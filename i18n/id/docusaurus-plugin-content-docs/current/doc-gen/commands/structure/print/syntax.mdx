@@ -6,9 +6,21 @@ sidebar_key: doc-gen-structure-print
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure print" title="Sintaks" description="Sintaks: doc-gen structure print" category="Struktur Proyek" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure print"
+  title="Sintaks"
+  description="Sintaks: doc-gen structure print"
+  category="Struktur Proyek"
+  status="Read Only"
+  syntax="doc-gen structure print [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 <Terminal language="bash">{`doc-gen structure print [TARGET_DIRECTORY] [OPTIONS]`}</Terminal>
-

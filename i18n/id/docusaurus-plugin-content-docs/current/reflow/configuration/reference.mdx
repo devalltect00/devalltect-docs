@@ -7,28 +7,28 @@ tags: [reflow, configuration, reference]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/reflow/config.toml"
-    title="Referensi Konfigurasi"
-    description="Petakan konfigurasi Reflow bawaan ke perintah dan batas operasi yang memakainya."
-    category="Konfigurasi"
-    status="Reflow 1.0.0"
-    syntax="[tool.reflow.*]"
-    tags={["TOML", "default perintah", "target repositori"]}
-    links={[
-        {label: "Ringkasan Konfigurasi", href: "./overview"},
-        {label: "Target Repositori", href: "../concepts/repository-targeting"},
-        {label: "Keamanan dan Dry-run", href: "../concepts/safety-and-dry-run"},
-        {label: "Perintah", href: "../commands/overview"},
-    ]}
+  command=".config/reflow/config.toml"
+  title="Referensi Konfigurasi"
+  description="Petakan konfigurasi Reflow bawaan ke perintah dan batas operasi yang memakainya."
+  category="Konfigurasi"
+  status="Reflow 1.0.0"
+  syntax="[tool.reflow.*]"
+  tags={["TOML", "default perintah", "target repositori"]}
+  links={[
+    { label: "Ringkasan Konfigurasi", href: "./overview" },
+    { label: "Target Repositori", href: "../concepts/repository-targeting" },
+    { label: "Keamanan dan Dry-run", href: "../concepts/safety-and-dry-run" },
+    { label: "Perintah", href: "../commands/overview" },
+  ]}
 />
 
 ## Resolusi dan kepemilikan
@@ -56,21 +56,39 @@ CLI eksplisit diberikan.
 <Section title="Repositori dan Git">
 
 <PropertyTable
-    title="Pengaturan target"
-    items={[
-        {property: <code>repository.path</code>, type: "path", defaultValue: ".", description: "Direktori lokal yang sudah ada. Nilai relatif ditentukan dari direktori pemanggilan."},
-        {property: <code>repository.url</code>, type: "URL Git", defaultValue: "tidak diatur", description: "Repositori remote yang dimaterialisasi dalam clone sementara terkelola. Jangan masukkan kredensial."},
-        {property: <code>git.default_remote</code>, type: "string", defaultValue: "origin", description: "Nama remote untuk penggantian tag remote dan push pemulihan release."},
-    ]}
+  title="Pengaturan target"
+  items={[
+    {
+      property: <code>repository.path</code>,
+      type: "path",
+      defaultValue: ".",
+      description:
+        "Direktori lokal yang sudah ada. Nilai relatif ditentukan dari direktori pemanggilan.",
+    },
+    {
+      property: <code>repository.url</code>,
+      type: "URL Git",
+      defaultValue: "tidak diatur",
+      description:
+        "Repositori remote yang dimaterialisasi dalam clone sementara terkelola. Jangan masukkan kredensial.",
+    },
+    {
+      property: <code>git.default_remote</code>,
+      type: "string",
+      defaultValue: "origin",
+      description:
+        "Nama remote untuk penggantian tag remote dan push pemulihan release.",
+    },
+  ]}
 />
 
-| Perintah | Target `path` | Target `url` | Cakupan persisten |
-| --- | --- | --- | --- |
-| `reflow init` | Didukung | Ditolak | File konfigurasi proyek |
-| `reflow tags convert local` | Didukung | Ditolak | Tag ref lokal saja |
-| `reflow tags convert remote` | Memakai remote checkout | Memakai clone sementara | Atomic push remote yang dijaga |
-| `reflow releases recover` | Memakai remote checkout | Memakai clone sementara | Hapus dan push ulang tag remote terpilih |
-| `reflow dockerize` | Memakai checkout sebagai sumber | Memakai clone sementara sebagai sumber | Operasi Docker dan registry |
+| Perintah                     | Target `path`                   | Target `url`                           | Cakupan persisten                        |
+| ---------------------------- | ------------------------------- | -------------------------------------- | ---------------------------------------- |
+| `reflow init`                | Didukung                        | Ditolak                                | File konfigurasi proyek                  |
+| `reflow tags convert local`  | Didukung                        | Ditolak                                | Tag ref lokal saja                       |
+| `reflow tags convert remote` | Memakai remote checkout         | Memakai clone sementara                | Atomic push remote yang dijaga           |
+| `reflow releases recover`    | Memakai remote checkout         | Memakai clone sementara                | Hapus dan push ulang tag remote terpilih |
+| `reflow dockerize`           | Memakai checkout sebagai sumber | Memakai clone sementara sebagai sumber | Operasi Docker dan registry              |
 
 Nilai registry seperti `github.image` dan `gitlab.image` tidak pernah memilih
 repositori Git.
@@ -80,18 +98,36 @@ repositori Git.
 <Section title="Eksekusi CLI Bersama">
 
 <PropertyTable
-    title="[tool.reflow.cli.execution]"
-    items={[
-        {property: <code>debug</code>, type: "boolean", defaultValue: "false", description: "Aktifkan output diagnostik terperinci ketika flag CLI tidak diberikan."},
-        {property: <code>dry_run</code>, type: "boolean", defaultValue: "false", description: "Simulasikan perubahan lokal, remote, Docker, dan registry sambil tetap menjalankan discovery dan validasi."},
-    ]}
+  title="[tool.reflow.cli.execution]"
+  items={[
+    {
+      property: <code>debug</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Aktifkan output diagnostik terperinci ketika flag CLI tidak diberikan.",
+    },
+    {
+      property: <code>dry_run</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Simulasikan perubahan lokal, remote, Docker, dan registry sambil tetap menjalankan discovery dan validasi.",
+    },
+  ]}
 />
 
 <PropertyTable
-    title="[tool.reflow.cli.progress]"
-    items={[
-        {property: <code>enabled</code>, type: "boolean", defaultValue: "true", description: "Tampilkan spinner dan progress bar Rich. Pengaturan ini hanya mengubah presentasi, bukan perilaku live atau dry-run."},
-    ]}
+  title="[tool.reflow.cli.progress]"
+  items={[
+    {
+      property: <code>enabled</code>,
+      type: "boolean",
+      defaultValue: "true",
+      description:
+        "Tampilkan spinner dan progress bar Rich. Pengaturan ini hanya mengubah presentasi, bukan perilaku live atau dry-run.",
+    },
+  ]}
 />
 
 <InfoBox variant="note" title="Dry-run masih dapat membaca dan menulis log">
@@ -108,11 +144,23 @@ disimulasikan.
 <Section title="Inisialisasi">
 
 <PropertyTable
-    title="[tool.reflow.initialization]"
-    items={[
-        {property: <code>force</code>, type: "boolean", defaultValue: "false", description: "Perilaku overwrite default untuk reflow init ketika --force/--no-force tidak diberikan."},
-        {property: <code>ask</code>, type: "boolean", defaultValue: "false", description: "Minta konfirmasi sebelum keputusan pembuatan atau penggantian yang didukung ketika --ask tidak diberikan."},
-    ]}
+  title="[tool.reflow.initialization]"
+  items={[
+    {
+      property: <code>force</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Perilaku overwrite default untuk reflow init ketika --force/--no-force tidak diberikan.",
+    },
+    {
+      property: <code>ask</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Minta konfirmasi sebelum keputusan pembuatan atau penggantian yang didukung ketika --ask tidak diberikan.",
+    },
+  ]}
 />
 
 Pengaturan ini hanya digunakan oleh `reflow init`. Perintah aktif menerima
@@ -123,11 +171,23 @@ mode `all` dan `config` serta memerlukan target lokal persisten.
 <Section title="Konversi Tag">
 
 <PropertyTable
-    title="[tool.reflow.cli.tags.convert]"
-    items={[
-        {property: <code>target_format</code>, type: "semver | pep440", defaultValue: "semver", description: "Format tujuan bersama untuk konversi tag lokal dan remote ketika --to tidak diberikan."},
-        {property: <code>yes</code>, type: "boolean", defaultValue: "false", description: "Lewati konfirmasi penggantian live setelah rencana lengkap ditampilkan. Dry-run tidak meminta konfirmasi."},
-    ]}
+  title="[tool.reflow.cli.tags.convert]"
+  items={[
+    {
+      property: <code>target_format</code>,
+      type: "semver | pep440",
+      defaultValue: "semver",
+      description:
+        "Format tujuan bersama untuk konversi tag lokal dan remote ketika --to tidak diberikan.",
+    },
+    {
+      property: <code>yes</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Lewati konfirmasi penggantian live setelah rencana lengkap ditampilkan. Dry-run tidak meminta konfirmasi.",
+    },
+  ]}
 />
 
 Default yang sama dipakai oleh `reflow tags convert local` dan
@@ -139,12 +199,27 @@ ref lokal atau remote yang dapat berubah.
 <Section title="Pemulihan Release dan Alias Deprecated">
 
 <PropertyTable
-    title="[tool.reflow.cli.releases.recover]"
-    items={[
-        {property: <code>delay</code>, type: "integer >= 0", defaultValue: "2", description: "Jeda dalam detik di antara operasi push ulang tag remote terpilih."},
-        {property: <code>only_stable</code>, type: "boolean", defaultValue: "false", description: "Kecualikan tag prerelease saat memilih release yang dipulihkan."},
-        {property: <code>limit</code>, type: "integer >= 1 | tidak diatur", defaultValue: "tanpa batas", description: "Jumlah maksimum tag tanpa release yang dipilih."},
-    ]}
+  title="[tool.reflow.cli.releases.recover]"
+  items={[
+    {
+      property: <code>delay</code>,
+      type: "integer >= 0",
+      defaultValue: "2",
+      description: "Jeda dalam detik di antara operasi push ulang tag remote terpilih.",
+    },
+    {
+      property: <code>only_stable</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Kecualikan tag prerelease saat memilih release yang dipulihkan.",
+    },
+    {
+      property: <code>limit</code>,
+      type: "integer >= 1 | tidak diatur",
+      defaultValue: "tanpa batas",
+      description: "Jumlah maksimum tag tanpa release yang dipilih.",
+    },
+  ]}
 />
 
 `--yes` untuk `reflow releases recover` hanya tersedia melalui CLI. Recovery
@@ -153,12 +228,27 @@ untuk memicu kembali CI/CD berbasis tag; perintah ini tidak membuat release
 melalui API.
 
 <PropertyTable
-    title="[tool.reflow.cli.tags.replay] (deprecated)"
-    items={[
-        {property: <code>delay</code>, type: "integer >= 0", defaultValue: "2", description: "Fallback lama ketika delay recovery kanonis tidak dikonfigurasi."},
-        {property: <code>only_stable</code>, type: "boolean", defaultValue: "false", description: "Fallback lama untuk filter stable-only kanonis."},
-        {property: <code>limit</code>, type: "integer >= 1 | tidak diatur", defaultValue: "tanpa batas", description: "Fallback lama untuk limit recovery kanonis."},
-    ]}
+  title="[tool.reflow.cli.tags.replay] (deprecated)"
+  items={[
+    {
+      property: <code>delay</code>,
+      type: "integer >= 0",
+      defaultValue: "2",
+      description: "Fallback lama ketika delay recovery kanonis tidak dikonfigurasi.",
+    },
+    {
+      property: <code>only_stable</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Fallback lama untuk filter stable-only kanonis.",
+    },
+    {
+      property: <code>limit</code>,
+      type: "integer >= 1 | tidak diatur",
+      defaultValue: "tanpa batas",
+      description: "Fallback lama untuk limit recovery kanonis.",
+    },
+  ]}
 />
 
 Pertahankan nilai lama hanya selama migrasi konfigurasi. Konfigurasi dan
@@ -170,13 +260,36 @@ automasi baru harus memakai `[tool.reflow.cli.releases.recover]` dan
 <Section title="Docker dan Image Registry">
 
 <PropertyTable
-    title="Publikasi container"
-    items={[
-        {property: <code>docker.provider</code>, type: "github | gitlab | both", defaultValue: "github", description: "Pilih tujuan registry terkonfigurasi yang dipakai reflow dockerize."},
-        {property: <code>docker.keep_local_images</code>, type: "boolean", defaultValue: "false", description: "Pertahankan semua tagged image lokal dan jangan hapus image non-latest setelah push."},
-        {property: <code>github.image</code>, type: "nama image", defaultValue: "placeholder template", description: "Tujuan GHCR, misalnya ghcr.io/acme/project. Wajib untuk github atau both."},
-        {property: <code>gitlab.image</code>, type: "nama image", defaultValue: "placeholder template", description: "Tujuan GitLab Container Registry. Wajib untuk gitlab atau both."},
-    ]}
+  title="Publikasi container"
+  items={[
+    {
+      property: <code>docker.provider</code>,
+      type: "github | gitlab | both",
+      defaultValue: "github",
+      description:
+        "Pilih tujuan registry terkonfigurasi yang dipakai reflow dockerize.",
+    },
+    {
+      property: <code>docker.keep_local_images</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Pertahankan semua tagged image lokal dan jangan hapus image non-latest setelah push.",
+    },
+    {
+      property: <code>github.image</code>,
+      type: "nama image",
+      defaultValue: "placeholder template",
+      description:
+        "Tujuan GHCR, misalnya ghcr.io/acme/project. Wajib untuk github atau both.",
+    },
+    {
+      property: <code>gitlab.image</code>,
+      type: "nama image",
+      defaultValue: "placeholder template",
+      description: "Tujuan GitLab Container Registry. Wajib untuk gitlab atau both.",
+    },
+  ]}
 />
 
 `reflow dockerize` tidak memiliki flag provider atau image khusus perintah pada
@@ -189,27 +302,87 @@ dapat menghapus image lokal non-latest.
 <Section title="Logging Console dan File">
 
 <PropertyTable
-    title="[tool.reflow.logging]"
-    items={[
-        {property: <code>level</code>, type: "log level", defaultValue: "INFO", description: "Ambang logging console; --log-level mengalahkan nilai ini."},
-        {property: <code>markup</code>, type: "boolean", defaultValue: "true", description: "Aktifkan Rich markup pada logging console."},
-        {property: <code>rich_tracebacks</code>, type: "boolean", defaultValue: "true", description: "Aktifkan rendering traceback Rich."},
-        {property: <code>show_time</code>, type: "boolean", defaultValue: "false", description: "Tampilkan timestamp pada record log console."},
-        {property: <code>show_level</code>, type: "boolean", defaultValue: "false", description: "Tampilkan label severity pada record log console."},
-        {property: <code>console_format</code>, type: "format string", defaultValue: "%(message)s", description: "Format logging Python untuk record console."},
-    ]}
+  title="[tool.reflow.logging]"
+  items={[
+    {
+      property: <code>level</code>,
+      type: "log level",
+      defaultValue: "INFO",
+      description: "Ambang logging console; --log-level mengalahkan nilai ini.",
+    },
+    {
+      property: <code>markup</code>,
+      type: "boolean",
+      defaultValue: "true",
+      description: "Aktifkan Rich markup pada logging console.",
+    },
+    {
+      property: <code>rich_tracebacks</code>,
+      type: "boolean",
+      defaultValue: "true",
+      description: "Aktifkan rendering traceback Rich.",
+    },
+    {
+      property: <code>show_time</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Tampilkan timestamp pada record log console.",
+    },
+    {
+      property: <code>show_level</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Tampilkan label severity pada record log console.",
+    },
+    {
+      property: <code>console_format</code>,
+      type: "format string",
+      defaultValue: "%(message)s",
+      description: "Format logging Python untuk record console.",
+    },
+  ]}
 />
 
 <PropertyTable
-    title="[tool.reflow.logging.file]"
-    items={[
-        {property: <code>level</code>, type: "log level", defaultValue: "DEBUG", description: "Ambang logging file."},
-        {property: <code>log_dir</code>, type: "path", defaultValue: "logs", description: "Direktori untuk log persisten."},
-        {property: <code>log_file</code>, type: "nama file", defaultValue: "reflow.log", description: "Nama file log aktif."},
-        {property: <code>max_bytes</code>, type: "ukuran", defaultValue: "10MB", description: "Rotasi log setelah mencapai ukuran perkiraan ini."},
-        {property: <code>backup_count</code>, type: "integer", defaultValue: "5", description: "Jumlah file log hasil rotasi yang dipertahankan."},
-        {property: <code>file_format</code>, type: "format string", defaultValue: "timestamp | level | logger | message", description: "Format logging Python untuk record file."},
-    ]}
+  title="[tool.reflow.logging.file]"
+  items={[
+    {
+      property: <code>level</code>,
+      type: "log level",
+      defaultValue: "DEBUG",
+      description: "Ambang logging file.",
+    },
+    {
+      property: <code>log_dir</code>,
+      type: "path",
+      defaultValue: "logs",
+      description: "Direktori untuk log persisten.",
+    },
+    {
+      property: <code>log_file</code>,
+      type: "nama file",
+      defaultValue: "reflow.log",
+      description: "Nama file log aktif.",
+    },
+    {
+      property: <code>max_bytes</code>,
+      type: "ukuran",
+      defaultValue: "10MB",
+      description: "Rotasi log setelah mencapai ukuran perkiraan ini.",
+    },
+    {
+      property: <code>backup_count</code>,
+      type: "integer",
+      defaultValue: "5",
+      description: "Jumlah file log hasil rotasi yang dipertahankan.",
+    },
+    {
+      property: <code>file_format</code>,
+      type: "format string",
+      defaultValue: "timestamp | level | logger | message",
+      description: "Format logging Python untuk record file.",
+    },
+  ]}
 />
 
 Jangan masukkan kredensial, token, atau URL yang mengandung secret ke dalam
@@ -253,9 +426,21 @@ bawaan saat memperbarui konfigurasi proyek yang sudah ada.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Ringkasan Konfigurasi", href: "./overview", description: "Pahami precedence dan kepemilikan proyek."},
-        {title: "Target Repositori", href: "../concepts/repository-targeting", description: "Pilih path atau URL dengan aman."},
-        {title: "Ringkasan Perintah", href: "../commands/overview", description: "Cocokkan konfigurasi dengan cakupan perubahan perintah."},
-    ]}
+  commands={[
+    {
+      title: "Ringkasan Konfigurasi",
+      href: "./overview",
+      description: "Pahami precedence dan kepemilikan proyek.",
+    },
+    {
+      title: "Target Repositori",
+      href: "../concepts/repository-targeting",
+      description: "Pilih path atau URL dengan aman.",
+    },
+    {
+      title: "Ringkasan Perintah",
+      href: "../commands/overview",
+      description: "Cocokkan konfigurasi dengan cakupan perubahan perintah.",
+    },
+  ]}
 />

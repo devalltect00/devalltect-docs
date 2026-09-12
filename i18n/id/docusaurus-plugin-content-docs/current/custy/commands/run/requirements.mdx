@@ -4,13 +4,54 @@ description: "Siapkan repository, files, remotes, dan release inputs sebelum pip
 sidebar_position: 2
 sidebar_key: custy-run-requirements
 ---
-import {CommandHero, RequirementGrid, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Requirements" description="Gabungkan requirements dari seluruh stage profile yang dipilih." category="Pipeline" status="Required" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Profiles",href:"./profiles"},{label:"Safety",href:"./safety"}]} />
+import { CommandHero, RequirementGrid, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Requirements"
+  description="Gabungkan requirements dari seluruh stage profile yang dipilih."
+  category="Pipeline"
+  status="Required"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<RequirementGrid items={[
- {title:"Git Repository",level:"required",children:"Repository dan current branch harus benar."},{title:"Custy Configuration",level:"required",children:"Paths, templates, execution, versioning, dan remotes harus valid."},{title:"Writable Artifacts",level:"required",children:"Target files dan backup directories harus writable."},{title:"Remote Access",level:"required",children:"Profile yang melakukan push memerlukan credentials dan permission."},{title:"Reviewed State",level:"recommended",children:"Periksa HEAD, working tree, index, tags, dan remotes."},
-]} />
-<InfoBox variant="warning" title="Profiles Combine Requirements">Semakin besar profile, semakin banyak requirements dan side effects yang digabungkan.</InfoBox>
+<RequirementGrid
+  items={[
+    {
+      title: "Git Repository",
+      level: "required",
+      children: "Repository dan current branch harus benar.",
+    },
+    {
+      title: "Custy Configuration",
+      level: "required",
+      children: "Paths, templates, execution, versioning, dan remotes harus valid.",
+    },
+    {
+      title: "Writable Artifacts",
+      level: "required",
+      children: "Target files dan backup directories harus writable.",
+    },
+    {
+      title: "Remote Access",
+      level: "required",
+      children: "Profile yang melakukan push memerlukan credentials dan permission.",
+    },
+    {
+      title: "Reviewed State",
+      level: "recommended",
+      children: "Periksa HEAD, working tree, index, tags, dan remotes.",
+    },
+  ]}
+/>
+<InfoBox variant="warning" title="Profiles Combine Requirements">
+  Semakin besar profile, semakin banyak requirements dan side effects yang digabungkan.
+</InfoBox>

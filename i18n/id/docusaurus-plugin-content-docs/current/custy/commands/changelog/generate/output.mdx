@@ -4,11 +4,28 @@ description: "Pahami struktur CHANGELOG.md dan hal yang perlu ditinjau."
 sidebar_position: 7
 sidebar_key: custy-changelog-generate-output
 ---
-import {CommandHero, CommandOutput, Section, InfoBox, Screenshot} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Command Output" description="Tinjau struktur Markdown yang dibuat generator." category="Changelog" status="Review Required" syntax="custy changelog generate" links={[
-    {label: "Workflow", href: "./workflow"}, {label: "Examples", href: "./examples"}, {label: "Troubleshooting", href: "./troubleshooting"},
-]} />
+import {
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
+  Screenshot,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Command Output"
+  description="Tinjau struktur Markdown yang dibuat generator."
+  category="Changelog"
+  status="Review Required"
+  syntax="custy changelog generate"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -20,23 +37,26 @@ untuk setiap Git tag yang ditemukan. Deskripsi berubah dari `Processing
 Unreleased changes` menjadi `Processing release TAG` ketika setiap range
 diproses.
 
-<CommandOutput outputs={[
+<CommandOutput
+  outputs={[
     {
-        title: "History Collection",
-        description: "Contoh progress untuk repository dengan dua tag.",
-        output: `Processing Unreleased changes   ━━━━━━━━━━━━━ 1/3
+      title: "History Collection",
+      description: "Contoh progress untuk repository dengan dua tag.",
+      output: `Processing Unreleased changes   ━━━━━━━━━━━━━ 1/3
 Processing release v2.0.0-rc.1 ━━━━━━━━━━━━━ 2/3
 Generating changelog ✔          ━━━━━━━━━━━━━ 3/3`,
-        notes: "Tampilan, waktu, dan tag yang sebenarnya mengikuti terminal dan repository saat ini.",
+      notes:
+        "Tampilan, waktu, dan tag yang sebenarnya mengikuti terminal dan repository saat ini.",
     },
-]} />
+  ]}
+/>
 
 <Screenshot
-    src="/img/custy/commands/changelog/generate-terminal.png"
-    alt="Progress changelog generation Custy pada terminal"
-    title="Changelog generation progress"
-    caption="Progress bar melaporkan Unreleased content dan setiap release range yang ditemukan."
-    fallback="Screenshot terminal untuk changelog generation akan ditambahkan nanti."
+  src="/img/custy/commands/changelog/generate-terminal.png"
+  alt="Progress changelog generation Custy pada terminal"
+  title="Changelog generation progress"
+  caption="Progress bar melaporkan Unreleased content dan setiap release range yang ditemukan."
+  fallback="Screenshot terminal untuk changelog generation akan ditambahkan nanti."
 />
 
 <InfoBox variant="info" title="Progress Selesai Bukan Konfirmasi File Ditulis">
@@ -55,14 +75,28 @@ menampilkan progress dan merender preview tanpa mengganti `CHANGELOG.md`.
 ## v1.4.0 - 2026-08-12
 
 ### Features
+
 - Add structured release metadata
 
 ### Bug Fixes
+
 - Preserve configured changelog grouping`},
-]} />
+  ]} />
 
-<Section title="Possible Content">Berdasarkan konfigurasi, output dapat berisi release metadata, grouped entries, scopes, breaking changes, compare links, statistics, pending content, dan footer.</Section>
+<Section title="Possible Content">
+  Berdasarkan konfigurasi, output dapat berisi release metadata, grouped entries,
+  scopes, breaking changes, compare links, statistics, pending content, dan footer.
+</Section>
 
-<Screenshot src="/img/custy/commands/changelog/generated-changelog.png" alt="Generated CHANGELOG.md preview" title="Generated Changelog" caption="Contoh struktur changelog setelah generation." fallback="Preview generated CHANGELOG.md akan ditambahkan nanti." />
+<Screenshot
+  src="/img/custy/commands/changelog/generated-changelog.png"
+  alt="Generated CHANGELOG.md preview"
+  title="Generated Changelog"
+  caption="Contoh struktur changelog setelah generation."
+  fallback="Preview generated CHANGELOG.md akan ditambahkan nanti."
+/>
 
-<InfoBox variant="warning" title="Selalu Tinjau Diff">Pastikan release boundaries, grouping, duplicate handling, links, dan manual content sesuai sebelum commit.</InfoBox>
+<InfoBox variant="warning" title="Selalu Tinjau Diff">
+  Pastikan release boundaries, grouping, duplicate handling, links, dan manual content
+  sesuai sebelum commit.
+</InfoBox>

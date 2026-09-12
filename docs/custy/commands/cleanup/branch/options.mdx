@@ -5,47 +5,43 @@ sidebar_position: 4
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - options
+  - cleanup
+  - branch
+  - options
 
 keywords:
-    - custy cleanup branches options
+  - custy cleanup branches options
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Options"
-    description="Customize how Branch Cleanup evaluates and removes Git branches."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "cleanup",
-        "branch",
-        "options",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Options"
+  description="Customize how Branch Cleanup evaluates and removes Git branches."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["cleanup", "branch", "options"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -63,43 +59,37 @@ Most cleanup behavior is configured once in your project's
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--include-prefix",
-            shorthand: "-i",
-            required: false,
-            description:
-                "Temporarily include one or more branch name prefixes during the current cleanup operation.",
-            example:
-                "--include-prefix release/",
-        },
-        {
-            name: "--merge-status",
-            shorthand: "-m",
-            required: false,
-            defaultValue: "merged",
-            description:
-                "Limit cleanup to merged, unmerged, or all matching branches.",
-            example:
-                "--merge-status all",
-        },
-        {
-            name: "--max-age",
-            required: false,
-            description:
-                "Only consider branches older than the specified relative age.",
-            example:
-                "--max-age 30d",
-        },
-        {
-            name: "--before",
-            required: false,
-            description:
-                "Only consider branches whose latest commit occurred before the specified date.",
-            example:
-                "--before 2026-07-01",
-        },
-    ]}
+  options={[
+    {
+      name: "--include-prefix",
+      shorthand: "-i",
+      required: false,
+      description:
+        "Temporarily include one or more branch name prefixes during the current cleanup operation.",
+      example: "--include-prefix release/",
+    },
+    {
+      name: "--merge-status",
+      shorthand: "-m",
+      required: false,
+      defaultValue: "merged",
+      description: "Limit cleanup to merged, unmerged, or all matching branches.",
+      example: "--merge-status all",
+    },
+    {
+      name: "--max-age",
+      required: false,
+      description: "Only consider branches older than the specified relative age.",
+      example: "--max-age 30d",
+    },
+    {
+      name: "--before",
+      required: false,
+      description:
+        "Only consider branches whose latest commit occurred before the specified date.",
+      example: "--before 2026-07-01",
+    },
+  ]}
 />
 
 </Section>

@@ -7,12 +7,41 @@ tags: [custy, changelog, experimental]
 keywords: [auto_detect_type, detect_breaking_changes, smart_formatting]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.advanced]" title="Advanced Changelog Features" description="Pahami experimental switches tanpa menganggapnya telah mengubah output." category="Changelog Configuration" status="Experimental / Loaded Only" syntax="[tool.custy.changelog.advanced]" tags={["heuristics", "experimental", "future behavior"]} links={[{label: "Core", href: "./core"}, {label: "Breaking Changes", href: "./breaking-changes"}, {label: "Rendering", href: "./rendering"}]} />
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Generated Values", value: "All false", icon: "security"}, {label: "Loaded", value: "Yes", icon: "configuration"}, {label: "Applied", value: "Not by active pipeline", icon: "warning"}]} />
+<CommandHero
+  command="[tool.custy.changelog.advanced]"
+  title="Advanced Changelog Features"
+  description="Pahami experimental switches tanpa menganggapnya telah mengubah output."
+  category="Changelog Configuration"
+  status="Experimental / Loaded Only"
+  syntax="[tool.custy.changelog.advanced]"
+  tags={["heuristics", "experimental", "future behavior"]}
+  links={[
+    { label: "Core", href: "./core" },
+    { label: "Breaking Changes", href: "./breaking-changes" },
+    { label: "Rendering", href: "./rendering" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Generated Values", value: "All false", icon: "security" },
+    { label: "Loaded", value: "Yes", icon: "configuration" },
+    { label: "Applied", value: "Not by active pipeline", icon: "warning" },
+  ]}
+/>
 
 ## Properties
+
 <PropertyTable items={[{property: "auto_detect_type", type: "Boolean", defaultValue: "false", description: "Ditujukan untuk menyimpulkan Conventional Commit type dari untyped messages. Dimuat ke configuration tetapi tidak diterapkan active pipeline."}, {property: "detect_breaking_changes", type: "Boolean", defaultValue: "false", description: "Ditujukan untuk heuristic breaking detection di luar configured keywords. Dimuat tetapi tidak diterapkan."}, {property: "smart_formatting", type: "Boolean", defaultValue: "false", description: "Ditujukan untuk evolving spacing, grouping, duplicate reduction, dan formatting heuristics. Dimuat tetapi tidak diterapkan."}]} />
 <Terminal title="Generated experimental defaults" language="toml">{`[tool.custy.changelog.advanced]
 auto_detect_type = false

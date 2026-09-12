@@ -6,14 +6,10 @@
 
 export { default } from "./RequirementCard";
 
-export type {
-    RequirementCardProps,
-    RequirementLevel,
-} from "./types";
-
+export type { RequirementCardProps, RequirementLevel } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.RequirementCard
     title="Git"
     level="required"

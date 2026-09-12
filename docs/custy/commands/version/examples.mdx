@@ -5,45 +5,42 @@ sidebar_position: 8
 sidebar_key: custy-version
 
 tags:
-    - version
-    - examples
+  - version
+  - examples
 
 keywords:
-    - custy version examples
+  - custy version examples
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Examples"
-    description="Learn how to synchronize project versions using common Version Update scenarios."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "examples",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy version"
+  title="Examples"
+  description="Learn how to synchronize project versions using common Version Update scenarios."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["examples", "version"]}
+  links={[
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -61,17 +58,15 @@ combined as needed.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Synchronize Project Version",
-            description:
-                "Update project version files using the configured defaults.",
-            command:
-`custy version update`,
-            result:
-                "Custy generates the next version and synchronizes every supported project version file.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Synchronize Project Version",
+      description: "Update project version files using the configured defaults.",
+      command: `custy version update`,
+      result:
+        "Custy generates the next version and synchronizes every supported project version file.",
+    },
+  ]}
 />
 
 </Section>
@@ -83,26 +78,21 @@ combined as needed.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Use Semantic Versioning",
-            description:
-                "Generate the next version using the SemVer strategy.",
-            command:
-`custy version update --strategy semver`,
-            result:
-                "The next version is calculated according to Semantic Versioning.",
-        },
-        {
-            title: "Use PEP 440",
-            description:
-                "Generate the next version using the Python PEP 440 strategy.",
-            command:
-`custy version update --strategy pep440`,
-            result:
-                "Custy generates a PEP 440 compliant version before synchronizing project files.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Use Semantic Versioning",
+      description: "Generate the next version using the SemVer strategy.",
+      command: `custy version update --strategy semver`,
+      result: "The next version is calculated according to Semantic Versioning.",
+    },
+    {
+      title: "Use PEP 440",
+      description: "Generate the next version using the Python PEP 440 strategy.",
+      command: `custy version update --strategy pep440`,
+      result:
+        "Custy generates a PEP 440 compliant version before synchronizing project files.",
+    },
+  ]}
 />
 
 </Section>
@@ -114,26 +104,21 @@ combined as needed.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Minor Release",
-            description:
-                "Generate the next minor version.",
-            command:
-`custy version update --bump minor`,
-            result:
-                "The generated version increments the minor component according to the selected strategy.",
-        },
-        {
-            title: "Explicit Version",
-            description:
-                "Synchronize project files using a specific version.",
-            command:
-`custy version update --tag v2.5.0`,
-            result:
-                "The supplied version is synchronized without generating a new one.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Minor Release",
+      description: "Generate the next minor version.",
+      command: `custy version update --bump minor`,
+      result:
+        "The generated version increments the minor component according to the selected strategy.",
+    },
+    {
+      title: "Explicit Version",
+      description: "Synchronize project files using a specific version.",
+      command: `custy version update --tag v2.5.0`,
+      result: "The supplied version is synchronized without generating a new one.",
+    },
+  ]}
 />
 
 </Section>
@@ -145,26 +130,21 @@ combined as needed.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Beta Release",
-            description:
-                "Generate a beta pre-release.",
-            command:
-`custy version update --pre-release beta`,
-            result:
-                "Custy generates the next beta version supported by the selected strategy.",
-        },
-        {
-            title: "Development Release",
-            description:
-                "Generate a development release.",
-            command:
-`custy version update --dev-release`,
-            result:
-                "Development version information is applied where supported.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Beta Release",
+      description: "Generate a beta pre-release.",
+      command: `custy version update --pre-release beta`,
+      result:
+        "Custy generates the next beta version supported by the selected strategy.",
+    },
+    {
+      title: "Development Release",
+      description: "Generate a development release.",
+      command: `custy version update --dev-release`,
+      result: "Development version information is applied where supported.",
+    },
+  ]}
 />
 
 </Section>
@@ -176,26 +156,21 @@ combined as needed.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Preview Version Update",
-            description:
-                "Review version synchronization without modifying project files.",
-            command:
-`custy --dry-run version update`,
-            result:
-                "Displays the actions that would be performed without updating any files.",
-        },
-        {
-            title: "Debug Version Update",
-            description:
-                "Display additional diagnostic information.",
-            command:
-`custy --debug version update`,
-            result:
-                "Runs Version Update while producing detailed debug output.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Preview Version Update",
+      description: "Review version synchronization without modifying project files.",
+      command: `custy --dry-run version update`,
+      result:
+        "Displays the actions that would be performed without updating any files.",
+    },
+    {
+      title: "Debug Version Update",
+      description: "Display additional diagnostic information.",
+      command: `custy --debug version update`,
+      result: "Runs Version Update while producing detailed debug output.",
+    },
+  ]}
 />
 
 </Section>

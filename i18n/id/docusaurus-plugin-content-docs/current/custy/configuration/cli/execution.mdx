@@ -7,25 +7,99 @@ tags: [custy, configuration, execution]
 keywords: [dry_run, force_commit, auto_stage, stage_mode]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.execution]" title="Execution" description="Tetapkan safety, staging, validation, dan diagnostic defaults yang dapat digunakan ulang pada supported commands." category="CLI Configuration" status="Active with Known Mismatch" syntax="[tool.custy.cli.execution]" tags={["dry run", "force", "staging"]} links={[{label: "Dry Run", href: "../../concepts/dry-run"}, {label: "Run Safety", href: "../../commands/run/safety"}, {label: "Resolution", href: "../resolution"}]} />
+<CommandHero
+  command="[tool.custy.cli.execution]"
+  title="Execution"
+  description="Tetapkan safety, staging, validation, dan diagnostic defaults yang dapat digunakan ulang pada supported commands."
+  category="CLI Configuration"
+  status="Active with Known Mismatch"
+  syntax="[tool.custy.cli.execution]"
+  tags={["dry run", "force", "staging"]}
+  links={[
+    { label: "Dry Run", href: "../../concepts/dry-run" },
+    { label: "Run Safety", href: "../../commands/run/safety" },
+    { label: "Resolution", href: "../resolution" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "8", icon: "table"}, {label: "Generated Dry Run", value: "false", icon: "warning"}, {label: "Generated Stage Mode", value: "all", icon: "git"}, {label: "Known Mismatch", value: "skip_checks", icon: "danger"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "8", icon: "table" },
+    { label: "Generated Dry Run", value: "false", icon: "warning" },
+    { label: "Generated Stage Mode", value: "all", icon: "git" },
+    { label: "Known Mismatch", value: "skip_checks", icon: "danger" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "dry_run", type: "Boolean", defaultValue: "false", description: "Default global preview state. Read-only discovery tetap berjalan sementara intended project-file, editor, Git, dan remote mutations disimulasikan."},
-        {property: "force_commit", type: "Boolean", defaultValue: "false", description: "Default force behavior untuk direct commit dan run commit steps."},
-        {property: "force_tag", type: "Boolean", defaultValue: "false", description: "Default force behavior untuk direct tag dan run tag steps."},
-        {property: "skip_checks", type: "Boolean", defaultValue: "false", description: "Generated plural key. Direct Git-operation dan run resolvers saat ini membaca singular skip_check, sehingga terjadi mismatch."},
-        {property: "no_debug", type: "Boolean", defaultValue: "true", description: "Inverse debug default yang digunakan global dan experimental workflow resolution."},
-        {property: "auto_stage", type: "Boolean", defaultValue: "false", description: "Stage files secara otomatis dalam supported commit, validate, dan run flows."},
-        {property: "stage_mode", type: "all | update | none | manual", defaultValue: "all", description: "Pilih semua changes, tracked updates saja, tanpa automatic staging, atau explicit manual staging."},
-        {property: "check_cz", type: "Boolean", defaultValue: "false", description: "Backward-compatible strict override. Jika true, wajibkan Commitizen configuration, executable cz, dan final message validation."},
-    ]}
+  items={[
+    {
+      property: "dry_run",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Default global preview state. Read-only discovery tetap berjalan sementara intended project-file, editor, Git, dan remote mutations disimulasikan.",
+    },
+    {
+      property: "force_commit",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Default force behavior untuk direct commit dan run commit steps.",
+    },
+    {
+      property: "force_tag",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Default force behavior untuk direct tag dan run tag steps.",
+    },
+    {
+      property: "skip_checks",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Generated plural key. Direct Git-operation dan run resolvers saat ini membaca singular skip_check, sehingga terjadi mismatch.",
+    },
+    {
+      property: "no_debug",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Inverse debug default yang digunakan global dan experimental workflow resolution.",
+    },
+    {
+      property: "auto_stage",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Stage files secara otomatis dalam supported commit, validate, dan run flows.",
+    },
+    {
+      property: "stage_mode",
+      type: "all | update | none | manual",
+      defaultValue: "all",
+      description:
+        "Pilih semua changes, tracked updates saja, tanpa automatic staging, atau explicit manual staging.",
+    },
+    {
+      property: "check_cz",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Backward-compatible strict override. Jika true, wajibkan Commitizen configuration, executable cz, dan final message validation.",
+    },
+  ]}
 />
 
 <Terminal title="Conservative shared defaults" language="toml">
@@ -53,6 +127,7 @@ default. Karena itu, explicit global option akan mengesampingkan setting ini.
 custy --dry-run run release
 
 # Nonaktifkan simulation dan gunakan normal execution
+
 custy --no-dry-run run release`}
 
 </Terminal>
@@ -86,4 +161,24 @@ template, gunakan explicit command option dan verifikasi displayed plan.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Run Safety", href: "../../commands/run/safety", description: "Tinjau pipeline-specific safety boundaries."}, {title: "Commit Options", href: "../../commands/commit/options", description: "Lihat staging dan force options."}, {title: "Resolution", href: "../resolution", description: "Pahami known naming mismatch."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Run Safety",
+        href: "../../commands/run/safety",
+        description: "Tinjau pipeline-specific safety boundaries.",
+      },
+      {
+        title: "Commit Options",
+        href: "../../commands/commit/options",
+        description: "Lihat staging dan force options.",
+      },
+      {
+        title: "Resolution",
+        href: "../resolution",
+        description: "Pahami known naming mismatch.",
+      },
+    ]}
+  />
+</Section>

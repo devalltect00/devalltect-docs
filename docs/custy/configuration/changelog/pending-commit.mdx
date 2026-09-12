@@ -7,15 +7,67 @@ tags: [custy, changelog, pending commit]
 keywords: [pending_commit enabled, generation, placement]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.pending_commit]" title="Pending Commit" description="Include project-owned pending message content and review the current limits of generation and placement settings." category="Changelog Configuration" status="Active + Loaded Only" syntax="[tool.custy.changelog.pending_commit]" tags={["commit-message.txt", "provider", "loaded-only settings"]} links={[{label: "Template Files", href: "../cli/templates/files"}, {label: "Core", href: "./core"}, {label: "Troubleshooting", href: "../../troubleshooting/changelog"}]} />
+<CommandHero
+  command="[tool.custy.changelog.pending_commit]"
+  title="Pending Commit"
+  description="Include project-owned pending message content and review the current limits of generation and placement settings."
+  category="Changelog Configuration"
+  status="Active + Loaded Only"
+  syntax="[tool.custy.changelog.pending_commit]"
+  tags={["commit-message.txt", "provider", "loaded-only settings"]}
+  links={[
+    { label: "Template Files", href: "../cli/templates/files" },
+    { label: "Core", href: "./core" },
+    { label: "Troubleshooting", href: "../../troubleshooting/changelog" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enabled", value: "Active", icon: "success"}, {label: "Generation", value: "Loaded only", icon: "workflow"}, {label: "Placement", value: "Loaded only", icon: "file"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Enabled", value: "Active", icon: "success" },
+    { label: "Generation", value: "Loaded only", icon: "workflow" },
+    { label: "Placement", value: "Loaded only", icon: "file" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "enabled", type: "Boolean", defaultValue: "true", description: "Active. Include the configured commit-message file through PendingCommitProvider for the newest unreleased range."}, {property: "generation", type: "append | regenerate", defaultValue: "regenerate", description: "Loaded only. The active generator does not invoke the integrator that applies this mode."}, {property: "placement", type: "before | after", defaultValue: "before", description: "Loaded only. The active generator does not currently reposition pending content."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "enabled",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Active. Include the configured commit-message file through PendingCommitProvider for the newest unreleased range.",
+    },
+    {
+      property: "generation",
+      type: "append | regenerate",
+      defaultValue: "regenerate",
+      description:
+        "Loaded only. The active generator does not invoke the integrator that applies this mode.",
+    },
+    {
+      property: "placement",
+      type: "before | after",
+      defaultValue: "before",
+      description:
+        "Loaded only. The active generator does not currently reposition pending content.",
+    },
+  ]}
+/>
 
 <Terminal title="Generated pending behavior" language="toml">
 
@@ -33,10 +85,10 @@ placement = "before"`}
 Use `enabled` to choose whether the configured commit-message file contributes
 additional content to the changelog:
 
-| Setting | Changelog message sources |
-| --- | --- |
-| `enabled = true` | Git commit history plus the pending message, when available, in the newest unreleased range. |
-| `enabled = false` | Git commit history only; the pending message is not included as an additional source. |
+| Setting           | Changelog message sources                                                                    |
+| ----------------- | -------------------------------------------------------------------------------------------- |
+| `enabled = true`  | Git commit history plus the pending message, when available, in the newest unreleased range. |
+| `enabled = false` | Git commit history only; the pending message is not included as an additional source.        |
 
 Edit the existing section in your project's `.config/custy/config.toml` rather
 than adding a second section with the same name:
@@ -92,4 +144,24 @@ settings until that integration path becomes active.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Template Files", href: "../cli/templates/files", description: "Configure commit_message."}, {title: "Cleaning", href: "./cleaning", description: "Remove template-only content before rendering."}, {title: "Commit Command", href: "../../commands/commit/overview", description: "Manage the message's Git operation."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Template Files",
+        href: "../cli/templates/files",
+        description: "Configure commit_message.",
+      },
+      {
+        title: "Cleaning",
+        href: "./cleaning",
+        description: "Remove template-only content before rendering.",
+      },
+      {
+        title: "Commit Command",
+        href: "../../commands/commit/overview",
+        description: "Manage the message's Git operation.",
+      },
+    ]}
+  />
+</Section>

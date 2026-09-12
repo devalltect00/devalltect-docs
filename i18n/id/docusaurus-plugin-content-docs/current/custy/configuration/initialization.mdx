@@ -7,39 +7,59 @@ tags: [custy, configuration, init]
 keywords: [tool.custy.initialization, init force, init ask]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.initialization]"
-    title="Initialization"
-    description="Pilih project defaults yang aman untuk preserve, prompt, atau replace generated resources."
-    category="Configuration"
-    status="Active"
-    syntax="custy init [--mode MODE] [--force | --ask]"
-    tags={["scaffolding", "overwrite", "prompts"]}
-    links={[
-        {label: "Init Overview", href: "../commands/init/overview"},
-        {label: "Configuration File", href: "./config-file"},
-        {label: "Generated Files", href: "../commands/init/generated-files"},
-    ]}
+  command="[tool.custy.initialization]"
+  title="Initialization"
+  description="Pilih project defaults yang aman untuk preserve, prompt, atau replace generated resources."
+  category="Configuration"
+  status="Active"
+  syntax="custy init [--mode MODE] [--force | --ask]"
+  tags={["scaffolding", "overwrite", "prompts"]}
+  links={[
+    { label: "Init Overview", href: "../commands/init/overview" },
+    { label: "Configuration File", href: "./config-file" },
+    { label: "Generated Files", href: "../commands/init/generated-files" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Table", value: "tool.custy.initialization", icon: "configuration"},
-        {label: "Properties", value: "2", icon: "table"},
-        {label: "Default Mode", value: "Preserve", icon: "security"},
-        {label: "CLI Priority", value: "Higher", icon: "terminal"},
-    ]}
+  items={[
+    { label: "Table", value: "tool.custy.initialization", icon: "configuration" },
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Default Mode", value: "Preserve", icon: "security" },
+    { label: "CLI Priority", value: "Higher", icon: "terminal" },
+  ]}
 />
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "force", type: "Boolean", defaultValue: "false", description: "Timpa existing selected files tanpa konfirmasi, termasuk file di dalam nested example directories. Direktori digabungkan, bukan diganti. Explicit CLI force choice mengalahkan configuration."},
-        {property: "ask", type: "Boolean", defaultValue: "false", description: "Minta konfirmasi sebelum mengganti individual generated files yang mendukung prompt. Packaged example files menggunakan merge behavior tanpa prompt per file. Menolak prompt mempertahankan file."},
-    ]}
+  items={[
+    {
+      property: "force",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Timpa existing selected files tanpa konfirmasi, termasuk file di dalam nested example directories. Direktori digabungkan, bukan diganti. Explicit CLI force choice mengalahkan configuration.",
+    },
+    {
+      property: "ask",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Minta konfirmasi sebelum mengganti individual generated files yang mendukung prompt. Packaged example files menggunakan merge behavior tanpa prompt per file. Menolak prompt mempertahankan file.",
+    },
+  ]}
 />
 
 <Terminal title="Safe defaults" language="toml">
@@ -78,11 +98,23 @@ ditentukan, resolver menggunakan `all`.
 <Section title="Lanjutkan">
 
 <RelatedCommands
-    commands={[
-        {title: "Init Syntax", href: "../commands/init/syntax", description: "Tinjau invocation forms untuk mode, force, dan ask."},
-        {title: "Generated Files", href: "../commands/init/generated-files", description: "Lihat resources yang dapat dibuat setiap mode."},
-        {title: "Configuration File", href: "./config-file", description: "Pahami packaged dan project-owned copies."},
-    ]}
+  commands={[
+    {
+      title: "Init Syntax",
+      href: "../commands/init/syntax",
+      description: "Tinjau invocation forms untuk mode, force, dan ask.",
+    },
+    {
+      title: "Generated Files",
+      href: "../commands/init/generated-files",
+      description: "Lihat resources yang dapat dibuat setiap mode.",
+    },
+    {
+      title: "Configuration File",
+      href: "./config-file",
+      description: "Pahami packaged dan project-owned copies.",
+    },
+  ]}
 />
 
 </Section>

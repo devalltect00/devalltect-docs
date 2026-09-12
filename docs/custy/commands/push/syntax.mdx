@@ -8,29 +8,25 @@ keywords: [custy push syntax]
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandSyntax,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Command Syntax"
-    description="Use explicit, grouped, backup-aware, and dry-run push forms."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "syntax",
-        "Git remotes",
-        "dry-run",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Options", href: "./options"},
-        {label: "Remotes", href: "./remotes"},
-    ]}
+  command="custy push"
+  title="Command Syntax"
+  description="Use explicit, grouped, backup-aware, and dry-run push forms."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  tags={["syntax", "Git remotes", "dry-run"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Remotes", href: "./remotes" },
+  ]}
 />
 
 ## Overview
@@ -45,14 +41,39 @@ forms select the same profile and use the same remote-selection rules.
 >
 
 <CommandSyntax
-    examples={[
-        {title: "Run the configured push profile", command: "custy push", description: "Validate and synchronize through the resolved workflow remotes."},
-        {title: "Select exactly one remote", command: "custy push --remote upstream", description: "Override configured groups and push only to upstream."},
-        {title: "Select all configured remotes", command: "custy push --all-remote", description: "Select the de-duplicated main and backup groups, subject to branch safety."},
-        {title: "Request backup synchronization", command: "custy push --sync-backup", description: "Also resolve and push eligible backup remotes."},
-        {title: "Push a selected tag with HEAD", command: "custy push --tag v1.2.3", description: "Supply the local tag that should be pushed after HEAD."},
-        {title: "Preview external operations", command: "custy --dry-run push --tag v1.2.3", description: "Report intended remote and tag operations without normal pushes."},
-    ]}
+  examples={[
+    {
+      title: "Run the configured push profile",
+      command: "custy push",
+      description: "Validate and synchronize through the resolved workflow remotes.",
+    },
+    {
+      title: "Select exactly one remote",
+      command: "custy push --remote upstream",
+      description: "Override configured groups and push only to upstream.",
+    },
+    {
+      title: "Select all configured remotes",
+      command: "custy push --all-remote",
+      description:
+        "Select the de-duplicated main and backup groups, subject to branch safety.",
+    },
+    {
+      title: "Request backup synchronization",
+      command: "custy push --sync-backup",
+      description: "Also resolve and push eligible backup remotes.",
+    },
+    {
+      title: "Push a selected tag with HEAD",
+      command: "custy push --tag v1.2.3",
+      description: "Supply the local tag that should be pushed after HEAD.",
+    },
+    {
+      title: "Preview external operations",
+      command: "custy --dry-run push --tag v1.2.3",
+      description: "Report intended remote and tag operations without normal pushes.",
+    },
+  ]}
 />
 
 </Section>

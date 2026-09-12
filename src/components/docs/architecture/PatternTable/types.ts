@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -13,48 +10,43 @@ import {
  * Represents a software design pattern entry.
  */
 export interface PatternTableItem {
+  /**
+   * Pattern name.
+   *
+   * Example:
+   * Builder
+   */
+  pattern: string;
 
-    /**
-     * Pattern name.
-     *
-     * Example:
-     * Builder
-     */
-    pattern: string;
+  /**
+   * Purpose of the pattern.
+   */
+  purpose: ReactNode;
 
-    /**
-     * Purpose of the pattern.
-     */
-    purpose: ReactNode;
-
-    /**
-     * Where the pattern is implemented.
-     */
-    implementation: ReactNode;
-
+  /**
+   * Where the pattern is implemented.
+   */
+  implementation: ReactNode;
 }
 
 /**
  * PatternTable component properties.
  */
-export interface PatternTableProps
-    extends HTMLAttributes<HTMLElement> {
+export interface PatternTableProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Optional section title.
+   *
+   * @default "Design Patterns"
+   */
+  title?: string;
 
-    /**
-     * Optional section title.
-     *
-     * @default "Design Patterns"
-     */
-    title?: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Pattern list.
-     */
-    patterns: PatternTableItem[];
-
+  /**
+   * Pattern list.
+   */
+  patterns: PatternTableItem[];
 }

@@ -1,1 +1,6 @@
-{"label":"Tag","position":8,"link":{"type":"doc","id":"custy/commands/tag/overview"},"collapsed":true}
+{
+  "label": "Tag",
+  "position": 8,
+  "link": { "type": "doc", "id": "custy/commands/tag/overview" },
+  "collapsed": true
+}

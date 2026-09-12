@@ -8,27 +8,19 @@
  * ============================================================================
  */
 
-import {
-    useColorMode,
-} from "@docusaurus/theme-common";
+import { useColorMode } from "@docusaurus/theme-common";
 
 /**
  * Returns the current documentation theme.
  */
 export function useThemeMode() {
+  const { colorMode } = useColorMode();
 
-    const {
-        colorMode,
-    } = useColorMode();
+  return {
+    isDark: colorMode === "dark",
 
-    return {
+    isLight: colorMode === "light",
 
-        isDark: colorMode === "dark",
-
-        isLight: colorMode === "light",
-
-        colorMode,
-
-    };
-
+    colorMode,
+  };
 }

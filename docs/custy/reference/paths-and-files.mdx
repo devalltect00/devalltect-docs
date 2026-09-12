@@ -8,53 +8,97 @@ keywords: [Custy file paths, .config custy, Custy templates]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/custy/"
-    title="Paths and Files"
-    description="Locate the project-owned files Custy reads, writes, backs up, logs, and initializes."
-    category="Reference"
-    status="Default Path Index"
-    syntax="project root / relative path"
-    tags={["configuration", "templates", "backups", "outputs"]}
-    links={[
-        {label: "Configuration File", href: "../configuration/config-file"},
-        {label: "Template Files", href: "../configuration/cli/templates/files"},
-        {label: "Generated Files", href: "../commands/init/generated-files"},
-    ]}
+  command=".config/custy/"
+  title="Paths and Files"
+  description="Locate the project-owned files Custy reads, writes, backs up, logs, and initializes."
+  category="Reference"
+  status="Default Path Index"
+  syntax="project root / relative path"
+  tags={["configuration", "templates", "backups", "outputs"]}
+  links={[
+    { label: "Configuration File", href: "../configuration/config-file" },
+    { label: "Template Files", href: "../configuration/cli/templates/files" },
+    { label: "Generated Files", href: "../commands/init/generated-files" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Project Config", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Primary Output", value: "CHANGELOG.md", icon: "release"},
-        {label: "Default Version", value: "app/__version__.py", icon: "python"},
-        {label: "Default Log", value: "logs/custy.log", icon: "file"},
-    ]}
+  items={[
+    {
+      label: "Project Config",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Primary Output", value: "CHANGELOG.md", icon: "release" },
+    { label: "Default Version", value: "app/__version__.py", icon: "python" },
+    { label: "Default Log", value: "logs/custy.log", icon: "file" },
+  ]}
 />
 
 ## Project-Owned Paths
 
 <PropertyTable
-    title="Active Defaults"
-    items={[
-        {property: ".config/custy/config.toml", type: "TOML", description: "Project-owned configuration loaded from the current working tree."},
-        {property: ".config/custy/templates/changelog/changelog.j2", type: "Jinja template", description: "Template used by ChangelogGenerator to render the complete Markdown document."},
-        {property: ".config/custy/templates/commit-message.txt", type: "Text", description: "Editable commit-message source and optional pending changelog content."},
-        {property: ".config/custy/templates/tag-message.txt", type: "Text", description: "Editable annotated-tag message source."},
-        {property: ".config/custy/templates/backups/commit/", type: "Directory", description: "Default timestamped commit-message backup destination."},
-        {property: ".config/custy/templates/backups/tag/", type: "Directory", description: "Default timestamped tag-message backup destination."},
-        {property: "app/__version__.py", type: "Python source", description: "Generated and configured default version file. Initialization may select the detected project-source directory or fall back to src/__version__.py."},
-        {property: "CHANGELOG.md", type: "Markdown", description: "Fixed active changelog output path in the project root."},
-        {property: "logs/custy.log", type: "Rotating log", description: "Built-in log path; both directory and filename can be changed through tool.custy.logging.file."},
-    ]}
+  title="Active Defaults"
+  items={[
+    {
+      property: ".config/custy/config.toml",
+      type: "TOML",
+      description: "Project-owned configuration loaded from the current working tree.",
+    },
+    {
+      property: ".config/custy/templates/changelog/changelog.j2",
+      type: "Jinja template",
+      description:
+        "Template used by ChangelogGenerator to render the complete Markdown document.",
+    },
+    {
+      property: ".config/custy/templates/commit-message.txt",
+      type: "Text",
+      description:
+        "Editable commit-message source and optional pending changelog content.",
+    },
+    {
+      property: ".config/custy/templates/tag-message.txt",
+      type: "Text",
+      description: "Editable annotated-tag message source.",
+    },
+    {
+      property: ".config/custy/templates/backups/commit/",
+      type: "Directory",
+      description: "Default timestamped commit-message backup destination.",
+    },
+    {
+      property: ".config/custy/templates/backups/tag/",
+      type: "Directory",
+      description: "Default timestamped tag-message backup destination.",
+    },
+    {
+      property: "app/__version__.py",
+      type: "Python source",
+      description:
+        "Generated and configured default version file. Initialization may select the detected project-source directory or fall back to src/__version__.py.",
+    },
+    {
+      property: "CHANGELOG.md",
+      type: "Markdown",
+      description: "Fixed active changelog output path in the project root.",
+    },
+    {
+      property: "logs/custy.log",
+      type: "Rotating log",
+      description:
+        "Built-in log path; both directory and filename can be changed through tool.custy.logging.file.",
+    },
+  ]}
 />
 
 ---
@@ -122,12 +166,28 @@ directory.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Generated Files", href: "../commands/init/generated-files", description: "Review which Init mode creates each project resource."},
-        {title: "Configuration File", href: "../configuration/config-file", description: "Understand project ownership and safe replacement."},
-        {title: "Template Files", href: "../configuration/cli/templates/files", description: "Configure changelog, commit-message, and tag-message paths."},
-        {title: "Logging Files", href: "../configuration/logging/file", description: "Configure log path, level, rotation size, count, and format."},
-    ]}
+  commands={[
+    {
+      title: "Generated Files",
+      href: "../commands/init/generated-files",
+      description: "Review which Init mode creates each project resource.",
+    },
+    {
+      title: "Configuration File",
+      href: "../configuration/config-file",
+      description: "Understand project ownership and safe replacement.",
+    },
+    {
+      title: "Template Files",
+      href: "../configuration/cli/templates/files",
+      description: "Configure changelog, commit-message, and tag-message paths.",
+    },
+    {
+      title: "Logging Files",
+      href: "../configuration/logging/file",
+      description: "Configure log path, level, rotation size, count, and format.",
+    },
+  ]}
 />
 
 </Section>

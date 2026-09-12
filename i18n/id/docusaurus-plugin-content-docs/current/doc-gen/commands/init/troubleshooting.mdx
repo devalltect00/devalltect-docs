@@ -6,11 +6,24 @@ sidebar_key: doc-gen-init-troubleshooting
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Pemecahan Masalah" description="Pemecahan Masalah" category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Pemecahan Masalah"
+  description="Pemecahan Masalah"
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Gejala | Kemungkinan penyebab | Solusi |
-| --- | --- | --- |
-| File konfigurasi dilewati. | Penggantian belum disetujui. | Gunakan `--ask` atau `--force`. |
-| Tidak ada file yang ditulis. | Dry-run aktif. | Setelah meninjau hasilnya, jalankan kembali tanpa mode dry-run. |
+| Gejala                       | Kemungkinan penyebab         | Solusi                                                          |
+| ---------------------------- | ---------------------------- | --------------------------------------------------------------- |
+| File konfigurasi dilewati.   | Penggantian belum disetujui. | Gunakan `--ask` atau `--force`.                                 |
+| Tidak ada file yang ditulis. | Dry-run aktif.               | Setelah meninjau hasilnya, jalankan kembali tanpa mode dry-run. |

@@ -6,16 +6,29 @@ sidebar_key: reflow-dockerize
 tags: [reflow, configuration]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Konfigurasi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Publikasi Container" status="Perubahan Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Konfigurasi"
+  description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal."
+  category="Publikasi Container"
+  status="Perubahan Eksternal"
+  syntax="reflow dockerize [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Kunci konfigurasi | Bawaan | Efek |
-| --- | --- | --- |
-| `tool.reflow.docker.provider` | github | Pilih `github`, `gitlab`, atau `both`. |
-| `tool.reflow.docker.keep_local_images` | false | Pertahankan image lokal setelah push. |
-| `tool.reflow.github.image` | placeholder | Tujuan GHCR. |
-| `tool.reflow.gitlab.image` | placeholder | Tujuan GitLab Container Registry. |
+| Kunci konfigurasi                      | Bawaan      | Efek                                   |
+| -------------------------------------- | ----------- | -------------------------------------- |
+| `tool.reflow.docker.provider`          | github      | Pilih `github`, `gitlab`, atau `both`. |
+| `tool.reflow.docker.keep_local_images` | false       | Pertahankan image lokal setelah push.  |
+| `tool.reflow.github.image`             | placeholder | Tujuan GHCR.                           |
+| `tool.reflow.gitlab.image`             | placeholder | Tujuan GitLab Container Registry.      |
 
 ```toml
 [tool.reflow.docker]

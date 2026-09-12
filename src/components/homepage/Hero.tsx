@@ -1,6 +1,7 @@
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import React from "react";
+import ThemedImage from "@theme/ThemedImage";
 
 import styles from "./Hero.module.css";
 
@@ -24,14 +25,22 @@ import styles from "./Hero.module.css";
  * ============================================================
  */
 export default function Hero(): React.JSX.Element {
-  const logoSrc = useBaseUrl("/img/logo-devalltect00.png");
+  const lightLogoSrc = useBaseUrl("/img/logo-devalltect00-on-light.png");
+  const darkLogoSrc = useBaseUrl("/img/logo-devalltect00-on-dark.png");
 
   return (
     <section className={styles.hero}>
       <div className="container">
         <div className={styles.content}>
           {/* Logo */}
-          <img src={logoSrc} alt="Devalltect Logo" className={styles.logo} />
+          <ThemedImage
+            alt="Devalltect Logo"
+            className={styles.logo}
+            sources={{
+              light: lightLogoSrc,
+              dark: darkLogoSrc,
+            }}
+          />
 
           {/* Badge */}
           <div className={styles.badge}>Documentation Portal • 4 Projects</div>

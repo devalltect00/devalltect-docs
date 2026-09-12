@@ -16,39 +16,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Requirements"
-    description="Tinjau requirements yang direkomendasikan sebelum menyiapkan proyek untuk digunakan bersama Custy."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "requirements",
-        "setup",
-        "project initialization",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy init"
+  title="Requirements"
+  description="Tinjau requirements yang direkomendasikan sebelum menyiapkan proyek untuk digunakan bersama Custy."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["requirements", "setup", "project initialization"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -78,32 +74,30 @@ workflow tim Anda.
 >
 
 <RequirementGrid
-    items={[
-        {
-            title: "Proyek yang Sudah Ada",
-            level: "recommended",
-            children:
-                "Jalankan command dari root directory proyek software yang sudah ada.",
-        },
-        {
-            title: "Izin Tulis",
-            level: "required",
-            children:
-                "Custy membuat file configuration dan direktori di dalam proyek Anda.",
-        },
-        {
-            title: "Custy Sudah Terinstal",
-            level: "required",
-            children:
-                "Gunakan instalasi native yang sudah ditinjau atau image Custy yang di-build secara lokal dari Dockerfile saat ini.",
-        },
-        {
-            title: "Git Repository",
-            level: "recommended",
-            children:
-                "Init dapat menulis resource tanpa Git, tetapi workflow utama Custy untuk validate, changelog, version, commit, tag, push, dan pipeline memerlukannya.",
-        },
-    ]}
+  items={[
+    {
+      title: "Proyek yang Sudah Ada",
+      level: "recommended",
+      children: "Jalankan command dari root directory proyek software yang sudah ada.",
+    },
+    {
+      title: "Izin Tulis",
+      level: "required",
+      children: "Custy membuat file configuration dan direktori di dalam proyek Anda.",
+    },
+    {
+      title: "Custy Sudah Terinstal",
+      level: "required",
+      children:
+        "Gunakan instalasi native yang sudah ditinjau atau image Custy yang di-build secara lokal dari Dockerfile saat ini.",
+    },
+    {
+      title: "Git Repository",
+      level: "recommended",
+      children:
+        "Init dapat menulis resource tanpa Git, tetapi workflow utama Custy untuk validate, changelog, version, commit, tag, push, dan pipeline memerlukannya.",
+    },
+  ]}
 />
 
 </Section>
@@ -140,9 +134,7 @@ Contoh berikut menjalankan init pada proyek saat ini.
 
 <Terminal>
 
-{`
-custy init
-`}
+{`custy init`}
 
 </Terminal>
 
@@ -151,13 +143,11 @@ root proyek yang dimaksud ke `/workspace`:
 
 <Terminal>
 
-{`
-docker run -it --rm \
+{`docker run -it --rm \
     -v "<project>:/workspace" \
     -w /workspace \
     custy-prod:latest \
-    init
-`}
+    init`}
 
 </Terminal>
 

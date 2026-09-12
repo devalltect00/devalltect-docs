@@ -1,42 +1,32 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-import type {
-    WorkflowLegendItem,
-} from "../WorkflowLegend";
+import type { WorkflowLegendItem } from "../WorkflowLegend";
 
-import type {
-    WorkflowTimelineItem,
-} from "../WorkflowTimeline";
+import type { WorkflowTimelineItem } from "../WorkflowTimeline";
 
 /**
  * WorkflowDiagram component props.
  */
-export interface WorkflowDiagramProps
-    extends HTMLAttributes<HTMLElement> {
+export interface WorkflowDiagramProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Diagram title.
+   *
+   * @default "Workflow Diagram"
+   */
+  title?: string;
 
-    /**
-     * Diagram title.
-     *
-     * @default "Workflow Diagram"
-     */
-    title?: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
+  /**
+   * Workflow timeline.
+   */
+  timeline: WorkflowTimelineItem[];
 
-    /**
-     * Workflow timeline.
-     */
-    timeline: WorkflowTimelineItem[];
-
-    /**
-     * Workflow legend.
-     */
-    legend?: WorkflowLegendItem[];
-
+  /**
+   * Workflow legend.
+   */
+  legend?: WorkflowLegendItem[];
 }

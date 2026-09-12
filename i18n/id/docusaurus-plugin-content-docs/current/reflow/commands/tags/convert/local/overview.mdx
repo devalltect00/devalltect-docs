@@ -6,9 +6,23 @@ sidebar_key: reflow-tags-convert-local
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert local" title="Konversi Tag Lokal" description="Mengganti nama tag pada checkout lokal persisten sambil mempertahankan tipe dan metadata annotated jika memungkinkan." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Persyaratan",href:"./requirements"},{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert local"
+  title="Konversi Tag Lokal"
+  description="Mengganti nama tag pada checkout lokal persisten sambil mempertahankan tipe dan metadata annotated jika memungkinkan."
+  category="Konversi Tag"
+  status="Stabil"
+  syntax="reflow tags convert local [OPTIONS]"
+  links={[
+    { label: "Persyaratan", href: "./requirements" },
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 <Section title="Tujuan">
 
@@ -16,7 +30,9 @@ Mengganti nama tag pada checkout lokal persisten sambil mempertahankan tipe dan 
 
 </Section>
 
-<InfoBox variant="warning" title="Batas keamanan">Hanya mengubah ref lokal, menolak URL, dan tidak melakukan push.</InfoBox>
+<InfoBox variant="warning" title="Batas keamanan">
+  Hanya mengubah ref lokal, menolak URL, dan tidak melakukan push.
+</InfoBox>
 
 - Resolve checkout dan baca objek tag.
 - Susun rencana penggantian lengkap.

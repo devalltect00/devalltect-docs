@@ -6,9 +6,16 @@ sidebar_key: reflow-reference
 tags: [reflow, cli, reference]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Referensi CLI" description="Referensi cepat CLI, path, option, dan safety." category="Reference" status="v1.0.0" syntax="reflow init" />
+<CommandHero
+  command="Reflow"
+  title="Referensi CLI"
+  description="Referensi cepat CLI, path, option, dan safety."
+  category="Reference"
+  status="v1.0.0"
+  syntax="reflow init"
+/>
 
 ## Commands
 
@@ -26,5 +33,7 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 - `--debug`
 - `--log-level`
 
-<InfoBox variant="warning" title="Safety">Konversi tag local dan remote memakai command terpisah. Remote push, release recovery, dan registry publishing adalah mutasi eksternal eksplisit.</InfoBox>
-
+<InfoBox variant="warning" title="Safety">
+  Konversi tag local dan remote memakai command terpisah. Remote push, release recovery,
+  dan registry publishing adalah mutasi eksternal eksplisit.
+</InfoBox>

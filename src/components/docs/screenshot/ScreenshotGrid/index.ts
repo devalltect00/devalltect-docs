@@ -6,13 +6,10 @@
 
 export { default } from "./ScreenshotGrid";
 
-export type {
-    ScreenshotGridItem,
-    ScreenshotGridProps,
-} from "./types";
+export type { ScreenshotGridItem, ScreenshotGridProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.ScreenshotGrid
     title="Initialization Workflow"
     description="Screenshots captured while initializing a project."

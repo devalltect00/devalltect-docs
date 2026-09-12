@@ -1,13 +1,9 @@
 export { default } from "./WorkflowStage";
 
-export type {
-    WorkflowStageItem,
-    WorkflowStageProps,
-} from "./types";
-
+export type { WorkflowStageItem, WorkflowStageProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.WorkflowStage
     title="Release Preparation"
     description="Prepare the project before creating a release."

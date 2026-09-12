@@ -1,64 +1,81 @@
-feat(portal): checkpoint project previews and maintainer documentation
+refactor(portal): checkpoint clearer homepage navigation
 
-Record the second untagged v1.0.0 development checkpoint by adding a polished
-visual introduction for every documented project and documenting how the
-Devalltect portal itself is maintained.
+Record the third untagged v1.0.0 development checkpoint by simplifying the
+homepage information architecture, making reader entry points accurately match
+their destinations, and refining the technology summaries shown for each
+documented project.
 
-### 🖼️ Project Visual Previews
+### 🧭 Homepage Information Architecture
 
-- Reuse the shared screenshot component for Custy, Path Header Scanner,
-  Doc Gen, and Reflow landing pages in both supported locales.
-- Add overview and compact card presentation variants with consistent 16:9
-  sizing, responsive containment, theme-aware surfaces, and accessible fallback
-  behavior.
-- Reserve stable asset paths under `static/img/project-previews/` so final PNG
-  screenshots can be added without rewriting pages or project metadata.
-- Keep missing preview assets non-breaking during preparation while requiring
-  the real four images before the stable release is published.
-- Detect image failures that occur before client hydration so cached missing
-  assets still render the styled accessible fallback instead of broken-image UI.
+- Consolidate the overlapping documentation-category and documentation-tree
+  sections into one goal-oriented "Find What You Need" section.
+- Present getting started, commands and configuration, concepts and
+  architecture, and development and testing as clear reader goals.
+- Explain that projects share navigation conventions without claiming that
+  every project must expose an identical documentation tree.
+- Remove hover behavior from informational cards so they no longer imply an
+  unavailable click action.
+- Remove the superseded DocumentationModel component and stylesheet instead of
+  retaining unused homepage code.
 
-### 🎨 Homepage and Project Metadata
+### 👥 Accurate Reader Paths
 
-- Display project previews directly in the existing homepage cards instead of
-  creating a duplicate showcase section.
-- Add typed preview metadata with asset paths, alternative text, and fallback
-  descriptions to the centralized project catalog.
-- Replace identical technology badges with concise project-specific runtime and
-  tooling summaries.
-- Preserve responsive card behavior, readable terminal images, lazy loading,
-  and accessible navigation.
-- Resolve the homepage hero logo through the configured Docusaurus base path so
-  it renders correctly in GitHub Pages and other subpath deployments.
+- Replace ambiguous Users and Developers labels with the task-oriented
+  "Use a Tool" and "Develop or Contribute" paths.
+- Keep the tool path connected to the project directory.
+- Add an English and Indonesian developer hub with direct project developer
+  guides, architecture references, and the portal maintainer workflow.
+- Register the developer hub in the curated root sidebar immediately after the
+  project overview so the page retains sidebar and pagination context.
+- Point the developer homepage action to that dedicated hub instead of the
+  generic portal introduction.
 
-### 📘 Devalltect Docs Guide
+### 🧰 Curated Project Technology Metadata
 
-- Add a dedicated Devalltect Docs documentation hub in English and Indonesian.
-- Explain supported projects, portal organization, localization, source review,
-  metadata ownership, screenshot capture, validation, freshness, and release
-  preparation.
-- Add the portal guide to the sidebar and homepage maintainer navigation.
-- Correct outdated root-page language coverage and add the missing Indonesian
-  introduction and project-overview pages.
+- Expand homepage technology badges with representative runtime technologies
+  and important product integrations.
+- Add Rich and Docker where they describe the delivered CLI experience.
+- Identify Reflow's GitHub CLI integration and Custy's Jinja2 and Commitizen
+  integration without listing every test, formatter, hook, or CI dependency.
+- Keep the project cards readable by treating their badges as curated summaries
+  rather than exhaustive dependency manifests.
 
-### ✅ Release Preparation
+### 🌓 Theme-Aware Branding
 
-- Document consistent PNG names and recommend crisp, credential-safe 1600 × 900
-  terminal captures.
-- Keep command names, paths, and configuration identifiers literal across
-  translations.
-- Validate documentation freshness, TypeScript, pre-commit, multilingual builds,
-  routes, links, and responsive rendering before v1.0.0 publication.
+- Replace transformation-oriented logo filenames with explicit `on-light` and
+  `on-dark` variants that describe their intended background.
+- Configure the navbar to select the correct logo through Docusaurus `srcDark`
+  support.
+- Render the homepage logo through Docusaurus's native themed-image component
+  so theme changes do not require custom state or duplicate branding logic.
+- Keep the light-background variant as the temporary social preview image until
+  a dedicated theme-independent social card is provided.
+
+### 🌍 Documentation Synchronization
+
+- Add aligned English and Indonesian developer-hub pages.
+- Add documented release versions to both project-overview tables.
+- Synchronize the portal guide with Custy v2.1.1, Path Header Scanner v1.0.0,
+  Doc Gen v1.0.1, and Reflow v1.0.1.
+- Preserve literal project names, commands, paths, and technical terms where
+  translation would reduce accuracy.
+
+### ✅ Validation
+
+- Validate TypeScript and documentation-freshness behavior.
+- Build English and Indonesian production documentation.
+- Check MDX routes, internal links, homepage rendering, responsive cards, and
+  release-template consistency before publishing v1.0.0.
 
 Tag: none
-Previous checkpoint: v1.0.0 development checkpoint 1
-Release phase: v1.0.0 development checkpoint 2
+Previous checkpoint: v1.0.0 development checkpoint 2
+Release phase: v1.0.0 development checkpoint 3
 Target release: v1.0.0
 
 🔖 **Tags**:
-- Type: `#feature`, `#documentation`, `#components`, `#i18n`
+- Type: `#refactor`, `#documentation`, `#navigation`, `#i18n`
 - Platform: `#docusaurus`, `#react`, `#typescript`, `#yarn`
 - Projects: `#custy`, `#path-header-scanner`, `#doc-gen`, `#reflow`
-- Experience: `#screenshots`, `#homepage`, `#accessibility`, `#responsive-ui`
-- Quality: `#typecheck`, `#build`, `#freshness`, `#pre-commit`
+- Experience: `#homepage`, `#information-architecture`, `#developer-hub`, `#theme-aware-branding`, `#responsive-ui`
+- Quality: `#typecheck`, `#build`, `#freshness`, `#accessibility`
 - Stability: `#checkpoint`, `#untagged`, `#pre-release`

@@ -8,37 +8,37 @@ keywords: [Custy commands, custy CLI tree, Custy subcommands]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy COMMAND [ARGS]..."
-    title="CLI Reference"
-    description="See the active command tree and open the detailed guide for each operation."
-    category="Reference"
-    status="Active Public CLI"
-    syntax="custy [GLOBAL_OPTIONS] COMMAND [COMMAND_OPTIONS]"
-    tags={["Typer", "direct commands", "command groups"]}
-    links={[
-        {label: "Commands Guide", href: "../commands/overview"},
-        {label: "Global Options", href: "./global-options"},
-        {label: "CLI Architecture", href: "../architecture/cli-layer"},
-    ]}
+  command="custy COMMAND [ARGS]..."
+  title="CLI Reference"
+  description="See the active command tree and open the detailed guide for each operation."
+  category="Reference"
+  status="Active Public CLI"
+  syntax="custy [GLOBAL_OPTIONS] COMMAND [COMMAND_OPTIONS]"
+  tags={["Typer", "direct commands", "command groups"]}
+  links={[
+    { label: "Commands Guide", href: "../commands/overview" },
+    { label: "Global Options", href: "./global-options" },
+    { label: "CLI Architecture", href: "../architecture/cli-layer" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Installed Entrypoint", value: "custy", icon: "terminal"},
-        {label: "Module Entrypoint", value: "python -m app", icon: "python"},
-        {label: "Direct Commands", value: "6", icon: "command"},
-        {label: "Command Groups", value: "6", icon: "directory"},
-    ]}
+  items={[
+    { label: "Installed Entrypoint", value: "custy", icon: "terminal" },
+    { label: "Module Entrypoint", value: "python -m app", icon: "python" },
+    { label: "Direct Commands", value: "6", icon: "command" },
+    { label: "Command Groups", value: "6", icon: "directory" },
+  ]}
 />
 
 ## Syntax
@@ -52,6 +52,7 @@ or subcommand follow that name.
 custy [GLOBAL_OPTIONS] GROUP SUBCOMMAND [SUBCOMMAND_OPTIONS]
 
 # Equivalent source-checkout entrypoint
+
 python -m app [GLOBAL_OPTIONS] COMMAND [COMMAND_OPTIONS]`}
 
 </Terminal>
@@ -61,15 +62,63 @@ python -m app [GLOBAL_OPTIONS] COMMAND [COMMAND_OPTIONS]`}
 <Section title="Direct Commands">
 
 <KeyValueTable
-    title="Root Operations"
-    items={[
-        {key: "custy init", value: <>Create or replace project configuration, templates, examples, and a version file. <a href="../commands/init/overview">Open Init docs</a>.</>},
-        {key: "custy validate", value: <>Run the complete project-readiness profile. <a href="../commands/validate/overview">Open Validate docs</a>.</>},
-        {key: "custy commit", value: <>Run the prepared commit pipeline. <a href="../commands/commit/overview">Open Commit docs</a>.</>},
-        {key: "custy tag", value: <>Prepare version artifacts and create a local Git tag. <a href="../commands/tag/overview">Open Tag docs</a>.</>},
-        {key: "custy push", value: <>Push the resolved branch and optional tag to configured remotes. <a href="../commands/push/overview">Open Push docs</a>.</>},
-        {key: "custy run", value: <>Resolve one or more supported public profiles into an ordered pipeline. <a href="../commands/run/overview">Open Run docs</a>.</>},
-    ]}
+  title="Root Operations"
+  items={[
+    {
+      key: "custy init",
+      value: (
+        <>
+          Create or replace project configuration, templates, examples, and a version
+          file. <a href="../commands/init/overview">Open Init docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy validate",
+      value: (
+        <>
+          Run the complete project-readiness profile.{" "}
+          <a href="../commands/validate/overview">Open Validate docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy commit",
+      value: (
+        <>
+          Run the prepared commit pipeline.{" "}
+          <a href="../commands/commit/overview">Open Commit docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy tag",
+      value: (
+        <>
+          Prepare version artifacts and create a local Git tag.{" "}
+          <a href="../commands/tag/overview">Open Tag docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy push",
+      value: (
+        <>
+          Push the resolved branch and optional tag to configured remotes.{" "}
+          <a href="../commands/push/overview">Open Push docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy run",
+      value: (
+        <>
+          Resolve one or more supported public profiles into an ordered pipeline.{" "}
+          <a href="../commands/run/overview">Open Run docs</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -79,15 +128,69 @@ python -m app [GLOBAL_OPTIONS] COMMAND [COMMAND_OPTIONS]`}
 <Section title="Command Groups">
 
 <KeyValueTable
-    title="Grouped Operations"
-    items={[
-        {key: "custy changelog generate", value: <>Generate <code>CHANGELOG.md</code> through the active semantic changelog system. <a href="../commands/changelog/generate/overview">Open Changelog docs</a>.</>},
-        {key: "custy version update", value: <>Resolve and apply a compatible version to the configured version file. <a href="../commands/version/overview">Open Version docs</a>.</>},
-        {key: "custy backup commit | tag | all", value: <>Back up one or both message templates. <a href="../commands/backup/overview">Open Backup docs</a>.</>},
-        {key: "custy cleanup backups | branches | all", value: <>Remove retained backup files, eligible branches, or both. <a href="../commands/cleanup/overview">Open Cleanup docs</a>.</>},
-        {key: "custy configure credentials", value: <>Configure, inspect, test, or remove optional external HTTPS credential fallback. <a href="../commands/configure/credentials/overview">Open Configure Credentials docs</a>.</>},
-        {key: "custy workflow branch", value: <>Evaluate or enforce branch and tag transitions through the experimental workflow surface. <a href="../commands/workflow/overview">Open Workflow warning</a>.</>},
-    ]}
+  title="Grouped Operations"
+  items={[
+    {
+      key: "custy changelog generate",
+      value: (
+        <>
+          Generate <code>CHANGELOG.md</code> through the active semantic changelog
+          system.{" "}
+          <a href="../commands/changelog/generate/overview">Open Changelog docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy version update",
+      value: (
+        <>
+          Resolve and apply a compatible version to the configured version file.{" "}
+          <a href="../commands/version/overview">Open Version docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy backup commit | tag | all",
+      value: (
+        <>
+          Back up one or both message templates.{" "}
+          <a href="../commands/backup/overview">Open Backup docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy cleanup backups | branches | all",
+      value: (
+        <>
+          Remove retained backup files, eligible branches, or both.{" "}
+          <a href="../commands/cleanup/overview">Open Cleanup docs</a>.
+        </>
+      ),
+    },
+    {
+      key: "custy configure credentials",
+      value: (
+        <>
+          Configure, inspect, test, or remove optional external HTTPS credential
+          fallback.{" "}
+          <a href="../commands/configure/credentials/overview">
+            Open Configure Credentials docs
+          </a>
+          .
+        </>
+      ),
+    },
+    {
+      key: "custy workflow branch",
+      value: (
+        <>
+          Evaluate or enforce branch and tag transitions through the experimental
+          workflow surface.{" "}
+          <a href="../commands/workflow/overview">Open Workflow warning</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 <InfoBox variant="warning" title="Workflow is experimental">
@@ -119,12 +222,30 @@ steps.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Command Guide", href: "../commands/overview", description: "Open detailed syntax, options, output, examples, and troubleshooting."},
-        {title: "Global Options", href: "./global-options", description: "Review the six options parsed by the root callback."},
-        {title: "Pipeline Profiles", href: "./pipeline-profiles", description: "Distinguish public Run values from internal resolver profiles."},
-        {title: "CLI Architecture", href: "../architecture/cli-layer", description: "Trace entrypoints, registration, models, resolvers, and AppContext."},
-    ]}
+  commands={[
+    {
+      title: "Command Guide",
+      href: "../commands/overview",
+      description:
+        "Open detailed syntax, options, output, examples, and troubleshooting.",
+    },
+    {
+      title: "Global Options",
+      href: "./global-options",
+      description: "Review the six options parsed by the root callback.",
+    },
+    {
+      title: "Pipeline Profiles",
+      href: "./pipeline-profiles",
+      description: "Distinguish public Run values from internal resolver profiles.",
+    },
+    {
+      title: "CLI Architecture",
+      href: "../architecture/cli-layer",
+      description:
+        "Trace entrypoints, registration, models, resolvers, and AppContext.",
+    },
+  ]}
 />
 
 </Section>

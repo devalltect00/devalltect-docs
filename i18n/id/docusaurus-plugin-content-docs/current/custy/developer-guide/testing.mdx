@@ -4,7 +4,15 @@ description: "Pilih focused Custy tests, pahami suite layers, dan jalankan compl
 sidebar_position: 3
 sidebar_key: custy-developer-guide-testing
 ---
-import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Section,Terminal} from "@site/src/components/docs";
+
+import {
+  CommandHero,
+  CommandChecklist,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero command="pytest" title="Testing" description="Validasi behavior mulai dari smallest relevant tests hingga complete suite." category="Developer Guide" status="Required" syntax="pytest [PATH] [OPTIONS]" tags={["unit","CLI","integration","regression","pre-commit"]} links={[{label:"Test Layers",href:"#test-layers"},{label:"Focused Validation",href:"#focused-validation"},{label:"Pre-Commit",href:"#pre-commit-quality-gates"},{label:"Complete Validation",href:"#complete-validation"}]} />
 ## Test Layers
@@ -19,16 +27,61 @@ Repository hooks menggunakan Ruff untuk linting dan safe lint fixes, Black sebag
 make pre-commit-validate
 
 # Check staged files
+
 make pre-commit-run-staged
 
 # Check semua tracked files
+
 make pre-commit-run`}</Terminal>
-<InfoBox variant="note" title="Reference Files Tetap Tidak Berubah">Pre-commit exclusions serta Ruff dan Black force-exclusion settings melindungi `old/`, `example_before/`, copied, deprecated, development, dan temporary Python reference files. Protection tetap berlaku ketika hook, editor, atau command memberikan path secara explicit.</InfoBox>
+
+<InfoBox variant="note" title="Reference Files Tetap Tidak Berubah">
+  Pre-commit exclusions serta Ruff dan Black force-exclusion settings melindungi `old/`,
+  `example_before/`, copied, deprecated, development, dan temporary Python reference
+  files. Protection tetap berlaku ketika hook, editor, atau command memberikan path
+  secara explicit.
+</InfoBox>
 ## Complete Validation
 <Terminal language="bash">{`python -m pytest
 python -m ruff check .
 python -m black --check .
 make check`}</Terminal>
-<InfoBox variant="warning" title="Test Behavior dan Boundaries">Changes pada command, step, strategy, atau configuration harus menguji resolution, happy path, invalid input, failure propagation, dan relevant side effects.</InfoBox>
-<CommandChecklist items={[{title:"Focused tests pass",description:"Relevant subsystem behavior tercakup."},{title:"Full suite passes",description:"Tidak ada regression lintas subsystem."},{title:"Docs aligned",description:"User-facing behavior dan examples tetap akurat."}]} />
-<RelatedCommands commands={[{title:"Adding Commands",href:"./adding-commands",description:"Test CLI boundary."},{title:"Adding Pipeline Steps",href:"./adding-pipeline-steps",description:"Test ordering dan execution."},{title:"Adding Version Strategies",href:"./adding-version-strategies",description:"Test generation dan sorting."},{title:"Contributing",href:"./contributing",description:"Final review."}]} />
+<InfoBox variant="warning" title="Test Behavior dan Boundaries">
+  Changes pada command, step, strategy, atau configuration harus menguji resolution,
+  happy path, invalid input, failure propagation, dan relevant side effects.
+</InfoBox>
+<CommandChecklist
+  items={[
+    {
+      title: "Focused tests pass",
+      description: "Relevant subsystem behavior tercakup.",
+    },
+    {
+      title: "Full suite passes",
+      description: "Tidak ada regression lintas subsystem.",
+    },
+    {
+      title: "Docs aligned",
+      description: "User-facing behavior dan examples tetap akurat.",
+    },
+  ]}
+/>
+<RelatedCommands
+  commands={[
+    {
+      title: "Adding Commands",
+      href: "./adding-commands",
+      description: "Test CLI boundary.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "./adding-pipeline-steps",
+      description: "Test ordering dan execution.",
+    },
+    {
+      title: "Adding Version Strategies",
+      href: "./adding-version-strategies",
+      description: "Test generation dan sorting.",
+    },
+    { title: "Contributing", href: "./contributing", description: "Final review." },
+  ]}
+/>

@@ -36,15 +36,15 @@ For example...
 
 These should remain consistent across every project:
 
-* Folder naming (`architecture`, `commands`, `user-guide`, etc.)
-* File naming (`overview.mdx`, `workflow.mdx`, `examples.mdx`, etc.)
-* Frontmatter style
-* Component usage
-* Writing style
-* Terminology
-* Navigation style
-* Visual design
-* Documentation quality
+- Folder naming (`architecture`, `commands`, `user-guide`, etc.)
+- File naming (`overview.mdx`, `workflow.mdx`, `examples.mdx`, etc.)
+- Frontmatter style
+- Component usage
+- Writing style
+- Terminology
+- Navigation style
+- Visual design
+- Documentation quality
 
 ---
 
@@ -218,12 +218,12 @@ Custy has things that Reflow doesn't.
 
 For example:
 
-* Pipeline architecture
-* Workflow engine
-* Versioning strategies
-* Commit workflow
-* Release workflow
-* Configuration system
+- Pipeline architecture
+- Workflow engine
+- Versioning strategies
+- Commit workflow
+- Release workflow
+- Configuration system
 
 Those deserve dedicated documentation.
 
@@ -241,9 +241,9 @@ Why?
 
 Because after reviewing everything we've discussed about Custy over the past months, I don't think it needs a top-level `concepts` section. The concepts naturally fit into:
 
-* `user-guide/`
-* `architecture/`
-* `configuration/`
+- `user-guide/`
+- `architecture/`
+- `configuration/`
 
 If, six months from now, Custy grows to the point where a dedicated `concepts/` section makes sense, we can add it without disrupting the rest of the documentation.
 

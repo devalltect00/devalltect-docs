@@ -6,20 +6,33 @@ sidebar_key: reflow-getting-started
 tags: [reflow, docker, containers]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="docker pull ghcr.io/devalltect00/reflow:v1.0.1" title="Run Reflow with Docker" description="Choose an immutable release tag or a controlled moving alias, then mount only the repository Reflow should manage." category="Getting Started" status="Stable Image Policy" syntax="docker pull ghcr.io/devalltect00/reflow:<tag>" />
+<CommandHero
+  command="docker pull ghcr.io/devalltect00/reflow:v1.0.1"
+  title="Run Reflow with Docker"
+  description="Choose an immutable release tag or a controlled moving alias, then mount only the repository Reflow should manage."
+  category="Getting Started"
+  status="Stable Image Policy"
+  syntax="docker pull ghcr.io/devalltect00/reflow:<tag>"
+/>
 
 <Section title="Published Image Tags">
 
 Stable releases publish four coordinated references to the same image:
 
-| Tag | Example | Behavior |
-| --- | --- | --- |
-| Exact | `v1.0.1` | Immutable release selection; recommended for CI and reproducible automation. |
-| Minor | `v1.0` | Moves to the newest stable patch in the 1.0 line. |
-| Major | `v1` | Moves to the newest stable release in the 1.x line. |
-| Latest | `latest` | Moves to the newest stable Reflow release. |
+| Tag    | Example  | Behavior                                                                     |
+| ------ | -------- | ---------------------------------------------------------------------------- |
+| Exact  | `v1.0.1` | Immutable release selection; recommended for CI and reproducible automation. |
+| Minor  | `v1.0`   | Moves to the newest stable patch in the 1.0 line.                            |
+| Major  | `v1`     | Moves to the newest stable release in the 1.x line.                          |
+| Latest | `latest` | Moves to the newest stable Reflow release.                                   |
 
 <Terminal title="Pull Reflow" language="bash">
 
@@ -70,8 +83,22 @@ repository and follows that repository's configured image destination.
 
 </Section>
 
-<RelatedCommands commands={[
-    {title: "Installation and First Workflow", href: "./first-workflow", description: "Install Reflow and preview the first repository operation."},
-    {title: "Dockerize", href: "../commands/dockerize/overview", description: "Publish images for a selected target repository."},
-    {title: "Safety and Dry-run", href: "../concepts/safety-and-dry-run", description: "Review the non-mutation boundary."},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Installation and First Workflow",
+      href: "./first-workflow",
+      description: "Install Reflow and preview the first repository operation.",
+    },
+    {
+      title: "Dockerize",
+      href: "../commands/dockerize/overview",
+      description: "Publish images for a selected target repository.",
+    },
+    {
+      title: "Safety and Dry-run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Review the non-mutation boundary.",
+    },
+  ]}
+/>

@@ -1,6 +1,6 @@
 {
   "label": "Version",
   "position": 5,
-  "link": {"type": "doc", "id": "custy/commands/version/overview"},
+  "link": { "type": "doc", "id": "custy/commands/version/overview" },
   "collapsed": true
 }

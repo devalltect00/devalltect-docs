@@ -6,38 +6,34 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Syntax"
-    description="Learn how to invoke the validation command using Custy's CLI."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "syntax",
-        "validation",
-        "cli",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy validate"
+  title="Syntax"
+  description="Learn how to invoke the validation command using Custy's CLI."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["syntax", "validation", "cli"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -62,14 +58,13 @@ required validation stages automatically.
 >
 
 <CommandSyntax
-    examples={[
-        {
-            title: "Direct Validation",
-            description:
-                "Run the validation process directly.",
-            command: "custy validate",
-        },
-    ]}
+  examples={[
+    {
+      title: "Direct Validation",
+      description: "Run the validation process directly.",
+      command: "custy validate",
+    },
+  ]}
 />
 
 </Section>
@@ -96,8 +91,8 @@ commit, tagging, pushing, or release operations.
 
 The validation command has one public form.
 
-| Command | Purpose |
-|---------|---------|
+| Command          | Purpose                  |
+| ---------------- | ------------------------ |
 | `custy validate` | Run validation directly. |
 
 Internal validation profiles are reused by other commands, but their names are

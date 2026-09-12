@@ -8,29 +8,25 @@ keywords: [custy run dev examples]
 ---
 
 import {
-    CommandExample,
-    CommandHero,
-    InfoBox,
-    Section,
+  CommandExample,
+  CommandHero,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run dev"
-    title="Examples"
-    description="Use reviewed Dev-profile patterns for previews, staging control, project templates, and normal daily execution."
-    category="Pipeline Profile"
-    status="Stable with Limitations"
-    syntax="custy run dev [OPTIONS]"
-    tags={[
-        "examples",
-        "development",
-        "dry-run",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run dev"
+  title="Examples"
+  description="Use reviewed Dev-profile patterns for previews, staging control, project templates, and normal daily execution."
+  category="Pipeline Profile"
+  status="Stable with Limitations"
+  syntax="custy run dev [OPTIONS]"
+  tags={["examples", "development", "dry-run"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 ## Overview
@@ -54,12 +50,32 @@ Read the actual resolved destination before allowing normal execution.
 >
 
 <CommandExample
-    examples={[
-        {title: "Preview daily development", command: "custy --dry-run run dev", description: "Inspect commit-message, staging, commit, and branch-push intent before mutations."},
-        {title: "Use tracked-change staging", command: "custy run dev --auto-stage --stage-mode update", description: "Select update-style staging for tracked modifications and deletions."},
-        {title: "Use a project commit template", command: "custy run dev --commit-msg-file .config/custy/templates/commit-message.txt", description: "Provide the message file used by the commit stage."},
-        {title: "Run after review", command: "custy run dev", description: "Execute the configured development pipeline.", notes: "Read the resolved push destination before confirming any prompt."},
-    ]}
+  examples={[
+    {
+      title: "Preview daily development",
+      command: "custy --dry-run run dev",
+      description:
+        "Inspect commit-message, staging, commit, and branch-push intent before mutations.",
+    },
+    {
+      title: "Use tracked-change staging",
+      command: "custy run dev --auto-stage --stage-mode update",
+      description:
+        "Select update-style staging for tracked modifications and deletions.",
+    },
+    {
+      title: "Use a project commit template",
+      command:
+        "custy run dev --commit-msg-file .config/custy/templates/commit-message.txt",
+      description: "Provide the message file used by the commit stage.",
+    },
+    {
+      title: "Run after review",
+      command: "custy run dev",
+      description: "Execute the configured development pipeline.",
+      notes: "Read the resolved push destination before confirming any prompt.",
+    },
+  ]}
 />
 
 </Section>

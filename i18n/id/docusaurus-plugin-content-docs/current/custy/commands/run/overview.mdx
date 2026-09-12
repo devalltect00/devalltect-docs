@@ -4,21 +4,66 @@ description: "Jalankan public Custy pipeline profiles untuk Git operations, deve
 sidebar_position: 1
 sidebar_key: custy-run
 ---
-import {CommandHero, FeatureGrid, InfoBox, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Execute Pipeline Profiles" description="Pilih public profile terkecil yang mencapai hasil yang diperlukan." category="Pipeline" status="Stable with Limitations" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Profiles",href:"./profiles"},{label:"Custom Sequences",href:"./custom-sequences"},{label:"Safety",href:"./safety"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Execute Pipeline Profiles"
+  description="Pilih public profile terkecil yang mencapai hasil yang diperlukan."
+  category="Pipeline"
+  status="Stable with Limitations"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Custom Sequences", href: "./custom-sequences" },
+    { label: "Safety", href: "./safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="warning" title="Ignore the Broader Help List">Public Run argument saat ini menerima `commit`, `tag`, `push`, `dev`, `release`, dan `full`. Internal names bukan public profiles.</InfoBox>
+<InfoBox variant="warning" title="Ignore the Broader Help List">
+  Public Run argument saat ini menerima `commit`, `tag`, `push`, `dev`, `release`, dan
+  `full`. Internal names bukan public profiles.
+</InfoBox>
 
-<FeatureGrid items={[
- {title:"Focused",children:"Gunakan commit, tag, atau push untuk satu profile terfokus."},
- {title:"Development",children:"Gunakan dev untuk meninjau commit message, membuat commit, dan push branch HEAD tanpa efek samping rilis."},
- {title:"Release",children:"Gunakan release untuk version, commit, tag, dan publication."},
- {title:"Full",children:"Gunakan hanya bila experimental finalization diperlukan."},
-]} />
+<FeatureGrid
+  items={[
+    {
+      title: "Focused",
+      children: "Gunakan commit, tag, atau push untuk satu profile terfokus.",
+    },
+    {
+      title: "Development",
+      children:
+        "Gunakan dev untuk meninjau commit message, membuat commit, dan push branch HEAD tanpa efek samping rilis.",
+    },
+    {
+      title: "Release",
+      children: "Gunakan release untuk version, commit, tag, dan publication.",
+    },
+    {
+      title: "Full",
+      children: "Gunakan hanya bila experimental finalization diperlukan.",
+    },
+  ]}
+/>
 
-<RelatedCommands commands={[
- {name:"git",description:"Commit profile guide.",href:"../commit/overview"},{name:"release",description:"Tag profile guide.",href:"../tag/overview"},{name:"network",description:"Push profile guide.",href:"../push/overview"},{name:"pipeline",description:"Direct changelog generation.",href:"../changelog/generate/overview"},
-]} />
+<RelatedCommands
+  commands={[
+    { name: "git", description: "Commit profile guide.", href: "../commit/overview" },
+    { name: "release", description: "Tag profile guide.", href: "../tag/overview" },
+    { name: "network", description: "Push profile guide.", href: "../push/overview" },
+    {
+      name: "pipeline",
+      description: "Direct changelog generation.",
+      href: "../changelog/generate/overview",
+    },
+  ]}
+/>

@@ -4,14 +4,42 @@ description: "Pertanyaan tentang experimental workflow transition command."
 sidebar_position: 9
 sidebar_key: custy-workflow-branch-faq
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang stability, CI/CD, dry run, dan alternatives." category="Workflow" status="Experimental and Blocked" syntax="custy workflow branch [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Troubleshooting",href:"./troubleshooting"},{label:"Full Profile",href:"../../run/full/overview"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang stability, CI/CD, dry run, dan alternatives."
+  category="Workflow"
+  status="Experimental and Blocked"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+    { label: "Full Profile", href: "../../run/full/overview" },
+  ]}
+/>
 
 ## Ringkasan
-<InfoBox variant="danger" title="Experimental and Currently Blocked">Command belum siap untuk operational workflows.</InfoBox>
-<Section title="Apakah custy workflow branch Stabil?">Tidak. Current pipeline construction memiliki known blocker.</Section>
-<Section title="Haruskah Digunakan dalam CI/CD?">Tidak. Gunakan stable validation dan release commands.</Section>
-<Section title="Apakah Sama dengan custy run full?">Tidak. Full adalah registered release profile dengan experimental finalization; Workflow Branch adalah transition interface tersendiri.</Section>
-<Section title="Apakah Dry Run Membuat Current Command Usable?">Tidak. Dry run tidak memperbaiki missing step registration.</Section>
-<Section title="Apa yang Harus Dilakukan Pengguna Sementara Ini?">Gunakan `custy validate`, public Run profiles, dan manual branch-policy review sampai implementation diperbaiki.</Section>
+
+<InfoBox variant="danger" title="Experimental and Currently Blocked">
+  Command belum siap untuk operational workflows.
+</InfoBox>
+<Section title="Apakah custy workflow branch Stabil?">
+  Tidak. Current pipeline construction memiliki known blocker.
+</Section>
+<Section title="Haruskah Digunakan dalam CI/CD?">
+  Tidak. Gunakan stable validation dan release commands.
+</Section>
+<Section title="Apakah Sama dengan custy run full?">
+  Tidak. Full adalah registered release profile dengan experimental finalization;
+  Workflow Branch adalah transition interface tersendiri.
+</Section>
+<Section title="Apakah Dry Run Membuat Current Command Usable?">
+  Tidak. Dry run tidak memperbaiki missing step registration.
+</Section>
+<Section title="Apa yang Harus Dilakukan Pengguna Sementara Ini?">
+  Gunakan `custy validate`, public Run profiles, dan manual branch-policy review sampai
+  implementation diperbaiki.
+</Section>

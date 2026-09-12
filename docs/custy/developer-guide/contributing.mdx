@@ -8,40 +8,40 @@ keywords: [contribute to Custy, Custy pull request, Custy code quality]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="make check"
-    title="Contributing"
-    description="Turn one understood problem into a focused change with evidence that reviewers can verify."
-    category="Developer Guide"
-    status="Review Checklist"
-    syntax="scope -> implement -> validate -> document -> hand off"
-    tags={["quality", "tests", "documentation", "review"]}
-    links={[
-        {label: "Setup", href: "./development-setup"},
-        {label: "Testing", href: "./testing"},
-        {label: "Final Checklist", href: "#final-review-checklist"},
-    ]}
+  command="make check"
+  title="Contributing"
+  description="Turn one understood problem into a focused change with evidence that reviewers can verify."
+  category="Developer Guide"
+  status="Review Checklist"
+  syntax="scope -> implement -> validate -> document -> hand off"
+  tags={["quality", "tests", "documentation", "review"]}
+  links={[
+    { label: "Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Final Checklist", href: "#final-review-checklist" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Primary Branches", value: "main and develop", icon: "git"},
-        {label: "Quality Helper", value: "make check", icon: "testing"},
-        {label: "Source Standard", value: "Typed and documented", icon: "file"},
-        {label: "Change Style", value: "Focused", icon: "security"},
-    ]}
+  items={[
+    { label: "Primary Branches", value: "main and develop", icon: "git" },
+    { label: "Quality Helper", value: "make check", icon: "testing" },
+    { label: "Source Standard", value: "Typed and documented", icon: "file" },
+    { label: "Change Style", value: "Focused", icon: "security" },
+  ]}
 />
 
 ## Overview
@@ -63,14 +63,44 @@ release artifacts into one contribution.
 <Section title="Contribution Workflow">
 
 <WorkflowTimeline
-    items={[
-        {title: "Understand the affected flow", description: "Trace the active CLI entry point, configuration, core behavior, side effects, and existing tests before editing.", status: "completed"},
-        {title: "Define a focused contract", description: "State inputs, outputs, errors, side effects, compatibility expectations, and the smallest set of affected files.", status: "completed"},
-        {title: "Implement with tests", description: "Keep responsibilities separated, document non-obvious interfaces, and add focused coverage alongside behavior.", status: "current"},
-        {title: "Run widening validation", description: "Run the affected tests, integration or regression coverage, then formatting, lint, and the complete suite.", status: "pending"},
-        {title: "Update documentation", description: "Synchronize command, configuration, workflow, architecture, developer, and troubleshooting guidance as applicable.", status: "pending"},
-        {title: "Prepare the handoff", description: "Summarize changed files, decisions, validation results, known limits, and anything intentionally left unchanged.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Understand the affected flow",
+      description:
+        "Trace the active CLI entry point, configuration, core behavior, side effects, and existing tests before editing.",
+      status: "completed",
+    },
+    {
+      title: "Define a focused contract",
+      description:
+        "State inputs, outputs, errors, side effects, compatibility expectations, and the smallest set of affected files.",
+      status: "completed",
+    },
+    {
+      title: "Implement with tests",
+      description:
+        "Keep responsibilities separated, document non-obvious interfaces, and add focused coverage alongside behavior.",
+      status: "current",
+    },
+    {
+      title: "Run widening validation",
+      description:
+        "Run the affected tests, integration or regression coverage, then formatting, lint, and the complete suite.",
+      status: "pending",
+    },
+    {
+      title: "Update documentation",
+      description:
+        "Synchronize command, configuration, workflow, architecture, developer, and troubleshooting guidance as applicable.",
+      status: "pending",
+    },
+    {
+      title: "Prepare the handoff",
+      description:
+        "Summarize changed files, decisions, validation results, known limits, and anything intentionally left unchanged.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -80,13 +110,31 @@ release artifacts into one contribution.
 <Section title="Branch and Scope Conventions">
 
 <FeatureGrid
-    title="Repository Branch Types"
-    items={[
-        {title: "Feature", icon: <Icon name="feature" />, children: "Use feature/<name> for a focused new capability."},
-        {title: "Bug Fix", icon: <Icon name="warning" />, children: "Use bugfix/<name> for a focused correction."},
-        {title: "Release", icon: <Icon name="release" />, children: "Use release/<version> only for an intentional release-preparation change."},
-        {title: "Primary Development", icon: <Icon name="git" />, children: "Treat main and develop as the repository's primary long-lived branches."},
-    ]}
+  title="Repository Branch Types"
+  items={[
+    {
+      title: "Feature",
+      icon: <Icon name="feature" />,
+      children: "Use feature/<name> for a focused new capability.",
+    },
+    {
+      title: "Bug Fix",
+      icon: <Icon name="warning" />,
+      children: "Use bugfix/<name> for a focused correction.",
+    },
+    {
+      title: "Release",
+      icon: <Icon name="release" />,
+      children:
+        "Use release/<version> only for an intentional release-preparation change.",
+    },
+    {
+      title: "Primary Development",
+      icon: <Icon name="git" />,
+      children:
+        "Treat main and develop as the repository's primary long-lived branches.",
+    },
+  ]}
 />
 
 Follow the repository owner's current workflow when it differs from these
@@ -100,14 +148,38 @@ a changelog, or push a branch merely because a source change is complete.
 <Section title="Implementation Standards">
 
 <CommandChecklist
-    items={[
-        {title: "Keep boundaries clear", description: "Typer and presentation stay in app/cli; reusable workflow and domain behavior stay in app/core or another focused active package."},
-        {title: "Use useful types", description: "Type public and non-obvious values and prefer explicit dataclasses or enums where they clarify a contract."},
-        {title: "Document behavior", description: "Add accurate module, class, function, and method documentation, including real arguments, returns, errors, side effects, and examples when useful."},
-        {title: "Log deliberately", description: "Use actionable levels and context without secrets, raw credentials, tokens, or duplicate noise."},
-        {title: "Keep functions focused", description: "Prefer readable composition and small responsibilities over clever or unnecessary abstractions."},
-        {title: "Preserve user safety", description: "Use clear errors, safe defaults, predictable prompts, dry-run support where applicable, and explicit confirmation for consequential behavior."},
-    ]}
+  items={[
+    {
+      title: "Keep boundaries clear",
+      description:
+        "Typer and presentation stay in app/cli; reusable workflow and domain behavior stay in app/core or another focused active package.",
+    },
+    {
+      title: "Use useful types",
+      description:
+        "Type public and non-obvious values and prefer explicit dataclasses or enums where they clarify a contract.",
+    },
+    {
+      title: "Document behavior",
+      description:
+        "Add accurate module, class, function, and method documentation, including real arguments, returns, errors, side effects, and examples when useful.",
+    },
+    {
+      title: "Log deliberately",
+      description:
+        "Use actionable levels and context without secrets, raw credentials, tokens, or duplicate noise.",
+    },
+    {
+      title: "Keep functions focused",
+      description:
+        "Prefer readable composition and small responsibilities over clever or unnecessary abstractions.",
+    },
+    {
+      title: "Preserve user safety",
+      description:
+        "Use clear errors, safe defaults, predictable prompts, dry-run support where applicable, and explicit confirmation for consequential behavior.",
+    },
+  ]}
 />
 
 </Section>
@@ -125,18 +197,23 @@ complete checks from the active `venv/` environment.
 python -m pytest tests/core/pipeline
 
 # Full tests with configured coverage
+
 python -m pytest
 
 # Formatting check, Ruff lint, and full tests
+
 make check
 
 # Validate the hook configuration
+
 make pre-commit-validate
 
 # Check staged files during normal contributor work
+
 make pre-commit-run-staged
 
 # Check every tracked file before handoff
+
 make pre-commit-run`}
 
 </Terminal>
@@ -178,14 +255,38 @@ build.
 <Section title="Final Review Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "Scope is focused", description: "Every changed file supports the stated behavior, tests, or documentation."},
-        {title: "Public behavior is intentional", description: "CLI paths, options, defaults, prompts, errors, and side effects match the agreed contract."},
-        {title: "Tests cover the risk", description: "Focused, integration, and regression coverage address successful and failing paths at the right boundaries."},
-        {title: "Quality checks are reported", description: "Formatting, lint, tests, and relevant builds have explicit outcomes."},
-        {title: "Documentation is synchronized", description: "Users and contributors can understand requirements, behavior, safety, and recovery."},
-        {title: "No unrelated release action occurred", description: "Versions, changelogs, tags, pushes, and publication remain untouched unless they were explicitly part of the work."},
-    ]}
+  items={[
+    {
+      title: "Scope is focused",
+      description:
+        "Every changed file supports the stated behavior, tests, or documentation.",
+    },
+    {
+      title: "Public behavior is intentional",
+      description:
+        "CLI paths, options, defaults, prompts, errors, and side effects match the agreed contract.",
+    },
+    {
+      title: "Tests cover the risk",
+      description:
+        "Focused, integration, and regression coverage address successful and failing paths at the right boundaries.",
+    },
+    {
+      title: "Quality checks are reported",
+      description:
+        "Formatting, lint, tests, and relevant builds have explicit outcomes.",
+    },
+    {
+      title: "Documentation is synchronized",
+      description:
+        "Users and contributors can understand requirements, behavior, safety, and recovery.",
+    },
+    {
+      title: "No unrelated release action occurred",
+      description:
+        "Versions, changelogs, tags, pushes, and publication remain untouched unless they were explicitly part of the work.",
+    },
+  ]}
 />
 
 </Section>
@@ -204,12 +305,29 @@ assertions, skip coverage, or delete tests only to make the suite pass.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Create the supported editable environment."},
-        {title: "Testing", href: "./testing", description: "Select focused and complete validation."},
-        {title: "Adding Commands", href: "./adding-commands", description: "Preserve the active CLI module boundaries."},
-        {title: "Adding Pipeline Steps", href: "./adding-pipeline-steps", description: "Preserve registration, priority, composition, and failure contracts."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Create the supported editable environment.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Select focused and complete validation.",
+    },
+    {
+      title: "Adding Commands",
+      href: "./adding-commands",
+      description: "Preserve the active CLI module boundaries.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "./adding-pipeline-steps",
+      description:
+        "Preserve registration, priority, composition, and failure contracts.",
+    },
+  ]}
 />
 
 </Section>

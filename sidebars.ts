@@ -16,6 +16,7 @@ const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     "intro",
     "projects-overview",
+    "developers",
     {
       type: "category",
       label: "Devalltect Docs",

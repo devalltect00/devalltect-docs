@@ -4,13 +4,34 @@ description: "Pratinjau supported mutations sambil tetap melakukan discovery, va
 sidebar_position: 3
 sidebar_key: custy-concepts-dry-run
 ---
-import {CommandHero, FeatureGrid, InfoBox, Section, RelatedCommands, Terminal} from "@site/src/components/docs";
 
-<CommandHero command="custy --dry-run COMMAND" title="Dry Run" description="Tinjau planned operation sebelum supported mutations diterapkan." category="Concept" status="Safety Tool" syntax="custy --dry-run COMMAND [OPTIONS]" links={[{label:"Safety",href:"./safety-and-side-effects"},{label:"Run Safety",href:"../commands/run/safety"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  RelatedCommands,
+  Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy --dry-run COMMAND"
+  title="Dry Run"
+  description="Tinjau planned operation sebelum supported mutations diterapkan."
+  category="Concept"
+  status="Safety Tool"
+  syntax="custy --dry-run COMMAND [OPTIONS]"
+  links={[
+    { label: "Safety", href: "./safety-and-side-effects" },
+    { label: "Run Safety", href: "../commands/run/safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="tip" title="Place the Option Before the Command">`--dry-run` adalah global option dan harus ditempatkan sebelum command group.</InfoBox>
+<InfoBox variant="tip" title="Place the Option Before the Command">
+  `--dry-run` adalah global option dan harus ditempatkan sebelum command group.
+</InfoBox>
 
 <Section title="Cara Menentukan Mode yang Efektif">
 
@@ -25,25 +46,46 @@ execution jika configuration menetapkan `dry_run = true`.
 custy --dry-run changelog generate
 
 # Paksa normal execution walaupun configuration mengaktifkan dry_run
+
 custy --no-dry-run changelog generate`}
 
 </Terminal>
 
 </Section>
 
-<FeatureGrid title="Simulation Boundary" subtitle="Dry run menekan supported mutations tetapi tetap melakukan cukup banyak pekerjaan nyata untuk resolve dan validate operation." items={[
- {title:"Discovery",children:"Baca repository, files, configuration, dan remotes yang diperlukan."},{title:"Validation",children:"Jalankan checks yang dibutuhkan untuk menilai request."},{title:"Resolution",children:"Tentukan versions, profiles, steps, dan destinations."},{title:"Mutation Suppression",children:"Hindari supported file/Git/network changes."},
-]} />
+<FeatureGrid
+  title="Simulation Boundary"
+  subtitle="Dry run menekan supported mutations tetapi tetap melakukan cukup banyak pekerjaan nyata untuk resolve dan validate operation."
+  items={[
+    {
+      title: "Discovery",
+      children: "Baca repository, files, configuration, dan remotes yang diperlukan.",
+    },
+    {
+      title: "Validation",
+      children: "Jalankan checks yang dibutuhkan untuk menilai request.",
+    },
+    {
+      title: "Resolution",
+      children: "Tentukan versions, profiles, steps, dan destinations.",
+    },
+    {
+      title: "Mutation Suppression",
+      children: "Hindari supported file/Git/network changes.",
+    },
+  ]}
+/>
 
 <Section title="A Safe Preview Sequence">
-1. Periksa repository state.
-2. Jalankan dry run.
-3. Baca resolved values, stages, files, tags, dan destinations.
-4. Perbaiki configuration atau input.
-5. Jalankan ulang dry run sebelum normal execution.
+  1. Periksa repository state. 2. Jalankan dry run. 3. Baca resolved values, stages,
+  files, tags, dan destinations. 4. Perbaiki configuration atau input. 5. Jalankan ulang
+  dry run sebelum normal execution.
 </Section>
 
-<InfoBox variant="warning" title="Dry Run Is a Simulation, Not a Guarantee">Dry run tidak membuktikan future authentication, concurrency, editor interaction, remote acceptance, atau state yang berubah setelah preview.</InfoBox>
+<InfoBox variant="warning" title="Dry Run Is a Simulation, Not a Guarantee">
+  Dry run tidak membuktikan future authentication, concurrency, editor interaction,
+  remote acceptance, atau state yang berubah setelah preview.
+</InfoBox>
 
 <InfoBox variant="info" title="Diagnostic Logging Tetap Aktif">
 
@@ -52,6 +94,29 @@ Normal logging Custy masih dapat membuat atau menambahkan diagnostic log file.
 
 </InfoBox>
 
-<RelatedCommands commands={[
- {name:"success",description:"First workflow guide.",href:"../getting-started/first-workflow"},{name:"pipeline",description:"Run safety.",href:"../commands/run/safety"},{name:"file",description:"Changelog generation.",href:"../commands/changelog/generate/overview"},{name:"git",description:"Side effects.",href:"./safety-and-side-effects"},{name:"terminal",description:"Review command output.",href:"../commands/run/output"},{name:"dependency",description:"Requirements model.",href:"../commands/run/requirements"},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      name: "success",
+      description: "First workflow guide.",
+      href: "../getting-started/first-workflow",
+    },
+    { name: "pipeline", description: "Run safety.", href: "../commands/run/safety" },
+    {
+      name: "file",
+      description: "Changelog generation.",
+      href: "../commands/changelog/generate/overview",
+    },
+    { name: "git", description: "Side effects.", href: "./safety-and-side-effects" },
+    {
+      name: "terminal",
+      description: "Review command output.",
+      href: "../commands/run/output",
+    },
+    {
+      name: "dependency",
+      description: "Requirements model.",
+      href: "../commands/run/requirements",
+    },
+  ]}
+/>

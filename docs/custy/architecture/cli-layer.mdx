@@ -8,40 +8,40 @@ keywords: [Custy CLI architecture, app cli main, Custy command modules]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    FeatureGrid,
-    Grid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  FeatureGrid,
+  Grid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/cli/"
-    title="CLI Layer"
-    description="Understand how Custy turns shell input into resolved arguments and delegated core execution."
-    category="Architecture"
-    status="Public Boundary"
-    syntax="entrypoint -> callback -> command -> resolver -> core"
-    tags={["Typer", "AppContext", "command registration", "Rich"]}
-    links={[
-        {label: "Architecture Overview", href: "./overview"},
-        {label: "Core Layer", href: "./core-layer"},
-        {label: "Adding Commands", href: "../developer-guide/adding-commands"},
-    ]}
+  command="app/cli/"
+  title="CLI Layer"
+  description="Understand how Custy turns shell input into resolved arguments and delegated core execution."
+  category="Architecture"
+  status="Public Boundary"
+  syntax="entrypoint -> callback -> command -> resolver -> core"
+  tags={["Typer", "AppContext", "command registration", "Rich"]}
+  links={[
+    { label: "Architecture Overview", href: "./overview" },
+    { label: "Core Layer", href: "./core-layer" },
+    { label: "Adding Commands", href: "../developer-guide/adding-commands" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Installed Entrypoint", value: "app.cli.main:app", icon: "command"},
-        {label: "Module Entrypoint", value: "app/__main__.py", icon: "python"},
-        {label: "Framework", value: "Typer", icon: "terminal"},
-        {label: "Shared State", value: "AppContext", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Installed Entrypoint", value: "app.cli.main:app", icon: "command" },
+    { label: "Module Entrypoint", value: "app/__main__.py", icon: "python" },
+    { label: "Framework", value: "Typer", icon: "terminal" },
+    { label: "Shared State", value: "AppContext", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -56,13 +56,31 @@ mutation logic remain outside command callbacks.
 <Section title="Entrypoints and Registration">
 
 <FeatureGrid
-    title="Public Command Tree"
-    items={[
-        {title: "Package Script", icon: <Icon name="command" />, children: "pyproject.toml maps custy to app.cli.main:app."},
-        {title: "Module Execution", icon: <Icon name="python" />, children: "python -m app imports the same Typer application and invokes it."},
-        {title: "Direct Commands", icon: <Icon name="terminal" />, children: "init, validate, commit, tag, push, and run are registered directly on the root application."},
-        {title: "Command Groups", icon: <Icon name="directory" />, children: "changelog, workflow, version, backup, and cleanup are registered as Typer sub-applications."},
-    ]}
+  title="Public Command Tree"
+  items={[
+    {
+      title: "Package Script",
+      icon: <Icon name="command" />,
+      children: "pyproject.toml maps custy to app.cli.main:app.",
+    },
+    {
+      title: "Module Execution",
+      icon: <Icon name="python" />,
+      children: "python -m app imports the same Typer application and invokes it.",
+    },
+    {
+      title: "Direct Commands",
+      icon: <Icon name="terminal" />,
+      children:
+        "init, validate, commit, tag, push, and run are registered directly on the root application.",
+    },
+    {
+      title: "Command Groups",
+      icon: <Icon name="directory" />,
+      children:
+        "changelog, workflow, version, backup, and cleanup are registered as Typer sub-applications.",
+    },
+  ]}
 />
 
 </Section>
@@ -70,15 +88,44 @@ mutation logic remain outside command callbacks.
 ---
 
 <WorkflowDiagram
-    title="Request Lifecycle"
-    timeline={[
-        {title: "Parse global options", description: "The root callback receives banner, help, version, dry-run, debug, and log-level input.", status: "completed"},
-        {title: "Resolve global defaults", description: "resolve_main_args applies project configuration and built-in fallbacks.", status: "completed"},
-        {title: "Create shared context", description: "AppContext stores global execution flags on the Typer context.", status: "completed"},
-        {title: "Configure presentation", description: "Logging, Rich console behavior, banner, and help are initialized before the subcommand runs.", status: "completed"},
-        {title: "Resolve command arguments", description: "The selected command builds a typed effective model from options and config.toml.", status: "current"},
-        {title: "Delegate execution", description: "The callback invokes initialization, a specialized handler, or a pipeline-backed workflow.", status: "pending"},
-    ]}
+  title="Request Lifecycle"
+  timeline={[
+    {
+      title: "Parse global options",
+      description:
+        "The root callback receives banner, help, version, dry-run, debug, and log-level input.",
+      status: "completed",
+    },
+    {
+      title: "Resolve global defaults",
+      description:
+        "resolve_main_args applies project configuration and built-in fallbacks.",
+      status: "completed",
+    },
+    {
+      title: "Create shared context",
+      description: "AppContext stores global execution flags on the Typer context.",
+      status: "completed",
+    },
+    {
+      title: "Configure presentation",
+      description:
+        "Logging, Rich console behavior, banner, and help are initialized before the subcommand runs.",
+      status: "completed",
+    },
+    {
+      title: "Resolve command arguments",
+      description:
+        "The selected command builds a typed effective model from options and config.toml.",
+      status: "current",
+    },
+    {
+      title: "Delegate execution",
+      description:
+        "The callback invokes initialization, a specialized handler, or a pipeline-backed workflow.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -88,23 +135,57 @@ mutation logic remain outside command callbacks.
 <Grid columns={2}>
 
 <DependencyCard
-    title="Input Modules"
-    dependencies={[
-        {source: "options.py", target: "Typer callback", description: "Declare public names, aliases, validation, completion, and help panels."},
-        {source: "Typer values", target: "CliArgs", description: "Collect raw command inputs without deciding final defaults."},
-        {source: "CliArgs and ConfigLoader", target: "resolver.py", description: "Apply CLI -> project configuration -> built-in priority."},
-        {source: "resolver.py", target: "models.py", description: "Return one typed effective argument dataclass."},
-    ]}
+  title="Input Modules"
+  dependencies={[
+    {
+      source: "options.py",
+      target: "Typer callback",
+      description:
+        "Declare public names, aliases, validation, completion, and help panels.",
+    },
+    {
+      source: "Typer values",
+      target: "CliArgs",
+      description: "Collect raw command inputs without deciding final defaults.",
+    },
+    {
+      source: "CliArgs and ConfigLoader",
+      target: "resolver.py",
+      description: "Apply CLI -> project configuration -> built-in priority.",
+    },
+    {
+      source: "resolver.py",
+      target: "models.py",
+      description: "Return one typed effective argument dataclass.",
+    },
+  ]}
 />
 
 <DependencyCard
-    title="Execution Modules"
-    dependencies={[
-        {source: "Resolved model", target: "WorkflowEngineBuilder", description: "Transport supported values into WorkflowConfig."},
-        {source: "AppContext", target: "Combined arguments", description: "Carry global dry-run, debug, and logging state."},
-        {source: "Profile names", target: "CommandResolver", description: "Select the internal step configuration for a pipeline-backed command."},
-        {source: "Pipeline", target: "Core services", description: "Execute registered adapters through a shared GitContext."},
-    ]}
+  title="Execution Modules"
+  dependencies={[
+    {
+      source: "Resolved model",
+      target: "WorkflowEngineBuilder",
+      description: "Transport supported values into WorkflowConfig.",
+    },
+    {
+      source: "AppContext",
+      target: "Combined arguments",
+      description: "Carry global dry-run, debug, and logging state.",
+    },
+    {
+      source: "Profile names",
+      target: "CommandResolver",
+      description:
+        "Select the internal step configuration for a pipeline-backed command.",
+    },
+    {
+      source: "Pipeline",
+      target: "Core services",
+      description: "Execute registered adapters through a shared GitContext.",
+    },
+  ]}
 />
 
 </Grid>
@@ -154,12 +235,28 @@ CLI and orchestration layers rather than isolated behind one interface.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Core Layer", href: "./core-layer", description: "See where command callbacks delegate business behavior."},
-        {title: "Configuration System", href: "./configuration-system", description: "Understand the values command resolvers consume."},
-        {title: "Pipeline Engine", href: "./pipeline-engine", description: "Follow profile names into registered steps."},
-        {title: "Adding Commands", href: "../developer-guide/adding-commands", description: "Apply the active four-module command pattern."},
-    ]}
+  commands={[
+    {
+      title: "Core Layer",
+      href: "./core-layer",
+      description: "See where command callbacks delegate business behavior.",
+    },
+    {
+      title: "Configuration System",
+      href: "./configuration-system",
+      description: "Understand the values command resolvers consume.",
+    },
+    {
+      title: "Pipeline Engine",
+      href: "./pipeline-engine",
+      description: "Follow profile names into registered steps.",
+    },
+    {
+      title: "Adding Commands",
+      href: "../developer-guide/adding-commands",
+      description: "Apply the active four-module command pattern.",
+    },
+  ]}
 />
 
 </Section>

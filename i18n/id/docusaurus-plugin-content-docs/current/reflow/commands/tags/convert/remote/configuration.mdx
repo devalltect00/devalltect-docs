@@ -6,16 +6,29 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, configuration]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Konfigurasi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Konversi Tag" status="Perubahan Jarak Jauh Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Konfigurasi"
+  description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal."
+  category="Konversi Tag"
+  status="Perubahan Jarak Jauh Terjaga"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Kunci konfigurasi | Bawaan | Efek |
-| --- | --- | --- |
-| `tool.reflow.repository.url` | tidak diatur | Pilih target melalui clone sementara yang dikelola. |
-| `tool.reflow.repository.path` | direktori saat ini | Pilih checkout lokal sebagai alternatif yang saling eksklusif. |
-| `tool.reflow.cli.tags.convert.target_format` | semver | Tentukan format tag tujuan. |
-| `tool.reflow.cli.tags.convert.yes` | false | Lewati prompt konfirmasi mode langsung. |
+| Kunci konfigurasi                            | Bawaan             | Efek                                                           |
+| -------------------------------------------- | ------------------ | -------------------------------------------------------------- |
+| `tool.reflow.repository.url`                 | tidak diatur       | Pilih target melalui clone sementara yang dikelola.            |
+| `tool.reflow.repository.path`                | direktori saat ini | Pilih checkout lokal sebagai alternatif yang saling eksklusif. |
+| `tool.reflow.cli.tags.convert.target_format` | semver             | Tentukan format tag tujuan.                                    |
+| `tool.reflow.cli.tags.convert.yes`           | false              | Lewati prompt konfirmasi mode langsung.                        |
 
 ```toml
 [tool.reflow.repository]

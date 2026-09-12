@@ -5,21 +5,27 @@ sidebar_position: 5
 sidebar_key: reflow-examples
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow"
-    title="Contoh Alur Kerja"
-    description="Pratinjau alur tag, pemulihan release, dan container yang sadar repositori sebelum mengizinkan perubahan persisten."
-    category="Contoh"
-    status="Dry-run Terlebih Dahulu"
-    syntax="reflow [GLOBAL OPTIONS] COMMAND"
-    links={[
-        {label: "Perintah", href: "./commands/overview"},
-        {label: "Target Repositori", href: "./concepts/repository-targeting"},
-        {label: "Keamanan Dry-run", href: "./concepts/safety-and-dry-run"},
-        {label: "Konfigurasi", href: "./configuration/reference"},
-    ]}
+  command="reflow"
+  title="Contoh Alur Kerja"
+  description="Pratinjau alur tag, pemulihan release, dan container yang sadar repositori sebelum mengizinkan perubahan persisten."
+  category="Contoh"
+  status="Dry-run Terlebih Dahulu"
+  syntax="reflow [GLOBAL OPTIONS] COMMAND"
+  links={[
+    { label: "Perintah", href: "./commands/overview" },
+    { label: "Target Repositori", href: "./concepts/repository-targeting" },
+    { label: "Keamanan Dry-run", href: "./concepts/safety-and-dry-run" },
+    { label: "Konfigurasi", href: "./configuration/reference" },
+  ]}
 />
 
 <Section title="Ganti format tag">
@@ -28,12 +34,14 @@ import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/sr
 reflow --dry-run -C ../project tags convert local --to semver
 
 # Terapkan setelah meninjau rencana
+
 reflow -C ../project tags convert local --to semver --yes`}</Terminal>
 
 <Terminal title="SemVer ke PEP 440 secara remote" language="bash">{`# URL diklon ke workspace sementara terkelola untuk discovery
 reflow --dry-run --repository-url https://github.com/acme/project.git tags convert remote --to pep440
 
 # Scope remote menjalankan push terlindungi; --push tidak digunakan
+
 reflow --repository-url https://github.com/acme/project.git tags convert remote --to pep440 --yes`}</Terminal>
 
 </Section>
@@ -44,6 +52,7 @@ reflow --repository-url https://github.com/acme/project.git tags convert remote 
 reflow --dry-run -C ../project releases recover
 
 # Selesaikan tagged image; jangan build, push, atau membersihkan image
+
 reflow --dry-run -C ../project dockerize`}</Terminal>
 
 </Section>
@@ -56,10 +65,26 @@ remote, registry image, dan perilaku konfirmasi yang ditampilkan.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Konversi Tag Lokal", href: "./commands/tags/convert/local/examples", description: "Contoh tambahan untuk checkout persisten."},
-        {title: "Konversi Tag Remote", href: "./commands/tags/convert/remote/examples", description: "Contoh tambahan untuk penggantian remote terlindungi."},
-        {title: "Pemulihan Release", href: "./commands/releases/recover/examples", description: "Pratinjau dan izinkan pemulihan melalui re-push tag."},
-        {title: "Dockerize", href: "./commands/dockerize/examples", description: "Pratinjau publikasi tagged image."},
-    ]}
+  commands={[
+    {
+      title: "Konversi Tag Lokal",
+      href: "./commands/tags/convert/local/examples",
+      description: "Contoh tambahan untuk checkout persisten.",
+    },
+    {
+      title: "Konversi Tag Remote",
+      href: "./commands/tags/convert/remote/examples",
+      description: "Contoh tambahan untuk penggantian remote terlindungi.",
+    },
+    {
+      title: "Pemulihan Release",
+      href: "./commands/releases/recover/examples",
+      description: "Pratinjau dan izinkan pemulihan melalui re-push tag.",
+    },
+    {
+      title: "Dockerize",
+      href: "./commands/dockerize/examples",
+      description: "Pratinjau publikasi tagged image.",
+    },
+  ]}
 />

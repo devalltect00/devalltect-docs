@@ -8,53 +8,92 @@ keywords: [Custy environment variables, Custy terminal, Custy editor]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Environment"
-    description="Prepare the Python, Git, working-directory, terminal, editor, and optional tooling boundaries used by Custy."
-    category="Reference"
-    status="Runtime Requirements"
-    syntax="project root + installed custy + Git repository"
-    tags={["Python 3.14+", "Git", "UTF-8 terminal", "editor"]}
-    links={[
-        {label: "Installation", href: "../getting-started/installation"},
-        {label: "Requirements", href: "../commands/validate/requirements"},
-        {label: "Paths", href: "./paths-and-files"},
-    ]}
+  command="custy"
+  title="Environment"
+  description="Prepare the Python, Git, working-directory, terminal, editor, and optional tooling boundaries used by Custy."
+  category="Reference"
+  status="Runtime Requirements"
+  syntax="project root + installed custy + Git repository"
+  tags={["Python 3.14+", "Git", "UTF-8 terminal", "editor"]}
+  links={[
+    { label: "Installation", href: "../getting-started/installation" },
+    { label: "Requirements", href: "../commands/validate/requirements" },
+    { label: "Paths", href: "./paths-and-files" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Python", value: "3.14+", icon: "python"},
-        {label: "Repository Tool", value: "Git", icon: "git"},
-        {label: "Preferred Terminal", value: "UTF-8 capable", icon: "terminal"},
-        {label: "Configuration Base", value: "Current directory", icon: "directory"},
-    ]}
+  items={[
+    { label: "Python", value: "3.14+", icon: "python" },
+    { label: "Repository Tool", value: "Git", icon: "git" },
+    { label: "Preferred Terminal", value: "UTF-8 capable", icon: "terminal" },
+    { label: "Configuration Base", value: "Current directory", icon: "directory" },
+  ]}
 />
 
 ## Runtime Requirements
 
 <RequirementGrid
-    items={[
-        {title: "Python 3.14+", level: "required", children: "The package metadata requires Python 3.14 or newer."},
-        {title: "Git", level: "required", children: "Custy's core workflows inspect and modify Git repository state. Docker images install Git inside the container."},
-        {title: "pip or installed package", level: "required", children: "The custy entrypoint must resolve from the intended virtual environment, release installation, or container."},
-        {title: "UTF-8-capable terminal", level: "recommended", children: "Rich output contains Unicode symbols and emoji; compatible encoding avoids display and redirected-output failures."},
-        {title: "Configured Editor", level: "recommended", children: "Install at least one editor from the active tool.custy.editor candidate list. Docker includes Micro, Nano, Vim, and Vi."},
-        {title: "Commitizen", level: "optional", children: "The external cz executable is needed only by Commitizen-dependent validation or strategy paths."},
-        {title: "Docker", level: "optional", children: "Use the supported container workflow without installing Custy and Git directly on the host."},
-        {title: "Make", level: "optional", children: "Use repository Makefile helpers; it is not required by the installed core CLI."},
-    ]}
+  items={[
+    {
+      title: "Python 3.14+",
+      level: "required",
+      children: "The package metadata requires Python 3.14 or newer.",
+    },
+    {
+      title: "Git",
+      level: "required",
+      children:
+        "Custy's core workflows inspect and modify Git repository state. Docker images install Git inside the container.",
+    },
+    {
+      title: "pip or installed package",
+      level: "required",
+      children:
+        "The custy entrypoint must resolve from the intended virtual environment, release installation, or container.",
+    },
+    {
+      title: "UTF-8-capable terminal",
+      level: "recommended",
+      children:
+        "Rich output contains Unicode symbols and emoji; compatible encoding avoids display and redirected-output failures.",
+    },
+    {
+      title: "Configured Editor",
+      level: "recommended",
+      children:
+        "Install at least one editor from the active tool.custy.editor candidate list. Docker includes Micro, Nano, Vim, and Vi.",
+    },
+    {
+      title: "Commitizen",
+      level: "optional",
+      children:
+        "The external cz executable is needed only by Commitizen-dependent validation or strategy paths.",
+    },
+    {
+      title: "Docker",
+      level: "optional",
+      children:
+        "Use the supported container workflow without installing Custy and Git directly on the host.",
+    },
+    {
+      title: "Make",
+      level: "optional",
+      children:
+        "Use repository Makefile helpers; it is not required by the installed core CLI.",
+    },
+  ]}
 />
 
 ---
@@ -84,15 +123,33 @@ The active application reads these environment variables only to customize
 Rich colors and progress presentation:
 
 <KeyValueTable
-    title="Color Overrides"
-    items={[
-        {key: "CUSTY_PRIMARY / CUSTY_SECONDARY", value: "Primary accent and secondary text."},
-        {key: "CUSTY_INFO / CUSTY_WARNING / CUSTY_SUCCESS / CUSTY_ERROR", value: "Semantic output colors."},
-        {key: "CUSTY_DRY_RUN / CUSTY_POINTING", value: "Dry-run and pointer or hint colors."},
-        {key: "CUSTY_HELP_TITLE / CUSTY_HELP_TEXT / CUSTY_HELP_HINT", value: "Help heading, body, and hint styles."},
-        {key: "CUSTY_HELP_OPTION / CUSTY_HELP_EXAMPLE", value: "Help option and example styles."},
-        {key: "CUSTY_PROGRESS_TITLE / CUSTY_PROGRESS_STEP / CUSTY_PROGRESS_DONE", value: "Progress heading, active step, and completion styles."},
-    ]}
+  title="Color Overrides"
+  items={[
+    {
+      key: "CUSTY_PRIMARY / CUSTY_SECONDARY",
+      value: "Primary accent and secondary text.",
+    },
+    {
+      key: "CUSTY_INFO / CUSTY_WARNING / CUSTY_SUCCESS / CUSTY_ERROR",
+      value: "Semantic output colors.",
+    },
+    {
+      key: "CUSTY_DRY_RUN / CUSTY_POINTING",
+      value: "Dry-run and pointer or hint colors.",
+    },
+    {
+      key: "CUSTY_HELP_TITLE / CUSTY_HELP_TEXT / CUSTY_HELP_HINT",
+      value: "Help heading, body, and hint styles.",
+    },
+    {
+      key: "CUSTY_HELP_OPTION / CUSTY_HELP_EXAMPLE",
+      value: "Help option and example styles.",
+    },
+    {
+      key: "CUSTY_PROGRESS_TITLE / CUSTY_PROGRESS_STEP / CUSTY_PROGRESS_DONE",
+      value: "Progress heading, active step, and completion styles.",
+    },
+  ]}
 />
 
 Values must be valid Rich color or style-compatible color strings. These
@@ -110,13 +167,29 @@ inherits the variables supplied to its process and checks the following exact
 names when `tool.custy.editor.prefer_environment = true`:
 
 <KeyValueTable
-    title="Editor Runtime Variables"
-    items={[
-        {key: "VISUAL", value: "Primary editor command. May contain a trusted executable and optional arguments, such as code --wait or micro."},
-        {key: "EDITOR", value: "Secondary editor command, checked after VISUAL, such as notepad, nano, vim, or nvim -f."},
-        {key: "PATH", value: "Indirectly controls executable discovery. PATH does not select an editor by itself."},
-        {key: "CUSTY_CONTAINER", value: "Selects container candidates when set to 1, true, yes, or on. The official image sets it; it is not an editor command."},
-    ]}
+  title="Editor Runtime Variables"
+  items={[
+    {
+      key: "VISUAL",
+      value:
+        "Primary editor command. May contain a trusted executable and optional arguments, such as code --wait or micro.",
+    },
+    {
+      key: "EDITOR",
+      value:
+        "Secondary editor command, checked after VISUAL, such as notepad, nano, vim, or nvim -f.",
+    },
+    {
+      key: "PATH",
+      value:
+        "Indirectly controls executable discovery. PATH does not select an editor by itself.",
+    },
+    {
+      key: "CUSTY_CONTAINER",
+      value:
+        "Selects container candidates when set to 1, true, yes, or on. The official image sets it; it is not an editor command.",
+    },
+  ]}
 />
 
 Only `VISUAL` and `EDITOR` accept editor commands. Use the uppercase names
@@ -131,13 +204,15 @@ $env:VISUAL = "code --wait"
 $env:EDITOR = "notepad"
 
 # POSIX shell
+
 export VISUAL="micro"
 export EDITOR="nano"
 
 # Docker
+
 docker run --rm -it -e VISUAL=micro -e EDITOR=nano \
-  -v "\${PWD}:/workspace" -w /workspace \
-  custy-prod:latest run release`}
+ -v "\${PWD}:/workspace" -w /workspace \
+ custy-prod:latest run release`}
 
 </Terminal>
 
@@ -187,13 +262,34 @@ affects presentation and can prevent help output from completing.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Installation", href: "../getting-started/installation", description: "Choose Python source, release asset, Docker, or Makefile setup."},
-        {title: "Paths and Files", href: "./paths-and-files", description: "Locate files resolved from the working directory."},
-        {title: "Validation Requirements", href: "../commands/validate/requirements", description: "Prepare repository, templates, version file, remotes, and staging."},
-        {title: "Errors and Exit Status", href: "./exit-errors", description: "Interpret terminal, parser, validation, and subprocess failures."},
-        {title: "Editor Configuration", href: "../configuration/editor", description: "Configure editor identifiers, precedence, container behavior, and keybindings."},
-    ]}
+  commands={[
+    {
+      title: "Installation",
+      href: "../getting-started/installation",
+      description: "Choose Python source, release asset, Docker, or Makefile setup.",
+    },
+    {
+      title: "Paths and Files",
+      href: "./paths-and-files",
+      description: "Locate files resolved from the working directory.",
+    },
+    {
+      title: "Validation Requirements",
+      href: "../commands/validate/requirements",
+      description: "Prepare repository, templates, version file, remotes, and staging.",
+    },
+    {
+      title: "Errors and Exit Status",
+      href: "./exit-errors",
+      description: "Interpret terminal, parser, validation, and subprocess failures.",
+    },
+    {
+      title: "Editor Configuration",
+      href: "../configuration/editor",
+      description:
+        "Configure editor identifiers, precedence, container behavior, and keybindings.",
+    },
+  ]}
 />
 
 </Section>

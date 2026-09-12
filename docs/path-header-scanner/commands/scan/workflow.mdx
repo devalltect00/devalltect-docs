@@ -6,9 +6,22 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="Workflow" description="Discover supported files, validate path headers, preview missing or stale headers, and apply corrections only when explicitly requested." category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="Workflow"
+  description="Discover supported files, validate path headers, preview missing or stale headers, and apply corrections only when explicitly requested."
+  category="Header Scanning"
+  status="Preview First"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ### 1. Stage 1
 
@@ -30,5 +43,7 @@ Compute valid, inserted, updated, and failed results.
 
 Write only in live --apply mode; otherwise render preview and summary.
 
-<InfoBox variant="warning" title="Safety boundary">Preview is the default. --apply enables writes; --dry-run overrides CLI and configured apply mode and guarantees no target-file changes.</InfoBox>
-
+<InfoBox variant="warning" title="Safety boundary">
+  Preview is the default. --apply enables writes; --dry-run overrides CLI and configured
+  apply mode and guarantees no target-file changes.
+</InfoBox>

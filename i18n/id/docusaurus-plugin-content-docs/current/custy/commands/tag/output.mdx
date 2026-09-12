@@ -4,15 +4,46 @@ description: "Files, backups, dan Git references yang dihasilkan custy tag."
 sidebar_position: 8
 sidebar_key: custy-tag-output
 ---
-import {CommandHero, CommandOutput, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy tag" title="Command Output" description="Tinjau version artifacts, backup, dan local Git tag." category="Git Operations" status="Review Required" syntax="custy tag [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import {
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy tag"
+  title="Command Output"
+  description="Tinjau version artifacts, backup, dan local Git tag."
+  category="Git Operations"
+  status="Review Required"
+  syntax="custy tag [OPTIONS]"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOutput outputs={[{title:"Observable Results",description:"Hasil tingkat tinggi profile.",output:`Version and tag artifacts prepared
+<CommandOutput
+  outputs={[
+    {
+      title: "Observable Results",
+      description: "Hasil tingkat tinggi profile.",
+      output: `Version and tag artifacts prepared
 Tag message backed up
-Local Git tag created`}]} />
+Local Git tag created`,
+    },
+  ]}
+/>
 
-<Section title="Verify the Local Result">Periksa `git tag --list`, `git show TAG`, version-file diff, tag message, dan commit target.</Section>
-<InfoBox variant="warning" title="Review Before Publishing">Setelah tag dipush, menggantinya dapat membingungkan release consumers dan CI/CD.</InfoBox>
+<Section title="Verify the Local Result">
+  Periksa `git tag --list`, `git show TAG`, version-file diff, tag message, dan commit
+  target.
+</Section>
+<InfoBox variant="warning" title="Review Before Publishing">
+  Setelah tag dipush, menggantinya dapat membingungkan release consumers dan CI/CD.
+</InfoBox>

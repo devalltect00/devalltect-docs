@@ -6,13 +6,10 @@
 
 export { default } from "./MermaidCard";
 
-export type {
-    MermaidCardProps,
-} from "./types";
-
+export type { MermaidCardProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.MermaidCard
     title="Release Workflow"
     description="Overall release process."

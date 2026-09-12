@@ -6,38 +6,34 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Options"
-    description="Learn about the available command-line options for project validation."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "options",
-        "validation",
-        "cli",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Validation Checks",
-            href: "./validation-checks",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy validate"
+  title="Options"
+  description="Learn about the available command-line options for project validation."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["options", "validation", "cli"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Validation Checks",
+      href: "./validation-checks",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -54,6 +50,7 @@ interacts with the project during the validation process.
 >
 
 Most validation behavior is controlled by your project's
+
 <code>.config/custy/config.toml</code> configuration.
 
 Command-line options temporarily override those configuration values for the
@@ -68,44 +65,42 @@ current execution.
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--skip-checks",
-            shorthand: "",
-            required: false,
-            description:
-                "Skip optional validation checks when supported by the current workflow.",
-            defaultValue: "false",
-            example: "custy validate --skip-checks",
-        },
-        {
-            name: "--force-commit",
-            shorthand: "",
-            required: false,
-            description:
-                "Continue validation even when no staged changes are available.",
-            defaultValue: "false",
-            example: "custy validate --force-commit",
-        },
-        {
-            name: "--auto-stage",
-            shorthand: "",
-            required: false,
-            description:
-                "Automatically stage modified files before validating staged changes.",
-            defaultValue: "false",
-            example: "custy validate --auto-stage",
-        },
-        {
-            name: "--stage-mode",
-            shorthand: "",
-            required: false,
-            description:
-                "Choose how automatic staging is performed.",
-            defaultValue: "all",
-            example: "custy validate --stage-mode update",
-        },
-    ]}
+  options={[
+    {
+      name: "--skip-checks",
+      shorthand: "",
+      required: false,
+      description:
+        "Skip optional validation checks when supported by the current workflow.",
+      defaultValue: "false",
+      example: "custy validate --skip-checks",
+    },
+    {
+      name: "--force-commit",
+      shorthand: "",
+      required: false,
+      description: "Continue validation even when no staged changes are available.",
+      defaultValue: "false",
+      example: "custy validate --force-commit",
+    },
+    {
+      name: "--auto-stage",
+      shorthand: "",
+      required: false,
+      description:
+        "Automatically stage modified files before validating staged changes.",
+      defaultValue: "false",
+      example: "custy validate --auto-stage",
+    },
+    {
+      name: "--stage-mode",
+      shorthand: "",
+      required: false,
+      description: "Choose how automatic staging is performed.",
+      defaultValue: "all",
+      example: "custy validate --stage-mode update",
+    },
+  ]}
 />
 
 </Section>

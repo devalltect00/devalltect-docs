@@ -16,39 +16,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    InfoBox,
-    Section,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Initialization Workflow"
-    description="Understand the sequence of operations performed when initializing a project with Custy."
-    category="Initialization"
-    status="Recommended"
-    syntax="custy init"
-    tags={[
-        "workflow",
-        "initialization",
-        "project setup",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Generated Files",
-            href: "./generated-files",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-    ]}
+  command="custy init"
+  title="Initialization Workflow"
+  description="Understand the sequence of operations performed when initializing a project with Custy."
+  category="Initialization"
+  status="Recommended"
+  syntax="custy init"
+  tags={["workflow", "initialization", "project setup"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Generated Files",
+      href: "./generated-files",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+  ]}
 />
 
 ## Overview
@@ -78,40 +74,40 @@ Its only responsibility is preparing the project for future Custy operations.
 >
 
 <WorkflowTimeline
-    title="Initialization Timeline"
-    description="High-level sequence of operations performed by the initialization workflow."
-    items={[
-        {
-            title: "Resolve Options",
-            description:
-                "Determine the effective initialization settings by combining command-line arguments, project configuration, and built-in defaults.",
-            status: "completed",
-        },
-        {
-            title: "Prepare Initialization",
-            description:
-                "Build the initialization context and determine which resources need to be generated.",
-            status: "completed",
-        },
-        {
-            title: "Generate Resources",
-            description:
-                "Create configuration files, templates, and optional example resources according to the selected mode.",
-            status: "completed",
-        },
-        {
-            title: "Handle Existing Files",
-            description:
-                "Preserve or overwrite generated files according to their resource type, force behavior, and supported interactive confirmation settings.",
-            status: "completed",
-        },
-        {
-            title: "Complete Initialization",
-            description:
-                "Finish the initialization process and prepare the project for future Custy commands.",
-            status: "completed",
-        },
-    ]}
+  title="Initialization Timeline"
+  description="High-level sequence of operations performed by the initialization workflow."
+  items={[
+    {
+      title: "Resolve Options",
+      description:
+        "Determine the effective initialization settings by combining command-line arguments, project configuration, and built-in defaults.",
+      status: "completed",
+    },
+    {
+      title: "Prepare Initialization",
+      description:
+        "Build the initialization context and determine which resources need to be generated.",
+      status: "completed",
+    },
+    {
+      title: "Generate Resources",
+      description:
+        "Create configuration files, templates, and optional example resources according to the selected mode.",
+      status: "completed",
+    },
+    {
+      title: "Handle Existing Files",
+      description:
+        "Preserve or overwrite generated files according to their resource type, force behavior, and supported interactive confirmation settings.",
+      status: "completed",
+    },
+    {
+      title: "Complete Initialization",
+      description:
+        "Finish the initialization process and prepare the project for future Custy commands.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>
@@ -123,30 +119,30 @@ Its only responsibility is preparing the project for future Custy operations.
 >
 
 <WorkflowStep
-    number={1}
-    status="completed"
-    title="Resolve Initialization Settings"
-    description="
+  number={1}
+  status="completed"
+  title="Resolve Initialization Settings"
+  description="
 Determine the effective initialization mode by combining command-line
 arguments, project configuration, and Custy's built-in defaults.
 "
 />
 
 <WorkflowStep
-    number={2}
-    status="completed"
-    title="Build the Initialization Context"
-    description="
+  number={2}
+  status="completed"
+  title="Build the Initialization Context"
+  description="
 Prepare the internal execution context that will be shared by every
 generation step during initialization.
 "
 />
 
 <WorkflowStep
-    number={3}
-    status="completed"
-    title="Generate Project Resources"
-    description="
+  number={3}
+  status="completed"
+  title="Generate Project Resources"
+  description="
 Generate the selected project resources, including configuration files,
 templates, and optional nested example resources depending on the chosen
 initialization mode.
@@ -154,10 +150,10 @@ initialization mode.
 />
 
 <WorkflowStep
-    number={4}
-    status="completed"
-    title="Merge Packaged Examples"
-    description="
+  number={4}
+  status="completed"
+  title="Merge Packaged Examples"
+  description="
 Walk the packaged example tree recursively. Add missing directories and files,
 preserve existing example files by default, or overwrite those files when
 force behavior is enabled.
@@ -165,10 +161,10 @@ force behavior is enabled.
 />
 
 <WorkflowStep
-    number={5}
-    status="completed"
-    title="Finalize Initialization"
-    description="
+  number={5}
+  status="completed"
+  title="Finalize Initialization"
+  description="
 Complete the initialization process and prepare the project for subsequent
 Custy commands.
 "

@@ -6,12 +6,27 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, syntax]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Syntax" description="Syntax: reflow tags convert remote" category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Syntax"
+  description="Syntax: reflow tags convert remote"
+  category="Tag Conversion"
+  status="Guarded Remote Mutation"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <Terminal language="bash">{`reflow tags convert remote [OPTIONS]
 reflow [GLOBAL OPTIONS] tags convert remote [OPTIONS]`}</Terminal>
 
-<InfoBox variant="note" title="Global options">Place `--repository`, `--repository-url`, `--dry-run`, `--debug`, and `--log-level` before the command path.</InfoBox>
-
+<InfoBox variant="note" title="Global options">
+  Place `--repository`, `--repository-url`, `--dry-run`, `--debug`, and `--log-level`
+  before the command path.
+</InfoBox>

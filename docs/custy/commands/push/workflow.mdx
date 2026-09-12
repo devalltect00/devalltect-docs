@@ -8,29 +8,25 @@ keywords: [custy push workflow]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Push Workflow"
-    description="Follow validation, remote resolution, HEAD synchronization, optional tag publication, and backup behavior."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "workflow",
-        "remotes",
-        "synchronization",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Remotes", href: "./remotes"},
-        {label: "Output", href: "./output"},
-    ]}
+  command="custy push"
+  title="Push Workflow"
+  description="Follow validation, remote resolution, HEAD synchronization, optional tag publication, and backup behavior."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  tags={["workflow", "remotes", "synchronization"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Output", href: "./output" },
+  ]}
 />
 
 ## Overview
@@ -47,15 +43,43 @@ confirmation.
 >
 
 <WorkflowTimeline
-    title="Push Profile"
-    items={[
-        {title: "Validate repository", description: "Run repository and pre-push validation.", status: "completed"},
-        {title: "Resolve selection precedence", description: "Apply explicit --remote, all_remote, then push_to to select the effective groups.", status: "completed"},
-        {title: "Apply backup safety", description: "Remove backup destinations when the current non-critical branch is not eligible.", status: "optional"},
-        {title: "Resolve authentication", description: "Use native Git or SSH first, then an enabled external token source for an eligible container HTTPS push.", status: "optional"},
-        {title: "Push HEAD", description: "Push the current HEAD to each resolved main and backup remote.", status: "completed"},
-        {title: "Push tag", description: "Push the selected tag when one is available and tag push is not skipped.", status: "optional"},
-    ]}
+  title="Push Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Run repository and pre-push validation.",
+      status: "completed",
+    },
+    {
+      title: "Resolve selection precedence",
+      description:
+        "Apply explicit --remote, all_remote, then push_to to select the effective groups.",
+      status: "completed",
+    },
+    {
+      title: "Apply backup safety",
+      description:
+        "Remove backup destinations when the current non-critical branch is not eligible.",
+      status: "optional",
+    },
+    {
+      title: "Resolve authentication",
+      description:
+        "Use native Git or SSH first, then an enabled external token source for an eligible container HTTPS push.",
+      status: "optional",
+    },
+    {
+      title: "Push HEAD",
+      description: "Push the current HEAD to each resolved main and backup remote.",
+      status: "completed",
+    },
+    {
+      title: "Push tag",
+      description:
+        "Push the selected tag when one is available and tag push is not skipped.",
+      status: "optional",
+    },
+  ]}
 />
 
 </Section>

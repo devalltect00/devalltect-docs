@@ -7,9 +7,31 @@ tags: [custy, dev pipeline, git]
 keywords: [custy run dev, Custy development pipeline]
 ---
 
-import {CommandChecklist, CommandHero, InfoBox, KeyValueTable, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandChecklist,
+  CommandHero,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy run dev" title="Development Pipeline" description="Koordinasikan review pesan commit, local commit, dan push branch tanpa persiapan rilis." category="Pipeline Profile" status="Stable" syntax="custy run dev [OPTIONS]" tags={["daily development", "commit", "push"]} links={[{label: "Run Dev Guide", href: "../commands/run/dev/overview"}, {label: "Profiles", href: "./profiles"}, {label: "Safety", href: "../commands/run/safety"}]} />
+<CommandHero
+  command="custy run dev"
+  title="Development Pipeline"
+  description="Koordinasikan review pesan commit, local commit, dan push branch tanpa persiapan rilis."
+  category="Pipeline Profile"
+  status="Stable"
+  syntax="custy run dev [OPTIONS]"
+  tags={["daily development", "commit", "push"]}
+  links={[
+    { label: "Run Dev Guide", href: "../commands/run/dev/overview" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "../commands/run/safety" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -18,48 +40,182 @@ dan meninjau pesan commit, melakukan stage, membuat commit, lalu mendorong
 branch `HEAD`. Dev tidak menyiapkan release state, membuat release artifacts
 atau changelog, membuat tag, atau mendorong tag.
 
-<Terminal title="Preview before normal execution" language="bash">{`custy --dry-run run dev
+<Terminal
+  title="Preview before normal execution"
+  language="bash"
+>{`custy --dry-run run dev
 custy run dev`}</Terminal>
 
 ---
 
 <Section title="Exact Phase Flow">
-<WorkflowTimeline title="Dev Profile" items={[{title: "Validate repository", description: "Pastikan execution berada dalam Git repository.", status: "completed"}, {title: "Validate commit and remote inputs", description: "Resolve commit validator, hook policy, commit-message file, dan remote.", status: "completed"}, {title: "Review commit message", description: "Buka hanya commit-message file dan validasi content yang disimpan.", status: "completed"}, {title: "Back up and clean", description: "Backup commit-message file dan terapkan backup retention cleanup.", status: "completed"}, {title: "Stage and commit", description: "Stage resolved project changes dan buat local commit.", status: "completed"}, {title: "Push", description: "Push branch HEAD ke resolved remotes tanpa memublikasikan tag.", status: "current"}]} />
+  <WorkflowTimeline
+    title="Dev Profile"
+    items={[
+      {
+        title: "Validate repository",
+        description: "Pastikan execution berada dalam Git repository.",
+        status: "completed",
+      },
+      {
+        title: "Validate commit and remote inputs",
+        description:
+          "Resolve commit validator, hook policy, commit-message file, dan remote.",
+        status: "completed",
+      },
+      {
+        title: "Review commit message",
+        description:
+          "Buka hanya commit-message file dan validasi content yang disimpan.",
+        status: "completed",
+      },
+      {
+        title: "Back up and clean",
+        description:
+          "Backup commit-message file dan terapkan backup retention cleanup.",
+        status: "completed",
+      },
+      {
+        title: "Stage and commit",
+        description: "Stage resolved project changes dan buat local commit.",
+        status: "completed",
+      },
+      {
+        title: "Push",
+        description: "Push branch HEAD ke resolved remotes tanpa memublikasikan tag.",
+        status: "current",
+      },
+    ]}
+  />
 </Section>
 
 ---
 
-<KeyValueTable title="Exact Dev Step Order" description="Internal name ditampilkan agar users dan contributors dapat mencocokkan documentation dengan logs dan source." items={[
- {key: "01 — ensure_git_repo_step", value: "Pastikan execution berada dalam Git repository."},
- {key: "02 — ensure_commit_validation_provider_step", value: "Resolve configured commit-message validator."},
- {key: "03 — ensure_commit_hook_policy_step", value: "Resolve configured commit-hook policy."},
- {key: "04 — ensure_commit_message_file_step", value: "Resolve commit-message file."},
- {key: "05 — ensure_commit_message_file_exists_step", value: "Pastikan commit-message file tersedia sebelum editing."},
- {key: "06 — ensure_remote_exists_step", value: "Validasi resolved push destination."},
- {key: "07 — edit_files_step", value: "Buka hanya commit-message file untuk review dan editing."},
- {key: "08 — validate_edited_step", value: "Validasi reviewed commit message."},
- {key: "09 — backup_commit_message_files_step", value: "Backup commit-message file."},
- {key: "10 — cleanup_backup_step", value: "Terapkan configured backup retention cleanup."},
- {key: "11 — stage_step", value: "Stage files yang dipilih workflow."},
- {key: "12 — commit_step", value: "Buat local development commit."},
- {key: "13 — push_step", value: "Push branch HEAD tanpa mendorong tag."},
-]} />
+<KeyValueTable
+  title="Exact Dev Step Order"
+  description="Internal name ditampilkan agar users dan contributors dapat mencocokkan documentation dengan logs dan source."
+  items={[
+    {
+      key: "01 — ensure_git_repo_step",
+      value: "Pastikan execution berada dalam Git repository.",
+    },
+    {
+      key: "02 — ensure_commit_validation_provider_step",
+      value: "Resolve configured commit-message validator.",
+    },
+    {
+      key: "03 — ensure_commit_hook_policy_step",
+      value: "Resolve configured commit-hook policy.",
+    },
+    {
+      key: "04 — ensure_commit_message_file_step",
+      value: "Resolve commit-message file.",
+    },
+    {
+      key: "05 — ensure_commit_message_file_exists_step",
+      value: "Pastikan commit-message file tersedia sebelum editing.",
+    },
+    {
+      key: "06 — ensure_remote_exists_step",
+      value: "Validasi resolved push destination.",
+    },
+    {
+      key: "07 — edit_files_step",
+      value: "Buka hanya commit-message file untuk review dan editing.",
+    },
+    { key: "08 — validate_edited_step", value: "Validasi reviewed commit message." },
+    {
+      key: "09 — backup_commit_message_files_step",
+      value: "Backup commit-message file.",
+    },
+    {
+      key: "10 — cleanup_backup_step",
+      value: "Terapkan configured backup retention cleanup.",
+    },
+    { key: "11 — stage_step", value: "Stage files yang dipilih workflow." },
+    { key: "12 — commit_step", value: "Buat local development commit." },
+    { key: "13 — push_step", value: "Push branch HEAD tanpa mendorong tag." },
+  ]}
+/>
 
 ---
 
-<InfoBox variant="info" title="Release Responsibilities Dikecualikan">Dev tidak menyiapkan atau menerapkan version, menginisialisasi workflow rilis, membuat release artifacts atau changelog, mengedit tag message, membuat tag, atau mendorong tag. Gunakan Release untuk publikasi versioned dan tagged.</InfoBox>
-<InfoBox variant="warning" title="Dev Hanya Memvalidasi yang Digunakan">Profile memvalidasi repository, commit-message, hook, dan remote readiness. Version serta tag-message validation sengaja dilewati karena berada di luar Dev workflow.</InfoBox>
+<InfoBox variant="info" title="Release Responsibilities Dikecualikan">
+  Dev tidak menyiapkan atau menerapkan version, menginisialisasi workflow rilis, membuat
+  release artifacts atau changelog, mengedit tag message, membuat tag, atau mendorong
+  tag. Gunakan Release untuk publikasi versioned dan tagged.
+</InfoBox>
+<InfoBox variant="warning" title="Dev Hanya Memvalidasi yang Digunakan">
+  Profile memvalidasi repository, commit-message, hook, dan remote readiness. Version
+  serta tag-message validation sengaja dilewati karena berada di luar Dev workflow.
+</InfoBox>
 
 ---
 
 <Section title="Before You Run">
-<CommandChecklist items={[{title: "Review repository state", description: "Konfirmasi current branch dan pastikan unrelated work tidak ikut di-stage."}, {title: "Check commit path", description: "Verifikasi configured commit-message file dan reviewed content."}, {title: "Confirm the destination", description: "Tinjau default atau selected remotes karena push merupakan bagian Dev."}, {title: "Use dry-run first", description: "Periksa planned mutations dan remote operations sebelum normal run."}, {title: "Review the result", description: "Periksa diff, commit, dan remote branch setelah selesai."}]} />
+  <CommandChecklist
+    items={[
+      {
+        title: "Review repository state",
+        description:
+          "Konfirmasi current branch dan pastikan unrelated work tidak ikut di-stage.",
+      },
+      {
+        title: "Check commit path",
+        description: "Verifikasi configured commit-message file dan reviewed content.",
+      },
+      {
+        title: "Confirm the destination",
+        description:
+          "Tinjau default atau selected remotes karena push merupakan bagian Dev.",
+      },
+      {
+        title: "Use dry-run first",
+        description:
+          "Periksa planned mutations dan remote operations sebelum normal run.",
+      },
+      {
+        title: "Review the result",
+        description: "Periksa diff, commit, dan remote branch setelah selesai.",
+      },
+    ]}
+  />
 </Section>
 
 ---
 
-<Section title="Failure dan Retry">Jika Dev gagal sebelum commit, periksa edited message, backups, dan Git index. Jika gagal saat atau setelah push, verifikasi apakah local commit dan remote updates sudah selesai. Jangan menjalankan ulang seluruh profile sampai state tersebut dipahami.</Section>
+<Section title="Failure dan Retry">
+  Jika Dev gagal sebelum commit, periksa edited message, backups, dan Git index. Jika
+  gagal saat atau setelah push, verifikasi apakah local commit dan remote updates sudah
+  selesai. Jangan menjalankan ulang seluruh profile sampai state tersebut dipahami.
+</Section>
 
 ---
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Run Dev", href: "../commands/run/dev/overview", description: "Gunakan command options dan practical examples untuk Dev profile."}, {title: "Complete Profile Reference", href: "./profile-reference", description: "Bandingkan Dev dengan resolver profiles lain."}, {title: "Release Pipeline", href: "./release-pipeline", description: "Bandingkan Dev dengan versioned, tagged release."}, {title: "Commit Command", href: "../commands/commit/overview", description: "Buat focused commit dengan command-specific controls."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Run Dev",
+        href: "../commands/run/dev/overview",
+        description:
+          "Gunakan command options dan practical examples untuk Dev profile.",
+      },
+      {
+        title: "Complete Profile Reference",
+        href: "./profile-reference",
+        description: "Bandingkan Dev dengan resolver profiles lain.",
+      },
+      {
+        title: "Release Pipeline",
+        href: "./release-pipeline",
+        description: "Bandingkan Dev dengan versioned, tagged release.",
+      },
+      {
+        title: "Commit Command",
+        href: "../commands/commit/overview",
+        description: "Buat focused commit dengan command-specific controls.",
+      },
+    ]}
+  />
+</Section>

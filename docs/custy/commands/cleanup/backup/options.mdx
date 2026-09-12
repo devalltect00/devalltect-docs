@@ -5,47 +5,43 @@ sidebar_position: 4
 sidebar_key: custy-cleanup-backup
 
 tags:
-    - cleanup
-    - backup
-    - options
+  - cleanup
+  - backup
+  - options
 
 keywords:
-    - custy cleanup backups options
+  - custy cleanup backups options
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Options"
-    description="Customize how Backup Cleanup removes obsolete backup files."
-    category="Maintenance"
-    status="Recommended"
-    syntax="custy cleanup backups"
-    tags={[
-        "cleanup",
-        "backup",
-        "options",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy cleanup backups"
+  title="Options"
+  description="Customize how Backup Cleanup removes obsolete backup files."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup backups"
+  tags={["cleanup", "backup", "options"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -63,28 +59,24 @@ settings for a single execution.
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--type",
-            shorthand: "-t",
-            required: false,
-            defaultValue: "all",
-            description:
-                "Select which backup category should be cleaned.",
-            example:
-                "--type commit",
-        },
-        {
-            name: "--keep",
-            shorthand: "-k",
-            required: false,
-            defaultValue: "10",
-            description:
-                "Specify how many of the newest backup files should be preserved.",
-            example:
-                "--keep 20",
-        },
-    ]}
+  options={[
+    {
+      name: "--type",
+      shorthand: "-t",
+      required: false,
+      defaultValue: "all",
+      description: "Select which backup category should be cleaned.",
+      example: "--type commit",
+    },
+    {
+      name: "--keep",
+      shorthand: "-k",
+      required: false,
+      defaultValue: "10",
+      description: "Specify how many of the newest backup files should be preserved.",
+      example: "--keep 20",
+    },
+  ]}
 />
 
 </Section>
@@ -100,11 +92,11 @@ operation.
 
 Available values are:
 
-| Value | Description |
-|--------|-------------|
+| Value    | Description                        |
+| -------- | ---------------------------------- |
 | `commit` | Clean commit message backups only. |
-| `tag` | Clean tag message backups only. |
-| `all` | Clean both commit and tag backups. |
+| `tag`    | Clean tag message backups only.    |
+| `all`    | Clean both commit and tag backups. |
 
 When no cleanup type is specified, Custy resolves the value from your project
 configuration.

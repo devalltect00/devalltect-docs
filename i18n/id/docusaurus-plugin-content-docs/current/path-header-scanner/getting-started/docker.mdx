@@ -6,18 +6,31 @@ sidebar_key: path-header-scanner-getting-started
 tags: [path-header-scanner, docker, container]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.0" title="Jalankan Path Header Scanner dengan Docker" description="Gunakan image terpublikasi untuk mempratinjau atau menerapkan path header pada proyek yang di-mount secara eksplisit." category="Memulai" status="Kebijakan Image Stabil" syntax="docker pull ghcr.io/devalltect00/path-header-scanner:<tag>" />
+<CommandHero
+  command="docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.0"
+  title="Jalankan Path Header Scanner dengan Docker"
+  description="Gunakan image terpublikasi untuk mempratinjau atau menerapkan path header pada proyek yang di-mount secara eksplisit."
+  category="Memulai"
+  status="Kebijakan Image Stabil"
+  syntax="docker pull ghcr.io/devalltect00/path-header-scanner:<tag>"
+/>
 
 <Section title="Tag Image yang Dipublikasikan">
 
-| Tag | Contoh | Perilaku |
-| --- | --- | --- |
-| Eksak | `v1.0.0` | Immutable dan disarankan untuk CI atau otomasi yang dapat direproduksi. |
-| Minor | `v1.0` | Bergerak ke patch stabil terbaru dalam lini 1.0. |
-| Major | `v1` | Bergerak ke rilis stabil terbaru dalam lini 1.x. |
-| Latest | `latest` | Bergerak ke rilis stabil Path Header Scanner terbaru. |
+| Tag    | Contoh   | Perilaku                                                                |
+| ------ | -------- | ----------------------------------------------------------------------- |
+| Eksak  | `v1.0.0` | Immutable dan disarankan untuk CI atau otomasi yang dapat direproduksi. |
+| Minor  | `v1.0`   | Bergerak ke patch stabil terbaru dalam lini 1.0.                        |
+| Major  | `v1`     | Bergerak ke rilis stabil terbaru dalam lini 1.x.                        |
+| Latest | `latest` | Bergerak ke rilis stabil Path Header Scanner terbaru.                   |
 
 <Terminal title="Pull dan verifikasi Path Header Scanner" language="bash">
 
@@ -44,7 +57,17 @@ direktori proyek yang dituju.
 
 </Section>
 
-<RelatedCommands commands={[
-    {title: "Instalasi dan Workflow Pertama", href: "./first-workflow", description: "Instal scanner dan pratinjau sebuah proyek."},
-    {title: "Scan", href: "../commands/scan/overview", description: "Tinjau perilaku preview, apply, dan dry-run."},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Instalasi dan Workflow Pertama",
+      href: "./first-workflow",
+      description: "Instal scanner dan pratinjau sebuah proyek.",
+    },
+    {
+      title: "Scan",
+      href: "../commands/scan/overview",
+      description: "Tinjau perilaku preview, apply, dan dry-run.",
+    },
+  ]}
+/>

@@ -6,13 +6,28 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner init" title="Persyaratan" description="Sebelum menjalankannya" category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner init"
+  title="Persyaratan"
+  description="Sebelum menjalankannya"
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="path-header-scanner init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 - Direktori proyek dapat ditulis.
 - Kompatibilitas package Python 3.11+; runtime standar Python 3.14.
 - Tinjau .config/path_header_scanner sebelum --force.
 
-<InfoBox variant="tip" title="Dry run">Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta konfirmasi.</InfoBox>
-
+<InfoBox variant="tip" title="Dry run">
+  Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta
+  konfirmasi.
+</InfoBox>

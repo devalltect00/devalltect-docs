@@ -6,13 +6,28 @@ sidebar_key: doc-gen-structure-generate
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure generate" title="Persyaratan" description="Sebelum menjalankannya" category="Struktur Proyek" status="Menulis Output Terpilih" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure generate"
+  title="Persyaratan"
+  description="Sebelum menjalankannya"
+  category="Struktur Proyek"
+  status="Menulis Output Terpilih"
+  syntax="doc-gen structure generate [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 - Target dapat dibaca.
 - Output parent dapat ditulis untuk live generation.
 - Output tidak menunjuk dokumentasi yang tidak terkait.
 
-<InfoBox variant="tip" title="Dry run">Hanya generate yang menulis output. Dry-run merender in-memory tanpa membuat direktori atau file.</InfoBox>
-
+<InfoBox variant="tip" title="Dry run">
+  Hanya generate yang menulis output. Dry-run merender in-memory tanpa membuat direktori
+  atau file.
+</InfoBox>

@@ -6,10 +6,47 @@ sidebar_key: doc-gen-concepts-overview
 tags: [doc-gen, concepts, safety]
 ---
 
-import {CommandHero, FeatureGrid, InfoBox} from "@site/src/components/docs";
+import { CommandHero, FeatureGrid, InfoBox } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen" title="Konsep Utama" description="Pahami keputusan yang digunakan bersama oleh pembuatan, penampilan, dan analisis struktur." category="Konsep" status="v1.0.0" syntax="doc-gen structure COMMAND [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Profil dan mode cerdas",href:"./profiles-and-smart-mode"},{label:"Keamanan dan dry-run",href:"./safety-and-dry-run"},{label:"Perintah",href:"../commands/overview"}]} />
+<CommandHero
+  command="doc-gen"
+  title="Konsep Utama"
+  description="Pahami keputusan yang digunakan bersama oleh pembuatan, penampilan, dan analisis struktur."
+  category="Konsep"
+  status="v1.0.0"
+  syntax="doc-gen structure COMMAND [TARGET_DIRECTORY] [OPTIONS]"
+  links={[
+    { label: "Profil dan mode cerdas", href: "./profiles-and-smart-mode" },
+    { label: "Keamanan dan dry-run", href: "./safety-and-dry-run" },
+    { label: "Perintah", href: "../commands/overview" },
+  ]}
+/>
 
-<FeatureGrid items={[{title:"Profil",children:"Pilih preset detail struktur yang dapat digunakan berulang kali."},{title:"Mode cerdas",children:"Sesuaikan kedalaman, visibilitas file, dan direktori yang diringkas berdasarkan ukuran repositori."},{title:"Resolusi target",children:"Pindai argumen target eksplisit atau direktori dari konfigurasi dan nilai bawaan."},{title:"Batas penulisan",children:"Hanya structure generate yang menulis dokumen Markdown; dry-run mencegah penulisan tersebut."}]} />
+<FeatureGrid
+  items={[
+    {
+      title: "Profil",
+      children: "Pilih preset detail struktur yang dapat digunakan berulang kali.",
+    },
+    {
+      title: "Mode cerdas",
+      children:
+        "Sesuaikan kedalaman, visibilitas file, dan direktori yang diringkas berdasarkan ukuran repositori.",
+    },
+    {
+      title: "Resolusi target",
+      children:
+        "Pindai argumen target eksplisit atau direktori dari konfigurasi dan nilai bawaan.",
+    },
+    {
+      title: "Batas penulisan",
+      children:
+        "Hanya structure generate yang menulis dokumen Markdown; dry-run mencegah penulisan tersebut.",
+    },
+  ]}
+/>
 
-<InfoBox variant="info" title="Pilih berdasarkan efek">Gunakan `print` atau `analyze` untuk pemeriksaan hanya-baca. Pratinjau `generate` dengan `--dry-run` sebelum menulis file output yang telah ditentukan.</InfoBox>
+<InfoBox variant="info" title="Pilih berdasarkan efek">
+  Gunakan `print` atau `analyze` untuk pemeriksaan hanya-baca. Pratinjau `generate`
+  dengan `--dry-run` sebelum menulis file output yang telah ditentukan.
+</InfoBox>

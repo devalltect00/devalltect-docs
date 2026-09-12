@@ -8,38 +8,38 @@ keywords: [custy cleanup backups, cleanup backups, backup retention]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Screenshot,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Screenshot,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Backup Cleanup"
-    description="Hapus backup files lama secara otomatis sambil mempertahankan backup terbaru sesuai retention policy proyek."
-    category="Maintenance"
-    status="Direkomendasikan"
-    syntax="custy cleanup backups"
-    tags={["cleanup", "backup", "maintenance"]}
-    links={[
-        {label: "Requirements", href: "./requirements"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy cleanup backups"
+  title="Backup Cleanup"
+  description="Hapus backup files lama secara otomatis sambil mempertahankan backup terbaru sesuai retention policy proyek."
+  category="Maintenance"
+  status="Direkomendasikan"
+  syntax="custy cleanup backups"
+  tags={["cleanup", "backup", "maintenance"]}
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    metadata={[
-        {label: "Kategori", value: "Maintenance"},
-        {label: "Resource", value: "Backup Files"},
-        {label: "Workflow", value: "Supported"},
-        {label: "Configuration", value: "config.toml"},
-    ]}
+  metadata={[
+    { label: "Kategori", value: "Maintenance" },
+    { label: "Resource", value: "Backup Files" },
+    { label: "Workflow", value: "Supported" },
+    { label: "Configuration", value: "config.toml" },
+  ]}
 />
 
 ## Ringkasan
@@ -59,13 +59,29 @@ Backup Cleanup tidak mengubah source files, commit, branch, atau tag.
 <Section title="Yang Dilakukan Backup Cleanup">
 
 <FeatureGrid
-    title="Tanggung Jawab"
-    items={[
-        {title: "Find Backup Files", icon: <Icon name="compare" />, children: <>Temukan file dalam configured backup directories.</>},
-        {title: "Apply Retention Policy", icon: <Icon name="timeline" />, children: <>Pertahankan backup terbaru dan pilih file lama.</>},
-        {title: "Remove Old Backups", icon: <Icon name="danger" />, children: <>Hapus file yang melebihi retention count.</>},
-        {title: "Keep Workspace Organized", icon: <Icon name="directory" />, children: <>Cegah akumulasi file historis yang tidak diperlukan.</>},
-    ]}
+  title="Tanggung Jawab"
+  items={[
+    {
+      title: "Find Backup Files",
+      icon: <Icon name="compare" />,
+      children: <>Temukan file dalam configured backup directories.</>,
+    },
+    {
+      title: "Apply Retention Policy",
+      icon: <Icon name="timeline" />,
+      children: <>Pertahankan backup terbaru dan pilih file lama.</>,
+    },
+    {
+      title: "Remove Old Backups",
+      icon: <Icon name="danger" />,
+      children: <>Hapus file yang melebihi retention count.</>,
+    },
+    {
+      title: "Keep Workspace Organized",
+      icon: <Icon name="directory" />,
+      children: <>Cegah akumulasi file historis yang tidak diperlukan.</>,
+    },
+  ]}
 />
 
 </Section>
@@ -73,10 +89,10 @@ Backup Cleanup tidak mengubah source files, commit, branch, atau tag.
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
-    alt="Proses Backup Cleanup"
-    title="Backup Cleanup"
-    caption="Contoh output setelah menghapus backup files lama sesuai retention policy."
+  src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+  alt="Proses Backup Cleanup"
+  title="Backup Cleanup"
+  caption="Contoh output setelah menghapus backup files lama sesuai retention policy."
 />
 
 ---
@@ -102,9 +118,21 @@ atau hanya ingin menyimpan backup terbaru.
 </Section>
 
 <RelatedCommands
-    commands={[
-        {name: "backup", description: "Buat backup files sebelum cleanup.", href: "../../backup/overview"},
-        {name: "cleanup", description: "Kembali ke Cleanup overview.", href: "../overview"},
-        {name: "run", description: "Pelajari integrasi Backup Cleanup dalam pipeline.", href: "../../run/overview"},
-    ]}
+  commands={[
+    {
+      name: "backup",
+      description: "Buat backup files sebelum cleanup.",
+      href: "../../backup/overview",
+    },
+    {
+      name: "cleanup",
+      description: "Kembali ke Cleanup overview.",
+      href: "../overview",
+    },
+    {
+      name: "run",
+      description: "Pelajari integrasi Backup Cleanup dalam pipeline.",
+      href: "../../run/overview",
+    },
+  ]}
 />

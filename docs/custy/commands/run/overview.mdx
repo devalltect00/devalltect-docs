@@ -8,37 +8,37 @@ keywords: [custy run, dev profile, release profile, full profile]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run"
-    title="Execute Pipeline Profiles"
-    description="Resolve one or more supported public profiles into a deduplicated, globally ordered execution pipeline."
-    category="Pipeline"
-    status="Stable with limitations"
-    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
-    tags={["pipeline", "Git automation", "release"]}
-    links={[
-        {label: "Profiles", href: "./profiles"},
-        {label: "Custom sequences", href: "./custom-sequences"},
-        {label: "Safety", href: "./safety"},
-    ]}
+  command="custy run"
+  title="Execute Pipeline Profiles"
+  description="Resolve one or more supported public profiles into a deduplicated, globally ordered execution pipeline."
+  category="Pipeline"
+  status="Stable with limitations"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  tags={["pipeline", "Git automation", "release"]}
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Custom sequences", href: "./custom-sequences" },
+    { label: "Safety", href: "./safety" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Category", value: "Pipeline", icon: "pipeline"},
-        {label: "Public Profiles", value: "6", icon: "workflow"},
-        {label: "Side Effects", value: "Profile-dependent", icon: "warning"},
-        {label: "Composition", value: "Supported", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Category", value: "Pipeline", icon: "pipeline" },
+    { label: "Public Profiles", value: "6", icon: "workflow" },
+    { label: "Side Effects", value: "Profile-dependent", icon: "warning" },
+    { label: "Composition", value: "Supported", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -71,15 +71,41 @@ actually accepted names.
 >
 
 <FeatureGrid
-    title="Common Pipeline Choices"
-    items={[
-        {title: "Commit", icon: <Icon name="git" />, children: "Prepare artifacts, update the changelog, stage, and create a local commit."},
-        {title: "Tag", icon: <Icon name="release" />, children: "Resolve version state and create a reviewed local tag."},
-        {title: "Push", icon: <Icon name="network" />, children: "Synchronize HEAD and an optional tag with resolved remotes."},
-        {title: "Dev", icon: <Icon name="play" />, children: "Validate and review the commit message, create a commit, and push branch HEAD without release side effects."},
-        {title: "Release", icon: <Icon name="pipeline" />, children: "Apply a version, generate release notes, commit, tag, and push."},
-        {title: "Full", icon: <Icon name="workflow" />, children: "Run Release and then invoke experimental workflow finalization."},
-    ]}
+  title="Common Pipeline Choices"
+  items={[
+    {
+      title: "Commit",
+      icon: <Icon name="git" />,
+      children:
+        "Prepare artifacts, update the changelog, stage, and create a local commit.",
+    },
+    {
+      title: "Tag",
+      icon: <Icon name="release" />,
+      children: "Resolve version state and create a reviewed local tag.",
+    },
+    {
+      title: "Push",
+      icon: <Icon name="network" />,
+      children: "Synchronize HEAD and an optional tag with resolved remotes.",
+    },
+    {
+      title: "Dev",
+      icon: <Icon name="play" />,
+      children:
+        "Validate and review the commit message, create a commit, and push branch HEAD without release side effects.",
+    },
+    {
+      title: "Release",
+      icon: <Icon name="pipeline" />,
+      children: "Apply a version, generate release notes, commit, tag, and push.",
+    },
+    {
+      title: "Full",
+      icon: <Icon name="workflow" />,
+      children: "Run Release and then invoke experimental workflow finalization.",
+    },
+  ]}
 />
 
 </Section>
@@ -103,12 +129,29 @@ Use [Dev](./dev/overview) for daily commit-and-push work,
 >
 
 <RelatedCommands
-    commands={[
-        {title: "custy commit", href: "../commit/overview", description: "Use the direct command for commit-specific overrides."},
-        {title: "custy tag", href: "../tag/overview", description: "Use the direct command for tag-specific version and message inputs."},
-        {title: "custy push", href: "../push/overview", description: "Use the direct command for push-specific options and limitations."},
-        {title: "custy changelog generate", href: "../changelog/generate/overview", description: "Generate release notes without selecting an unsupported Run name."},
-    ]}
+  commands={[
+    {
+      title: "custy commit",
+      href: "../commit/overview",
+      description: "Use the direct command for commit-specific overrides.",
+    },
+    {
+      title: "custy tag",
+      href: "../tag/overview",
+      description:
+        "Use the direct command for tag-specific version and message inputs.",
+    },
+    {
+      title: "custy push",
+      href: "../push/overview",
+      description: "Use the direct command for push-specific options and limitations.",
+    },
+    {
+      title: "custy changelog generate",
+      href: "../changelog/generate/overview",
+      description: "Generate release notes without selecting an unsupported Run name.",
+    },
+  ]}
 />
 
 </Section>

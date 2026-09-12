@@ -4,10 +4,79 @@ description: "Tambahkan dan integrasikan Custy version-tag strategy melalui prot
 sidebar_position: 6
 sidebar_key: custy-developer-guide-adding-version-strategies
 ---
-import {CommandHero,CommandChecklist,InfoBox,RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="VersionTagStrategy" title="Adding Version Strategies" description="Integrasikan generation dan sorting strategy tanpa mencampur version-format responsibilities." category="Developer Guide" status="Cross-Layer Extension" syntax="protocol -> implementation -> enum -> dispatch -> tests -> docs" links={[{label:"Version Strategies",href:"../commands/version/versioning-strategies"},{label:"Configuration",href:"../configuration/cli/versioning"},{label:"Testing",href:"./testing"}]} />
+import {
+  CommandHero,
+  CommandChecklist,
+  InfoBox,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="VersionTagStrategy"
+  title="Adding Version Strategies"
+  description="Integrasikan generation dan sorting strategy tanpa mencampur version-format responsibilities."
+  category="Developer Guide"
+  status="Cross-Layer Extension"
+  syntax="protocol -> implementation -> enum -> dispatch -> tests -> docs"
+  links={[
+    { label: "Version Strategies", href: "../commands/version/versioning-strategies" },
+    { label: "Configuration", href: "../configuration/cli/versioning" },
+    { label: "Testing", href: "./testing" },
+  ]}
+/>
 ## Integration Checklist
-<CommandChecklist items={[{title:"Implement protocol",description:"Generate tag dari typed input dengan deterministic behavior."},{title:"Register strategy",description:"Hubungkan active strategy factory atau workflow dispatch."},{title:"Expose CLI/config value",description:"Update enum, validation, defaults, dan help."},{title:"Define sorting",description:"Pastikan existing tags diurutkan dengan strategy yang benar."},{title:"Test boundaries",description:"Cover valid, invalid, prerelease, conversion, detection, dan ordering cases."},{title:"Document",description:"Update user strategy, configuration, workflow, dan architecture pages."}]} />
-<InfoBox variant="warning" title="Generation, Sorting, dan Conversion Terpisah">Menambahkan generator tidak otomatis menambahkan tag sorter atau converter. Integrasikan setiap responsibility yang memang didukung.</InfoBox>
-<RelatedCommands commands={[{title:"Version Strategies",href:"../commands/version/versioning-strategies",description:"User behavior."},{title:"Versioning Configuration",href:"../configuration/cli/versioning",description:"Persistent selection."},{title:"Version Workflow",href:"../commands/version/workflow",description:"Runtime dispatch."},{title:"Testing",href:"./testing",description:"Complete coverage."}]} />
+<CommandChecklist
+  items={[
+    {
+      title: "Implement protocol",
+      description: "Generate tag dari typed input dengan deterministic behavior.",
+    },
+    {
+      title: "Register strategy",
+      description: "Hubungkan active strategy factory atau workflow dispatch.",
+    },
+    {
+      title: "Expose CLI/config value",
+      description: "Update enum, validation, defaults, dan help.",
+    },
+    {
+      title: "Define sorting",
+      description: "Pastikan existing tags diurutkan dengan strategy yang benar.",
+    },
+    {
+      title: "Test boundaries",
+      description:
+        "Cover valid, invalid, prerelease, conversion, detection, dan ordering cases.",
+    },
+    {
+      title: "Document",
+      description:
+        "Update user strategy, configuration, workflow, dan architecture pages.",
+    },
+  ]}
+/>
+<InfoBox variant="warning" title="Generation, Sorting, dan Conversion Terpisah">
+  Menambahkan generator tidak otomatis menambahkan tag sorter atau converter.
+  Integrasikan setiap responsibility yang memang didukung.
+</InfoBox>
+<RelatedCommands
+  commands={[
+    {
+      title: "Version Strategies",
+      href: "../commands/version/versioning-strategies",
+      description: "User behavior.",
+    },
+    {
+      title: "Versioning Configuration",
+      href: "../configuration/cli/versioning",
+      description: "Persistent selection.",
+    },
+    {
+      title: "Version Workflow",
+      href: "../commands/version/workflow",
+      description: "Runtime dispatch.",
+    },
+    { title: "Testing", href: "./testing", description: "Complete coverage." },
+  ]}
+/>

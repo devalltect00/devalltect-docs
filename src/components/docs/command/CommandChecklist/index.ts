@@ -1,13 +1,9 @@
 export { default } from "./CommandChecklist";
 
-export type {
-    CommandChecklistItem,
-    CommandChecklistProps,
-} from "./types";
-
+export type { CommandChecklistItem, CommandChecklistProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandChecklist
     title="Before Running custy init"
     description="Make sure your environment is ready before initializing the project."

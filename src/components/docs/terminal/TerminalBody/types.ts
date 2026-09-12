@@ -6,20 +6,18 @@ import { HTMLAttributes, ReactNode } from "react";
  * Displays terminal content while preserving
  * whitespace and line breaks.
  */
-export interface TerminalBodyProps
-    extends HTMLAttributes<HTMLElement> {
+export interface TerminalBodyProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Terminal content.
+   */
+  children: ReactNode;
 
-    /**
-     * Terminal content.
-     */
-    children: ReactNode;
-
-    /**
-     * Show line numbers.
-     *
-     * Reserved for future implementation.
-     *
-     * @default false
-     */
-    lineNumbers?: boolean;
+  /**
+   * Show line numbers.
+   *
+   * Reserved for future implementation.
+   *
+   * @default false
+   */
+  lineNumbers?: boolean;
 }

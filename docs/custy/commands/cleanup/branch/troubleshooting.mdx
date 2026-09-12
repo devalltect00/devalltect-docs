@@ -5,52 +5,43 @@ sidebar_position: 9
 sidebar_key: custy-cleanup-branch-troubleshooting
 
 tags:
-    - cleanup
-    - branch
-    - troubleshooting
+  - cleanup
+  - branch
+  - troubleshooting
 
 keywords:
-    - custy cleanup branches troubleshooting
-    - branch cleanup skipped
+  - custy cleanup branches troubleshooting
+  - branch cleanup skipped
 ---
 
-import {
-    CommandHero,
-    InfoBox,
-    Screenshot,
-    Section,
-} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Screenshot, Section } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Branch Cleanup Troubleshooting"
-    description="Resolve common issues encountered while cleaning Git branches."
-    category="Maintenance"
-    status="Support Guide"
-    syntax="custy cleanup branches"
-    tags={[
-        "cleanup",
-        "branch",
-        "troubleshooting",
-    ]}
-    links={[
-        {
-            label: "Troubleshooting Hub",
-            href: "../../../troubleshooting/overview",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Branch Cleanup Troubleshooting"
+  description="Resolve common issues encountered while cleaning Git branches."
+  category="Maintenance"
+  status="Support Guide"
+  syntax="custy cleanup branches"
+  tags={["cleanup", "branch", "troubleshooting"]}
+  links={[
+    {
+      label: "Troubleshooting Hub",
+      href: "../../../troubleshooting/overview",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+  ]}
 />
 
 ## Overview
@@ -123,10 +114,10 @@ include_prefixes = [
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-branch-release-process-example-no-branch-prefix-configured.png"
-    alt="Branch Cleanup skipped because no branch prefixes were configured"
-    title="Safe Default Behavior"
-    caption="Custy intentionally skips Branch Cleanup when no branch prefixes are configured. This protects repositories from accidental branch deletion."
+  src="/img/custy/commands/cleanup/cleanup-branch-release-process-example-no-branch-prefix-configured.png"
+  alt="Branch Cleanup skipped because no branch prefixes were configured"
+  title="Safe Default Behavior"
+  caption="Custy intentionally skips Branch Cleanup when no branch prefixes are configured. This protects repositories from accidental branch deletion."
 />
 
 ---

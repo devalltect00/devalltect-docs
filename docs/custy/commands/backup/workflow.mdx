@@ -6,39 +6,35 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Workflow"
-    description="Learn how Custy performs backup operations before later workflow stages."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup all"
-    tags={[
-        "workflow",
-        "backup",
-        "pipeline",
-    ]}
-    links={[
-        {
-            label: "Backup Files",
-            href: "./backup-files",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy backup"
+  title="Workflow"
+  description="Learn how Custy performs backup operations before later workflow stages."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup all"
+  tags={["workflow", "backup", "pipeline"]}
+  links={[
+    {
+      label: "Backup Files",
+      href: "./backup-files",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -73,40 +69,40 @@ operations such as commit, tag, and release.
 >
 
 <WorkflowTimeline
-    title="Backup Pipeline"
-    description="High-level sequence performed during a backup operation."
-    items={[
-        {
-            title: "Resolve Configuration",
-            description:
-                "Determine the effective backup configuration, including template locations and backup directories.",
-            status: "completed",
-        },
-        {
-            title: "Locate Template Files",
-            description:
-                "Locate the requested commit or tag template files before creating backups.",
-            status: "completed",
-        },
-        {
-            title: "Create Backup",
-            description:
-                "Generate timestamped backup copies inside the configured backup directory.",
-            status: "completed",
-        },
-        {
-            title: "Manage Existing Backups",
-            description:
-                "Apply the configured retention policy and remove older backups when necessary.",
-            status: "completed",
-        },
-        {
-            title: "Finish",
-            description:
-                "Report the backup result and make newly created backup files available for later workflow stages.",
-            status: "completed",
-        },
-    ]}
+  title="Backup Pipeline"
+  description="High-level sequence performed during a backup operation."
+  items={[
+    {
+      title: "Resolve Configuration",
+      description:
+        "Determine the effective backup configuration, including template locations and backup directories.",
+      status: "completed",
+    },
+    {
+      title: "Locate Template Files",
+      description:
+        "Locate the requested commit or tag template files before creating backups.",
+      status: "completed",
+    },
+    {
+      title: "Create Backup",
+      description:
+        "Generate timestamped backup copies inside the configured backup directory.",
+      status: "completed",
+    },
+    {
+      title: "Manage Existing Backups",
+      description:
+        "Apply the configured retention policy and remove older backups when necessary.",
+      status: "completed",
+    },
+    {
+      title: "Finish",
+      description:
+        "Report the backup result and make newly created backup files available for later workflow stages.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

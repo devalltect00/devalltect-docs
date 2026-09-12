@@ -6,13 +6,30 @@ sidebar_key: doc-gen-init
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Initialize Doc Gen" description="Create the project-owned Doc Gen configuration file." category="Initialization" status="Recommended" syntax="doc-gen init [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Initialize Doc Gen"
+  description="Create the project-owned Doc Gen configuration file."
+  category="Initialization"
+  status="Recommended"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-<Section title="Purpose">Create `.config/doc_gen/config.toml` for the current project.</Section>
+<Section title="Purpose">
+  Create `.config/doc_gen/config.toml` for the current project.
+</Section>
 
-<InfoBox variant="warning" title="Safety boundary">Dry-run never creates directories, writes files, replaces content, or prompts.</InfoBox>
+<InfoBox variant="warning" title="Safety boundary">
+  Dry-run never creates directories, writes files, replaces content, or prompts.
+</InfoBox>
 
 - Resolve defaults.
 - Build the selected configuration-file plan.

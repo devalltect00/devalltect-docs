@@ -6,9 +6,23 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Konversi Tag Remote" description="Mengganti nama tag pada remote terpilih melalui satu atomic push yang dijaga." category="Konversi Tag" status="Mutasi Remote Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Persyaratan",href:"./requirements"},{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Konversi Tag Remote"
+  description="Mengganti nama tag pada remote terpilih melalui satu atomic push yang dijaga."
+  category="Konversi Tag"
+  status="Mutasi Remote Terjaga"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Persyaratan", href: "./requirements" },
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 <Section title="Tujuan">
 
@@ -16,7 +30,10 @@ Mengganti nama tag pada remote terpilih melalui satu atomic push yang dijaga.
 
 </Section>
 
-<InfoBox variant="warning" title="Batas keamanan">Mengubah remote ref hanya setelah seluruh rencana valid dan dikonfirmasi kecuali --yes.</InfoBox>
+<InfoBox variant="warning" title="Batas keamanan">
+  Mengubah remote ref hanya setelah seluruh rencana valid dan dikonfirmasi kecuali
+  --yes.
+</InfoBox>
 
 - Resolve target dan materialize workspace.
 - Susun rencana remote lengkap.

@@ -6,9 +6,22 @@ sidebar_key: doc-gen-structure-generate
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure generate" title="Output" description="Output" category="Struktur Proyek" status="Menulis Output Terpilih" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure generate"
+  title="Output"
+  description="Output"
+  category="Struktur Proyek"
+  status="Menulis Output Terpilih"
+  syntax="doc-gen structure generate [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 - Target/profile/output.
 - Progress scan/render.
@@ -19,4 +32,3 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 Command : doc-gen structure generate
 Dry run : true/false
 Status  : <result>`}</Terminal>
-

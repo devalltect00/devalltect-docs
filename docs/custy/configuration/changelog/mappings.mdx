@@ -7,11 +7,39 @@ tags: [custy, changelog, mappings]
 keywords: [scope_map, type_map, Conventional Commits]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.scope_map] + [tool.custy.changelog.type_map]" title="Scope and Type Mappings" description="Translate machine-oriented commit classification into stable, reader-friendly section names." category="Changelog Configuration" status="Active and Extensible" syntax={'RAW_KEY = "Display label"'} tags={["scopes", "types", "display names"]} links={[{label: "Rendering", href: "./rendering"}, {label: "Breaking Changes", href: "./breaking-changes"}, {label: "Core", href: "./core"}]} />
+<CommandHero
+  command="[tool.custy.changelog.scope_map] + [tool.custy.changelog.type_map]"
+  title="Scope and Type Mappings"
+  description="Translate machine-oriented commit classification into stable, reader-friendly section names."
+  category="Changelog Configuration"
+  status="Active and Extensible"
+  syntax={'RAW_KEY = "Display label"'}
+  tags={["scopes", "types", "display names"]}
+  links={[
+    { label: "Rendering", href: "./rendering" },
+    { label: "Breaking Changes", href: "./breaking-changes" },
+    { label: "Core", href: "./core" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Scope Keys", value: "9", icon: "table"}, {label: "Generated Type Keys", value: "16", icon: "table"}, {label: "Unknown Scope", value: "Preserved", icon: "success"}, {label: "Unknown Type", value: "Falls back to other", icon: "configuration"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Scope Keys", value: "9", icon: "table" },
+    { label: "Generated Type Keys", value: "16", icon: "table" },
+    { label: "Unknown Scope", value: "Preserved", icon: "success" },
+    { label: "Unknown Type", value: "Falls back to other", icon: "configuration" },
+  ]}
+/>
 
 ## Scope Mapping
 
@@ -19,18 +47,46 @@ Every key is a raw commit scope; every value is the displayed scope. Unmapped
 scopes retain their original name.
 
 <PropertyTable
-    title="Generated scope_map entries"
-    items={[
-        {property: "main", defaultValue: "core", description: "Display main as core."},
-        {property: "auth", defaultValue: "authentication", description: "Expand the authentication scope."},
-        {property: "cli", defaultValue: "cli", description: "Preserve CLI labeling."},
-        {property: "changelog", defaultValue: "changelog", description: "Preserve changelog labeling."},
-        {property: "workflow", defaultValue: "workflow", description: "Preserve workflow labeling."},
-        {property: "template", defaultValue: "template", description: "Preserve template labeling."},
-        {property: "config", defaultValue: "configuration", description: "Expand config to configuration."},
-        {property: "docs", defaultValue: "documentation", description: "Expand docs to documentation."},
-        {property: "tests", defaultValue: "tests", description: "Preserve tests labeling."},
-    ]}
+  title="Generated scope_map entries"
+  items={[
+    { property: "main", defaultValue: "core", description: "Display main as core." },
+    {
+      property: "auth",
+      defaultValue: "authentication",
+      description: "Expand the authentication scope.",
+    },
+    { property: "cli", defaultValue: "cli", description: "Preserve CLI labeling." },
+    {
+      property: "changelog",
+      defaultValue: "changelog",
+      description: "Preserve changelog labeling.",
+    },
+    {
+      property: "workflow",
+      defaultValue: "workflow",
+      description: "Preserve workflow labeling.",
+    },
+    {
+      property: "template",
+      defaultValue: "template",
+      description: "Preserve template labeling.",
+    },
+    {
+      property: "config",
+      defaultValue: "configuration",
+      description: "Expand config to configuration.",
+    },
+    {
+      property: "docs",
+      defaultValue: "documentation",
+      description: "Expand docs to documentation.",
+    },
+    {
+      property: "tests",
+      defaultValue: "tests",
+      description: "Preserve tests labeling.",
+    },
+  ]}
 />
 
 ## Type Mapping
@@ -39,25 +95,81 @@ The mapping also provides stable group order when `sort_groups = false`.
 Unknown types use the value assigned to `other`.
 
 <PropertyTable
-    title="Generated type_map entries"
-    items={[
-        {property: "feat", defaultValue: "✨ Features", description: "New user-facing functionality."},
-        {property: "fix", defaultValue: "🐛 Bug Fixes", description: "Corrective changes."},
-        {property: "improvement", defaultValue: "🧠 Improvements", description: "Enhancements not classified as features."},
-        {property: "template", defaultValue: "📄 Templates", description: "Template changes."},
-        {property: "breaking", defaultValue: "⚠️ Breaking Changes", description: "Backward-incompatible changes."},
-        {property: "docs", defaultValue: "📚 Documentation", description: "Documentation changes."},
-        {property: "refactor", defaultValue: "🧠 Refactoring", description: "Internal restructuring."},
-        {property: "perf", defaultValue: "⚡ Performance", description: "Performance improvements."},
-        {property: "test", defaultValue: "🧪 Tests", description: "Test changes."},
-        {property: "chore", defaultValue: "🔧 Chores", description: "Maintenance work."},
-        {property: "ci", defaultValue: "⚙️ CI/CD", description: "Continuous integration and delivery changes."},
-        {property: "build", defaultValue: "🏗️ Build", description: "Build-system changes."},
-        {property: "release", defaultValue: "🚀 Releases", description: "Release-oriented commits."},
-        {property: "revert", defaultValue: "↩️ Reverts", description: "Reverted changes."},
-        {property: "style", defaultValue: "🎨 Styling", description: "Formatting or style-only changes."},
-        {property: "other", defaultValue: "📦 Others", description: "Fallback title for unknown commit types."},
-    ]}
+  title="Generated type_map entries"
+  items={[
+    {
+      property: "feat",
+      defaultValue: "✨ Features",
+      description: "New user-facing functionality.",
+    },
+    {
+      property: "fix",
+      defaultValue: "🐛 Bug Fixes",
+      description: "Corrective changes.",
+    },
+    {
+      property: "improvement",
+      defaultValue: "🧠 Improvements",
+      description: "Enhancements not classified as features.",
+    },
+    {
+      property: "template",
+      defaultValue: "📄 Templates",
+      description: "Template changes.",
+    },
+    {
+      property: "breaking",
+      defaultValue: "⚠️ Breaking Changes",
+      description: "Backward-incompatible changes.",
+    },
+    {
+      property: "docs",
+      defaultValue: "📚 Documentation",
+      description: "Documentation changes.",
+    },
+    {
+      property: "refactor",
+      defaultValue: "🧠 Refactoring",
+      description: "Internal restructuring.",
+    },
+    {
+      property: "perf",
+      defaultValue: "⚡ Performance",
+      description: "Performance improvements.",
+    },
+    { property: "test", defaultValue: "🧪 Tests", description: "Test changes." },
+    { property: "chore", defaultValue: "🔧 Chores", description: "Maintenance work." },
+    {
+      property: "ci",
+      defaultValue: "⚙️ CI/CD",
+      description: "Continuous integration and delivery changes.",
+    },
+    {
+      property: "build",
+      defaultValue: "🏗️ Build",
+      description: "Build-system changes.",
+    },
+    {
+      property: "release",
+      defaultValue: "🚀 Releases",
+      description: "Release-oriented commits.",
+    },
+    {
+      property: "revert",
+      defaultValue: "↩️ Reverts",
+      description: "Reverted changes.",
+    },
+    {
+      property: "style",
+      defaultValue: "🎨 Styling",
+      description: "Formatting or style-only changes.",
+    },
+    {
+      property: "other",
+      defaultValue: "📦 Others",
+      description: "Fallback title for unknown commit types.",
+    },
+  ]}
 />
 
 <Terminal title="Custom mapping" language="toml">
@@ -77,4 +189,24 @@ messages remain unchanged.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Rendering", href: "./rendering", description: "Configure grouping, sorting, scopes, and icons."}, {title: "Breaking Changes", href: "./breaking-changes", description: "Configure breaking classification."}, {title: "Core", href: "./core", description: "Exclude raw types before mapping."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Configure grouping, sorting, scopes, and icons.",
+      },
+      {
+        title: "Breaking Changes",
+        href: "./breaking-changes",
+        description: "Configure breaking classification.",
+      },
+      {
+        title: "Core",
+        href: "./core",
+        description: "Exclude raw types before mapping.",
+      },
+    ]}
+  />
+</Section>

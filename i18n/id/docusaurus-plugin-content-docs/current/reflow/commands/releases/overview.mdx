@@ -6,10 +6,19 @@ sidebar_key: reflow-releases
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox} from "@site/src/components/docs";
+import { CommandHero, InfoBox } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases" title="Command Release" description="Periksa dan pulihkan release berbasis tag yang hilang." category="Release Automation" status="Stabil" syntax="reflow releases recover [OPTIONS]" />
+<CommandHero
+  command="reflow releases"
+  title="Command Release"
+  description="Periksa dan pulihkan release berbasis tag yang hilang."
+  category="Release Automation"
+  status="Stabil"
+  syntax="reflow releases recover [OPTIONS]"
+/>
 
 [Panduan recovery lengkap](./recover/overview)
 
-<InfoBox variant="note" title="CI/CD">Recovery melakukan re-push tag; tidak membuat release record langsung.</InfoBox>
+<InfoBox variant="note" title="CI/CD">
+  Recovery melakukan re-push tag; tidak membuat release record langsung.
+</InfoBox>

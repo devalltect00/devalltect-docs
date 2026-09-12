@@ -4,26 +4,117 @@ description: "Cara Release profile bergerak dari preflight validation hingga ver
 sidebar_position: 5
 sidebar_key: custy-concepts-release-lifecycle
 ---
-import {CommandHero, WorkflowTimeline, FeatureGrid, InfoBox, Section, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy run release" title="Release Lifecycle" description="Pahami durable state yang dibuat pada setiap release phase." category="Concept" status="High Impact" syntax="custy --dry-run run release [OPTIONS]" links={[{label:"Release Profile",href:"../commands/run/release/overview"},{label:"Workflow",href:"../commands/run/release/workflow"}]} />
+import {
+  CommandHero,
+  WorkflowTimeline,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run release"
+  title="Release Lifecycle"
+  description="Pahami durable state yang dibuat pada setiap release phase."
+  category="Concept"
+  status="High Impact"
+  syntax="custy --dry-run run release [OPTIONS]"
+  links={[
+    { label: "Release Profile", href: "../commands/run/release/overview" },
+    { label: "Workflow", href: "../commands/run/release/workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="danger" title="Release Is Consequential">Normal execution mengubah project files, Git history, local tags, dan remote repositories.</InfoBox>
+<InfoBox variant="danger" title="Release Is Consequential">
+  Normal execution mengubah project files, Git history, local tags, dan remote
+  repositories.
+</InfoBox>
 
-<WorkflowTimeline title="Release Profile" items={[
- {title:"Validate",description:"Repository, commit, tag, dan push preflight.",status:"completed"},{title:"Prepare",description:"Resolve version dan edit artifacts.",status:"completed"},{title:"Apply",description:"Update version files dan changelog.",status:"completed"},{title:"Record",description:"Backup, stage, commit, dan tag.",status:"completed"},{title:"Publish",description:"Push HEAD dan tag.",status:"completed"},
-]} />
+<WorkflowTimeline
+  title="Release Profile"
+  items={[
+    {
+      title: "Validate",
+      description: "Repository, commit, tag, dan push preflight.",
+      status: "completed",
+    },
+    {
+      title: "Prepare",
+      description: "Resolve version dan edit artifacts.",
+      status: "completed",
+    },
+    {
+      title: "Apply",
+      description: "Update version files dan changelog.",
+      status: "completed",
+    },
+    {
+      title: "Record",
+      description: "Backup, stage, commit, dan tag.",
+      status: "completed",
+    },
+    { title: "Publish", description: "Push HEAD dan tag.", status: "completed" },
+  ]}
+/>
 
-<FeatureGrid title="Release Outputs" subtitle="Release adalah urutan durable states, bukan satu transaksi yang tidak dapat dipisahkan." items={[
- {title:"Files",children:"Version sources, release artifacts, dan CHANGELOG.md."},{title:"Git Commit",children:"Local history berisi release changes."},{title:"Git Tag",children:"Local release reference menandai commit."},{title:"Remote State",children:"Branch/tag dipublikasikan ke resolved destinations."},
-]} />
+<FeatureGrid
+  title="Release Outputs"
+  subtitle="Release adalah urutan durable states, bukan satu transaksi yang tidak dapat dipisahkan."
+  items={[
+    {
+      title: "Files",
+      children: "Version sources, release artifacts, dan CHANGELOG.md.",
+    },
+    { title: "Git Commit", children: "Local history berisi release changes." },
+    { title: "Git Tag", children: "Local release reference menandai commit." },
+    {
+      title: "Remote State",
+      children: "Branch/tag dipublikasikan ke resolved destinations.",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="A Failed Release Can Be Partially Complete">Sebelum retry, periksa files, commit, tag, dan setiap remote untuk menemukan completion boundary.</InfoBox>
+<InfoBox variant="warning" title="A Failed Release Can Be Partially Complete">
+  Sebelum retry, periksa files, commit, tag, dan setiap remote untuk menemukan
+  completion boundary.
+</InfoBox>
 
-<Section title="Release and Full Have Different Boundaries">Release berhenti setelah push; Full menambahkan experimental workflow finalization setelah publication.</Section>
+<Section title="Release and Full Have Different Boundaries">
+  Release berhenti setelah push; Full menambahkan experimental workflow finalization
+  setelah publication.
+</Section>
 
-<RelatedCommands commands={[
- {name:"configuration",description:"Versioning concept.",href:"./versioning"},{name:"file",description:"Release guide.",href:"../commands/run/release/overview"},{name:"git",description:"Exact release workflow.",href:"../commands/run/release/workflow"},{name:"network",description:"Full boundary.",href:"../commands/run/full/overview"},{name:"package",description:"Safety model.",href:"./safety-and-side-effects"},{name:"dependency",description:"Release requirements.",href:"../commands/run/requirements"},
-]} />
+<RelatedCommands
+  commands={[
+    { name: "configuration", description: "Versioning concept.", href: "./versioning" },
+    {
+      name: "file",
+      description: "Release guide.",
+      href: "../commands/run/release/overview",
+    },
+    {
+      name: "git",
+      description: "Exact release workflow.",
+      href: "../commands/run/release/workflow",
+    },
+    {
+      name: "network",
+      description: "Full boundary.",
+      href: "../commands/run/full/overview",
+    },
+    {
+      name: "package",
+      description: "Safety model.",
+      href: "./safety-and-side-effects",
+    },
+    {
+      name: "dependency",
+      description: "Release requirements.",
+      href: "../commands/run/requirements",
+    },
+  ]}
+/>

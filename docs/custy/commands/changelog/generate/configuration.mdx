@@ -8,40 +8,36 @@ keywords: [tool.custy.changelog, changelog configuration]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Configuration"
-    description="Configure changelog collection, cleaning, grouping, links, release behavior, and Markdown rendering."
-    category="Changelog"
-    status="Advanced"
-    syntax="custy changelog generate"
-    tags={[
-        "configuration",
-        "TOML",
-        "rendering",
-    ]}
-    links={[
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Full Configuration Guide",
-            href: "../../../configuration/changelog/overview",
-        },
-    ]}
+  command="custy changelog generate"
+  title="Configuration"
+  description="Configure changelog collection, cleaning, grouping, links, release behavior, and Markdown rendering."
+  category="Changelog"
+  status="Advanced"
+  syntax="custy changelog generate"
+  tags={["configuration", "TOML", "rendering"]}
+  links={[
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Full Configuration Guide",
+      href: "../../../configuration/changelog/overview",
+    },
+  ]}
 />
 
 ## Overview
@@ -57,75 +53,78 @@ presentation behavior independently.
 >
 
 <PropertyTable
-    title="Changelog Configuration Groups"
-    description="TOML tables used by changelog generation."
-    items={[
-        {
-            property: "[tool.custy.cli.changelog]",
-            type: "CLI behavior",
-            description: "Configure command-level behavior such as force_generation.",
-        },
-        {
-            property: "[tool.custy.cli.templates.file]",
-            type: "Paths",
-            description: "Select changelog and commit-message template paths.",
-        },
-        {
-            property: "[tool.custy.changelog.core]",
-            type: "Collection",
-            description: "Control eligible commits, ignored merge commits, and ignored types.",
-        },
-        {
-            property: "[tool.custy.changelog.pending_commit]",
-            type: "Active + loaded only",
-            description: "Enable pending-message collection; generation mode and placement are loaded but not applied by the active generator.",
-        },
-        {
-            property: "[tool.custy.changelog.cleaning]",
-            type: "Presentation",
-            description: "Remove configured template-only content before rendering.",
-        },
-        {
-            property: "[tool.custy.changelog.release]",
-            type: "Release behavior",
-            description: "Configure release recognition and release-level behavior.",
-        },
-        {
-            property: "[tool.custy.changelog.release_behavior]",
-            type: "Overrides",
-            description: "Define version-specific release overrides.",
-        },
-        {
-            property: "[tool.custy.changelog.links]",
-            type: "Links",
-            description: "Configure repository, release, and comparison URL generation.",
-        },
-        {
-            property: "[tool.custy.changelog.render]",
-            type: "Rendering",
-            description: "Control titles, summaries, metadata, grouping, empty sections, statistics, and footer presentation.",
-        },
-        {
-            property: "[tool.custy.changelog.breaking]",
-            type: "Classification",
-            description: "Configure breaking-change handling.",
-        },
-        {
-            property: "[tool.custy.changelog.scope_map]",
-            type: "Display mapping",
-            description: "Map commit scopes to their displayed labels.",
-        },
-        {
-            property: "[tool.custy.changelog.type_map]",
-            type: "Display mapping",
-            description: "Map and order commit types in the rendered changelog.",
-        },
-        {
-            property: "[tool.custy.changelog.advanced]",
-            type: "Experimental",
-            description: "Configure experimental changelog behavior.",
-        },
-    ]}
+  title="Changelog Configuration Groups"
+  description="TOML tables used by changelog generation."
+  items={[
+    {
+      property: "[tool.custy.cli.changelog]",
+      type: "CLI behavior",
+      description: "Configure command-level behavior such as force_generation.",
+    },
+    {
+      property: "[tool.custy.cli.templates.file]",
+      type: "Paths",
+      description: "Select changelog and commit-message template paths.",
+    },
+    {
+      property: "[tool.custy.changelog.core]",
+      type: "Collection",
+      description:
+        "Control eligible commits, ignored merge commits, and ignored types.",
+    },
+    {
+      property: "[tool.custy.changelog.pending_commit]",
+      type: "Active + loaded only",
+      description:
+        "Enable pending-message collection; generation mode and placement are loaded but not applied by the active generator.",
+    },
+    {
+      property: "[tool.custy.changelog.cleaning]",
+      type: "Presentation",
+      description: "Remove configured template-only content before rendering.",
+    },
+    {
+      property: "[tool.custy.changelog.release]",
+      type: "Release behavior",
+      description: "Configure release recognition and release-level behavior.",
+    },
+    {
+      property: "[tool.custy.changelog.release_behavior]",
+      type: "Overrides",
+      description: "Define version-specific release overrides.",
+    },
+    {
+      property: "[tool.custy.changelog.links]",
+      type: "Links",
+      description: "Configure repository, release, and comparison URL generation.",
+    },
+    {
+      property: "[tool.custy.changelog.render]",
+      type: "Rendering",
+      description:
+        "Control titles, summaries, metadata, grouping, empty sections, statistics, and footer presentation.",
+    },
+    {
+      property: "[tool.custy.changelog.breaking]",
+      type: "Classification",
+      description: "Configure breaking-change handling.",
+    },
+    {
+      property: "[tool.custy.changelog.scope_map]",
+      type: "Display mapping",
+      description: "Map commit scopes to their displayed labels.",
+    },
+    {
+      property: "[tool.custy.changelog.type_map]",
+      type: "Display mapping",
+      description: "Map and order commit types in the rendered changelog.",
+    },
+    {
+      property: "[tool.custy.changelog.advanced]",
+      type: "Experimental",
+      description: "Configure experimental changelog behavior.",
+    },
+  ]}
 />
 
 </Section>
@@ -183,12 +182,28 @@ documents every property, generated default, supported value, implementation
 status, and interaction with the project Jinja template.
 
 <RelatedCommands
-    commands={[
-        {title: "Core Collection", href: "../../../configuration/changelog/core", description: "Configure ignored merge commits and commit types."},
-        {title: "Release Processing", href: "../../../configuration/changelog/releases", description: "Configure extraction and per-version behavior."},
-        {title: "Rendering", href: "../../../configuration/changelog/rendering", description: "Review all 28 rendering properties."},
-        {title: "All Configuration Properties", href: "../../../configuration/reference", description: "Search the complete Custy configuration index."},
-    ]}
+  commands={[
+    {
+      title: "Core Collection",
+      href: "../../../configuration/changelog/core",
+      description: "Configure ignored merge commits and commit types.",
+    },
+    {
+      title: "Release Processing",
+      href: "../../../configuration/changelog/releases",
+      description: "Configure extraction and per-version behavior.",
+    },
+    {
+      title: "Rendering",
+      href: "../../../configuration/changelog/rendering",
+      description: "Review all 28 rendering properties.",
+    },
+    {
+      title: "All Configuration Properties",
+      href: "../../../configuration/reference",
+      description: "Search the complete Custy configuration index.",
+    },
+  ]}
 />
 
 </Section>

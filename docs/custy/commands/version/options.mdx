@@ -5,45 +5,42 @@ sidebar_position: 4
 sidebar_key: custy-version
 
 tags:
-    - version
-    - options
+  - version
+  - options
 
 keywords:
-    - custy version options
+  - custy version options
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Options"
-    description="Customize how Custy generates and applies project version updates."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "options",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Versioning Strategies",
-            href: "./versioning-strategies",
-        },
-    ]}
+  command="custy version"
+  title="Options"
+  description="Customize how Custy generates and applies project version updates."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["options", "version"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Versioning Strategies",
+      href: "./versioning-strategies",
+    },
+  ]}
 />
 
 ## Overview
@@ -62,72 +59,62 @@ configuration before falling back to built-in defaults.
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--strategy",
-            required: false,
-            defaultValue: "config.toml",
-            description:
-                "Select the versioning strategy used to generate the next version.",
-            example:
-                "--strategy semver",
-        },
-        {
-            name: "--bump",
-            required: false,
-            defaultValue: "auto",
-            description:
-                "Specify the version bump level such as auto, patch, minor, or major.",
-            example:
-                "--bump minor",
-        },
-        {
-            name: "--tag",
-            required: false,
-            description:
-                "Provide an explicit stable or supported lifecycle version instead of generating one from a strategy.",
-            example:
-                "--tag v2.4.0-rc.1",
-        },
-        {
-            name: "--pre-release",
-            required: false,
-            description:
-                "Generate a pre-release version such as alpha, beta, or rc.",
-            example:
-                "--pre-release beta",
-        },
-        {
-            name: "--post-release",
-            required: false,
-            defaultValue: "false",
-            description:
-                "Generate a post-release version when supported by the selected strategy.",
-        },
-        {
-            name: "--dev-release",
-            required: false,
-            defaultValue: "false",
-            description:
-                "Generate a development release when supported by the selected strategy.",
-        },
-        {
-            name: "--meta",
-            required: false,
-            description:
-                "Append build metadata or local version information.",
-            example:
-                "--meta build.42",
-        },
-        {
-            name: "--epoch",
-            required: false,
-            description:
-                "Specify the PEP 440 epoch component.",
-            example:
-                "--epoch 1",
-        },
-    ]}
+  options={[
+    {
+      name: "--strategy",
+      required: false,
+      defaultValue: "config.toml",
+      description: "Select the versioning strategy used to generate the next version.",
+      example: "--strategy semver",
+    },
+    {
+      name: "--bump",
+      required: false,
+      defaultValue: "auto",
+      description:
+        "Specify the version bump level such as auto, patch, minor, or major.",
+      example: "--bump minor",
+    },
+    {
+      name: "--tag",
+      required: false,
+      description:
+        "Provide an explicit stable or supported lifecycle version instead of generating one from a strategy.",
+      example: "--tag v2.4.0-rc.1",
+    },
+    {
+      name: "--pre-release",
+      required: false,
+      description: "Generate a pre-release version such as alpha, beta, or rc.",
+      example: "--pre-release beta",
+    },
+    {
+      name: "--post-release",
+      required: false,
+      defaultValue: "false",
+      description:
+        "Generate a post-release version when supported by the selected strategy.",
+    },
+    {
+      name: "--dev-release",
+      required: false,
+      defaultValue: "false",
+      description:
+        "Generate a development release when supported by the selected strategy.",
+    },
+    {
+      name: "--meta",
+      required: false,
+      description: "Append build metadata or local version information.",
+      example: "--meta build.42",
+    },
+    {
+      name: "--epoch",
+      required: false,
+      description: "Specify the PEP 440 epoch component.",
+      example: "--epoch 1",
+    },
+  ]}
 />
 
 </Section>

@@ -1,55 +1,45 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-import type {
-    WorkflowStepStatus,
-} from "../WorkflowStep";
+import type { WorkflowStepStatus } from "../WorkflowStep";
 
 /**
  * Timeline item.
  */
 export interface WorkflowTimelineItem {
+  /**
+   * Timeline title.
+   */
+  title: string;
 
-    /**
-     * Timeline title.
-     */
-    title: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Workflow status.
-     */
-    status?: WorkflowStepStatus;
-
+  /**
+   * Workflow status.
+   */
+  status?: WorkflowStepStatus;
 }
 
 /**
  * WorkflowTimeline component props.
  */
-export interface WorkflowTimelineProps
-    extends HTMLAttributes<HTMLElement> {
+export interface WorkflowTimelineProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Timeline title.
+   *
+   * @default "Workflow Timeline"
+   */
+  title?: string;
 
-    /**
-     * Timeline title.
-     *
-     * @default "Workflow Timeline"
-     */
-    title?: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Timeline steps.
-     */
-    items: WorkflowTimelineItem[];
-
+  /**
+   * Timeline steps.
+   */
+  items: WorkflowTimelineItem[];
 }

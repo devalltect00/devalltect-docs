@@ -6,16 +6,25 @@ sidebar_key: reflow-troubleshooting
 tags: [reflow, troubleshooting, errors]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Common Problems" description="Diagnose configuration, target, environment, and workflow failures." category="Support" status="Guide" syntax="reflow --dry-run -C ../project tags convert local" />
+<CommandHero
+  command="Reflow"
+  title="Common Problems"
+  description="Diagnose configuration, target, environment, and workflow failures."
+  category="Support"
+  status="Guide"
+  syntax="reflow --dry-run -C ../project tags convert local"
+/>
 
-| Symptom | First check |
-| --- | --- |
-| Wrong target | CLI target, configured target, then current directory |
-| Dry-run changed expected result | Confirm mutation was simulated rather than persisted |
-| Configuration ignored | Check the exact table/key and CLI override |
-| External tool failure | Verify Git, Docker, provider CLI, filesystem, or terminal environment |
+| Symptom                         | First check                                                           |
+| ------------------------------- | --------------------------------------------------------------------- |
+| Wrong target                    | CLI target, configured target, then current directory                 |
+| Dry-run changed expected result | Confirm mutation was simulated rather than persisted                  |
+| Configuration ignored           | Check the exact table/key and CLI override                            |
+| External tool failure           | Verify Git, Docker, provider CLI, filesystem, or terminal environment |
 
-<InfoBox variant="tip" title="Diagnostic first">Capture the concise error and debug context; do not retry an external mutation blindly.</InfoBox>
-
+<InfoBox variant="tip" title="Diagnostic first">
+  Capture the concise error and debug context; do not retry an external mutation
+  blindly.
+</InfoBox>

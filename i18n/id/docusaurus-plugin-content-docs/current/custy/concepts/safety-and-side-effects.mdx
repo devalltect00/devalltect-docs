@@ -4,13 +4,35 @@ description: "Klasifikasikan local, Git, interactive, dan remote effects serta g
 sidebar_position: 6
 sidebar_key: custy-concepts-safety
 ---
-import {CommandHero, FeatureGrid, PropertyTable, InfoBox, Section, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy --dry-run COMMAND" title="Safety and Side Effects" description="Tinjau scope dan durable effects sebelum normal execution." category="Concept" status="Safety Model" syntax="custy --dry-run COMMAND [OPTIONS]" links={[{label:"Dry Run",href:"./dry-run"},{label:"Run Safety",href:"../commands/run/safety"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  PropertyTable,
+  InfoBox,
+  Section,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy --dry-run COMMAND"
+  title="Safety and Side Effects"
+  description="Tinjau scope dan durable effects sebelum normal execution."
+  category="Concept"
+  status="Safety Model"
+  syntax="custy --dry-run COMMAND [OPTIONS]"
+  links={[
+    { label: "Dry Run", href: "./dry-run" },
+    { label: "Run Safety", href: "../commands/run/safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="warning" title="Profiles Inherit Every Included Effect">Profile besar mewarisi file, Git, interactive, dan network effects dari seluruh stages.</InfoBox>
+<InfoBox variant="warning" title="Profiles Inherit Every Included Effect">
+  Profile besar mewarisi file, Git, interactive, dan network effects dari seluruh
+  stages.
+</InfoBox>
 
 <InfoBox variant="info" title="Dry-Run Memisahkan Discovery dari Mutation">
 
@@ -22,31 +44,99 @@ destination Custy.
 
 </InfoBox>
 
-<FeatureGrid title="What Custy Can Affect" items={[
- {title:"Inspection and Validation",children:"Read repository/configuration dan menjalankan checks."},{title:"Project-File Operations",children:"Generate, edit, validate, backup, dan overwrite files."},{title:"Commit and Tag Operations",children:"Stage changes serta membuat durable local history/references."},{title:"Push Operations",children:"Mengubah remote branch/tag dan berpotensi memicu automation."},{title:"Interactive Effects",children:"Open editor atau meminta remote selection."},{title:"Release and Full Profiles",children:"Menggabungkan seluruh effect, termasuk experimental finalization."},
-]} />
+<FeatureGrid
+  title="What Custy Can Affect"
+  items={[
+    {
+      title: "Inspection and Validation",
+      children: "Read repository/configuration dan menjalankan checks.",
+    },
+    {
+      title: "Project-File Operations",
+      children: "Generate, edit, validate, backup, dan overwrite files.",
+    },
+    {
+      title: "Commit and Tag Operations",
+      children: "Stage changes serta membuat durable local history/references.",
+    },
+    {
+      title: "Push Operations",
+      children: "Mengubah remote branch/tag dan berpotensi memicu automation.",
+    },
+    {
+      title: "Interactive Effects",
+      children: "Open editor atau meminta remote selection.",
+    },
+    {
+      title: "Release and Full Profiles",
+      children: "Menggabungkan seluruh effect, termasuk experimental finalization.",
+    },
+  ]}
+/>
 
-<PropertyTable title="Effect Categories" items={[
- {property:"Inspection and validation",type:"Repository-aware",description:"Membaca real project dan Git state."},
- {property:"Project-file operations",type:"Local mutation",description:"Dapat membuat atau mengubah files."},
- {property:"Commit and tag operations",type:"Local history",description:"Membuat durable Git objects dan references."},
- {property:"Push operations",type:"External mutation",description:"Mengubah state pada resolved remotes."},
- {property:"Release and Full profiles",type:"Combined scope",description:"Menggabungkan file, Git, tag, remote, dan finalization effects."},
-]} />
+<PropertyTable
+  title="Effect Categories"
+  items={[
+    {
+      property: "Inspection and validation",
+      type: "Repository-aware",
+      description: "Membaca real project dan Git state.",
+    },
+    {
+      property: "Project-file operations",
+      type: "Local mutation",
+      description: "Dapat membuat atau mengubah files.",
+    },
+    {
+      property: "Commit and tag operations",
+      type: "Local history",
+      description: "Membuat durable Git objects dan references.",
+    },
+    {
+      property: "Push operations",
+      type: "External mutation",
+      description: "Mengubah state pada resolved remotes.",
+    },
+    {
+      property: "Release and Full profiles",
+      type: "Combined scope",
+      description: "Menggabungkan file, Git, tag, remote, dan finalization effects.",
+    },
+  ]}
+/>
 
 <Section title="Before Normal Execution">
-```bash
-git status
-git log -1 --oneline
-git remote -v
-custy --dry-run COMMAND
-```
+  ```bash git status git log -1 --oneline git remote -v custy --dry-run COMMAND ```
 </Section>
 
-<Section title="After Execution or Failure">Periksa diff, Git index/history, local tags, backup artifacts, dan setiap remote. Jangan menganggap pipeline atomic.</Section>
+<Section title="After Execution or Failure">
+  Periksa diff, Git index/history, local tags, backup artifacts, dan setiap remote.
+  Jangan menganggap pipeline atomic.
+</Section>
 
-<InfoBox variant="danger" title="Remote Effects Deserve Separate Review">Verifikasi setiap destination secara independen; partial remote success dapat terjadi.</InfoBox>
+<InfoBox variant="danger" title="Remote Effects Deserve Separate Review">
+  Verifikasi setiap destination secara independen; partial remote success dapat terjadi.
+</InfoBox>
 
-<RelatedCommands commands={[
- {name:"success",description:"Validation guide.",href:"../commands/validate/overview"},{name:"file",description:"Dry-run concept.",href:"./dry-run"},{name:"git",description:"Run safety.",href:"../commands/run/safety"},{name:"network",description:"Push guide.",href:"../commands/push/overview"},{name:"dependency",description:"Release lifecycle.",href:"./release-lifecycle"},{name:"terminal",description:"Troubleshooting workflows.",href:"../commands/run/troubleshooting"},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      name: "success",
+      description: "Validation guide.",
+      href: "../commands/validate/overview",
+    },
+    { name: "file", description: "Dry-run concept.", href: "./dry-run" },
+    { name: "git", description: "Run safety.", href: "../commands/run/safety" },
+    { name: "network", description: "Push guide.", href: "../commands/push/overview" },
+    {
+      name: "dependency",
+      description: "Release lifecycle.",
+      href: "./release-lifecycle",
+    },
+    {
+      name: "terminal",
+      description: "Troubleshooting workflows.",
+      href: "../commands/run/troubleshooting",
+    },
+  ]}
+/>

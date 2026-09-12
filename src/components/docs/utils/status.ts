@@ -5,35 +5,25 @@
  * ============================================================================
  */
 
-import type {
-    Variant,
-} from "../types";
+import type { Variant } from "../types";
 
 /**
  * Converts a semantic status into a badge variant.
  */
 export function statusToVariant(
-    status: "success" | "warning" | "danger" | "info",
+  status: "success" | "warning" | "danger" | "info"
 ): Variant {
+  switch (status) {
+    case "success":
+      return "success";
 
-    switch (status) {
+    case "warning":
+      return "warning";
 
-        case "success":
+    case "danger":
+      return "danger";
 
-            return "success";
-
-        case "warning":
-
-            return "warning";
-
-        case "danger":
-
-            return "danger";
-
-        default:
-
-            return "primary";
-
-    }
-
+    default:
+      return "primary";
+  }
 }

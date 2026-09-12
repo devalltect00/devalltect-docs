@@ -8,40 +8,40 @@ keywords: [Custy GitService, GitCommandExecutor, Git architecture]
 ---
 
 import {
-    ArchitectureCard,
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  ArchitectureCard,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/git_ops/"
-    title="Git Operations Architecture"
-    description="Separate repository policy from low-level Git command execution and version-tag interpretation."
-    category="Architecture"
-    status="Core Service Boundary"
-    syntax="consumer -> GitService -> IGitCommandExecutor -> git"
-    tags={["GitService", "protocol", "executor", "dry-run"]}
-    links={[
-        {label: "Core Layer", href: "./core-layer"},
-        {label: "Workflow Engine", href: "./workflow-engine"},
-        {label: "Strategy Pattern", href: "./strategy-pattern"},
-    ]}
+  command="app/core/git_ops/"
+  title="Git Operations Architecture"
+  description="Separate repository policy from low-level Git command execution and version-tag interpretation."
+  category="Architecture"
+  status="Core Service Boundary"
+  syntax="consumer -> GitService -> IGitCommandExecutor -> git"
+  tags={["GitService", "protocol", "executor", "dry-run"]}
+  links={[
+    { label: "Core Layer", href: "./core-layer" },
+    { label: "Workflow Engine", href: "./workflow-engine" },
+    { label: "Strategy Pattern", href: "./strategy-pattern" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "High-Level API", value: "GitService", icon: "git"},
-        {label: "Executor Contract", value: "IGitCommandExecutor", icon: "dependency"},
-        {label: "Concrete Executor", value: "GitCommandExecutor", icon: "terminal"},
-        {label: "Construction", value: "create_git_service", icon: "configuration"},
-    ]}
+  items={[
+    { label: "High-Level API", value: "GitService", icon: "git" },
+    { label: "Executor Contract", value: "IGitCommandExecutor", icon: "dependency" },
+    { label: "Concrete Executor", value: "GitCommandExecutor", icon: "terminal" },
+    { label: "Construction", value: "create_git_service", icon: "configuration" },
+  ]}
 />
 
 ## Overview
@@ -92,15 +92,44 @@ sorters, logs operations, and raises meaningful operation failures.
 ---
 
 <WorkflowDiagram
-    title="Operation Flow"
-    timeline={[
-        {title: "Request repository behavior", description: "A workflow, changelog provider, cleanup service, or strategy calls GitService.", status: "completed"},
-        {title: "Apply domain policy", description: "GitService chooses remotes, validates state, selects sorting, or prepares command parameters.", status: "completed"},
-        {title: "Invoke protocol operation", description: "The service calls the injected IGitCommandExecutor interface.", status: "completed"},
-        {title: "Execute or simulate", description: "GitCommandExecutor delegates to Runner, which runs subprocess or reports a dry-run simulation.", status: "current"},
-        {title: "Normalize result", description: "CommandResult carries return code, output, error text, and dry-run skipped state.", status: "pending"},
-        {title: "Return or raise", description: "GitService converts low-level output into values or high-level failures for its caller.", status: "pending"},
-    ]}
+  title="Operation Flow"
+  timeline={[
+    {
+      title: "Request repository behavior",
+      description:
+        "A workflow, changelog provider, cleanup service, or strategy calls GitService.",
+      status: "completed",
+    },
+    {
+      title: "Apply domain policy",
+      description:
+        "GitService chooses remotes, validates state, selects sorting, or prepares command parameters.",
+      status: "completed",
+    },
+    {
+      title: "Invoke protocol operation",
+      description: "The service calls the injected IGitCommandExecutor interface.",
+      status: "completed",
+    },
+    {
+      title: "Execute or simulate",
+      description:
+        "GitCommandExecutor delegates to Runner, which runs subprocess or reports a dry-run simulation.",
+      status: "current",
+    },
+    {
+      title: "Normalize result",
+      description:
+        "CommandResult carries return code, output, error text, and dry-run skipped state.",
+      status: "pending",
+    },
+    {
+      title: "Return or raise",
+      description:
+        "GitService converts low-level output into values or high-level failures for its caller.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -110,23 +139,57 @@ sorters, logs operations, and raises meaningful operation failures.
 <Grid columns={2}>
 
 <DependencyCard
-    title="Repository and History"
-    dependencies={[
-        {source: "GitService", target: "repository checks", description: "Detect repository and commit state."},
-        {source: "GitService", target: "branch operations", description: "Inspect, list, compare, and delete local or remote branches."},
-        {source: "GitService", target: "history queries", description: "Read hashes, messages, ranges, counts, dates, and structured commits."},
-        {source: "GitService", target: "tag ordering", description: "Select and cache a strategy-aware TagSorter."},
-    ]}
+  title="Repository and History"
+  dependencies={[
+    {
+      source: "GitService",
+      target: "repository checks",
+      description: "Detect repository and commit state.",
+    },
+    {
+      source: "GitService",
+      target: "branch operations",
+      description: "Inspect, list, compare, and delete local or remote branches.",
+    },
+    {
+      source: "GitService",
+      target: "history queries",
+      description:
+        "Read hashes, messages, ranges, counts, dates, and structured commits.",
+    },
+    {
+      source: "GitService",
+      target: "tag ordering",
+      description: "Select and cache a strategy-aware TagSorter.",
+    },
+  ]}
 />
 
 <DependencyCard
-    title="Mutating Operations"
-    dependencies={[
-        {source: "GitService", target: "staging", description: "Stage all, tracked updates, or explicit files and inspect the index."},
-        {source: "GitService", target: "commit and tag", description: "Create local history from resolved messages and flags."},
-        {source: "GitService", target: "push", description: "Push HEAD or selected tags to one or more resolved remotes."},
-        {source: "GitService", target: "branch deletion", description: "Apply local and remote cleanup selected by the branch service."},
-    ]}
+  title="Mutating Operations"
+  dependencies={[
+    {
+      source: "GitService",
+      target: "staging",
+      description:
+        "Stage all, tracked updates, or explicit files and inspect the index.",
+    },
+    {
+      source: "GitService",
+      target: "commit and tag",
+      description: "Create local history from resolved messages and flags.",
+    },
+    {
+      source: "GitService",
+      target: "push",
+      description: "Push HEAD or selected tags to one or more resolved remotes.",
+    },
+    {
+      source: "GitService",
+      target: "branch deletion",
+      description: "Apply local and remote cleanup selected by the branch service.",
+    },
+  ]}
 />
 
 </Grid>
@@ -178,12 +241,28 @@ service-level resolution rather than centralized in one object.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Workflow Engine", href: "./workflow-engine", description: "See how release policy consumes the Git service."},
-        {title: "Strategy Pattern", href: "./strategy-pattern", description: "Separate tag generation, sorting, and format conversion."},
-        {title: "Push Command", href: "../commands/push/overview", description: "Review the public remote synchronization behavior."},
-        {title: "Git Configuration", href: "../configuration/git/overview", description: "Configure default, primary, and backup remotes."},
-    ]}
+  commands={[
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "See how release policy consumes the Git service.",
+    },
+    {
+      title: "Strategy Pattern",
+      href: "./strategy-pattern",
+      description: "Separate tag generation, sorting, and format conversion.",
+    },
+    {
+      title: "Push Command",
+      href: "../commands/push/overview",
+      description: "Review the public remote synchronization behavior.",
+    },
+    {
+      title: "Git Configuration",
+      href: "../configuration/git/overview",
+      description: "Configure default, primary, and backup remotes.",
+    },
+  ]}
 />
 
 </Section>

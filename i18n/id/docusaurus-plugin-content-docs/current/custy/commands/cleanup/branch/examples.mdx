@@ -4,22 +4,78 @@ description: "Contoh umum Branch Cleanup."
 sidebar_position: 7
 sidebar_key: custy-cleanup-branch
 ---
-import {CommandHero, CommandExample, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup branches" title="Examples" description="Gunakan Branch Cleanup dalam beberapa skenario umum." category="Maintenance" status="Practical Guide" syntax="custy cleanup branches" links={[
-    {label: "Workflow", href: "./workflow"}, {label: "Output", href: "./output"}, {label: "Troubleshooting", href: "./troubleshooting"},
-]} />
+import {
+  CommandHero,
+  CommandExample,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup branches"
+  title="Examples"
+  description="Gunakan Branch Cleanup dalam beberapa skenario umum."
+  category="Maintenance"
+  status="Practical Guide"
+  syntax="custy cleanup branches"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Output", href: "./output" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandExample examples={[
-    {title: "Gunakan Project Configuration", description: "Jalankan kebijakan cleanup proyek.", command: `custy cleanup branches`, result: "Mengevaluasi branch berdasarkan konfigurasi aktif."},
-    {title: "Batasi Prefix", description: "Pilih release branches.", command: `custy cleanup branches --include-prefix release/`, result: "Hanya branch dengan prefix release/ dipertimbangkan."},
-    {title: "Semua Merge Status", description: "Override merge status.", command: `custy cleanup branches --merge-status all`, result: "Merge status tidak lagi membatasi kandidat."},
-    {title: "Lebih Lama dari 30 Hari", description: "Gunakan usia relatif.", command: `custy cleanup branches --max-age 30d`, result: "Memilih branch yang melewati batas usia."},
-    {title: "Sebelum Tanggal Tertentu", description: "Gunakan tanggal absolut.", command: `custy cleanup branches --before 2026-07-01`, result: "Memilih branch sebelum tanggal tersebut."},
-    {title: "Preview Cleanup", description: "Tinjau kandidat tanpa menghapus.", command: `custy --dry-run cleanup branches`, result: "Menampilkan rencana cleanup."},
-    {title: "Debug Cleanup", description: "Tambahkan diagnostik.", command: `custy --debug cleanup branches`, result: "Menjalankan cleanup dengan output debug."},
-]} />
+<CommandExample
+  examples={[
+    {
+      title: "Gunakan Project Configuration",
+      description: "Jalankan kebijakan cleanup proyek.",
+      command: `custy cleanup branches`,
+      result: "Mengevaluasi branch berdasarkan konfigurasi aktif.",
+    },
+    {
+      title: "Batasi Prefix",
+      description: "Pilih release branches.",
+      command: `custy cleanup branches --include-prefix release/`,
+      result: "Hanya branch dengan prefix release/ dipertimbangkan.",
+    },
+    {
+      title: "Semua Merge Status",
+      description: "Override merge status.",
+      command: `custy cleanup branches --merge-status all`,
+      result: "Merge status tidak lagi membatasi kandidat.",
+    },
+    {
+      title: "Lebih Lama dari 30 Hari",
+      description: "Gunakan usia relatif.",
+      command: `custy cleanup branches --max-age 30d`,
+      result: "Memilih branch yang melewati batas usia.",
+    },
+    {
+      title: "Sebelum Tanggal Tertentu",
+      description: "Gunakan tanggal absolut.",
+      command: `custy cleanup branches --before 2026-07-01`,
+      result: "Memilih branch sebelum tanggal tersebut.",
+    },
+    {
+      title: "Preview Cleanup",
+      description: "Tinjau kandidat tanpa menghapus.",
+      command: `custy --dry-run cleanup branches`,
+      result: "Menampilkan rencana cleanup.",
+    },
+    {
+      title: "Debug Cleanup",
+      description: "Tambahkan diagnostik.",
+      command: `custy --debug cleanup branches`,
+      result: "Menjalankan cleanup dengan output debug.",
+    },
+  ]}
+/>
 
-<InfoBox variant="danger" title="Tinjau Konfigurasi">Jangan gunakan `--merge-status all` tanpa memahami dampaknya. Kombinasikan filter secara hati-hati dan lakukan dry run.</InfoBox>
+<InfoBox variant="danger" title="Tinjau Konfigurasi">
+  Jangan gunakan `--merge-status all` tanpa memahami dampaknya. Kombinasikan filter
+  secara hati-hati dan lakukan dry run.
+</InfoBox>

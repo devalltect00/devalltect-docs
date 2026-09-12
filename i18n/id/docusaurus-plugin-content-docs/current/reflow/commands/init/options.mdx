@@ -6,17 +6,59 @@ sidebar_key: reflow-init
 tags: [reflow, command]
 ---
 
-import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="reflow init" title="Opsi" description="Atur mode inisialisasi yang didukung serta penanganan file konfigurasi yang sudah ada." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Sintaks",href:"./syntax"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow init"
+  title="Opsi"
+  description="Atur mode inisialisasi yang didukung serta penanganan file konfigurasi yang sudah ada."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="reflow init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 <CommandOption
-    options={[
-        {name: "--mode", shorthand: "-m", defaultValue: "all", description: "Pilih mode all atau config yang didukung.", example: "reflow init --mode config"},
-        {name: "--force/--no-force", shorthand: "-f/-F", defaultValue: "false", description: "Timpa resource konfigurasi terpilih yang sudah ada.", example: "reflow init --force"},
-        {name: "--ask", shorthand: "-a", defaultValue: "false", description: "Minta konfirmasi sebelum membuat atau mengganti resource terpilih.", example: "reflow init --ask"},
-        {name: "--dry-run/--no-dry-run", shorthand: "-dr/-Dr", defaultValue: "false", description: "Opsi global sebelum init; pratinjau tanpa menulis filesystem.", example: "reflow --dry-run init"},
-    ]}
+  options={[
+    {
+      name: "--mode",
+      shorthand: "-m",
+      defaultValue: "all",
+      description: "Pilih mode all atau config yang didukung.",
+      example: "reflow init --mode config",
+    },
+    {
+      name: "--force/--no-force",
+      shorthand: "-f/-F",
+      defaultValue: "false",
+      description: "Timpa resource konfigurasi terpilih yang sudah ada.",
+      example: "reflow init --force",
+    },
+    {
+      name: "--ask",
+      shorthand: "-a",
+      defaultValue: "false",
+      description: "Minta konfirmasi sebelum membuat atau mengganti resource terpilih.",
+      example: "reflow init --ask",
+    },
+    {
+      name: "--dry-run/--no-dry-run",
+      shorthand: "-dr/-Dr",
+      defaultValue: "false",
+      description: "Opsi global sebelum init; pratinjau tanpa menulis filesystem.",
+      example: "reflow --dry-run init",
+    },
+  ]}
 />
 
 <InfoBox variant="note" title="Hanya dua mode yang aktif">

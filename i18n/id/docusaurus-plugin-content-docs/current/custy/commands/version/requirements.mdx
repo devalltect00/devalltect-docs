@@ -4,20 +4,56 @@ description: "Prasyarat untuk menyinkronkan versi proyek."
 sidebar_position: 2
 sidebar_key: custy-version
 ---
-import {CommandHero, RequirementGrid, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Requirements" description="Siapkan configuration dan file proyek sebelum Version Update." category="Versioning" status="Required" syntax="custy version update" links={[
-    {label: "Ringkasan", href: "./overview"}, {label: "Syntax", href: "./syntax"}, {label: "Workflow", href: "./workflow"},
-]} />
+import {
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Requirements"
+  description="Siapkan configuration dan file proyek sebelum Version Update."
+  category="Versioning"
+  status="Required"
+  syntax="custy version update"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<RequirementGrid items={[
-    {title: "Git Repository", level: "required", children: "Jalankan dari project Git yang valid agar strategy dan release context dapat di-resolve."},
-    {title: "Version Metadata", level: "recommended", children: "Custy dapat mendeteksi metadata Python atau Node.js. Project tanpa metadata tetap valid dan dapat menggunakan Git-tag-only versioning."},
-    {title: "Writable Project Files", level: "required", children: "File target harus dapat ditulis oleh current user."},
-    {title: "Clean Review Point", level: "recommended", children: "Periksa Git status agar perubahan version mudah ditinjau."},
-]} />
+<RequirementGrid
+  items={[
+    {
+      title: "Git Repository",
+      level: "required",
+      children:
+        "Jalankan dari project Git yang valid agar strategy dan release context dapat di-resolve.",
+    },
+    {
+      title: "Version Metadata",
+      level: "recommended",
+      children:
+        "Custy dapat mendeteksi metadata Python atau Node.js. Project tanpa metadata tetap valid dan dapat menggunakan Git-tag-only versioning.",
+    },
+    {
+      title: "Writable Project Files",
+      level: "required",
+      children: "File target harus dapat ditulis oleh current user.",
+    },
+    {
+      title: "Clean Review Point",
+      level: "recommended",
+      children: "Periksa Git status agar perubahan version mudah ditinjau.",
+    },
+  ]}
+/>
 
 <Section title="Automatic Version Metadata Detection">
 
@@ -32,6 +68,11 @@ tersebut harus tersedia dan berupa file.
 
 </Section>
 
-<InfoBox variant="note" title="Generic project tetap didukung">Project tanpa metadata yang didukung tidak menerima file Python buatan. Custy tetap dapat dijalankan dan menggunakan Git tag sebagai version source.</InfoBox>
+<InfoBox variant="note" title="Generic project tetap didukung">
+  Project tanpa metadata yang didukung tidak menerima file Python buatan. Custy tetap
+  dapat dijalankan dan menggunakan Git tag sebagai version source.
+</InfoBox>
 
-<Section title="Persiapan yang Disarankan">Jalankan `custy --dry-run version update` sebelum menerapkan perubahan versi nyata.</Section>
+<Section title="Persiapan yang Disarankan">
+  Jalankan `custy --dry-run version update` sebelum menerapkan perubahan versi nyata.
+</Section>

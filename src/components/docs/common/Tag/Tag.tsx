@@ -24,28 +24,20 @@ import type { TagProps } from "./types";
  * • Specifications
  */
 export default function Tag({
-    children,
-    icon,
-    hoverable = true,
-    className,
-    ...props
+  children,
+  icon,
+  hoverable = true,
+  className,
+  ...props
 }: TagProps) {
-    return (
-        <span
-            className={clsx(
-                styles.tag,
-                hoverable && styles.hoverable,
-                className,
-            )}
-            {...props}
-        >
-            {icon && (
-                <span className={styles.icon}>
-                    {icon}
-                </span>
-            )}
+  return (
+    <span
+      className={clsx(styles.tag, hoverable && styles.hoverable, className)}
+      {...props}
+    >
+      {icon && <span className={styles.icon}>{icon}</span>}
 
-            {children}
-        </span>
-    );
+      {children}
+    </span>
+  );
 }

@@ -6,14 +6,10 @@
 
 export { default } from "./PatternTable";
 
-export type {
-    PatternTableItem,
-    PatternTableProps,
-} from "./types";
-
+export type { PatternTableItem, PatternTableProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.PatternTable
     description="Summary of the primary design patterns used throughout Custy."
     patterns={[

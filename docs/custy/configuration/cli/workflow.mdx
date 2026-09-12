@@ -7,20 +7,63 @@ tags: [custy, configuration, workflow, experimental]
 keywords: [cli workflow, enforce, check_transition]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.workflow]" title="Workflow Defaults" description="Configure experimental branch and tag transition policy separately from stable run profiles." category="CLI Configuration" status="Experimental / Currently Blocked" syntax="[tool.custy.cli.workflow]" tags={["transition policy", "enforcement", "experimental"]} links={[{label: "Workflow Warning", href: "../../commands/workflow/overview"}, {label: "Branch Workflow", href: "../../commands/workflow/branch/overview"}, {label: "Run Profiles", href: "../../commands/run/profiles"}]} />
+<CommandHero
+  command="[tool.custy.cli.workflow]"
+  title="Workflow Defaults"
+  description="Configure experimental branch and tag transition policy separately from stable run profiles."
+  category="CLI Configuration"
+  status="Experimental / Currently Blocked"
+  syntax="[tool.custy.cli.workflow]"
+  tags={["transition policy", "enforcement", "experimental"]}
+  links={[
+    { label: "Workflow Warning", href: "../../commands/workflow/overview" },
+    { label: "Branch Workflow", href: "../../commands/workflow/branch/overview" },
+    { label: "Run Profiles", href: "../../commands/run/profiles" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enforce", value: "false", icon: "security"}, {label: "Transition Check", value: "false", icon: "workflow"}, {label: "Production Ready", value: "No", icon: "danger"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Enforce", value: "false", icon: "security" },
+    { label: "Transition Check", value: "false", icon: "workflow" },
+    { label: "Production Ready", value: "No", icon: "danger" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "enforce", type: "Boolean", defaultValue: "false", description: "Select enforcement rather than information-only workflow behavior."},
-        {property: "check_transition", type: "Boolean", defaultValue: "false", description: "Validate configured branch and tag transitions."},
-        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Enable backup synchronization after supported workflow completion."},
-    ]}
+  items={[
+    {
+      property: "enforce",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Select enforcement rather than information-only workflow behavior.",
+    },
+    {
+      property: "check_transition",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Validate configured branch and tag transitions.",
+    },
+    {
+      property: "sync_backup",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Enable backup synchronization after supported workflow completion.",
+    },
+  ]}
 />
 
 <Terminal title="Generated defaults" language="toml">
@@ -40,4 +83,24 @@ until the implementation is corrected and tested end to end.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Workflow Overview", href: "../../commands/workflow/overview", description: "Review the current blocker."}, {title: "Run Profiles", href: "../../commands/run/profiles", description: "Use supported public pipelines."}, {title: "Validate", href: "../../commands/validate/overview", description: "Use supported readiness checks."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Workflow Overview",
+        href: "../../commands/workflow/overview",
+        description: "Review the current blocker.",
+      },
+      {
+        title: "Run Profiles",
+        href: "../../commands/run/profiles",
+        description: "Use supported public pipelines.",
+      },
+      {
+        title: "Validate",
+        href: "../../commands/validate/overview",
+        description: "Use supported readiness checks.",
+      },
+    ]}
+  />
+</Section>

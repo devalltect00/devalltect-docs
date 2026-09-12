@@ -16,44 +16,40 @@ keywords:
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Mulai Cepat"
-    description="Siapkan repositori yang sudah ada dengan Custy, tinjau resource yang dibuat, validasi kesiapan, dan pratinjau pipeline."
-    category="Memulai"
-    status="Direkomendasikan"
-    syntax="custy init && custy validate"
-    tags={[
-        "inisialisasi",
-        "validasi",
-        "dry run",
-    ]}
-    links={[
-        {label: "Sebelum Memulai", href: "#before-you-begin"},
-        {label: "Inisialisasi", href: "#initialize-custy"},
-        {label: "Pratinjau", href: "#preview-a-pipeline"},
-    ]}
+  command="custy init"
+  title="Mulai Cepat"
+  description="Siapkan repositori yang sudah ada dengan Custy, tinjau resource yang dibuat, validasi kesiapan, dan pratinjau pipeline."
+  category="Memulai"
+  status="Direkomendasikan"
+  syntax="custy init && custy validate"
+  tags={["inisialisasi", "validasi", "dry run"]}
+  links={[
+    { label: "Sebelum Memulai", href: "#before-you-begin" },
+    { label: "Inisialisasi", href: "#initialize-custy" },
+    { label: "Pratinjau", href: "#preview-a-pipeline" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Titik Awal", value: "Repositori yang sudah ada", icon: "git"},
-        {label: "Penulisan Pertama", value: "Resource proyek", icon: "file"},
-        {label: "Pemeriksaan Kesiapan", value: "custy validate", icon: "success"},
-        {label: "Aksi Pipeline Pertama", value: "Pratinjau dry run", icon: "play"},
-    ]}
+  items={[
+    { label: "Titik Awal", value: "Repositori yang sudah ada", icon: "git" },
+    { label: "Penulisan Pertama", value: "Resource proyek", icon: "file" },
+    { label: "Pemeriksaan Kesiapan", value: "custy validate", icon: "success" },
+    { label: "Aksi Pipeline Pertama", value: "Pratinjau dry run", icon: "play" },
+  ]}
 />
 
 ## Ringkasan
@@ -81,24 +77,36 @@ sebelum memulai.
 >
 
 <CommandChecklist
-    items={[
-        {
-            title: "Custy sudah terinstal",
-            description: <><code>custy --version</code> ditemukan dari environment Python atau container yang dimaksud.</>,
-        },
-        {
-            title: "Proyek dikelola dengan Git",
-            description: <><code>git status</code> menampilkan repositori dan branch yang ingin Anda kelola.</>,
-        },
-        {
-            title: "Pekerjaan penting dapat dipulihkan",
-            description: "Commit, stash, atau backup pekerjaan yang tidak boleh tercampur dengan perubahan orientasi awal.",
-        },
-        {
-            title: "Anda memahami remote yang dikonfigurasi",
-            description: "Pipeline berikutnya dapat melakukan push, jadi verifikasi nama dan tujuan remote sebelum eksekusi normal.",
-        },
-    ]}
+  items={[
+    {
+      title: "Custy sudah terinstal",
+      description: (
+        <>
+          <code>custy --version</code> ditemukan dari environment Python atau container
+          yang dimaksud.
+        </>
+      ),
+    },
+    {
+      title: "Proyek dikelola dengan Git",
+      description: (
+        <>
+          <code>git status</code> menampilkan repositori dan branch yang ingin Anda
+          kelola.
+        </>
+      ),
+    },
+    {
+      title: "Pekerjaan penting dapat dipulihkan",
+      description:
+        "Commit, stash, atau backup pekerjaan yang tidak boleh tercampur dengan perubahan orientasi awal.",
+    },
+    {
+      title: "Anda memahami remote yang dikonfigurasi",
+      description:
+        "Pipeline berikutnya dapat melakukan push, jadi verifikasi nama dan tujuan remote sebelum eksekusi normal.",
+    },
+  ]}
 />
 
 <Terminal title="Pastikan proyek sudah benar" language="bash">
@@ -134,35 +142,49 @@ Jika direktori examples sudah ada, Custy tetap menambahkan missing nested
 packaged examples tanpa mengganti existing example files.
 
 <FeatureGrid
-    title="Tinjau Resource Ini"
-    items={[
-        {
-            title: "Konfigurasi",
-            icon: <Icon name="configuration" />,
-            children: <>Tinjau <code>.config/custy/config.toml</code>. Isi URL browser repository changelog hanya jika comparison links diperlukan, lalu verifikasi setiap nama Git remote yang dikonfigurasi.</>,
-        },
-        {
-            title: "Template Pesan",
-            icon: <Icon name="file" />,
-            children: "Periksa template pesan commit dan tag yang dibuat sebelum digunakan oleh operasi Git.",
-        },
-        {
-            title: "Template Changelog",
-            icon: <Icon name="release" />,
-            children: "Tinjau template changelog sebelum membuat catatan rilis.",
-        },
-        {
-            title: "File Versi",
-            icon: <Icon name="project" />,
-            children: <>Pastikan path file versi yang dibuat atau dikonfigurasi sesuai dengan struktur proyek Anda.</>,
-        },
-    ]}
+  title="Tinjau Resource Ini"
+  items={[
+    {
+      title: "Konfigurasi",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Tinjau <code>.config/custy/config.toml</code>. Isi URL browser repository
+          changelog hanya jika comparison links diperlukan, lalu verifikasi setiap nama
+          Git remote yang dikonfigurasi.
+        </>
+      ),
+    },
+    {
+      title: "Template Pesan",
+      icon: <Icon name="file" />,
+      children:
+        "Periksa template pesan commit dan tag yang dibuat sebelum digunakan oleh operasi Git.",
+    },
+    {
+      title: "Template Changelog",
+      icon: <Icon name="release" />,
+      children: "Tinjau template changelog sebelum membuat catatan rilis.",
+    },
+    {
+      title: "File Versi",
+      icon: <Icon name="project" />,
+      children: (
+        <>
+          Pastikan path file versi yang dibuat atau dikonfigurasi sesuai dengan struktur
+          proyek Anda.
+        </>
+      ),
+    },
+  ]}
 />
 
 <Terminal title="Tinjau repository links dan remotes" language="bash">
 
 {`git remote -v
+
 # Edit .config/custy/config.toml, lalu validasi.
+
 custy validate`}
 
 </Terminal>
@@ -244,13 +266,34 @@ serta tujuan push yang dijelaskan dalam dokumentasi profil Dev.
 >
 
 <WorkflowTimeline
-    items={[
-        {title: "Pastikan repositori", description: "Verifikasi direktori, branch, working tree, dan remote saat ini.", status: "completed"},
-        {title: "Inisialisasi resource", description: "Buat konfigurasi, template, contoh, dan resource versi.", status: "completed"},
-        {title: "Tinjau file yang dibuat", description: "Pertahankan, sesuaikan, atau hapus resource secara sengaja sebelum melanjutkan.", status: "completed"},
-        {title: "Validasi kesiapan", description: "Selesaikan pemeriksaan yang gagal sebelum eksekusi pipeline.", status: "completed"},
-        {title: "Pratinjau Dev", description: "Periksa output dry run dan efek samping yang didokumentasikan.", status: "current"},
-    ]}
+  items={[
+    {
+      title: "Pastikan repositori",
+      description: "Verifikasi direktori, branch, working tree, dan remote saat ini.",
+      status: "completed",
+    },
+    {
+      title: "Inisialisasi resource",
+      description: "Buat konfigurasi, template, contoh, dan resource versi.",
+      status: "completed",
+    },
+    {
+      title: "Tinjau file yang dibuat",
+      description:
+        "Pertahankan, sesuaikan, atau hapus resource secara sengaja sebelum melanjutkan.",
+      status: "completed",
+    },
+    {
+      title: "Validasi kesiapan",
+      description: "Selesaikan pemeriksaan yang gagal sebelum eksekusi pipeline.",
+      status: "completed",
+    },
+    {
+      title: "Pratinjau Dev",
+      description: "Periksa output dry run dan efek samping yang didokumentasikan.",
+      status: "current",
+    },
+  ]}
 />
 
 </Section>
@@ -262,13 +305,34 @@ serta tujuan push yang dijelaskan dalam dokumentasi profil Dev.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Instalasi", href: "./installation", description: "Pilih instalasi melalui GitLab privat, source, artefak, Git, atau Docker."},
-        {title: "Alur Kerja Pertama", href: "./first-workflow", description: "Pahami profil Dev sebelum eksekusi normal."},
-        {title: "custy init", href: "../commands/init/overview", description: "Tinjau mode inisialisasi dan file yang dibuat."},
-        {title: "custy validate", href: "../commands/validate/overview", description: "Pahami setiap pemeriksaan kesiapan."},
-        {title: "custy run dev", href: "../commands/run/dev/overview", description: "Tinjau profil development yang terdaftar secara tepat."},
-    ]}
+  commands={[
+    {
+      title: "Instalasi",
+      href: "./installation",
+      description:
+        "Pilih instalasi melalui GitLab privat, source, artefak, Git, atau Docker.",
+    },
+    {
+      title: "Alur Kerja Pertama",
+      href: "./first-workflow",
+      description: "Pahami profil Dev sebelum eksekusi normal.",
+    },
+    {
+      title: "custy init",
+      href: "../commands/init/overview",
+      description: "Tinjau mode inisialisasi dan file yang dibuat.",
+    },
+    {
+      title: "custy validate",
+      href: "../commands/validate/overview",
+      description: "Pahami setiap pemeriksaan kesiapan.",
+    },
+    {
+      title: "custy run dev",
+      href: "../commands/run/dev/overview",
+      description: "Tinjau profil development yang terdaftar secara tepat.",
+    },
+  ]}
 />
 
 </Section>

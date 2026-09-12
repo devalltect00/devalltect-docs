@@ -4,31 +4,104 @@ description: "Konfigurasikan collection, cleaning, grouping, links, dan renderin
 sidebar_position: 5
 sidebar_key: custy-changelog-generate-configuration
 ---
-import {CommandHero, PropertyTable, Section, InfoBox, Terminal, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Configuration" description="Pahami kelompok pengaturan yang membentuk output changelog." category="Changelog" status="Advanced" syntax="custy changelog generate" links={[
-    {label: "Options", href: "./options"}, {label: "Workflow", href: "./workflow"}, {label: "Reference", href: "../../../configuration/reference"},
-]} />
+import {
+  CommandHero,
+  PropertyTable,
+  Section,
+  InfoBox,
+  Terminal,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Configuration"
+  description="Pahami kelompok pengaturan yang membentuk output changelog."
+  category="Changelog"
+  status="Advanced"
+  syntax="custy changelog generate"
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Reference", href: "../../../configuration/reference" },
+  ]}
+/>
 
 ## Ringkasan
 
 Konfigurasi aktif berada di `.config/custy/config.toml`. File dalam `app/templates/` adalah source template internal yang disalin oleh `custy init`, bukan file yang diedit pengguna.
 
-<PropertyTable title="Changelog Configuration Groups" items={[
-    {property: "[tool.custy.cli.changelog]", type: "CLI defaults", description: "Default direct command seperti force generation."},
-    {property: "[tool.custy.cli.templates.file]", type: "Paths", description: "Path template changelog dan commit message."},
-    {property: "[tool.custy.changelog.core]", type: "Collection", description: "Eligible commits, merge commits, dan ignored types."},
-    {property: "[tool.custy.changelog.pending_commit]", type: "Active + loaded only", description: "Pending-message collection dan pengaturan terkait."},
-    {property: "[tool.custy.changelog.cleaning]", type: "Presentation", description: "Hapus template-only content sebelum rendering."},
-    {property: "[tool.custy.changelog.release]", type: "Release behavior", description: "Release recognition dan perilaku level release."},
-    {property: "[tool.custy.changelog.release_behavior]", type: "Overrides", description: "Version-specific release overrides."},
-    {property: "[tool.custy.changelog.links]", type: "Links", description: "Repository, release, dan comparison URLs."},
-    {property: "[tool.custy.changelog.render]", type: "Rendering", description: "Titles, summaries, grouping, metadata, statistics, dan footer."},
-    {property: "[tool.custy.changelog.breaking]", type: "Classification", description: "Breaking-change handling."},
-    {property: "[tool.custy.changelog.scope_map]", type: "Display mapping", description: "Pemetaan scope ke display label."},
-    {property: "[tool.custy.changelog.type_map]", type: "Display mapping", description: "Pemetaan dan urutan commit type."},
-    {property: "[tool.custy.changelog.advanced]", type: "Experimental", description: "Experimental changelog behavior."},
-]} />
+<PropertyTable
+  title="Changelog Configuration Groups"
+  items={[
+    {
+      property: "[tool.custy.cli.changelog]",
+      type: "CLI defaults",
+      description: "Default direct command seperti force generation.",
+    },
+    {
+      property: "[tool.custy.cli.templates.file]",
+      type: "Paths",
+      description: "Path template changelog dan commit message.",
+    },
+    {
+      property: "[tool.custy.changelog.core]",
+      type: "Collection",
+      description: "Eligible commits, merge commits, dan ignored types.",
+    },
+    {
+      property: "[tool.custy.changelog.pending_commit]",
+      type: "Active + loaded only",
+      description: "Pending-message collection dan pengaturan terkait.",
+    },
+    {
+      property: "[tool.custy.changelog.cleaning]",
+      type: "Presentation",
+      description: "Hapus template-only content sebelum rendering.",
+    },
+    {
+      property: "[tool.custy.changelog.release]",
+      type: "Release behavior",
+      description: "Release recognition dan perilaku level release.",
+    },
+    {
+      property: "[tool.custy.changelog.release_behavior]",
+      type: "Overrides",
+      description: "Version-specific release overrides.",
+    },
+    {
+      property: "[tool.custy.changelog.links]",
+      type: "Links",
+      description: "Repository, release, dan comparison URLs.",
+    },
+    {
+      property: "[tool.custy.changelog.render]",
+      type: "Rendering",
+      description: "Titles, summaries, grouping, metadata, statistics, dan footer.",
+    },
+    {
+      property: "[tool.custy.changelog.breaking]",
+      type: "Classification",
+      description: "Breaking-change handling.",
+    },
+    {
+      property: "[tool.custy.changelog.scope_map]",
+      type: "Display mapping",
+      description: "Pemetaan scope ke display label.",
+    },
+    {
+      property: "[tool.custy.changelog.type_map]",
+      type: "Display mapping",
+      description: "Pemetaan dan urutan commit type.",
+    },
+    {
+      property: "[tool.custy.changelog.advanced]",
+      type: "Experimental",
+      description: "Experimental changelog behavior.",
+    },
+  ]}
+/>
 
 <Section title="Example Configuration">
 
@@ -53,13 +126,39 @@ show_compare_link = true
 
 </Section>
 
-<InfoBox variant="warning" title="Ubah Satu Perilaku Sekaligus">Gunakan dry run dan tinjau diff setelah setiap perubahan agar sumber perbedaan output mudah ditemukan.</InfoBox>
+<InfoBox variant="warning" title="Ubah Satu Perilaku Sekaligus">
+  Gunakan dry run dan tinjau diff setelah setiap perubahan agar sumber perbedaan output
+  mudah ditemukan.
+</InfoBox>
 
-<Section title="Detailed Property Reference">Lihat [configuration overview](../../../configuration/changelog/overview), [core](../../../configuration/changelog/core), [releases](../../../configuration/changelog/releases), dan [rendering](../../../configuration/changelog/rendering).</Section>
+<Section title="Detailed Property Reference">
+  Lihat [configuration overview](../../../configuration/changelog/overview),
+  [core](../../../configuration/changelog/core),
+  [releases](../../../configuration/changelog/releases), dan
+  [rendering](../../../configuration/changelog/rendering).
+</Section>
 
-<RelatedCommands commands={[
-    {name: "overview", description: "Peta seluruh konfigurasi changelog.", href: "../../../configuration/changelog/overview"},
-    {name: "core", description: "Collection dan eligibility rules.", href: "../../../configuration/changelog/core"},
-    {name: "releases", description: "Release recognition dan overrides.", href: "../../../configuration/changelog/releases"},
-    {name: "rendering", description: "Grouping, metadata, statistics, dan presentation.", href: "../../../configuration/changelog/rendering"},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      name: "overview",
+      description: "Peta seluruh konfigurasi changelog.",
+      href: "../../../configuration/changelog/overview",
+    },
+    {
+      name: "core",
+      description: "Collection dan eligibility rules.",
+      href: "../../../configuration/changelog/core",
+    },
+    {
+      name: "releases",
+      description: "Release recognition dan overrides.",
+      href: "../../../configuration/changelog/releases",
+    },
+    {
+      name: "rendering",
+      description: "Grouping, metadata, statistics, dan presentation.",
+      href: "../../../configuration/changelog/rendering",
+    },
+  ]}
+/>

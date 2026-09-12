@@ -6,14 +6,23 @@ sidebar_key: doc-gen-architecture
 tags: [doc-gen, architecture]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Doc Gen" title="Architecture" description="Understand responsibilities and execution flow." category="Architecture" status="v1.0.1" syntax="doc-gen init" />
+<CommandHero
+  command="Doc Gen"
+  title="Architecture"
+  description="Understand responsibilities and execution flow."
+  category="Architecture"
+  status="v1.0.1"
+  syntax="doc-gen init"
+/>
 
 1. Typer/Rich CLI and error boundary
 2. Configuration/profile resolution
 3. Structure discovery, analysis, and rendering
 4. Terminal and Markdown writers
 
-<InfoBox variant="note" title="Separation of responsibilities">Generate writes only its resolved Markdown output; print and analyze are read-only. Generate dry-run never creates its output directory or file.</InfoBox>
-
+<InfoBox variant="note" title="Separation of responsibilities">
+  Generate writes only its resolved Markdown output; print and analyze are read-only.
+  Generate dry-run never creates its output directory or file.
+</InfoBox>

@@ -7,20 +7,66 @@ tags: [custy, configuration, push]
 keywords: [all_remote, skip_tag, sync_backup]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.push]" title="Push Defaults" description="Choose the default remote breadth, tag handling, and backup synchronization for supported push flows." category="CLI Configuration" status="Active" syntax="[tool.custy.cli.push]" tags={["remotes", "tags", "backup sync"]} links={[{label: "Git Namespace", href: "../git/overview"}, {label: "Push Command", href: "../../commands/push/overview"}, {label: "Remotes", href: "../../commands/push/remotes"}]} />
+<CommandHero
+  command="[tool.custy.cli.push]"
+  title="Push Defaults"
+  description="Choose the default remote breadth, tag handling, and backup synchronization for supported push flows."
+  category="CLI Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.push]"
+  tags={["remotes", "tags", "backup sync"]}
+  links={[
+    { label: "Git Namespace", href: "../git/overview" },
+    { label: "Push Command", href: "../../commands/push/overview" },
+    { label: "Remotes", href: "../../commands/push/remotes" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "All Remote", value: "true", icon: "network"}, {label: "Skip Tag", value: "false", icon: "release"}, {label: "External Side Effect", value: "Yes", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "All Remote", value: "true", icon: "network" },
+    { label: "Skip Tag", value: "false", icon: "release" },
+    { label: "External Side Effect", value: "Yes", icon: "warning" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Select the de-duplicated main and backup groups unless an explicit --remote overrides it."},
-        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push HEAD without creating or pushing a tag in combined workflows when true."},
-        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Add configured backups to a main-only selection when branch safety permits. It does not disable backups selected by all_remote or push_to."},
-    ]}
+  items={[
+    {
+      property: "all_remote",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Select the de-duplicated main and backup groups unless an explicit --remote overrides it.",
+    },
+    {
+      property: "skip_tag",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Push HEAD without creating or pushing a tag in combined workflows when true.",
+    },
+    {
+      property: "sync_backup",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Add configured backups to a main-only selection when branch safety permits. It does not disable backups selected by all_remote or push_to.",
+    },
+  ]}
 />
 
 <Terminal title="Generated defaults" language="toml">
@@ -40,4 +86,24 @@ names and `push_to`. Selection priority is explicit `--remote`,
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Git Remotes", href: "../git/remotes", description: "Define primary and backup groups."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Understand command-level selection."}, {title: "Push Troubleshooting", href: "../../commands/push/troubleshooting", description: "Diagnose authentication and rejected pushes."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Git Remotes",
+        href: "../git/remotes",
+        description: "Define primary and backup groups.",
+      },
+      {
+        title: "Push Remotes",
+        href: "../../commands/push/remotes",
+        description: "Understand command-level selection.",
+      },
+      {
+        title: "Push Troubleshooting",
+        href: "../../commands/push/troubleshooting",
+        description: "Diagnose authentication and rejected pushes.",
+      },
+    ]}
+  />
+</Section>

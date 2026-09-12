@@ -8,53 +8,73 @@ keywords: [Reflow concepts, repository targeting, dry-run, mutation scope]
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow"
-    title="Core Concepts"
-    description="Understand how Reflow selects a repository and where each command is allowed to make changes."
-    category="Concepts"
-    status="Read Before Mutation"
-    syntax="reflow [GLOBAL OPTIONS] COMMAND"
-    tags={["repository targets", "mutation scopes", "dry-run"]}
-    links={[
-        {label: "Repository Targeting", href: "./repository-targeting"},
-        {label: "Safety and Dry-run", href: "./safety-and-dry-run"},
-    ]}
+  command="reflow"
+  title="Core Concepts"
+  description="Understand how Reflow selects a repository and where each command is allowed to make changes."
+  category="Concepts"
+  status="Read Before Mutation"
+  syntax="reflow [GLOBAL OPTIONS] COMMAND"
+  tags={["repository targets", "mutation scopes", "dry-run"]}
+  links={[
+    { label: "Repository Targeting", href: "./repository-targeting" },
+    { label: "Safety and Dry-run", href: "./safety-and-dry-run" },
+  ]}
 />
 
 <Section title="Two Decisions Govern Every Workflow">
 
 <FeatureGrid
-    items={[
-        {
-            title: "Which repository?",
-            icon: <Icon name="git" />,
-            children: <>CLI target options override configuration; configuration overrides the current working directory.</>,
-        },
-        {
-            title: "Which mutation scope?",
-            icon: <Icon name="workflow" />,
-            children: <>The command determines whether changes are local, remote, registry-facing, or initialization-only.</>,
-        },
-        {
-            title: "Preview or live mode?",
-            icon: <Icon name="success" />,
-            children: <>Global <code>--dry-run</code> permits discovery and validation while suppressing persistent mutations.</>,
-        },
-        {
-            title: "Interactive or automated?",
-            icon: <Icon name="command" />,
-            children: <>Mutating tag and recovery commands prompt in live mode unless their documented <code>--yes</code> option is supplied.</>,
-        },
-    ]}
+  items={[
+    {
+      title: "Which repository?",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          CLI target options override configuration; configuration overrides the current
+          working directory.
+        </>
+      ),
+    },
+    {
+      title: "Which mutation scope?",
+      icon: <Icon name="workflow" />,
+      children: (
+        <>
+          The command determines whether changes are local, remote, registry-facing, or
+          initialization-only.
+        </>
+      ),
+    },
+    {
+      title: "Preview or live mode?",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Global <code>--dry-run</code> permits discovery and validation while
+          suppressing persistent mutations.
+        </>
+      ),
+    },
+    {
+      title: "Interactive or automated?",
+      icon: <Icon name="command" />,
+      children: (
+        <>
+          Mutating tag and recovery commands prompt in live mode unless their documented{" "}
+          <code>--yes</code> option is supplied.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -68,8 +88,16 @@ mutation.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Repository Targeting", href: "./repository-targeting", description: "Follow target precedence and path/URL exclusivity."},
-        {title: "Safety and Dry-run", href: "./safety-and-dry-run", description: "Understand what a preview may read and what it must not change."},
-    ]}
+  commands={[
+    {
+      title: "Repository Targeting",
+      href: "./repository-targeting",
+      description: "Follow target precedence and path/URL exclusivity.",
+    },
+    {
+      title: "Safety and Dry-run",
+      href: "./safety-and-dry-run",
+      description: "Understand what a preview may read and what it must not change.",
+    },
+  ]}
 />

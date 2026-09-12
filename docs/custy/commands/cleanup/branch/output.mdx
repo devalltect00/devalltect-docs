@@ -5,48 +5,44 @@ sidebar_position: 8
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - output
+  - cleanup
+  - branch
+  - output
 
 keywords:
-    - custy cleanup branches output
+  - custy cleanup branches output
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    Section,
-    InfoBox,
-    Screenshot,
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
+  Screenshot,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Output"
-    description="Learn how Custy reports the results of a Branch Cleanup operation."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "cleanup",
-        "branch",
-        "output",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Output"
+  description="Learn how Custy reports the results of a Branch Cleanup operation."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["cleanup", "branch", "output"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -61,29 +57,27 @@ branches were found.
 ---
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Successful Branch Cleanup",
-            description:
-                "Eligible branches were successfully removed.",
-            output:
-`🧹 Cleaning Git branches...
+  outputs={[
+    {
+      title: "Successful Branch Cleanup",
+      description: "Eligible branches were successfully removed.",
+      output: `🧹 Cleaning Git branches...
 ✓ Evaluating configured cleanup rules...
 ✓ Removing eligible branches...
 ✓ Branch cleanup completed successfully.`,
-            notes:
-                "Actual output varies depending on your repository and cleanup configuration.",
-        },
-    ]}
+      notes:
+        "Actual output varies depending on your repository and cleanup configuration.",
+    },
+  ]}
 />
 
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
-    alt="Branch cleanup process"
-    title="Branch Cleanup Output"
-    caption="Example CLI output showing Custy evaluating cleanup rules and removing eligible branches."
+  src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
+  alt="Branch cleanup process"
+  title="Branch Cleanup Output"
+  caption="Example CLI output showing Custy evaluating cleanup rules and removing eligible branches."
 />
 
 ---

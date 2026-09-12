@@ -8,30 +8,26 @@ keywords: [custy run output]
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run"
-    title="Command Output"
-    description="Interpret combined validation, artifact, backup, Git, remote, and finalization output from resolved profiles."
-    category="Pipeline"
-    status="Profile-dependent"
-    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
-    tags={[
-        "output",
-        "pipeline stages",
-        "verification",
-    ]}
-    links={[
-        {label: "Profiles", href: "./profiles"},
-        {label: "Safety", href: "./safety"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy run"
+  title="Command Output"
+  description="Interpret combined validation, artifact, backup, Git, remote, and finalization output from resolved profiles."
+  category="Pipeline"
+  status="Profile-dependent"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  tags={["output", "pipeline stages", "verification"]}
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Overview
@@ -46,25 +42,26 @@ the selected profile names and their normalized pipeline.
 >
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Resolved Pipeline Progress",
-            description: "Representative categories reported by a mutating release profile.",
-            output: `Repository validation completed
+  outputs={[
+    {
+      title: "Resolved Pipeline Progress",
+      description: "Representative categories reported by a mutating release profile.",
+      output: `Repository validation completed
 Version and artifacts prepared
 Changelog generated
 Commit and tag created
 Remote synchronization completed`,
-            notes: "Exact stages and messages depend on the selected profile and installed Custy version.",
-        },
-        {
-            title: "Dry-Run Intent",
-            description: "Representative preview for external or Git-history operations.",
-            output: `Dry-run: create commit
+      notes:
+        "Exact stages and messages depend on the selected profile and installed Custy version.",
+    },
+    {
+      title: "Dry-Run Intent",
+      description: "Representative preview for external or Git-history operations.",
+      output: `Dry-run: create commit
 Dry-run: create tag
 Dry-run: push HEAD and tag`,
-        },
-    ]}
+    },
+  ]}
 />
 
 Output can also include editor prompts, generated artifact paths, backup

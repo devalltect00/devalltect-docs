@@ -1,1 +1,8 @@
-{"label":"Referensi","position":9,"collapsed":false,"collapsible":true,"className":"category-custy-reference","link":{"type":"doc","id":"custy/reference/overview"}}
+{
+  "label": "Referensi",
+  "position": 9,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-reference",
+  "link": { "type": "doc", "id": "custy/reference/overview" }
+}

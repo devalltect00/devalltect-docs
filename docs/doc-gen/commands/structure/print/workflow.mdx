@@ -6,9 +6,22 @@ sidebar_key: doc-gen-structure-print
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure print" title="Workflow" description="Scan and render a project tree directly in the terminal without creating a Markdown document." category="Project Structure" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure print"
+  title="Workflow"
+  description="Scan and render a project tree directly in the terminal without creating a Markdown document."
+  category="Project Structure"
+  status="Read Only"
+  syntax="doc-gen structure print [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ### 1. Stage 1
 
@@ -26,5 +39,6 @@ Render the structure for terminal output.
 
 Display the tree and summary without invoking the writer.
 
-<InfoBox variant="warning" title="Safety boundary">Print is inherently read-only. --dry-run is accepted and remains non-mutating.</InfoBox>
-
+<InfoBox variant="warning" title="Safety boundary">
+  Print is inherently read-only. --dry-run is accepted and remains non-mutating.
+</InfoBox>

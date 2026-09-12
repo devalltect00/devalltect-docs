@@ -5,52 +5,42 @@ sidebar_position: 1
 sidebar_key: custy-version
 
 tags:
-    - version
-    - versioning
-    - semver
-    - pep440
-    - commitizen
+  - version
+  - versioning
+  - semver
+  - pep440
+  - commitizen
 
 keywords:
-    - custy version
-    - custy version update
-    - version synchronization
+  - custy version
+  - custy version update
+  - version synchronization
 ---
 
-import {
-    CommandHero,
-    FeatureGrid,
-    Section,
-    InfoBox,
-} from "@site/src/components/docs";
+import { CommandHero, FeatureGrid, Section, InfoBox } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Version"
-    description="Synchronize project versions across supported files using configurable versioning strategies."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version <subcommand>"
-    tags={[
-        "version",
-        "sync",
-        "semver",
-        "pep440",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Versioning Strategies",
-            href: "./versioning-strategies",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy version"
+  title="Version"
+  description="Synchronize project versions across supported files using configurable versioning strategies."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version <subcommand>"
+  tags={["version", "sync", "semver", "pep440"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Versioning Strategies",
+      href: "./versioning-strategies",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -67,58 +57,54 @@ synchronization process based on the detected project type.
 ---
 
 <FeatureGrid
-    title="Version Command Features"
-    description="Core capabilities provided by Custy's Version command."
-    items={[
-        {
-            title: "Version Synchronization",
-            subtitle:
-                "Keep project version references consistent across supported files.",
-            icon: "workflow",
-            children: (
-                <>
-                    Synchronizes version information across supported project
-                    files so every version reference remains consistent.
-                </>
-            ),
-        },
-        {
-            title: "Multiple Strategies",
-            subtitle:
-                "Support for SemVer, PEP 440, Commitizen, Date, and Git Count.",
-            icon: "layer",
-            children: (
-                <>
-                    Generate version numbers using the strategy that best
-                    matches your project's workflow and ecosystem.
-                </>
-            ),
-        },
-        {
-            title: "Project Detection",
-            subtitle:
-                "Automatically detects the target project type.",
-            icon: "compare",
-            children: (
-                <>
-                    Custy detects Python and Node.js projects to determine
-                    which version files should be updated.
-                </>
-            ),
-        },
-        {
-            title: "Automatic Conversion",
-            subtitle:
-                "Convert compatible version formats when required.",
-            icon: "dependency",
-            children: (
-                <>
-                    When appropriate, Custy converts compatible version formats
-                    to keep project files aligned with ecosystem conventions.
-                </>
-            ),
-        },
-    ]}
+  title="Version Command Features"
+  description="Core capabilities provided by Custy's Version command."
+  items={[
+    {
+      title: "Version Synchronization",
+      subtitle: "Keep project version references consistent across supported files.",
+      icon: "workflow",
+      children: (
+        <>
+          Synchronizes version information across supported project files so every
+          version reference remains consistent.
+        </>
+      ),
+    },
+    {
+      title: "Multiple Strategies",
+      subtitle: "Support for SemVer, PEP 440, Commitizen, Date, and Git Count.",
+      icon: "layer",
+      children: (
+        <>
+          Generate version numbers using the strategy that best matches your project's
+          workflow and ecosystem.
+        </>
+      ),
+    },
+    {
+      title: "Project Detection",
+      subtitle: "Automatically detects the target project type.",
+      icon: "compare",
+      children: (
+        <>
+          Custy detects Python and Node.js projects to determine which version files
+          should be updated.
+        </>
+      ),
+    },
+    {
+      title: "Automatic Conversion",
+      subtitle: "Convert compatible version formats when required.",
+      icon: "dependency",
+      children: (
+        <>
+          When appropriate, Custy converts compatible version formats to keep project
+          files aligned with ecosystem conventions.
+        </>
+      ),
+    },
+  ]}
 />
 
 ---

@@ -7,20 +7,65 @@ tags: [custy, configuration, git, remotes]
 keywords: [default_remote, main_remotes, backup_remotes]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.git]" title="Git Remotes" description="Name one fallback remote and separate authoritative destinations from mirrors or archives." category="Git Configuration" status="Active + Optional Key" syntax="[tool.custy.git]" tags={["origin", "primary", "backup"]} links={[{label: "Push Strategy", href: "./push-strategy"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Remotes", href: "../../commands/push/remotes"}]} />
+<CommandHero
+  command="[tool.custy.git]"
+  title="Git Remotes"
+  description="Name one fallback remote and separate authoritative destinations from mirrors or archives."
+  category="Git Configuration"
+  status="Active + Optional Key"
+  syntax="[tool.custy.git]"
+  tags={["origin", "primary", "backup"]}
+  links={[
+    { label: "Push Strategy", href: "./push-strategy" },
+    { label: "CLI Push", href: "../cli/push" },
+    { label: "Push Remotes", href: "../../commands/push/remotes" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Remote Keys", value: "2", icon: "table"}, {label: "Optional Remote Key", value: "1", icon: "note"}, {label: "Primary Default", value: "origin", icon: "git"}, {label: "Backup Default", value: "Empty", icon: "security"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Remote Keys", value: "2", icon: "table" },
+    { label: "Optional Remote Key", value: "1", icon: "note" },
+    { label: "Primary Default", value: "origin", icon: "git" },
+    { label: "Backup Default", value: "Empty", icon: "security" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "default_remote", type: "Remote name string", defaultValue: "origin", description: "Fallback when a main-group push has no main_remotes and no explicit --remote. Use a name reported by git remote, not a URL."},
-        {property: "main_remotes", type: "Remote name array", defaultValue: "[\"origin\"]", description: "Authoritative destinations for group-aware push flows."},
-        {property: "backup_remotes", type: "Remote name array", defaultValue: "[]", description: "Optional mirror or archive destinations for group-aware push flows. Supported but commented out in the generated file."},
-    ]}
+  items={[
+    {
+      property: "default_remote",
+      type: "Remote name string",
+      defaultValue: "origin",
+      description:
+        "Fallback when a main-group push has no main_remotes and no explicit --remote. Use a name reported by git remote, not a URL.",
+    },
+    {
+      property: "main_remotes",
+      type: "Remote name array",
+      defaultValue: '["origin"]',
+      description: "Authoritative destinations for group-aware push flows.",
+    },
+    {
+      property: "backup_remotes",
+      type: "Remote name array",
+      defaultValue: "[]",
+      description:
+        "Optional mirror or archive destinations for group-aware push flows. Supported but commented out in the generated file.",
+    },
+  ]}
 />
 
 <Terminal title="Multi-host setup" language="toml">
@@ -47,4 +92,24 @@ each configured name is actually present in the repository.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Push Strategy", href: "./push-strategy", description: "Select main, backup, or all."}, {title: "CLI Push", href: "../cli/push", description: "Configure all_remote and tag behavior."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Review command-level remote selection."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Push Strategy",
+        href: "./push-strategy",
+        description: "Select main, backup, or all.",
+      },
+      {
+        title: "CLI Push",
+        href: "../cli/push",
+        description: "Configure all_remote and tag behavior.",
+      },
+      {
+        title: "Push Remotes",
+        href: "../../commands/push/remotes",
+        description: "Review command-level remote selection.",
+      },
+    ]}
+  />
+</Section>

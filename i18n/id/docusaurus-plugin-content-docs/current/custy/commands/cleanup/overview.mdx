@@ -9,38 +9,38 @@ keywords: [custy cleanup, cleanup backups, cleanup branches]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Screenshot,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Screenshot,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup"
-    title="Cleanup Project Resources"
-    description="Hapus backup files lama dan stale Git branches agar proyek tetap teratur dan mudah dipelihara."
-    category="Maintenance"
-    status="Direkomendasikan"
-    syntax="custy cleanup <subcommand>"
-    tags={["maintenance", "cleanup", "git", "backups"]}
-    links={[
-        {label: "Backup Cleanup", href: "./backup/overview"},
-        {label: "Branch Cleanup", href: "./branch/overview"},
-        {label: "Run Profiles", href: "../run/overview"},
-    ]}
+  command="custy cleanup"
+  title="Cleanup Project Resources"
+  description="Hapus backup files lama dan stale Git branches agar proyek tetap teratur dan mudah dipelihara."
+  category="Maintenance"
+  status="Direkomendasikan"
+  syntax="custy cleanup <subcommand>"
+  tags={["maintenance", "cleanup", "git", "backups"]}
+  links={[
+    { label: "Backup Cleanup", href: "./backup/overview" },
+    { label: "Branch Cleanup", href: "./branch/overview" },
+    { label: "Run Profiles", href: "../run/overview" },
+  ]}
 />
 
 <CommandMetadata
-    metadata={[
-        {label: "Kategori", value: "Maintenance"},
-        {label: "Git Repository", value: "Diperlukan untuk branch cleanup"},
-        {label: "Configuration", value: "config.toml"},
-        {label: "Workflow Support", value: "Partial"},
-    ]}
+  metadata={[
+    { label: "Kategori", value: "Maintenance" },
+    { label: "Git Repository", value: "Diperlukan untuk branch cleanup" },
+    { label: "Configuration", value: "config.toml" },
+    { label: "Workflow Support", value: "Partial" },
+  ]}
 />
 
 ## Ringkasan
@@ -65,11 +65,24 @@ branches dalam repository. Jalankan sesuai kebutuhan maintenance.
 <Section title="Jenis Cleanup">
 
 <FeatureGrid
-    title="Operasi Cleanup yang Tersedia"
-    items={[
-        {title: "Backup Cleanup", icon: <Icon name="copy" />, children: <>Hapus backup files lama sambil mempertahankan backup terbaru.</>},
-        {title: "Branch Cleanup", icon: <Icon name="git" />, children: <>Hapus stale Git branches yang memenuhi filters sambil melindungi branch penting.</>},
-    ]}
+  title="Operasi Cleanup yang Tersedia"
+  items={[
+    {
+      title: "Backup Cleanup",
+      icon: <Icon name="copy" />,
+      children: <>Hapus backup files lama sambil mempertahankan backup terbaru.</>,
+    },
+    {
+      title: "Branch Cleanup",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Hapus stale Git branches yang memenuhi filters sambil melindungi branch
+          penting.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -78,10 +91,10 @@ branches dalam repository. Jalankan sesuai kebutuhan maintenance.
 
 <Section title="Cleanup Otomatis dan Manual">
 
-| Operasi | Otomatis | Manual | Tujuan |
-|---|---|---|---|
-| Backup Cleanup | Ya | Ya | Menghapus backup files lama. |
-| Branch Cleanup | Tidak | Ya | Menghapus obsolete Git branches. |
+| Operasi        | Otomatis | Manual | Tujuan                           |
+| -------------- | -------- | ------ | -------------------------------- |
+| Backup Cleanup | Ya       | Ya     | Menghapus backup files lama.     |
+| Branch Cleanup | Tidak    | Ya     | Menghapus obsolete Git branches. |
 
 Backup Cleanup dapat berjalan otomatis dalam workflow tertentu. Branch Cleanup
 sengaja dijalankan manual karena memodifikasi Git repository.
@@ -119,9 +132,21 @@ age, dan date filters agar maintenance sesuai Git workflow proyek.
 ---
 
 <RelatedCommands
-    commands={[
-        {name: "init", description: "Buat configuration yang digunakan cleanup.", href: "../init/overview"},
-        {name: "backup", description: "Buat backup files sebelum cleanup.", href: "../backup/overview"},
-        {name: "run", description: "Jalankan pipeline yang menyertakan automatic backup cleanup.", href: "../run/overview"},
-    ]}
+  commands={[
+    {
+      name: "init",
+      description: "Buat configuration yang digunakan cleanup.",
+      href: "../init/overview",
+    },
+    {
+      name: "backup",
+      description: "Buat backup files sebelum cleanup.",
+      href: "../backup/overview",
+    },
+    {
+      name: "run",
+      description: "Jalankan pipeline yang menyertakan automatic backup cleanup.",
+      href: "../run/overview",
+    },
+  ]}
 />

@@ -6,25 +6,25 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Syntax"
-    description="Pelajari cara membuat backup untuk template resources Custy."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup commit"
-    tags={["syntax", "backup", "templates"]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Options", href: "./options"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy backup"
+  title="Syntax"
+  description="Pelajari cara membuat backup untuk template resources Custy."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup commit"
+  tags={["syntax", "backup", "templates"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Ringkasan
@@ -45,11 +45,23 @@ template yang berubah, backup template tersebut saja biasanya sudah cukup.
 <Section title="Command Syntax">
 
 <CommandSyntax
-    examples={[
-        {title: "Backup Commit Template", description: "Buat backup commit message template yang dikonfigurasi.", command: "custy backup commit"},
-        {title: "Backup Tag Template", description: "Buat backup tag message template yang dikonfigurasi.", command: "custy backup tag"},
-        {title: "Backup Semua Templates", description: "Buat backup commit dan tag message templates.", command: "custy backup all"},
-    ]}
+  examples={[
+    {
+      title: "Backup Commit Template",
+      description: "Buat backup commit message template yang dikonfigurasi.",
+      command: "custy backup commit",
+    },
+    {
+      title: "Backup Tag Template",
+      description: "Buat backup tag message template yang dikonfigurasi.",
+      command: "custy backup tag",
+    },
+    {
+      title: "Backup Semua Templates",
+      description: "Buat backup commit dan tag message templates.",
+      command: "custy backup all",
+    },
+  ]}
 />
 
 </Section>
@@ -58,11 +70,11 @@ template yang berubah, backup template tersebut saja biasanya sudah cukup.
 
 <Section title="Subcommands">
 
-| Subcommand | Tujuan |
-|------------|--------|
-| `commit` | Backup commit message template yang dikonfigurasi. |
-| `tag` | Backup tag message template yang dikonfigurasi. |
-| `all` | Backup kedua template files dalam satu operasi. |
+| Subcommand | Tujuan                                             |
+| ---------- | -------------------------------------------------- |
+| `commit`   | Backup commit message template yang dikonfigurasi. |
+| `tag`      | Backup tag message template yang dikonfigurasi.    |
+| `all`      | Backup kedua template files dalam satu operasi.    |
 
 Setiap subcommand membuat timestamped backup files di configured backup
 directories.

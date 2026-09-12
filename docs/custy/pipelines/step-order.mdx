@@ -8,40 +8,40 @@ keywords: [STEP_ORDER, Custy step priority, profile sorting]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="STEP_ORDER"
-    title="Step Priority and Ordering"
-    description="Understand Custy's 28 priority entries and how they normalize a merged profile sequence."
-    category="Pipeline Reference"
-    status="28 Ordered Steps"
-    syntax="lower priority number -> earlier merged-profile position"
-    tags={["phase priority", "deduplication", "stable sorting"]}
-    links={[
-        {label: "Profile Reference", href: "./profile-reference"},
-        {label: "Composition", href: "./custom-composition"},
-        {label: "Execution Model", href: "./execution-model"},
-    ]}
+  command="STEP_ORDER"
+  title="Step Priority and Ordering"
+  description="Understand Custy's 28 priority entries and how they normalize a merged profile sequence."
+  category="Pipeline Reference"
+  status="28 Ordered Steps"
+  syntax="lower priority number -> earlier merged-profile position"
+  tags={["phase priority", "deduplication", "stable sorting"]}
+  links={[
+    { label: "Profile Reference", href: "./profile-reference" },
+    { label: "Composition", href: "./custom-composition" },
+    { label: "Execution Model", href: "./execution-model" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Priority Entries", value: "28", icon: "table"},
-        {label: "First Priority", value: "0", icon: "play"},
-        {label: "Last Priority", value: "90", icon: "workflow"},
-        {label: "Unknown Fallback", value: "999", icon: "warning"},
-    ]}
+  items={[
+    { label: "Priority Entries", value: "28", icon: "table" },
+    { label: "First Priority", value: "0", icon: "play" },
+    { label: "Last Priority", value: "90", icon: "workflow" },
+    { label: "Unknown Fallback", value: "999", icon: "warning" },
+  ]}
 />
 
 ## Overview
@@ -63,13 +63,33 @@ determines position while normalizing a merged profile.
 <Section title="When Sorting Applies">
 
 <FeatureGrid
-    title="Resolver Rules"
-    items={[
-        {title: "Single Profile", icon: <Icon name="workflow" />, children: "Expand nested profile references and preserve the profile's declared order. STEP_ORDER is not applied again."},
-        {title: "Multiple Profiles", icon: <Icon name="dependency" />, children: "Expand every profile, combine the results, remove repeated names, then sort the unique steps by priority."},
-        {title: "Repeated Step", icon: <Icon name="copy" />, children: "Keep only the first occurrence before sorting. This prevents shared validation or preparation from executing twice."},
-        {title: "Unknown Priority", icon: <Icon name="warning" />, children: "A step missing from STEP_ORDER receives priority 999 and sorts after known steps during composition."},
-    ]}
+  title="Resolver Rules"
+  items={[
+    {
+      title: "Single Profile",
+      icon: <Icon name="workflow" />,
+      children:
+        "Expand nested profile references and preserve the profile's declared order. STEP_ORDER is not applied again.",
+    },
+    {
+      title: "Multiple Profiles",
+      icon: <Icon name="dependency" />,
+      children:
+        "Expand every profile, combine the results, remove repeated names, then sort the unique steps by priority.",
+    },
+    {
+      title: "Repeated Step",
+      icon: <Icon name="copy" />,
+      children:
+        "Keep only the first occurrence before sorting. This prevents shared validation or preparation from executing twice.",
+    },
+    {
+      title: "Unknown Priority",
+      icon: <Icon name="warning" />,
+      children:
+        "A step missing from STEP_ORDER receives priority 999 and sorts after known steps during composition.",
+    },
+  ]}
 />
 
 </Section>
@@ -79,14 +99,36 @@ determines position while normalizing a merged profile.
 <Section title="Merged-Profile Algorithm">
 
 <WorkflowTimeline
-    title="Normalization Order"
-    items={[
-        {title: "Validate each profile name", description: "Reject an unknown resolver profile before execution begins.", status: "completed"},
-        {title: "Expand nested profiles", description: "Replace validation subprofiles and other nested references with concrete step definitions.", status: "completed"},
-        {title: "Append expanded definitions", description: "Collect steps from the selected profiles in input order.", status: "completed"},
-        {title: "Deduplicate by step name", description: "Keep the first definition for each unique name.", status: "completed"},
-        {title: "Sort by STEP_ORDER", description: "Apply the numeric priorities with a stable sort, using 999 for missing names.", status: "current"},
-    ]}
+  title="Normalization Order"
+  items={[
+    {
+      title: "Validate each profile name",
+      description: "Reject an unknown resolver profile before execution begins.",
+      status: "completed",
+    },
+    {
+      title: "Expand nested profiles",
+      description:
+        "Replace validation subprofiles and other nested references with concrete step definitions.",
+      status: "completed",
+    },
+    {
+      title: "Append expanded definitions",
+      description: "Collect steps from the selected profiles in input order.",
+      status: "completed",
+    },
+    {
+      title: "Deduplicate by step name",
+      description: "Keep the first definition for each unique name.",
+      status: "completed",
+    },
+    {
+      title: "Sort by STEP_ORDER",
+      description:
+        "Apply the numeric priorities with a stable sort, using 999 for missing names.",
+      status: "current",
+    },
+  ]}
 />
 
 </Section>
@@ -96,38 +138,248 @@ determines position while normalizing a merged profile.
 <Section title="Complete Priority Reference">
 
 <KeyValueTable
-    title="STEP_ORDER"
-    description="Lower values sort earlier when several profiles are combined."
-    items={[
-        {key: "0 — Initialization_custy_step", value: <><strong>Initialization.</strong> Create or refresh project-owned Custy resources.</>},
-        {key: "10 — ensure_git_repo_step", value: <><strong>Validation.</strong> Require execution inside a Git repository.</>},
-        {key: "11 — ensure_staged_changes_step", value: <><strong>Validation.</strong> Check the staged-change requirement for commit work.</>},
-        {key: "12 — ensure_commit_validation_provider_step", value: <><strong>Validation.</strong> Resolve built-in, Commitizen, or Git-policy message validation.</>},
-        {key: "13 — ensure_commit_hook_policy_step", value: <><strong>Validation.</strong> Resolve native or safe direct pre-commit hook execution.</>},
-        {key: "14 — ensure_commit_message_file_step", value: <><strong>Validation.</strong> Validate the configured commit-message file setting.</>},
-        {key: "15 — ensure_commit_message_file_exists_step", value: <><strong>Validation.</strong> Require the commit-message file to exist.</>},
-        {key: "16 — ensure_version_file_step", value: <><strong>Validation.</strong> Validate the configured version file.</>},
-        {key: "17 — ensure_tag_message_file_step", value: <><strong>Validation.</strong> Validate the configured tag-message file setting.</>},
-        {key: "18 — ensure_tag_message_file_exists_step", value: <><strong>Validation.</strong> Require the tag-message file to exist.</>},
-        {key: "19 — ensure_remote_exists_step", value: <><strong>Validation.</strong> Require the resolved Git remote destinations.</>},
-        {key: "30 — prepare_version_step", value: <><strong>Preparation.</strong> Resolve the version and tag context used by later stages.</>},
-        {key: "31 — workflow_init_step", value: <><strong>Preparation.</strong> Initialize branch workflow state and services.</>},
-        {key: "32 — prepare_tag_message_step", value: <><strong>Preparation.</strong> Prepare tag-message content for the resolved version.</>},
-        {key: "40 — generate_artifacts_step", value: <><strong>Generation and editing.</strong> Generate configured release artifacts.</>},
-        {key: "41 — edit_files_step", value: <><strong>Generation and editing.</strong> Open generated files for user review and editing.</>},
-        {key: "42 — validate_edited_step", value: <><strong>Generation and editing.</strong> Validate files after the editing stage.</>},
-        {key: "43 — apply_version_step", value: <><strong>Generation and editing.</strong> Apply the resolved version to configured project files.</>},
-        {key: "44 — generate_changelog_step", value: <><strong>Generation and editing.</strong> Run conditional changelog generation.</>},
-        {key: "50 — backup_commit_message_files_step", value: <><strong>Backup and cleanup.</strong> Back up commit-message content.</>},
-        {key: "51 — backup_tag_message_files_step", value: <><strong>Backup and cleanup.</strong> Back up tag-message content.</>},
-        {key: "52 — cleanup_backup_step", value: <><strong>Backup and cleanup.</strong> Apply configured backup retention cleanup.</>},
-        {key: "70 — stage_step", value: <><strong>Git execution.</strong> Stage the files selected by the workflow.</>},
-        {key: "71 — commit_step", value: <><strong>Git execution.</strong> Create the local Git commit.</>},
-        {key: "72 — tag_step", value: <><strong>Git execution.</strong> Create the local Git tag.</>},
-        {key: "73 — push_step", value: <><strong>Git execution.</strong> Push HEAD and an eligible tag to resolved remotes.</>},
-        {key: "80 — cleanup_branches_step", value: <><strong>Branch cleanup.</strong> Run configured branch cleanup behavior.</>},
-        {key: "90 — finalize_step", value: <><strong>Finalization.</strong> Invoke experimental post-release workflow transitions.</>},
-    ]}
+  title="STEP_ORDER"
+  description="Lower values sort earlier when several profiles are combined."
+  items={[
+    {
+      key: "0 — Initialization_custy_step",
+      value: (
+        <>
+          <strong>Initialization.</strong> Create or refresh project-owned Custy
+          resources.
+        </>
+      ),
+    },
+    {
+      key: "10 — ensure_git_repo_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Require execution inside a Git repository.
+        </>
+      ),
+    },
+    {
+      key: "11 — ensure_staged_changes_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Check the staged-change requirement for commit
+          work.
+        </>
+      ),
+    },
+    {
+      key: "12 — ensure_commit_validation_provider_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Resolve built-in, Commitizen, or Git-policy
+          message validation.
+        </>
+      ),
+    },
+    {
+      key: "13 — ensure_commit_hook_policy_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Resolve native or safe direct pre-commit hook
+          execution.
+        </>
+      ),
+    },
+    {
+      key: "14 — ensure_commit_message_file_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Validate the configured commit-message file
+          setting.
+        </>
+      ),
+    },
+    {
+      key: "15 — ensure_commit_message_file_exists_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Require the commit-message file to exist.
+        </>
+      ),
+    },
+    {
+      key: "16 — ensure_version_file_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Validate the configured version file.
+        </>
+      ),
+    },
+    {
+      key: "17 — ensure_tag_message_file_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Validate the configured tag-message file setting.
+        </>
+      ),
+    },
+    {
+      key: "18 — ensure_tag_message_file_exists_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Require the tag-message file to exist.
+        </>
+      ),
+    },
+    {
+      key: "19 — ensure_remote_exists_step",
+      value: (
+        <>
+          <strong>Validation.</strong> Require the resolved Git remote destinations.
+        </>
+      ),
+    },
+    {
+      key: "30 — prepare_version_step",
+      value: (
+        <>
+          <strong>Preparation.</strong> Resolve the version and tag context used by
+          later stages.
+        </>
+      ),
+    },
+    {
+      key: "31 — workflow_init_step",
+      value: (
+        <>
+          <strong>Preparation.</strong> Initialize branch workflow state and services.
+        </>
+      ),
+    },
+    {
+      key: "32 — prepare_tag_message_step",
+      value: (
+        <>
+          <strong>Preparation.</strong> Prepare tag-message content for the resolved
+          version.
+        </>
+      ),
+    },
+    {
+      key: "40 — generate_artifacts_step",
+      value: (
+        <>
+          <strong>Generation and editing.</strong> Generate configured release
+          artifacts.
+        </>
+      ),
+    },
+    {
+      key: "41 — edit_files_step",
+      value: (
+        <>
+          <strong>Generation and editing.</strong> Open generated files for user review
+          and editing.
+        </>
+      ),
+    },
+    {
+      key: "42 — validate_edited_step",
+      value: (
+        <>
+          <strong>Generation and editing.</strong> Validate files after the editing
+          stage.
+        </>
+      ),
+    },
+    {
+      key: "43 — apply_version_step",
+      value: (
+        <>
+          <strong>Generation and editing.</strong> Apply the resolved version to
+          configured project files.
+        </>
+      ),
+    },
+    {
+      key: "44 — generate_changelog_step",
+      value: (
+        <>
+          <strong>Generation and editing.</strong> Run conditional changelog generation.
+        </>
+      ),
+    },
+    {
+      key: "50 — backup_commit_message_files_step",
+      value: (
+        <>
+          <strong>Backup and cleanup.</strong> Back up commit-message content.
+        </>
+      ),
+    },
+    {
+      key: "51 — backup_tag_message_files_step",
+      value: (
+        <>
+          <strong>Backup and cleanup.</strong> Back up tag-message content.
+        </>
+      ),
+    },
+    {
+      key: "52 — cleanup_backup_step",
+      value: (
+        <>
+          <strong>Backup and cleanup.</strong> Apply configured backup retention
+          cleanup.
+        </>
+      ),
+    },
+    {
+      key: "70 — stage_step",
+      value: (
+        <>
+          <strong>Git execution.</strong> Stage the files selected by the workflow.
+        </>
+      ),
+    },
+    {
+      key: "71 — commit_step",
+      value: (
+        <>
+          <strong>Git execution.</strong> Create the local Git commit.
+        </>
+      ),
+    },
+    {
+      key: "72 — tag_step",
+      value: (
+        <>
+          <strong>Git execution.</strong> Create the local Git tag.
+        </>
+      ),
+    },
+    {
+      key: "73 — push_step",
+      value: (
+        <>
+          <strong>Git execution.</strong> Push HEAD and an eligible tag to resolved
+          remotes.
+        </>
+      ),
+    },
+    {
+      key: "80 — cleanup_branches_step",
+      value: (
+        <>
+          <strong>Branch cleanup.</strong> Run configured branch cleanup behavior.
+        </>
+      ),
+    },
+    {
+      key: "90 — finalize_step",
+      value: (
+        <>
+          <strong>Finalization.</strong> Invoke experimental post-release workflow
+          transitions.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -182,12 +434,28 @@ this reference whenever ordering changes.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Complete Profile Reference", href: "./profile-reference", description: "Compare declared and expanded profile sequences."},
-        {title: "Custom Composition", href: "./custom-composition", description: "Apply these priorities to supported public profile combinations."},
-        {title: "Execution Model", href: "./execution-model", description: "Follow resolution, building, context, and sequential execution."},
-        {title: "Step System", href: "./step-system", description: "Learn the contributor requirements for new registered steps."},
-    ]}
+  commands={[
+    {
+      title: "Complete Profile Reference",
+      href: "./profile-reference",
+      description: "Compare declared and expanded profile sequences.",
+    },
+    {
+      title: "Custom Composition",
+      href: "./custom-composition",
+      description: "Apply these priorities to supported public profile combinations.",
+    },
+    {
+      title: "Execution Model",
+      href: "./execution-model",
+      description: "Follow resolution, building, context, and sequential execution.",
+    },
+    {
+      title: "Step System",
+      href: "./step-system",
+      description: "Learn the contributor requirements for new registered steps.",
+    },
+  ]}
 />
 
 </Section>

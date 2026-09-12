@@ -6,18 +6,25 @@ sidebar_key: path-header-scanner-troubleshooting
 tags: [path-header-scanner, troubleshooting, errors]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Path Header Scanner" title="Common Problems" description="Diagnose configuration, target, environment, and workflow failures." category="Support" status="Guide" syntax="path-header-scanner scan app --dry-run" />
+<CommandHero
+  command="Path Header Scanner"
+  title="Common Problems"
+  description="Diagnose configuration, target, environment, and workflow failures."
+  category="Support"
+  status="Guide"
+  syntax="path-header-scanner scan app --dry-run"
+/>
 
-| Symptom | Likely cause | First check |
-| --- | --- | --- |
-| Target directory does not exist | The target was resolved from an unexpected base | Compare `TARGET_DIRECTORY` with `--workdir`; retry with an absolute path if needed |
-| No supported files found | The target is empty, excluded, or contains unsupported extensions | Review the [supported header syntax](../concepts/path-headers) and built-in exclusions |
-| Changes are reported but files stay unchanged | Preview mode is active | Add `--apply` only after reviewing the proposed results |
-| `--apply` still writes nothing | CLI or configured dry-run is active | Check `--dry-run`, `--no-dry-run`, and `cli.execution.dry_run` |
-| Existing configuration is skipped | Initialization replacement was not approved | Use `--ask`, or review the file before `--force` |
-| Help raises `UnicodeEncodeError` on Windows | A legacy CP1252 terminal cannot encode Rich symbols | Use UTF-8 terminal mode, such as `chcp 65001`, or set `PYTHONUTF8=1` |
+| Symptom                                       | Likely cause                                                      | First check                                                                            |
+| --------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Target directory does not exist               | The target was resolved from an unexpected base                   | Compare `TARGET_DIRECTORY` with `--workdir`; retry with an absolute path if needed     |
+| No supported files found                      | The target is empty, excluded, or contains unsupported extensions | Review the [supported header syntax](../concepts/path-headers) and built-in exclusions |
+| Changes are reported but files stay unchanged | Preview mode is active                                            | Add `--apply` only after reviewing the proposed results                                |
+| `--apply` still writes nothing                | CLI or configured dry-run is active                               | Check `--dry-run`, `--no-dry-run`, and `cli.execution.dry_run`                         |
+| Existing configuration is skipped             | Initialization replacement was not approved                       | Use `--ask`, or review the file before `--force`                                       |
+| Help raises `UnicodeEncodeError` on Windows   | A legacy CP1252 terminal cannot encode Rich symbols               | Use UTF-8 terminal mode, such as `chcp 65001`, or set `PYTHONUTF8=1`                   |
 
 <InfoBox variant="tip" title="Resolve paths before applying">
 

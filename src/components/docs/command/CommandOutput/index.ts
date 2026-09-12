@@ -1,13 +1,9 @@
 export { default } from "./CommandOutput";
 
-export type {
-    CommandOutputItem,
-    CommandOutputProps,
-} from "./types";
-
+export type { CommandOutputItem, CommandOutputProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandOutput
     outputs={[
         {

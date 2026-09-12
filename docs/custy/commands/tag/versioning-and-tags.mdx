@@ -8,29 +8,25 @@ keywords: [Custy version strategies, pre-release tag]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    PropertyTable,
-    Section,
+  CommandHero,
+  InfoBox,
+  PropertyTable,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy tag"
-    title="Versioning and Tags"
-    description="Choose a supported version strategy and compatible release modifiers before creating a Git tag."
-    category="Versioning"
-    status="Advanced"
-    syntax="custy tag --strategy STRATEGY [OPTIONS]"
-    tags={[
-        "SemVer",
-        "PEP 440",
-        "release modifiers",
-    ]}
-    links={[
-        {label: "Options", href: "./options"},
-        {label: "Configuration", href: "./configuration"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy tag"
+  title="Versioning and Tags"
+  description="Choose a supported version strategy and compatible release modifiers before creating a Git tag."
+  category="Versioning"
+  status="Advanced"
+  syntax="custy tag --strategy STRATEGY [OPTIONS]"
+  tags={["SemVer", "PEP 440", "release modifiers"]}
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Overview
@@ -45,14 +41,34 @@ the strategy that matches the project's published version format.
 >
 
 <PropertyTable
-    title="Version Strategy Comparison"
-    items={[
-        {property: "semver", type: "v1.2.3", description: "Applications and libraries following Semantic Versioning."},
-        {property: "pep440", type: "1.2.3rc1", description: "Python packages using PEP 440."},
-        {property: "date", type: "Date-derived", description: "Calendar or date-oriented releases."},
-        {property: "gitcount", type: "Commit-count-derived", description: "Build or internal sequencing."},
-        {property: "commitizen", type: "History-derived", description: "Conventional Commit and Commitizen workflows."},
-    ]}
+  title="Version Strategy Comparison"
+  items={[
+    {
+      property: "semver",
+      type: "v1.2.3",
+      description: "Applications and libraries following Semantic Versioning.",
+    },
+    {
+      property: "pep440",
+      type: "1.2.3rc1",
+      description: "Python packages using PEP 440.",
+    },
+    {
+      property: "date",
+      type: "Date-derived",
+      description: "Calendar or date-oriented releases.",
+    },
+    {
+      property: "gitcount",
+      type: "Commit-count-derived",
+      description: "Build or internal sequencing.",
+    },
+    {
+      property: "commitizen",
+      type: "History-derived",
+      description: "Conventional Commit and Commitizen workflows.",
+    },
+  ]}
 />
 
 </Section>

@@ -8,38 +8,38 @@ keywords: [custy push, multi-remote push]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Screenshot,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Screenshot,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Push Commits and Tags"
-    description="Validate repository state and synchronize the current HEAD, plus an optional tag, with resolved Git remotes."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy push [OPTIONS]"
-    tags={["Git remote", "HEAD", "tag"]}
-    links={[
-        {label: "Options", href: "./options"},
-        {label: "Remotes", href: "./remotes"},
-        {label: "Workflow", href: "./workflow"},
-    ]}
+  command="custy push"
+  title="Push Commits and Tags"
+  description="Validate repository state and synchronize the current HEAD, plus an optional tag, with resolved Git remotes."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  tags={["Git remote", "HEAD", "tag"]}
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Category", value: "Git Operations", icon: "git"},
-        {label: "Complexity", value: "Advanced", icon: "requirement"},
-        {label: "External Side Effect", value: "Yes", icon: "network"},
-        {label: "Current Status", value: "Stable", icon: "success"},
-    ]}
+  items={[
+    { label: "Category", value: "Git Operations", icon: "git" },
+    { label: "Complexity", value: "Advanced", icon: "requirement" },
+    { label: "External Side Effect", value: "Yes", icon: "network" },
+    { label: "Current Status", value: "Stable", icon: "success" },
+  ]}
 />
 
 ## Overview
@@ -67,13 +67,31 @@ execution. Use dry-run first.
 >
 
 <FeatureGrid
-    title="What the Push Profile Coordinates"
-    items={[
-        {title: "Validate State", icon: <Icon name="security" />, children: "Check repository and pre-push conditions before remote operations."},
-        {title: "Resolve Remotes", icon: <Icon name="network" />, children: "Apply explicit-remote, all-remote, push_to, and backup-sync precedence."},
-        {title: "Push HEAD", icon: <Icon name="git" />, children: "Synchronize the current HEAD with every resolved destination."},
-        {title: "Push Tag", icon: <Icon name="release" />, children: "Publish an available selected tag when tag synchronization is enabled."},
-    ]}
+  title="What the Push Profile Coordinates"
+  items={[
+    {
+      title: "Validate State",
+      icon: <Icon name="security" />,
+      children: "Check repository and pre-push conditions before remote operations.",
+    },
+    {
+      title: "Resolve Remotes",
+      icon: <Icon name="network" />,
+      children:
+        "Apply explicit-remote, all-remote, push_to, and backup-sync precedence.",
+    },
+    {
+      title: "Push HEAD",
+      icon: <Icon name="git" />,
+      children: "Synchronize the current HEAD with every resolved destination.",
+    },
+    {
+      title: "Push Tag",
+      icon: <Icon name="release" />,
+      children:
+        "Publish an available selected tag when tag synchronization is enabled.",
+    },
+  ]}
 />
 
 </Section>
@@ -85,11 +103,11 @@ execution. Use dry-run first.
 >
 
 <Screenshot
-    src="/img/custy/commands/push/multi-remote-output.png"
-    alt="Custy terminal output while synchronizing Git remotes"
-    title="Remote synchronization"
-    caption="Custy reports the result for each resolved main or backup remote."
-    fallback="Screenshot of Custy multi-remote push output will be added later."
+  src="/img/custy/commands/push/multi-remote-output.png"
+  alt="Custy terminal output while synchronizing Git remotes"
+  title="Remote synchronization"
+  caption="Custy reports the result for each resolved main or backup remote."
+  fallback="Screenshot of Custy multi-remote push output will be added later."
 />
 
 </Section>
@@ -101,12 +119,28 @@ execution. Use dry-run first.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "custy commit", href: "../commit/overview", description: "Create and review the local commit before synchronization."},
-        {title: "custy tag", href: "../tag/overview", description: "Create and review the local tag before publishing it."},
-        {title: "custy run dev", href: "../run/dev/overview", description: "Combine daily commit and push stages."},
-        {title: "custy run release", href: "../run/release/overview", description: "Coordinate commit, tag, and push stages for a release."},
-    ]}
+  commands={[
+    {
+      title: "custy commit",
+      href: "../commit/overview",
+      description: "Create and review the local commit before synchronization.",
+    },
+    {
+      title: "custy tag",
+      href: "../tag/overview",
+      description: "Create and review the local tag before publishing it.",
+    },
+    {
+      title: "custy run dev",
+      href: "../run/dev/overview",
+      description: "Combine daily commit and push stages.",
+    },
+    {
+      title: "custy run release",
+      href: "../run/release/overview",
+      description: "Coordinate commit, tag, and push stages for a release.",
+    },
+  ]}
 />
 
 </Section>

@@ -7,11 +7,44 @@ tags: [custy, user guide, workflows]
 keywords: [Custy user guide, daily development, release workflow]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy" title="Panduan Pengguna" description="Ikuti practical, review-first journeys untuk pekerjaan yang ingin Anda selesaikan dengan Custy." category="User Guide" status="Task-Oriented" syntax="prepare -> preview -> execute -> verify" tags={["daily work", "releases", "maintenance", "recovery"]} links={[{label: "Daily Development", href: "./everyday-development"}, {label: "Prepare a Release", href: "./preparing-releases"}, {label: "Troubleshoot Workflows", href: "./troubleshooting-workflows"}]} />
+<CommandHero
+  command="custy"
+  title="Panduan Pengguna"
+  description="Ikuti practical, review-first journeys untuk pekerjaan yang ingin Anda selesaikan dengan Custy."
+  category="User Guide"
+  status="Task-Oriented"
+  syntax="prepare -> preview -> execute -> verify"
+  tags={["daily work", "releases", "maintenance", "recovery"]}
+  links={[
+    { label: "Daily Development", href: "./everyday-development" },
+    { label: "Prepare a Release", href: "./preparing-releases" },
+    { label: "Troubleshoot Workflows", href: "./troubleshooting-workflows" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Audience", value: "Custy users", icon: "feature"}, {label: "Approach", value: "Outcome first", icon: "workflow"}, {label: "Safety Pattern", value: "Preview and verify", icon: "security"}, {label: "Detailed Reference", value: "Linked, not duplicated", icon: "dependency"}]} />
+<CommandMetadata
+  items={[
+    { label: "Audience", value: "Custy users", icon: "feature" },
+    { label: "Approach", value: "Outcome first", icon: "workflow" },
+    { label: "Safety Pattern", value: "Preview and verify", icon: "security" },
+    {
+      label: "Detailed Reference",
+      value: "Linked, not duplicated",
+      icon: "dependency",
+    },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -24,27 +57,124 @@ Gunakan [Command Reference](../commands/overview) untuk seluruh options,
 [Configuration](../configuration/overview) untuk persistent project policy,
 dan [Pipelines](../pipelines/overview) untuk exact internal execution order.
 
-<InfoBox variant="tip" title="Reliable Operating Pattern">Periksa repository state, jalankan validation, preview consequential operations dengan global `--dry-run`, jalankan normally hanya setelah preview dipahami, lalu verifikasi local dan remote results.</InfoBox>
+<InfoBox variant="tip" title="Reliable Operating Pattern">
+  Periksa repository state, jalankan validation, preview consequential operations dengan
+  global `--dry-run`, jalankan normally hanya setelah preview dipahami, lalu verifikasi
+  local dan remote results.
+</InfoBox>
 
 ---
 
 <Section title="Pilih Journey Anda">
-<FeatureGrid title="Common Custy Work" items={[{title: "Everyday Development", icon: <Icon name="play" />, children: <>Tinjau commit message, lalu commit dan push perubahan branch tanpa efek samping rilis melalui <a href="./everyday-development">Dev journey</a>.</>}, {title: "Preparing Releases", icon: <Icon name="release" />, children: <>Bergerak dari release readiness menuju version, changelog, commit, tag, dan publication melalui <a href="./preparing-releases">Release journey</a>.</>}, {title: "Managing Backups", icon: <Icon name="package" />, children: <>Lindungi commit dan tag message files dan terapkan retention melalui <a href="./managing-backups">Backup journey</a>.</>}, {title: "Cleaning Branches", icon: <Icon name="git" />, children: <>Preview layered branch filters sebelum menghapus local dan remote branches melalui <a href="./cleaning-branches">Cleanup journey</a>.</>}, {title: "Recovering Workflows", icon: <Icon name="warning" />, children: <>Temukan last completed effect dan pilih narrow recovery action melalui <a href="./troubleshooting-workflows">Troubleshooting journey</a>.</>}, {title: "Choosing a Command", icon: <Icon name="terminal" />, children: <>Gunakan <a href="../commands/overview">Command Reference</a> ketika satu focused operation lebih aman daripada full profile.</>}]} />
+  <FeatureGrid
+    title="Common Custy Work"
+    items={[
+      {
+        title: "Everyday Development",
+        icon: <Icon name="play" />,
+        children: (
+          <>
+            Tinjau commit message, lalu commit dan push perubahan branch tanpa efek
+            samping rilis melalui <a href="./everyday-development">Dev journey</a>.
+          </>
+        ),
+      },
+      {
+        title: "Preparing Releases",
+        icon: <Icon name="release" />,
+        children: (
+          <>
+            Bergerak dari release readiness menuju version, changelog, commit, tag, dan
+            publication melalui <a href="./preparing-releases">Release journey</a>.
+          </>
+        ),
+      },
+      {
+        title: "Managing Backups",
+        icon: <Icon name="package" />,
+        children: (
+          <>
+            Lindungi commit dan tag message files dan terapkan retention melalui{" "}
+            <a href="./managing-backups">Backup journey</a>.
+          </>
+        ),
+      },
+      {
+        title: "Cleaning Branches",
+        icon: <Icon name="git" />,
+        children: (
+          <>
+            Preview layered branch filters sebelum menghapus local dan remote branches
+            melalui <a href="./cleaning-branches">Cleanup journey</a>.
+          </>
+        ),
+      },
+      {
+        title: "Recovering Workflows",
+        icon: <Icon name="warning" />,
+        children: (
+          <>
+            Temukan last completed effect dan pilih narrow recovery action melalui{" "}
+            <a href="./troubleshooting-workflows">Troubleshooting journey</a>.
+          </>
+        ),
+      },
+      {
+        title: "Choosing a Command",
+        icon: <Icon name="terminal" />,
+        children: (
+          <>
+            Gunakan <a href="../commands/overview">Command Reference</a> ketika satu
+            focused operation lebih aman daripada full profile.
+          </>
+        ),
+      },
+    ]}
+  />
 </Section>
 
 ---
 
 <Section title="Mulai dari Repository State">
-<Terminal title="Reusable preflight" language="bash">{`git status --short --branch
+  <Terminal title="Reusable preflight" language="bash">{`git status --short --branch
 git diff
 git diff --staged
 git remote -v
 custy validate`}</Terminal>
-Checks ini menjawab empat pertanyaan sebelum Custy memutasi apa pun: branch
-mana yang active, changes apa yang tersedia, changes mana yang staged, dan
-tujuan remote operations.
+  Checks ini menjawab empat pertanyaan sebelum Custy memutasi apa pun: branch mana yang
+  active, changes apa yang tersedia, changes mana yang staged, dan tujuan remote
+  operations.
 </Section>
 
-<InfoBox variant="warning" title="Dry-Run adalah Preview, Bukan Guarantee">Dry-run mencegah supported mutations, sedangkan discovery, validation, file reads, configuration resolution, dan remote selection tetap dapat berjalan. Baca [Dry Run concept](../concepts/dry-run) untuk exact boundary.</InfoBox>
+<InfoBox variant="warning" title="Dry-Run adalah Preview, Bukan Guarantee">
+  Dry-run mencegah supported mutations, sedangkan discovery, validation, file reads,
+  configuration resolution, dan remote selection tetap dapat berjalan. Baca [Dry Run
+  concept](../concepts/dry-run) untuk exact boundary.
+</InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Everyday Development", href: "./everyday-development", description: "Selesaikan reviewed daily commit-and-push journey."}, {title: "Preparing Releases", href: "./preparing-releases", description: "Siapkan dan publish versioned release secara deliberate."}, {title: "Managing Backups", href: "./managing-backups", description: "Buat, verifikasi, pertahankan, dan restore message backups."}, {title: "Troubleshooting Workflows", href: "./troubleshooting-workflows", description: "Diagnosis partial files, commits, tags, dan pushes."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Everyday Development",
+        href: "./everyday-development",
+        description: "Selesaikan reviewed daily commit-and-push journey.",
+      },
+      {
+        title: "Preparing Releases",
+        href: "./preparing-releases",
+        description: "Siapkan dan publish versioned release secara deliberate.",
+      },
+      {
+        title: "Managing Backups",
+        href: "./managing-backups",
+        description: "Buat, verifikasi, pertahankan, dan restore message backups.",
+      },
+      {
+        title: "Troubleshooting Workflows",
+        href: "./troubleshooting-workflows",
+        description: "Diagnosis partial files, commits, tags, dan pushes.",
+      },
+    ]}
+  />
+</Section>

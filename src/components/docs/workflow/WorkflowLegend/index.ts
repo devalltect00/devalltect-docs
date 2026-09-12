@@ -1,13 +1,9 @@
 export { default } from "./WorkflowLegend";
 
-export type {
-    WorkflowLegendItem,
-    WorkflowLegendProps,
-} from "./types";
-
+export type { WorkflowLegendItem, WorkflowLegendProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.WorkflowLegend
     items={[
         {

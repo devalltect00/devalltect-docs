@@ -6,13 +6,26 @@ sidebar_key: doc-gen-init
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Initialization" status="Recommended" syntax="doc-gen init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Options"
+  description="CLI values override project configuration, which overrides internal defaults."
+  category="Initialization"
+  status="Recommended"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Flag / value | Default | Effect |
-| --- | --- | --- |
-| `--mode, -m` | `all` | Choose `all` or `config`. Both currently create the project configuration; `all` is the default composite mode. |
-| `--force/--no-force, -f/-F` | false | Overwrite an existing configuration file. |
-| `--ask, -a` | false | Prompt before replacing an existing configuration file. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Preview without writes. |
+| Flag / value                      | Default | Effect                                                                                                          |
+| --------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| `--mode, -m`                      | `all`   | Choose `all` or `config`. Both currently create the project configuration; `all` is the default composite mode. |
+| `--force/--no-force, -f/-F`       | false   | Overwrite an existing configuration file.                                                                       |
+| `--ask, -a`                       | false   | Prompt before replacing an existing configuration file.                                                         |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false   | Preview without writes.                                                                                         |

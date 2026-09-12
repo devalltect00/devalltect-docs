@@ -7,11 +7,39 @@ tags: [configure, credentials, preferences]
 keywords: [custy configure, custy credentials]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy configure" title="Configure Custy Preferences" description="Manage focused user preferences through safe, purpose-built commands." category="Configuration" status="Stable" syntax="custy configure COMMAND" tags={["preferences", "credentials", "safe setup"]} links={[{label: "Credentials", href: "./credentials/overview"}, {label: "Configuration", href: "../../configuration/overview"}, {label: "Push", href: "../push/overview"}]} />
+<CommandHero
+  command="custy configure"
+  title="Configure Custy Preferences"
+  description="Manage focused user preferences through safe, purpose-built commands."
+  category="Configuration"
+  status="Stable"
+  syntax="custy configure COMMAND"
+  tags={["preferences", "credentials", "safe setup"]}
+  links={[
+    { label: "Credentials", href: "./credentials/overview" },
+    { label: "Configuration", href: "../../configuration/overview" },
+    { label: "Push", href: "../push/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Current Command", value: "credentials", icon: "security"}, {label: "Secret in config.toml", value: "Never", icon: "success"}, {label: "Git Providers", value: "GitHub + GitLab", icon: "git"}, {label: "Dry-Run", value: "Supported", icon: "dry-run"}]} />
+<CommandMetadata
+  items={[
+    { label: "Current Command", value: "credentials", icon: "security" },
+    { label: "Secret in config.toml", value: "Never", icon: "success" },
+    { label: "Git Providers", value: "GitHub + GitLab", icon: "git" },
+    { label: "Dry-Run", value: "Supported", icon: "dry-run" },
+  ]}
+/>
 
 ## Overview
 
@@ -26,6 +54,55 @@ and environment-variable names. Token values remain outside the project.
 
 </InfoBox>
 
-<Section title="Available Configuration"><FeatureGrid items={[{title: "Guided Setup", icon: <Icon name="terminal" />, children: "Run custy configure credentials with no subcommand for hidden token entry and safe defaults."}, {title: "Provider Management", icon: <Icon name="security" />, children: "Enable, inspect, test, or remove GitHub and GitLab fallback preferences."}, {title: "Native Git First", icon: <Icon name="git" />, children: "Keep credential managers and SSH authoritative; use Custy's helper only as an enabled HTTPS fallback."}, {title: "Docker Boundary", icon: <Icon name="docker" />, children: "Keep local credentials unchanged while supplying explicit secrets to a container."}]} /></Section>
+<Section title="Available Configuration">
+  <FeatureGrid
+    items={[
+      {
+        title: "Guided Setup",
+        icon: <Icon name="terminal" />,
+        children:
+          "Run custy configure credentials with no subcommand for hidden token entry and safe defaults.",
+      },
+      {
+        title: "Provider Management",
+        icon: <Icon name="security" />,
+        children:
+          "Enable, inspect, test, or remove GitHub and GitLab fallback preferences.",
+      },
+      {
+        title: "Native Git First",
+        icon: <Icon name="git" />,
+        children:
+          "Keep credential managers and SSH authoritative; use Custy's helper only as an enabled HTTPS fallback.",
+      },
+      {
+        title: "Docker Boundary",
+        icon: <Icon name="docker" />,
+        children:
+          "Keep local credentials unchanged while supplying explicit secrets to a container.",
+      },
+    ]}
+  />
+</Section>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Configure Credentials", href: "./credentials/overview", description: "Choose file, environment, prompt, or native Git behavior."}, {title: "Git Credentials", href: "../../configuration/git/credentials", description: "Review every configuration property and the behavior matrix."}, {title: "Push", href: "../push/overview", description: "Synchronize HEAD and tags with configured remotes."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Configure Credentials",
+        href: "./credentials/overview",
+        description: "Choose file, environment, prompt, or native Git behavior.",
+      },
+      {
+        title: "Git Credentials",
+        href: "../../configuration/git/credentials",
+        description: "Review every configuration property and the behavior matrix.",
+      },
+      {
+        title: "Push",
+        href: "../push/overview",
+        description: "Synchronize HEAD and tags with configured remotes.",
+      },
+    ]}
+  />
+</Section>

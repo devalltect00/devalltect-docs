@@ -5,49 +5,45 @@ sidebar_position: 2
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - requirements
+  - cleanup
+  - branch
+  - requirements
 
 keywords:
-    - custy cleanup branches
-    - branch cleanup requirements
+  - custy cleanup branches
+  - branch cleanup requirements
 ---
 
 import {
-    CommandHero,
-    RequirementGrid,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Requirements"
-    description="Understand the prerequisites before removing obsolete Git branches."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "cleanup",
-        "branch",
-        "requirements",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Requirements"
+  description="Understand the prerequisites before removing obsolete Git branches."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["cleanup", "branch", "requirements"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -77,49 +73,41 @@ Always review the configured cleanup filters before executing the command.
 >
 
 <RequirementGrid
-    title="Required Environment"
-    items={[
-        {
-            title: "Git Repository",
-            icon: <Icon name="git" />,
-            children: (
-                <>
-                    Branch Cleanup requires the current directory to be a
-                    valid Git repository.
-                </>
-            ),
-        },
-        {
-            title: "Project Configuration",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Cleanup behavior is resolved from your project's
-                    <code>config.toml</code>.
-                </>
-            ),
-        },
-        {
-            title: "Configured Cleanup Rules",
-            icon: <Icon name="table" />,
-            children: (
-                <>
-                    Configure branch prefixes and optional filters before
-                    attempting branch cleanup.
-                </>
-            ),
-        },
-        {
-            title: "Repository Access",
-            icon: <Icon name="security" />,
-            children: (
-                <>
-                    Custy must be able to inspect and remove local Git
-                    branches.
-                </>
-            ),
-        },
-    ]}
+  title="Required Environment"
+  items={[
+    {
+      title: "Git Repository",
+      icon: <Icon name="git" />,
+      children: (
+        <>Branch Cleanup requires the current directory to be a valid Git repository.</>
+      ),
+    },
+    {
+      title: "Project Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Cleanup behavior is resolved from your project's
+          <code>config.toml</code>.
+        </>
+      ),
+    },
+    {
+      title: "Configured Cleanup Rules",
+      icon: <Icon name="table" />,
+      children: (
+        <>
+          Configure branch prefixes and optional filters before attempting branch
+          cleanup.
+        </>
+      ),
+    },
+    {
+      title: "Repository Access",
+      icon: <Icon name="security" />,
+      children: <>Custy must be able to inspect and remove local Git branches.</>,
+    },
+  ]}
 />
 
 </Section>

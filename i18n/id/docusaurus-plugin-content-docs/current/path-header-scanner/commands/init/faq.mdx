@@ -6,9 +6,22 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner init" title="FAQ" description="FAQ" category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner init"
+  title="FAQ"
+  description="FAQ"
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="path-header-scanner init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ## Apakah init memindai source file?
 
@@ -21,4 +34,3 @@ Ya, jika default perlu dibagikan.
 ## Dapatkah dry-run menimpa?
 
 Tidak.
-

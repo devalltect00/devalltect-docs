@@ -1,53 +1,43 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
-import type {
-    WorkflowStepStatus,
-} from "../WorkflowStep";
+import type { WorkflowStepStatus } from "../WorkflowStep";
 
 /**
  * Represents a workflow stage.
  */
 export interface WorkflowStageItem {
+  /**
+   * Stage title.
+   */
+  title: string;
 
-    /**
-     * Stage title.
-     */
-    title: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Stage status.
-     */
-    status?: WorkflowStepStatus;
-
+  /**
+   * Stage status.
+   */
+  status?: WorkflowStepStatus;
 }
 
 /**
  * WorkflowStage component props.
  */
-export interface WorkflowStageProps
-    extends HTMLAttributes<HTMLElement> {
+export interface WorkflowStageProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Stage heading.
+   */
+  title: string;
 
-    /**
-     * Stage heading.
-     */
-    title: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Stage steps.
-     */
-    steps: WorkflowStageItem[];
-
+  /**
+   * Stage steps.
+   */
+  steps: WorkflowStageItem[];
 }

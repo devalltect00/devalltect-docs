@@ -6,9 +6,22 @@ sidebar_key: reflow-init
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow init" title="Sintaks" description="Pola pemanggilan command." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow init"
+  title="Sintaks"
+  description="Pola pemanggilan command."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="reflow init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 <Terminal language="bash">{`reflow init [OPTIONS]
 reflow --dry-run init`}</Terminal>

@@ -5,21 +5,27 @@ sidebar_position: 5
 sidebar_key: phs-examples
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner"
-    title="Workflow Examples"
-    description="Resolve a scan target, preview path-header changes, and opt into writes only after review."
-    category="Examples"
-    status="Preview First"
-    syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
-    links={[
-        {label: "Scan Guide", href: "./commands/scan/overview"},
-        {label: "Scan Options", href: "./commands/scan/options"},
-        {label: "Path Headers", href: "./concepts/path-headers"},
-        {label: "Configuration", href: "./configuration/reference"},
-    ]}
+  command="path-header-scanner"
+  title="Workflow Examples"
+  description="Resolve a scan target, preview path-header changes, and opt into writes only after review."
+  category="Examples"
+  status="Preview First"
+  syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
+  links={[
+    { label: "Scan Guide", href: "./commands/scan/overview" },
+    { label: "Scan Options", href: "./commands/scan/options" },
+    { label: "Path Headers", href: "./concepts/path-headers" },
+    { label: "Configuration", href: "./configuration/reference" },
+  ]}
 />
 
 <Section title="Preview and resolve targets">
@@ -28,9 +34,11 @@ import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/sr
 path-header-scanner scan app
 
 # Resolve app from another project base
+
 path-header-scanner scan app --workdir ../project
 
 # Explicit simulation wins over apply
+
 path-header-scanner scan app --apply --dry-run`}</Terminal>
 
 </Section>
@@ -50,9 +58,21 @@ or project configuration disables effective apply mode.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "First Workflow", href: "./getting-started/first-workflow", description: "Install, initialize, preview, and apply safely."},
-        {title: "Scan Examples", href: "./commands/scan/examples", description: "See additional target and mode combinations."},
-        {title: "Safety and Dry-run", href: "./concepts/safety-and-dry-run", description: "Understand preview, apply, and explicit simulation."},
-    ]}
+  commands={[
+    {
+      title: "First Workflow",
+      href: "./getting-started/first-workflow",
+      description: "Install, initialize, preview, and apply safely.",
+    },
+    {
+      title: "Scan Examples",
+      href: "./commands/scan/examples",
+      description: "See additional target and mode combinations.",
+    },
+    {
+      title: "Safety and Dry-run",
+      href: "./concepts/safety-and-dry-run",
+      description: "Understand preview, apply, and explicit simulation.",
+    },
+  ]}
 />

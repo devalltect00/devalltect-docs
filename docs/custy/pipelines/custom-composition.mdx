@@ -8,30 +8,30 @@ keywords: [custy run commit tag push, pipeline deduplication]
 ---
 
 import {
-    CommandExample,
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandExample,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run PROFILE PROFILE"
-    title="Custom Profile Composition"
-    description="Merge supported public profiles into one deduplicated pipeline with a safe global phase order."
-    category="Pipelines"
-    status="Advanced"
-    syntax="custy run PROFILE PROFILE [PROFILE ...] [OPTIONS]"
-    tags={["profile merge", "deduplication", "global ordering"]}
-    links={[
-        {label: "Profiles", href: "./profiles"},
-        {label: "Step Priority", href: "./step-order"},
-        {label: "Execution Model", href: "./execution-model"},
-    ]}
+  command="custy run PROFILE PROFILE"
+  title="Custom Profile Composition"
+  description="Merge supported public profiles into one deduplicated pipeline with a safe global phase order."
+  category="Pipelines"
+  status="Advanced"
+  syntax="custy run PROFILE PROFILE [PROFILE ...] [OPTIONS]"
+  tags={["profile merge", "deduplication", "global ordering"]}
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Execution Model", href: "./execution-model" },
+  ]}
 />
 
 ## Overview
@@ -44,14 +44,36 @@ creates one combined pipeline from the union of their expanded steps.
 <Section title="Normalization Process">
 
 <WorkflowTimeline
-    title="How Profiles Are Combined"
-    items={[
-        {title: "Validate profile names", description: "Every input must be one of the six accepted public names.", status: "completed"},
-        {title: "Expand nested profiles", description: "Replace profile references with concrete registered step definitions.", status: "completed"},
-        {title: "Collect all steps", description: "Append the expanded steps from every selected profile.", status: "completed"},
-        {title: "Deduplicate by name", description: "Keep the first instance of each repeated step name.", status: "completed"},
-        {title: "Apply global order", description: "Sort the unique steps by Custy's phase priorities before execution.", status: "current"},
-    ]}
+  title="How Profiles Are Combined"
+  items={[
+    {
+      title: "Validate profile names",
+      description: "Every input must be one of the six accepted public names.",
+      status: "completed",
+    },
+    {
+      title: "Expand nested profiles",
+      description:
+        "Replace profile references with concrete registered step definitions.",
+      status: "completed",
+    },
+    {
+      title: "Collect all steps",
+      description: "Append the expanded steps from every selected profile.",
+      status: "completed",
+    },
+    {
+      title: "Deduplicate by name",
+      description: "Keep the first instance of each repeated step name.",
+      status: "completed",
+    },
+    {
+      title: "Apply global order",
+      description:
+        "Sort the unique steps by Custy's phase priorities before execution.",
+      status: "current",
+    },
+  ]}
 />
 
 </Section>
@@ -99,11 +121,24 @@ priority attached to every line.
 <Section title="Examples">
 
 <CommandExample
-    examples={[
-        {title: "Commit and push", command: "custy --dry-run run commit push", description: "Preview one flow that prepares a commit and then synchronizes it."},
-        {title: "Commit, tag, and push", command: "custy --dry-run run commit tag push", description: "Preview a merged step set that currently matches the Release profile."},
-        {title: "Input order is normalized", command: "custy --dry-run run push commit", description: "Push is still placed after commit by global ordering."},
-    ]}
+  examples={[
+    {
+      title: "Commit and push",
+      command: "custy --dry-run run commit push",
+      description: "Preview one flow that prepares a commit and then synchronizes it.",
+    },
+    {
+      title: "Commit, tag, and push",
+      command: "custy --dry-run run commit tag push",
+      description:
+        "Preview a merged step set that currently matches the Release profile.",
+    },
+    {
+      title: "Input order is normalized",
+      command: "custy --dry-run run push commit",
+      description: "Push is still placed after commit by global ordering.",
+    },
+  ]}
 />
 
 </Section>
@@ -113,13 +148,33 @@ priority attached to every line.
 <Section title="Important Comparisons">
 
 <FeatureGrid
-    title="Similar Does Not Always Mean Equivalent"
-    items={[
-        {title: "commit + tag + push", icon: <Icon name="release" />, children: "The current resolved step set is equivalent to Release, but the named Release profile communicates intent more clearly."},
-        {title: "commit + push", icon: <Icon name="dependency" />, children: "This is not the same as Dev: it adds commit and push validation and includes version application."},
-        {title: "dev", icon: <Icon name="play" />, children: "This deliberate profile has its own source-defined stage list and omits version application and tag creation."},
-        {title: "full", icon: <Icon name="workflow" />, children: "This is Release plus finalization; combining focused profiles does not add the finalization step."},
-    ]}
+  title="Similar Does Not Always Mean Equivalent"
+  items={[
+    {
+      title: "commit + tag + push",
+      icon: <Icon name="release" />,
+      children:
+        "The current resolved step set is equivalent to Release, but the named Release profile communicates intent more clearly.",
+    },
+    {
+      title: "commit + push",
+      icon: <Icon name="dependency" />,
+      children:
+        "This is not the same as Dev: it adds commit and push validation and includes version application.",
+    },
+    {
+      title: "dev",
+      icon: <Icon name="play" />,
+      children:
+        "This deliberate profile has its own source-defined stage list and omits version application and tag creation.",
+    },
+    {
+      title: "full",
+      icon: <Icon name="workflow" />,
+      children:
+        "This is Release plus finalization; combining focused profiles does not add the finalization step.",
+    },
+  ]}
 />
 
 </Section>
@@ -147,12 +202,28 @@ subprofiles. Public CLI users cannot pass those internal names to `custy run`.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Profiles", href: "./profiles", description: "Choose a built-in profile before composing a broader flow."},
-        {title: "Step Priority and Ordering", href: "./step-order", description: "See why merged input order does not control execution order."},
-        {title: "Execution Model", href: "./execution-model", description: "Understand expansion, ordering, building, and execution."},
-        {title: "Run Custom Sequences", href: "../commands/run/custom-sequences", description: "See the command-level composition guide."},
-    ]}
+  commands={[
+    {
+      title: "Profiles",
+      href: "./profiles",
+      description: "Choose a built-in profile before composing a broader flow.",
+    },
+    {
+      title: "Step Priority and Ordering",
+      href: "./step-order",
+      description: "See why merged input order does not control execution order.",
+    },
+    {
+      title: "Execution Model",
+      href: "./execution-model",
+      description: "Understand expansion, ordering, building, and execution.",
+    },
+    {
+      title: "Run Custom Sequences",
+      href: "../commands/run/custom-sequences",
+      description: "See the command-level composition guide.",
+    },
+  ]}
 />
 
 </Section>

@@ -7,27 +7,27 @@ tags: [reflow, installation, quick-start]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow"
-    title="Installation and First Workflow"
-    description="Install Reflow in an isolated environment and preview a local tag-conversion plan against an explicit target."
-    category="Getting Started"
-    status="Recommended"
-    syntax="reflow --dry-run -C /path/to/project tags convert local"
-    links={[
-        {label: "Commands", href: "../commands/overview"},
-        {label: "Init Guide", href: "../commands/init/overview"},
-        {label: "Local Conversion", href: "../commands/tags/convert/local/overview"},
-        {label: "Configuration", href: "../configuration/overview"},
-    ]}
+  command="reflow"
+  title="Installation and First Workflow"
+  description="Install Reflow in an isolated environment and preview a local tag-conversion plan against an explicit target."
+  category="Getting Started"
+  status="Recommended"
+  syntax="reflow --dry-run -C /path/to/project tags convert local"
+  links={[
+    { label: "Commands", href: "../commands/overview" },
+    { label: "Init Guide", href: "../commands/init/overview" },
+    { label: "Local Conversion", href: "../commands/tags/convert/local/overview" },
+    { label: "Configuration", href: "../configuration/overview" },
+  ]}
 />
 
 <InfoBox variant="note" title="Runtime requirement">
@@ -49,9 +49,10 @@ token limited to `read_package_registry`.
 {`python -m venv venv
 
 # Activate the environment, then install one reviewed package version.
+
 python -m pip install \
-  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
-  "git-reflow==1.0.1"
+ --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+ "git-reflow==1.0.1"
 
 reflow --version`}
 
@@ -79,8 +80,10 @@ when private-registry access is unavailable.
 {`python -m venv venv
 
 # Activate with the command for your shell:
+
 # Windows PowerShell: .\\venv\\Scripts\\Activate.ps1
-# POSIX shell:        source venv/bin/activate
+
+# POSIX shell: source venv/bin/activate
 
 python -m pip install .
 reflow --version`}
@@ -90,14 +93,38 @@ reflow --version`}
 </Section>
 
 <WorkflowTimeline
-    title="First Local Workflow"
-    items={[
-        {title: "Select a checkout", description: "Use -C/--repository so the Reflow source checkout cannot become the accidental target.", status: "current"},
-        {title: "Initialize configuration", description: "Generate .config/reflow/config.toml and review it before sharing or editing defaults.", status: "pending"},
-        {title: "Inspect tags", description: "Use Git to confirm which existing tag names the conversion plan should consider.", status: "pending"},
-        {title: "Preview conversion", description: "Run the local conversion with global --dry-run and inspect every source-to-destination mapping.", status: "pending"},
-        {title: "Choose whether to execute", description: "A live run changes only local tag refs; it does not push them.", status: "pending"},
-    ]}
+  title="First Local Workflow"
+  items={[
+    {
+      title: "Select a checkout",
+      description:
+        "Use -C/--repository so the Reflow source checkout cannot become the accidental target.",
+      status: "current",
+    },
+    {
+      title: "Initialize configuration",
+      description:
+        "Generate .config/reflow/config.toml and review it before sharing or editing defaults.",
+      status: "pending",
+    },
+    {
+      title: "Inspect tags",
+      description:
+        "Use Git to confirm which existing tag names the conversion plan should consider.",
+      status: "pending",
+    },
+    {
+      title: "Preview conversion",
+      description:
+        "Run the local conversion with global --dry-run and inspect every source-to-destination mapping.",
+      status: "pending",
+    },
+    {
+      title: "Choose whether to execute",
+      description: "A live run changes only local tag refs; it does not push them.",
+      status: "pending",
+    },
+  ]}
 />
 
 <Terminal title="Initialize and preview" language="bash">
@@ -117,9 +144,21 @@ replacement plan.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Initialize Reflow", href: "../commands/init/overview", description: "Create project-owned configuration safely."},
-        {title: "Convert Local Tags", href: "../commands/tags/convert/local/overview", description: "Understand local-only replacement behavior."},
-        {title: "Examples", href: "../examples", description: "Compare local, remote, recovery, and Docker previews."},
-    ]}
+  commands={[
+    {
+      title: "Initialize Reflow",
+      href: "../commands/init/overview",
+      description: "Create project-owned configuration safely.",
+    },
+    {
+      title: "Convert Local Tags",
+      href: "../commands/tags/convert/local/overview",
+      description: "Understand local-only replacement behavior.",
+    },
+    {
+      title: "Examples",
+      href: "../examples",
+      description: "Compare local, remote, recovery, and Docker previews.",
+    },
+  ]}
 />

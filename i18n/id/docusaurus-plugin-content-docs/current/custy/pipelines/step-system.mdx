@@ -7,9 +7,31 @@ tags: [custy, pipeline steps, developer guide]
 keywords: [Custy BaseStep, StepRegistry, PipelineBuilder, GitContext]
 ---
 
-import {CommandChecklist, CommandHero, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandChecklist,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="app/core/pipeline/" title="Pipeline Step System" description="Pahami internal contracts yang harus dipertahankan contributor saat menambah atau mengubah pipeline behavior." category="Developer Guide" status="Internal API" syntax="resolve → create registered steps → execute(context)" tags={["BaseStep", "StepRegistry", "PipelineBuilder", "GitContext"]} links={[{label: "Execution Model", href: "./execution-model"}, {label: "Profiles", href: "./profiles"}, {label: "Step Priority", href: "./step-order"}, {label: "Composition", href: "./custom-composition"}]} />
+<CommandHero
+  command="app/core/pipeline/"
+  title="Pipeline Step System"
+  description="Pahami internal contracts yang harus dipertahankan contributor saat menambah atau mengubah pipeline behavior."
+  category="Developer Guide"
+  status="Internal API"
+  syntax="resolve → create registered steps → execute(context)"
+  tags={["BaseStep", "StepRegistry", "PipelineBuilder", "GitContext"]}
+  links={[
+    { label: "Execution Model", href: "./execution-model" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Composition", href: "./custom-composition" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -17,12 +39,60 @@ Pipeline package Custy memisahkan workflow definition dari execution. Profiles
 memberi nama intended steps, registry memetakan names ke classes, builder
 membuat instances, dan pipeline memanggil setiap instance dengan satu shared context.
 
-<InfoBox variant="warning" title="Internal Extension Point, Bukan Public Plugin API">Registry memungkinkan dynamic construction di dalam Custy, tetapi project saat ini tidak menyediakan documented third-party plugin installation contract. Perlakukan modules ini sebagai contributor-facing internals yang dapat berubah bersama source.</InfoBox>
+<InfoBox variant="warning" title="Internal Extension Point, Bukan Public Plugin API">
+  Registry memungkinkan dynamic construction di dalam Custy, tetapi project saat ini
+  tidak menyediakan documented third-party plugin installation contract. Perlakukan
+  modules ini sebagai contributor-facing internals yang dapat berubah bersama source.
+</InfoBox>
 
 ---
 
 <Section title="Core Responsibilities">
-<FeatureGrid title="Pipeline Building Blocks" items={[{title: "BaseStep", icon: <Icon name="dependency" />, children: <>Menentukan required <code>execute(context)</code> interface untuk setiap step.</>}, {title: "StepRegistry", icon: <Icon name="configuration" />, children: "Memetakan unique string name ke step class dan membuat instances saat diperlukan."}, {title: "Step Registration", icon: <Icon name="project" />, children: "Mendaftarkan built-in validation, preparation, generation, backup, cleanup, execution, dan finalization steps."}, {title: "CommandResolver", icon: <Icon name="pipeline" />, children: "Memperluas profiles dan menormalisasi multi-profile composition sebelum building."}, {title: "PipelineBuilder", icon: <Icon name="architecture" />, children: "Mengubah resolved step dictionaries menjadi concrete objects melalui registry."}, {title: "GitContext", icon: <Icon name="git" />, children: "Membawa workflow engine, shared services, dan mutable runtime values antar-steps."}]} />
+  <FeatureGrid
+    title="Pipeline Building Blocks"
+    items={[
+      {
+        title: "BaseStep",
+        icon: <Icon name="dependency" />,
+        children: (
+          <>
+            Menentukan required <code>execute(context)</code> interface untuk setiap
+            step.
+          </>
+        ),
+      },
+      {
+        title: "StepRegistry",
+        icon: <Icon name="configuration" />,
+        children:
+          "Memetakan unique string name ke step class dan membuat instances saat diperlukan.",
+      },
+      {
+        title: "Step Registration",
+        icon: <Icon name="project" />,
+        children:
+          "Mendaftarkan built-in validation, preparation, generation, backup, cleanup, execution, dan finalization steps.",
+      },
+      {
+        title: "CommandResolver",
+        icon: <Icon name="pipeline" />,
+        children:
+          "Memperluas profiles dan menormalisasi multi-profile composition sebelum building.",
+      },
+      {
+        title: "PipelineBuilder",
+        icon: <Icon name="architecture" />,
+        children:
+          "Mengubah resolved step dictionaries menjadi concrete objects melalui registry.",
+      },
+      {
+        title: "GitContext",
+        icon: <Icon name="git" />,
+        children:
+          "Membawa workflow engine, shared services, dan mutable runtime values antar-steps.",
+      },
+    ]}
+  />
 </Section>
 
 ---
@@ -44,7 +114,40 @@ membuat instances, dan pipeline memanggil setiap instance dengan satu shared con
 ---
 
 <Section title="Contributor Checklist">
-<CommandChecklist items={[{title: "Implement one focused step", description: "Subclass BaseStep dan sediakan documented execute(context) method dengan satu clear responsibility."}, {title: "Register a unique name", description: "Tambahkan class ke register_all_steps(); duplicate names menghasilkan ValueError."}, {title: "Assign phase order", description: "Tambahkan name ke STEP_ORDER agar merged profiles tidak menempatkannya dalam unsafe phase."}, {title: "Add it to intentional profiles", description: "Update hanya profiles yang benar-benar membutuhkan behavior baru; jangan sembunyikan profile logic dalam resolver."}, {title: "Test resolution and execution", description: "Cover profile membership, ordering, deduplication, failure behavior, dan expected engine call."}, {title: "Update user and developer docs", description: "Dokumentasikan changed requirements, side effects, output, recovery, dan extension behavior."}]} />
+  <CommandChecklist
+    items={[
+      {
+        title: "Implement one focused step",
+        description:
+          "Subclass BaseStep dan sediakan documented execute(context) method dengan satu clear responsibility.",
+      },
+      {
+        title: "Register a unique name",
+        description:
+          "Tambahkan class ke register_all_steps(); duplicate names menghasilkan ValueError.",
+      },
+      {
+        title: "Assign phase order",
+        description:
+          "Tambahkan name ke STEP_ORDER agar merged profiles tidak menempatkannya dalam unsafe phase.",
+      },
+      {
+        title: "Add it to intentional profiles",
+        description:
+          "Update hanya profiles yang benar-benar membutuhkan behavior baru; jangan sembunyikan profile logic dalam resolver.",
+      },
+      {
+        title: "Test resolution and execution",
+        description:
+          "Cover profile membership, ordering, deduplication, failure behavior, dan expected engine call.",
+      },
+      {
+        title: "Update user and developer docs",
+        description:
+          "Dokumentasikan changed requirements, side effects, output, recovery, dan extension behavior.",
+      },
+    ]}
+  />
 </Section>
 
 ---
@@ -60,11 +163,21 @@ membuat instances, dan pipeline memanggil setiap instance dengan satu shared con
 
 ---
 
-<Section title="Context dan State Discipline">Simpan configuration dan services dalam workflow engine. Gunakan `GitContext` untuk shared runtime state yang harus melewati step boundary, seperti current tag, workflow case, atau staging list. Step harus mendelegasikan domain behavior ke engine atau focused service, bukan menduplikasi Git atau release logic.</Section>
+<Section title="Context dan State Discipline">
+  Simpan configuration dan services dalam workflow engine. Gunakan `GitContext` untuk
+  shared runtime state yang harus melewati step boundary, seperti current tag, workflow
+  case, atau staging list. Step harus mendelegasikan domain behavior ke engine atau
+  focused service, bukan menduplikasi Git atau release logic.
+</Section>
 
 ---
 
-<InfoBox variant="danger" title="Mengubah Order Dapat Mengubah Safety">Global order merupakan bagian execution contract untuk merged profiles. Priority baru atau yang dipindahkan dapat mengubah apakah validation berjalan sebelum file writes atau apakah commit, tag, push, cleanup, dan finalization berjalan dalam safe sequence. Perlakukan ordering changes sebagai behavioral changes dan test sesuai dampaknya.</InfoBox>
+<InfoBox variant="danger" title="Mengubah Order Dapat Mengubah Safety">
+  Global order merupakan bagian execution contract untuk merged profiles. Priority baru
+  atau yang dipindahkan dapat mengubah apakah validation berjalan sebelum file writes
+  atau apakah commit, tag, push, cleanup, dan finalization berjalan dalam safe sequence.
+  Perlakukan ordering changes sebagai behavioral changes dan test sesuai dampaknya.
+</InfoBox>
 
 Setiap step yang dapat berpartisipasi dalam merged profiles harus memiliki
 explicit `STEP_ORDER` entry. Tanpa entry, step menerima fallback priority `999`
@@ -73,4 +186,35 @@ dan berpindah setelah seluruh known steps. Tinjau complete contract dalam
 
 ---
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Execution Model", href: "./execution-model", description: "Lihat cara internal pieces berkolaborasi saat runtime."}, {title: "Step Priority and Ordering", href: "./step-order", description: "Tinjau seluruh priorities dan contributor ordering requirements."}, {title: "Custom Composition", href: "./custom-composition", description: "Tinjau resolver behavior yang dipengaruhi step ordering."}, {title: "Adding Pipeline Steps", href: "../developer-guide/adding-pipeline-steps", description: "Ikuti complete implementation, registration, ordering, dan test workflow."}, {title: "Release Pipeline", href: "./release-pipeline", description: "Telusuri stable profile terlengkap melalui phases-nya."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Execution Model",
+        href: "./execution-model",
+        description: "Lihat cara internal pieces berkolaborasi saat runtime.",
+      },
+      {
+        title: "Step Priority and Ordering",
+        href: "./step-order",
+        description: "Tinjau seluruh priorities dan contributor ordering requirements.",
+      },
+      {
+        title: "Custom Composition",
+        href: "./custom-composition",
+        description: "Tinjau resolver behavior yang dipengaruhi step ordering.",
+      },
+      {
+        title: "Adding Pipeline Steps",
+        href: "../developer-guide/adding-pipeline-steps",
+        description:
+          "Ikuti complete implementation, registration, ordering, dan test workflow.",
+      },
+      {
+        title: "Release Pipeline",
+        href: "./release-pipeline",
+        description: "Telusuri stable profile terlengkap melalui phases-nya.",
+      },
+    ]}
+  />
+</Section>

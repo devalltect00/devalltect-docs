@@ -5,5 +5,5 @@
   "collapsible": true,
   "className": "category-configure",
   "key": "custy-commands-configure",
-  "link": {"type": "doc", "id": "custy/commands/configure/overview"}
+  "link": { "type": "doc", "id": "custy/commands/configure/overview" }
 }

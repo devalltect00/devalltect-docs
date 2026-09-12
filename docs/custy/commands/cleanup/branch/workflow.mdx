@@ -5,49 +5,45 @@ sidebar_position: 6
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - workflow
+  - cleanup
+  - branch
+  - workflow
 
 keywords:
-    - custy cleanup branches workflow
+  - custy cleanup branches workflow
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
-    Screenshot,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
+  Screenshot,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Workflow"
-    description="Understand how Custy evaluates configured cleanup rules before removing Git branches."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "workflow",
-        "cleanup",
-        "branch",
-    ]}
-    links={[
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Workflow"
+  description="Understand how Custy evaluates configured cleanup rules before removing Git branches."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["workflow", "cleanup", "branch"]}
+  links={[
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -63,40 +59,38 @@ This layered approach helps minimize the risk of accidental branch removal.
 ---
 
 <WorkflowTimeline
-    title="Branch Cleanup Workflow"
-    description="High-level execution sequence."
-    items={[
-        {
-            title: "Load Configuration",
-            description:
-                "Resolve cleanup rules from command-line options, project configuration, and built-in defaults.",
-            status: "completed",
-        },
-        {
-            title: "Inspect Repository",
-            description:
-                "Retrieve local Git branches and collect metadata used during cleanup.",
-            status: "completed",
-        },
-        {
-            title: "Apply Cleanup Filters",
-            description:
-                "Evaluate branch prefixes, merge status, age filters, and protected branch rules.",
-            status: "completed",
-        },
-        {
-            title: "Remove Eligible Branches",
-            description:
-                "Delete only branches that satisfy every configured cleanup rule.",
-            status: "completed",
-        },
-        {
-            title: "Display Summary",
-            description:
-                "Present the cleanup results and any skipped branches.",
-            status: "completed",
-        },
-    ]}
+  title="Branch Cleanup Workflow"
+  description="High-level execution sequence."
+  items={[
+    {
+      title: "Load Configuration",
+      description:
+        "Resolve cleanup rules from command-line options, project configuration, and built-in defaults.",
+      status: "completed",
+    },
+    {
+      title: "Inspect Repository",
+      description:
+        "Retrieve local Git branches and collect metadata used during cleanup.",
+      status: "completed",
+    },
+    {
+      title: "Apply Cleanup Filters",
+      description:
+        "Evaluate branch prefixes, merge status, age filters, and protected branch rules.",
+      status: "completed",
+    },
+    {
+      title: "Remove Eligible Branches",
+      description: "Delete only branches that satisfy every configured cleanup rule.",
+      status: "completed",
+    },
+    {
+      title: "Display Summary",
+      description: "Present the cleanup results and any skipped branches.",
+      status: "completed",
+    },
+  ]}
 />
 
 ---
@@ -174,28 +168,28 @@ skipped branches, or a message indicating that no cleanup was required.
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-branch-release-before.png"
-    alt="Branches before cleanup"
-    title="Before Cleanup"
-    caption="Repository state before Branch Cleanup. Multiple release branches are still present."
+  src="/img/custy/commands/cleanup/cleanup-branch-release-before.png"
+  alt="Branches before cleanup"
+  title="Before Cleanup"
+  caption="Repository state before Branch Cleanup. Multiple release branches are still present."
 />
 
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
-    alt="Branch cleanup process"
-    title="Cleanup Execution"
-    caption="Custy evaluates the configured filters and removes only eligible branches."
+  src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
+  alt="Branch cleanup process"
+  title="Cleanup Execution"
+  caption="Custy evaluates the configured filters and removes only eligible branches."
 />
 
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-branch-release-after.png"
-    alt="Branches after cleanup"
-    title="After Cleanup"
-    caption="Only the eligible release branches have been removed. Protected and non-matching branches remain."
+  src="/img/custy/commands/cleanup/cleanup-branch-release-after.png"
+  alt="Branches after cleanup"
+  title="After Cleanup"
+  caption="Only the eligible release branches have been removed. Protected and non-matching branches remain."
 />
 
 ---

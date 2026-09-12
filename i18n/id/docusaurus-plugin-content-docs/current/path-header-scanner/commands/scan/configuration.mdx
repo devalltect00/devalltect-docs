@@ -6,17 +6,30 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="Konfigurasi" description="Nilai CLI mengungguli konfigurasi proyek, kemudian default internal." category="Pemindaian Header" status="Pratinjau Terlebih Dahulu" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="Konfigurasi"
+  description="Nilai CLI mengungguli konfigurasi proyek, kemudian default internal."
+  category="Pemindaian Header"
+  status="Pratinjau Terlebih Dahulu"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Key | Default | Efek |
-| --- | --- | --- |
-| `tool.path-header-scanner.cli.execution.dry_run` | false | Default simulasi bersama. |
-| `tool.path-header-scanner.cli.execution.debug` | false | Aktifkan logging diagnostik. |
-| `tool.path-header-scanner.cli.scan.target_directory` | app | Target pemindaian default. |
-| `tool.path-header-scanner.cli.scan.apply` | false | Aktifkan penulisan secara eksplisit. |
-| `tool.path-header-scanner.cli.scan.include_target_directory` | true | Tentukan apakah nama target disertakan dalam path header. |
+| Key                                                          | Default | Efek                                                      |
+| ------------------------------------------------------------ | ------- | --------------------------------------------------------- |
+| `tool.path-header-scanner.cli.execution.dry_run`             | false   | Default simulasi bersama.                                 |
+| `tool.path-header-scanner.cli.execution.debug`               | false   | Aktifkan logging diagnostik.                              |
+| `tool.path-header-scanner.cli.scan.target_directory`         | app     | Target pemindaian default.                                |
+| `tool.path-header-scanner.cli.scan.apply`                    | false   | Aktifkan penulisan secara eksplisit.                      |
+| `tool.path-header-scanner.cli.scan.include_target_directory` | true    | Tentukan apakah nama target disertakan dalam path header. |
 
 ```toml
 [tool.path-header-scanner.cli.execution]

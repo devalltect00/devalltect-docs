@@ -6,18 +6,31 @@ sidebar_key: doc-gen-structure-analyze
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="Opsi" description="Nilai CLI memiliki prioritas tertinggi, diikuti konfigurasi proyek dan nilai bawaan internal." category="Struktur Proyek" status="Hanya Baca" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="Opsi"
+  description="Nilai CLI memiliki prioritas tertinggi, diikuti konfigurasi proyek dan nilai bawaan internal."
+  category="Struktur Proyek"
+  status="Hanya Baca"
+  syntax="doc-gen structure analyze [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Flag / nilai | Bawaan | Efek |
-| --- | --- | --- |
-| `TARGET_DIRECTORY` | . | Direktori akar repositori yang akan dipindai. |
-| `--profile` | custom | Pilih `minimal`, `default`, `detailed`, atau `custom`. |
-| `--smart/--no-smart` | false | Aktifkan optimasi otomatis sesuai profil. |
-| `--max-depth` | 5 | Kedalaman direktori maksimum yang ditampilkan. |
-| `--show-files/--hide-files` | true | Tampilkan atau sembunyikan file. |
-| `--collapse` | daftar terkonfigurasi | Daftar direktori yang akan diringkas, dipisahkan dengan koma. |
-| `--project-type` | terdeteksi otomatis | Ganti hasil deteksi jenis proyek. |
-| `--verbose, -v` | false | Tampilkan informasi tambahan tentang struktur yang dihasilkan. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Simulasikan output yang dapat berubah; proses penemuan tetap berjalan. |
+| Flag / nilai                      | Bawaan                | Efek                                                                   |
+| --------------------------------- | --------------------- | ---------------------------------------------------------------------- |
+| `TARGET_DIRECTORY`                | .                     | Direktori akar repositori yang akan dipindai.                          |
+| `--profile`                       | custom                | Pilih `minimal`, `default`, `detailed`, atau `custom`.                 |
+| `--smart/--no-smart`              | false                 | Aktifkan optimasi otomatis sesuai profil.                              |
+| `--max-depth`                     | 5                     | Kedalaman direktori maksimum yang ditampilkan.                         |
+| `--show-files/--hide-files`       | true                  | Tampilkan atau sembunyikan file.                                       |
+| `--collapse`                      | daftar terkonfigurasi | Daftar direktori yang akan diringkas, dipisahkan dengan koma.          |
+| `--project-type`                  | terdeteksi otomatis   | Ganti hasil deteksi jenis proyek.                                      |
+| `--verbose, -v`                   | false                 | Tampilkan informasi tambahan tentang struktur yang dihasilkan.         |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false                 | Simulasikan output yang dapat berubah; proses penemuan tetap berjalan. |

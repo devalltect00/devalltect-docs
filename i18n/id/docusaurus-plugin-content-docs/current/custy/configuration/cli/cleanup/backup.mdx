@@ -7,15 +7,60 @@ tags: [custy, configuration, cleanup, backup]
 keywords: [cleanup backup type, cleanup keep]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.cleanup.backup]" title="Backup Cleanup" description="Pilih message-backup category dan retention count yang digunakan cleanup." category="Cleanup Configuration" status="Active" syntax="[tool.custy.cli.cleanup.backup]" tags={["type", "keep", "retention"]} links={[{label: "Backup Directories", href: "../templates/directories"}, {label: "Cleanup Backup", href: "../../../commands/cleanup/backup/overview"}, {label: "Backup Command", href: "../../../commands/backup/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.cleanup.backup]"
+  title="Backup Cleanup"
+  description="Pilih message-backup category dan retention count yang digunakan cleanup."
+  category="Cleanup Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.cleanup.backup]"
+  tags={["type", "keep", "retention"]}
+  links={[
+    { label: "Backup Directories", href: "../templates/directories" },
+    { label: "Cleanup Backup", href: "../../../commands/cleanup/backup/overview" },
+    { label: "Backup Command", href: "../../../commands/backup/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Default Type", value: "all", icon: "package"}, {label: "Default Keep", value: "10", icon: "file"}, {label: "Status", value: "Active", icon: "success"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Default Type", value: "all", icon: "package" },
+    { label: "Default Keep", value: "10", icon: "file" },
+    { label: "Status", value: "Active", icon: "success" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "type", type: "all | commit | tag", defaultValue: "all", description: "Pilih kedua message categories, commit backups saja, atau tag backups saja. Shared enum juga memuat branch untuk broader cleanup orchestration."}, {property: "keep", type: "Non-negative integer", defaultValue: "10", description: "Pertahankan sejumlah most-recent files ini di setiap selected backup category dan hapus file yang lebih lama."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "type",
+      type: "all | commit | tag",
+      defaultValue: "all",
+      description:
+        "Pilih kedua message categories, commit backups saja, atau tag backups saja. Shared enum juga memuat branch untuk broader cleanup orchestration.",
+    },
+    {
+      property: "keep",
+      type: "Non-negative integer",
+      defaultValue: "10",
+      description:
+        "Pertahankan sejumlah most-recent files ini di setiap selected backup category dan hapus file yang lebih lama.",
+    },
+  ]}
+/>
 
 <Terminal title="Generated retention" language="toml">
 
@@ -32,4 +77,24 @@ Retention policy bekerja pada `cli.templates.directory.backups_commit` dan
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Backup Directories", href: "../templates/directories", description: "Lihat cleanup targets."}, {title: "Cleanup Backup Workflow", href: "../../../commands/cleanup/backup/workflow", description: "Tinjau selection dan deletion order."}, {title: "Cleanup Backup Examples", href: "../../../commands/cleanup/backup/examples", description: "Lihat retention scenarios."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Backup Directories",
+        href: "../templates/directories",
+        description: "Lihat cleanup targets.",
+      },
+      {
+        title: "Cleanup Backup Workflow",
+        href: "../../../commands/cleanup/backup/workflow",
+        description: "Tinjau selection dan deletion order.",
+      },
+      {
+        title: "Cleanup Backup Examples",
+        href: "../../../commands/cleanup/backup/examples",
+        description: "Lihat retention scenarios.",
+      },
+    ]}
+  />
+</Section>

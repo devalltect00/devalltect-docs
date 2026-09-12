@@ -8,23 +8,21 @@ import { HTMLAttributes, ReactNode } from "react";
  *
  * Unlike Badge, a Tag does not communicate semantic status.
  */
-export interface TagProps
-    extends HTMLAttributes<HTMLSpanElement> {
+export interface TagProps extends HTMLAttributes<HTMLSpanElement> {
+  /**
+   * Tag content.
+   */
+  children: ReactNode;
 
-    /**
-     * Tag content.
-     */
-    children: ReactNode;
+  /**
+   * Optional leading icon.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional leading icon.
-     */
-    icon?: ReactNode;
-
-    /**
-     * Render with a subtle hover animation.
-     *
-     * @default true
-     */
-    hoverable?: boolean;
+  /**
+   * Render with a subtle hover animation.
+   *
+   * @default true
+   */
+  hoverable?: boolean;
 }

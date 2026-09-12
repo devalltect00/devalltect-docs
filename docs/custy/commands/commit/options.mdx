@@ -8,39 +8,35 @@ keywords: [auto-stage, stage-mode, allow-empty-commit]
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy commit"
-    title="Command Options"
-    description="Control commit templates, staging behavior, version resolution, backups, and empty-commit handling."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy commit [OPTIONS]"
-    tags={[
-        "options",
-        "staging",
-        "versioning",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy commit"
+  title="Command Options"
+  description="Control commit templates, staging behavior, version resolution, backups, and empty-commit handling."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy commit [OPTIONS]"
+  tags={["options", "staging", "versioning"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -56,56 +52,59 @@ the final Git commit.
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--commit-msg-file",
-            shorthand: "-cmsg",
-            description: "Override the existing commit-message template file.",
-            example: "--commit-msg-file templates/commit-message.txt",
-        },
-        {
-            name: "--auto-stage",
-            shorthand: "-as",
-            description: "Enable automatic staging behavior.",
-            defaultValue: "Resolved configuration",
-            example: "--auto-stage",
-        },
-        {
-            name: "--stage-mode",
-            shorthand: "-sm",
-            description: "Select all, update, none, or manual staging behavior.",
-            example: "--stage-mode update",
-        },
-        {
-            name: "--allow-empty-commit / --no-allow-empty-commit",
-            shorthand: "-aec / -Aec",
-            description: "Allow or reject commit creation when no normal changes are available.",
-            example: "--allow-empty-commit",
-        },
-        {
-            name: "--strategy",
-            description: "Resolve release artifacts with semver, pep440, date, gitcount, or commitizen.",
-            example: "--strategy semver",
-        },
-        {
-            name: "--backup-commit-dir",
-            shorthand: "-bcd",
-            description: "Override the directory used for commit-message backups.",
-            example: "--backup-commit-dir .config/custy/templates/backups/commit",
-        },
-        {
-            name: "--version-file",
-            shorthand: "-vf",
-            description: "Override the existing project version file.",
-            example: "--version-file app/__version__.py",
-        },
-        {
-            name: "--check-cz",
-            shorthand: "-cz",
-            description: "Require configured and installed Commitizen validation for this invocation.",
-            example: "--check-cz",
-        },
-    ]}
+  options={[
+    {
+      name: "--commit-msg-file",
+      shorthand: "-cmsg",
+      description: "Override the existing commit-message template file.",
+      example: "--commit-msg-file templates/commit-message.txt",
+    },
+    {
+      name: "--auto-stage",
+      shorthand: "-as",
+      description: "Enable automatic staging behavior.",
+      defaultValue: "Resolved configuration",
+      example: "--auto-stage",
+    },
+    {
+      name: "--stage-mode",
+      shorthand: "-sm",
+      description: "Select all, update, none, or manual staging behavior.",
+      example: "--stage-mode update",
+    },
+    {
+      name: "--allow-empty-commit / --no-allow-empty-commit",
+      shorthand: "-aec / -Aec",
+      description:
+        "Allow or reject commit creation when no normal changes are available.",
+      example: "--allow-empty-commit",
+    },
+    {
+      name: "--strategy",
+      description:
+        "Resolve release artifacts with semver, pep440, date, gitcount, or commitizen.",
+      example: "--strategy semver",
+    },
+    {
+      name: "--backup-commit-dir",
+      shorthand: "-bcd",
+      description: "Override the directory used for commit-message backups.",
+      example: "--backup-commit-dir .config/custy/templates/backups/commit",
+    },
+    {
+      name: "--version-file",
+      shorthand: "-vf",
+      description: "Override the existing project version file.",
+      example: "--version-file app/__version__.py",
+    },
+    {
+      name: "--check-cz",
+      shorthand: "-cz",
+      description:
+        "Require configured and installed Commitizen validation for this invocation.",
+      example: "--check-cz",
+    },
+  ]}
 />
 
 </Section>

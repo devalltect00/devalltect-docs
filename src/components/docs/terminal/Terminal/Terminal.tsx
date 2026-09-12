@@ -17,47 +17,25 @@ import styles from "./Terminal.module.css";
 import type { TerminalProps } from "./types";
 
 export default function Terminal({
-    children,
-    title,
-    language = "bash",
-    showHeader = true,
-    className,
-    ...props
+  children,
+  title,
+  language = "bash",
+  showHeader = true,
+  className,
+  ...props
 }: TerminalProps) {
-
-    const resolvedTitle = title ?? translate({
-        id: "docs.terminal.title",
-        message: "Terminal",
+  const resolvedTitle =
+    title ??
+    translate({
+      id: "docs.terminal.title",
+      message: "Terminal",
     });
 
-    return (
+  return (
+    <Card noPadding className={clsx(styles.terminal, className)} {...props}>
+      {showHeader && <TerminalHeader title={resolvedTitle} language={language} />}
 
-        <Card
-            noPadding
-            className={clsx(
-                styles.terminal,
-                className,
-            )}
-            {...props}
-        >
-
-            {showHeader && (
-
-                <TerminalHeader
-                    title={resolvedTitle}
-                    language={language}
-                />
-
-            )}
-
-            <TerminalBody>
-
-                {children}
-
-            </TerminalBody>
-
-        </Card>
-
-    );
-
+      <TerminalBody>{children}</TerminalBody>
+    </Card>
+  );
 }

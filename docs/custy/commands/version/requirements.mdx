@@ -5,45 +5,42 @@ sidebar_position: 2
 sidebar_key: custy-version
 
 tags:
-    - version
-    - requirements
+  - version
+  - requirements
 
 keywords:
-    - custy version requirements
+  - custy version requirements
 ---
 
 import {
-    CommandHero,
-    RequirementGrid,
-    Section,
-    InfoBox,
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Requirements"
-    description="Project requirements before synchronizing version information."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "requirements",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy version"
+  title="Requirements"
+  description="Project requirements before synchronizing version information."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["requirements", "version"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -57,53 +54,48 @@ updates the intended project files.
 ---
 
 <RequirementGrid
-    title="Project Requirements"
-    description="Minimum requirements before running Version Update."
-    items={[
-        {
-            title: "Git Repository",
-            level: "required",
-            children: (
-                <>
-                    The current project should already be initialized as a Git
-                    repository.
-                </>
-            ),
-        },
-        {
-            title: "Version Metadata",
-            level: "recommended",
-            children: (
-                <>
-                    Custy can detect supported Python or Node.js metadata.
-                    Projects without it remain valid and can use Git-tag-only
-                    versioning.
-                </>
-            ),
-        },
-        {
-            title: "Project Configuration",
-            level: "recommended",
-            children: (
-                <>
-                    Configure the preferred versioning strategy and bump policy
-                    inside <code>config.toml</code>.
-                </>
-            ),
-        },
-        {
-            title: "Initialized Project",
-            level: "recommended",
-            children: (
-                <>
-                    Projects initialized with
-                    <code>custy init</code>
-                    already contain the recommended directory structure and
-                    configuration files.
-                </>
-            ),
-        },
-    ]}
+  title="Project Requirements"
+  description="Minimum requirements before running Version Update."
+  items={[
+    {
+      title: "Git Repository",
+      level: "required",
+      children: (
+        <>The current project should already be initialized as a Git repository.</>
+      ),
+    },
+    {
+      title: "Version Metadata",
+      level: "recommended",
+      children: (
+        <>
+          Custy can detect supported Python or Node.js metadata. Projects without it
+          remain valid and can use Git-tag-only versioning.
+        </>
+      ),
+    },
+    {
+      title: "Project Configuration",
+      level: "recommended",
+      children: (
+        <>
+          Configure the preferred versioning strategy and bump policy inside{" "}
+          <code>config.toml</code>.
+        </>
+      ),
+    },
+    {
+      title: "Initialized Project",
+      level: "recommended",
+      children: (
+        <>
+          Projects initialized with
+          <code>custy init</code>
+          already contain the recommended directory structure and configuration files.
+        </>
+      ),
+    },
+  ]}
 />
 
 ---

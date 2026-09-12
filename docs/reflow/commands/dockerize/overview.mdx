@@ -6,9 +6,23 @@ sidebar_key: reflow-dockerize
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Build and Publish Tagged Images" description="Build an image for every repository tag and publish it to configured GitHub and/or GitLab registries." category="Container Publishing" status="External Mutation" syntax="reflow [GLOBAL OPTIONS] dockerize" links={[{label:"Requirements",href:"./requirements"},{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Build and Publish Tagged Images"
+  description="Build an image for every repository tag and publish it to configured GitHub and/or GitLab registries."
+  category="Container Publishing"
+  status="External Mutation"
+  syntax="reflow [GLOBAL OPTIONS] dockerize"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <Section title="Purpose">
 
@@ -16,7 +30,9 @@ Build an image for every repository tag and publish it to configured GitHub and/
 
 </Section>
 
-<InfoBox variant="warning" title="Safety boundary">Live mode builds/pushes and may remove local images. Dry-run simulates all mutation.</InfoBox>
+<InfoBox variant="warning" title="Safety boundary">
+  Live mode builds/pushes and may remove local images. Dry-run simulates all mutation.
+</InfoBox>
 
 - Resolve/materialize repository.
 - Validate Git, discover tags, resolve registry.

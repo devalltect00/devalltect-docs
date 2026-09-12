@@ -8,19 +8,9 @@
 /**
  * Generic documentation status.
  */
-export type Status =
-    | "default"
-    | "success"
-    | "warning"
-    | "danger"
-    | "info";
+export type Status = "default" | "success" | "warning" | "danger" | "info";
 
 /**
  * Badge variant.
  */
-export type Variant =
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "danger";
+export type Variant = "primary" | "secondary" | "success" | "warning" | "danger";

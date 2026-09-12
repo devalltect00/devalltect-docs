@@ -5,48 +5,44 @@ sidebar_position: 7
 sidebar_key: custy-cleanup-backup
 
 tags:
-    - cleanup
-    - backup
-    - output
+  - cleanup
+  - backup
+  - output
 
 keywords:
-    - custy cleanup backups output
+  - custy cleanup backups output
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    Section,
-    InfoBox,
-    Screenshot,
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
+  Screenshot,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Output"
-    description="Learn what information Custy reports after removing obsolete backup files."
-    category="Maintenance"
-    status="Recommended"
-    syntax="custy cleanup backups"
-    tags={[
-        "cleanup",
-        "backup",
-        "output",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy cleanup backups"
+  title="Output"
+  description="Learn what information Custy reports after removing obsolete backup files."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup backups"
+  tags={["cleanup", "backup", "output"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -71,19 +67,19 @@ report that no cleanup was necessary.
 → Cleaning tag backups (keeping 10)
 
 ✓ Pipeline completed successfully!`,
-            notes:
-                "The exact wording may vary depending on your project configuration and cleanup target.",
-        },
-    ]}
+notes:
+"The exact wording may vary depending on your project configuration and cleanup target.",
+},
+]}
 />
 
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
-    alt="Backup cleanup output"
-    title="Backup Cleanup Output"
-    caption="Example CLI output after Backup Cleanup removes obsolete backup files."
+  src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+  alt="Backup cleanup output"
+  title="Backup Cleanup Output"
+  caption="Example CLI output after Backup Cleanup removes obsolete backup files."
 />
 
 ---

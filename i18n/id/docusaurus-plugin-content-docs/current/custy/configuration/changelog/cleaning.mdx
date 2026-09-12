@@ -7,14 +7,88 @@ tags: [custy, changelog, cleaning]
 keywords: [remove_separators, remove_headers, remove_keywords]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.cleaning]" title="Cleaning Rules" description="Hapus project-specific template boilerplate sebelum grouping dan rendering tanpa mengubah Git history." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.cleaning]" tags={["preprocessing", "metadata", "keywords"]} links={[{label: "Pending Commit", href: "./pending-commit"}, {label: "Releases", href: "./releases"}, {label: "Rendering", href: "./rendering"}]} />
-<CommandMetadata items={[{label: "Properties", value: "6", icon: "table"}, {label: "Stage", value: "Preprocessing", icon: "pipeline"}, {label: "Changes Git History", value: "No", icon: "security"}, {label: "Generated Separator", value: "---", icon: "file"}]} />
+<CommandHero
+  command="[tool.custy.changelog.cleaning]"
+  title="Cleaning Rules"
+  description="Hapus project-specific template boilerplate sebelum grouping dan rendering tanpa mengubah Git history."
+  category="Changelog Configuration"
+  status="Active"
+  syntax="[tool.custy.changelog.cleaning]"
+  tags={["preprocessing", "metadata", "keywords"]}
+  links={[
+    { label: "Pending Commit", href: "./pending-commit" },
+    { label: "Releases", href: "./releases" },
+    { label: "Rendering", href: "./rendering" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "6", icon: "table" },
+    { label: "Stage", value: "Preprocessing", icon: "pipeline" },
+    { label: "Changes Git History", value: "No", icon: "security" },
+    { label: "Generated Separator", value: "---", icon: "file" },
+  ]}
+/>
 
 ## Properties
-<PropertyTable items={[{property: "remove_separators", type: "String array", defaultValue: "[\"---\"]", description: "Hapus matching Markdown separator lines."}, {property: "remove_headers", type: "Boolean", defaultValue: "false", description: "Hapus Markdown heading lines untuk mencegah duplicated structure."}, {property: "remove_hash_lines", type: "Boolean", defaultValue: "false", description: "Hapus comment-style lines yang diawali #."}, {property: "remove_release_summary", type: "Boolean", defaultValue: "false", description: "Hapus generated release narrative sambil mempertahankan actual change items."}, {property: "remove_metadata", type: "Boolean", defaultValue: "false", description: "Hapus source metadata seperti type, stability, workflow, atau maintenance lines."}, {property: "remove_keywords", type: "String array", defaultValue: "3 generated phrases", description: "Hapus lines yang memuat configured case-sensitive project boilerplate."}]} />
-<Terminal title="Generated cleaning rules" language="toml">{`[tool.custy.changelog.cleaning]
+
+<PropertyTable
+  items={[
+    {
+      property: "remove_separators",
+      type: "String array",
+      defaultValue: '["---"]',
+      description: "Hapus matching Markdown separator lines.",
+    },
+    {
+      property: "remove_headers",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Hapus Markdown heading lines untuk mencegah duplicated structure.",
+    },
+    {
+      property: "remove_hash_lines",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Hapus comment-style lines yang diawali #.",
+    },
+    {
+      property: "remove_release_summary",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Hapus generated release narrative sambil mempertahankan actual change items.",
+    },
+    {
+      property: "remove_metadata",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Hapus source metadata seperti type, stability, workflow, atau maintenance lines.",
+    },
+    {
+      property: "remove_keywords",
+      type: "String array",
+      defaultValue: "3 generated phrases",
+      description:
+        "Hapus lines yang memuat configured case-sensitive project boilerplate.",
+    },
+  ]}
+/>
+<Terminal
+  title="Generated cleaning rules"
+  language="toml"
+>{`[tool.custy.changelog.cleaning]
 remove_separators = ["---"]
 remove_headers = false
 remove_hash_lines = false
@@ -25,5 +99,28 @@ remove_keywords = [
   "- *(Nothing yet)* — See tag message for full context.",
   "- _(Nothing yet)_",
 ]`}</Terminal>
-<InfoBox variant="warning" title="Keyword Matching Bersifat Case-Sensitive">Gunakan exact phrases dan ubah satu cleaning rule setiap kali. Broad removals dapat menghasilkan valid Markdown yang diam-diam kehilangan useful release context.</InfoBox>
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Releases", href: "./releases", description: "Konfigurasikan release extraction setelah cleaning."}, {title: "Rendering", href: "./rendering", description: "Atur final visibility dan layout."}, {title: "Troubleshooting", href: "../../commands/changelog/generate/troubleshooting", description: "Diagnosis missing content."}]} /></Section>
+<InfoBox variant="warning" title="Keyword Matching Bersifat Case-Sensitive">
+  Gunakan exact phrases dan ubah satu cleaning rule setiap kali. Broad removals dapat
+  menghasilkan valid Markdown yang diam-diam kehilangan useful release context.
+</InfoBox>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Releases",
+        href: "./releases",
+        description: "Konfigurasikan release extraction setelah cleaning.",
+      },
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Atur final visibility dan layout.",
+      },
+      {
+        title: "Troubleshooting",
+        href: "../../commands/changelog/generate/troubleshooting",
+        description: "Diagnosis missing content.",
+      },
+    ]}
+  />
+</Section>

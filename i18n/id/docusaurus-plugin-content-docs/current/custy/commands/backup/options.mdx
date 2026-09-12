@@ -6,25 +6,25 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Options"
-    description="Pelajari command-line options yang didukung command backup."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup commit"
-    tags={["options", "backup", "cli"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Backup Files", href: "./backup-files"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy backup"
+  title="Options"
+  description="Pelajari command-line options yang didukung command backup."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup commit"
+  tags={["options", "backup", "cli"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Backup Files", href: "./backup-files" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Ringkasan
@@ -46,32 +46,34 @@ atau default bawaan.
 <Section title="Options yang Tersedia">
 
 <CommandOption
-    options={[
-        {
-            name: "--backup-dir",
-            shorthand: "",
-            required: false,
-            description: "Override destination directory untuk generated backup files.",
-            defaultValue: "Configured backup directory",
-            example: "custy backup commit --backup-dir .config/custy/backups/custom",
-        },
-        {
-            name: "--keep",
-            shorthand: "",
-            required: false,
-            description: "Tentukan jumlah backup files yang dipertahankan sebelum backup lama di-prune.",
-            defaultValue: "Project configuration",
-            example: "custy backup all --keep 20",
-        },
-        {
-            name: "--force",
-            shorthand: "-f",
-            required: false,
-            description: "Buat backup directories saat diperlukan dan lanjutkan tanpa konfirmasi interaktif.",
-            defaultValue: "false",
-            example: "custy backup tag --force",
-        },
-    ]}
+  options={[
+    {
+      name: "--backup-dir",
+      shorthand: "",
+      required: false,
+      description: "Override destination directory untuk generated backup files.",
+      defaultValue: "Configured backup directory",
+      example: "custy backup commit --backup-dir .config/custy/backups/custom",
+    },
+    {
+      name: "--keep",
+      shorthand: "",
+      required: false,
+      description:
+        "Tentukan jumlah backup files yang dipertahankan sebelum backup lama di-prune.",
+      defaultValue: "Project configuration",
+      example: "custy backup all --keep 20",
+    },
+    {
+      name: "--force",
+      shorthand: "-f",
+      required: false,
+      description:
+        "Buat backup directories saat diperlukan dan lanjutkan tanpa konfirmasi interaktif.",
+      defaultValue: "false",
+      example: "custy backup tag --force",
+    },
+  ]}
 />
 
 </Section>

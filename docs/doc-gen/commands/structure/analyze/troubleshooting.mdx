@@ -6,13 +6,25 @@ sidebar_key: doc-gen-structure-analyze-troubleshooting
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="Troubleshooting" description="Troubleshooting" category="Project Structure" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="Troubleshooting"
+  description="Troubleshooting"
+  category="Project Structure"
+  status="Read Only"
+  syntax="doc-gen structure analyze [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Symptom | Likely cause | Solution |
-| --- | --- | --- |
+| Symptom                  | Likely cause                                          | Solution                                         |
+| ------------------------ | ----------------------------------------------------- | ------------------------------------------------ |
 | Detection is unexpected. | Signals are ambiguous or project type was overridden. | Remove/adjust --project-type and inspect target. |
-| Analysis is slow. | Generated/dependency directories are visible. | Add them to collapse/ignore settings. |
-| Target missing. | Resolution is invalid. | Verify the target path. |
-
+| Analysis is slow.        | Generated/dependency directories are visible.         | Add them to collapse/ignore settings.            |
+| Target missing.          | Resolution is invalid.                                | Verify the target path.                          |

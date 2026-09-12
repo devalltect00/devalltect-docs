@@ -8,6 +8,4 @@
 /**
  * Supported documentation themes.
  */
-export type ThemeMode =
-    | "light"
-    | "dark";
+export type ThemeMode = "light" | "dark";

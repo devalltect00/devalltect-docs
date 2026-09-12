@@ -4,19 +4,59 @@ description: "Contoh praktis changelog generation."
 sidebar_position: 8
 sidebar_key: custy-changelog-generate-examples
 ---
-import {CommandHero, CommandExample, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Examples" description="Jalankan generation default, dry run, force, atau alternative message file." category="Changelog" status="Practical Guide" syntax="custy changelog generate [OPTIONS]" links={[
-    {label: "Syntax", href: "./syntax"}, {label: "Options", href: "./options"}, {label: "Output", href: "./output"},
-]} />
+import {
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Examples"
+  description="Jalankan generation default, dry run, force, atau alternative message file."
+  category="Changelog"
+  status="Practical Guide"
+  syntax="custy changelog generate [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Output", href: "./output" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandExample examples={[
-    {title: "Project Defaults", description: "Gunakan seluruh konfigurasi proyek.", command: `custy changelog generate`, result: "Membuat atau memperbarui configured changelog artifact."},
-    {title: "Dry Run", description: "Pratinjau tanpa menulis file.", command: `custy --dry-run changelog generate`, result: "Menampilkan rencana generation."},
-    {title: "Force Generation", description: "Paksa keputusan generation untuk invocation ini.", command: `custy changelog generate --force`, result: "Menjalankan forced regeneration sesuai behavior yang didukung."},
-    {title: "Alternative Pending Message", description: "Gunakan file pesan lain.", command: `custy changelog generate --commit-msg-file .config/custy/templates/release-commit.txt`, result: "Membaca pending message dari file tersebut."},
-]} />
+<CommandExample
+  examples={[
+    {
+      title: "Project Defaults",
+      description: "Gunakan seluruh konfigurasi proyek.",
+      command: `custy changelog generate`,
+      result: "Membuat atau memperbarui configured changelog artifact.",
+    },
+    {
+      title: "Dry Run",
+      description: "Pratinjau tanpa menulis file.",
+      command: `custy --dry-run changelog generate`,
+      result: "Menampilkan rencana generation.",
+    },
+    {
+      title: "Force Generation",
+      description: "Paksa keputusan generation untuk invocation ini.",
+      command: `custy changelog generate --force`,
+      result: "Menjalankan forced regeneration sesuai behavior yang didukung.",
+    },
+    {
+      title: "Alternative Pending Message",
+      description: "Gunakan file pesan lain.",
+      command: `custy changelog generate --commit-msg-file .config/custy/templates/release-commit.txt`,
+      result: "Membaca pending message dari file tersebut.",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Forced Generation Lebih Luas">`--force` dapat menghasilkan perubahan lebih besar. Gunakan dry run dan tinjau diff.</InfoBox>
+<InfoBox variant="warning" title="Forced Generation Lebih Luas">
+  `--force` dapat menghasilkan perubahan lebih besar. Gunakan dry run dan tinjau diff.
+</InfoBox>

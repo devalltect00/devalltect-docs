@@ -4,17 +4,31 @@ description: "Syntax command untuk menghapus branch lama."
 sidebar_position: 3
 sidebar_key: custy-cleanup-branch
 ---
-import {CommandHero, Terminal, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup branches" title="Syntax" description="Gunakan syntax Branch Cleanup dan global options dengan benar." category="Maintenance" status="Reference" syntax="custy cleanup branches" links={[
-    {label: "Requirements", href: "./requirements"}, {label: "Options", href: "./options"}, {label: "Configuration", href: "./configuration"},
-]} />
+import { CommandHero, Terminal, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup branches"
+  title="Syntax"
+  description="Gunakan syntax Branch Cleanup dan global options dengan benar."
+  category="Maintenance"
+  status="Reference"
+  syntax="custy cleanup branches"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Options", href: "./options" },
+    { label: "Configuration", href: "./configuration" },
+  ]}
+/>
 
 ## Ringkasan
 
 <Terminal command="custy cleanup branches" title="Basic Syntax" />
 
-<InfoBox variant="note" title="Public Invocation">Gunakan `custy cleanup branches` untuk operasi mandiri. Nama step internal bukan nilai publik untuk `custy run`.</InfoBox>
+<InfoBox variant="note" title="Public Invocation">
+  Gunakan `custy cleanup branches` untuk operasi mandiri. Nama step internal bukan nilai
+  publik untuk `custy run`.
+</InfoBox>
 
 <Section title="Global Options">
 Global options ditempatkan sebelum subcommand:
@@ -24,6 +38,10 @@ custy --dry-run cleanup branches
 custy --debug cleanup branches
 custy --log-level DEBUG cleanup branches
 ```
+
 </Section>
 
-<Section title="Hasil Ditentukan oleh Konfigurasi">Command yang sama dapat menghasilkan kandidat berbeda karena Custy menggabungkan project configuration dengan option CLI.</Section>
+<Section title="Hasil Ditentukan oleh Konfigurasi">
+  Command yang sama dapat menghasilkan kandidat berbeda karena Custy menggabungkan
+  project configuration dengan option CLI.
+</Section>

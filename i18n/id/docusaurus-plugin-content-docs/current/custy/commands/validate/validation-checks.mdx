@@ -6,26 +6,26 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    Section,
-    FeatureGrid,
-    InfoBox,
-    Icon,
+  CommandHero,
+  Section,
+  FeatureGrid,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Validation Checks"
-    description="Pahami setiap validation step yang dijalankan sebelum workflow Custy dimulai."
-    category="Validate"
-    status="Direkomendasikan"
-    syntax="custy validate"
-    tags={["validation", "workflow", "git", "configuration"]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy validate"
+  title="Validation Checks"
+  description="Pahami setiap validation step yang dijalankan sebelum workflow Custy dimulai."
+  category="Validate"
+  status="Direkomendasikan"
+  syntax="custy validate"
+  tags={["validation", "workflow", "git", "configuration"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Ringkasan
@@ -52,29 +52,40 @@ ditentukan dari project configuration selama memungkinkan.
 <Section title="Kategori Validation">
 
 <FeatureGrid
-    title="Yang Diperiksa Custy"
-    items={[
-        {
-            title: "Git Repository",
-            icon: <Icon name="git" />,
-            children: <>Pastikan current directory merupakan Git repository yang valid sebelum melanjutkan.</>,
-        },
-        {
-            title: "Repository Configuration",
-            icon: <Icon name="configuration" />,
-            children: <>Pastikan repository configuration seperti remote dan version file tersedia.</>,
-        },
-        {
-            title: "Project Resources",
-            icon: <Icon name="directory" />,
-            children: <>Pastikan template files dan supporting resources yang diperlukan tersedia.</>,
-        },
-        {
-            title: "Repository State",
-            icon: <Icon name="success" />,
-            children: <>Pastikan repository berada dalam kondisi yang sesuai untuk commit workflow.</>,
-        },
-    ]}
+  title="Yang Diperiksa Custy"
+  items={[
+    {
+      title: "Git Repository",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Pastikan current directory merupakan Git repository yang valid sebelum
+          melanjutkan.
+        </>
+      ),
+    },
+    {
+      title: "Repository Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>Pastikan repository configuration seperti remote dan version file tersedia.</>
+      ),
+    },
+    {
+      title: "Project Resources",
+      icon: <Icon name="directory" />,
+      children: (
+        <>Pastikan template files dan supporting resources yang diperlukan tersedia.</>
+      ),
+    },
+    {
+      title: "Repository State",
+      icon: <Icon name="success" />,
+      children: (
+        <>Pastikan repository berada dalam kondisi yang sesuai untuk commit workflow.</>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -85,17 +96,17 @@ ditentukan dari project configuration selama memungkinkan.
 
 Custy menjalankan validation dalam urutan berikut.
 
-| Step | Validation |
-|------|------------|
-| 1 | Git repository |
-| 2 | Git remote |
-| 3 | Version file |
-| 4 | Commit message template |
-| 5 | Tag message template |
-| 6 | Staged changes |
-| 7 | Commit validation provider preflight |
-| 8 | Commit message template availability |
-| 9 | Tag message template availability |
+| Step | Validation                           |
+| ---- | ------------------------------------ |
+| 1    | Git repository                       |
+| 2    | Git remote                           |
+| 3    | Version file                         |
+| 4    | Commit message template              |
+| 5    | Tag message template                 |
+| 6    | Staged changes                       |
+| 7    | Commit validation provider preflight |
+| 8    | Commit message template availability |
+| 9    | Tag message template availability    |
 
 Urutan ini memastikan environment checks yang ringan diselesaikan sebelum
 workflow-specific validation dimulai.

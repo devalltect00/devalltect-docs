@@ -4,9 +4,28 @@ description: "Atasi version file hilang, strategy invalid, format tak terduga, c
 sidebar_position: 4
 sidebar_key: custy-troubleshooting-versioning
 ---
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy version update" title="Versioning Troubleshooting" description="Pisahkan masalah version selection, generation, file application, dan Git tagging." category="Pemecahan Masalah" status="Phase-aware" syntax="select -> generate -> apply -> tag" links={[{label:"Troubleshooting Hub",href:"./overview"},{label:"Version Formats",href:"../reference/version-formats"},{label:"Version Command",href:"../commands/version/troubleshooting"},{label:"Tag Command",href:"../commands/tag/troubleshooting"}]} />
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version update"
+  title="Versioning Troubleshooting"
+  description="Pisahkan masalah version selection, generation, file application, dan Git tagging."
+  category="Pemecahan Masalah"
+  status="Phase-aware"
+  syntax="select -> generate -> apply -> tag"
+  links={[
+    { label: "Troubleshooting Hub", href: "./overview" },
+    { label: "Version Formats", href: "../reference/version-formats" },
+    { label: "Version Command", href: "../commands/version/troubleshooting" },
+    { label: "Tag Command", href: "../commands/tag/troubleshooting" },
+  ]}
+/>
 
 ## Version file hilang atau tidak diperbarui
 
@@ -20,6 +39,34 @@ Gunakan nama strategy yang didukung dan input version yang valid untuk format te
 
 Periksa local dan remote tags sebelum mencoba ulang. Jika version file sudah berubah tetapi tag gagal, pulihkan atau lanjutkan dari state aktual—jangan otomatis mengulang seluruh pipeline.
 
-<InfoBox variant="warning" title="Generation dan tagging adalah phase terpisah">Version baru dapat sudah dihitung atau ditulis sebelum tag dibuat. Periksa file diff dan tags untuk menentukan recovery.</InfoBox>
+<InfoBox variant="warning" title="Generation dan tagging adalah phase terpisah">
+  Version baru dapat sudah dihitung atau ditulis sebelum tag dibuat. Periksa file diff
+  dan tags untuk menentukan recovery.
+</InfoBox>
 
-<Section title="Panduan terkait"><RelatedCommands commands={[{title:"Version Troubleshooting",href:"../commands/version/troubleshooting",description:"Atasi focused Version Update failures."},{title:"Tag Troubleshooting",href:"../commands/tag/troubleshooting",description:"Atasi validation, version input, dan existing tag."},{title:"Version Formats",href:"../reference/version-formats",description:"Bandingkan strategy, form, conversion, dan limit."},{title:"Versioning Concept",href:"../concepts/versioning",description:"Pahami selection, preparation, synchronization, dan tagging."}]} /></Section>
+<Section title="Panduan terkait">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Version Troubleshooting",
+        href: "../commands/version/troubleshooting",
+        description: "Atasi focused Version Update failures.",
+      },
+      {
+        title: "Tag Troubleshooting",
+        href: "../commands/tag/troubleshooting",
+        description: "Atasi validation, version input, dan existing tag.",
+      },
+      {
+        title: "Version Formats",
+        href: "../reference/version-formats",
+        description: "Bandingkan strategy, form, conversion, dan limit.",
+      },
+      {
+        title: "Versioning Concept",
+        href: "../concepts/versioning",
+        description: "Pahami selection, preparation, synchronization, dan tagging.",
+      },
+    ]}
+  />
+</Section>

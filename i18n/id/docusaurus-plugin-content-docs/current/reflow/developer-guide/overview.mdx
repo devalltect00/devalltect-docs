@@ -6,13 +6,23 @@ sidebar_key: reflow-developer-guide
 tags: [reflow, developer-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Panduan Pengembang" description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanan." category="Pengembangan" status="Panduan Kontributor" syntax="python -m pytest" />
+<CommandHero
+  command="Reflow"
+  title="Panduan Pengembang"
+  description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanan."
+  category="Pengembangan"
+  status="Panduan Kontributor"
+  syntax="python -m pytest"
+/>
 
 - Pisahkan interaksi CLI dari perilaku inti yang dapat digunakan kembali.
 - Pertahankan urutan prioritas konfigurasi dan sumber daya milik proyek.
 - Tambahkan penanganan kesalahan pada batas CLI.
 - Uji efek mode langsung dan dry-run secara terpisah.
 
-<InfoBox variant="note" title="Perluasan">Tambahkan penguraian perintah di app/cli dan perilaku yang dapat digunakan kembali di app/core; sertakan pengujian batas mode langsung/dry-run.</InfoBox>
+<InfoBox variant="note" title="Perluasan">
+  Tambahkan penguraian perintah di app/cli dan perilaku yang dapat digunakan kembali di
+  app/core; sertakan pengujian batas mode langsung/dry-run.
+</InfoBox>

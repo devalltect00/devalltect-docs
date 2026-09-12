@@ -6,14 +6,10 @@
 
 export { default } from "./PatternCard";
 
-export type {
-    PatternCardProps,
-    PatternImplementation,
-} from "./types";
-
+export type { PatternCardProps, PatternImplementation } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.PatternCard
     title="Builder Pattern"
     icon={<Docs.Icon name="builder" />}

@@ -6,9 +6,16 @@ sidebar_key: doc-gen-configuration
 tags: [doc-gen, configuration]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command=".config/doc_gen/config.toml" title="Konfigurasi" description="Pahami file konfigurasi, urutan prioritas, dan bagian yang aktif." category="Konfigurasi" status="Milik Proyek" syntax=".config/doc_gen/config.toml" />
+<CommandHero
+  command=".config/doc_gen/config.toml"
+  title="Konfigurasi"
+  description="Pahami file konfigurasi, urutan prioritas, dan bagian yang aktif."
+  category="Konfigurasi"
+  status="Milik Proyek"
+  syntax=".config/doc_gen/config.toml"
+/>
 
 <Section title="Urutan prioritas">
 
@@ -18,4 +25,7 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 
 </Section>
 
-<InfoBox variant="warning" title="Kepemilikan">Inisialisasi membuat salinan milik proyek. CLI tidak boleh diam-diam menimpa konfigurasi yang dikelola pengguna.</InfoBox>
+<InfoBox variant="warning" title="Kepemilikan">
+  Inisialisasi membuat salinan milik proyek. CLI tidak boleh diam-diam menimpa
+  konfigurasi yang dikelola pengguna.
+</InfoBox>

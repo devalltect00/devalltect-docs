@@ -22,25 +22,12 @@ export { default as PatternTable } from "./PatternTable";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    ArchitectureCardProps,
-} from "./ArchitectureCard";
+export type { ArchitectureCardProps } from "./ArchitectureCard";
 
-export type {
-    LayerCardProps,
-} from "./LayerCard";
+export type { LayerCardProps } from "./LayerCard";
 
-export type {
-    DependencyCardProps,
-    DependencyItem,
-} from "./DependencyCard";
+export type { DependencyCardProps, DependencyItem } from "./DependencyCard";
 
-export type {
-    PatternCardProps,
-    PatternImplementation,
-} from "./PatternCard";
+export type { PatternCardProps, PatternImplementation } from "./PatternCard";
 
-export type {
-    PatternTableProps,
-    PatternTableItem,
-} from "./PatternTable";
+export type { PatternTableProps, PatternTableItem } from "./PatternTable";

@@ -33,47 +33,20 @@ export { default as CommandLifecycle } from "./CommandLifecycle";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    CommandHeroLink,
-    CommandHeroProps,
-} from "./CommandHero";
+export type { CommandHeroLink, CommandHeroProps } from "./CommandHero";
 
-export type {
-    CommandMetadataItem,
-    CommandMetadataProps,
-} from "./CommandMetadata";
+export type { CommandMetadataItem, CommandMetadataProps } from "./CommandMetadata";
 
-export type {
-    CommandSyntaxExample,
-    CommandSyntaxProps,
-} from "./CommandSyntax";
+export type { CommandSyntaxExample, CommandSyntaxProps } from "./CommandSyntax";
 
-export type {
-    CommandOptionItem,
-    CommandOptionProps,
-} from "./CommandOption";
+export type { CommandOptionItem, CommandOptionProps } from "./CommandOption";
 
-export type {
-    CommandExampleItem,
-    CommandExampleProps,
-} from "./CommandExample";
+export type { CommandExampleItem, CommandExampleProps } from "./CommandExample";
 
-export type {
-    CommandOutputItem,
-    CommandOutputProps,
-} from "./CommandOutput";
+export type { CommandOutputItem, CommandOutputProps } from "./CommandOutput";
 
-export type {
-    RelatedCommandItem,
-    RelatedCommandsProps,
-} from "./RelatedCommands";
+export type { RelatedCommandItem, RelatedCommandsProps } from "./RelatedCommands";
 
-export type {
-    CommandChecklistItem,
-    CommandChecklistProps,
-} from "./CommandChecklist";
+export type { CommandChecklistItem, CommandChecklistProps } from "./CommandChecklist";
 
-export type {
-    CommandLifecycleProps,
-    CommandLifecycleStep,
-} from "./CommandLifecycle";
+export type { CommandLifecycleProps, CommandLifecycleStep } from "./CommandLifecycle";

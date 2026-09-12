@@ -4,22 +4,78 @@ description: "Pertanyaan umum tentang custy push."
 sidebar_position: 10
 sidebar_key: custy-push-faq
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang destinations, tags, backup remotes, dan dry run." category="Git Operations" status="Reference" syntax="custy push [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Remotes",href:"./remotes"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang destinations, tags, backup remotes, dan dry run."
+  category="Git Operations"
+  status="Reference"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="warning" title="Preview Unfamiliar Pushes">Selalu baca remote role, name, dan actions yang dilaporkan sebelum multi-remote push.</InfoBox>
+<InfoBox variant="warning" title="Preview Unfamiliar Pushes">
+  Selalu baca remote role, name, dan actions yang dilaporkan sebelum multi-remote push.
+</InfoBox>
 
-<Section title="Apa yang Dipush Secara Default?">Current HEAD dikirim ke resolved main remote. Tag dan backup synchronization bergantung pada options dan state.</Section>
-<Section title="Apakah custy push Membuat Commit atau Tag?">Tidak. Commit dan Tag adalah profile terpisah.</Section>
-<Section title="Dapatkah Push ke Backup Remote?">Ya, bila synchronization diminta dan eligible backup destination ditemukan.</Section>
-<Section title="Apa yang Di-override oleh --remote?">Option ini memilih tepat satu destination dan override `--all-remote`, `push_to`, serta configured remote groups.</Section>
-<Section title="Apa Perbedaan custy run push?">Keduanya memakai registered Push profile dan mempropagasikan push options yang sama. Direct form menonaktifkan hidden Rich rendering sepenuhnya, sedangkan `custy run push` menghentikan sementara visible progress selama interactive authentication. Keduanya memberikan stable terminal ownership kepada Git untuk username, PAT, dan SSH prompt.</Section>
-<Section title="Apakah Dry Run Menghubungi Remote?">Dry run ditujukan untuk pratinjau tanpa push mutation; jangan menganggapnya sebagai bukti authentication atau remote permission sukses.</Section>
-<Section title="Mengapa Docker Meminta Credentials Lagi?">Container tidak mewarisi host credential-manager session. Gunakan native SSH, jawab approved interactive prompt, atau konfigurasikan optional protected external fallback melalui `custy configure credentials`.</Section>
-<Section title="Mengapa Interactive Push Terlihat Freeze?">Git biasanya sedang menunggu username dan PAT input. Versi Custy saat ini memberikan direct terminal ownership kepada manual Git authentication. Direct command menonaktifkan hidden Rich renderer dan Run pipeline menghentikan sementara visible progress sampai authentication selesai. Jika hanya `custy push` kehilangan prompt sedangkan `custy run push` bekerja, rebuild atau pull current image. Jangan mengirim dua empty lines: untuk private repository, GitHub dapat menampilkan `Repository not found` bersama `Authentication failed` ketika access tidak tersedia.</Section>
-<Section title="Bagaimana Manual Docker Authentication Bekerja?">Jalankan dengan `-it` dan jangan berikan managed credential mount atau variable. Masukkan provider username, lalu masukkan PAT ketika Git menampilkan `Password`. Password field biasanya menyembunyikan input. Disposable container tidak menyimpan nilai ini dan GitHub serta GitLab remotes dapat meminta secara terpisah.</Section>
-<Section title="Apakah Custy Menyimpan Token Saya?">Tidak di project configuration. File mode menyimpan token di external protected file yang dipilih secara eksplisit; environment mode membaca named runtime variable.</Section>
-<Section title="Dapatkah Non-Interactive Push Menunggu Input?">Dengan rekomendasi `fail_non_interactive = true`, tidak. Git prompt dinonaktifkan ketika tidak dapat dijawab sehingga job gagal secara jelas dan tidak hang.</Section>
+<Section title="Apa yang Dipush Secara Default?">
+  Current HEAD dikirim ke resolved main remote. Tag dan backup synchronization
+  bergantung pada options dan state.
+</Section>
+<Section title="Apakah custy push Membuat Commit atau Tag?">
+  Tidak. Commit dan Tag adalah profile terpisah.
+</Section>
+<Section title="Dapatkah Push ke Backup Remote?">
+  Ya, bila synchronization diminta dan eligible backup destination ditemukan.
+</Section>
+<Section title="Apa yang Di-override oleh --remote?">
+  Option ini memilih tepat satu destination dan override `--all-remote`, `push_to`,
+  serta configured remote groups.
+</Section>
+<Section title="Apa Perbedaan custy run push?">
+  Keduanya memakai registered Push profile dan mempropagasikan push options yang sama.
+  Direct form menonaktifkan hidden Rich rendering sepenuhnya, sedangkan `custy run push`
+  menghentikan sementara visible progress selama interactive authentication. Keduanya
+  memberikan stable terminal ownership kepada Git untuk username, PAT, dan SSH prompt.
+</Section>
+<Section title="Apakah Dry Run Menghubungi Remote?">
+  Dry run ditujukan untuk pratinjau tanpa push mutation; jangan menganggapnya sebagai
+  bukti authentication atau remote permission sukses.
+</Section>
+<Section title="Mengapa Docker Meminta Credentials Lagi?">
+  Container tidak mewarisi host credential-manager session. Gunakan native SSH, jawab
+  approved interactive prompt, atau konfigurasikan optional protected external fallback
+  melalui `custy configure credentials`.
+</Section>
+<Section title="Mengapa Interactive Push Terlihat Freeze?">
+  Git biasanya sedang menunggu username dan PAT input. Versi Custy saat ini memberikan
+  direct terminal ownership kepada manual Git authentication. Direct command
+  menonaktifkan hidden Rich renderer dan Run pipeline menghentikan sementara visible
+  progress sampai authentication selesai. Jika hanya `custy push` kehilangan prompt
+  sedangkan `custy run push` bekerja, rebuild atau pull current image. Jangan mengirim
+  dua empty lines: untuk private repository, GitHub dapat menampilkan `Repository not
+  found` bersama `Authentication failed` ketika access tidak tersedia.
+</Section>
+<Section title="Bagaimana Manual Docker Authentication Bekerja?">
+  Jalankan dengan `-it` dan jangan berikan managed credential mount atau variable.
+  Masukkan provider username, lalu masukkan PAT ketika Git menampilkan `Password`.
+  Password field biasanya menyembunyikan input. Disposable container tidak menyimpan
+  nilai ini dan GitHub serta GitLab remotes dapat meminta secara terpisah.
+</Section>
+<Section title="Apakah Custy Menyimpan Token Saya?">
+  Tidak di project configuration. File mode menyimpan token di external protected file
+  yang dipilih secara eksplisit; environment mode membaca named runtime variable.
+</Section>
+<Section title="Dapatkah Non-Interactive Push Menunggu Input?">
+  Dengan rekomendasi `fail_non_interactive = true`, tidak. Git prompt dinonaktifkan
+  ketika tidak dapat dijawab sehingga job gagal secara jelas dan tidak hang.
+</Section>

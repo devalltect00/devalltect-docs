@@ -6,9 +6,23 @@ sidebar_key: custy-architecture-core-layer
 tags: [custy, core, architecture]
 ---
 
-import {CommandHero, RelatedCommands, Section} from "@site/src/components/docs";
+import { CommandHero, RelatedCommands, Section } from "@site/src/components/docs";
 
-<CommandHero command="app/core/" title="Core Layer" description="Petakan pipeline, workflow, Git, changelog, initialization, maintenance, dan shared runtime service." category="Arsitektur" status="Active Source" syntax="orchestration + domain services + infrastructure adapters" tags={["pipeline", "workflow", "git_ops", "changelog"]} links={[{label: "Architecture Overview", href: "./overview"}, {label: "Workflow Engine", href: "./workflow-engine"}, {label: "Git Operations", href: "./git-operations"}, {label: "Changelog", href: "./changelog-system"}]} />
+<CommandHero
+  command="app/core/"
+  title="Core Layer"
+  description="Petakan pipeline, workflow, Git, changelog, initialization, maintenance, dan shared runtime service."
+  category="Arsitektur"
+  status="Active Source"
+  syntax="orchestration + domain services + infrastructure adapters"
+  tags={["pipeline", "workflow", "git_ops", "changelog"]}
+  links={[
+    { label: "Architecture Overview", href: "./overview" },
+    { label: "Workflow Engine", href: "./workflow-engine" },
+    { label: "Git Operations", href: "./git-operations" },
+    { label: "Changelog", href: "./changelog-system" },
+  ]}
+/>
 
 ## Peta subsistem
 
@@ -24,4 +38,27 @@ Tambahkan perilaku baru sebagai focused service dengan engine method yang tipis 
 
 </Section>
 
-<RelatedCommands commands={[{title: "Workflow Engine", href: "./workflow-engine", description: "Pelajari facade, state, service, dan phase method."}, {title: "Git Operations", href: "./git-operations", description: "Ikuti kebijakan Git ke executor boundary."}, {title: "Changelog System", href: "./changelog-system", description: "Telusuri history hingga Markdown."}, {title: "Developer Guide", href: "../developer-guide/overview", description: "Gunakan batas ini ketika membuat perubahan."}]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "Pelajari facade, state, service, dan phase method.",
+    },
+    {
+      title: "Git Operations",
+      href: "./git-operations",
+      description: "Ikuti kebijakan Git ke executor boundary.",
+    },
+    {
+      title: "Changelog System",
+      href: "./changelog-system",
+      description: "Telusuri history hingga Markdown.",
+    },
+    {
+      title: "Developer Guide",
+      href: "../developer-guide/overview",
+      description: "Gunakan batas ini ketika membuat perubahan.",
+    },
+  ]}
+/>

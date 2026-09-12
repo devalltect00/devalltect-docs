@@ -6,9 +6,16 @@ sidebar_key: doc-gen-getting-started
 tags: [doc-gen, installation, quick-start]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Doc Gen" title="Instalasi dan Alur Kerja Pertama" description="Gunakan environment khusus, periksa repositori, dan pratinjau output yang diselesaikan sebelum generate." category="Memulai" status="Direkomendasikan" syntax="doc-gen structure generate . --dry-run" />
+<CommandHero
+  command="Doc Gen"
+  title="Instalasi dan Alur Kerja Pertama"
+  description="Gunakan environment khusus, periksa repositori, dan pratinjau output yang diselesaikan sebelum generate."
+  category="Memulai"
+  status="Direkomendasikan"
+  syntax="doc-gen structure generate . --dry-run"
+/>
 
 <Terminal title="Environment" language="bash">{`python -m venv venv
 python -m pip install -e .
@@ -19,13 +26,16 @@ doc-gen init --dry-run
 doc-gen init
 
 # Pemeriksaan read-only
+
 doc-gen structure print .
 doc-gen structure analyze .
 
 # Pratinjau target dan path output yang diselesaikan
+
 doc-gen structure generate . --output docs/project_structure.md --dry-run
 
 # Generate hanya setelah meninjau pratinjau
+
 doc-gen structure generate . --output docs/project_structure.md`}</Terminal>
 
 <InfoBox variant="warning" title="Satu output yang dipilih">
@@ -36,4 +46,6 @@ penulisan perintah.
 
 </InfoBox>
 
-<InfoBox variant="note" title="Runtime">Kompatibel dengan Python 3.9+; runtime standar menggunakan Python 3.14</InfoBox>
+<InfoBox variant="note" title="Runtime">
+  Kompatibel dengan Python 3.9+; runtime standar menggunakan Python 3.14
+</InfoBox>

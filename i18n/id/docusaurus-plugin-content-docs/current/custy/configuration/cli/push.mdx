@@ -7,20 +7,66 @@ tags: [custy, configuration, push]
 keywords: [all_remote, skip_tag, sync_backup]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.push]" title="Push Defaults" description="Pilih default remote breadth, tag handling, dan backup synchronization untuk supported push flows." category="CLI Configuration" status="Active" syntax="[tool.custy.cli.push]" tags={["remotes", "tags", "backup sync"]} links={[{label: "Git Namespace", href: "../git/overview"}, {label: "Push Command", href: "../../commands/push/overview"}, {label: "Remotes", href: "../../commands/push/remotes"}]} />
+<CommandHero
+  command="[tool.custy.cli.push]"
+  title="Push Defaults"
+  description="Pilih default remote breadth, tag handling, dan backup synchronization untuk supported push flows."
+  category="CLI Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.push]"
+  tags={["remotes", "tags", "backup sync"]}
+  links={[
+    { label: "Git Namespace", href: "../git/overview" },
+    { label: "Push Command", href: "../../commands/push/overview" },
+    { label: "Remotes", href: "../../commands/push/remotes" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "All Remote", value: "true", icon: "network"}, {label: "Skip Tag", value: "false", icon: "release"}, {label: "External Side Effect", value: "Yes", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "All Remote", value: "true", icon: "network" },
+    { label: "Skip Tag", value: "false", icon: "release" },
+    { label: "External Side Effect", value: "Yes", icon: "warning" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Pilih de-duplicated main dan backup groups kecuali explicit --remote meng-override."},
-        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push HEAD tanpa membuat atau push tag dalam combined workflows jika true."},
-        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Tambahkan configured backups ke main-only selection jika branch safety mengizinkan. Nilai ini tidak menonaktifkan backups yang dipilih oleh all_remote atau push_to."},
-    ]}
+  items={[
+    {
+      property: "all_remote",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Pilih de-duplicated main dan backup groups kecuali explicit --remote meng-override.",
+    },
+    {
+      property: "skip_tag",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Push HEAD tanpa membuat atau push tag dalam combined workflows jika true.",
+    },
+    {
+      property: "sync_backup",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Tambahkan configured backups ke main-only selection jika branch safety mengizinkan. Nilai ini tidak menonaktifkan backups yang dipilih oleh all_remote atau push_to.",
+    },
+  ]}
 />
 
 <Terminal title="Generated defaults" language="toml">
@@ -40,4 +86,24 @@ names dan `push_to`. Prioritas selection adalah explicit `--remote`,
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Git Remotes", href: "../git/remotes", description: "Tentukan primary dan backup groups."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Pahami command-level selection."}, {title: "Push Troubleshooting", href: "../../commands/push/troubleshooting", description: "Diagnosis authentication dan rejected pushes."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Git Remotes",
+        href: "../git/remotes",
+        description: "Tentukan primary dan backup groups.",
+      },
+      {
+        title: "Push Remotes",
+        href: "../../commands/push/remotes",
+        description: "Pahami command-level selection.",
+      },
+      {
+        title: "Push Troubleshooting",
+        href: "../../commands/push/troubleshooting",
+        description: "Diagnosis authentication dan rejected pushes.",
+      },
+    ]}
+  />
+</Section>

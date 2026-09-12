@@ -8,38 +8,42 @@ keywords: [custy init --mode config, packaged config, project config]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Configuration File"
-    description="Bedakan packaged initialization source milik Custy dari editable configuration milik project Anda."
-    category="Configuration"
-    status="Essential"
-    syntax="custy init [--mode config] [--ask | --force]"
-    tags={["ownership", "initialization", "safe replacement"]}
-    links={[
-        {label: "Initialization", href: "./initialization"},
-        {label: "Resolution", href: "./resolution"},
-        {label: "All Properties", href: "./reference"},
-    ]}
+  command="custy init"
+  title="Configuration File"
+  description="Bedakan packaged initialization source milik Custy dari editable configuration milik project Anda."
+  category="Configuration"
+  status="Essential"
+  syntax="custy init [--mode config] [--ask | --force]"
+  tags={["ownership", "initialization", "safe replacement"]}
+  links={[
+    { label: "Initialization", href: "./initialization" },
+    { label: "Resolution", href: "./resolution" },
+    { label: "All Properties", href: "./reference" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Packaged Source", value: "app/templates/config.toml", icon: "package"},
-        {label: "Project Copy", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Format", value: "TOML", icon: "file"},
-        {label: "Loaded", value: "Once per process", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Packaged Source", value: "app/templates/config.toml", icon: "package" },
+    {
+      label: "Project Copy",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Format", value: "TOML", icon: "file" },
+    { label: "Loaded", value: "Once per process", icon: "dependency" },
+  ]}
 />
 
 ## Ringkasan
@@ -54,12 +58,30 @@ source file.
 <Section title="Ownership">
 
 <PropertyTable
-    items={[
-        {property: "app/templates/config.toml", type: "Application source", description: "Dikemas bersama Custy dan digunakan untuk membuat project configuration baru. Application upgrade dapat menggantinya."},
-        {property: ".config/custy/config.toml", type: "Project-owned copy", description: "Dimuat oleh commands dan ditujukan untuk team-specific edits, review, serta version control."},
-        {property: "app/templates/changelog/changelog.j2", type: "Application source", description: "Packaged source untuk default changelog layout."},
-        {property: ".config/custy/templates/changelog/changelog.j2", type: "Project-owned copy", description: "Editable Jinja template yang dimuat melalui configured path."},
-    ]}
+  items={[
+    {
+      property: "app/templates/config.toml",
+      type: "Application source",
+      description:
+        "Dikemas bersama Custy dan digunakan untuk membuat project configuration baru. Application upgrade dapat menggantinya.",
+    },
+    {
+      property: ".config/custy/config.toml",
+      type: "Project-owned copy",
+      description:
+        "Dimuat oleh commands dan ditujukan untuk team-specific edits, review, serta version control.",
+    },
+    {
+      property: "app/templates/changelog/changelog.j2",
+      type: "Application source",
+      description: "Packaged source untuk default changelog layout.",
+    },
+    {
+      property: ".config/custy/templates/changelog/changelog.j2",
+      type: "Project-owned copy",
+      description: "Editable Jinja template yang dimuat melalui configured path.",
+    },
+  ]}
 />
 
 Packaged dan generated configuration saat ini memiliki logical TOML content
@@ -72,12 +94,28 @@ yang sama. Byte hash dapat berbeda karena line-ending conversion.
 <Section title="Write Behavior">
 
 <WorkflowTimeline
-    items={[
-        {title: "Resource belum ada", description: "Custy membuatnya dari packaged source.", status: "completed"},
-        {title: "Resource sudah ada, normal mode", description: "Custy mempertahankan project copy dan melewati replacement.", status: "current"},
-        {title: "Resource sudah ada dengan --ask", description: "Custy meminta konfirmasi sebelum mengganti setiap file.", status: "pending"},
-        {title: "Resource sudah ada dengan --force", description: "Custy mengganti selected resources tanpa prompt.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Resource belum ada",
+      description: "Custy membuatnya dari packaged source.",
+      status: "completed",
+    },
+    {
+      title: "Resource sudah ada, normal mode",
+      description: "Custy mempertahankan project copy dan melewati replacement.",
+      status: "current",
+    },
+    {
+      title: "Resource sudah ada dengan --ask",
+      description: "Custy meminta konfirmasi sebelum mengganti setiap file.",
+      status: "pending",
+    },
+    {
+      title: "Resource sudah ada dengan --force",
+      description: "Custy mengganti selected resources tanpa prompt.",
+      status: "pending",
+    },
+  ]}
 />
 
 <InfoBox variant="danger" title="Force Dapat Menghapus Project Customization">
@@ -123,12 +161,28 @@ dry_run = false`}
 <Section title="Lanjutkan">
 
 <RelatedCommands
-    commands={[
-        {title: "Initialization", href: "./initialization", description: "Konfigurasikan default force dan prompt behavior."},
-        {title: "Resolution", href: "./resolution", description: "Pahami prioritas CLI, file, dan built-in."},
-        {title: "Init Generated Files", href: "../commands/init/generated-files", description: "Tinjau setiap resource yang dibuat initialization."},
-        {title: "Validate", href: "../commands/validate/overview", description: "Periksa kesiapan project setelah mengedit configuration."},
-    ]}
+  commands={[
+    {
+      title: "Initialization",
+      href: "./initialization",
+      description: "Konfigurasikan default force dan prompt behavior.",
+    },
+    {
+      title: "Resolution",
+      href: "./resolution",
+      description: "Pahami prioritas CLI, file, dan built-in.",
+    },
+    {
+      title: "Init Generated Files",
+      href: "../commands/init/generated-files",
+      description: "Tinjau setiap resource yang dibuat initialization.",
+    },
+    {
+      title: "Validate",
+      href: "../commands/validate/overview",
+      description: "Periksa kesiapan project setelah mengedit configuration.",
+    },
+  ]}
 />
 
 </Section>

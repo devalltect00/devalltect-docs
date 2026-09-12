@@ -6,31 +6,36 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner init"
-    title="Inisialisasi Path Header Scanner"
-    description="Buat konfigurasi milik proyek yang digunakan Path Header Scanner."
-    category="Inisialisasi"
-    status="Menulis Konfigurasi"
-    syntax="path-header-scanner init [OPTIONS]"
-    tags={["persiapan proyek", "konfigurasi", "dry-run"]}
-    links={[
-        {label: "Sintaks", href: "./syntax"},
-        {label: "Opsi", href: "./options"},
-        {label: "Alur Kerja", href: "./workflow"},
-        {label: "Contoh", href: "./examples"},
-    ]}
+  command="path-header-scanner init"
+  title="Inisialisasi Path Header Scanner"
+  description="Buat konfigurasi milik proyek yang digunakan Path Header Scanner."
+  category="Inisialisasi"
+  status="Menulis Konfigurasi"
+  syntax="path-header-scanner init [OPTIONS]"
+  tags={["persiapan proyek", "konfigurasi", "dry-run"]}
+  links={[
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Mode Default", value: "all", icon: "configuration"},
-        {label: "Mode yang Didukung", value: "all dan config", icon: "feature"},
-        {label: "Target", value: ".config/path_header_scanner/config.toml", icon: "file"},
-        {label: "Dry-run", value: "Tanpa penulisan filesystem", icon: "success"},
-    ]}
+  items={[
+    { label: "Mode Default", value: "all", icon: "configuration" },
+    { label: "Mode yang Didukung", value: "all dan config", icon: "feature" },
+    { label: "Target", value: ".config/path_header_scanner/config.toml", icon: "file" },
+    { label: "Dry-run", value: "Tanpa penulisan filesystem", icon: "success" },
+  ]}
 />
 
 ## Ringkasan

@@ -4,16 +4,61 @@ description: "Jalankan complete release pipeline lalu workflow finalization."
 sidebar_position: 1
 sidebar_key: custy-run-full
 ---
-import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy run full" title="Full Profile" description="Jalankan semua Release stages lalu experimental finalization." category="Pipeline Profile" status="Experimental Finalization" syntax="custy run full [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Safety",href:"../safety"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Screenshot,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run full"
+  title="Full Profile"
+  description="Jalankan semua Release stages lalu experimental finalization."
+  category="Pipeline Profile"
+  status="Experimental Finalization"
+  syntax="custy run full [OPTIONS]"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Safety", href: "../safety" },
+  ]}
+/>
 
 ## Ringkasan
-<InfoBox variant="danger" title="Broadest Profile">Full mencakup file mutation, commit, tag, push, dan experimental finalization setelah publication.</InfoBox>
-<FeatureGrid items={[
- {title:"Release",children:"Jalankan seluruh registered Release stages."},{title:"Publish",children:"Push HEAD dan tag ke resolved remotes."},{title:"Finalize",children:"Invoke experimental workflow finalization."},{title:"Recover",children:"Pisahkan recovery berdasarkan last completed stage."},
-]} />
-<Screenshot src="/img/custy/commands/run/full-profile.png" alt="Custy Full profile" title="Full Release Lifecycle" caption="Release publication diikuti experimental finalization." />
-<RelatedCommands commands={[
- {name:"git",description:"Release profile.",href:"../release/overview"},{name:"network",description:"Dev profile.",href:"../dev/overview"},{name:"release",description:"Workflow Branch command.",href:"../../workflow/branch/overview"},{name:"workflow",description:"Full pipeline internals.",href:"./workflow"},
-]} />
+
+<InfoBox variant="danger" title="Broadest Profile">
+  Full mencakup file mutation, commit, tag, push, dan experimental finalization setelah
+  publication.
+</InfoBox>
+<FeatureGrid
+  items={[
+    { title: "Release", children: "Jalankan seluruh registered Release stages." },
+    { title: "Publish", children: "Push HEAD dan tag ke resolved remotes." },
+    { title: "Finalize", children: "Invoke experimental workflow finalization." },
+    {
+      title: "Recover",
+      children: "Pisahkan recovery berdasarkan last completed stage.",
+    },
+  ]}
+/>
+<Screenshot
+  src="/img/custy/commands/run/full-profile.png"
+  alt="Custy Full profile"
+  title="Full Release Lifecycle"
+  caption="Release publication diikuti experimental finalization."
+/>
+<RelatedCommands
+  commands={[
+    { name: "git", description: "Release profile.", href: "../release/overview" },
+    { name: "network", description: "Dev profile.", href: "../dev/overview" },
+    {
+      name: "release",
+      description: "Workflow Branch command.",
+      href: "../../workflow/branch/overview",
+    },
+    { name: "workflow", description: "Full pipeline internals.", href: "./workflow" },
+  ]}
+/>

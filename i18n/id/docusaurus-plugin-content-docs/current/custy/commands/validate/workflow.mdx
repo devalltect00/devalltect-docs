@@ -6,26 +6,26 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Workflow"
-    description="Pelajari cara Custy menjalankan validation sebelum workflow operations."
-    category="Validate"
-    status="Direkomendasikan"
-    syntax="custy validate"
-    tags={["workflow", "pipeline", "validation"]}
-    links={[
-        {label: "Validation Checks", href: "./validation-checks"},
-        {label: "Examples", href: "./examples"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy validate"
+  title="Workflow"
+  description="Pelajari cara Custy menjalankan validation sebelum workflow operations."
+  category="Validate"
+  status="Direkomendasikan"
+  syntax="custy validate"
+  tags={["workflow", "pipeline", "validation"]}
+  links={[
+    { label: "Validation Checks", href: "./validation-checks" },
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Ringkasan
@@ -49,35 +49,40 @@ hanya validation stage.
 <Section title="Validation Timeline">
 
 <WorkflowTimeline
-    title="Validation Pipeline"
-    description="Urutan tingkat tinggi yang dijalankan selama project validation."
-    items={[
-        {
-            title: "Resolve Configuration",
-            description: "Muat project configuration dan tentukan validation settings yang efektif.",
-            status: "completed",
-        },
-        {
-            title: "Verify Repository",
-            description: "Pastikan current directory merupakan Git repository yang valid dan remote yang dikonfigurasi tersedia.",
-            status: "completed",
-        },
-        {
-            title: "Verify Project Resources",
-            description: "Periksa version file beserta commit dan tag templates yang diperlukan.",
-            status: "completed",
-        },
-        {
-            title: "Verify Repository State",
-            description: "Validate staged changes dan kondisi repository lain sebelum workflow execution.",
-            status: "completed",
-        },
-        {
-            title: "Finish Validation",
-            description: "Laporkan hasil validation dan izinkan workflow stages berikutnya melanjutkan jika berhasil.",
-            status: "completed",
-        },
-    ]}
+  title="Validation Pipeline"
+  description="Urutan tingkat tinggi yang dijalankan selama project validation."
+  items={[
+    {
+      title: "Resolve Configuration",
+      description:
+        "Muat project configuration dan tentukan validation settings yang efektif.",
+      status: "completed",
+    },
+    {
+      title: "Verify Repository",
+      description:
+        "Pastikan current directory merupakan Git repository yang valid dan remote yang dikonfigurasi tersedia.",
+      status: "completed",
+    },
+    {
+      title: "Verify Project Resources",
+      description:
+        "Periksa version file beserta commit dan tag templates yang diperlukan.",
+      status: "completed",
+    },
+    {
+      title: "Verify Repository State",
+      description:
+        "Validate staged changes dan kondisi repository lain sebelum workflow execution.",
+      status: "completed",
+    },
+    {
+      title: "Finish Validation",
+      description:
+        "Laporkan hasil validation dan izinkan workflow stages berikutnya melanjutkan jika berhasil.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

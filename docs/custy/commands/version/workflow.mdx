@@ -5,46 +5,43 @@ sidebar_position: 7
 sidebar_key: custy-version
 
 tags:
-    - version
-    - workflow
+  - version
+  - workflow
 
 keywords:
-    - custy version workflow
+  - custy version workflow
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Workflow"
-    description="Understand how Custy prepares, generates, and synchronizes project version information."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "workflow",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Versioning Strategies",
-            href: "./versioning-strategies",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy version"
+  title="Workflow"
+  description="Understand how Custy prepares, generates, and synchronizes project version information."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["workflow", "version"]}
+  links={[
+    {
+      label: "Versioning Strategies",
+      href: "./versioning-strategies",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -59,40 +56,39 @@ of a larger workflow through `custy run`.
 ---
 
 <WorkflowTimeline
-    title="Version Update Workflow"
-    description="High-level execution sequence."
-    items={[
-        {
-            title: "Validate Project",
-            description:
-                "Verify the project repository and any explicitly configured version target.",
-            status: "completed",
-        },
-        {
-            title: "Generate Version",
-            description:
-                "Determine the next version using an explicit tag or the selected versioning strategy.",
-            status: "completed",
-        },
-        {
-            title: "Prepare Tag Message",
-            description:
-                "Resolve or initialize the tag message template used by later workflow stages.",
-            status: "completed",
-        },
-        {
-            title: "Detect Project Type",
-            description:
-                "Identify the target project ecosystem before synchronizing version files.",
-            status: "completed",
-        },
-        {
-            title: "Synchronize Project Files",
-            description:
-                "Update every supported version file using the generated version.",
-            status: "completed",
-        },
-    ]}
+  title="Version Update Workflow"
+  description="High-level execution sequence."
+  items={[
+    {
+      title: "Validate Project",
+      description:
+        "Verify the project repository and any explicitly configured version target.",
+      status: "completed",
+    },
+    {
+      title: "Generate Version",
+      description:
+        "Determine the next version using an explicit tag or the selected versioning strategy.",
+      status: "completed",
+    },
+    {
+      title: "Prepare Tag Message",
+      description:
+        "Resolve or initialize the tag message template used by later workflow stages.",
+      status: "completed",
+    },
+    {
+      title: "Detect Project Type",
+      description:
+        "Identify the target project ecosystem before synchronizing version files.",
+      status: "completed",
+    },
+    {
+      title: "Synchronize Project Files",
+      description: "Update every supported version file using the generated version.",
+      status: "completed",
+    },
+  ]}
 />
 
 ---

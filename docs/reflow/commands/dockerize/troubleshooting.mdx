@@ -6,15 +6,29 @@ sidebar_key: reflow-dockerize-troubleshooting
 tags: [reflow, troubleshooting]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Troubleshooting" description="Troubleshooting" category="Container Publishing" status="External Mutation" syntax="reflow dockerize [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Troubleshooting"
+  description="Troubleshooting"
+  category="Container Publishing"
+  status="External Mutation"
+  syntax="reflow dockerize [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Symptom | Likely cause | Solution |
-| --- | --- | --- |
-| Build fails. | Docker/context/build invalid. | Start Docker and test docker build. |
-| Push denied. | Authentication/permission missing. | Login and verify ownership. |
-| No tags. | Target contains none. | Create or fetch tags. |
+| Symptom      | Likely cause                       | Solution                            |
+| ------------ | ---------------------------------- | ----------------------------------- |
+| Build fails. | Docker/context/build invalid.      | Start Docker and test docker build. |
+| Push denied. | Authentication/permission missing. | Login and verify ownership.         |
+| No tags.     | Target contains none.              | Create or fetch tags.               |
 
-<InfoBox variant="tip" title="Diagnostics">Use `--debug` before retrying live mutation.</InfoBox>
-
+<InfoBox variant="tip" title="Diagnostics">
+  Use `--debug` before retrying live mutation.
+</InfoBox>

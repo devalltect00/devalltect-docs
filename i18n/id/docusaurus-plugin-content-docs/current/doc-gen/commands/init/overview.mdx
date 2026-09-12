@@ -6,13 +6,31 @@ sidebar_key: doc-gen-init
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Inisialisasi Doc Gen" description="Membuat file konfigurasi Doc Gen milik proyek." category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Inisialisasi Doc Gen"
+  description="Membuat file konfigurasi Doc Gen milik proyek."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-<Section title="Tujuan">Membuat `.config/doc_gen/config.toml` untuk proyek saat ini.</Section>
+<Section title="Tujuan">
+  Membuat `.config/doc_gen/config.toml` untuk proyek saat ini.
+</Section>
 
-<InfoBox variant="warning" title="Batas keamanan">Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta konfirmasi.</InfoBox>
+<InfoBox variant="warning" title="Batas keamanan">
+  Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta
+  konfirmasi.
+</InfoBox>
 
 - Resolve default.
 - Susun rencana pembuatan file konfigurasi.

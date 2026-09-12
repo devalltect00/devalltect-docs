@@ -6,9 +6,22 @@ sidebar_key: reflow-tags-convert-local
 tags: [reflow, requirements]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert local" title="Requirements" description="Before you run it" category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert local"
+  title="Requirements"
+  description="Before you run it"
+  category="Tag Conversion"
+  status="Stable"
+  syntax="reflow tags convert local [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Before you run it
 
@@ -16,5 +29,6 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 - Convertible PEP 440 or SemVer tags.
 - No destination collision or signed tag.
 
-<InfoBox variant="tip" title="Dry run">Dry-run performs discovery and validation without persistent mutation.</InfoBox>
-
+<InfoBox variant="tip" title="Dry run">
+  Dry-run performs discovery and validation without persistent mutation.
+</InfoBox>

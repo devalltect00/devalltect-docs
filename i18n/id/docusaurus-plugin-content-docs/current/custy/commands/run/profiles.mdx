@@ -4,14 +4,100 @@ description: "Bandingkan enam public profile names yang diterima custy run."
 sidebar_position: 5
 sidebar_key: custy-run-profiles
 ---
-import {CommandHero, FeatureGrid, Icon, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Public Profiles" description="Pilih profile terkecil yang mencapai hasil Anda." category="Pipeline" status="Stable with Limitations" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Custom Sequences",href:"./custom-sequences"},{label:"Pipeline Guide",href:"../../pipelines/overview"},{label:"Safety",href:"./safety"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Public Profiles"
+  description="Pilih profile terkecil yang mencapai hasil Anda."
+  category="Pipeline"
+  status="Stable with Limitations"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Custom Sequences", href: "./custom-sequences" },
+    { label: "Pipeline Guide", href: "../../pipelines/overview" },
+    { label: "Safety", href: "./safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<FeatureGrid title="Public Run Profiles" items={[
- {title:"Commit",icon:<Icon name="git" />,children:<>Artifacts, version, changelog, backup, staging, dan commit. <a href="../commit/overview">Commit guide</a>.</>},{title:"Tag",icon:<Icon name="release" />,children:<>Version/tag artifacts, backup, dan local tag. <a href="../tag/overview">Tag guide</a>.</>},{title:"Push",icon:<Icon name="network" />,children:<>Validation, HEAD, dan optional tag push. <a href="../push/overview">Push guide</a>.</>},{title:"Dev",icon:<Icon name="play" />,children:<>Validasi dan tinjau commit message, backup, commit, lalu push branch HEAD tanpa efek samping rilis. <a href="./dev/overview">Dev guide</a>.</>},{title:"Release",icon:<Icon name="pipeline" />,children:<>Version, changelog, commit, tag, dan push. <a href="./release/overview">Release guide</a>.</>},{title:"Full",icon:<Icon name="workflow" />,children:<>Release lalu workflow finalization. <a href="./full/overview">Full guide</a>.</>},
-]} />
-<InfoBox variant="info" title="Profile Names Are Not Raw Steps">Setiap name berkembang menjadi ordered stage list yang lengkap.</InfoBox>
-<Section title="Internal Profiles">Internal profiles dapat dipakai resolver atau command lain, tetapi tidak diterima current public Run argument.</Section>
+<FeatureGrid
+  title="Public Run Profiles"
+  items={[
+    {
+      title: "Commit",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Artifacts, version, changelog, backup, staging, dan commit.{" "}
+          <a href="../commit/overview">Commit guide</a>.
+        </>
+      ),
+    },
+    {
+      title: "Tag",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Version/tag artifacts, backup, dan local tag.{" "}
+          <a href="../tag/overview">Tag guide</a>.
+        </>
+      ),
+    },
+    {
+      title: "Push",
+      icon: <Icon name="network" />,
+      children: (
+        <>
+          Validation, HEAD, dan optional tag push.{" "}
+          <a href="../push/overview">Push guide</a>.
+        </>
+      ),
+    },
+    {
+      title: "Dev",
+      icon: <Icon name="play" />,
+      children: (
+        <>
+          Validasi dan tinjau commit message, backup, commit, lalu push branch HEAD
+          tanpa efek samping rilis. <a href="./dev/overview">Dev guide</a>.
+        </>
+      ),
+    },
+    {
+      title: "Release",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Version, changelog, commit, tag, dan push.{" "}
+          <a href="./release/overview">Release guide</a>.
+        </>
+      ),
+    },
+    {
+      title: "Full",
+      icon: <Icon name="workflow" />,
+      children: (
+        <>
+          Release lalu workflow finalization. <a href="./full/overview">Full guide</a>.
+        </>
+      ),
+    },
+  ]}
+/>
+<InfoBox variant="info" title="Profile Names Are Not Raw Steps">
+  Setiap name berkembang menjadi ordered stage list yang lengkap.
+</InfoBox>
+<Section title="Internal Profiles">
+  Internal profiles dapat dipakai resolver atau command lain, tetapi tidak diterima
+  current public Run argument.
+</Section>

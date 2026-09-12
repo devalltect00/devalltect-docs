@@ -357,9 +357,7 @@ Every public component should expose its public types.
 Example
 
 ```ts
-export type {
-    FeatureCardProps,
-} from "./FeatureCard";
+export type { FeatureCardProps } from "./FeatureCard";
 ```
 
 Avoid using `any`.
@@ -375,10 +373,7 @@ Always import through the public API whenever possible.
 Preferred
 
 ```tsx
-import {
-    FeatureCard,
-    WorkflowTimeline,
-} from "@site/src/components/docs";
+import { FeatureCard, WorkflowTimeline } from "@site/src/components/docs";
 ```
 
 Avoid importing deep internal files unless developing the library itself.

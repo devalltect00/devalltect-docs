@@ -6,13 +6,10 @@
 
 export { default } from "./Screenshot";
 
-export type {
-    ScreenshotProps,
-} from "./types";
-
+export type { ScreenshotProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.Screenshot
     src="/img/custy/init.png"
     alt="custy init command output"

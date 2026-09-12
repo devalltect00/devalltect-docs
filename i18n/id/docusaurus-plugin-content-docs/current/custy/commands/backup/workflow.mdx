@@ -6,26 +6,26 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Workflow"
-    description="Pelajari cara Custy menjalankan backup sebelum workflow stages berikutnya."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup all"
-    tags={["workflow", "backup", "pipeline"]}
-    links={[
-        {label: "Backup Files", href: "./backup-files"},
-        {label: "Examples", href: "./examples"},
-        {label: "Output", href: "./output"},
-    ]}
+  command="custy backup"
+  title="Workflow"
+  description="Pelajari cara Custy menjalankan backup sebelum workflow stages berikutnya."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup all"
+  tags={["workflow", "backup", "pipeline"]}
+  links={[
+    { label: "Backup Files", href: "./backup-files" },
+    { label: "Examples", href: "./examples" },
+    { label: "Output", href: "./output" },
+  ]}
 />
 
 ## Ringkasan
@@ -48,15 +48,37 @@ lebih besar bersama operasi commit, tag, dan release.
 <Section title="Backup Timeline">
 
 <WorkflowTimeline
-    title="Backup Pipeline"
-    description="Urutan tingkat tinggi selama operasi backup."
-    items={[
-        {title: "Resolve Configuration", description: "Tentukan effective backup configuration, termasuk lokasi template dan backup directories.", status: "completed"},
-        {title: "Locate Template Files", description: "Temukan commit atau tag template files yang diminta.", status: "completed"},
-        {title: "Create Backup", description: "Buat timestamped backup copy di configured backup directory.", status: "completed"},
-        {title: "Manage Existing Backups", description: "Terapkan retention policy dan hapus backup lama jika diperlukan.", status: "completed"},
-        {title: "Finish", description: "Laporkan hasil dan sediakan backup files untuk workflow stages berikutnya.", status: "completed"},
-    ]}
+  title="Backup Pipeline"
+  description="Urutan tingkat tinggi selama operasi backup."
+  items={[
+    {
+      title: "Resolve Configuration",
+      description:
+        "Tentukan effective backup configuration, termasuk lokasi template dan backup directories.",
+      status: "completed",
+    },
+    {
+      title: "Locate Template Files",
+      description: "Temukan commit atau tag template files yang diminta.",
+      status: "completed",
+    },
+    {
+      title: "Create Backup",
+      description: "Buat timestamped backup copy di configured backup directory.",
+      status: "completed",
+    },
+    {
+      title: "Manage Existing Backups",
+      description: "Terapkan retention policy dan hapus backup lama jika diperlukan.",
+      status: "completed",
+    },
+    {
+      title: "Finish",
+      description:
+        "Laporkan hasil dan sediakan backup files untuk workflow stages berikutnya.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

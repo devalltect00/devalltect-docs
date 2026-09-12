@@ -6,19 +6,26 @@ sidebar_key: path-header-scanner-configuration
 tags: [path-header-scanner, configuration, reference]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command=".config/path_header_scanner/config.toml" title="Referensi Konfigurasi" description="Petakan key konfigurasi yang didukung ke perintah yang menggunakannya." category="Konfigurasi" status="Referensi v1.0.0" syntax="Opsi CLI > konfigurasi proyek > default internal" />
+<CommandHero
+  command=".config/path_header_scanner/config.toml"
+  title="Referensi Konfigurasi"
+  description="Petakan key konfigurasi yang didukung ke perintah yang menggunakannya."
+  category="Konfigurasi"
+  status="Referensi v1.0.0"
+  syntax="Opsi CLI > konfigurasi proyek > default internal"
+/>
 
 <Section title="Bagian yang didukung">
 
-| Bagian TOML | Key yang didukung | Digunakan oleh |
-| --- | --- | --- |
-| `[tool.path-header-scanner.cli.execution]` | `dry_run`, `debug` | Default eksekusi bersama; `dry_run` memengaruhi `init` dan `scan` |
-| `[tool.path-header-scanner.initialization]` | `force`, `ask` | `path-header-scanner init` |
-| `[tool.path-header-scanner.cli.scan]` | `target_directory`, `apply`, `include_target_directory` | `path-header-scanner scan` |
-| `[tool.path-header-scanner.logging]` | `level`, flag tampilan Rich, `console_format` | Diagnostik konsol |
-| `[tool.path-header-scanner.logging.file]` | level/path file, rotasi, dan `file_format` | Diagnostik persisten |
+| Bagian TOML                                 | Key yang didukung                                       | Digunakan oleh                                                    |
+| ------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------------------- |
+| `[tool.path-header-scanner.cli.execution]`  | `dry_run`, `debug`                                      | Default eksekusi bersama; `dry_run` memengaruhi `init` dan `scan` |
+| `[tool.path-header-scanner.initialization]` | `force`, `ask`                                          | `path-header-scanner init`                                        |
+| `[tool.path-header-scanner.cli.scan]`       | `target_directory`, `apply`, `include_target_directory` | `path-header-scanner scan`                                        |
+| `[tool.path-header-scanner.logging]`        | `level`, flag tampilan Rich, `console_format`           | Diagnostik konsol                                                 |
+| `[tool.path-header-scanner.logging.file]`   | level/path file, rotasi, dan `file_format`              | Diagnostik persisten                                              |
 
 </Section>
 

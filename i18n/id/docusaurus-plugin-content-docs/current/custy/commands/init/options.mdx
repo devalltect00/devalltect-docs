@@ -17,38 +17,34 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Command Options"
-    description="Pelajari bagaimana setiap command-line option mengubah proses init."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init [OPTIONS]"
-    tags={[
-        "options",
-        "configuration",
-        "initialization",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy init"
+  title="Command Options"
+  description="Pelajari bagaimana setiap command-line option mengubah proses init."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init [OPTIONS]"
+  tags={["options", "configuration", "initialization"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -78,35 +74,33 @@ mode default **all**.
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--mode",
-            shorthand: "-m",
-            required: false,
-            description:
-                "Pilih resource proyek yang akan dibuat.",
-            defaultValue: "all",
-            example: "custy init --mode templates",
-        },
-        {
-            name: "--force",
-            shorthand: "-f",
-            required: false,
-            description:
-                "Timpa file yang sudah ada tanpa meminta konfirmasi.",
-            defaultValue: "false",
-            example: "custy init --force",
-        },
-        {
-            name: "--ask",
-            shorthand: "-a",
-            required: false,
-            description:
-                "Minta konfirmasi sebelum menimpa generated files yang mendukung prompt. Packaged examples digabungkan tanpa prompt per file.",
-            defaultValue: "false",
-            example: "custy init --ask",
-        },
-    ]}
+  options={[
+    {
+      name: "--mode",
+      shorthand: "-m",
+      required: false,
+      description: "Pilih resource proyek yang akan dibuat.",
+      defaultValue: "all",
+      example: "custy init --mode templates",
+    },
+    {
+      name: "--force",
+      shorthand: "-f",
+      required: false,
+      description: "Timpa file yang sudah ada tanpa meminta konfirmasi.",
+      defaultValue: "false",
+      example: "custy init --force",
+    },
+    {
+      name: "--ask",
+      shorthand: "-a",
+      required: false,
+      description:
+        "Minta konfirmasi sebelum menimpa generated files yang mendukung prompt. Packaged examples digabungkan tanpa prompt per file.",
+      defaultValue: "false",
+      example: "custy init --ask",
+    },
+  ]}
 />
 
 </Section>
@@ -119,13 +113,13 @@ mode default **all**.
 
 Option `--mode` menentukan resource yang dibuat Custy.
 
-| Mode | Deskripsi |
-|------|-----------|
-| `all` | Membuat configuration, templates, dan example resources. |
-| `all_no_examples` | Membuat configuration dan templates tanpa examples. |
-| `config` | Hanya membuat file configuration proyek. |
-| `templates` | Hanya membuat default templates. |
-| `examples` | Hanya membuat example resources. |
+| Mode              | Deskripsi                                                |
+| ----------------- | -------------------------------------------------------- |
+| `all`             | Membuat configuration, templates, dan example resources. |
+| `all_no_examples` | Membuat configuration dan templates tanpa examples.      |
+| `config`          | Hanya membuat file configuration proyek.                 |
+| `templates`       | Hanya membuat default templates.                         |
+| `examples`        | Hanya membuat example resources.                         |
 
 Untuk sebagian besar proyek, **all** merupakan pilihan yang direkomendasikan
 karena menyiapkan seluruh workspace proyek dalam satu langkah.

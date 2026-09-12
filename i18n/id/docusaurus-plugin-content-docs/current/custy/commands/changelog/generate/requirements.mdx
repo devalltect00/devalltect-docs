@@ -4,22 +4,65 @@ description: "Persiapkan repository dan configuration sebelum membuat changelog.
 sidebar_position: 2
 sidebar_key: custy-changelog-generate-requirements
 ---
-import {CommandHero, RequirementGrid, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Requirements" description="Pastikan Git history, configuration, dan template siap digunakan." category="Changelog" status="Required" syntax="custy changelog generate" links={[
-    {label: "Ringkasan", href: "./overview"}, {label: "Syntax", href: "./syntax"}, {label: "Configuration", href: "./configuration"},
-]} />
+import {
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Requirements"
+  description="Pastikan Git history, configuration, dan template siap digunakan."
+  category="Changelog"
+  status="Required"
+  syntax="custy changelog generate"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Configuration", href: "./configuration" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="warning" title="Tinjau Repository Terlebih Dahulu">Periksa current branch, Git history, tags, dan working-tree diff sebelum generation.</InfoBox>
+<InfoBox variant="warning" title="Tinjau Repository Terlebih Dahulu">
+  Periksa current branch, Git history, tags, dan working-tree diff sebelum generation.
+</InfoBox>
 
-<RequirementGrid items={[
-    {title: "Git Repository", level: "required", children: "Jalankan dari repository dengan commit history yang dapat dibaca."},
-    {title: "Custy Configuration", level: "required", children: "Pastikan .config/custy/config.toml tersedia dan valid."},
-    {title: "Changelog Template", level: "required", children: "Template yang dikonfigurasi harus tersedia dan dapat dirender."},
-    {title: "Writable Output", level: "required", children: "Lokasi CHANGELOG.md harus dapat ditulis."},
-    {title: "Conventional Messages", level: "recommended", children: "Commit terstruktur menghasilkan classification yang lebih baik."},
-]} />
+<RequirementGrid
+  items={[
+    {
+      title: "Git Repository",
+      level: "required",
+      children: "Jalankan dari repository dengan commit history yang dapat dibaca.",
+    },
+    {
+      title: "Custy Configuration",
+      level: "required",
+      children: "Pastikan .config/custy/config.toml tersedia dan valid.",
+    },
+    {
+      title: "Changelog Template",
+      level: "required",
+      children: "Template yang dikonfigurasi harus tersedia dan dapat dirender.",
+    },
+    {
+      title: "Writable Output",
+      level: "required",
+      children: "Lokasi CHANGELOG.md harus dapat ditulis.",
+    },
+    {
+      title: "Conventional Messages",
+      level: "recommended",
+      children: "Commit terstruktur menghasilkan classification yang lebih baik.",
+    },
+  ]}
+/>
 
-<Section title="Remote Access Bersifat Opsional">Generation utama menggunakan local Git history. Remote diperlukan hanya jika konfigurasi atau workflow tambahan membutuhkannya.</Section>
+<Section title="Remote Access Bersifat Opsional">
+  Generation utama menggunakan local Git history. Remote diperlukan hanya jika
+  konfigurasi atau workflow tambahan membutuhkannya.
+</Section>

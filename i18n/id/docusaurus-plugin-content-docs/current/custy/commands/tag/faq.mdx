@@ -4,17 +4,47 @@ description: "Pertanyaan umum tentang custy tag."
 sidebar_position: 11
 sidebar_key: custy-tag-faq
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy tag" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang local tags, versioning, modifiers, dan force behavior." category="Git Operations" status="Reference" syntax="custy tag [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Versioning and Tags",href:"./versioning-and-tags"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy tag"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang local tags, versioning, modifiers, dan force behavior."
+  category="Git Operations"
+  status="Reference"
+  syntax="custy tag [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Versioning and Tags", href: "./versioning-and-tags" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="info" title="Local Before Remote">Verifikasi tag secara lokal sebelum menggunakan Push.</InfoBox>
+<InfoBox variant="info" title="Local Before Remote">
+  Verifikasi tag secara lokal sebelum menggunakan Push.
+</InfoBox>
 
-<Section title="Apakah custy tag Melakukan Push?">Tidak. Command membuat local tag.</Section>
-<Section title="Apa Perbedaan custy run tag?">Keduanya memakai registered Tag profile; direct command menyediakan tag-specific overrides.</Section>
-<Section title="Haruskah Menggunakan --tag atau --bump?">Gunakan `--tag` untuk exact version; gunakan bump dan strategy untuk membentuk versi berikutnya.</Section>
-<Section title="Apakah Profile Memperbarui Version File?">Ya, resolved version ditulis ke configured version file sebagai bagian workflow.</Section>
-<Section title="Dapatkah Saya Membuat Pre-release?">Ya, gunakan strategy dan modifier yang kompatibel seperti `--pre`.</Section>
-<Section title="Kapan --force-tag Digunakan?">Hanya setelah conflict dipahami dan replacement aman. Hindari mengganti published tag tanpa koordinasi.</Section>
+<Section title="Apakah custy tag Melakukan Push?">
+  Tidak. Command membuat local tag.
+</Section>
+<Section title="Apa Perbedaan custy run tag?">
+  Keduanya memakai registered Tag profile; direct command menyediakan tag-specific
+  overrides.
+</Section>
+<Section title="Haruskah Menggunakan --tag atau --bump?">
+  Gunakan `--tag` untuk exact version; gunakan bump dan strategy untuk membentuk versi
+  berikutnya.
+</Section>
+<Section title="Apakah Profile Memperbarui Version File?">
+  Ya, resolved version ditulis ke configured version file sebagai bagian workflow.
+</Section>
+<Section title="Dapatkah Saya Membuat Pre-release?">
+  Ya, gunakan strategy dan modifier yang kompatibel seperti `--pre`.
+</Section>
+<Section title="Kapan --force-tag Digunakan?">
+  Hanya setelah conflict dipahami dan replacement aman. Hindari mengganti published tag
+  tanpa koordinasi.
+</Section>

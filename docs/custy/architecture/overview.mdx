@@ -8,42 +8,42 @@ keywords: [Custy architecture, Custy source structure, Custy runtime flow]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    Icon,
-    InfoBox,
-    LayerCard,
-    PatternTable,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  Icon,
+  InfoBox,
+  LayerCard,
+  PatternTable,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/"
-    title="Custy Architecture"
-    description="Follow a CLI request through configuration, orchestration, domain services, infrastructure, and presentation."
-    category="Architecture"
-    status="Implementation-Aligned"
-    syntax="entrypoint -> CLI -> pipeline -> workflow -> services -> effects"
-    tags={["Typer", "pipeline", "workflow engine", "Git service"]}
-    links={[
-        {label: "CLI Layer", href: "./cli-layer"},
-        {label: "Core Layer", href: "./core-layer"},
-        {label: "Pipeline Engine", href: "./pipeline-engine"},
-        {label: "Changelog System", href: "./changelog-system"},
-    ]}
+  command="app/"
+  title="Custy Architecture"
+  description="Follow a CLI request through configuration, orchestration, domain services, infrastructure, and presentation."
+  category="Architecture"
+  status="Implementation-Aligned"
+  syntax="entrypoint -> CLI -> pipeline -> workflow -> services -> effects"
+  tags={["Typer", "pipeline", "workflow engine", "Git service"]}
+  links={[
+    { label: "CLI Layer", href: "./cli-layer" },
+    { label: "Core Layer", href: "./core-layer" },
+    { label: "Pipeline Engine", href: "./pipeline-engine" },
+    { label: "Changelog System", href: "./changelog-system" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Runtime", value: "Python 3.14+", icon: "python"},
-        {label: "CLI Framework", value: "Typer and Rich", icon: "terminal"},
-        {label: "Primary Source", value: "app", icon: "directory"},
-        {label: "Execution Style", value: "Sequential orchestration", icon: "pipeline"},
-    ]}
+  items={[
+    { label: "Runtime", value: "Python 3.14+", icon: "python" },
+    { label: "CLI Framework", value: "Typer and Rich", icon: "terminal" },
+    { label: "Primary Source", value: "app", icon: "directory" },
+    { label: "Execution Style", value: "Sequential orchestration", icon: "pipeline" },
+  ]}
 />
 
 ## Overview
@@ -105,16 +105,46 @@ renders templates, and supplies initialization resources.
 ---
 
 <WorkflowDiagram
-    title="Primary Runtime Path"
-    description="The common pipeline-backed command path; initialization and a few focused handlers use specialized core coordinators."
-    timeline={[
-        {title: "Entrypoint", description: "The installed custy script or python -m app loads app.cli.main:app.", status: "completed"},
-        {title: "Global callback", description: "Resolve global configuration, create AppContext, configure logging, and render banner or help behavior.", status: "completed"},
-        {title: "Command module", description: "Parse typed options, resolve effective values, and select a service or pipeline profile.", status: "completed"},
-        {title: "Composition", description: "Build WorkflowConfig, WorkflowEngine, GitContext, and registered steps.", status: "completed"},
-        {title: "Sequential execution", description: "Each step delegates one operation to the engine or another focused coordinator.", status: "current"},
-        {title: "Effects and presentation", description: "Services access Git, files, templates, or subprocesses while Rich and logging report progress and failures.", status: "pending"},
-    ]}
+  title="Primary Runtime Path"
+  description="The common pipeline-backed command path; initialization and a few focused handlers use specialized core coordinators."
+  timeline={[
+    {
+      title: "Entrypoint",
+      description:
+        "The installed custy script or python -m app loads app.cli.main:app.",
+      status: "completed",
+    },
+    {
+      title: "Global callback",
+      description:
+        "Resolve global configuration, create AppContext, configure logging, and render banner or help behavior.",
+      status: "completed",
+    },
+    {
+      title: "Command module",
+      description:
+        "Parse typed options, resolve effective values, and select a service or pipeline profile.",
+      status: "completed",
+    },
+    {
+      title: "Composition",
+      description:
+        "Build WorkflowConfig, WorkflowEngine, GitContext, and registered steps.",
+      status: "completed",
+    },
+    {
+      title: "Sequential execution",
+      description:
+        "Each step delegates one operation to the engine or another focused coordinator.",
+      status: "current",
+    },
+    {
+      title: "Effects and presentation",
+      description:
+        "Services access Git, files, templates, or subprocesses while Rich and logging report progress and failures.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -124,23 +154,59 @@ renders templates, and supplies initialization resources.
 <Grid columns={2}>
 
 <DependencyCard
-    title="Command Execution"
-    dependencies={[
-        {source: "Typer command", target: "Argument resolver", description: "Convert explicit options and project configuration into a typed effective model."},
-        {source: "Argument resolver", target: "WorkflowEngineBuilder", description: "Transport resolved values into one workflow configuration."},
-        {source: "CommandResolver", target: "StepRegistry", description: "Turn profile definitions into concrete registered step instances."},
-        {source: "Pipeline step", target: "WorkflowEngine", description: "Delegate one ordered operation through a shared GitContext."},
-    ]}
+  title="Command Execution"
+  dependencies={[
+    {
+      source: "Typer command",
+      target: "Argument resolver",
+      description:
+        "Convert explicit options and project configuration into a typed effective model.",
+    },
+    {
+      source: "Argument resolver",
+      target: "WorkflowEngineBuilder",
+      description: "Transport resolved values into one workflow configuration.",
+    },
+    {
+      source: "CommandResolver",
+      target: "StepRegistry",
+      description: "Turn profile definitions into concrete registered step instances.",
+    },
+    {
+      source: "Pipeline step",
+      target: "WorkflowEngine",
+      description: "Delegate one ordered operation through a shared GitContext.",
+    },
+  ]}
 />
 
 <DependencyCard
-    title="External Effects"
-    dependencies={[
-        {source: "WorkflowEngine", target: "GitService", description: "Apply high-level repository policy without calling subprocess directly."},
-        {source: "GitService", target: "IGitCommandExecutor", description: "Use a protocol-backed low-level command boundary."},
-        {source: "ChangelogGenerator", target: "GitService and JinjaRenderer", description: "Collect repository history, build domain models, and render Markdown."},
-        {source: "InitMain", target: "ScaffoldGenerator", description: "Build an initialization plan and create selected packaged resources."},
-    ]}
+  title="External Effects"
+  dependencies={[
+    {
+      source: "WorkflowEngine",
+      target: "GitService",
+      description:
+        "Apply high-level repository policy without calling subprocess directly.",
+    },
+    {
+      source: "GitService",
+      target: "IGitCommandExecutor",
+      description: "Use a protocol-backed low-level command boundary.",
+    },
+    {
+      source: "ChangelogGenerator",
+      target: "GitService and JinjaRenderer",
+      description:
+        "Collect repository history, build domain models, and render Markdown.",
+    },
+    {
+      source: "InitMain",
+      target: "ScaffoldGenerator",
+      description:
+        "Build an initialization plan and create selected packaged resources.",
+    },
+  ]}
 />
 
 </Grid>
@@ -150,16 +216,41 @@ renders templates, and supplies initialization resources.
 ---
 
 <PatternTable
-    title="Architectural Patterns"
-    description="Patterns are used selectively; they do not form a general plugin framework."
-    patterns={[
-        {pattern: "Builder", purpose: "Construct complex workflow and initialization inputs incrementally.", implementation: "WorkflowEngineBuilder and InitBuilder"},
-        {pattern: "Registry", purpose: "Map stable step names to concrete pipeline classes.", implementation: "StepRegistry and register_all_steps"},
-        {pattern: "Strategy", purpose: "Generate and sort version tags using interchangeable algorithms.", implementation: "TagStrategy and TagSorter implementations"},
-        {pattern: "Factory", purpose: "Centralize service, provider, and sorter construction.", implementation: "create_git_service, MessageProviderFactory, and TagSorterFactory"},
-        {pattern: "Pipeline", purpose: "Execute explicit steps in a predictable sequence.", implementation: "CommandResolver, PipelineBuilder, Pipeline, and BaseStep"},
-        {pattern: "Facade / Application Service", purpose: "Give steps a cohesive workflow API over several services.", implementation: "WorkflowEngine"},
-    ]}
+  title="Architectural Patterns"
+  description="Patterns are used selectively; they do not form a general plugin framework."
+  patterns={[
+    {
+      pattern: "Builder",
+      purpose: "Construct complex workflow and initialization inputs incrementally.",
+      implementation: "WorkflowEngineBuilder and InitBuilder",
+    },
+    {
+      pattern: "Registry",
+      purpose: "Map stable step names to concrete pipeline classes.",
+      implementation: "StepRegistry and register_all_steps",
+    },
+    {
+      pattern: "Strategy",
+      purpose: "Generate and sort version tags using interchangeable algorithms.",
+      implementation: "TagStrategy and TagSorter implementations",
+    },
+    {
+      pattern: "Factory",
+      purpose: "Centralize service, provider, and sorter construction.",
+      implementation:
+        "create_git_service, MessageProviderFactory, and TagSorterFactory",
+    },
+    {
+      pattern: "Pipeline",
+      purpose: "Execute explicit steps in a predictable sequence.",
+      implementation: "CommandResolver, PipelineBuilder, Pipeline, and BaseStep",
+    },
+    {
+      pattern: "Facade / Application Service",
+      purpose: "Give steps a cohesive workflow API over several services.",
+      implementation: "WorkflowEngine",
+    },
+  ]}
 />
 
 ---
@@ -186,12 +277,29 @@ renders templates, and supplies initialization resources.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "CLI Layer", href: "./cli-layer", description: "Trace entrypoints, command modules, global context, and registration."},
-        {title: "Core Layer", href: "./core-layer", description: "Review each core subsystem and its current coupling."},
-        {title: "Pipeline Engine", href: "./pipeline-engine", description: "Follow profile resolution through registered sequential steps."},
-        {title: "Developer Guide", href: "../developer-guide/overview", description: "Use the architecture when changing or extending Custy."},
-    ]}
+  commands={[
+    {
+      title: "CLI Layer",
+      href: "./cli-layer",
+      description:
+        "Trace entrypoints, command modules, global context, and registration.",
+    },
+    {
+      title: "Core Layer",
+      href: "./core-layer",
+      description: "Review each core subsystem and its current coupling.",
+    },
+    {
+      title: "Pipeline Engine",
+      href: "./pipeline-engine",
+      description: "Follow profile resolution through registered sequential steps.",
+    },
+    {
+      title: "Developer Guide",
+      href: "../developer-guide/overview",
+      description: "Use the architecture when changing or extending Custy.",
+    },
+  ]}
 />
 
 </Section>

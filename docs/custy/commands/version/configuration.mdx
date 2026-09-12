@@ -5,47 +5,44 @@ sidebar_position: 5
 sidebar_key: custy-version
 
 tags:
-    - version
-    - configuration
+  - version
+  - configuration
 
 keywords:
-    - custy version configuration
-    - versioning strategy
+  - custy version configuration
+  - versioning strategy
 ---
 
 import {
-    CommandHero,
-    PropertyTable,
-    Section,
-    InfoBox,
-    Terminal,
+  CommandHero,
+  PropertyTable,
+  Section,
+  InfoBox,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Configuration"
-    description="Configure default versioning behavior through config.toml."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "configuration",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Versioning Strategies",
-            href: "./versioning-strategies",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy version"
+  title="Configuration"
+  description="Configure default versioning behavior through config.toml."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["configuration", "version"]}
+  links={[
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Versioning Strategies",
+      href: "./versioning-strategies",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -63,26 +60,24 @@ command-line options are omitted.
 >
 
 <PropertyTable
-    title="config.toml Properties"
-    description="Configuration fields controlling default version generation."
-    items={[
-        {
-            property: "strategy",
-            type: "semver | pep440 | commitizen | date | gitcount",
-            defaultValue: "semver",
-            required: false,
-            description:
-                "Default versioning strategy used to generate the next version.",
-        },
-        {
-            property: "bump",
-            type: "auto | patch | minor | major",
-            defaultValue: "auto",
-            required: false,
-            description:
-                "Default bump level when generating the next version.",
-        },
-    ]}
+  title="config.toml Properties"
+  description="Configuration fields controlling default version generation."
+  items={[
+    {
+      property: "strategy",
+      type: "semver | pep440 | commitizen | date | gitcount",
+      defaultValue: "semver",
+      required: false,
+      description: "Default versioning strategy used to generate the next version.",
+    },
+    {
+      property: "bump",
+      type: "auto | patch | minor | major",
+      defaultValue: "auto",
+      required: false,
+      description: "Default bump level when generating the next version.",
+    },
+  ]}
 />
 
 </Section>

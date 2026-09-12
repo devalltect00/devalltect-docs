@@ -7,9 +7,31 @@ tags: [custy, release pipeline, git]
 keywords: [custy run release, Custy release workflow]
 ---
 
-import {CommandChecklist, CommandHero, InfoBox, KeyValueTable, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandChecklist,
+  CommandHero,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy run release" title="Release Pipeline" description="Validate, prepare, document, commit, tag, dan publish versioned release tanpa post-push finalization." category="Pipeline Profile" status="Stable with Limitations" syntax="custy run release [OPTIONS]" tags={["version", "changelog", "commit", "tag", "push"]} links={[{label: "Run Release Guide", href: "../commands/run/release/overview"}, {label: "Profiles", href: "./profiles"}, {label: "Full Pipeline", href: "./full-pipeline"}]} />
+<CommandHero
+  command="custy run release"
+  title="Release Pipeline"
+  description="Validate, prepare, document, commit, tag, dan publish versioned release tanpa post-push finalization."
+  category="Pipeline Profile"
+  status="Stable with Limitations"
+  syntax="custy run release [OPTIONS]"
+  tags={["version", "changelog", "commit", "tag", "push"]}
+  links={[
+    { label: "Run Release Guide", href: "../commands/run/release/overview" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Full Pipeline", href: "./full-pipeline" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -24,22 +46,217 @@ custy run release`}</Terminal>
 ---
 
 <Section title="Exact Phase Flow">
-<WorkflowTimeline title="Release Profile" items={[{title: "Validate all release prerequisites", description: "Jalankan repository, pre-commit, pre-tag, dan pre-push validation subprofiles.", status: "completed"}, {title: "Prepare release state", description: "Resolve version, initialize workflow state, dan siapkan tag message.", status: "completed"}, {title: "Generate and review artifacts", description: "Generate configured artifacts, buka untuk editing, dan validasi edited files.", status: "completed"}, {title: "Apply version", description: "Tulis resolved version melalui active version update path.", status: "completed"}, {title: "Generate changelog", description: "Generate configured changelog ketika version dan command rules mengizinkannya.", status: "completed"}, {title: "Back up and clean", description: "Backup commit dan tag messages lalu terapkan retention cleanup.", status: "completed"}, {title: "Commit and tag", description: "Stage release files, buat release commit, dan buat local tag.", status: "completed"}, {title: "Push", description: "Publish HEAD dan eligible release tag ke resolved remotes.", status: "current"}]} />
+  <WorkflowTimeline
+    title="Release Profile"
+    items={[
+      {
+        title: "Validate all release prerequisites",
+        description:
+          "Jalankan repository, pre-commit, pre-tag, dan pre-push validation subprofiles.",
+        status: "completed",
+      },
+      {
+        title: "Prepare release state",
+        description:
+          "Resolve version, initialize workflow state, dan siapkan tag message.",
+        status: "completed",
+      },
+      {
+        title: "Generate and review artifacts",
+        description:
+          "Generate configured artifacts, buka untuk editing, dan validasi edited files.",
+        status: "completed",
+      },
+      {
+        title: "Apply version",
+        description: "Tulis resolved version melalui active version update path.",
+        status: "completed",
+      },
+      {
+        title: "Generate changelog",
+        description:
+          "Generate configured changelog ketika version dan command rules mengizinkannya.",
+        status: "completed",
+      },
+      {
+        title: "Back up and clean",
+        description: "Backup commit dan tag messages lalu terapkan retention cleanup.",
+        status: "completed",
+      },
+      {
+        title: "Commit and tag",
+        description: "Stage release files, buat release commit, dan buat local tag.",
+        status: "completed",
+      },
+      {
+        title: "Push",
+        description: "Publish HEAD dan eligible release tag ke resolved remotes.",
+        status: "current",
+      },
+    ]}
+  />
 </Section>
 
 ---
 
-<KeyValueTable title="Exact Release Step Order" description="Release memperluas nested validation profiles sebelum preparation dan mutation stages." items={[
- {key: "01 — ensure_git_repo_step", value: "Wajibkan Git repository."}, {key: "02 — ensure_staged_changes_step", value: "Periksa commit staging readiness."}, {key: "03 — ensure_commit_validation_provider_step", value: "Resolve built-in, Commitizen, atau Git-policy message validation."}, {key: "04 — ensure_commit_hook_policy_step", value: "Resolve native hooks atau safe direct pre-commit execution."}, {key: "05 — ensure_commit_message_file_step", value: "Validasi configured commit-message file setting."}, {key: "06 — ensure_commit_message_file_exists_step", value: "Wajibkan commit-message file."}, {key: "07 — ensure_version_file_step", value: "Validasi configured version file."}, {key: "08 — ensure_tag_message_file_step", value: "Validasi configured tag-message file setting."}, {key: "09 — ensure_tag_message_file_exists_step", value: "Wajibkan tag-message file."}, {key: "10 — ensure_remote_exists_step", value: "Wajibkan resolved Git remotes."}, {key: "11 — prepare_version_step", value: "Resolve release version dan tag context."}, {key: "12 — workflow_init_step", value: "Initialize branch workflow state."}, {key: "13 — prepare_tag_message_step", value: "Siapkan tag message untuk resolved version."}, {key: "14 — generate_artifacts_step", value: "Pertahankan reviewed messages dan generate hanya artifacts yang missing atau empty."}, {key: "15 — edit_files_step", value: "Buka release files untuk review dan editing."}, {key: "16 — validate_edited_step", value: "Validasi edited artifacts."}, {key: "17 — apply_version_step", value: "Terapkan resolved version melalui configured update path."}, {key: "18 — generate_changelog_step", value: "Jalankan conditional changelog generation."}, {key: "19 — backup_commit_message_files_step", value: "Backup commit-message file."}, {key: "20 — backup_tag_message_files_step", value: "Backup tag-message file."}, {key: "21 — cleanup_backup_step", value: "Terapkan backup retention cleanup."}, {key: "22 — stage_step", value: "Stage resolved release files."}, {key: "23 — commit_step", value: "Jalankan resolved hook plan dan buat release commit."}, {key: "24 — tag_step", value: "Buat local release tag."}, {key: "25 — push_step", value: "Push HEAD dan eligible release tag ke resolved remotes."},
-]} />
+<KeyValueTable
+  title="Exact Release Step Order"
+  description="Release memperluas nested validation profiles sebelum preparation dan mutation stages."
+  items={[
+    { key: "01 — ensure_git_repo_step", value: "Wajibkan Git repository." },
+    {
+      key: "02 — ensure_staged_changes_step",
+      value: "Periksa commit staging readiness.",
+    },
+    {
+      key: "03 — ensure_commit_validation_provider_step",
+      value: "Resolve built-in, Commitizen, atau Git-policy message validation.",
+    },
+    {
+      key: "04 — ensure_commit_hook_policy_step",
+      value: "Resolve native hooks atau safe direct pre-commit execution.",
+    },
+    {
+      key: "05 — ensure_commit_message_file_step",
+      value: "Validasi configured commit-message file setting.",
+    },
+    {
+      key: "06 — ensure_commit_message_file_exists_step",
+      value: "Wajibkan commit-message file.",
+    },
+    {
+      key: "07 — ensure_version_file_step",
+      value: "Validasi configured version file.",
+    },
+    {
+      key: "08 — ensure_tag_message_file_step",
+      value: "Validasi configured tag-message file setting.",
+    },
+    {
+      key: "09 — ensure_tag_message_file_exists_step",
+      value: "Wajibkan tag-message file.",
+    },
+    { key: "10 — ensure_remote_exists_step", value: "Wajibkan resolved Git remotes." },
+    {
+      key: "11 — prepare_version_step",
+      value: "Resolve release version dan tag context.",
+    },
+    { key: "12 — workflow_init_step", value: "Initialize branch workflow state." },
+    {
+      key: "13 — prepare_tag_message_step",
+      value: "Siapkan tag message untuk resolved version.",
+    },
+    {
+      key: "14 — generate_artifacts_step",
+      value:
+        "Pertahankan reviewed messages dan generate hanya artifacts yang missing atau empty.",
+    },
+    {
+      key: "15 — edit_files_step",
+      value: "Buka release files untuk review dan editing.",
+    },
+    { key: "16 — validate_edited_step", value: "Validasi edited artifacts." },
+    {
+      key: "17 — apply_version_step",
+      value: "Terapkan resolved version melalui configured update path.",
+    },
+    {
+      key: "18 — generate_changelog_step",
+      value: "Jalankan conditional changelog generation.",
+    },
+    {
+      key: "19 — backup_commit_message_files_step",
+      value: "Backup commit-message file.",
+    },
+    { key: "20 — backup_tag_message_files_step", value: "Backup tag-message file." },
+    { key: "21 — cleanup_backup_step", value: "Terapkan backup retention cleanup." },
+    { key: "22 — stage_step", value: "Stage resolved release files." },
+    {
+      key: "23 — commit_step",
+      value: "Jalankan resolved hook plan dan buat release commit.",
+    },
+    { key: "24 — tag_step", value: "Buat local release tag." },
+    {
+      key: "25 — push_step",
+      value: "Push HEAD dan eligible release tag ke resolved remotes.",
+    },
+  ]}
+/>
 
 ---
 
-<Section title="Before You Run"><CommandChecklist items={[{title: "Start from reviewed Git state", description: "Konfirmasi branch, status, staged files, existing tags, dan remotes."}, {title: "Validate project configuration", description: "Periksa version strategy, paths, templates, changelog rules, dan remote policy."}, {title: "Review message files", description: "Pastikan commit dan tag messages tersedia dan memenuhi configured convention."}, {title: "Preview with dry-run", description: "Baca setiap planned file, Git, dan remote action sebelum normal execution."}, {title: "Plan recovery", description: "Ketahui cara memeriksa dan reconcile partial commit, tag, atau push."}]} /></Section>
+<Section title="Before You Run">
+  <CommandChecklist
+    items={[
+      {
+        title: "Start from reviewed Git state",
+        description:
+          "Konfirmasi branch, status, staged files, existing tags, dan remotes.",
+      },
+      {
+        title: "Validate project configuration",
+        description:
+          "Periksa version strategy, paths, templates, changelog rules, dan remote policy.",
+      },
+      {
+        title: "Review message files",
+        description:
+          "Pastikan commit dan tag messages tersedia dan memenuhi configured convention.",
+      },
+      {
+        title: "Preview with dry-run",
+        description:
+          "Baca setiap planned file, Git, dan remote action sebelum normal execution.",
+      },
+      {
+        title: "Plan recovery",
+        description:
+          "Ketahui cara memeriksa dan reconcile partial commit, tag, atau push.",
+      },
+    ]}
+  />
+</Section>
 
-<InfoBox variant="warning" title="Changelog Generation Bersifat Conditional">Release profile memuat changelog step, tetapi workflow engine dapat melewati generation untuk non-final version atau berdasarkan active command dan configuration rules. Registered step tidak menjamin file akan dimutasi.</InfoBox>
-<InfoBox variant="danger" title="Publication Tidak Atomic">Failure dapat terjadi setelah files berubah, commit atau local tag dibuat, atau satu remote berhasil. Periksa exact completion boundary sebelum retry.</InfoBox>
+<InfoBox variant="warning" title="Changelog Generation Bersifat Conditional">
+  Release profile memuat changelog step, tetapi workflow engine dapat melewati
+  generation untuk non-final version atau berdasarkan active command dan configuration
+  rules. Registered step tidak menjamin file akan dimutasi.
+</InfoBox>
+<InfoBox variant="danger" title="Publication Tidak Atomic">
+  Failure dapat terjadi setelah files berubah, commit atau local tag dibuat, atau satu
+  remote berhasil. Periksa exact completion boundary sebelum retry.
+</InfoBox>
 
-<Section title="Release atau Full?">Release berakhir setelah push. Full memuat Release stages yang sama, lalu invoke experimental branch workflow finalization. Pilih Release kecuali post-publication transition tersebut memang diperlukan dan dipahami.</Section>
+<Section title="Release atau Full?">
+  Release berakhir setelah push. Full memuat Release stages yang sama, lalu invoke
+  experimental branch workflow finalization. Pilih Release kecuali post-publication
+  transition tersebut memang diperlukan dan dipahami.
+</Section>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Run Release", href: "../commands/run/release/overview", description: "Gunakan practical release options, examples, dan troubleshooting."}, {title: "Complete Profile Reference", href: "./profile-reference", description: "Bandingkan Release dengan seluruh public dan internal profiles."}, {title: "Full Pipeline", href: "./full-pipeline", description: "Tinjau post-push finalization difference."}, {title: "Changelog Generate", href: "../commands/changelog/generate/overview", description: "Generate changelog sebagai focused operation."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Run Release",
+        href: "../commands/run/release/overview",
+        description:
+          "Gunakan practical release options, examples, dan troubleshooting.",
+      },
+      {
+        title: "Complete Profile Reference",
+        href: "./profile-reference",
+        description: "Bandingkan Release dengan seluruh public dan internal profiles.",
+      },
+      {
+        title: "Full Pipeline",
+        href: "./full-pipeline",
+        description: "Tinjau post-push finalization difference.",
+      },
+      {
+        title: "Changelog Generate",
+        href: "../commands/changelog/generate/overview",
+        description: "Generate changelog sebagai focused operation.",
+      },
+    ]}
+  />
+</Section>

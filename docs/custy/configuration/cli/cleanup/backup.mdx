@@ -7,15 +7,60 @@ tags: [custy, configuration, cleanup, backup]
 keywords: [cleanup backup type, cleanup keep]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.cleanup.backup]" title="Backup Cleanup" description="Select the message-backup category and retention count used by cleanup." category="Cleanup Configuration" status="Active" syntax="[tool.custy.cli.cleanup.backup]" tags={["type", "keep", "retention"]} links={[{label: "Backup Directories", href: "../templates/directories"}, {label: "Cleanup Backup", href: "../../../commands/cleanup/backup/overview"}, {label: "Backup Command", href: "../../../commands/backup/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.cleanup.backup]"
+  title="Backup Cleanup"
+  description="Select the message-backup category and retention count used by cleanup."
+  category="Cleanup Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.cleanup.backup]"
+  tags={["type", "keep", "retention"]}
+  links={[
+    { label: "Backup Directories", href: "../templates/directories" },
+    { label: "Cleanup Backup", href: "../../../commands/cleanup/backup/overview" },
+    { label: "Backup Command", href: "../../../commands/backup/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Default Type", value: "all", icon: "package"}, {label: "Default Keep", value: "10", icon: "file"}, {label: "Status", value: "Active", icon: "success"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Default Type", value: "all", icon: "package" },
+    { label: "Default Keep", value: "10", icon: "file" },
+    { label: "Status", value: "Active", icon: "success" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "type", type: "all | commit | tag", defaultValue: "all", description: "Select both message categories, commit backups only, or tag backups only. The shared enum also contains branch for broader cleanup orchestration."}, {property: "keep", type: "Non-negative integer", defaultValue: "10", description: "Retain this many most-recent files in each selected backup category and remove older files."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "type",
+      type: "all | commit | tag",
+      defaultValue: "all",
+      description:
+        "Select both message categories, commit backups only, or tag backups only. The shared enum also contains branch for broader cleanup orchestration.",
+    },
+    {
+      property: "keep",
+      type: "Non-negative integer",
+      defaultValue: "10",
+      description:
+        "Retain this many most-recent files in each selected backup category and remove older files.",
+    },
+  ]}
+/>
 
 <Terminal title="Generated retention" language="toml">
 
@@ -32,4 +77,24 @@ The retention policy acts on `cli.templates.directory.backups_commit` and
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Backup Directories", href: "../templates/directories", description: "See the cleanup targets."}, {title: "Cleanup Backup Workflow", href: "../../../commands/cleanup/backup/workflow", description: "Review selection and deletion order."}, {title: "Cleanup Backup Examples", href: "../../../commands/cleanup/backup/examples", description: "See retention scenarios."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Backup Directories",
+        href: "../templates/directories",
+        description: "See the cleanup targets.",
+      },
+      {
+        title: "Cleanup Backup Workflow",
+        href: "../../../commands/cleanup/backup/workflow",
+        description: "Review selection and deletion order.",
+      },
+      {
+        title: "Cleanup Backup Examples",
+        href: "../../../commands/cleanup/backup/examples",
+        description: "See retention scenarios.",
+      },
+    ]}
+  />
+</Section>

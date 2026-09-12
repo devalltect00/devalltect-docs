@@ -6,14 +6,10 @@
 
 export { default } from "./KeyValueTable";
 
-export type {
-    KeyValueTableItem,
-    KeyValueTableProps,
-} from "./types";
-
+export type { KeyValueTableItem, KeyValueTableProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.KeyValueTable
     title="Project Information"
     description="Basic information about the Custy project."

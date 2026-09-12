@@ -4,17 +4,47 @@ description: "Pertanyaan umum tentang custy commit."
 sidebar_position: 10
 sidebar_key: custy-commit-faq
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy commit" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang staging, changelog, empty commit, dan profile boundaries." category="Git Operations" status="Reference" syntax="custy commit [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Workflow",href:"./workflow"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy commit"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang staging, changelog, empty commit, dan profile boundaries."
+  category="Git Operations"
+  status="Reference"
+  syntax="custy commit [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="info" title="A Multi-stage Profile">Command mengoordinasikan validation dan artifacts sebelum final Git commit.</InfoBox>
+<InfoBox variant="info" title="A Multi-stage Profile">
+  Command mengoordinasikan validation dan artifacts sebelum final Git commit.
+</InfoBox>
 
-<Section title="Apakah custy commit Sama dengan git commit?">Tidak. Custy menjalankan versioning, artifact, changelog, backup, validation, dan staging stages tambahan.</Section>
-<Section title="Apakah Command Ini Melakukan Push?">Tidak. Profile berhenti setelah local commit.</Section>
-<Section title="Apa Perbedaan custy run commit?">Keduanya menggunakan registered commit profile; direct command menyediakan commit-specific CLI overrides.</Section>
-<Section title="Dapatkah Command Membuat Empty Commit?">Ya, bila `--allow-empty-commit` atau resolved configuration mengizinkannya.</Section>
-<Section title="Apakah Command Membuat Changelog?">Ya, changelog generation merupakan internal stage profile.</Section>
-<Section title="Haruskah Saya Stage Manual Terlebih Dahulu?">Tergantung `auto_stage` dan `stage_mode`. Tinjau resolved configuration dan Git index sebelum eksekusi.</Section>
+<Section title="Apakah custy commit Sama dengan git commit?">
+  Tidak. Custy menjalankan versioning, artifact, changelog, backup, validation, dan
+  staging stages tambahan.
+</Section>
+<Section title="Apakah Command Ini Melakukan Push?">
+  Tidak. Profile berhenti setelah local commit.
+</Section>
+<Section title="Apa Perbedaan custy run commit?">
+  Keduanya menggunakan registered commit profile; direct command menyediakan
+  commit-specific CLI overrides.
+</Section>
+<Section title="Dapatkah Command Membuat Empty Commit?">
+  Ya, bila `--allow-empty-commit` atau resolved configuration mengizinkannya.
+</Section>
+<Section title="Apakah Command Membuat Changelog?">
+  Ya, changelog generation merupakan internal stage profile.
+</Section>
+<Section title="Haruskah Saya Stage Manual Terlebih Dahulu?">
+  Tergantung `auto_stage` dan `stage_mode`. Tinjau resolved configuration dan Git index
+  sebelum eksekusi.
+</Section>

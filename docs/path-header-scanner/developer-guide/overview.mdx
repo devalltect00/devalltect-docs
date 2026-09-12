@@ -8,27 +8,27 @@ keywords: [Path Header Scanner development, scanner contributor guide, scanner t
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="make check"
-    title="Path Header Scanner Developer Guide"
-    description="Extend language-aware path-header scanning while preserving preview-first and dry-run safety."
-    category="Development"
-    status="Contributor Guide"
-    syntax="setup -> focused change -> widening validation"
-    tags={["Python", "pytest", "pre-commit", "scan safety"]}
-    links={[
-        {label: "Setup", href: "./development-setup"},
-        {label: "Testing", href: "./testing"},
-        {label: "Contributing", href: "./contributing"},
-    ]}
+  command="make check"
+  title="Path Header Scanner Developer Guide"
+  description="Extend language-aware path-header scanning while preserving preview-first and dry-run safety."
+  category="Development"
+  status="Contributor Guide"
+  syntax="setup -> focused change -> widening validation"
+  tags={["Python", "pytest", "pre-commit", "scan safety"]}
+  links={[
+    { label: "Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Contributing", href: "./contributing" },
+  ]}
 />
 
 ## Contributor priorities
@@ -39,13 +39,33 @@ deterministic target resolution, language-aware syntax, exclusions, and clear
 valid, inserted, updated, and failed summaries.
 
 <FeatureGrid
-    title="Development Boundaries"
-    items={[
-        {title: "CLI", icon: <Icon name="terminal" />, children: "Keep command parsing, argument resolution, and presentation under app/cli."},
-        {title: "Scanner", icon: <Icon name="architecture" />, children: "Keep discovery, validation, processing, and updates under app/core/scan."},
-        {title: "Languages", icon: <Icon name="file" />, children: "Keep header syntax and language-specific behavior under app/languages."},
-        {title: "Safety", icon: <Icon name="security" />, children: "Test preview, --apply, configured apply, and --dry-run as distinct contracts using temporary files."},
-    ]}
+  title="Development Boundaries"
+  items={[
+    {
+      title: "CLI",
+      icon: <Icon name="terminal" />,
+      children:
+        "Keep command parsing, argument resolution, and presentation under app/cli.",
+    },
+    {
+      title: "Scanner",
+      icon: <Icon name="architecture" />,
+      children:
+        "Keep discovery, validation, processing, and updates under app/core/scan.",
+    },
+    {
+      title: "Languages",
+      icon: <Icon name="file" />,
+      children:
+        "Keep header syntax and language-specific behavior under app/languages.",
+    },
+    {
+      title: "Safety",
+      icon: <Icon name="security" />,
+      children:
+        "Test preview, --apply, configured apply, and --dry-run as distinct contracts using temporary files.",
+    },
+  ]}
 />
 
 ---
@@ -69,10 +89,26 @@ automatic formatting and lint fixes.
 ---
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Install the scanner and contributor tools."},
-        {title: "Testing", href: "./testing", description: "Test preview, apply, languages, and dry-run boundaries."},
-        {title: "Contributing", href: "./contributing", description: "Prepare a focused scanner contribution."},
-        {title: "Architecture", href: "../architecture/overview", description: "Trace scanning responsibilities and data flow."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Install the scanner and contributor tools.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Test preview, apply, languages, and dry-run boundaries.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Prepare a focused scanner contribution.",
+    },
+    {
+      title: "Architecture",
+      href: "../architecture/overview",
+      description: "Trace scanning responsibilities and data flow.",
+    },
+  ]}
 />

@@ -8,30 +8,26 @@ keywords: [custy push output]
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Command Output"
-    description="Interpret per-remote dry-run, success, skip, warning, and failure messages from the push profile."
-    category="Git Operations"
-    status="Review Required"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "output",
-        "remotes",
-        "verification",
-    ]}
-    links={[
-        {label: "Workflow", href: "./workflow"},
-        {label: "Remotes", href: "./remotes"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy push"
+  title="Command Output"
+  description="Interpret per-remote dry-run, success, skip, warning, and failure messages from the push profile."
+  category="Git Operations"
+  status="Review Required"
+  syntax="custy push [OPTIONS]"
+  tags={["output", "remotes", "verification"]}
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Overview
@@ -46,23 +42,25 @@ every message because different destinations can produce different results.
 >
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Dry-Run Remote Processing",
-            description: "Representative intent reported before normal synchronization.",
-            output: `Remote role: main
+  outputs={[
+    {
+      title: "Dry-Run Remote Processing",
+      description: "Representative intent reported before normal synchronization.",
+      output: `Remote role: main
 Remote: origin
 Dry-run: push HEAD
 Dry-run: push tag v1.2.3`,
-            notes: "Use the actual output from the installed Custy version as destination truth.",
-        },
-        {
-            title: "Backup Remote Skipped",
-            description: "Representative skip behavior when no eligible backup destination is available.",
-            output: `Backup synchronization skipped
+      notes:
+        "Use the actual output from the installed Custy version as destination truth.",
+    },
+    {
+      title: "Backup Remote Skipped",
+      description:
+        "Representative skip behavior when no eligible backup destination is available.",
+      output: `Backup synchronization skipped
 No eligible backup remote resolved`,
-        },
-    ]}
+    },
+  ]}
 />
 
 Output can include the current branch, remote role, dry-run intent, HEAD and tag

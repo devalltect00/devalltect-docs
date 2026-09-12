@@ -4,40 +4,75 @@ description: "Atasi masalah changelog generation dan rendering."
 sidebar_position: 9
 sidebar_key: custy-changelog-generate-troubleshooting
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Changelog Generate Troubleshooting" description="Diagnosa collection, classification, grouping, links, dan pending content." category="Changelog" status="Panduan Dukungan" syntax="custy changelog generate [OPTIONS]" links={[
-    {label: "Pusat Pemecahan Masalah", href: "../../../troubleshooting/overview"}, {label: "Requirements", href: "./requirements"}, {label: "Configuration", href: "./configuration"}, {label: "FAQ", href: "./faq"},
-]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Changelog Generate Troubleshooting"
+  description="Diagnosa collection, classification, grouping, links, dan pending content."
+  category="Changelog"
+  status="Panduan Dukungan"
+  syntax="custy changelog generate [OPTIONS]"
+  links={[
+    { label: "Pusat Pemecahan Masalah", href: "../../../troubleshooting/overview" },
+    { label: "Requirements", href: "./requirements" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "FAQ", href: "./faq" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="tip" title="Periksa Input Sebelum Mengulang">Periksa Git history, tags, effective configuration, template path, pending message, dan current diff.</InfoBox>
+<InfoBox variant="tip" title="Periksa Input Sebelum Mengulang">
+  Periksa Git history, tags, effective configuration, template path, pending message,
+  dan current diff.
+</InfoBox>
 
 ## Commit Tidak Muncul
 
-<Section compact>Periksa release boundary, ignored types, merge-commit policy, message parsing, serta filter konfigurasi.</Section>
+<Section compact>
+  Periksa release boundary, ignored types, merge-commit policy, message parsing, serta
+  filter konfigurasi.
+</Section>
 
 ## Entry yang Sama Muncul Lebih dari Sekali
 
-<Section compact>Periksa deduplication, pending content, release boundaries, dan apakah artifact lama ikut digabungkan.</Section>
+<Section compact>
+  Periksa deduplication, pending content, release boundaries, dan apakah artifact lama
+  ikut digabungkan.
+</Section>
 
 ## Scope Heading Terlalu Ramai
 
-<Section compact>Tinjau `scope_map`, group-by-scope behavior, dan aturan unknown scope.</Section>
+<Section compact>
+  Tinjau `scope_map`, group-by-scope behavior, dan aturan unknown scope.
+</Section>
 
 ## Pending Content Salah Posisi
 
-<Section compact>Periksa apakah pending collection aktif, file yang dibaca benar, serta placement dan release behavior yang berlaku.</Section>
+<Section compact>
+  Periksa apakah pending collection aktif, file yang dibaca benar, serta placement dan
+  release behavior yang berlaku.
+</Section>
 
 ## Comparison Link Tidak Benar
 
-<Section compact>Periksa repository URL, tag format, previous/current release boundary, dan link configuration.</Section>
+<Section compact>
+  Periksa repository URL, tag format, previous/current release boundary, dan link
+  configuration.
+</Section>
 
 ## Alternative Pending Message File Ditolak
 
-<Section compact>Pastikan path pada `--commit-msg-file` menunjuk file yang ada dan dapat dibaca dari current working directory.</Section>
+<Section compact>
+  Pastikan path pada `--commit-msg-file` menunjuk file yang ada dan dapat dibaca dari
+  current working directory.
+</Section>
 
 ## Pemulihan yang Aman
 
-<Section compact>Simpan atau tinjau perubahan yang diperlukan, pulihkan artifact yang salah melalui version control, lalu jalankan dry run setelah memperbaiki akar masalah.</Section>
+<Section compact>
+  Simpan atau tinjau perubahan yang diperlukan, pulihkan artifact yang salah melalui
+  version control, lalu jalankan dry run setelah memperbaiki akar masalah.
+</Section>

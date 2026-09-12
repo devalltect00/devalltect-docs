@@ -14,54 +14,28 @@
 
 import clsx from "clsx";
 
-import {
-    Card,
-    Heading,
-} from "../../";
+import { Card, Heading } from "../../";
 
 import styles from "./ArchitectureCard.module.css";
 
-import type {
-    ArchitectureCardProps,
-} from "./types";
+import type { ArchitectureCardProps } from "./types";
 
 /**
  * Displays an architecture documentation card.
  */
 export default function ArchitectureCard({
-    title,
-    subtitle,
-    icon,
-    children,
-    className,
-    ...props
+  title,
+  subtitle,
+  icon,
+  children,
+  className,
+  ...props
 }: ArchitectureCardProps) {
+  return (
+    <Card className={clsx(styles.card, className)} {...props}>
+      <Heading level={3} title={title} subtitle={subtitle} icon={icon} />
 
-    return (
-
-        <Card
-            className={clsx(
-                styles.card,
-                className,
-            )}
-            {...props}
-        >
-
-            <Heading
-                level={3}
-                title={title}
-                subtitle={subtitle}
-                icon={icon}
-            />
-
-            <div className={styles.content}>
-
-                {children}
-
-            </div>
-
-        </Card>
-
-    );
-
+      <div className={styles.content}>{children}</div>
+    </Card>
+  );
 }

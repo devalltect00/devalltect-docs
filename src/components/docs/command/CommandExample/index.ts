@@ -1,13 +1,9 @@
 export { default } from "./CommandExample";
 
-export type {
-    CommandExampleItem,
-    CommandExampleProps,
-} from "./types";
-
+export type { CommandExampleItem, CommandExampleProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandExample
     examples={[
         {

@@ -6,14 +6,27 @@ sidebar_key: doc-gen-init
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Konfigurasi" description="Nilai CLI memiliki prioritas tertinggi, diikuti konfigurasi proyek dan nilai bawaan internal." category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Konfigurasi"
+  description="Nilai CLI memiliki prioritas tertinggi, diikuti konfigurasi proyek dan nilai bawaan internal."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Kunci | Bawaan | Efek |
-| --- | --- | --- |
-| `tool.doc-gen.initialization.force` | false | Nilai bawaan untuk menimpa file yang sudah ada. |
-| `tool.doc-gen.initialization.ask` | false | Nilai bawaan untuk meminta konfirmasi. |
+| Kunci                               | Bawaan | Efek                                            |
+| ----------------------------------- | ------ | ----------------------------------------------- |
+| `tool.doc-gen.initialization.force` | false  | Nilai bawaan untuk menimpa file yang sudah ada. |
+| `tool.doc-gen.initialization.ask`   | false  | Nilai bawaan untuk meminta konfirmasi.          |
 
 ```toml
 [tool.doc-gen.initialization]

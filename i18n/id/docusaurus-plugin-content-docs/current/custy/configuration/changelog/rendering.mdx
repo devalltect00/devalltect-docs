@@ -7,30 +7,292 @@ tags: [custy, changelog, rendering]
 keywords: [changelog render, group_by_scope, show_title, sort_scopes]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.render]" title="Rendering" description="Atur final Markdown layout sambil membedakan active template behavior dari loaded-only fields." category="Changelog Configuration" status="Active + Loaded-Only Fields" syntax="[tool.custy.changelog.render]" tags={["visibility", "layout", "sorting"]} links={[{label: "Links", href: "./links"}, {label: "Mappings", href: "./mappings"}, {label: "Output", href: "../../commands/changelog/generate/output"}]} />
-<CommandMetadata items={[{label: "Properties", value: "28", icon: "table"}, {label: "Groups", value: "5", icon: "directory"}, {label: "Template", value: "changelog.j2", icon: "file"}, {label: "Loaded-Only", value: "Documented below", icon: "warning"}]} />
+<CommandHero
+  command="[tool.custy.changelog.render]"
+  title="Rendering"
+  description="Atur final Markdown layout sambil membedakan active template behavior dari loaded-only fields."
+  category="Changelog Configuration"
+  status="Active + Loaded-Only Fields"
+  syntax="[tool.custy.changelog.render]"
+  tags={["visibility", "layout", "sorting"]}
+  links={[
+    { label: "Links", href: "./links" },
+    { label: "Mappings", href: "./mappings" },
+    { label: "Output", href: "../../commands/changelog/generate/output" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "28", icon: "table" },
+    { label: "Groups", value: "5", icon: "directory" },
+    { label: "Template", value: "changelog.j2", icon: "file" },
+    { label: "Loaded-Only", value: "Documented below", icon: "warning" },
+  ]}
+/>
 
 ## General Visibility
-<PropertyTable items={[{property: "show_title", type: "Boolean", defaultValue: "true", description: "Render main Changelog heading. Active dalam generated Jinja template."}, {property: "show_description", type: "Boolean", defaultValue: "true", description: "Render introductory description. Active dalam template."}, {property: "show_release_status", type: "Boolean", defaultValue: "true", description: "Render release label jika status tersedia. Active."}, {property: "show_summary", type: "Boolean", defaultValue: "true", description: "Render resolved release summary. Active."}, {property: "show_promoted_from", type: "Boolean", defaultValue: "true", description: "Render pre-release versions yang dipromosikan ke release. Active."}, {property: "show_compare_link", type: "Boolean", defaultValue: "true", description: "Tampilkan comparison URL jika link generation menghasilkannya. Active."}]} />
+
+<PropertyTable
+  items={[
+    {
+      property: "show_title",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Render main Changelog heading. Active dalam generated Jinja template.",
+    },
+    {
+      property: "show_description",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Render introductory description. Active dalam template.",
+    },
+    {
+      property: "show_release_status",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Render release label jika status tersedia. Active.",
+    },
+    {
+      property: "show_summary",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Render resolved release summary. Active.",
+    },
+    {
+      property: "show_promoted_from",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Render pre-release versions yang dipromosikan ke release. Active.",
+    },
+    {
+      property: "show_compare_link",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Tampilkan comparison URL jika link generation menghasilkannya. Active.",
+    },
+  ]}
+/>
 
 ## Layout dan Empty Content
-<PropertyTable items={[{property: "group_by_scope", type: "Boolean", defaultValue: "true", description: "Buat scope subsections dalam commit-type groups. Active."}, {property: "collapse_generic_scopes", type: "Boolean", defaultValue: "true", description: "Hindari subsections untuk scopes yang tidak menambah banyak makna. Active."}, {property: "generic_scopes", type: "String array", defaultValue: "8 generated values", description: "Scope names yang dianggap generic setelah scope mapping. Active dan dinormalisasi menjadi lowercase."}, {property: "deduplicate", type: "Boolean", defaultValue: "true", description: "Hapus overlapping changelog entries selama processing dan context construction. Active."}, {property: "show_empty_sections", type: "Boolean", defaultValue: "false", description: "Dimuat ke rendering model tetapi tidak digunakan current active template atau context."}, {property: "show_empty_groups", type: "Boolean", defaultValue: "false", description: "Pertahankan empty commit-type groups dalam render context. Active."}, {property: "show_empty_scopes", type: "Boolean", defaultValue: "false", description: "Pertahankan empty scope subsections. Active."}, {property: "show_empty_metadata", type: "Boolean", defaultValue: "false", description: "Loaded only; current generated template tidak memiliki metadata section."}, {property: "show_empty_tags", type: "Boolean", defaultValue: "false", description: "Render empty Tags section saat show_tags aktif. Active."}]} />
+
+<PropertyTable
+  items={[
+    {
+      property: "group_by_scope",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Buat scope subsections dalam commit-type groups. Active.",
+    },
+    {
+      property: "collapse_generic_scopes",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Hindari subsections untuk scopes yang tidak menambah banyak makna. Active.",
+    },
+    {
+      property: "generic_scopes",
+      type: "String array",
+      defaultValue: "8 generated values",
+      description:
+        "Scope names yang dianggap generic setelah scope mapping. Active dan dinormalisasi menjadi lowercase.",
+    },
+    {
+      property: "deduplicate",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Hapus overlapping changelog entries selama processing dan context construction. Active.",
+    },
+    {
+      property: "show_empty_sections",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Dimuat ke rendering model tetapi tidak digunakan current active template atau context.",
+    },
+    {
+      property: "show_empty_groups",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Pertahankan empty commit-type groups dalam render context. Active.",
+    },
+    {
+      property: "show_empty_scopes",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Pertahankan empty scope subsections. Active.",
+    },
+    {
+      property: "show_empty_metadata",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Loaded only; current generated template tidak memiliki metadata section.",
+    },
+    {
+      property: "show_empty_tags",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Render empty Tags section saat show_tags aktif. Active.",
+    },
+  ]}
+/>
 <Terminal title="Generated generic scopes" language="toml">{`generic_scopes = [
   "", "main", "core", "general",
   "default", "root", "changelog", "release",
 ]`}</Terminal>
 
 ## Optional Sections
-<PropertyTable items={[{property: "show_metadata", type: "Boolean", defaultValue: "true", description: "Loaded only; current generated template tidak merender metadata block."}, {property: "show_tags", type: "Boolean", defaultValue: "true", description: "Render grouped release tags. Active."}, {property: "show_contributors", type: "Boolean", defaultValue: "false", description: "Loaded only dan ditandai sebagai future feature dalam generated configuration."}, {property: "show_statistics", type: "Boolean", defaultValue: "false", description: "Loaded only dan ditandai sebagai future feature dalam generated configuration."}]} />
+
+<PropertyTable
+  items={[
+    {
+      property: "show_metadata",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Loaded only; current generated template tidak merender metadata block.",
+    },
+    {
+      property: "show_tags",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Render grouped release tags. Active.",
+    },
+    {
+      property: "show_contributors",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Loaded only dan ditandai sebagai future feature dalam generated configuration.",
+    },
+    {
+      property: "show_statistics",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Loaded only dan ditandai sebagai future feature dalam generated configuration.",
+    },
+  ]}
+/>
 
 ## Formatting
-<PropertyTable items={[{property: "bullet", type: "String", defaultValue: "-", description: "Character atau string sebelum rendered items. Active."}, {property: "indent", type: "Non-negative integer", defaultValue: "0", description: "Leading spaces sebelum list items. Invalid negative values fallback ke 0. Active."}, {property: "blank_lines_between_releases", type: "Non-negative integer", defaultValue: "2", description: "Loaded only; spacing saat ini diatur Jinja template structure."}, {property: "blank_lines_between_commit_groups", type: "Non-negative integer", defaultValue: "1", description: "Loaded only; spacing saat ini diatur Jinja template structure."}]} />
+
+<PropertyTable
+  items={[
+    {
+      property: "bullet",
+      type: "String",
+      defaultValue: "-",
+      description: "Character atau string sebelum rendered items. Active.",
+    },
+    {
+      property: "indent",
+      type: "Non-negative integer",
+      defaultValue: "0",
+      description:
+        "Leading spaces sebelum list items. Invalid negative values fallback ke 0. Active.",
+    },
+    {
+      property: "blank_lines_between_releases",
+      type: "Non-negative integer",
+      defaultValue: "2",
+      description: "Loaded only; spacing saat ini diatur Jinja template structure.",
+    },
+    {
+      property: "blank_lines_between_commit_groups",
+      type: "Non-negative integer",
+      defaultValue: "1",
+      description: "Loaded only; spacing saat ini diatur Jinja template structure.",
+    },
+  ]}
+/>
 
 ## Sorting dan Visuals
-<PropertyTable items={[{property: "sort_groups", type: "Boolean", defaultValue: "false", description: "Sort commit-type groups secara alfabetis, bukan mapped order. Active."}, {property: "sort_scopes", type: "Boolean", defaultValue: "true", description: "Sort scope subsections secara alfabetis. Active."}, {property: "sort_items", type: "Boolean", defaultValue: "false", description: "Sort individual entries secara alfabetis. Active."}, {property: "show_section_icons", type: "Boolean", defaultValue: "true", description: "Pertahankan atau hapus icon prefixes dari mapped section titles. Active."}, {property: "show_footer", type: "Boolean", defaultValue: "false", description: "Render footer Generated by Custy. Active dalam generated template."}]} />
 
-<InfoBox variant="warning" title="Loaded Tidak Selalu Berarti Visible">Resolver menerima setiap property di atas, tetapi current generated template tidak menerapkan metadata, contributors, statistics, global empty-section, atau blank-line controls. Fields tersebut didokumentasikan sebagai loaded only.</InfoBox>
-<Section title="Review Workflow">Ubah satu rendering group setiap kali, jalankan `custy changelog generate`, lalu periksa rendered Markdown dan Git diff. Template customization juga dapat mengubah rendering fields yang memiliki visible effect.</Section>
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Mappings", href: "./mappings", description: "Konfigurasikan labels yang di-sort dan dirender."}, {title: "Links", href: "./links", description: "Konfigurasikan comparison URL generation."}, {title: "Generated Output", href: "../../commands/changelog/generate/output", description: "Tinjau expected Markdown structure."}, {title: "Troubleshooting", href: "../../commands/changelog/generate/troubleshooting", description: "Diagnosis missing atau unexpected sections."}]} /></Section>
+<PropertyTable
+  items={[
+    {
+      property: "sort_groups",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Sort commit-type groups secara alfabetis, bukan mapped order. Active.",
+    },
+    {
+      property: "sort_scopes",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Sort scope subsections secara alfabetis. Active.",
+    },
+    {
+      property: "sort_items",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Sort individual entries secara alfabetis. Active.",
+    },
+    {
+      property: "show_section_icons",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Pertahankan atau hapus icon prefixes dari mapped section titles. Active.",
+    },
+    {
+      property: "show_footer",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Render footer Generated by Custy. Active dalam generated template.",
+    },
+  ]}
+/>
+
+<InfoBox variant="warning" title="Loaded Tidak Selalu Berarti Visible">
+  Resolver menerima setiap property di atas, tetapi current generated template tidak
+  menerapkan metadata, contributors, statistics, global empty-section, atau blank-line
+  controls. Fields tersebut didokumentasikan sebagai loaded only.
+</InfoBox>
+<Section title="Review Workflow">
+  Ubah satu rendering group setiap kali, jalankan `custy changelog generate`, lalu
+  periksa rendered Markdown dan Git diff. Template customization juga dapat mengubah
+  rendering fields yang memiliki visible effect.
+</Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Mappings",
+        href: "./mappings",
+        description: "Konfigurasikan labels yang di-sort dan dirender.",
+      },
+      {
+        title: "Links",
+        href: "./links",
+        description: "Konfigurasikan comparison URL generation.",
+      },
+      {
+        title: "Generated Output",
+        href: "../../commands/changelog/generate/output",
+        description: "Tinjau expected Markdown structure.",
+      },
+      {
+        title: "Troubleshooting",
+        href: "../../commands/changelog/generate/troubleshooting",
+        description: "Diagnosis missing atau unexpected sections.",
+      },
+    ]}
+  />
+</Section>

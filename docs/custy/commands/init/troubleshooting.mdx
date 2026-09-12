@@ -15,42 +15,34 @@ keywords:
   - common problems
 ---
 
-import {
-    CommandHero,
-    InfoBox,
-    Section,
-} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Init Troubleshooting"
-    description="Common problems, possible causes, and recommended solutions."
-    category="Initialization"
-    status="Support Guide"
-    syntax="custy init"
-    tags={[
-        "troubleshooting",
-        "errors",
-        "support",
-    ]}
-    links={[
-        {
-            label: "Troubleshooting Hub",
-            href: "../../troubleshooting/overview",
-        },
-        {
-            label: "Requirements",
-            href: "./requirements",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy init"
+  title="Init Troubleshooting"
+  description="Common problems, possible causes, and recommended solutions."
+  category="Initialization"
+  status="Support Guide"
+  syntax="custy init"
+  tags={["troubleshooting", "errors", "support"]}
+  links={[
+    {
+      label: "Troubleshooting Hub",
+      href: "../../troubleshooting/overview",
+    },
+    {
+      label: "Requirements",
+      href: "./requirements",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -130,7 +122,7 @@ Custy behaves differently than expected after initialization.
 **Why it happens**
 
 The project already contains a customized
-` .config/custy/config.toml ` configuration.
+`.config/custy/config.toml` configuration.
 
 **How to resolve it**
 

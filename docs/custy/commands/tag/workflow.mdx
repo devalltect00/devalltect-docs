@@ -8,29 +8,25 @@ keywords: [custy tag workflow]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy tag"
-    title="Tag Workflow"
-    description="Follow version resolution, artifact preparation, message backup, and local Git tag creation."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy tag [OPTIONS]"
-    tags={[
-        "workflow",
-        "pipeline",
-        "local tag",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Versioning", href: "./versioning-and-tags"},
-        {label: "Output", href: "./output"},
-    ]}
+  command="custy tag"
+  title="Tag Workflow"
+  description="Follow version resolution, artifact preparation, message backup, and local Git tag creation."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy tag [OPTIONS]"
+  tags={["workflow", "pipeline", "local tag"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Versioning", href: "./versioning-and-tags" },
+    { label: "Output", href: "./output" },
+  ]}
 />
 
 ## Overview
@@ -45,16 +41,44 @@ reference. Required failures stop later stages.
 >
 
 <WorkflowTimeline
-    title="Tag Profile"
-    items={[
-        {title: "Validate repository", description: "Run repository and pre-tag checks.", status: "completed"},
-        {title: "Prepare version", description: "Resolve the target version and initialize workflow state.", status: "completed"},
-        {title: "Prepare tag message", description: "Load or generate the annotated tag message.", status: "completed"},
-        {title: "Generate and edit artifacts", description: "Create configured artifacts and allow required editing.", status: "completed"},
-        {title: "Apply version", description: "Write the selected version to the configured version file.", status: "completed"},
-        {title: "Back up and clean", description: "Back up tag-message content and prune retained backups.", status: "completed"},
-        {title: "Create local tag", description: "Create the Git tag at the resolved target commit.", status: "completed"},
-    ]}
+  title="Tag Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Run repository and pre-tag checks.",
+      status: "completed",
+    },
+    {
+      title: "Prepare version",
+      description: "Resolve the target version and initialize workflow state.",
+      status: "completed",
+    },
+    {
+      title: "Prepare tag message",
+      description: "Load or generate the annotated tag message.",
+      status: "completed",
+    },
+    {
+      title: "Generate and edit artifacts",
+      description: "Create configured artifacts and allow required editing.",
+      status: "completed",
+    },
+    {
+      title: "Apply version",
+      description: "Write the selected version to the configured version file.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Back up tag-message content and prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Create local tag",
+      description: "Create the Git tag at the resolved target commit.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

@@ -6,15 +6,28 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner init" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Initialization" status="Recommended" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner init"
+  title="Options"
+  description="CLI values override project configuration, which overrides internal defaults."
+  category="Initialization"
+  status="Recommended"
+  syntax="path-header-scanner init [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Flag / value | Default | Effect |
-| --- | --- | --- |
-| `--mode, -m` | `all` | Choose `all` or `config`. Both currently initialize the configuration resource. |
-| `--force/--no-force, -f/-F` | `false` | Overwrite an existing selected resource without prompting. |
-| `--ask, -a` | `false` | Ask before creating or replacing resources when a decision is needed. |
+| Flag / value                      | Default                        | Effect                                                                                     |
+| --------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------ |
+| `--mode, -m`                      | `all`                          | Choose `all` or `config`. Both currently initialize the configuration resource.            |
+| `--force/--no-force, -f/-F`       | `false`                        | Overwrite an existing selected resource without prompting.                                 |
+| `--ask, -a`                       | `false`                        | Ask before creating or replacing resources when a decision is needed.                      |
 | `--dry-run/--no-dry-run, -dr/-Dr` | configured value, then `false` | Display the initialization plan without creating directories, writing files, or prompting. |
 
 <InfoBox variant="note" title="Mode scope in v1.0.0">

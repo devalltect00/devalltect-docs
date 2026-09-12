@@ -4,25 +4,63 @@ description: "Pahami main dan backup remote resolution dalam Push workflow."
 sidebar_position: 5
 sidebar_key: custy-push-remotes
 ---
-import {CommandHero, FeatureGrid, InfoBox, Section, Terminal} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Remote Resolution" description="Pahami bagaimana destination roles dipilih dan diverifikasi." category="Git Operations" status="Important" syntax="custy push [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Remote Resolution"
+  description="Pahami bagaimana destination roles dipilih dan diverifikasi."
+  category="Git Operations"
+  status="Important"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<FeatureGrid items={[
- {title:"Explicit Remote",children:"--remote memilih tepat satu destination dan override group settings."},
- {title:"Main Remotes",children:"Berasal dari main_remotes, dengan fallback ke default_remote jika list kosong."},
- {title:"Backup Remotes",children:"Berasal hanya dari backup_remotes dan tetap mengikuti branch safety."},
- {title:"All Remotes",children:"--all-remote memilih de-duplicated union dari main dan backup groups."},
-]} />
+<FeatureGrid
+  items={[
+    {
+      title: "Explicit Remote",
+      children: "--remote memilih tepat satu destination dan override group settings.",
+    },
+    {
+      title: "Main Remotes",
+      children:
+        "Berasal dari main_remotes, dengan fallback ke default_remote jika list kosong.",
+    },
+    {
+      title: "Backup Remotes",
+      children: "Berasal hanya dari backup_remotes dan tetap mengikuti branch safety.",
+    },
+    {
+      title: "All Remotes",
+      children: "--all-remote memilih de-duplicated union dari main dan backup groups.",
+    },
+  ]}
+/>
 
-<Section title="Branch Safety">Pastikan current branch memang boleh dipush dan upstream/destination sesuai. Custy tidak menggantikan branch-protection rules.</Section>
-<InfoBox variant="info" title="Selection Priority">`--remote` memiliki prioritas tertinggi, dilanjutkan `all_remote = true`, lalu `tool.custy.git.push_to`. `sync_backup = true` menambahkan configured backups ke main-group push jika branch diizinkan.</InfoBox>
+<Section title="Branch Safety">
+  Pastikan current branch memang boleh dipush dan upstream/destination sesuai. Custy
+  tidak menggantikan branch-protection rules.
+</Section>
+<InfoBox variant="info" title="Selection Priority">
+  `--remote` memiliki prioritas tertinggi, dilanjutkan `all_remote = true`, lalu
+  `tool.custy.git.push_to`. `sync_backup = true` menambahkan configured backups ke
+  main-group push jika branch diizinkan.
+</InfoBox>
 
 <Section title="Inspect Repository Remotes">
-```bash
-git remote -v
-git branch -vv
-```
+  ```bash git remote -v git branch -vv ```
 </Section>

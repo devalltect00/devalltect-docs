@@ -6,12 +6,85 @@ sidebar_key: custy-architecture-pipeline-engine
 tags: [custy, pipeline, architecture]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, WorkflowDiagram} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  WorkflowDiagram,
+} from "@site/src/components/docs";
 
-<CommandHero command="app/core/pipeline/" title="Pipeline Engine" description="Ikuti profile name hingga registered step yang berjalan berurutan." category="Arsitektur" status="Sequential" syntax="profile -> expand -> normalize -> registry -> build -> execute" links={[{label: "Pipeline Guide", href: "../pipelines/overview"}, {label: "Execution Model", href: "../pipelines/execution-model"}, {label: "Step System", href: "../pipelines/step-system"}]} />
+<CommandHero
+  command="app/core/pipeline/"
+  title="Pipeline Engine"
+  description="Ikuti profile name hingga registered step yang berjalan berurutan."
+  category="Arsitektur"
+  status="Sequential"
+  syntax="profile -> expand -> normalize -> registry -> build -> execute"
+  links={[
+    { label: "Pipeline Guide", href: "../pipelines/overview" },
+    { label: "Execution Model", href: "../pipelines/execution-model" },
+    { label: "Step System", href: "../pipelines/step-system" },
+  ]}
+/>
 
-<WorkflowDiagram title="Konstruksi Pipeline" timeline={[{title: "Resolve profile", description: "CommandResolver membaca PIPELINE_PROFILES.", status: "completed"}, {title: "Expand", description: "Nested profile diubah menjadi concrete step names.", status: "completed"}, {title: "Normalize order", description: "STEP_ORDER menentukan urutan global dan deduplication.", status: "completed"}, {title: "Instantiate", description: "StepRegistry membuat step yang terdaftar.", status: "current"}, {title: "Execute", description: "Pipeline menjalankan step secara sequential melalui GitContext.", status: "pending"}]} />
+<WorkflowDiagram
+  title="Konstruksi Pipeline"
+  timeline={[
+    {
+      title: "Resolve profile",
+      description: "CommandResolver membaca PIPELINE_PROFILES.",
+      status: "completed",
+    },
+    {
+      title: "Expand",
+      description: "Nested profile diubah menjadi concrete step names.",
+      status: "completed",
+    },
+    {
+      title: "Normalize order",
+      description: "STEP_ORDER menentukan urutan global dan deduplication.",
+      status: "completed",
+    },
+    {
+      title: "Instantiate",
+      description: "StepRegistry membuat step yang terdaftar.",
+      status: "current",
+    },
+    {
+      title: "Execute",
+      description: "Pipeline menjalankan step secara sequential melalui GitContext.",
+      status: "pending",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Profile internal bukan API publik">Hanya profile yang diekspos oleh `custy run` merupakan pilihan pengguna yang didukung. Profile direct-command dan composition tetap internal walaupun berada dalam resolver yang sama.</InfoBox>
+<InfoBox variant="warning" title="Profile internal bukan API publik">
+  Hanya profile yang diekspos oleh `custy run` merupakan pilihan pengguna yang didukung.
+  Profile direct-command dan composition tetap internal walaupun berada dalam resolver
+  yang sama.
+</InfoBox>
 
-<RelatedCommands commands={[{title: "Pipeline Guide", href: "../pipelines/overview", description: "Pelajari profile, order, safety, dan behavior."}, {title: "Workflow Engine", href: "./workflow-engine", description: "Lihat target delegasi setiap step."}, {title: "Adding Pipeline Steps", href: "../developer-guide/adding-pipeline-steps", description: "Pertahankan registration, priority, composition, dan test."}, {title: "Run Command", href: "../commands/run/overview", description: "Gunakan public profile boundary."}]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Pipeline Guide",
+      href: "../pipelines/overview",
+      description: "Pelajari profile, order, safety, dan behavior.",
+    },
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "Lihat target delegasi setiap step.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "../developer-guide/adding-pipeline-steps",
+      description: "Pertahankan registration, priority, composition, dan test.",
+    },
+    {
+      title: "Run Command",
+      href: "../commands/run/overview",
+      description: "Gunakan public profile boundary.",
+    },
+  ]}
+/>

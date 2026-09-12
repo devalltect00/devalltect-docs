@@ -16,43 +16,39 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy --dry-run COMMAND"
-    title="Dry Run"
-    description="Resolve and preview supported operations before allowing Custy to change files, Git history, or remotes."
-    category="Core Concepts"
-    status="Recommended First Step"
-    syntax="custy --dry-run COMMAND [OPTIONS]"
-    tags={[
-        "simulation",
-        "safety",
-        "preview",
-    ]}
-    links={[
-        {label: "Run Safety", href: "../commands/run/safety"},
-        {label: "First Workflow", href: "../getting-started/first-workflow"},
-        {label: "Side Effects", href: "./safety-and-side-effects"},
-    ]}
+  command="custy --dry-run COMMAND"
+  title="Dry Run"
+  description="Resolve and preview supported operations before allowing Custy to change files, Git history, or remotes."
+  category="Core Concepts"
+  status="Recommended First Step"
+  syntax="custy --dry-run COMMAND [OPTIONS]"
+  tags={["simulation", "safety", "preview"]}
+  links={[
+    { label: "Run Safety", href: "../commands/run/safety" },
+    { label: "First Workflow", href: "../getting-started/first-workflow" },
+    { label: "Side Effects", href: "./safety-and-side-effects" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Option Scope", value: "Global", icon: "configuration"},
-        {label: "Option Position", value: "Before the command", icon: "terminal"},
-        {label: "Supported Mutations", value: "Simulated", icon: "success"},
-        {label: "Reads and Validation", value: "Still performed", icon: "warning"},
-    ]}
+  items={[
+    { label: "Option Scope", value: "Global", icon: "configuration" },
+    { label: "Option Position", value: "Before the command", icon: "terminal" },
+    { label: "Supported Mutations", value: "Simulated", icon: "success" },
+    { label: "Reads and Validation", value: "Still performed", icon: "warning" },
+  ]}
 />
 
 ## Overview
@@ -85,6 +81,7 @@ normal execution when the project configuration already sets `dry_run = true`.
 custy --dry-run changelog generate
 
 # Force normal execution, even when dry_run = true in configuration
+
 custy --no-dry-run changelog generate`}
 
 </Terminal>
@@ -99,39 +96,45 @@ custy --no-dry-run changelog generate`}
 >
 
 <FeatureGrid
-    title="Simulation Boundary"
-    items={[
-        {
-            title: "Project Writes",
-            icon: <Icon name="file" />,
-            children: "Supported version, changelog, artifact, and backup writes are previewed instead of applied.",
-        },
-        {
-            title: "Git Mutations",
-            icon: <Icon name="git" />,
-            children: "Supported staging, commit, tag, and push operations are reported without normal execution.",
-        },
-        {
-            title: "Discovery and Reads",
-            icon: <Icon name="dependency" />,
-            children: "Configuration, project files, repository state, history, tags, and remotes can still be inspected.",
-        },
-        {
-            title: "Validation",
-            icon: <Icon name="success" />,
-            children: "Prerequisite and repository checks still run and can stop the preview with a useful error.",
-        },
-        {
-            title: "Resolution",
-            icon: <Icon name="pipeline" />,
-            children: "Profiles, versions, paths, templates, and destinations are still resolved where the selected flow requires them.",
-        },
-        {
-            title: "Review",
-            icon: <Icon name="terminal" />,
-            children: "The output becomes a plan for checking what normal execution intends to do.",
-        },
-    ]}
+  title="Simulation Boundary"
+  items={[
+    {
+      title: "Project Writes",
+      icon: <Icon name="file" />,
+      children:
+        "Supported version, changelog, artifact, and backup writes are previewed instead of applied.",
+    },
+    {
+      title: "Git Mutations",
+      icon: <Icon name="git" />,
+      children:
+        "Supported staging, commit, tag, and push operations are reported without normal execution.",
+    },
+    {
+      title: "Discovery and Reads",
+      icon: <Icon name="dependency" />,
+      children:
+        "Configuration, project files, repository state, history, tags, and remotes can still be inspected.",
+    },
+    {
+      title: "Validation",
+      icon: <Icon name="success" />,
+      children:
+        "Prerequisite and repository checks still run and can stop the preview with a useful error.",
+    },
+    {
+      title: "Resolution",
+      icon: <Icon name="pipeline" />,
+      children:
+        "Profiles, versions, paths, templates, and destinations are still resolved where the selected flow requires them.",
+    },
+    {
+      title: "Review",
+      icon: <Icon name="terminal" />,
+      children:
+        "The output becomes a plan for checking what normal execution intends to do.",
+    },
+  ]}
 />
 
 </Section>
@@ -143,34 +146,46 @@ custy --no-dry-run changelog generate`}
 >
 
 <WorkflowTimeline
-    title="Dry-Run Review"
-    items={[
-        {
-            title: "Inspect repository state",
-            description: <>Review <code>git status</code>, the current branch, local tags, and configured remotes.</>,
-            status: "current",
-        },
-        {
-            title: "Run the dry preview",
-            description: <>Place <code>--dry-run</code> before the selected Custy command.</>,
-            status: "pending",
-        },
-        {
-            title: "Read resolved values",
-            description: "Confirm project paths, profile stages, version values, tags, and destinations.",
-            status: "pending",
-        },
-        {
-            title: "Resolve reported errors",
-            description: "Fix invalid configuration, missing resources, or repository prerequisites.",
-            status: "pending",
-        },
-        {
-            title: "Decide whether to execute",
-            description: "Run normally only when every intended effect and destination is understood.",
-            status: "pending",
-        },
-    ]}
+  title="Dry-Run Review"
+  items={[
+    {
+      title: "Inspect repository state",
+      description: (
+        <>
+          Review <code>git status</code>, the current branch, local tags, and configured
+          remotes.
+        </>
+      ),
+      status: "current",
+    },
+    {
+      title: "Run the dry preview",
+      description: (
+        <>
+          Place <code>--dry-run</code> before the selected Custy command.
+        </>
+      ),
+      status: "pending",
+    },
+    {
+      title: "Read resolved values",
+      description:
+        "Confirm project paths, profile stages, version values, tags, and destinations.",
+      status: "pending",
+    },
+    {
+      title: "Resolve reported errors",
+      description:
+        "Fix invalid configuration, missing resources, or repository prerequisites.",
+      status: "pending",
+    },
+    {
+      title: "Decide whether to execute",
+      description:
+        "Run normally only when every intended effect and destination is understood.",
+      status: "pending",
+    },
+  ]}
 />
 
 <Terminal title="Preview common operations" language="bash">
@@ -179,9 +194,11 @@ custy --no-dry-run changelog generate`}
 custy --dry-run changelog generate
 
 # Preview the daily development pipeline
+
 custy --dry-run run dev
 
 # Preview the complete release pipeline
+
 custy --dry-run run release`}
 
 </Terminal>
@@ -237,12 +254,28 @@ Before normal execution:
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Run Safety", href: "../commands/run/safety", description: "Review the possible effects of combined pipeline profiles."},
-        {title: "First Workflow", href: "../getting-started/first-workflow", description: "Preview the Dev profile as part of onboarding."},
-        {title: "Generate Changelog", href: "../commands/changelog/generate/overview", description: "Preview generated release notes before writing the file."},
-        {title: "Safety and Side Effects", href: "./safety-and-side-effects", description: "Classify local, Git, interactive, and remote effects."},
-    ]}
+  commands={[
+    {
+      title: "Run Safety",
+      href: "../commands/run/safety",
+      description: "Review the possible effects of combined pipeline profiles.",
+    },
+    {
+      title: "First Workflow",
+      href: "../getting-started/first-workflow",
+      description: "Preview the Dev profile as part of onboarding.",
+    },
+    {
+      title: "Generate Changelog",
+      href: "../commands/changelog/generate/overview",
+      description: "Preview generated release notes before writing the file.",
+    },
+    {
+      title: "Safety and Side Effects",
+      href: "./safety-and-side-effects",
+      description: "Classify local, Git, interactive, and remote effects.",
+    },
+  ]}
 />
 
 </Section>

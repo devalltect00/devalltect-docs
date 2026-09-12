@@ -6,21 +6,34 @@ sidebar_key: doc-gen-structure-print
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure print" title="Konfigurasi" description="Nilai CLI memiliki prioritas tertinggi, diikuti konfigurasi proyek dan nilai bawaan internal." category="Struktur Proyek" status="Hanya Baca" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure print"
+  title="Konfigurasi"
+  description="Nilai CLI memiliki prioritas tertinggi, diikuti konfigurasi proyek dan nilai bawaan internal."
+  category="Struktur Proyek"
+  status="Hanya Baca"
+  syntax="doc-gen structure print [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Kunci | Bawaan | Efek |
-| --- | --- | --- |
-| `tool.doc-gen.cli.execution.dry_run` | false | Nilai bawaan simulasi global. |
-| `tool.doc-gen.cli.execution.debug` | false | Log diagnostik. |
-| `tool.doc-gen.cli.structure.target_directory` | . | Direktori akar bawaan. |
-| `tool.doc-gen.cli.structure.profile` | custom | Profil struktur. |
-| `tool.doc-gen.cli.structure.smart_mode` | false | Optimasi otomatis. |
-| `tool.doc-gen.cli.structure.max_depth` | 5 | Batas kedalaman. |
-| `tool.doc-gen.cli.structure.show_files` | true | Visibilitas file. |
-| `tool.doc-gen.cli.structure.collapse_dirs` | daftar bawaan | Direktori yang diringkas. |
-| `tool.doc-gen.cli.structure.verbose` | false | Output terminal tambahan. |
+| Kunci                                         | Bawaan        | Efek                          |
+| --------------------------------------------- | ------------- | ----------------------------- |
+| `tool.doc-gen.cli.execution.dry_run`          | false         | Nilai bawaan simulasi global. |
+| `tool.doc-gen.cli.execution.debug`            | false         | Log diagnostik.               |
+| `tool.doc-gen.cli.structure.target_directory` | .             | Direktori akar bawaan.        |
+| `tool.doc-gen.cli.structure.profile`          | custom        | Profil struktur.              |
+| `tool.doc-gen.cli.structure.smart_mode`       | false         | Optimasi otomatis.            |
+| `tool.doc-gen.cli.structure.max_depth`        | 5             | Batas kedalaman.              |
+| `tool.doc-gen.cli.structure.show_files`       | true          | Visibilitas file.             |
+| `tool.doc-gen.cli.structure.collapse_dirs`    | daftar bawaan | Direktori yang diringkas.     |
+| `tool.doc-gen.cli.structure.verbose`          | false         | Output terminal tambahan.     |
 
 ```toml
 [tool.doc-gen.cli.execution]

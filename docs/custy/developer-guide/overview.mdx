@@ -8,39 +8,39 @@ keywords: [Custy development, Custy architecture, contribute to Custy]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/"
-    title="Developer Guide"
-    description="Move from a working contributor environment to a tested, documented Custy change."
-    category="Developer Guide"
-    status="Contributor Reference"
-    syntax="understand -> change -> test -> document -> review"
-    tags={["Python 3.14+", "Typer", "Rich", "pytest"]}
-    links={[
-        {label: "Development Setup", href: "./development-setup"},
-        {label: "Testing", href: "./testing"},
-        {label: "Adding Commands", href: "./adding-commands"},
-        {label: "Architecture", href: "../architecture/overview"},
-        {label: "Contributing", href: "./contributing"},
-    ]}
+  command="app/"
+  title="Developer Guide"
+  description="Move from a working contributor environment to a tested, documented Custy change."
+  category="Developer Guide"
+  status="Contributor Reference"
+  syntax="understand -> change -> test -> document -> review"
+  tags={["Python 3.14+", "Typer", "Rich", "pytest"]}
+  links={[
+    { label: "Development Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Adding Commands", href: "./adding-commands" },
+    { label: "Architecture", href: "../architecture/overview" },
+    { label: "Contributing", href: "./contributing" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "CLI Layer", value: "app/cli", icon: "terminal"},
-        {label: "Core Layer", value: "app/core", icon: "architecture"},
-        {label: "Test Suite", value: "tests", icon: "testing"},
-        {label: "Runtime", value: "Python 3.14+", icon: "python"},
-    ]}
+  items={[
+    { label: "CLI Layer", value: "app/cli", icon: "terminal" },
+    { label: "Core Layer", value: "app/core", icon: "architecture" },
+    { label: "Test Suite", value: "tests", icon: "testing" },
+    { label: "Runtime", value: "Python 3.14+", icon: "python" },
+  ]}
 />
 
 ## Overview
@@ -63,15 +63,71 @@ and different test responsibilities.
 <Section title="Choose a Development Path">
 
 <FeatureGrid
-    title="Contributor Workflows"
-    items={[
-        {title: "Prepare the Environment", icon: <Icon name="python" />, children: <>Create the supported virtual environment, install Custy in editable mode, and verify the CLI in <a href="./development-setup">Development Setup</a>.</>},
-        {title: "Test a Change", icon: <Icon name="testing" />, children: <>Select focused CLI, core, integration, and regression checks before running the complete suite in <a href="./testing">Testing</a>.</>},
-        {title: "Add a CLI Command", icon: <Icon name="terminal" />, children: <>Preserve the command, options, model, resolver, registration, and test boundaries in <a href="./adding-commands">Adding Commands</a>.</>},
-        {title: "Add Pipeline Behavior", icon: <Icon name="pipeline" />, children: <>Implement, register, order, compose, and test one focused unit of work in <a href="./adding-pipeline-steps">Adding Pipeline Steps</a>.</>},
-        {title: "Add Version Generation", icon: <Icon name="release" />, children: <>Extend the strategy enum and workflow dispatch alongside a tested strategy implementation in <a href="./adding-version-strategies">Adding Version Strategies</a>.</>},
-        {title: "Extend Configuration", icon: <Icon name="configuration" />, children: <>Carry a new setting from the packaged template through resolution, runtime use, tests, and docs in <a href="./extending-configuration">Extending Configuration</a>.</>},
-    ]}
+  title="Contributor Workflows"
+  items={[
+    {
+      title: "Prepare the Environment",
+      icon: <Icon name="python" />,
+      children: (
+        <>
+          Create the supported virtual environment, install Custy in editable mode, and
+          verify the CLI in <a href="./development-setup">Development Setup</a>.
+        </>
+      ),
+    },
+    {
+      title: "Test a Change",
+      icon: <Icon name="testing" />,
+      children: (
+        <>
+          Select focused CLI, core, integration, and regression checks before running
+          the complete suite in <a href="./testing">Testing</a>.
+        </>
+      ),
+    },
+    {
+      title: "Add a CLI Command",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Preserve the command, options, model, resolver, registration, and test
+          boundaries in <a href="./adding-commands">Adding Commands</a>.
+        </>
+      ),
+    },
+    {
+      title: "Add Pipeline Behavior",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Implement, register, order, compose, and test one focused unit of work in{" "}
+          <a href="./adding-pipeline-steps">Adding Pipeline Steps</a>.
+        </>
+      ),
+    },
+    {
+      title: "Add Version Generation",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Extend the strategy enum and workflow dispatch alongside a tested strategy
+          implementation in{" "}
+          <a href="./adding-version-strategies">Adding Version Strategies</a>.
+        </>
+      ),
+    },
+    {
+      title: "Extend Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Carry a new setting from the packaged template through resolution, runtime
+          use, tests, and docs in{" "}
+          <a href="./extending-configuration">Extending Configuration</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -107,13 +163,35 @@ contract. Treat these pages as guidance for contributing to the Custy source.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Create and verify a supported contributor environment."},
-        {title: "Testing", href: "./testing", description: "Choose focused and complete validation for a change."},
-        {title: "Architecture", href: "../architecture/overview", description: "Trace the active layers, dependencies, orchestration, strategies, and data flow before changing them."},
-        {title: "Pipeline Step System", href: "../pipelines/step-system", description: "Review the internal registry, builder, context, and ordering contracts."},
-        {title: "Contributing", href: "./contributing", description: "Follow the end-to-end contribution checklist."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Create and verify a supported contributor environment.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Choose focused and complete validation for a change.",
+    },
+    {
+      title: "Architecture",
+      href: "../architecture/overview",
+      description:
+        "Trace the active layers, dependencies, orchestration, strategies, and data flow before changing them.",
+    },
+    {
+      title: "Pipeline Step System",
+      href: "../pipelines/step-system",
+      description:
+        "Review the internal registry, builder, context, and ordering contracts.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Follow the end-to-end contribution checklist.",
+    },
+  ]}
 />
 
 </Section>

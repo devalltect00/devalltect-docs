@@ -16,38 +16,34 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Command Output"
-    description="Learn what to expect when Custy initializes a project."
-    category="Initialization"
-    status="Recommended"
-    syntax="custy init"
-    tags={[
-        "output",
-        "terminal",
-        "messages",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy init"
+  title="Command Output"
+  description="Learn what to expect when Custy initializes a project."
+  category="Initialization"
+  status="Recommended"
+  syntax="custy init"
+  tags={["output", "terminal", "messages"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -90,11 +86,12 @@ Initializing Custy project...
 Initialization completed successfully.
 
 💡 Next Steps
+
 1. Review .config/custy/config.toml.
 2. Set tool.custy.changelog.links.repository if changelog compare links are needed.
 3. Verify default_remote, main_remotes, and backup_remotes with git remote -v.
 4. Run custy validate.
-`,
+   `,
             notes:
                 "The exact wording may differ slightly between Custy versions, but the overall flow remains the same.",
         },
@@ -103,9 +100,9 @@ Initialization completed successfully.
             description:
                 "Displayed when Custy preserves existing files while adding a missing packaged example.",
             output: `
-Skipped .config/custy/config.toml (already exists)
-Skipped .config/custy/templates/commit-message.txt (already exists)
-Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt
+   Skipped .config/custy/config.toml (already exists)
+   Skipped .config/custy/templates/commit-message.txt (already exists)
+   Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt
 
 Initialization completed successfully.
 `,
@@ -121,10 +118,10 @@ Configuration already exists.
 
 Overwrite existing file? (y/N)
 `,
-            notes:
-                "Interactive prompts apply to supported individual generated files. Packaged example files use preserve-or-force merge behavior without per-file prompts.",
-        },
-    ]}
+notes:
+"Interactive prompts apply to supported individual generated files. Packaged example files use preserve-or-force merge behavior without per-file prompts.",
+},
+]}
 />
 
 </Section>

@@ -6,9 +6,21 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="Syntax" description="Syntax: path-header-scanner scan" category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="Syntax"
+  description="Syntax: path-header-scanner scan"
+  category="Header Scanning"
+  status="Preview First"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <Terminal language="bash">{`path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]`}</Terminal>
-

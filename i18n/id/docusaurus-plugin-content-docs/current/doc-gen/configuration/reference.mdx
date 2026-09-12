@@ -6,20 +6,27 @@ sidebar_key: doc-gen-configuration
 tags: [doc-gen, configuration, reference]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command=".config/doc_gen/config.toml" title="Referensi Konfigurasi" description="Pahami file konfigurasi, urutan prioritas, dan bagian yang aktif." category="Konfigurasi" status="Referensi" syntax=".config/doc_gen/config.toml" />
+<CommandHero
+  command=".config/doc_gen/config.toml"
+  title="Referensi Konfigurasi"
+  description="Pahami file konfigurasi, urutan prioritas, dan bagian yang aktif."
+  category="Konfigurasi"
+  status="Referensi"
+  syntax=".config/doc_gen/config.toml"
+/>
 
-| Tabel TOML | Kunci yang didukung | Digunakan oleh |
-| --- | --- | --- |
-| `tool.doc-gen.cli.execution` | `dry_run`, `debug` | Nilai bawaan eksekusi bersama |
-| `tool.doc-gen.initialization` | `force`, `ask` | `doc-gen init` |
-| `tool.doc-gen.cli.structure` | `target_directory`, `profile`, `smart_mode`, `max_depth`, `show_files`, `collapse_dirs`, `verbose` | Semua perintah struktur |
-| `tool.doc-gen.cli.structure.generate` | `output_file` | `structure generate` |
-| `tool.doc-gen.cli.structure.print` | Dicadangkan; belum ada kunci khusus aktif | `structure print` |
-| `tool.doc-gen.cli.structure.analyze` | Dicadangkan; belum ada kunci khusus aktif | `structure analyze` |
-| `tool.doc-gen.logging` | `level`, `markup`, `rich_tracebacks`, `show_time`, `show_level`, `console_format` | Diagnostik konsol |
-| `tool.doc-gen.logging.file` | `level`, `log_dir`, `log_file`, `max_bytes`, `backup_count`, `file_format` | Diagnostik file berotasi |
+| Tabel TOML                            | Kunci yang didukung                                                                                | Digunakan oleh                |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------- | ----------------------------- |
+| `tool.doc-gen.cli.execution`          | `dry_run`, `debug`                                                                                 | Nilai bawaan eksekusi bersama |
+| `tool.doc-gen.initialization`         | `force`, `ask`                                                                                     | `doc-gen init`                |
+| `tool.doc-gen.cli.structure`          | `target_directory`, `profile`, `smart_mode`, `max_depth`, `show_files`, `collapse_dirs`, `verbose` | Semua perintah struktur       |
+| `tool.doc-gen.cli.structure.generate` | `output_file`                                                                                      | `structure generate`          |
+| `tool.doc-gen.cli.structure.print`    | Dicadangkan; belum ada kunci khusus aktif                                                          | `structure print`             |
+| `tool.doc-gen.cli.structure.analyze`  | Dicadangkan; belum ada kunci khusus aktif                                                          | `structure analyze`           |
+| `tool.doc-gen.logging`                | `level`, `markup`, `rich_tracebacks`, `show_time`, `show_level`, `console_format`                  | Diagnostik konsol             |
+| `tool.doc-gen.logging.file`           | `level`, `log_dir`, `log_file`, `max_bytes`, `backup_count`, `file_format`                         | Diagnostik file berotasi      |
 
 <Section title="Urutan resolusi">
 
@@ -29,4 +36,7 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 
 </Section>
 
-<InfoBox variant="note" title="Gunakan kunci aktif saja">Tabel `print` dan `analyze` disediakan untuk pengaturan khusus di masa depan. Letakkan pengaturan pemindaian bersama di `tool.doc-gen.cli.structure`.</InfoBox>
+<InfoBox variant="note" title="Gunakan kunci aktif saja">
+  Tabel `print` dan `analyze` disediakan untuk pengaturan khusus di masa depan. Letakkan
+  pengaturan pemindaian bersama di `tool.doc-gen.cli.structure`.
+</InfoBox>

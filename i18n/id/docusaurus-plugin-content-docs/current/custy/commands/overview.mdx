@@ -16,42 +16,38 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Command Reference"
-    description="Temukan command Custy yang didukung untuk setup proyek, validasi, versioning, changelog, operasi Git, dan pipeline."
-    category="CLI Reference"
-    status="Referensi Bahasa Indonesia"
-    syntax="custy COMMAND [OPTIONS]"
-    tags={[
-        "commands",
-        "CLI reference",
-        "public interface",
-    ]}
-    links={[
-        {label: "Ringkasan Custy", href: "../index"},
-        {label: "Indeks CLI", href: "../reference/cli"},
-        {label: "Troubleshooting", href: "../troubleshooting/overview"},
-        {label: "Run Profiles", href: "./run/overview"},
-        {label: "Workflow Eksperimental", href: "./workflow/overview"},
-    ]}
+  command="custy"
+  title="Command Reference"
+  description="Temukan command Custy yang didukung untuk setup proyek, validasi, versioning, changelog, operasi Git, dan pipeline."
+  category="CLI Reference"
+  status="Referensi Bahasa Indonesia"
+  syntax="custy COMMAND [OPTIONS]"
+  tags={["commands", "CLI reference", "public interface"]}
+  links={[
+    { label: "Ringkasan Custy", href: "../index" },
+    { label: "Indeks CLI", href: "../reference/cli" },
+    { label: "Troubleshooting", href: "../troubleshooting/overview" },
+    { label: "Run Profiles", href: "./run/overview" },
+    { label: "Workflow Eksperimental", href: "./workflow/overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Cakupan", value: "Public CLI", icon: "command"},
-        {label: "Grup Utama", value: "11", icon: "terminal"},
-        {label: "Run Profiles", value: "6 nama publik", icon: "pipeline"},
-        {label: "Grup Eksperimental", value: "Workflow", icon: "warning"},
-    ]}
+  items={[
+    { label: "Cakupan", value: "Public CLI", icon: "command" },
+    { label: "Grup Utama", value: "11", icon: "terminal" },
+    { label: "Run Profiles", value: "6 nama publik", icon: "pipeline" },
+    { label: "Grup Eksperimental", value: "Workflow", icon: "warning" },
+  ]}
 />
 
 ## Ringkasan
@@ -77,16 +73,81 @@ sebagai argumen `custy run` yang valid.
 >
 
 <FeatureGrid
-    title="Public Command Reference"
-    items={[
-        {title: "Init dan Validate", icon: <Icon name="success" />, children: <>Gunakan <a href="./init/overview">Init</a> untuk menyiapkan resource proyek dan <a href="./validate/overview">Validate</a> untuk memeriksa kesiapan.</>},
-        {title: "Backup dan Cleanup", icon: <Icon name="package" />, children: <>Gunakan <a href="./backup/overview">Backup</a> untuk menyimpan file pesan dan <a href="./cleanup/overview">Cleanup</a> untuk pruning yang sudah ditinjau.</>},
-        {title: "Version dan Changelog", icon: <Icon name="release" />, children: <>Gunakan <a href="./version/overview">Version</a> untuk versi proyek dan <a href="./changelog/generate/overview">Changelog Generate</a> untuk release notes.</>},
-        {title: "Commit dan Tag", icon: <Icon name="git" />, children: <>Gunakan <a href="./commit/overview">Commit</a> untuk menyiapkan riwayat lokal dan <a href="./tag/overview">Tag</a> untuk version tag yang sudah ditinjau.</>},
-        {title: "Push dan Run", icon: <Icon name="pipeline" />, children: <>Gunakan <a href="./push/overview">Push</a> untuk sinkronisasi remote dan <a href="./run/overview">Run</a> untuk public profiles.</>},
-        {title: "Configure Credentials", icon: <Icon name="security" />, children: <>Gunakan <a href="./configure/credentials/overview">Configure Credentials</a> untuk menyiapkan optional HTTPS token fallback eksternal tanpa menyimpan token dalam project configuration.</>},
-        {title: "Workflow Eksperimental", icon: <Icon name="warning" />, children: <>Grup <a href="./workflow/overview">Workflow</a> masih eksperimental dan saat ini terhalang oleh ketidaksesuaian source yang sudah didokumentasikan.</>},
-    ]}
+  title="Public Command Reference"
+  items={[
+    {
+      title: "Init dan Validate",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Gunakan <a href="./init/overview">Init</a> untuk menyiapkan resource proyek
+          dan <a href="./validate/overview">Validate</a> untuk memeriksa kesiapan.
+        </>
+      ),
+    },
+    {
+      title: "Backup dan Cleanup",
+      icon: <Icon name="package" />,
+      children: (
+        <>
+          Gunakan <a href="./backup/overview">Backup</a> untuk menyimpan file pesan dan{" "}
+          <a href="./cleanup/overview">Cleanup</a> untuk pruning yang sudah ditinjau.
+        </>
+      ),
+    },
+    {
+      title: "Version dan Changelog",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Gunakan <a href="./version/overview">Version</a> untuk versi proyek dan{" "}
+          <a href="./changelog/generate/overview">Changelog Generate</a> untuk release
+          notes.
+        </>
+      ),
+    },
+    {
+      title: "Commit dan Tag",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Gunakan <a href="./commit/overview">Commit</a> untuk menyiapkan riwayat lokal
+          dan <a href="./tag/overview">Tag</a> untuk version tag yang sudah ditinjau.
+        </>
+      ),
+    },
+    {
+      title: "Push dan Run",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Gunakan <a href="./push/overview">Push</a> untuk sinkronisasi remote dan{" "}
+          <a href="./run/overview">Run</a> untuk public profiles.
+        </>
+      ),
+    },
+    {
+      title: "Configure Credentials",
+      icon: <Icon name="security" />,
+      children: (
+        <>
+          Gunakan <a href="./configure/credentials/overview">Configure Credentials</a>{" "}
+          untuk menyiapkan optional HTTPS token fallback eksternal tanpa menyimpan token
+          dalam project configuration.
+        </>
+      ),
+    },
+    {
+      title: "Workflow Eksperimental",
+      icon: <Icon name="warning" />,
+      children: (
+        <>
+          Grup <a href="./workflow/overview">Workflow</a> masih eksperimental dan saat
+          ini terhalang oleh ketidaksesuaian source yang sudah didokumentasikan.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>

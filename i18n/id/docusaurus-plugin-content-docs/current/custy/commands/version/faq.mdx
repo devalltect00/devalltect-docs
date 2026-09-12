@@ -4,19 +4,48 @@ description: "Pertanyaan umum tentang Version Update."
 sidebar_position: 11
 sidebar_key: custy-version
 ---
-import {CommandHero, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang pembentukan dan sinkronisasi versi." category="Versioning" status="Reference" syntax="custy version update" links={[
-    {label: "Versioning Strategies", href: "./versioning-strategies"}, {label: "Workflow", href: "./workflow"}, {label: "Troubleshooting", href: "./troubleshooting"},
-]} />
+import { CommandHero, Section, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang pembentukan dan sinkronisasi versi."
+  category="Versioning"
+  status="Reference"
+  syntax="custy version update"
+  links={[
+    { label: "Versioning Strategies", href: "./versioning-strategies" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<Section title="Apa perbedaan version generation dan synchronization?">Generation menentukan versi berikutnya; synchronization menulis representasi versi tersebut ke seluruh file proyek yang didukung.</Section>
-<Section title="Strategy mana yang harus digunakan?">Gunakan SemVer untuk aplikasi umum, PEP 440 untuk Python package, atau strategy lain yang sesuai release model proyek.</Section>
-<Section title="Dapatkah saya menetapkan versi secara langsung?">Ya. Gunakan `--tag` pada `custy version update`.</Section>
-<Section title="Apakah dry run mengubah file?">Tidak. Dry run hanya melaporkan file yang akan diperbarui.</Section>
-<Section title="Mengapa format berbeda antar-file?">Custy dapat menormalisasi versi agar valid untuk ecosystem masing-masing sambil mempertahankan release identity yang sama.</Section>
-<Section title="Apakah Version Update membuat Git tag?">Halaman ini membahas sinkronisasi versi. Gunakan command Tag untuk pembuatan Git tag.</Section>
+<Section title="Apa perbedaan version generation dan synchronization?">
+  Generation menentukan versi berikutnya; synchronization menulis representasi versi
+  tersebut ke seluruh file proyek yang didukung.
+</Section>
+<Section title="Strategy mana yang harus digunakan?">
+  Gunakan SemVer untuk aplikasi umum, PEP 440 untuk Python package, atau strategy lain
+  yang sesuai release model proyek.
+</Section>
+<Section title="Dapatkah saya menetapkan versi secara langsung?">
+  Ya. Gunakan `--tag` pada `custy version update`.
+</Section>
+<Section title="Apakah dry run mengubah file?">
+  Tidak. Dry run hanya melaporkan file yang akan diperbarui.
+</Section>
+<Section title="Mengapa format berbeda antar-file?">
+  Custy dapat menormalisasi versi agar valid untuk ecosystem masing-masing sambil
+  mempertahankan release identity yang sama.
+</Section>
+<Section title="Apakah Version Update membuat Git tag?">
+  Halaman ini membahas sinkronisasi versi. Gunakan command Tag untuk pembuatan Git tag.
+</Section>
 
-<InfoBox variant="tip" title="Langkah Berikutnya">Setelah versi sinkron, lanjutkan ke release workflow atau command Tag sesuai kebutuhan proyek.</InfoBox>
+<InfoBox variant="tip" title="Langkah Berikutnya">
+  Setelah versi sinkron, lanjutkan ke release workflow atau command Tag sesuai kebutuhan
+  proyek.
+</InfoBox>

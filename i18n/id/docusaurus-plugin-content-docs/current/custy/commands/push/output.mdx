@@ -4,20 +4,52 @@ description: "Pahami successful, skipped, dry-run, dan failed push output."
 sidebar_position: 7
 sidebar_key: custy-push-output
 ---
-import {CommandHero, CommandOutput, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Command Output" description="Baca role, destination, planned actions, skips, dan failures." category="Git Operations" status="Destination Evidence" syntax="custy push [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Remotes",href:"./remotes"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import {
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Command Output"
+  description="Baca role, destination, planned actions, skips, dan failures."
+  category="Git Operations"
+  status="Destination Evidence"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOutput outputs={[
- {title:"Dry Run",description:"Contoh destination dan actions.",output:`Remote role: main
+<CommandOutput
+  outputs={[
+    {
+      title: "Dry Run",
+      description: "Contoh destination dan actions.",
+      output: `Remote role: main
 Remote: origin
 Dry-run: push HEAD
-Dry-run: push tag v1.2.3`},
- {title:"Skipped Backup",description:"Tidak ada backup destination yang memenuhi syarat.",output:`Backup synchronization skipped
-No eligible backup remote resolved`},
-]} />
+Dry-run: push tag v1.2.3`,
+    },
+    {
+      title: "Skipped Backup",
+      description: "Tidak ada backup destination yang memenuhi syarat.",
+      output: `Backup synchronization skipped
+No eligible backup remote resolved`,
+    },
+  ]}
+/>
 
-<Section title="Verify Remote State">Periksa remote branch dan tag melalui hosting UI atau Git commands setelah push.</Section>
-<InfoBox variant="warning" title="Verify Each Destination Independently">Main remote dapat sukses sementara backup remote gagal atau dilewati.</InfoBox>
+<Section title="Verify Remote State">
+  Periksa remote branch dan tag melalui hosting UI atau Git commands setelah push.
+</Section>
+<InfoBox variant="warning" title="Verify Each Destination Independently">
+  Main remote dapat sukses sementara backup remote gagal atau dilewati.
+</InfoBox>

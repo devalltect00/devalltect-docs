@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -12,27 +9,24 @@ import {
 /**
  * Properties for the ArchitectureCard component.
  */
-export interface ArchitectureCardProps
-    extends HTMLAttributes<HTMLElement> {
+export interface ArchitectureCardProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Card title.
+   */
+  title: string;
 
-    /**
-     * Card title.
-     */
-    title: string;
+  /**
+   * Optional icon displayed beside the title.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon displayed beside the title.
-     */
-    icon?: ReactNode;
+  /**
+   * Optional subtitle.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Optional subtitle.
-     */
-    subtitle?: ReactNode;
-
-    /**
-     * Main card content.
-     */
-    children: ReactNode;
-
+  /**
+   * Main card content.
+   */
+  children: ReactNode;
 }

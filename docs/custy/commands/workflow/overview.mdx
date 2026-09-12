@@ -8,42 +8,38 @@ keywords: [custy workflow, workflow branch]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Screenshot,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Screenshot,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy workflow"
-    title="Workflow Commands"
-    description="Explore Custy's experimental interface for branch and version transition policy."
-    category="Experimental Workflow"
-    status="Experimental / Currently Blocked"
-    syntax="custy workflow COMMAND"
-    tags={[
-        "workflow policy",
-        "branch transitions",
-        "experimental",
-    ]}
-    links={[
-        {label: "Branch Command", href: "./branch/overview"},
-        {label: "Known Issue", href: "./branch/troubleshooting"},
-        {label: "Full Profile", href: "../run/full/overview"},
-    ]}
+  command="custy workflow"
+  title="Workflow Commands"
+  description="Explore Custy's experimental interface for branch and version transition policy."
+  category="Experimental Workflow"
+  status="Experimental / Currently Blocked"
+  syntax="custy workflow COMMAND"
+  tags={["workflow policy", "branch transitions", "experimental"]}
+  links={[
+    { label: "Branch Command", href: "./branch/overview" },
+    { label: "Known Issue", href: "./branch/troubleshooting" },
+    { label: "Full Profile", href: "../run/full/overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Category", value: "Experimental Workflow", icon: "workflow"},
-        {label: "Public Subcommands", value: "1", icon: "command"},
-        {label: "Production Ready", value: "No", icon: "danger"},
-        {label: "Known Blocker", value: "Step-name mismatch", icon: "warning"},
-    ]}
+  items={[
+    { label: "Category", value: "Experimental Workflow", icon: "workflow" },
+    { label: "Public Subcommands", value: "1", icon: "command" },
+    { label: "Production Ready", value: "No", icon: "danger" },
+    { label: "Known Blocker", value: "Step-name mismatch", icon: "warning" },
+  ]}
 />
 
 ## Overview
@@ -70,12 +66,31 @@ fixed and the workflow is validated end to end.
 >
 
 <FeatureGrid
-    title="Workflow Interface"
-    items={[
-        {title: "Branch Transitions", icon: <Icon name="git" />, children: <>The <a href="./branch/overview">workflow branch command</a> accepts branch and version boundaries for validation or enforcement.</>},
-        {title: "Policy Configuration", icon: <Icon name="configuration" />, children: "Resolve enforcement, transition-checking, and backup synchronization settings from project configuration."},
-        {title: "Current Blocker", icon: <Icon name="danger" />, children: "Pipeline construction can fail because the command requests finalize while registration exposes finalize_step."},
-    ]}
+  title="Workflow Interface"
+  items={[
+    {
+      title: "Branch Transitions",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          The <a href="./branch/overview">workflow branch command</a> accepts branch and
+          version boundaries for validation or enforcement.
+        </>
+      ),
+    },
+    {
+      title: "Policy Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "Resolve enforcement, transition-checking, and backup synchronization settings from project configuration.",
+    },
+    {
+      title: "Current Blocker",
+      icon: <Icon name="danger" />,
+      children:
+        "Pipeline construction can fail because the command requests finalize while registration exposes finalize_step.",
+    },
+  ]}
 />
 
 </Section>
@@ -87,11 +102,11 @@ fixed and the workflow is validated end to end.
 >
 
 <Screenshot
-    src="/img/custy/commands/workflow/experimental-warning.png"
-    alt="Experimental warning displayed for the Custy workflow command"
-    title="Experimental feature warning"
-    caption="Custy identifies workflow transition commands as beta functionality."
-    fallback="Screenshot of the Custy experimental workflow warning will be added later."
+  src="/img/custy/commands/workflow/experimental-warning.png"
+  alt="Experimental warning displayed for the Custy workflow command"
+  title="Experimental feature warning"
+  caption="Custy identifies workflow transition commands as beta functionality."
+  fallback="Screenshot of the Custy experimental workflow warning will be added later."
 />
 
 </Section>
@@ -106,11 +121,24 @@ The registered `finalize_step` used by `custy run full` is a separate execution
 path and is documented under the [Full profile](../run/full/overview).
 
 <RelatedCommands
-    commands={[
-        {title: "custy workflow branch", href: "./branch/overview", description: "Review the accepted experimental interface and known blocker."},
-        {title: "custy run full", href: "../run/full/overview", description: "Use the separate registered finalization path after a complete release."},
-        {title: "custy validate", href: "../validate/overview", description: "Use the stable validation command for supported repository checks."},
-    ]}
+  commands={[
+    {
+      title: "custy workflow branch",
+      href: "./branch/overview",
+      description: "Review the accepted experimental interface and known blocker.",
+    },
+    {
+      title: "custy run full",
+      href: "../run/full/overview",
+      description:
+        "Use the separate registered finalization path after a complete release.",
+    },
+    {
+      title: "custy validate",
+      href: "../validate/overview",
+      description: "Use the stable validation command for supported repository checks.",
+    },
+  ]}
 />
 
 </Section>

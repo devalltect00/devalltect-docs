@@ -8,38 +8,34 @@ keywords: [custy commit workflow]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy commit"
-    title="Commit Workflow"
-    description="Follow the registered commit profile from validation and artifact preparation to staging and local commit creation."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy commit [OPTIONS]"
-    tags={[
-        "workflow",
-        "pipeline",
-        "Git commit",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy commit"
+  title="Commit Workflow"
+  description="Follow the registered commit profile from validation and artifact preparation to staging and local commit creation."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy commit [OPTIONS]"
+  tags={["workflow", "pipeline", "Git commit"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -55,18 +51,54 @@ state.
 >
 
 <WorkflowTimeline
-    title="Commit Profile"
-    items={[
-        {title: "Validate repository", description: "Run repository and pre-commit validation.", status: "completed"},
-        {title: "Prepare version", description: "Resolve the version and initialize workflow state.", status: "completed"},
-        {title: "Generate artifacts", description: "Generate and open configured release or message artifacts.", status: "completed"},
-        {title: "Validate edits", description: "Check edited artifacts before continuing.", status: "completed"},
-        {title: "Apply version", description: "Write the resolved version to the configured file.", status: "completed"},
-        {title: "Generate changelog", description: "Update CHANGELOG.md through the internal changelog stage.", status: "completed"},
-        {title: "Back up and clean", description: "Back up the commit message and prune retained backups.", status: "completed"},
-        {title: "Stage changes", description: "Stage according to the resolved stage mode.", status: "completed"},
-        {title: "Create commit", description: "Create the final Git commit from the edited message.", status: "completed"},
-    ]}
+  title="Commit Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Run repository and pre-commit validation.",
+      status: "completed",
+    },
+    {
+      title: "Prepare version",
+      description: "Resolve the version and initialize workflow state.",
+      status: "completed",
+    },
+    {
+      title: "Generate artifacts",
+      description: "Generate and open configured release or message artifacts.",
+      status: "completed",
+    },
+    {
+      title: "Validate edits",
+      description: "Check edited artifacts before continuing.",
+      status: "completed",
+    },
+    {
+      title: "Apply version",
+      description: "Write the resolved version to the configured file.",
+      status: "completed",
+    },
+    {
+      title: "Generate changelog",
+      description: "Update CHANGELOG.md through the internal changelog stage.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Back up the commit message and prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Stage changes",
+      description: "Stage according to the resolved stage mode.",
+      status: "completed",
+    },
+    {
+      title: "Create commit",
+      description: "Create the final Git commit from the edited message.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

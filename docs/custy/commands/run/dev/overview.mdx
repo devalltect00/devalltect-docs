@@ -8,39 +8,39 @@ keywords: [custy run dev]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Screenshot,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Screenshot,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run dev"
-    title="Development Profile"
-    description="Review the commit message, stage selected changes, create a commit, and push branch HEAD without preparing a release."
-    category="Pipeline Profile"
-    status="Stable"
-    syntax="custy run dev [OPTIONS]"
-    tags={["development", "commit", "push"]}
-    links={[
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-        {label: "User Journey", href: "../../../user-guide/everyday-development"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run dev"
+  title="Development Profile"
+  description="Review the commit message, stage selected changes, create a commit, and push branch HEAD without preparing a release."
+  category="Pipeline Profile"
+  status="Stable"
+  syntax="custy run dev [OPTIONS]"
+  tags={["development", "commit", "push"]}
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "User Journey", href: "../../../user-guide/everyday-development" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Category", value: "Pipeline Profile", icon: "pipeline"},
-        {label: "Use Case", value: "Daily Development", icon: "play"},
-        {label: "Creates Commit", value: "Yes", icon: "git"},
-        {label: "Pushes Remotely", value: "Yes", icon: "network"},
-    ]}
+  items={[
+    { label: "Category", value: "Pipeline Profile", icon: "pipeline" },
+    { label: "Use Case", value: "Daily Development", icon: "play" },
+    { label: "Creates Commit", value: "Yes", icon: "git" },
+    { label: "Pushes Remotely", value: "Yes", icon: "network" },
+  ]}
 />
 
 ## Overview
@@ -67,13 +67,33 @@ execution.
 >
 
 <FeatureGrid
-    title="What Dev Includes"
-    items={[
-        {title: "Validate Inputs", icon: <Icon name="success" />, children: "Validate the repository, commit-message policy and file, and remote availability."},
-        {title: "Review Commit Message", icon: <Icon name="file" />, children: "Open only the configured commit-message file and validate the saved message."},
-        {title: "Commit Changes", icon: <Icon name="git" />, children: "Back up the message, stage resolved changes, and create a local commit."},
-        {title: "Push HEAD", icon: <Icon name="network" />, children: "Push the branch through resolved remote behavior without publishing a tag."},
-    ]}
+  title="What Dev Includes"
+  items={[
+    {
+      title: "Validate Inputs",
+      icon: <Icon name="success" />,
+      children:
+        "Validate the repository, commit-message policy and file, and remote availability.",
+    },
+    {
+      title: "Review Commit Message",
+      icon: <Icon name="file" />,
+      children:
+        "Open only the configured commit-message file and validate the saved message.",
+    },
+    {
+      title: "Commit Changes",
+      icon: <Icon name="git" />,
+      children:
+        "Back up the message, stage resolved changes, and create a local commit.",
+    },
+    {
+      title: "Push HEAD",
+      icon: <Icon name="network" />,
+      children:
+        "Push the branch through resolved remote behavior without publishing a tag.",
+    },
+  ]}
 />
 
 <InfoBox
@@ -96,11 +116,11 @@ and tag push. Use Release for those responsibilities.
 >
 
 <Screenshot
-    src="/img/custy/commands/run/dev-profile.png"
-    alt="Custy development profile stages shown in the terminal"
-    title="Development pipeline"
-    caption="The Dev profile reviews, commits, and pushes daily work without release side effects."
-    fallback="Screenshot of the Custy Dev profile will be added later."
+  src="/img/custy/commands/run/dev-profile.png"
+  alt="Custy development profile stages shown in the terminal"
+  title="Development pipeline"
+  caption="The Dev profile reviews, commits, and pushes daily work without release side effects."
+  fallback="Screenshot of the Custy Dev profile will be added later."
 />
 
 </Section>
@@ -112,12 +132,28 @@ and tag push. Use Release for those responsibilities.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "custy run release", href: "../release/overview", description: "Apply the version, create a tag, and publish a complete release."},
-        {title: "custy run full", href: "../full/overview", description: "Extend Release with experimental finalization."},
-        {title: "custy commit", href: "../../commit/overview", description: "Prepare and commit locally without the final push stage."},
-        {title: "custy push", href: "../../push/overview", description: "Review current remote behavior independently."},
-    ]}
+  commands={[
+    {
+      title: "custy run release",
+      href: "../release/overview",
+      description: "Apply the version, create a tag, and publish a complete release.",
+    },
+    {
+      title: "custy run full",
+      href: "../full/overview",
+      description: "Extend Release with experimental finalization.",
+    },
+    {
+      title: "custy commit",
+      href: "../../commit/overview",
+      description: "Prepare and commit locally without the final push stage.",
+    },
+    {
+      title: "custy push",
+      href: "../../push/overview",
+      description: "Review current remote behavior independently.",
+    },
+  ]}
 />
 
 </Section>

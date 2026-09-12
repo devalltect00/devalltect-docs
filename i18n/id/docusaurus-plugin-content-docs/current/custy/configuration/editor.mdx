@@ -7,43 +7,88 @@ tags: [custy, configuration, editor, docker]
 keywords: [tool.custy.editor, VISUAL, EDITOR, vscode, micro, nano, vim]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.editor]"
-    title="Editor"
-    description="Pilih editor yang dapat diprediksi untuk workflow lokal dan container tanpa menyimpan arbitrary shell command di project configuration."
-    category="Configuration"
-    status="Active"
-    syntax={'windows = ["vscode", "notepad"]'}
-    tags={["platform precedence", "safe fallback", "container editors"]}
-    links={[
-        {label: "Docker", href: "../getting-started/docker"},
-        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
-        {label: "Environment", href: "../reference/environment"},
-    ]}
+  command="[tool.custy.editor]"
+  title="Editor"
+  description="Pilih editor yang dapat diprediksi untuk workflow lokal dan container tanpa menyimpan arbitrary shell command di project configuration."
+  category="Configuration"
+  status="Active"
+  syntax={'windows = ["vscode", "notepad"]'}
+  tags={["platform precedence", "safe fallback", "container editors"]}
+  links={[
+    { label: "Docker", href: "../getting-started/docker" },
+    { label: "Run Troubleshooting", href: "../commands/run/troubleshooting" },
+    { label: "Environment", href: "../reference/environment" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Tables", value: "tool.custy.editor + candidates", icon: "configuration"},
-        {label: "Supported IDs", value: "7", icon: "table"},
-        {label: "Container Default", value: "Micro", icon: "terminal"},
-        {label: "Dry Run", value: "Tidak membuka proses", icon: "security"},
-    ]}
+  items={[
+    { label: "Tables", value: "tool.custy.editor + candidates", icon: "configuration" },
+    { label: "Supported IDs", value: "7", icon: "table" },
+    { label: "Container Default", value: "Micro", icon: "terminal" },
+    { label: "Dry Run", value: "Tidak membuka proses", icon: "security" },
+  ]}
 />
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "prefer_environment", type: "Boolean", defaultValue: "true", required: false, description: "Coba VISUAL lalu EDITOR sebelum candidates dari project configuration."},
-        {property: "allow_fallback", type: "Boolean", defaultValue: "true", required: false, description: "Tambahkan built-in candidates Custy setelah configured list."},
-        {property: "candidates.windows", type: "Editor ID array", defaultValue: '["vscode", "notepad"]', required: false, description: "Urutan candidates untuk host Windows."},
-        {property: "candidates.linux", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Urutan candidates untuk Linux native."},
-        {property: "candidates.macos", type: "Editor ID array", defaultValue: '["vscode", "micro", "nano", "vim", "vi"]', required: false, description: "Urutan candidates untuk macOS."},
-        {property: "candidates.container", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Urutan candidates ketika Custy mendeteksi container runtime."},
-    ]}
+  items={[
+    {
+      property: "prefer_environment",
+      type: "Boolean",
+      defaultValue: "true",
+      required: false,
+      description:
+        "Coba VISUAL lalu EDITOR sebelum candidates dari project configuration.",
+    },
+    {
+      property: "allow_fallback",
+      type: "Boolean",
+      defaultValue: "true",
+      required: false,
+      description: "Tambahkan built-in candidates Custy setelah configured list.",
+    },
+    {
+      property: "candidates.windows",
+      type: "Editor ID array",
+      defaultValue: '["vscode", "notepad"]',
+      required: false,
+      description: "Urutan candidates untuk host Windows.",
+    },
+    {
+      property: "candidates.linux",
+      type: "Editor ID array",
+      defaultValue: '["micro", "nano", "vim", "vi"]',
+      required: false,
+      description: "Urutan candidates untuk Linux native.",
+    },
+    {
+      property: "candidates.macos",
+      type: "Editor ID array",
+      defaultValue: '["vscode", "micro", "nano", "vim", "vi"]',
+      required: false,
+      description: "Urutan candidates untuk macOS.",
+    },
+    {
+      property: "candidates.container",
+      type: "Editor ID array",
+      defaultValue: '["micro", "nano", "vim", "vi"]',
+      required: false,
+      description: "Urutan candidates ketika Custy mendeteksi container runtime.",
+    },
+  ]}
 />
 
 <Section title="Configuration yang Direkomendasikan">
@@ -78,12 +123,12 @@ service, atau CI job dapat mendefinisikannya sebelum menjalankan Custy.
 
 ### Nama dan value yang diterima
 
-| Exact variable | Peran | Value yang diterima | Contoh |
-| --- | --- | --- | --- |
-| `VISUAL` | Environment editor utama | Trusted executable dengan optional arguments | `code --wait` |
-| `EDITOR` | Environment editor kedua | Trusted executable dengan optional arguments | `nano` |
-| `PATH` | Executable discovery; bukan untuk memilih editor | Operating-system search paths | Directory yang berisi `code.CMD` atau `micro` |
-| `CUSTY_CONTAINER` | Memilih container candidates; bukan editor command | `1`, `true`, `yes`, atau `on` | Official image menetapkan `1` |
+| Exact variable    | Peran                                              | Value yang diterima                          | Contoh                                        |
+| ----------------- | -------------------------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| `VISUAL`          | Environment editor utama                           | Trusted executable dengan optional arguments | `code --wait`                                 |
+| `EDITOR`          | Environment editor kedua                           | Trusted executable dengan optional arguments | `nano`                                        |
+| `PATH`            | Executable discovery; bukan untuk memilih editor   | Operating-system search paths                | Directory yang berisi `code.CMD` atau `micro` |
+| `CUSTY_CONTAINER` | Memilih container candidates; bukan editor command | `1`, `true`, `yes`, atau `on`                | Official image menetapkan `1`                 |
 
 Hanya `VISUAL` dan `EDITOR` yang menerima editor command. Gunakan uppercase
 name tersebut secara tepat agar portable; environment name bersifat
@@ -180,12 +225,12 @@ tidak mengubah environment milik Custy process yang sudah berjalan.
 
 ## Behavior Matrix
 
-| `prefer_environment` | `allow_fallback` | Urutan efektif | Penggunaan yang direkomendasikan |
-| --- | --- | --- | --- |
-| `true` | `true` | `VISUAL` → `EDITOR` → configured candidates → built-in defaults | Direkomendasikan untuk sebagian besar user |
-| `true` | `false` | `VISUAL` → `EDITOR` → configured candidates saja | Personal override dengan controlled project list |
-| `false` | `true` | Configured candidates → built-in defaults | Team atau container behavior yang predictable dengan recovery |
-| `false` | `false` | Configured candidates saja | Environment yang strict dan locked-down |
+| `prefer_environment` | `allow_fallback` | Urutan efektif                                                  | Penggunaan yang direkomendasikan                              |
+| -------------------- | ---------------- | --------------------------------------------------------------- | ------------------------------------------------------------- |
+| `true`               | `true`           | `VISUAL` → `EDITOR` → configured candidates → built-in defaults | Direkomendasikan untuk sebagian besar user                    |
+| `true`               | `false`          | `VISUAL` → `EDITOR` → configured candidates saja                | Personal override dengan controlled project list              |
+| `false`              | `true`           | Configured candidates → built-in defaults                       | Team atau container behavior yang predictable dengan recovery |
+| `false`              | `false`          | Configured candidates saja                                      | Environment yang strict dan locked-down                       |
 
 Fallback berarti Custy menambahkan built-in candidates untuk active runtime
 yang sama. Custy dapat melanjutkan ketika candidate tidak tersedia atau tidak
@@ -256,11 +301,11 @@ untuk pemeriksaan yang lebih terarah.
 
 <Section title="Keybindings di Container">
 
-| Editor | Undo | Redo | Catatan |
-| --- | --- | --- | --- |
-| Micro | `Ctrl+Z` atau `Alt+Z` | `Ctrl+Y` atau `Alt+Y` | Custy menambahkan alias Alt; shortcut native Micro tetap tersedia. |
-| Nano | `Alt+U` | `Alt+E` | Custy mempertahankan mapping native Nano. `Alt+Z` dan `Alt+Y` tidak diganti karena dipakai Nano untuk toggle interface dan syntax color. |
-| Vim / Vi | `u` atau `Alt+Z` | `Ctrl+R` atau `Alt+Y` | Custy menambahkan alias Alt pada normal dan insert mode tanpa menghapus command native. |
+| Editor   | Undo                  | Redo                  | Catatan                                                                                                                                  |
+| -------- | --------------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Micro    | `Ctrl+Z` atau `Alt+Z` | `Ctrl+Y` atau `Alt+Y` | Custy menambahkan alias Alt; shortcut native Micro tetap tersedia.                                                                       |
+| Nano     | `Alt+U`               | `Alt+E`               | Custy mempertahankan mapping native Nano. `Alt+Z` dan `Alt+Y` tidak diganti karena dipakai Nano untuk toggle interface dan syntax color. |
+| Vim / Vi | `u` atau `Alt+Z`      | `Ctrl+R` atau `Alt+Y` | Custy menambahkan alias Alt pada normal dan insert mode tanpa menghapus command native.                                                  |
 
 Pengaturan ini hanya berlaku untuk editor yang dibuka di dalam Custy image.
 Custy tidak menimpa pengaturan VS Code atau konfigurasi lokal Micro, Nano, Vim,
@@ -280,11 +325,25 @@ melaporkan editor step tanpa menjalankan editor process.
 <Section title="Lanjutkan">
 
 <RelatedCommands
-    commands={[
-        {title: "Docker", href: "../getting-started/docker", description: "Build image dan jalankan interactive workflow pada mounted project."},
-        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Diagnosa TTY, editor discovery, dan partial release state."},
-        {title: "Environment", href: "../reference/environment", description: "Tinjau VISUAL, EDITOR, PATH, terminal, dan external-tool boundaries."},
-    ]}
+  commands={[
+    {
+      title: "Docker",
+      href: "../getting-started/docker",
+      description:
+        "Build image dan jalankan interactive workflow pada mounted project.",
+    },
+    {
+      title: "Run Troubleshooting",
+      href: "../commands/run/troubleshooting",
+      description: "Diagnosa TTY, editor discovery, dan partial release state.",
+    },
+    {
+      title: "Environment",
+      href: "../reference/environment",
+      description:
+        "Tinjau VISUAL, EDITOR, PATH, terminal, dan external-tool boundaries.",
+    },
+  ]}
 />
 
 </Section>

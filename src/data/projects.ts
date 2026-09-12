@@ -227,7 +227,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Preview, validate, and apply consistent path headers across source code and documentation.",
-    technologies: ["Python 3.11+", "Typer", "Rich", "TOML"],
+    technologies: ["Python 3.11+", "Typer", "Rich", "TOML", "Docker"],
     preview: {
       src: "/img/project-previews/path-header-scanner.png",
       alt: "Path Header Scanner terminal banner and command output",
@@ -261,7 +261,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Generate, print, and analyze repository structure documentation in Markdown.",
-    technologies: ["Python 3.9+", "Typer", "Markdown", "TOML"],
+    technologies: ["Python 3.9+", "Typer", "Rich", "Markdown", "Docker"],
     preview: {
       src: "/img/project-previews/doc-gen.png",
       alt: "Doc Gen terminal banner and project structure output",
@@ -294,7 +294,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Repository-aware tag conversion, release recovery, and container image publishing.",
-    technologies: ["Python 3.14+", "Typer", "Git", "Docker"],
+    technologies: ["Python 3.14+", "Typer", "Rich", "Git", "GitHub CLI", "Docker"],
     preview: {
       src: "/img/project-previews/reflow.png",
       alt: "Reflow terminal banner and repository workflow output",
@@ -326,7 +326,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Configurable Git workflow, versioning, changelog, backup, cleanup, and release automation.",
-    technologies: ["Python 3.14+", "Typer", "Git", "Jinja2"],
+    technologies: ["Python 3.14+", "Typer", "Rich", "Git", "Jinja2", "Commitizen"],
     preview: {
       src: "/img/project-previews/custy.png",
       alt: "Custy terminal banner and Git workflow output",

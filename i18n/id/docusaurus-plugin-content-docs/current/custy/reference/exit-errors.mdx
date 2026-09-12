@@ -4,13 +4,42 @@ description: "Referensi success, usage, explicit exit, validation, pipeline, Git
 sidebar_position: 9
 sidebar_key: custy-reference-exit-errors
 ---
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy COMMAND" title="Errors and Exit Status" description="Bedakan parser error, validation stop, domain failure, subprocess error, dan unexpected exception." category="Referensi" status="Runtime Contract" syntax="input -> validation -> operation -> process status" links={[{label:"Troubleshooting Workflows",href:"../user-guide/troubleshooting-workflows"},{label:"Global Options",href:"./global-options"},{label:"Environment",href:"./environment"}]} />
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<Section title="Cara membaca kegagalan">Mulai dari pesan pertama, phase terakhir yang sukses, process status, dan state repository saat ini. Parser failure terjadi sebelum command body; validation failure menghentikan operation yang bergantung padanya; pipeline failure dapat terjadi setelah sebagian efek selesai.</Section>
+<CommandHero
+  command="custy COMMAND"
+  title="Errors and Exit Status"
+  description="Bedakan parser error, validation stop, domain failure, subprocess error, dan unexpected exception."
+  category="Referensi"
+  status="Runtime Contract"
+  syntax="input -> validation -> operation -> process status"
+  links={[
+    {
+      label: "Troubleshooting Workflows",
+      href: "../user-guide/troubleshooting-workflows",
+    },
+    { label: "Global Options", href: "./global-options" },
+    { label: "Environment", href: "./environment" },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Jangan mengandalkan exit code saja">Beberapa help, version, atau explicit-exit path memiliki behavior khusus. Gunakan output terminal dan log bersama exit status, lalu verifikasi Git serta file state.</InfoBox>
+<Section title="Cara membaca kegagalan">
+  Mulai dari pesan pertama, phase terakhir yang sukses, process status, dan state
+  repository saat ini. Parser failure terjadi sebelum command body; validation failure
+  menghentikan operation yang bergantung padanya; pipeline failure dapat terjadi setelah
+  sebagian efek selesai.
+</Section>
+
+<InfoBox variant="warning" title="Jangan mengandalkan exit code saja">
+  Beberapa help, version, atau explicit-exit path memiliki behavior khusus. Gunakan
+  output terminal dan log bersama exit status, lalu verifikasi Git serta file state.
+</InfoBox>
 
 <Section title="Commit Validation dan Git Hook Labels">
 
@@ -25,4 +54,27 @@ repository state sebelum retry.
 
 </Section>
 
-<RelatedCommands commands={[{title:"Troubleshooting Workflows",href:"../user-guide/troubleshooting-workflows",description:"Ikuti diagnosis dan recovery yang aman."},{title:"Environment",href:"./environment",description:"Periksa runtime, encoding, editor, Git, dan working directory."},{title:"Global Options",href:"./global-options",description:"Gunakan debug, log-level, no-banner, dan dry-run."},{title:"Safety and Side Effects",href:"../concepts/safety-and-side-effects",description:"Pahami perubahan non-transactional dan recovery responsibility."}]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Troubleshooting Workflows",
+      href: "../user-guide/troubleshooting-workflows",
+      description: "Ikuti diagnosis dan recovery yang aman.",
+    },
+    {
+      title: "Environment",
+      href: "./environment",
+      description: "Periksa runtime, encoding, editor, Git, dan working directory.",
+    },
+    {
+      title: "Global Options",
+      href: "./global-options",
+      description: "Gunakan debug, log-level, no-banner, dan dry-run.",
+    },
+    {
+      title: "Safety and Side Effects",
+      href: "../concepts/safety-and-side-effects",
+      description: "Pahami perubahan non-transactional dan recovery responsibility.",
+    },
+  ]}
+/>

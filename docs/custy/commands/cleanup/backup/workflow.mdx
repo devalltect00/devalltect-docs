@@ -5,49 +5,45 @@ sidebar_position: 5
 sidebar_key: custy-cleanup-backup
 
 tags:
-    - cleanup
-    - backup
-    - workflow
+  - cleanup
+  - backup
+  - workflow
 
 keywords:
-    - custy cleanup backups workflow
+  - custy cleanup backups workflow
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
-    Screenshot,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
+  Screenshot,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Workflow"
-    description="Understand the sequence of operations performed during Backup Cleanup."
-    category="Maintenance"
-    status="Recommended"
-    syntax="custy cleanup backups"
-    tags={[
-        "workflow",
-        "cleanup",
-        "backup",
-    ]}
-    links={[
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy cleanup backups"
+  title="Workflow"
+  description="Understand the sequence of operations performed during Backup Cleanup."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup backups"
+  tags={["workflow", "cleanup", "backup"]}
+  links={[
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -61,40 +57,36 @@ No project source files or Git metadata are modified during this workflow.
 ---
 
 <WorkflowTimeline
-    title="Backup Cleanup Workflow"
-    description="High-level execution sequence."
-    items={[
-        {
-            title: "Resolve Configuration",
-            description:
-                "Determine the cleanup target and retention count from command-line options, project configuration, or built-in defaults.",
-            status: "completed",
-        },
-        {
-            title: "Locate Backup Files",
-            description:
-                "Scan the configured backup directories for matching backup files.",
-            status: "completed",
-        },
-        {
-            title: "Apply Retention Policy",
-            description:
-                "Sort backup files and determine which files should be preserved.",
-            status: "completed",
-        },
-        {
-            title: "Remove Obsolete Backups",
-            description:
-                "Delete only backup files exceeding the configured retention count.",
-            status: "completed",
-        },
-        {
-            title: "Display Summary",
-            description:
-                "Report the cleanup result and finish the operation.",
-            status: "completed",
-        },
-    ]}
+  title="Backup Cleanup Workflow"
+  description="High-level execution sequence."
+  items={[
+    {
+      title: "Resolve Configuration",
+      description:
+        "Determine the cleanup target and retention count from command-line options, project configuration, or built-in defaults.",
+      status: "completed",
+    },
+    {
+      title: "Locate Backup Files",
+      description: "Scan the configured backup directories for matching backup files.",
+      status: "completed",
+    },
+    {
+      title: "Apply Retention Policy",
+      description: "Sort backup files and determine which files should be preserved.",
+      status: "completed",
+    },
+    {
+      title: "Remove Obsolete Backups",
+      description: "Delete only backup files exceeding the configured retention count.",
+      status: "completed",
+    },
+    {
+      title: "Display Summary",
+      description: "Report the cleanup result and finish the operation.",
+      status: "completed",
+    },
+  ]}
 />
 
 ---
@@ -168,10 +160,10 @@ No Git branches, commits, or tags are modified.
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
-    alt="Backup cleanup process"
-    title="Backup Cleanup Process"
-    caption="Example output showing Backup Cleanup removing obsolete backup files while preserving the configured number of recent backups."
+  src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+  alt="Backup cleanup process"
+  title="Backup Cleanup Process"
+  caption="Example output showing Backup Cleanup removing obsolete backup files while preserving the configured number of recent backups."
 />
 
 ---

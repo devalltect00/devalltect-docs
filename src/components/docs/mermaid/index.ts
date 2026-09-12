@@ -18,15 +18,8 @@ export { default as MermaidTitle } from "./MermaidTitle";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    MermaidCardProps,
-} from "./MermaidCard";
+export type { MermaidCardProps } from "./MermaidCard";
 
-export type {
-    MermaidLegendItem,
-    MermaidLegendProps,
-} from "./MermaidLegend";
+export type { MermaidLegendItem, MermaidLegendProps } from "./MermaidLegend";
 
-export type {
-    MermaidTitleProps,
-} from "./MermaidTitle";
+export type { MermaidTitleProps } from "./MermaidTitle";

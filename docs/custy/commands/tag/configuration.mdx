@@ -8,30 +8,26 @@ keywords: [tag configuration, version strategy]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    PropertyTable,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  PropertyTable,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy tag"
-    title="Configuration"
-    description="Configure tag templates, message backups, version files, strategies, and validation defaults."
-    category="Git Operations"
-    status="Advanced"
-    syntax="custy tag [OPTIONS]"
-    tags={[
-        "configuration",
-        "TOML",
-        "version strategy",
-    ]}
-    links={[
-        {label: "Options", href: "./options"},
-        {label: "Versioning", href: "./versioning-and-tags"},
-        {label: "Workflow", href: "./workflow"},
-    ]}
+  command="custy tag"
+  title="Configuration"
+  description="Configure tag templates, message backups, version files, strategies, and validation defaults."
+  category="Git Operations"
+  status="Advanced"
+  syntax="custy tag [OPTIONS]"
+  tags={["configuration", "TOML", "version strategy"]}
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Versioning", href: "./versioning-and-tags" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
 />
 
 ## Overview
@@ -47,14 +43,34 @@ overrides.
 >
 
 <PropertyTable
-    title="Tag Profile Configuration"
-    items={[
-        {property: "[tool.custy.cli.templates.file]", type: "tag_message", description: "Select the tag-message template used by the profile."},
-        {property: "[tool.custy.cli.templates.directory]", type: "backups_tag", description: "Select the directory used for retained tag-message backups."},
-        {property: "[tool.custy.cli.paths]", type: "version_file", description: "Select the project file that receives the resolved version."},
-        {property: "[tool.custy.cli.versioning]", type: "strategy and bump", description: "Configure the default version strategy and related version inputs."},
-        {property: "[tool.custy.cli.execution]", type: "tag behavior", description: "Configure force_tag and transition-check behavior."},
-    ]}
+  title="Tag Profile Configuration"
+  items={[
+    {
+      property: "[tool.custy.cli.templates.file]",
+      type: "tag_message",
+      description: "Select the tag-message template used by the profile.",
+    },
+    {
+      property: "[tool.custy.cli.templates.directory]",
+      type: "backups_tag",
+      description: "Select the directory used for retained tag-message backups.",
+    },
+    {
+      property: "[tool.custy.cli.paths]",
+      type: "version_file",
+      description: "Select the project file that receives the resolved version.",
+    },
+    {
+      property: "[tool.custy.cli.versioning]",
+      type: "strategy and bump",
+      description: "Configure the default version strategy and related version inputs.",
+    },
+    {
+      property: "[tool.custy.cli.execution]",
+      type: "tag behavior",
+      description: "Configure force_tag and transition-check behavior.",
+    },
+  ]}
 />
 
 </Section>

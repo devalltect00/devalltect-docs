@@ -5,76 +5,71 @@ sidebar_position: 1
 sidebar_key: custy-commands-cleanup
 
 tags:
-    - cleanup
-    - maintenance
-    - git
-    - backups
+  - cleanup
+  - maintenance
+  - git
+  - backups
 
 keywords:
-    - custy cleanup
-    - cleanup backups
-    - cleanup branches
+  - custy cleanup
+  - cleanup backups
+  - cleanup branches
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Screenshot,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Screenshot,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup"
-    title="Clean Up Project Resources"
-    description="Remove obsolete backup files and stale Git branches while keeping your project organized and maintainable."
-    category="Maintenance"
-    status="Recommended"
-    syntax="custy cleanup <subcommand>"
-    tags={[
-        "maintenance",
-        "cleanup",
-        "git",
-        "backups",
-    ]}
-    links={[
-        {
-            label: "Backup Cleanup",
-            href: "./backup/overview",
-        },
-        {
-            label: "Branch Cleanup",
-            href: "./branch/overview",
-        },
-        {
-            label: "Run Profiles",
-            href: "../run/overview",
-        },
-    ]}
+  command="custy cleanup"
+  title="Clean Up Project Resources"
+  description="Remove obsolete backup files and stale Git branches while keeping your project organized and maintainable."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup <subcommand>"
+  tags={["maintenance", "cleanup", "git", "backups"]}
+  links={[
+    {
+      label: "Backup Cleanup",
+      href: "./backup/overview",
+    },
+    {
+      label: "Branch Cleanup",
+      href: "./branch/overview",
+    },
+    {
+      label: "Run Profiles",
+      href: "../run/overview",
+    },
+  ]}
 />
 
 <CommandMetadata
-    metadata={[
-        {
-            label: "Category",
-            value: "Maintenance",
-        },
-        {
-            label: "Git Repository",
-            value: "Required for branch cleanup",
-        },
-        {
-            label: "Configuration",
-            value: "config.toml",
-        },
-        {
-            label: "Workflow Support",
-            value: "Partial",
-        },
-    ]}
+  metadata={[
+    {
+      label: "Category",
+      value: "Maintenance",
+    },
+    {
+      label: "Git Repository",
+      value: "Required for branch cleanup",
+    },
+    {
+      label: "Configuration",
+      value: "config.toml",
+    },
+    {
+      label: "Workflow Support",
+      value: "Partial",
+    },
+  ]}
 />
 
 ## Overview
@@ -117,29 +112,29 @@ your maintenance needs.
 >
 
 <FeatureGrid
-    title="Available Cleanup Operations"
-    items={[
-        {
-            title: "Backup Cleanup",
-            icon: <Icon name="copy" />,
-            children: (
-                <>
-                    Removes older backup files while keeping the most recent
-                    backups according to the configured retention policy.
-                </>
-            ),
-        },
-        {
-            title: "Branch Cleanup",
-            icon: <Icon name="git" />,
-            children: (
-                <>
-                    Removes stale Git branches that satisfy the configured
-                    cleanup filters while protecting important branches.
-                </>
-            ),
-        },
-    ]}
+  title="Available Cleanup Operations"
+  items={[
+    {
+      title: "Backup Cleanup",
+      icon: <Icon name="copy" />,
+      children: (
+        <>
+          Removes older backup files while keeping the most recent backups according to
+          the configured retention policy.
+        </>
+      ),
+    },
+    {
+      title: "Branch Cleanup",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Removes stale Git branches that satisfy the configured cleanup filters while
+          protecting important branches.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -150,10 +145,10 @@ your maintenance needs.
     title="Automatic vs Manual Cleanup"
 >
 
-| Cleanup Operation | Automatic | Manual | Purpose |
-|-------------------|-----------|--------|---------|
-| Backup Cleanup | ✅ Yes | ✅ Yes | Remove old backup files. |
-| Branch Cleanup | ❌ No | ✅ Yes | Remove obsolete Git branches. |
+| Cleanup Operation | Automatic | Manual | Purpose                       |
+| ----------------- | --------- | ------ | ----------------------------- |
+| Backup Cleanup    | ✅ Yes    | ✅ Yes | Remove old backup files.      |
+| Branch Cleanup    | ❌ No     | ✅ Yes | Remove obsolete Git branches. |
 
 Backup cleanup may execute automatically during certain Custy workflows.
 
@@ -221,21 +216,21 @@ workflow.
 ---
 
 <RelatedCommands
-    commands={[
-        {
-            name: "init",
-            description: "Generate Custy configuration files used by cleanup.",
-            href: "../init/overview",
-        },
-        {
-            name: "backup",
-            description: "Create backup files before they are cleaned up.",
-            href: "../backup/overview",
-        },
-        {
-            name: "run",
-            description: "Execute workflow pipelines that include automatic backup cleanup.",
-            href: "../run/overview",
-        },
-    ]}
+  commands={[
+    {
+      name: "init",
+      description: "Generate Custy configuration files used by cleanup.",
+      href: "../init/overview",
+    },
+    {
+      name: "backup",
+      description: "Create backup files before they are cleaned up.",
+      href: "../backup/overview",
+    },
+    {
+      name: "run",
+      description: "Execute workflow pipelines that include automatic backup cleanup.",
+      href: "../run/overview",
+    },
+  ]}
 />

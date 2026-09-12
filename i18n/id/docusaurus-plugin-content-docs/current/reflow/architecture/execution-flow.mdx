@@ -6,9 +6,16 @@ sidebar_key: reflow-architecture
 tags: [reflow, architecture, workflow]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Alur Eksekusi" description="Pahami responsibility dan execution flow." category="Architecture" status="Reference" syntax="reflow --dry-run -C ../project tags convert local" />
+<CommandHero
+  command="Reflow"
+  title="Alur Eksekusi"
+  description="Pahami responsibility dan execution flow."
+  category="Architecture"
+  status="Reference"
+  syntax="reflow --dry-run -C ../project tags convert local"
+/>
 
 <Terminal language="text">{`CLI input
   -> configuration resolution
@@ -16,5 +23,7 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
   -> core/service execution
   -> progress, summary, and actionable error boundary`}</Terminal>
 
-<InfoBox variant="warning" title="Mutation boundary">Konversi tag local dan remote memakai command terpisah. Remote push, release recovery, dan registry publishing adalah mutasi eksternal eksplisit.</InfoBox>
-
+<InfoBox variant="warning" title="Mutation boundary">
+  Konversi tag local dan remote memakai command terpisah. Remote push, release recovery,
+  dan registry publishing adalah mutasi eksternal eksplisit.
+</InfoBox>

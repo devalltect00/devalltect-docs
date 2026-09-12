@@ -6,38 +6,41 @@ sidebar_key: custy-reference-documentation-status
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    PropertyTable,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  PropertyTable,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Status Dokumentasi"
-    description="Kenali rilis Custy yang direpresentasikan situs ini dan tentukan kapan verifikasi khusus rilis diperlukan."
-    category="Referensi"
-    status="Diperiksa otomatis untuk v2.1.1"
-    syntax="custy --version"
-    tags={["baseline dokumentasi", "keselarasan rilis", "pemeliharaan"]}
-    links={[
-        {label: "Rilis Custy v2.1.1", href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1"},
-        {label: "Semua Rilis", href: "https://github.com/devalltect00/Custy/releases"},
-        {label: "Referensi", href: "./overview"},
-    ]}
+  command="custy"
+  title="Status Dokumentasi"
+  description="Kenali rilis Custy yang direpresentasikan situs ini dan tentukan kapan verifikasi khusus rilis diperlukan."
+  category="Referensi"
+  status="Diperiksa otomatis untuk v2.1.1"
+  syntax="custy --version"
+  tags={["baseline dokumentasi", "keselarasan rilis", "pemeliharaan"]}
+  links={[
+    {
+      label: "Rilis Custy v2.1.1",
+      href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1",
+    },
+    { label: "Semua Rilis", href: "https://github.com/devalltect00/Custy/releases" },
+    { label: "Referensi", href: "./overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Baseline Dokumentasi", value: "Custy v2.1.1", icon: "release"},
-        {label: "Terakhir Ditinjau", value: "25 Agustus 2026", icon: "success"},
-        {label: "Bahasa", value: "Inggris dan Indonesia", icon: "feature"},
-        {label: "Mode Kesegaran", value: "Otomatis · SemVer", icon: "configuration"},
-    ]}
+  items={[
+    { label: "Baseline Dokumentasi", value: "Custy v2.1.1", icon: "release" },
+    { label: "Terakhir Ditinjau", value: "25 Agustus 2026", icon: "success" },
+    { label: "Bahasa", value: "Inggris dan Indonesia", icon: "feature" },
+    { label: "Mode Kesegaran", value: "Otomatis · SemVer", icon: "configuration" },
+  ]}
 />
 
 ## Baseline saat ini
@@ -85,12 +88,32 @@ sebagai referensi khusus rilis.
 <Section title="Status Kesegaran">
 
 <FeatureGrid
-    items={[
-        {title: "Current", icon: <Icon name="success" />, children: "Versi dokumentasi sama dengan remote tag kompatibel terbaru. Notifikasi global disembunyikan agar informasi yang tidak memerlukan tindakan tidak diulang."},
-        {title: "Outdated", icon: <Icon name="warning" />, children: "Tersedia tag kompatibel yang lebih baru. Peringatan muncul di bagian atas setiap halaman proyek terdampak sebelum pengguna mengikuti petunjuk yang bergantung pada versi."},
-        {title: "Preview", icon: <Icon name="info" />, children: "Versi dokumentasi lebih baru daripada remote tag kompatibel terbaru. Notifikasi informasi menandai dokumentasi sebagai pratinjau."},
-        {title: "Unknown", icon: <Icon name="configuration" />, children: "Rilis terbaru tidak dapat diverifikasi dan fallback current tidak dipilih. Notifikasi netral meminta pengguna memeriksa daftar rilis."},
-    ]}
+  items={[
+    {
+      title: "Current",
+      icon: <Icon name="success" />,
+      children:
+        "Versi dokumentasi sama dengan remote tag kompatibel terbaru. Notifikasi global disembunyikan agar informasi yang tidak memerlukan tindakan tidak diulang.",
+    },
+    {
+      title: "Outdated",
+      icon: <Icon name="warning" />,
+      children:
+        "Tersedia tag kompatibel yang lebih baru. Peringatan muncul di bagian atas setiap halaman proyek terdampak sebelum pengguna mengikuti petunjuk yang bergantung pada versi.",
+    },
+    {
+      title: "Preview",
+      icon: <Icon name="info" />,
+      children:
+        "Versi dokumentasi lebih baru daripada remote tag kompatibel terbaru. Notifikasi informasi menandai dokumentasi sebagai pratinjau.",
+    },
+    {
+      title: "Unknown",
+      icon: <Icon name="configuration" />,
+      children:
+        "Rilis terbaru tidak dapat diverifikasi dan fallback current tidak dipilih. Notifikasi netral meminta pengguna memeriksa daftar rilis.",
+    },
+  ]}
 />
 
 </Section>
@@ -104,27 +127,94 @@ Pengaturan ini mengonfigurasi portal dokumentasi, bukan Custy CLI, sehingga
 tidak ditempatkan di `.config/custy/config.toml`.
 
 <PropertyTable
-    title="Field dokumentasi bersama"
-    items={[
-        {property: "version", type: "string", required: true, description: "Versi aplikasi ternormalisasi yang direpresentasikan halaman, tanpa mewajibkan prefiks v."},
-        {property: "versionTag", type: "string", required: true, description: "Tag repositori untuk rilis yang didokumentasikan, misalnya v2.1.1."},
-        {property: "lastReviewed", type: "YYYY-MM-DD", required: true, description: "Tanggal maintainer meninjau dokumentasi terhadap source secara sengaja."},
-        {property: "releaseUrl", type: "URL", required: true, description: "Halaman rilis untuk baseline yang didokumentasikan."},
-        {property: "statusPath", type: "site path", required: true, description: "Route independen locale menuju halaman status dokumentasi ini."},
-        {property: "freshness.mode", type: "manual | auto", required: true, description: "Pilih status yang dikendalikan maintainer atau deteksi remote tag saat build."},
-    ]}
+  title="Field dokumentasi bersama"
+  items={[
+    {
+      property: "version",
+      type: "string",
+      required: true,
+      description:
+        "Versi aplikasi ternormalisasi yang direpresentasikan halaman, tanpa mewajibkan prefiks v.",
+    },
+    {
+      property: "versionTag",
+      type: "string",
+      required: true,
+      description: "Tag repositori untuk rilis yang didokumentasikan, misalnya v2.1.1.",
+    },
+    {
+      property: "lastReviewed",
+      type: "YYYY-MM-DD",
+      required: true,
+      description:
+        "Tanggal maintainer meninjau dokumentasi terhadap source secara sengaja.",
+    },
+    {
+      property: "releaseUrl",
+      type: "URL",
+      required: true,
+      description: "Halaman rilis untuk baseline yang didokumentasikan.",
+    },
+    {
+      property: "statusPath",
+      type: "site path",
+      required: true,
+      description: "Route independen locale menuju halaman status dokumentasi ini.",
+    },
+    {
+      property: "freshness.mode",
+      type: "manual | auto",
+      required: true,
+      description:
+        "Pilih status yang dikendalikan maintainer atau deteksi remote tag saat build.",
+    },
+  ]}
 />
 
 <PropertyTable
-    title="Field mode otomatis"
-    items={[
-        {property: "repositoryUrl", type: "Git URL", required: true, description: "Remote yang diperiksa dengan git ls-remote. URL HTTPS publik paling sederhana untuk CI."},
-        {property: "tagFormat", type: "semver | pep440", required: true, description: "Grammar versi untuk memvalidasi dan mengurutkan tag. Format custom sengaja tidak didukung."},
-        {property: "releasesUrl", type: "URL", description: "Tautan daftar rilis opsional ketika pengguna memerlukan versi lain."},
-        {property: "includePrereleases", type: "boolean", defaultValue: "false", description: "Sertakan tag alpha, beta, rc, dan development saat memilih versi terbaru. Post release PEP 440 tetap menjadi kandidat stabil."},
-        {property: "timeoutMs", type: "number", defaultValue: "10000", description: "Timeout pemeriksaan remote dari 1000 hingga 60000 milidetik."},
-        {property: "fallbackStatus", type: "current | unknown", defaultValue: "unknown", description: "Status saat verifikasi otomatis gagal. Gunakan current hanya jika maintainer menerima fallback eksplisit tersebut."},
-    ]}
+  title="Field mode otomatis"
+  items={[
+    {
+      property: "repositoryUrl",
+      type: "Git URL",
+      required: true,
+      description:
+        "Remote yang diperiksa dengan git ls-remote. URL HTTPS publik paling sederhana untuk CI.",
+    },
+    {
+      property: "tagFormat",
+      type: "semver | pep440",
+      required: true,
+      description:
+        "Grammar versi untuk memvalidasi dan mengurutkan tag. Format custom sengaja tidak didukung.",
+    },
+    {
+      property: "releasesUrl",
+      type: "URL",
+      description:
+        "Tautan daftar rilis opsional ketika pengguna memerlukan versi lain.",
+    },
+    {
+      property: "includePrereleases",
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Sertakan tag alpha, beta, rc, dan development saat memilih versi terbaru. Post release PEP 440 tetap menjadi kandidat stabil.",
+    },
+    {
+      property: "timeoutMs",
+      type: "number",
+      defaultValue: "10000",
+      description: "Timeout pemeriksaan remote dari 1000 hingga 60000 milidetik.",
+    },
+    {
+      property: "fallbackStatus",
+      type: "current | unknown",
+      defaultValue: "unknown",
+      description:
+        "Status saat verifikasi otomatis gagal. Gunakan current hanya jika maintainer menerima fallback eksplisit tersebut.",
+    },
+  ]}
 />
 
 ### Mode otomatis
@@ -227,28 +317,32 @@ tersebut terpisah dari freshness resolver.
 <Section title="Cakupan Baseline">
 
 <FeatureGrid
-    items={[
-        {
-            title: "CLI Publik",
-            icon: <Icon name="terminal" />,
-            children: "Nama command, option, output, efek samping, dan profil pipeline publik yang didukung diselaraskan dengan v2.1.1.",
-        },
-        {
-            title: "Configuration",
-            icon: <Icon name="configuration" />,
-            children: "Bagian dan property configuration didasarkan pada template v2.1.1 serta perilaku resolution yang aktif.",
-        },
-        {
-            title: "Internal Developer",
-            icon: <Icon name="workflow" />,
-            children: "Materi architecture, extension, testing, dan pipeline mencerminkan source yang ditinjau untuk baseline dokumentasi v2.1.1.",
-        },
-        {
-            title: "Keterbatasan yang Diketahui",
-            icon: <Icon name="warning" />,
-            children: "Perilaku eksperimental, khusus internal, loaded-only, atau yang masih terbatas dijelaskan pada halaman terkait.",
-        },
-    ]}
+  items={[
+    {
+      title: "CLI Publik",
+      icon: <Icon name="terminal" />,
+      children:
+        "Nama command, option, output, efek samping, dan profil pipeline publik yang didukung diselaraskan dengan v2.1.1.",
+    },
+    {
+      title: "Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "Bagian dan property configuration didasarkan pada template v2.1.1 serta perilaku resolution yang aktif.",
+    },
+    {
+      title: "Internal Developer",
+      icon: <Icon name="workflow" />,
+      children:
+        "Materi architecture, extension, testing, dan pipeline mencerminkan source yang ditinjau untuk baseline dokumentasi v2.1.1.",
+    },
+    {
+      title: "Keterbatasan yang Diketahui",
+      icon: <Icon name="warning" />,
+      children:
+        "Perilaku eksperimental, khusus internal, loaded-only, atau yang masih terbatas dijelaskan pada halaman terkait.",
+    },
+  ]}
 />
 
 </Section>

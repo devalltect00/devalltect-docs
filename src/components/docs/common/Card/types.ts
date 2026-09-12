@@ -14,42 +14,41 @@ import { HTMLAttributes, ReactNode } from "react";
  * - Screenshot
  * - CommandHero
  */
-export interface CardProps
-    extends Omit<HTMLAttributes<HTMLElement>, "title"> {
-    /**
-     * Card content.
-     */
-    children: ReactNode;
+export interface CardProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+  /**
+   * Card content.
+   */
+  children: ReactNode;
 
-    /**
-     * Optional card title.
-     */
-    title?: ReactNode;
+  /**
+   * Optional card title.
+   */
+  title?: ReactNode;
 
-    /**
-     * Optional icon displayed beside the title.
-     */
-    icon?: ReactNode;
+  /**
+   * Optional icon displayed beside the title.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional subtitle.
-     */
-    subtitle?: ReactNode;
+  /**
+   * Optional subtitle.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Remove the default padding.
-     */
-    noPadding?: boolean;
+  /**
+   * Remove the default padding.
+   */
+  noPadding?: boolean;
 
-    /**
-     * Display a hover animation.
-     *
-     * Default: true
-     */
-    hoverable?: boolean;
+  /**
+   * Display a hover animation.
+   *
+   * Default: true
+   */
+  hoverable?: boolean;
 
-    /**
-     * Render with a subtle accent border.
-     */
-    bordered?: boolean;
+  /**
+   * Render with a subtle accent border.
+   */
+  bordered?: boolean;
 }

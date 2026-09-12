@@ -6,13 +6,10 @@
 
 export { default } from "./LayerCard";
 
-export type {
-    LayerCardProps,
-} from "./types";
-
+export type { LayerCardProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.LayerCard
     title="CLI Layer"
     subtitle="User interaction"

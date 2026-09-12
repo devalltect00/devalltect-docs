@@ -6,9 +6,16 @@ sidebar_key: doc-gen-getting-started
 tags: [doc-gen, installation, quick-start]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Doc Gen" title="Installation and First Workflow" description="Use a dedicated environment, inspect the repository, and preview the resolved output before generation." category="Getting Started" status="Recommended" syntax="doc-gen structure generate . --dry-run" />
+<CommandHero
+  command="Doc Gen"
+  title="Installation and First Workflow"
+  description="Use a dedicated environment, inspect the repository, and preview the resolved output before generation."
+  category="Getting Started"
+  status="Recommended"
+  syntax="doc-gen structure generate . --dry-run"
+/>
 
 <Section title="Install a Reviewed Release">
 
@@ -18,9 +25,10 @@ project ID and a deploy token limited to `read_package_registry`.
 <Terminal title="Private GitLab package" language="bash">{`python -m venv venv
 
 # Activate the environment, then install one reviewed package version.
+
 python -m pip install \
-  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
-  "doc-gen==1.0.1"
+ --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+ "doc-gen==1.0.1"
 
 doc-gen --version`}</Terminal>
 
@@ -43,13 +51,16 @@ doc-gen init --dry-run
 doc-gen init
 
 # Read-only inspection
+
 doc-gen structure print .
 doc-gen structure analyze .
 
 # Preview the resolved target and output path
+
 doc-gen structure generate . --output docs/project_structure.md --dry-run
 
 # Generate only after reviewing the preview
+
 doc-gen structure generate . --output docs/project_structure.md`}</Terminal>
 
 <InfoBox variant="warning" title="One selected output">
@@ -59,4 +70,6 @@ unrelated documentation remains outside the command's write scope.
 
 </InfoBox>
 
-<InfoBox variant="note" title="Runtime">Python 3.9+ compatibility; Python 3.14 standard runtime</InfoBox>
+<InfoBox variant="note" title="Runtime">
+  Python 3.9+ compatibility; Python 3.14 standard runtime
+</InfoBox>

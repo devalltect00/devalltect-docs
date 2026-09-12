@@ -6,14 +6,27 @@ sidebar_key: reflow-dockerize
 tags: [reflow, options]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Opsi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Publikasi Container" status="Perubahan Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Opsi"
+  description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal."
+  category="Publikasi Container"
+  status="Perubahan Eksternal"
+  syntax="reflow dockerize [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Flag / nilai | Bawaan | Efek |
-| --- | --- | --- |
-| `--repository, --repo, -C` | path yang ditentukan | Pilih build context. |
-| `--repository-url` | URL terkonfigurasi | Gunakan clone sementara yang dikelola. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Pratinjau tanpa perubahan Docker atau registry. |
-| `--debug/--no-debug, -dbg/-Dbg` | false | Aktifkan diagnostik. |
-| `--log-level, -ll` | INFO | Atur ambang logging. |
+| Flag / nilai                      | Bawaan               | Efek                                            |
+| --------------------------------- | -------------------- | ----------------------------------------------- |
+| `--repository, --repo, -C`        | path yang ditentukan | Pilih build context.                            |
+| `--repository-url`                | URL terkonfigurasi   | Gunakan clone sementara yang dikelola.          |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false                | Pratinjau tanpa perubahan Docker atau registry. |
+| `--debug/--no-debug, -dbg/-Dbg`   | false                | Aktifkan diagnostik.                            |
+| `--log-level, -ll`                | INFO                 | Atur ambang logging.                            |

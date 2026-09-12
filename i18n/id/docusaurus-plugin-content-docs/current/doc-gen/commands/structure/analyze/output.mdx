@@ -6,9 +6,22 @@ sidebar_key: doc-gen-structure-analyze
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="Output" description="Output" category="Struktur Proyek" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="Output"
+  description="Output"
+  category="Struktur Proyek"
+  status="Read Only"
+  syntax="doc-gen structure analyze [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 - Project type dan summary.
 - Keputusan profile/smart.
@@ -18,4 +31,3 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 Command : doc-gen structure analyze
 Dry run : true/false
 Status  : <result>`}</Terminal>
-

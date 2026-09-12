@@ -8,29 +8,25 @@ keywords: [workflow branch output]
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy workflow branch"
-    title="Command Output"
-    description="Understand intended transition diagnostics and the current likely pipeline-construction failure."
-    category="Experimental Workflow"
-    status="Currently Blocked"
-    syntax="custy workflow branch [OPTIONS]"
-    tags={[
-        "output",
-        "diagnostics",
-        "known failure",
-    ]}
-    links={[
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy workflow branch"
+  title="Command Output"
+  description="Understand intended transition diagnostics and the current likely pipeline-construction failure."
+  category="Experimental Workflow"
+  status="Currently Blocked"
+  syntax="custy workflow branch [OPTIONS]"
+  tags={["output", "diagnostics", "known failure"]}
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Overview
@@ -46,15 +42,17 @@ status.
 >
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Pipeline Construction Error",
-            description: "Representative result when the requested step name cannot be resolved.",
-            output: `Unable to build workflow pipeline
+  outputs={[
+    {
+      title: "Pipeline Construction Error",
+      description:
+        "Representative result when the requested step name cannot be resolved.",
+      output: `Unable to build workflow pipeline
 Unknown or unregistered step: finalize`,
-            notes: "Exact wording can vary, but the transition result must not be treated as successful.",
-        },
-    ]}
+      notes:
+        "Exact wording can vary, but the transition result must not be treated as successful.",
+    },
+  ]}
 />
 
 </Section>

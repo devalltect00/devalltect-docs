@@ -19,68 +19,64 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    FeatureCard,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  FeatureCard,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Initialize a Project"
-    description="Prepare an existing project for use with Custy by generating project-specific configuration, templates, and supporting resources."
-    category="Initialization"
-    status="Recommended"
-    syntax="custy init"
-    tags={[
-        "configuration",
-        "templates",
-        "project setup",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy init"
+  title="Initialize a Project"
+  description="Prepare an existing project for use with Custy by generating project-specific configuration, templates, and supporting resources."
+  category="Initialization"
+  status="Recommended"
+  syntax="custy init"
+  tags={["configuration", "templates", "project setup"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {
-            label: "Category",
-            value: "Initialization",
-            icon: "directory",
-        },
-        {
-            label: "Complexity",
-            value: "Beginner",
-            icon: "requirement",
-        },
-        {
-            label: "Modifies Git History",
-            value: "No",
-            icon: "git",
-        },
-        {
-            label: "Typical Duration",
-            value: "Less than a minute",
-            icon: "timeline",
-        },
-    ]}
+  items={[
+    {
+      label: "Category",
+      value: "Initialization",
+      icon: "directory",
+    },
+    {
+      label: "Complexity",
+      value: "Beginner",
+      icon: "requirement",
+    },
+    {
+      label: "Modifies Git History",
+      value: "No",
+      icon: "git",
+    },
+    {
+      label: "Typical Duration",
+      value: "Less than a minute",
+      icon: "timeline",
+    },
+  ]}
 />
 
 ## Overview
@@ -114,48 +110,39 @@ that can be tailored to your project's workflow.
 >
 
 <FeatureGrid
-    title="What This Command Does"
-    items={[
-        {
-            title: "Generate Configuration",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Creates the project's primary configuration file under
-                    <code>.config/custy/config.toml</code>
-                </>
-            ),
-        },
-        {
-            title: "Create Templates",
-            icon: <Icon name="file" />,
-            children: (
-                <>
-                    Generates default commit, tag, and changelog templates
-                    that can be customized for your team's workflow.
-                </>
-            ),
-        },
-        {
-            title: "Prepare Project",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Creates the required directory structure used by Custy.
-                </>
-            ),
-        },
-        {
-            title: "Optional Examples",
-            icon: <Icon name="project" />,
-            children: (
-                <>
-                    Generates example resources demonstrating supported
-                    templates.
-                </>
-            ),
-        },
-    ]}
+  title="What This Command Does"
+  items={[
+    {
+      title: "Generate Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Creates the project's primary configuration file under
+          <code>.config/custy/config.toml</code>
+        </>
+      ),
+    },
+    {
+      title: "Create Templates",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Generates default commit, tag, and changelog templates that can be customized
+          for your team's workflow.
+        </>
+      ),
+    },
+    {
+      title: "Prepare Project",
+      icon: <Icon name="directory" />,
+      children: <>Creates the required directory structure used by Custy.</>,
+    },
+    {
+      title: "Optional Examples",
+      icon: <Icon name="project" />,
+      children: <>Generates example resources demonstrating supported templates.</>,
+    },
+  ]}
 />
 
 </Section>
@@ -209,8 +196,7 @@ After initialization, your project contains a dedicated Custy workspace.
 
 <Terminal>
 
-{`
-your-project/
+{`your-project/
 └── .config/
     └── custy/
         ├── config.toml
@@ -219,8 +205,7 @@ your-project/
             ├── changelog/
             ├── examples/
             ├── commit-message.txt
-            └── tag-message.txt
-`}
+            └── tag-message.txt`}
 
 </Terminal>
 
@@ -283,32 +268,28 @@ For example:
 - Customize the generated configuration and templates.
 
 <RelatedCommands
-    commands={[
-        {
-            title: "Validate",
-            href: "../validate/overview",
-            description:
-                "Verify your project's Custy configuration.",
-        },
-        {
-            title: "Run",
-            href: "../run/overview",
-            description:
-                "Execute predefined workflows.",
-        },
-        {
-            title: "Workflow",
-            href: "../workflow/overview",
-            description:
-                "Learn about workflow orchestration.",
-        },
-        {
-            title: "Version",
-            href: "../version/overview",
-            description:
-                "Manage project versions.",
-        },
-    ]}
+  commands={[
+    {
+      title: "Validate",
+      href: "../validate/overview",
+      description: "Verify your project's Custy configuration.",
+    },
+    {
+      title: "Run",
+      href: "../run/overview",
+      description: "Execute predefined workflows.",
+    },
+    {
+      title: "Workflow",
+      href: "../workflow/overview",
+      description: "Learn about workflow orchestration.",
+    },
+    {
+      title: "Version",
+      href: "../version/overview",
+      description: "Manage project versions.",
+    },
+  ]}
 />
 
 </Section>

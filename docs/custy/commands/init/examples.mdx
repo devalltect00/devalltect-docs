@@ -15,38 +15,34 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandExample,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Examples"
-    description="Learn common ways to initialize a project using Custy."
-    category="Initialization"
-    status="Recommended"
-    syntax="custy init"
-    tags={[
-        "examples",
-        "best practices",
-        "initialization",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-    ]}
+  command="custy init"
+  title="Examples"
+  description="Learn common ways to initialize a project using Custy."
+  category="Initialization"
+  status="Recommended"
+  syntax="custy init"
+  tags={["examples", "best practices", "initialization"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+  ]}
 />
 
 ## Overview
@@ -73,68 +69,62 @@ If this is your first time using Custy, begin with the default initialization.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Initialize a Project",
-            description:
-                "Generate the complete Custy project workspace using the default initialization mode.",
-            command: "custy init",
-            result:
-                "Creates the default configuration, templates, directory structure, and recursively merged example resources.",
-            notes:
-                "Existing files are preserved by default, while missing nested examples can still be added.",
-        },
-        {
-            title: "Generate Configuration Only",
-            description:
-                "Create only the Custy configuration file.",
-            command: "custy init --mode config",
-            result:
-                "Generates .config/custy/config.toml without creating templates or example resources.",
-            notes:
-                "Useful when you only need project configuration and plan to create templates later.",
-        },
-        {
-            title: "Generate Templates Only",
-            description:
-                "Generate only the default template resources.",
-            command: "custy init --mode templates",
-            result:
-                "Creates the default commit, tag, and changelog templates.",
-            notes:
-                "Ideal for regenerating templates without modifying other project resources.",
-        },
-        {
-            title: "Generate Example Resources",
-            description:
-                "Generate only the example message templates.",
-            command: "custy init --mode examples",
-            result:
-                "Recursively creates or merges the commit-message and tag-message example trees.",
-            notes:
-                "Existing example files are preserved; missing files and nested directories are added.",
-        },
-        {
-            title: "Overwrite Existing Resources",
-            description:
-                "Replace existing generated resources without prompting.",
-            command: "custy init --force",
-            result:
-                "Existing selected files, including nested example files, are overwritten immediately.",
-            notes:
-                "Directories are merged rather than replaced. Use carefully if configuration, templates, or examples were customized.",
-        },
-        {
-            title: "Prompt Before Overwriting",
-            description:
-                "Ask for confirmation before replacing existing resources.",
-            command: "custy init --ask",
-            result:
-                "Custy prompts before supported individual generated files are overwritten.",
-            notes:
-                "Packaged examples do not prompt per file; they preserve existing files and copy missing files.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Initialize a Project",
+      description:
+        "Generate the complete Custy project workspace using the default initialization mode.",
+      command: "custy init",
+      result:
+        "Creates the default configuration, templates, directory structure, and recursively merged example resources.",
+      notes:
+        "Existing files are preserved by default, while missing nested examples can still be added.",
+    },
+    {
+      title: "Generate Configuration Only",
+      description: "Create only the Custy configuration file.",
+      command: "custy init --mode config",
+      result:
+        "Generates .config/custy/config.toml without creating templates or example resources.",
+      notes:
+        "Useful when you only need project configuration and plan to create templates later.",
+    },
+    {
+      title: "Generate Templates Only",
+      description: "Generate only the default template resources.",
+      command: "custy init --mode templates",
+      result: "Creates the default commit, tag, and changelog templates.",
+      notes:
+        "Ideal for regenerating templates without modifying other project resources.",
+    },
+    {
+      title: "Generate Example Resources",
+      description: "Generate only the example message templates.",
+      command: "custy init --mode examples",
+      result:
+        "Recursively creates or merges the commit-message and tag-message example trees.",
+      notes:
+        "Existing example files are preserved; missing files and nested directories are added.",
+    },
+    {
+      title: "Overwrite Existing Resources",
+      description: "Replace existing generated resources without prompting.",
+      command: "custy init --force",
+      result:
+        "Existing selected files, including nested example files, are overwritten immediately.",
+      notes:
+        "Directories are merged rather than replaced. Use carefully if configuration, templates, or examples were customized.",
+    },
+    {
+      title: "Prompt Before Overwriting",
+      description: "Ask for confirmation before replacing existing resources.",
+      command: "custy init --ask",
+      result:
+        "Custy prompts before supported individual generated files are overwritten.",
+      notes:
+        "Packaged examples do not prompt per file; they preserve existing files and copy missing files.",
+    },
+  ]}
 />
 
 </Section>

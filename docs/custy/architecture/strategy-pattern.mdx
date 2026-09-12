@@ -8,40 +8,40 @@ keywords: [Custy TagStrategy, TagSorter, version strategies]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    InfoBox,
-    PatternCard,
-    PatternTable,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  InfoBox,
+  PatternCard,
+  PatternTable,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/git_ops/tag_strategy/"
-    title="Strategy Pattern"
-    description="Keep tag generation, existing-tag ordering, and cross-format conversion as separate responsibilities."
-    category="Architecture"
-    status="Contributor Extension Point"
-    syntax="requested strategy -> implementation -> version tag"
-    tags={["TagStrategy", "TagSorter", "factory", "VersionBridge"]}
-    links={[
-        {label: "Git Operations", href: "./git-operations"},
-        {label: "Versioning Concept", href: "../concepts/versioning"},
-        {label: "Add a Strategy", href: "../developer-guide/adding-version-strategies"},
-    ]}
+  command="app/core/git_ops/tag_strategy/"
+  title="Strategy Pattern"
+  description="Keep tag generation, existing-tag ordering, and cross-format conversion as separate responsibilities."
+  category="Architecture"
+  status="Contributor Extension Point"
+  syntax="requested strategy -> implementation -> version tag"
+  tags={["TagStrategy", "TagSorter", "factory", "VersionBridge"]}
+  links={[
+    { label: "Git Operations", href: "./git-operations" },
+    { label: "Versioning Concept", href: "../concepts/versioning" },
+    { label: "Add a Strategy", href: "../developer-guide/adding-version-strategies" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Generation Contract", value: "TagStrategy", icon: "release"},
-        {label: "Generation Choices", value: "5", icon: "configuration"},
-        {label: "Sorting Contract", value: "TagSorter", icon: "table"},
-        {label: "Sorting Choices", value: "4", icon: "timeline"},
-    ]}
+  items={[
+    { label: "Generation Contract", value: "TagStrategy", icon: "release" },
+    { label: "Generation Choices", value: "5", icon: "configuration" },
+    { label: "Sorting Contract", value: "TagSorter", icon: "table" },
+    { label: "Sorting Choices", value: "4", icon: "timeline" },
+  ]}
 />
 
 ## Overview
@@ -62,24 +62,24 @@ format from the selected Git tag; it does not choose the next version.
 <Grid columns={3}>
 
 <PatternCard
-    pattern="Strategy"
-    title="Generate a Tag"
-    description="TagStrategy defines get_next_tag(). WorkflowEngine selects a concrete implementation from the resolved strategy."
-    implementation="tag_strategy/base.py and strategy modules"
+  pattern="Strategy"
+  title="Generate a Tag"
+  description="TagStrategy defines get_next_tag(). WorkflowEngine selects a concrete implementation from the resolved strategy."
+  implementation="tag_strategy/base.py and strategy modules"
 />
 
 <PatternCard
-    pattern="Strategy + Factory"
-    title="Sort Existing Tags"
-    description="TagSorter defines sort(), latest(), and oldest(). TagSorterFactory maps supported strategy choices to concrete sorters."
-    implementation="tag_sorter/base.py and factory.py"
+  pattern="Strategy + Factory"
+  title="Sort Existing Tags"
+  description="TagSorter defines sort(), latest(), and oldest(). TagSorterFactory maps supported strategy choices to concrete sorters."
+  implementation="tag_sorter/base.py and factory.py"
 />
 
 <PatternCard
-    pattern="Bridge Utility"
-    title="Convert a Version"
-    description="VersionBridge converts compatible SemVer and PEP 440 values when version files and Git tags need different representations."
-    implementation="versioning/version_bridge.py"
+  pattern="Bridge Utility"
+  title="Convert a Version"
+  description="VersionBridge converts compatible SemVer and PEP 440 values when version files and Git tags need different representations."
+  implementation="versioning/version_bridge.py"
 />
 
 </Grid>
@@ -91,15 +91,39 @@ format from the selected Git tag; it does not choose the next version.
 <Section title="Tag Generation Family">
 
 <PatternTable
-    title="Built-in Tag Strategies"
-    description="These implementations answer one question: what tag should Custy use next?"
-    patterns={[
-        {pattern: "SemVer", purpose: "Increment a semantic version using the selected bump and optional prerelease input.", implementation: "SemverStrategy"},
-        {pattern: "PEP 440", purpose: "Generate a Python-compatible public version from repository state and bump input.", implementation: "PEP440Strategy"},
-        {pattern: "Commitizen", purpose: "Use Commitizen-compatible project metadata, then delegate the version calculation through semantic-version behavior.", implementation: "CommitizenStrategy"},
-        {pattern: "Date", purpose: "Create a date-based tag for projects whose releases are organized by calendar value.", implementation: "DateStrategy"},
-        {pattern: "Git Count", purpose: "Derive the next value from repository commit count.", implementation: "GitCountStrategy"},
-    ]}
+  title="Built-in Tag Strategies"
+  description="These implementations answer one question: what tag should Custy use next?"
+  patterns={[
+    {
+      pattern: "SemVer",
+      purpose:
+        "Increment a semantic version using the selected bump and optional prerelease input.",
+      implementation: "SemverStrategy",
+    },
+    {
+      pattern: "PEP 440",
+      purpose:
+        "Generate a Python-compatible public version from repository state and bump input.",
+      implementation: "PEP440Strategy",
+    },
+    {
+      pattern: "Commitizen",
+      purpose:
+        "Use Commitizen-compatible project metadata, then delegate the version calculation through semantic-version behavior.",
+      implementation: "CommitizenStrategy",
+    },
+    {
+      pattern: "Date",
+      purpose:
+        "Create a date-based tag for projects whose releases are organized by calendar value.",
+      implementation: "DateStrategy",
+    },
+    {
+      pattern: "Git Count",
+      purpose: "Derive the next value from repository commit count.",
+      implementation: "GitCountStrategy",
+    },
+  ]}
 />
 
 <InfoBox variant="info" title="An explicit tag has highest priority">
@@ -115,15 +139,45 @@ when Custy must calculate the next tag.
 ---
 
 <WorkflowDiagram
-    title="Tag Resolution Flow"
-    timeline={[
-        {title: "Resolve CLI and configuration", description: "The command resolver prepares the explicit tag, strategy, bump, prerelease, and related inputs.", status: "completed"},
-        {title: "Build WorkflowConfig", description: "WorkflowEngineBuilder carries the resolved values into one engine configuration.", status: "completed"},
-        {title: "Check explicit input", description: "A supplied tag is accepted directly and bypasses automatic generation.", status: "completed"},
-        {title: "Select implementation", description: "Without an explicit tag, WorkflowEngine dispatches to the concrete strategy for the selected enum value.", status: "current"},
-        {title: "Generate the value", description: "The strategy reads only the repository or project inputs it needs and returns the next tag string.", status: "pending"},
-        {title: "Apply and consume", description: "Later workflow phases update version files, generate changelog context, create the Git tag, and optionally push it.", status: "pending"},
-    ]}
+  title="Tag Resolution Flow"
+  timeline={[
+    {
+      title: "Resolve CLI and configuration",
+      description:
+        "The command resolver prepares the explicit tag, strategy, bump, prerelease, and related inputs.",
+      status: "completed",
+    },
+    {
+      title: "Build WorkflowConfig",
+      description:
+        "WorkflowEngineBuilder carries the resolved values into one engine configuration.",
+      status: "completed",
+    },
+    {
+      title: "Check explicit input",
+      description:
+        "A supplied tag is accepted directly and bypasses automatic generation.",
+      status: "completed",
+    },
+    {
+      title: "Select implementation",
+      description:
+        "Without an explicit tag, WorkflowEngine dispatches to the concrete strategy for the selected enum value.",
+      status: "current",
+    },
+    {
+      title: "Generate the value",
+      description:
+        "The strategy reads only the repository or project inputs it needs and returns the next tag string.",
+      status: "pending",
+    },
+    {
+      title: "Apply and consume",
+      description:
+        "Later workflow phases update version files, generate changelog context, create the Git tag, and optionally push it.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -131,14 +185,34 @@ when Custy must calculate the next tag.
 <Section title="Tag Sorting Family">
 
 <DependencyCard
-    title="Existing-Tag Ordering"
-    dependencies={[
-        {source: "GitService", target: "TagSorterFactory", description: "Requests a sorter that matches the active version strategy."},
-        {source: "TagSorterFactory", target: "SemverSorter", description: "Orders semantic-version tags."},
-        {source: "TagSorterFactory", target: "PEP440Sorter", description: "Orders PEP 440-compatible tags."},
-        {source: "TagSorterFactory", target: "DateSorter", description: "Orders date-based tags."},
-        {source: "TagSorterFactory", target: "GitCountSorter", description: "Orders commit-count tags."},
-    ]}
+  title="Existing-Tag Ordering"
+  dependencies={[
+    {
+      source: "GitService",
+      target: "TagSorterFactory",
+      description: "Requests a sorter that matches the active version strategy.",
+    },
+    {
+      source: "TagSorterFactory",
+      target: "SemverSorter",
+      description: "Orders semantic-version tags.",
+    },
+    {
+      source: "TagSorterFactory",
+      target: "PEP440Sorter",
+      description: "Orders PEP 440-compatible tags.",
+    },
+    {
+      source: "TagSorterFactory",
+      target: "DateSorter",
+      description: "Orders date-based tags.",
+    },
+    {
+      source: "TagSorterFactory",
+      target: "GitCountSorter",
+      description: "Orders commit-count tags.",
+    },
+  ]}
 />
 
 `GitService` detects or receives a project strategy, creates the matching
@@ -172,12 +246,30 @@ currently discover or install third-party strategy plugins at runtime.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Git Operations", href: "./git-operations", description: "See where existing tags are read, sorted, created, and pushed."},
-        {title: "Workflow Engine", href: "./workflow-engine", description: "Inspect the active dispatch and downstream release phases."},
-        {title: "Versioning Concept", href: "../concepts/versioning", description: "Compare strategies, version-file formats, and user-facing behavior."},
-        {title: "Adding Version Strategies", href: "../developer-guide/adding-version-strategies", description: "Follow the complete contributor checklist for a new implementation."},
-    ]}
+  commands={[
+    {
+      title: "Git Operations",
+      href: "./git-operations",
+      description: "See where existing tags are read, sorted, created, and pushed.",
+    },
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "Inspect the active dispatch and downstream release phases.",
+    },
+    {
+      title: "Versioning Concept",
+      href: "../concepts/versioning",
+      description:
+        "Compare strategies, version-file formats, and user-facing behavior.",
+    },
+    {
+      title: "Adding Version Strategies",
+      href: "../developer-guide/adding-version-strategies",
+      description:
+        "Follow the complete contributor checklist for a new implementation.",
+    },
+  ]}
 />
 
 </Section>

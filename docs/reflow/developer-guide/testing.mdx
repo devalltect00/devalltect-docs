@@ -8,40 +8,40 @@ keywords: [Reflow tests, Reflow pytest, Reflow dry-run tests]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pytest"
-    title="Testing Reflow"
-    description="Build confidence from one affected contract to the complete release-workflow suite."
-    category="Developer Guide"
-    status="Required for Changes"
-    syntax="python -m pytest [PATH] [OPTIONS]"
-    tags={["CLI", "Git", "Docker", "dry-run", "pre-commit"]}
-    links={[
-        {label: "Test Layers", href: "#test-layers"},
-        {label: "Focused Tests", href: "#focused-validation"},
-        {label: "Pre-Commit", href: "#pre-commit-quality-gates"},
-        {label: "Full Validation", href: "#complete-validation"},
-    ]}
+  command="python -m pytest"
+  title="Testing Reflow"
+  description="Build confidence from one affected contract to the complete release-workflow suite."
+  category="Developer Guide"
+  status="Required for Changes"
+  syntax="python -m pytest [PATH] [OPTIONS]"
+  tags={["CLI", "Git", "Docker", "dry-run", "pre-commit"]}
+  links={[
+    { label: "Test Layers", href: "#test-layers" },
+    { label: "Focused Tests", href: "#focused-validation" },
+    { label: "Pre-Commit", href: "#pre-commit-quality-gates" },
+    { label: "Full Validation", href: "#complete-validation" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Framework", value: "pytest", icon: "testing"},
-        {label: "Coverage Target", value: "app", icon: "project"},
-        {label: "Test Root", value: "tests", icon: "directory"},
-        {label: "Default Import Mode", value: "importlib", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Framework", value: "pytest", icon: "testing" },
+    { label: "Coverage Target", value: "app", icon: "project" },
+    { label: "Test Root", value: "tests", icon: "directory" },
+    { label: "Default Import Mode", value: "importlib", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -63,13 +63,33 @@ the complete suite. Keep real external effects outside ordinary validation.
 <Section title="Test Layers">
 
 <FeatureGrid
-    title="Where Reflow Behavior Is Exercised"
-    items={[
-        {title: "CLI", icon: <Icon name="terminal" />, children: "tests/cli covers command wiring, help, target propagation, conversion scopes, recovery, Docker output, errors, and exit status."},
-        {title: "Configuration", icon: <Icon name="configuration" />, children: "tests/config and tests/unit/config cover loading, missing files, precedence, metadata, and pre-commit policy."},
-        {title: "Core Workflows", icon: <Icon name="architecture" />, children: "tests/core covers Git, GitHub, Docker, conversion, replacement, recovery orchestration, repositories, initialization, and dry-run support."},
-        {title: "Developer Workflows", icon: <Icon name="dependency" />, children: "Top-level tests validate Make targets, Docker and Compose contracts, packaging metadata, UI progress, and themes."},
-    ]}
+  title="Where Reflow Behavior Is Exercised"
+  items={[
+    {
+      title: "CLI",
+      icon: <Icon name="terminal" />,
+      children:
+        "tests/cli covers command wiring, help, target propagation, conversion scopes, recovery, Docker output, errors, and exit status.",
+    },
+    {
+      title: "Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "tests/config and tests/unit/config cover loading, missing files, precedence, metadata, and pre-commit policy.",
+    },
+    {
+      title: "Core Workflows",
+      icon: <Icon name="architecture" />,
+      children:
+        "tests/core covers Git, GitHub, Docker, conversion, replacement, recovery orchestration, repositories, initialization, and dry-run support.",
+    },
+    {
+      title: "Developer Workflows",
+      icon: <Icon name="dependency" />,
+      children:
+        "Top-level tests validate Make targets, Docker and Compose contracts, packaging metadata, UI progress, and themes.",
+    },
+  ]}
 />
 
 </Section>
@@ -84,12 +104,15 @@ the complete suite. Keep real external effects outside ordinary validation.
 python -m pytest tests/cli/test_repository_targeting.py
 
 # Tag replacement behavior
+
 python -m pytest tests/core/reflow/test_tag_replacement.py
 
 # Dry-run boundaries
+
 python -m pytest tests/core/dry_run
 
 # One regression by node ID
+
 python -m pytest tests/cli/test_error_handling.py::test_dockerize_total_failure_is_concise_and_unsuccessful`}
 
 </Terminal>
@@ -104,13 +127,33 @@ directory has inherited ACL problems.
 <Section title="What to Test">
 
 <CommandChecklist
-    items={[
-        {title: "Repository target", description: "Cover explicit CLI targets, configured targets, current-directory fallback, and path/URL conflicts."},
-        {title: "Mutation boundary", description: "Prove dry-run performs no persistent local, remote, or registry mutation."},
-        {title: "Conversion plan", description: "Cover both formats, collisions, signed tags, metadata preservation, confirmation, and atomic replacement."},
-        {title: "External failure", description: "Mock Git, GitHub CLI, Docker, and subprocess failures and assert concise remediation and nonzero exits."},
-        {title: "Configuration independence", description: "Provide deterministic test configuration instead of reading a contributor-managed config file."},
-    ]}
+  items={[
+    {
+      title: "Repository target",
+      description:
+        "Cover explicit CLI targets, configured targets, current-directory fallback, and path/URL conflicts.",
+    },
+    {
+      title: "Mutation boundary",
+      description:
+        "Prove dry-run performs no persistent local, remote, or registry mutation.",
+    },
+    {
+      title: "Conversion plan",
+      description:
+        "Cover both formats, collisions, signed tags, metadata preservation, confirmation, and atomic replacement.",
+    },
+    {
+      title: "External failure",
+      description:
+        "Mock Git, GitHub CLI, Docker, and subprocess failures and assert concise remediation and nonzero exits.",
+    },
+    {
+      title: "Configuration independence",
+      description:
+        "Provide deterministic test configuration instead of reading a contributor-managed config file.",
+    },
+  ]}
 />
 
 </Section>
@@ -143,6 +186,7 @@ files even when tools receive explicit paths.
 python -m pytest
 
 # Black check, Ruff lint, then tests
+
 make check`}
 
 </Terminal>
@@ -156,10 +200,26 @@ releases as part of ordinary testing.
 ---
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Install the complete contributor environment."},
-        {title: "Contributing", href: "./contributing", description: "Prepare a focused Reflow change for review."},
-        {title: "Dry Run", href: "../concepts/safety-and-dry-run", description: "Review Reflow's non-mutation contract."},
-        {title: "Architecture", href: "../architecture/overview", description: "Map tests to Reflow's layers."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Install the complete contributor environment.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Prepare a focused Reflow change for review.",
+    },
+    {
+      title: "Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Review Reflow's non-mutation contract.",
+    },
+    {
+      title: "Architecture",
+      href: "../architecture/overview",
+      description: "Map tests to Reflow's layers.",
+    },
+  ]}
 />

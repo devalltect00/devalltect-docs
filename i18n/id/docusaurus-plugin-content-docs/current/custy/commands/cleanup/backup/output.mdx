@@ -4,24 +4,31 @@ description: "Pahami output Backup Cleanup."
 sidebar_position: 7
 sidebar_key: custy-cleanup-backup
 ---
-import {CommandHero, CommandOutput, Section, InfoBox} from "@site/src/components/docs";
+
+import {
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Output"
-    description="Pelajari informasi yang dilaporkan Backup Cleanup."
-    category="Maintenance"
-    status="Direkomendasikan"
-    syntax="custy cleanup backups"
-    tags={["output", "cleanup", "backup"]}
-    links={[
-        {label: "Examples", href: "./examples"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-        {label: "FAQ", href: "./faq"},
-    ]}
+  command="custy cleanup backups"
+  title="Output"
+  description="Pelajari informasi yang dilaporkan Backup Cleanup."
+  category="Maintenance"
+  status="Direkomendasikan"
+  syntax="custy cleanup backups"
+  tags={["output", "cleanup", "backup"]}
+  links={[
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+    { label: "FAQ", href: "./faq" },
+  ]}
 />
 
 ## Ringkasan
+
 Custy melaporkan target, file yang dipertahankan/dihapus, dan summary.
 
 <Section title="Output Umum">
@@ -32,10 +39,13 @@ Custy melaporkan target, file yang dipertahankan/dihapus, dan summary.
 
 âœ“ Pipeline completed successfully!`, notes: "Teks persisnya dapat berbeda berdasarkan konfigurasi dan target cleanup."},
 ]} />
+
 </Section>
 
 <InfoBox variant="tip" title="Dry Run">
-Dry run menampilkan kandidat tanpa menghapus file.
+  Dry run menampilkan kandidat tanpa menghapus file.
 </InfoBox>
 
-<Section title="Langkah Berikutnya">Gunakan **Troubleshooting** jika hasil tidak sesuai.</Section>
+<Section title="Langkah Berikutnya">
+  Gunakan **Troubleshooting** jika hasil tidak sesuai.
+</Section>

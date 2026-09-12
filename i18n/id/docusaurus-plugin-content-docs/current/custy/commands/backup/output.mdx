@@ -16,25 +16,25 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Output"
-    description="Pelajari informasi yang dilaporkan Custy setelah membuat template backup."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup all"
-    tags={["output", "backup", "results"]}
-    links={[
-        {label: "Examples", href: "./examples"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-        {label: "FAQ", href: "./faq"},
-    ]}
+  command="custy backup"
+  title="Output"
+  description="Pelajari informasi yang dilaporkan Custy setelah membuat template backup."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup all"
+  tags={["output", "backup", "results"]}
+  links={[
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+    { label: "FAQ", href: "./faq" },
+  ]}
 />
 
 ## Ringkasan
@@ -48,27 +48,25 @@ eksekusi sesuai subcommand.
 <Section title="Output Umum">
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Commit Template Backup",
-            description: "Commit message template berhasil di-backup.",
-            output:
-`✓ Commit message template found
+  outputs={[
+    {
+      title: "Commit Template Backup",
+      description: "Commit message template berhasil di-backup.",
+      output: `✓ Commit message template found
 ✓ Backup directory ready
 ✓ Timestamped backup created
 ✓ Backup completed successfully`,
-            notes: "Pesan tepatnya dapat berbeda sesuai project configuration.",
-        },
-        {
-            title: "Combined Backup",
-            description: "Kedua template files berhasil di-backup.",
-            output:
-`✓ Commit message template backed up
+      notes: "Pesan tepatnya dapat berbeda sesuai project configuration.",
+    },
+    {
+      title: "Combined Backup",
+      description: "Kedua template files berhasil di-backup.",
+      output: `✓ Commit message template backed up
 ✓ Tag message template backed up
 ✓ Backup operation completed`,
-            notes: "Subcommand all menjalankan kedua operasi dalam satu eksekusi.",
-        },
-    ]}
+      notes: "Subcommand all menjalankan kedua operasi dalam satu eksekusi.",
+    },
+  ]}
 />
 
 </Section>

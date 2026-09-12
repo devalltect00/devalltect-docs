@@ -18,23 +18,22 @@ import type { DividerProps } from "./types";
  * without relying on Markdown horizontal rules.
  */
 export default function Divider({
-    orientation = "horizontal",
-    variant = "solid",
-    spacing = "md",
-    className,
-    ...props
+  orientation = "horizontal",
+  variant = "solid",
+  spacing = "md",
+  className,
+  ...props
 }: DividerProps) {
-
-    return (
-        <hr
-            className={clsx(
-                styles.divider,
-                styles[orientation],
-                styles[variant],
-                styles[spacing],
-                className,
-            )}
-            {...props}
-        />
-    );
+  return (
+    <hr
+      className={clsx(
+        styles.divider,
+        styles[orientation],
+        styles[variant],
+        styles[spacing],
+        className
+      )}
+      {...props}
+    />
+  );
 }

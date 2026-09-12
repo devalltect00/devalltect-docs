@@ -6,9 +6,22 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, workflow]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Alur Kerja" description="Menemukan version tag tanpa GitHub release lalu melakukan re-push untuk memicu ulang CI/CD berbasis tag." category="Pemulihan Release" status="Pemulihan Workflow GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Alur Kerja"
+  description="Menemukan version tag tanpa GitHub release lalu melakukan re-push untuk memicu ulang CI/CD berbasis tag."
+  category="Pemulihan Release"
+  status="Pemulihan Workflow GitHub"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ### 1. Tahap 1
 
@@ -30,5 +43,6 @@ Tampilkan target/rencana.
 
 Hapus dan re-push dengan delay setelah konfirmasi.
 
-<InfoBox variant="warning" title="Batas keamanan">Menghapus dan re-push tag; tidak membuat release record melalui website atau API.</InfoBox>
-
+<InfoBox variant="warning" title="Batas keamanan">
+  Menghapus dan re-push tag; tidak membuat release record melalui website atau API.
+</InfoBox>

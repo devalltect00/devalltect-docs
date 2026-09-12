@@ -18,47 +18,42 @@ keywords:
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pip install --index-url $PRIVATE_INDEX_URL custy==2.1.1"
-    title="Install Custy"
-    description="Choose a supported native installation method, prepare its requirements, and verify the Custy CLI."
-    category="Getting Started"
-    status="Python 3.14+"
-    syntax="python -m pip install [OPTIONS] SOURCE"
-    tags={[
-        "private GitLab PyPI",
-        "source checkout",
-        "release assets",
-        "developer setup",
-    ]}
-    links={[
-        {label: "Requirements", href: "#requirements"},
-        {label: "Installation Methods", href: "#choose-an-installation-method"},
-        {label: "Developer Setup", href: "#editable-developer-installation"},
-        {label: "Verify", href: "#verify-the-installation"},
-    ]}
+  command="python -m pip install --index-url $PRIVATE_INDEX_URL custy==2.1.1"
+  title="Install Custy"
+  description="Choose a supported native installation method, prepare its requirements, and verify the Custy CLI."
+  category="Getting Started"
+  status="Python 3.14+"
+  syntax="python -m pip install [OPTIONS] SOURCE"
+  tags={["private GitLab PyPI", "source checkout", "release assets", "developer setup"]}
+  links={[
+    { label: "Requirements", href: "#requirements" },
+    { label: "Installation Methods", href: "#choose-an-installation-method" },
+    { label: "Developer Setup", href: "#editable-developer-installation" },
+    { label: "Verify", href: "#verify-the-installation" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Native Python", value: "3.14 or newer", icon: "requirement"},
-        {label: "Core System Tool", value: "Git", icon: "git"},
-        {label: "Recommended Isolation", value: "Virtual environment", icon: "directory"},
-        {label: "Private Registry", value: "GitLab PyPI", icon: "package"},
-        {label: "Container Alternative", value: "Local Docker build", icon: "docker"},
-    ]}
+  items={[
+    { label: "Native Python", value: "3.14 or newer", icon: "requirement" },
+    { label: "Core System Tool", value: "Git", icon: "git" },
+    { label: "Recommended Isolation", value: "Virtual environment", icon: "directory" },
+    { label: "Private Registry", value: "GitLab PyPI", icon: "package" },
+    { label: "Container Alternative", value: "Local Docker build", icon: "docker" },
+  ]}
 />
 
 ## Overview
@@ -89,38 +84,44 @@ supported alternatives.
 >
 
 <RequirementGrid
-    items={[
-        {
-            title: "Python 3.14+",
-            level: "required",
-            children: "Required for native installation. This is the minimum version declared by the current package metadata.",
-        },
-        {
-            title: "pip",
-            level: "required",
-            children: "Required for native installation. Invoke it through the selected Python interpreter.",
-        },
-        {
-            title: "Git",
-            level: "required",
-            children: "Required on the native host for Custy's repository, version, changelog, commit, tag, push, and pipeline operations.",
-        },
-        {
-            title: "Virtual Environment",
-            level: "recommended",
-            children: "Keep Custy and its dependencies isolated from the system Python and unrelated projects.",
-        },
-        {
-            title: "Docker",
-            level: "optional",
-            children: "Use the container path instead of installing Python, pip, or Git on the host.",
-        },
-        {
-            title: "Make",
-            level: "optional",
-            children: "Use repository Make targets as development and container helpers; Make is not required by the Custy CLI itself.",
-        },
-    ]}
+  items={[
+    {
+      title: "Python 3.14+",
+      level: "required",
+      children:
+        "Required for native installation. This is the minimum version declared by the current package metadata.",
+    },
+    {
+      title: "pip",
+      level: "required",
+      children:
+        "Required for native installation. Invoke it through the selected Python interpreter.",
+    },
+    {
+      title: "Git",
+      level: "required",
+      children:
+        "Required on the native host for Custy's repository, version, changelog, commit, tag, push, and pipeline operations.",
+    },
+    {
+      title: "Virtual Environment",
+      level: "recommended",
+      children:
+        "Keep Custy and its dependencies isolated from the system Python and unrelated projects.",
+    },
+    {
+      title: "Docker",
+      level: "optional",
+      children:
+        "Use the container path instead of installing Python, pip, or Git on the host.",
+    },
+    {
+      title: "Make",
+      level: "optional",
+      children:
+        "Use repository Make targets as development and container helpers; Make is not required by the Custy CLI itself.",
+    },
+  ]}
 />
 
 </Section>
@@ -132,34 +133,49 @@ supported alternatives.
 >
 
 <FeatureGrid
-    title="Install Only When Needed"
-    items={[
-        {
-            title: "Commitizen",
-            icon: <Icon name="git" />,
-            children: <>Install <code>custy[commitizen]</code> when using Commitizen versioning or commit-message validation. It remains optional for normal Custy workflows and is included in the production Docker image.</>,
-        },
-        {
-            title: "Pre-Commit Hooks",
-            icon: <Icon name="success" />,
-            children: <>Install <code>custy[hooks]</code> when local Custy must execute pre-commit-managed hooks directly. Projects without pre-commit do not need this extra. The production image includes it.</>,
-        },
-        {
-            title: "Interactive Editor",
-            icon: <Icon name="file" />,
-            children: "Install at least one configured editor for commit, tag, or release message review. Windows defaults to VS Code then Notepad; Docker includes Micro, Nano, Vim, and Vi.",
-        },
-        {
-            title: "Remote Credentials",
-            icon: <Icon name="security" />,
-            children: "Configure SSH or supported Git credentials outside Custy before a push operation communicates with a remote.",
-        },
-        {
-            title: "Docker Compose",
-            icon: <Icon name="docker" />,
-            children: "Install the Compose plugin only when using the repository's development or production Compose services.",
-        },
-    ]}
+  title="Install Only When Needed"
+  items={[
+    {
+      title: "Commitizen",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Install <code>custy[commitizen]</code> when using Commitizen versioning or
+          commit-message validation. It remains optional for normal Custy workflows and
+          is included in the production Docker image.
+        </>
+      ),
+    },
+    {
+      title: "Pre-Commit Hooks",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Install <code>custy[hooks]</code> when local Custy must execute
+          pre-commit-managed hooks directly. Projects without pre-commit do not need
+          this extra. The production image includes it.
+        </>
+      ),
+    },
+    {
+      title: "Interactive Editor",
+      icon: <Icon name="file" />,
+      children:
+        "Install at least one configured editor for commit, tag, or release message review. Windows defaults to VS Code then Notepad; Docker includes Micro, Nano, Vim, and Vi.",
+    },
+    {
+      title: "Remote Credentials",
+      icon: <Icon name="security" />,
+      children:
+        "Configure SSH or supported Git credentials outside Custy before a push operation communicates with a remote.",
+    },
+    {
+      title: "Docker Compose",
+      icon: <Icon name="docker" />,
+      children:
+        "Install the Compose plugin only when using the repository's development or production Compose services.",
+    },
+  ]}
 />
 
 </Section>
@@ -171,34 +187,39 @@ supported alternatives.
 >
 
 <FeatureGrid
-    title="Native Installation Choices"
-    items={[
-        {
-            title: "Private GitLab PyPI",
-            icon: <Icon name="package" />,
-            children: "Recommended for authorized users who want an immutable, reviewed package without maintaining a source checkout.",
-        },
-        {
-            title: "Source Checkout",
-            icon: <Icon name="directory" />,
-            children: "Recommended when you want to inspect the exact source and install a normal runtime copy.",
-        },
-        {
-            title: "Release Artifact",
-            icon: <Icon name="package" />,
-            children: "Install a wheel or source distribution attached to a reviewed release when that release provides one.",
-        },
-        {
-            title: "Git Revision",
-            icon: <Icon name="git" />,
-            children: "Install directly from a reviewed tag or commit without keeping a separate checkout.",
-        },
-        {
-            title: "Editable Contributor Setup",
-            icon: <Icon name="command" />,
-            children: "Install the source tree in editable mode with testing, linting, formatting, packaging, and Git-hook tools.",
-        },
-    ]}
+  title="Native Installation Choices"
+  items={[
+    {
+      title: "Private GitLab PyPI",
+      icon: <Icon name="package" />,
+      children:
+        "Recommended for authorized users who want an immutable, reviewed package without maintaining a source checkout.",
+    },
+    {
+      title: "Source Checkout",
+      icon: <Icon name="directory" />,
+      children:
+        "Recommended when you want to inspect the exact source and install a normal runtime copy.",
+    },
+    {
+      title: "Release Artifact",
+      icon: <Icon name="package" />,
+      children:
+        "Install a wheel or source distribution attached to a reviewed release when that release provides one.",
+    },
+    {
+      title: "Git Revision",
+      icon: <Icon name="git" />,
+      children:
+        "Install directly from a reviewed tag or commit without keeping a separate checkout.",
+    },
+    {
+      title: "Editable Contributor Setup",
+      icon: <Icon name="command" />,
+      children:
+        "Install the source tree in editable mode with testing, linting, formatting, packaging, and Git-hook tools.",
+    },
+  ]}
 />
 
 </Section>
@@ -218,16 +239,16 @@ isolated environment.
 {`python -m venv venv
 
 # Activate the environment, then install one reviewed version.
+
 python -m pip install \
-  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
-  "custy==2.1.1"
+ --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+ "custy==2.1.1"
 
 custy --version`}
 
 </Terminal>
 
-The Git release tag remains SemVer, while package metadata is canonical PEP
-440. For example, tag `v2.1.0-rc.1` is installed as `custy==2.1.0rc1`.
+The Git release tag remains SemVer, while package metadata is canonical PEP 440. For example, tag `v2.1.0-rc.1` is installed as `custy==2.1.0rc1`.
 
 <InfoBox variant="warning" title="Keep registry credentials outside the repository">
 
@@ -401,25 +422,38 @@ make install-dev`}
 >
 
 <CommandChecklist
-    title="Installation Check"
-    items={[
-        {
-            title: "The intended environment is active",
-            description: "Your shell resolves Python and Custy from the selected virtual environment or installation.",
-        },
-        {
-            title: "The Python version is compatible",
-            description: <><code>python --version</code> reports Python 3.14 or newer for native use.</>,
-        },
-        {
-            title: "The installed version is visible",
-            description: <><code>custy --version</code> prints package version information.</>,
-        },
-        {
-            title: "Command help renders",
-            description: <><code>custy --help</code> shows the public commands and global options.</>,
-        },
-    ]}
+  title="Installation Check"
+  items={[
+    {
+      title: "The intended environment is active",
+      description:
+        "Your shell resolves Python and Custy from the selected virtual environment or installation.",
+    },
+    {
+      title: "The Python version is compatible",
+      description: (
+        <>
+          <code>python --version</code> reports Python 3.14 or newer for native use.
+        </>
+      ),
+    },
+    {
+      title: "The installed version is visible",
+      description: (
+        <>
+          <code>custy --version</code> prints package version information.
+        </>
+      ),
+    },
+    {
+      title: "Command help renders",
+      description: (
+        <>
+          <code>custy --help</code> shows the public commands and global options.
+        </>
+      ),
+    },
+  ]}
 />
 
 <Terminal title="Verify the CLI" language="bash">
@@ -483,13 +517,34 @@ by Custy's main workflows.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Docker Setup", href: "./docker", description: "Build a self-contained Custy image with Python, Git, pip, and Make included."},
-        {title: "Quick Start", href: "./quick-start", description: "Initialize and validate an existing repository."},
-        {title: "Developer Setup", href: "../developer-guide/development-setup", description: "Prepare and verify an editable contributor environment."},
-        {title: "custy init", href: "../commands/init/overview", description: "Generate project-specific Custy resources."},
-        {title: "custy validate", href: "../commands/validate/overview", description: "Check project readiness before a pipeline."},
-    ]}
+  commands={[
+    {
+      title: "Docker Setup",
+      href: "./docker",
+      description:
+        "Build a self-contained Custy image with Python, Git, pip, and Make included.",
+    },
+    {
+      title: "Quick Start",
+      href: "./quick-start",
+      description: "Initialize and validate an existing repository.",
+    },
+    {
+      title: "Developer Setup",
+      href: "../developer-guide/development-setup",
+      description: "Prepare and verify an editable contributor environment.",
+    },
+    {
+      title: "custy init",
+      href: "../commands/init/overview",
+      description: "Generate project-specific Custy resources.",
+    },
+    {
+      title: "custy validate",
+      href: "../commands/validate/overview",
+      description: "Check project readiness before a pipeline.",
+    },
+  ]}
 />
 
 </Section>

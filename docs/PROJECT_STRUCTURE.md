@@ -33,12 +33,28 @@ Common directories include:
 │           │   └── openai.yaml
 │           └── SKILL.md
 ├── .config
-│   └── doc_gen
+│   ├── custy
+│   │   ├── templates
+│   │   │   ├── backups/ ... (collapsed)
+│   │   │   ├── changelog
+│   │   │   │   └── changelog.j2
+│   │   │   ├── examples
+│   │   │   │   ├── commit_message
+│   │   │   │   └── tag_message
+│   │   │   ├── commit-message.txt
+│   │   │   └── tag-message.txt
+│   │   └── config.toml
+│   ├── doc_gen
+│   │   └── config.toml
+│   ├── path_header_scanner
+│   │   └── config.toml
+│   └── reflow
 │       └── config.toml
 ├── .docusaurus/ ... (collapsed)
 ├── .gitlab
 │   ├── ci.yml
 │   └── pages.yml
+├── .pnpm-store/ ... (collapsed)
 ├── .yarn/ ... (collapsed)
 ├── blog/ ... (collapsed)
 ├── build/ ... (collapsed)
@@ -89,6 +105,10 @@ Common directories include:
 │   │   │   │   ├── syntax.mdx
 │   │   │   │   ├── troubleshooting.mdx
 │   │   │   │   └── workflow.mdx
+│   │   │   ├── configure
+│   │   │   │   ├── credentials
+│   │   │   │   ├── _category_.json
+│   │   │   │   └── overview.mdx
 │   │   │   ├── init
 │   │   │   │   ├── _category_.json
 │   │   │   │   ├── configuration.mdx
@@ -207,6 +227,8 @@ Common directories include:
 │   │   │   │   └── workflow.mdx
 │   │   │   ├── git
 │   │   │   │   ├── _category_.json
+│   │   │   │   ├── credentials.mdx
+│   │   │   │   ├── hooks.mdx
 │   │   │   │   ├── overview.mdx
 │   │   │   │   ├── push-strategy.mdx
 │   │   │   │   └── remotes.mdx
@@ -216,7 +238,9 @@ Common directories include:
 │   │   │   │   ├── file.mdx
 │   │   │   │   └── overview.mdx
 │   │   │   ├── _category_.json
+│   │   │   ├── commit-validation.mdx
 │   │   │   ├── config-file.mdx
+│   │   │   ├── editor.mdx
 │   │   │   ├── initialization.mdx
 │   │   │   ├── overview.mdx
 │   │   │   ├── project.mdx
@@ -256,6 +280,7 @@ Common directories include:
 │   │   │   ├── _category_.json
 │   │   │   ├── cli.mdx
 │   │   │   ├── configuration.mdx
+│   │   │   ├── documentation-status.mdx
 │   │   │   ├── environment.mdx
 │   │   │   ├── exit-errors.mdx
 │   │   │   ├── global-options.mdx
@@ -281,244 +306,218 @@ Common directories include:
 │   │   │   └── troubleshooting-workflows.mdx
 │   │   ├── _category_.json
 │   │   └── index.mdx
+│   ├── devalltect-docs
+│   │   ├── _category_.json
+│   │   ├── index.mdx
+│   │   ├── maintainer-workflow.mdx
+│   │   └── versioning-and-freshness.mdx
 │   ├── doc-gen
 │   │   ├── architecture
 │   │   │   ├── _category_.json
-│   │   │   ├── design-patterns.mdx
-│   │   │   ├── diagrams.mdx
-│   │   │   └── workflow.mdx
+│   │   │   ├── execution-flow.mdx
+│   │   │   └── overview.mdx
 │   │   ├── commands
 │   │   │   ├── init
 │   │   │   │   ├── _category_.json
+│   │   │   │   ├── configuration.mdx
 │   │   │   │   ├── examples.mdx
 │   │   │   │   ├── faq.mdx
+│   │   │   │   ├── options.mdx
+│   │   │   │   ├── output.mdx
 │   │   │   │   ├── overview.mdx
+│   │   │   │   ├── requirements.mdx
+│   │   │   │   ├── syntax.mdx
+│   │   │   │   ├── troubleshooting.mdx
 │   │   │   │   └── workflow.mdx
 │   │   │   ├── structure
 │   │   │   │   ├── analyze
-│   │   │   │   ├── common
 │   │   │   │   ├── generate
 │   │   │   │   ├── print
-│   │   │   │   └── _category_.json
-│   │   │   └── _category_.json
-│   │   ├── developer-guide
-│   │   │   ├── blackbox
 │   │   │   │   ├── _category_.json
-│   │   │   │   └── ai-development-workflow.mdx
-│   │   │   ├── tooling
-│   │   │   │   ├── ruff
-│   │   │   │   └── _category_.json
+│   │   │   │   └── overview.mdx
 │   │   │   ├── _category_.json
-│   │   │   ├── developer-guide.mdx
-│   │   │   ├── docker-workflow.mdx
-│   │   │   └── getting-started.mdx
-│   │   ├── diagrams
-│   │   │   ├── generated
-│   │   │   │   ├── analyze-workflow.png
-│   │   │   │   ├── architecture-overview.png
-│   │   │   │   ├── generate-workflow.png
-│   │   │   │   ├── init-workflow.png
-│   │   │   │   └── print-workflow.png
+│   │   │   └── overview.mdx
+│   │   ├── concepts
 │   │   │   ├── _category_.json
-│   │   │   ├── analyze-workflow.mmd
-│   │   │   ├── architecture-overview.mmd
-│   │   │   ├── generate-workflow.mmd
-│   │   │   ├── init-workflow.mmd
-│   │   │   └── print-workflow.mmd
-│   │   ├── project
+│   │   │   ├── overview.mdx
+│   │   │   ├── profiles-and-smart-mode.mdx
+│   │   │   └── safety-and-dry-run.mdx
+│   │   ├── configuration
 │   │   │   ├── _category_.json
-│   │   │   └── project-structure.mdx
-│   │   ├── reads
-│   │   │   ├── blackbox
-│   │   │   │   └── documentation-prompt
+│   │   │   ├── overview.mdx
+│   │   │   └── reference.mdx
+│   │   ├── developer-guide
 │   │   │   ├── _category_.json
-│   │   │   ├── documentation-audit-report.mdx
-│   │   │   ├── linting-vs-formatting.mdx
-│   │   │   └── ruff.mdx
-│   │   ├── testing
+│   │   │   ├── contributing.mdx
+│   │   │   ├── development-setup.mdx
+│   │   │   ├── overview.mdx
+│   │   │   └── testing.mdx
+│   │   ├── getting-started
 │   │   │   ├── _category_.json
-│   │   │   └── testing-guide.mdx
+│   │   │   ├── docker.mdx
+│   │   │   ├── first-workflow.mdx
+│   │   │   └── overview.mdx
+│   │   ├── reference
+│   │   │   ├── _category_.json
+│   │   │   ├── cli.mdx
+│   │   │   ├── documentation-status.mdx
+│   │   │   └── overview.mdx
+│   │   ├── troubleshooting
+│   │   │   ├── _category_.json
+│   │   │   ├── common-errors.mdx
+│   │   │   └── overview.mdx
 │   │   ├── user-guide
 │   │   │   ├── _category_.json
-│   │   │   ├── commands.mdx
-│   │   │   ├── installation-methods.mdx
-│   │   │   ├── lifecycle.mdx
 │   │   │   ├── overview.mdx
-│   │   │   ├── quickstart.mdx
-│   │   │   └── smart-mode.mdx
+│   │   │   └── workflows.mdx
 │   │   ├── _category_.json
-│   │   ├── badges.mdx
-│   │   ├── configuration.mdx
-│   │   ├── how-to-use.mdx
-│   │   ├── index.mdx
-│   │   ├── infrastructure.mdx
-│   │   ├── installation.mdx
-│   │   ├── project_structure.mdx
-│   │   ├── TODO_tracking_history.mdx
-│   │   └── usage.mdx
+│   │   ├── examples.mdx
+│   │   └── index.mdx
 │   ├── path-header-scanner
 │   │   ├── architecture
 │   │   │   ├── _category_.json
-│   │   │   ├── design-patterns.mdx
-│   │   │   ├── diagrams.mdx
-│   │   │   └── workflow.mdx
-│   │   ├── changelog
-│   │   │   ├── diagrams
-│   │   │   └── _category_.json
-│   │   ├── developer-guide
-│   │   │   ├── blackbox
+│   │   │   ├── execution-flow.mdx
+│   │   │   └── overview.mdx
+│   │   ├── commands
+│   │   │   ├── init
 │   │   │   │   ├── _category_.json
-│   │   │   │   └── ai-development-workflow.mdx
-│   │   │   ├── tooling
-│   │   │   │   ├── ruff
-│   │   │   │   └── _category_.json
+│   │   │   │   ├── configuration.mdx
+│   │   │   │   ├── examples.mdx
+│   │   │   │   ├── faq.mdx
+│   │   │   │   ├── options.mdx
+│   │   │   │   ├── output.mdx
+│   │   │   │   ├── overview.mdx
+│   │   │   │   ├── requirements.mdx
+│   │   │   │   ├── syntax.mdx
+│   │   │   │   ├── troubleshooting.mdx
+│   │   │   │   └── workflow.mdx
+│   │   │   ├── scan
+│   │   │   │   ├── _category_.json
+│   │   │   │   ├── configuration.mdx
+│   │   │   │   ├── examples.mdx
+│   │   │   │   ├── faq.mdx
+│   │   │   │   ├── options.mdx
+│   │   │   │   ├── output.mdx
+│   │   │   │   ├── overview.mdx
+│   │   │   │   ├── requirements.mdx
+│   │   │   │   ├── syntax.mdx
+│   │   │   │   ├── troubleshooting.mdx
+│   │   │   │   └── workflow.mdx
 │   │   │   ├── _category_.json
-│   │   │   ├── developer-guide.mdx
-│   │   │   ├── docker-workflow.mdx
-│   │   │   └── getting-started.mdx
-│   │   ├── diagrams
-│   │   │   ├── generated
-│   │   │   │   ├── activity-scan.png
-│   │   │   │   ├── architecture-overview.png
-│   │   │   │   ├── cli-menu-design.png
-│   │   │   │   ├── flowchart-error-handling.png
-│   │   │   │   ├── init-workflow.png
-│   │   │   │   ├── models-structure.png
-│   │   │   │   ├── scan-algorithm-flow.png
-│   │   │   │   └── use-case.png
+│   │   │   └── overview.mdx
+│   │   ├── concepts
 │   │   │   ├── _category_.json
-│   │   │   ├── activity-scan.mmd
-│   │   │   ├── architecture-overview.mmd
-│   │   │   ├── cli-menu-design.mmd
-│   │   │   ├── flowchart-error-handling.mmd
-│   │   │   ├── init-workflow.mmd
-│   │   │   ├── models-structure.mmd
-│   │   │   ├── README.mdx
-│   │   │   ├── scan-algorithm-flow.mmd
-│   │   │   └── use-case.mmd
-│   │   ├── project
-│   │   │   ├── languages
-│   │   │   │   ├── markdown-language-strategy.mdx
-│   │   │   │   └── supported-languages.mdx
+│   │   │   ├── overview.mdx
+│   │   │   ├── path-headers.mdx
+│   │   │   └── safety-and-dry-run.mdx
+│   │   ├── configuration
 │   │   │   ├── _category_.json
-│   │   │   └── project-structure.mdx
-│   │   ├── reads
+│   │   │   ├── overview.mdx
+│   │   │   └── reference.mdx
+│   │   ├── developer-guide
 │   │   │   ├── _category_.json
-│   │   │   ├── documentation-audit-report.mdx
-│   │   │   ├── linting-vs-formatting.mdx
-│   │   │   └── ruff.mdx
-│   │   ├── testing
+│   │   │   ├── contributing.mdx
+│   │   │   ├── development-setup.mdx
+│   │   │   ├── overview.mdx
+│   │   │   └── testing.mdx
+│   │   ├── getting-started
 │   │   │   ├── _category_.json
-│   │   │   └── testing-guide.mdx
+│   │   │   ├── docker.mdx
+│   │   │   ├── first-workflow.mdx
+│   │   │   └── overview.mdx
+│   │   ├── reference
+│   │   │   ├── _category_.json
+│   │   │   ├── cli.mdx
+│   │   │   ├── documentation-status.mdx
+│   │   │   └── overview.mdx
+│   │   ├── troubleshooting
+│   │   │   ├── _category_.json
+│   │   │   ├── common-errors.mdx
+│   │   │   └── overview.mdx
 │   │   ├── user-guide
 │   │   │   ├── _category_.json
-│   │   │   ├── commands.mdx
-│   │   │   ├── installation-methods.mdx
-│   │   │   ├── legacy-overview.mdx
-│   │   │   ├── legacy-user-guide.mdx
-│   │   │   ├── lifecycle.mdx
 │   │   │   ├── overview.mdx
-│   │   │   └── quickstart.mdx
+│   │   │   └── workflows.mdx
 │   │   ├── _category_.json
-│   │   ├── badges.mdx
-│   │   ├── configuration.mdx
-│   │   ├── how-to-use.mdx
-│   │   ├── index.mdx
-│   │   ├── infrastructure.mdx
-│   │   ├── installation.mdx
-│   │   ├── project_structure.mdx
-│   │   ├── TODO_tracking_history.mdx
-│   │   └── usage.mdx
+│   │   ├── examples.mdx
+│   │   └── index.mdx
 │   ├── reflow
 │   │   ├── architecture
 │   │   │   ├── _category_.json
-│   │   │   ├── design-pattern.mdx
-│   │   │   ├── diagrams.mdx
-│   │   │   └── workflow.mdx
+│   │   │   ├── execution-flow.mdx
+│   │   │   └── overview.mdx
 │   │   ├── commands
 │   │   │   ├── dockerize
 │   │   │   │   ├── _category_.json
+│   │   │   │   ├── configuration.mdx
 │   │   │   │   ├── examples.mdx
 │   │   │   │   ├── faq.mdx
+│   │   │   │   ├── options.mdx
+│   │   │   │   ├── output.mdx
 │   │   │   │   ├── overview.mdx
 │   │   │   │   ├── requirements.mdx
+│   │   │   │   ├── syntax.mdx
+│   │   │   │   ├── troubleshooting.mdx
 │   │   │   │   └── workflow.mdx
 │   │   │   ├── init
 │   │   │   │   ├── _category_.json
+│   │   │   │   ├── configuration.mdx
 │   │   │   │   ├── examples.mdx
 │   │   │   │   ├── faq.mdx
+│   │   │   │   ├── options.mdx
+│   │   │   │   ├── output.mdx
 │   │   │   │   ├── overview.mdx
+│   │   │   │   ├── requirements.mdx
+│   │   │   │   ├── syntax.mdx
+│   │   │   │   ├── troubleshooting.mdx
 │   │   │   │   └── workflow.mdx
+│   │   │   ├── releases
+│   │   │   │   ├── recover
+│   │   │   │   ├── _category_.json
+│   │   │   │   └── overview.mdx
 │   │   │   ├── tags
 │   │   │   │   ├── convert
-│   │   │   │   ├── replay
-│   │   │   │   └── _category_.json
-│   │   │   └── _category_.json
-│   │   ├── developer-guide
-│   │   │   ├── blackbox
 │   │   │   │   ├── _category_.json
-│   │   │   │   └── ai-development-workflow.mdx
-│   │   │   ├── tooling
-│   │   │   │   ├── ruff
-│   │   │   │   └── _category_.json
+│   │   │   │   ├── overview.mdx
+│   │   │   │   └── replay.mdx
 │   │   │   ├── _category_.json
-│   │   │   ├── developer-guide.mdx
-│   │   │   ├── docker-workflow.mdx
-│   │   │   └── getting-started.mdx
-│   │   ├── diagrams
-│   │   │   ├── generated
-│   │   │   │   ├── architecture-layers.png
-│   │   │   │   ├── convert-workflow.png
-│   │   │   │   ├── dockerize-workflow.png
-│   │   │   │   ├── init-workflow.png
-│   │   │   │   ├── reflow-overview.png
-│   │   │   │   ├── release-lifecycle.png
-│   │   │   │   └── replay-workflow.png
+│   │   │   └── overview.mdx
+│   │   ├── concepts
 │   │   │   ├── _category_.json
-│   │   │   ├── architecture-layers.mmd
-│   │   │   ├── convert-workflow.mmd
-│   │   │   ├── dockerize-workflow.mmd
-│   │   │   ├── init-workflow.mmd
-│   │   │   ├── README.mdx
-│   │   │   ├── reflow-overview.mmd
-│   │   │   ├── release-lifecycle.mmd
-│   │   │   └── replay-workflow.mmd
-│   │   ├── future
-│   │   │   ├── scripts
-│   │   │   │   └── validate_github_gitlab_image.py
-│   │   │   └── _category_.json
-│   │   ├── project
+│   │   │   ├── overview.mdx
+│   │   │   ├── repository-targeting.mdx
+│   │   │   └── safety-and-dry-run.mdx
+│   │   ├── configuration
 │   │   │   ├── _category_.json
-│   │   │   ├── roadmap.mdx
-│   │   │   └── TODO_future.mdx
-│   │   ├── reads
-│   │   │   ├── notes
-│   │   │   │   └── old
+│   │   │   ├── overview.mdx
+│   │   │   └── reference.mdx
+│   │   ├── developer-guide
 │   │   │   ├── _category_.json
-│   │   │   ├── documentation-audit-report.mdx
-│   │   │   ├── linting-vs-formatting.mdx
-│   │   │   └── ruff.mdx
-│   │   ├── testing
+│   │   │   ├── contributing.mdx
+│   │   │   ├── development-setup.mdx
+│   │   │   ├── overview.mdx
+│   │   │   └── testing.mdx
+│   │   ├── getting-started
 │   │   │   ├── _category_.json
-│   │   │   └── testing-guide.mdx
+│   │   │   ├── docker.mdx
+│   │   │   ├── first-workflow.mdx
+│   │   │   └── overview.mdx
+│   │   ├── reference
+│   │   │   ├── _category_.json
+│   │   │   ├── cli.mdx
+│   │   │   ├── documentation-status.mdx
+│   │   │   └── overview.mdx
+│   │   ├── troubleshooting
+│   │   │   ├── _category_.json
+│   │   │   ├── common-errors.mdx
+│   │   │   └── overview.mdx
 │   │   ├── user-guide
 │   │   │   ├── _category_.json
-│   │   │   ├── commands.mdx
-│   │   │   ├── getting-started.mdx
-│   │   │   ├── installation-methods.mdx
-│   │   │   ├── lifecycle.mdx
 │   │   │   ├── overview.mdx
-│   │   │   └── quickstart.mdx
+│   │   │   └── workflows.mdx
 │   │   ├── _category_.json
-│   │   ├── badges.mdx
-│   │   ├── configuration.mdx
-│   │   ├── how-to-use.mdx
-│   │   ├── index.mdx
-│   │   ├── infrastructure.mdx
-│   │   ├── Installation.mdx
-│   │   ├── project_structure.mdx
-│   │   ├── TODO_tracking_history.mdx
-│   │   └── usage.mdx
+│   │   ├── examples.mdx
+│   │   └── index.mdx
 │   ├── this
 │   │   └── principles.md
 │   ├── tutorial-basics
@@ -537,12 +536,9 @@ Common directories include:
 │   │   ├── manage-docs-versions.mdx
 │   │   └── translate-your-site.mdx
 │   ├── badges.md
+│   ├── developers.mdx
 │   ├── intro.mdx
-│   ├── project_structure copy 2.md
-│   ├── project_structure copy 3.md
-│   ├── project_structure copy.md
-│   ├── project_structure.md
-│   ├── PROJECT_STRUCTUREe.md
+│   ├── PROJECT_STRUCTURE.md
 │   ├── projects-overview.mdx
 │   ├── TODO.md
 │   ├── TODO_category.md
@@ -551,7 +547,14 @@ Common directories include:
 │   └── id
 │       ├── docusaurus-plugin-content-docs
 │       │   ├── current
-│       │   │   └── custy
+│       │   │   ├── custy
+│       │   │   ├── devalltect-docs
+│       │   │   ├── doc-gen
+│       │   │   ├── path-header-scanner
+│       │   │   ├── reflow
+│       │   │   ├── developers.mdx
+│       │   │   ├── intro.mdx
+│       │   │   └── projects-overview.mdx
 │       │   └── current.json
 │       ├── docusaurus-theme-classic
 │       │   ├── footer.json
@@ -559,6 +562,15 @@ Common directories include:
 │       └── code.json
 ├── logs/ ... (collapsed)
 ├── node_modules/ ... (collapsed)
+├── plugins
+│   └── documentation-freshness
+│       ├── index.ts
+│       ├── remoteTags.test.ts
+│       ├── remoteTags.ts
+│       ├── resolver.test.ts
+│       ├── resolver.ts
+│       ├── versioning.test.ts
+│       └── versioning.ts
 ├── scripts
 │   └── add_frontmatter.py
 ├── src
@@ -586,6 +598,7 @@ Common directories include:
 │   │   │   │   ├── Badge
 │   │   │   │   ├── Card
 │   │   │   │   ├── Divider
+│   │   │   │   ├── DocumentationVersionNotice
 │   │   │   │   ├── Grid
 │   │   │   │   ├── Heading
 │   │   │   │   ├── Icon
@@ -669,8 +682,6 @@ Common directories include:
 │   │       ├── about.txt
 │   │       ├── Audiences.module.css
 │   │       ├── Audiences.tsx
-│   │       ├── DocumentationModel.module.css
-│   │       ├── DocumentationModel.tsx
 │   │       ├── DocumentationOverview.module.css
 │   │       ├── DocumentationOverview.tsx
 │   │       ├── Hero.module.css
@@ -684,33 +695,54 @@ Common directories include:
 │   │   ├── docs.css
 │   │   └── docs.old.css
 │   ├── data
+│   │   ├── documentationFreshness.ts
 │   │   └── projects.ts
 │   ├── logs/ ... (collapsed)
 │   ├── pages
+│   │   ├── docs.tsx
 │   │   ├── index.module.css
 │   │   ├── index.tsx
 │   │   └── markdown-page.mdx
+│   ├── theme
+│   │   └── DocItem
+│   │       └── Content
+│   │           ├── index.tsx
+│   │           └── NOTE.md
 │   └── __version__.py
 ├── static
 │   ├── img
 │   │   ├── custy
 │   │   │   └── commands
-│   │   │       └── cleanup
+│   │   │       ├── changelog
+│   │   │       ├── cleanup
+│   │   │       ├── commit
+│   │   │       ├── push
+│   │   │       ├── run
+│   │   │       ├── tag
+│   │   │       └── workflow
+│   │   ├── project-previews
+│   │   │   ├── custy.png
+│   │   │   ├── doc-gen.png
+│   │   │   ├── path-header-scanner.png
+│   │   │   └── reflow.png
 │   │   ├── docusaurus-social-card.jpg
 │   │   ├── docusaurus.png
 │   │   ├── favicon.ico
-│   │   ├── logo-devalltect00.png
+│   │   ├── logo-devalltect00-on-dark.png
+│   │   ├── logo-devalltect00-on-light.png
 │   │   ├── logo.svg
 │   │   ├── undraw_docusaurus_mountain.svg
 │   │   ├── undraw_docusaurus_react.svg
 │   │   └── undraw_docusaurus_tree.svg
 │   └── .nojekyll
+├── venv/ ... (collapsed)
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── .pre-commit-config.yaml
 ├── .prettierignore
 ├── .prettierrc.json
 ├── .yarnrc.yml
+├── CHANGELOG.md
 ├── docusaurus.config.ts
 ├── LICENSE
 ├── Makefile
@@ -730,6 +762,7 @@ Common directories include:
 | File | Description |
 |------|-------------|
 | `README.md` | Project overview and introduction. |
+| `CHANGELOG.md` | History of notable changes between releases. |
 | `LICENSE` | Project license information. |
 | `SECURITY.md` | Security policy and vulnerability reporting instructions. |
 | `Makefile` | Defines common development, testing, and build commands. |

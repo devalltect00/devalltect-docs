@@ -6,15 +6,27 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, options]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Options"
+  description="CLI values override project configuration, which overrides internal defaults."
+  category="Release Recovery"
+  status="GitHub Workflow Recovery"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Flag / value | Default | Effect |
-| --- | --- | --- |
-| `--delay, -d` | 2 | Seconds between re-pushes. |
-| `--only-stable` | false | Select stable tags only. |
-| `--limit, -l` | unlimited | Maximum selected tags. |
-| `--yes, -y` | false | Confirm without prompting. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Show selections without mutation. |
-
+| Flag / value                      | Default   | Effect                            |
+| --------------------------------- | --------- | --------------------------------- |
+| `--delay, -d`                     | 2         | Seconds between re-pushes.        |
+| `--only-stable`                   | false     | Select stable tags only.          |
+| `--limit, -l`                     | unlimited | Maximum selected tags.            |
+| `--yes, -y`                       | false     | Confirm without prompting.        |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false     | Show selections without mutation. |

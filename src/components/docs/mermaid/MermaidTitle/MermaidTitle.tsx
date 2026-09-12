@@ -22,47 +22,30 @@
 
 import clsx from "clsx";
 
-import {
-    Heading,
-    Icon,
-} from "../../";
+import { Heading, Icon } from "../../";
 
 import styles from "./MermaidTitle.module.css";
 
-import type {
-    MermaidTitleProps,
-} from "./types";
+import type { MermaidTitleProps } from "./types";
 
 /**
  * Displays a standardized diagram title.
  */
 export default function MermaidTitle({
-    title,
-    subtitle,
-    icon,
-    className,
-    ...props
+  title,
+  subtitle,
+  icon,
+  className,
+  ...props
 }: MermaidTitleProps) {
-
-    return (
-
-        <div
-            className={clsx(
-                styles.container,
-                className,
-            )}
-            {...props}
-        >
-
-            <Heading
-                level={2}
-                title={title}
-                subtitle={subtitle}
-                icon={icon ?? <Icon name="diagram" />}
-            />
-
-        </div>
-
-    );
-
+  return (
+    <div className={clsx(styles.container, className)} {...props}>
+      <Heading
+        level={2}
+        title={title}
+        subtitle={subtitle}
+        icon={icon ?? <Icon name="diagram" />}
+      />
+    </div>
+  );
 }

@@ -3,18 +3,13 @@
  */
 
 /** Docusaurus plugin name used to publish freshness data. */
-export const DOCUMENTATION_FRESHNESS_PLUGIN_NAME =
-  "documentation-freshness";
+export const DOCUMENTATION_FRESHNESS_PLUGIN_NAME = "documentation-freshness";
 
 /** Version formats supported by automatic remote-tag detection. */
 export type DocumentationTagFormat = "semver" | "pep440";
 
 /** User-facing relationship between documentation and a project release. */
-export type DocumentationStatus =
-  | "current"
-  | "outdated"
-  | "preview"
-  | "unknown";
+export type DocumentationStatus = "current" | "outdated" | "preview" | "unknown";
 
 /** Manual freshness configuration for projects with unsupported tag schemes. */
 export interface ManualDocumentationFreshness {
@@ -58,10 +53,7 @@ export type DocumentationFreshnessConfig =
   | AutoDocumentationFreshness;
 
 /** How a freshness result was established. */
-export type DocumentationVerification =
-  | "manual"
-  | "remote"
-  | "fallback";
+export type DocumentationVerification = "manual" | "remote" | "fallback";
 
 /** Serializable result produced by the build-time freshness plugin. */
 export interface DocumentationFreshnessResult {

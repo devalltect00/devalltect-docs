@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -12,27 +9,24 @@ import {
 /**
  * Properties for the FeatureCard component.
  */
-export interface FeatureCardProps
-    extends HTMLAttributes<HTMLElement> {
+export interface FeatureCardProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Feature title.
+   */
+  title: string;
 
-    /**
-     * Feature title.
-     */
-    title: string;
+  /**
+   * Optional icon displayed before the title.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon displayed before the title.
-     */
-    icon?: ReactNode;
+  /**
+   * Optional short summary.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Optional short summary.
-     */
-    subtitle?: ReactNode;
-
-    /**
-     * Feature content.
-     */
-    children: ReactNode;
-
+  /**
+   * Feature content.
+   */
+  children: ReactNode;
 }

@@ -18,16 +18,8 @@ export { default as ImageCompare } from "./ImageCompare";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    ScreenshotProps,
-} from "./Screenshot";
+export type { ScreenshotProps } from "./Screenshot";
 
-export type {
-    ScreenshotGridItem,
-    ScreenshotGridProps,
-} from "./ScreenshotGrid";
+export type { ScreenshotGridItem, ScreenshotGridProps } from "./ScreenshotGrid";
 
-export type {
-    ImageCompareProps,
-    ImageCompareSide,
-} from "./ImageCompare";
+export type { ImageCompareProps, ImageCompareSide } from "./ImageCompare";

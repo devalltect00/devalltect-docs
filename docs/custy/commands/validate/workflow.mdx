@@ -6,39 +6,35 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    WorkflowTimeline,
-    WorkflowStep,
-    Section,
-    InfoBox,
+  CommandHero,
+  WorkflowTimeline,
+  WorkflowStep,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Workflow"
-    description="Learn how Custy performs validation before executing workflow operations."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "workflow",
-        "pipeline",
-        "validation",
-    ]}
-    links={[
-        {
-            label: "Validation Checks",
-            href: "./validation-checks",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy validate"
+  title="Workflow"
+  description="Learn how Custy performs validation before executing workflow operations."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["workflow", "pipeline", "validation"]}
+  links={[
+    {
+      label: "Validation Checks",
+      href: "./validation-checks",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -70,40 +66,40 @@ Running `custy validate` allows you to execute only the validation stage.
 >
 
 <WorkflowTimeline
-    title="Validation Pipeline"
-    description="High-level sequence performed during project validation."
-    items={[
-        {
-            title: "Resolve Configuration",
-            description:
-                "Load project configuration and determine the effective validation settings.",
-            status: "completed",
-        },
-        {
-            title: "Verify Repository",
-            description:
-                "Ensure that the current directory is a valid Git repository and that the configured remote is available.",
-            status: "completed",
-        },
-        {
-            title: "Verify Project Resources",
-            description:
-                "Check the configured version file together with required commit and tag templates.",
-            status: "completed",
-        },
-        {
-            title: "Verify Repository State",
-            description:
-                "Validate staged changes and other repository conditions required before workflow execution.",
-            status: "completed",
-        },
-        {
-            title: "Finish Validation",
-            description:
-                "Report the validation result and allow later workflow stages to continue when successful.",
-            status: "completed",
-        },
-    ]}
+  title="Validation Pipeline"
+  description="High-level sequence performed during project validation."
+  items={[
+    {
+      title: "Resolve Configuration",
+      description:
+        "Load project configuration and determine the effective validation settings.",
+      status: "completed",
+    },
+    {
+      title: "Verify Repository",
+      description:
+        "Ensure that the current directory is a valid Git repository and that the configured remote is available.",
+      status: "completed",
+    },
+    {
+      title: "Verify Project Resources",
+      description:
+        "Check the configured version file together with required commit and tag templates.",
+      status: "completed",
+    },
+    {
+      title: "Verify Repository State",
+      description:
+        "Validate staged changes and other repository conditions required before workflow execution.",
+      status: "completed",
+    },
+    {
+      title: "Finish Validation",
+      description:
+        "Report the validation result and allow later workflow stages to continue when successful.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

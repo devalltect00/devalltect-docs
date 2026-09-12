@@ -4,22 +4,49 @@ description: "Cara Custy mengevaluasi dan menghapus Git branch."
 sidebar_position: 6
 sidebar_key: custy-cleanup-branch
 ---
-import {CommandHero, WorkflowStep, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup branches" title="Workflow" description="Ikuti setiap tahap pemilihan dan penghapusan branch." category="Maintenance" status="Process Guide" syntax="custy cleanup branches" links={[
-    {label: "Configuration", href: "./configuration"}, {label: "Examples", href: "./examples"}, {label: "Output", href: "./output"},
-]} />
+import { CommandHero, WorkflowStep, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup branches"
+  title="Workflow"
+  description="Ikuti setiap tahap pemilihan dan penghapusan branch."
+  category="Maintenance"
+  status="Process Guide"
+  syntax="custy cleanup branches"
+  links={[
+    { label: "Configuration", href: "./configuration" },
+    { label: "Examples", href: "./examples" },
+    { label: "Output", href: "./output" },
+  ]}
+/>
 
 ## Ringkasan
 
 Custy memproses branch secara berurutan agar setiap kandidat melewati seluruh aturan keselamatan.
 
-<WorkflowStep title="1. Resolve Cleanup Configuration">Gabungkan project configuration dan option CLI.</WorkflowStep>
-<WorkflowStep title="2. Inspect Local Branches">Baca local branch yang tersedia.</WorkflowStep>
-<WorkflowStep title="3. Apply Cleanup Rules">Terapkan prefix, merge status, usia, dan tanggal.</WorkflowStep>
-<WorkflowStep title="4. Remove Eligible Branches">Kecualikan protected branch, lalu hapus kandidat yang tersisa.</WorkflowStep>
-<WorkflowStep title="5. Report Results">Tampilkan branch yang dihapus, dilewati, atau tidak cocok.</WorkflowStep>
+<WorkflowStep title="1. Resolve Cleanup Configuration">
+  Gabungkan project configuration dan option CLI.
+</WorkflowStep>
+<WorkflowStep title="2. Inspect Local Branches">
+  Baca local branch yang tersedia.
+</WorkflowStep>
+<WorkflowStep title="3. Apply Cleanup Rules">
+  Terapkan prefix, merge status, usia, dan tanggal.
+</WorkflowStep>
+<WorkflowStep title="4. Remove Eligible Branches">
+  Kecualikan protected branch, lalu hapus kandidat yang tersisa.
+</WorkflowStep>
+<WorkflowStep title="5. Report Results">
+  Tampilkan branch yang dihapus, dilewati, atau tidak cocok.
+</WorkflowStep>
 
-<InfoBox variant="warning" title="Safety by Design">Filter bekerja sebagai pipeline: branch hanya dapat dihapus bila lolos seluruh filter aktif.</InfoBox>
+<InfoBox variant="warning" title="Safety by Design">
+  Filter bekerja sebagai pipeline: branch hanya dapat dihapus bila lolos seluruh filter
+  aktif.
+</InfoBox>
 
-<Section title="Sebelum dan Sesudah Cleanup">Gunakan dry run untuk meninjau kandidat, jalankan cleanup, lalu periksa output dan daftar branch lokal.</Section>
+<Section title="Sebelum dan Sesudah Cleanup">
+  Gunakan dry run untuk meninjau kandidat, jalankan cleanup, lalu periksa output dan
+  daftar branch lokal.
+</Section>

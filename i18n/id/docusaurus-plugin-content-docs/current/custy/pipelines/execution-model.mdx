@@ -7,9 +7,31 @@ tags: [custy, pipelines, architecture]
 keywords: [custy pipeline execution, command resolver, pipeline builder]
 ---
 
-import {CommandHero, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy run PROFILE" title="Pipeline Execution Model" description="Telusuri active runtime dari resolved CLI configuration hingga registered step terakhir." category="Pipelines" status="Implementation-Aligned" syntax="CLI input → profile resolution → build → sequential execution" tags={["resolver", "registry", "context", "failure behavior"]} links={[{label: "Pipeline Overview", href: "./overview"}, {label: "Profiles", href: "./profiles"}, {label: "Step Priority", href: "./step-order"}, {label: "Step System", href: "./step-system"}]} />
+<CommandHero
+  command="custy run PROFILE"
+  title="Pipeline Execution Model"
+  description="Telusuri active runtime dari resolved CLI configuration hingga registered step terakhir."
+  category="Pipelines"
+  status="Implementation-Aligned"
+  syntax="CLI input → profile resolution → build → sequential execution"
+  tags={["resolver", "registry", "context", "failure behavior"]}
+  links={[
+    { label: "Pipeline Overview", href: "./overview" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Step System", href: "./step-system" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -21,14 +43,83 @@ shared runtime context melalui resulting sequence.
 ---
 
 <Section title="Runtime Lifecycle">
-<WorkflowTimeline title="Dari Command hingga Selesai" items={[{title: "Resolve command inputs", description: "Gabungkan command options, project configuration, serta global dry-run, debug, dan logging values.", status: "completed"}, {title: "Register step classes", description: "Daftarkan setiap built-in step name sebelum pipeline dibangun.", status: "completed"}, {title: "Resolve profiles", description: "Expand nested profiles; merged profiles di-deduplicate dan diurutkan secara global.", status: "completed"}, {title: "Build services and context", description: "Buat workflow engine dan bungkus dalam shared GitContext.", status: "completed"}, {title: "Build the pipeline", description: "Instantiate setiap resolved step melalui StepRegistry.", status: "completed"}, {title: "Execute sequentially", description: "Jalankan setiap step dengan context yang sama sambil memperbarui Rich progress display.", status: "current"}]} />
+  <WorkflowTimeline
+    title="Dari Command hingga Selesai"
+    items={[
+      {
+        title: "Resolve command inputs",
+        description:
+          "Gabungkan command options, project configuration, serta global dry-run, debug, dan logging values.",
+        status: "completed",
+      },
+      {
+        title: "Register step classes",
+        description: "Daftarkan setiap built-in step name sebelum pipeline dibangun.",
+        status: "completed",
+      },
+      {
+        title: "Resolve profiles",
+        description:
+          "Expand nested profiles; merged profiles di-deduplicate dan diurutkan secara global.",
+        status: "completed",
+      },
+      {
+        title: "Build services and context",
+        description: "Buat workflow engine dan bungkus dalam shared GitContext.",
+        status: "completed",
+      },
+      {
+        title: "Build the pipeline",
+        description: "Instantiate setiap resolved step melalui StepRegistry.",
+        status: "completed",
+      },
+      {
+        title: "Execute sequentially",
+        description:
+          "Jalankan setiap step dengan context yang sama sambil memperbarui Rich progress display.",
+        status: "current",
+      },
+    ]}
+  />
 </Section>
 
 ---
 
 <Section title="Single dan Multiple Profiles">
-<FeatureGrid title="Resolver Behavior" items={[{title: "One Profile", icon: <Icon name="workflow" />, children: "Nested profile references di-expand dengan declared order tetap dipertahankan."}, {title: "Several Profiles", icon: <Icon name="dependency" />, children: "Expanded steps digabungkan, duplicate names dihapus, dan global phase order diterapkan."}, {title: "Unknown Name", icon: <Icon name="warning" />, children: "Resolution gagal sebelum pipeline dibangun."}, {title: "Circular Reference", icon: <Icon name="danger" />, children: "Nested profile expansion menghasilkan error ketika cycle terdeteksi."}]} />
-<InfoBox variant="info" title="Input Order Bukan Execution Order">Untuk multiple profiles, Custy menggunakan global phase priorities: initialization, validation, preparation, generation dan editing, backup dan cleanup, execution, branch cleanup, lalu finalization. Menulis `push commit` tidak memaksa push berjalan sebelum commit.</InfoBox>
+  <FeatureGrid
+    title="Resolver Behavior"
+    items={[
+      {
+        title: "One Profile",
+        icon: <Icon name="workflow" />,
+        children:
+          "Nested profile references di-expand dengan declared order tetap dipertahankan.",
+      },
+      {
+        title: "Several Profiles",
+        icon: <Icon name="dependency" />,
+        children:
+          "Expanded steps digabungkan, duplicate names dihapus, dan global phase order diterapkan.",
+      },
+      {
+        title: "Unknown Name",
+        icon: <Icon name="warning" />,
+        children: "Resolution gagal sebelum pipeline dibangun.",
+      },
+      {
+        title: "Circular Reference",
+        icon: <Icon name="danger" />,
+        children:
+          "Nested profile expansion menghasilkan error ketika cycle terdeteksi.",
+      },
+    ]}
+  />
+  <InfoBox variant="info" title="Input Order Bukan Execution Order">
+    Untuk multiple profiles, Custy menggunakan global phase priorities: initialization,
+    validation, preparation, generation dan editing, backup dan cleanup, execution,
+    branch cleanup, lalu finalization. Menulis `push commit` tidak memaksa push berjalan
+    sebelum commit.
+  </InfoBox>
 </Section>
 
 ---
@@ -47,7 +138,12 @@ Lihat [Step Priority and Ordering](./step-order) untuk seluruh 27 entries dan co
 
 ---
 
-<Section title="Shared Runtime Context">Setiap step menerima `GitContext` yang sama. Context menyediakan workflow engine, Git service, optional Commitizen helper, dan mutable runtime values seperti resolved tag, workflow case, serta files yang dipilih untuk staging. Satu step dapat menyiapkan state untuk later step tanpa membuat ulang services.</Section>
+<Section title="Shared Runtime Context">
+  Setiap step menerima `GitContext` yang sama. Context menyediakan workflow engine, Git
+  service, optional Commitizen helper, dan mutable runtime values seperti resolved tag,
+  workflow case, serta files yang dipilih untuk staging. Satu step dapat menyiapkan
+  state untuk later step tanpa membuat ulang services.
+</Section>
 
 ---
 
@@ -57,14 +153,47 @@ Active Run pipeline menampilkan Rich progress indicator dan hanya maju setelah
 step berhasil. Saat step menghasilkan exception, Custy menghentikan progress,
 mengidentifikasi failed step, melempar ulang error, dan tidak menjalankan later steps.
 
-<InfoBox variant="danger" title="Stopped Pipeline Tidak Di-Roll Back">Earlier file writes, commits, tags, atau pushes mungkin sudah tersedia. Tentukan last successful stage dan periksa local serta remote state sebelum memilih recovery action.</InfoBox>
+<InfoBox variant="danger" title="Stopped Pipeline Tidak Di-Roll Back">
+  Earlier file writes, commits, tags, atau pushes mungkin sudah tersedia. Tentukan last
+  successful stage dan periksa local serta remote state sebelum memilih recovery action.
+</InfoBox>
 
 </Section>
 
 ---
 
-<Section title="Dua Pipeline Presentations">`custy run` menggunakan progress-enabled `Pipeline`. Beberapa focused commands menggunakan `SimplePipeline`, yang menjalankan registered step contract sama dengan logging lebih sederhana. Perbedaan ini memengaruhi presentation, bukan kewajiban setiap step untuk menerapkan `execute(context)`.</Section>
+<Section title="Dua Pipeline Presentations">
+  `custy run` menggunakan progress-enabled `Pipeline`. Beberapa focused commands
+  menggunakan `SimplePipeline`, yang menjalankan registered step contract sama dengan
+  logging lebih sederhana. Perbedaan ini memengaruhi presentation, bukan kewajiban
+  setiap step untuk menerapkan `execute(context)`.
+</Section>
 
 ---
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Profiles", href: "./profiles", description: "Lihat practical resolution setiap public name."}, {title: "Step Priority and Ordering", href: "./step-order", description: "Tinjau exact single- dan multi-profile ordering rules."}, {title: "Custom Composition", href: "./custom-composition", description: "Pahami merged-profile normalization."}, {title: "Step System", href: "./step-system", description: "Tinjau internal contracts dan source responsibilities."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Profiles",
+        href: "./profiles",
+        description: "Lihat practical resolution setiap public name.",
+      },
+      {
+        title: "Step Priority and Ordering",
+        href: "./step-order",
+        description: "Tinjau exact single- dan multi-profile ordering rules.",
+      },
+      {
+        title: "Custom Composition",
+        href: "./custom-composition",
+        description: "Pahami merged-profile normalization.",
+      },
+      {
+        title: "Step System",
+        href: "./step-system",
+        description: "Tinjau internal contracts dan source responsibilities.",
+      },
+    ]}
+  />
+</Section>

@@ -8,38 +8,42 @@ keywords: [Custy config error, invalid TOML, Custy path problem]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/custy/config.toml"
-    title="Configuration Troubleshooting"
-    description="Confirm file ownership, TOML shape, process location, precedence, status, and resolved paths before retrying."
-    category="Troubleshooting"
-    status="Configuration Recovery"
-    syntax="locate -> parse -> resolve -> validate path -> restart"
-    tags={["TOML", "working directory", "precedence", "cache"]}
-    links={[
-        {label: "Troubleshooting Hub", href: "./overview"},
-        {label: "Configuration Guide", href: "../configuration/overview"},
-        {label: "All Properties", href: "../configuration/reference"},
-        {label: "Paths", href: "../reference/paths-and-files"},
-    ]}
+  command=".config/custy/config.toml"
+  title="Configuration Troubleshooting"
+  description="Confirm file ownership, TOML shape, process location, precedence, status, and resolved paths before retrying."
+  category="Troubleshooting"
+  status="Configuration Recovery"
+  syntax="locate -> parse -> resolve -> validate path -> restart"
+  tags={["TOML", "working directory", "precedence", "cache"]}
+  links={[
+    { label: "Troubleshooting Hub", href: "./overview" },
+    { label: "Configuration Guide", href: "../configuration/overview" },
+    { label: "All Properties", href: "../configuration/reference" },
+    { label: "Paths", href: "../reference/paths-and-files" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Root Table", value: "tool.custy", icon: "table"},
-        {label: "Precedence", value: "CLI -> config -> default", icon: "timeline"},
-        {label: "Shared Cache", value: "Once per process", icon: "dependency"},
-    ]}
+  items={[
+    {
+      label: "Project File",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Root Table", value: "tool.custy", icon: "table" },
+    { label: "Precedence", value: "CLI -> config -> default", icon: "timeline" },
+    { label: "Shared Cache", value: "Once per process", icon: "dependency" },
+  ]}
 />
 
 ## Scope of This Page
@@ -66,16 +70,48 @@ and configured project source before diagnosing an individual property.
 <Section title="Common Symptoms">
 
 <KeyValueTable
-    items={[
-        {key: "Config file not found", value: "Run from the intended project root or initialize the project-owned resources. A missing file loads as an empty configuration and resolvers use built-in defaults."},
-        {key: "Invalid TOML", value: "Correct the first TOML parser location. Check quotes, arrays, table headers, duplicate keys, and nesting below tool.custy."},
-        {key: "A property appears ignored", value: "Check the full path, CLI override, generated/default status, and whether the property is active, loaded-only, reserved, mismatch, or experimental."},
-        {key: "An old value remains", value: "The shared ConfigLoader is cached once per process. End the current Custy process and run a new invocation after saving the file."},
-        {key: "A relative path resolves incorrectly", value: "Resolve it from the process working directory or use an explicit path supported by the selected option."},
-        {key: "Configured project source error", value: "An explicit tool.custy.project.project_source must resolve to an existing directory. Use auto for runtime detection; a missing app/ directory is not an error in automatic mode."},
-        {key: "Configured version target error", value: "An explicit tool.custy.cli.paths.version_file must resolve to an existing file. Use auto to detect supported metadata or to allow a tag-only project."},
-        {key: "Generated setting has no effect", value: "Presence in the template is not proof of active consumption; use the property reference's implementation-status column."},
-    ]}
+  items={[
+    {
+      key: "Config file not found",
+      value:
+        "Run from the intended project root or initialize the project-owned resources. A missing file loads as an empty configuration and resolvers use built-in defaults.",
+    },
+    {
+      key: "Invalid TOML",
+      value:
+        "Correct the first TOML parser location. Check quotes, arrays, table headers, duplicate keys, and nesting below tool.custy.",
+    },
+    {
+      key: "A property appears ignored",
+      value:
+        "Check the full path, CLI override, generated/default status, and whether the property is active, loaded-only, reserved, mismatch, or experimental.",
+    },
+    {
+      key: "An old value remains",
+      value:
+        "The shared ConfigLoader is cached once per process. End the current Custy process and run a new invocation after saving the file.",
+    },
+    {
+      key: "A relative path resolves incorrectly",
+      value:
+        "Resolve it from the process working directory or use an explicit path supported by the selected option.",
+    },
+    {
+      key: "Configured project source error",
+      value:
+        "An explicit tool.custy.project.project_source must resolve to an existing directory. Use auto for runtime detection; a missing app/ directory is not an error in automatic mode.",
+    },
+    {
+      key: "Configured version target error",
+      value:
+        "An explicit tool.custy.cli.paths.version_file must resolve to an existing file. Use auto to detect supported metadata or to allow a tag-only project.",
+    },
+    {
+      key: "Generated setting has no effect",
+      value:
+        "Presence in the template is not proof of active consumption; use the property reference's implementation-status column.",
+    },
+  ]}
 />
 
 </Section>
@@ -161,12 +197,30 @@ those values.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Configuration Resolution", href: "../configuration/resolution", description: "Review precedence, fallback, status, and known exceptions."},
-        {title: "All Configuration Properties", href: "../configuration/reference", description: "Find exact paths, defaults, and implementation status."},
-        {title: "Init Troubleshooting", href: "../commands/init/troubleshooting", description: "Resolve existing files, permissions, unexpected content, and missing examples."},
-        {title: "Validate Troubleshooting", href: "../commands/validate/troubleshooting", description: "Resolve configured remotes, version files, templates, staging, and conventions."},
-    ]}
+  commands={[
+    {
+      title: "Configuration Resolution",
+      href: "../configuration/resolution",
+      description: "Review precedence, fallback, status, and known exceptions.",
+    },
+    {
+      title: "All Configuration Properties",
+      href: "../configuration/reference",
+      description: "Find exact paths, defaults, and implementation status.",
+    },
+    {
+      title: "Init Troubleshooting",
+      href: "../commands/init/troubleshooting",
+      description:
+        "Resolve existing files, permissions, unexpected content, and missing examples.",
+    },
+    {
+      title: "Validate Troubleshooting",
+      href: "../commands/validate/troubleshooting",
+      description:
+        "Resolve configured remotes, version files, templates, staging, and conventions.",
+    },
+  ]}
 />
 
 </Section>

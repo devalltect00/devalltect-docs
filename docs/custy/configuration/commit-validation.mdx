@@ -8,37 +8,37 @@ keywords: [commit validation provider, check-cz, commitizen optional]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.commit.validation]"
-    title="Commit Validation"
-    description="Keep commit validation available in every project while enabling Commitizen only when the project intentionally adopts it."
-    category="Configuration"
-    status="Active"
-    syntax="provider = auto | custy | commitizen | git"
-    tags={["provider selection", "optional Commitizen", "Git hooks"]}
-    links={[
-        {label: "Commit Configuration", href: "../commands/commit/configuration"},
-        {label: "Commit Troubleshooting", href: "../commands/commit/troubleshooting"},
-        {label: "Execution Defaults", href: "./cli/execution"},
-    ]}
+  command="[tool.custy.commit.validation]"
+  title="Commit Validation"
+  description="Keep commit validation available in every project while enabling Commitizen only when the project intentionally adopts it."
+  category="Configuration"
+  status="Active"
+  syntax="provider = auto | custy | commitizen | git"
+  tags={["provider selection", "optional Commitizen", "Git hooks"]}
+  links={[
+    { label: "Commit Configuration", href: "../commands/commit/configuration" },
+    { label: "Commit Troubleshooting", href: "../commands/commit/troubleshooting" },
+    { label: "Execution Defaults", href: "./cli/execution" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Default Provider", value: "auto", icon: "configuration"},
-        {label: "Strict by Default", value: "No", icon: "security"},
-        {label: "Built-in Validator", value: "Always available", icon: "success"},
-        {label: "External Tool", value: "cz (optional)", icon: "terminal"},
-    ]}
+  items={[
+    { label: "Default Provider", value: "auto", icon: "configuration" },
+    { label: "Strict by Default", value: "No", icon: "security" },
+    { label: "Built-in Validator", value: "Always available", icon: "success" },
+    { label: "External Tool", value: "cz (optional)", icon: "terminal" },
+  ]}
 />
 
 ## Recommended Configuration
@@ -58,17 +58,17 @@ finds both recognized project configuration and an available executable.
 
 <Section title="Behavior Matrix">
 
-| Provider | Commitizen config | `cz` installed | Result |
-| --- | --- | --- | --- |
-| `auto` | No | No | Use Custy validation. |
-| `auto` | No | Yes | Use Custy validation; installation alone does not activate Commitizen. |
-| `auto` | Yes | Yes | Run Custy validation, then Commitizen validation. |
-| `auto` | Yes | No | Warn and fall back to Custy. |
-| `auto` with `require_tool = true` | Yes | No | Stop before mutation with `COMMITIZEN_NOT_AVAILABLE`. |
-| `custy` | Any | Any | Use only Custy's built-in conventional-message rules. |
-| `commitizen` | Yes | Yes | Require both Custy and Commitizen validation. |
-| `commitizen` | No or invalid | Any | Stop before mutation with a focused configuration error. |
-| `git` | Any | Any | Require a readable, non-empty UTF-8 message file; allow project-specific message formats. |
+| Provider                          | Commitizen config | `cz` installed | Result                                                                                    |
+| --------------------------------- | ----------------- | -------------- | ----------------------------------------------------------------------------------------- |
+| `auto`                            | No                | No             | Use Custy validation.                                                                     |
+| `auto`                            | No                | Yes            | Use Custy validation; installation alone does not activate Commitizen.                    |
+| `auto`                            | Yes               | Yes            | Run Custy validation, then Commitizen validation.                                         |
+| `auto`                            | Yes               | No             | Warn and fall back to Custy.                                                              |
+| `auto` with `require_tool = true` | Yes               | No             | Stop before mutation with `COMMITIZEN_NOT_AVAILABLE`.                                     |
+| `custy`                           | Any               | Any            | Use only Custy's built-in conventional-message rules.                                     |
+| `commitizen`                      | Yes               | Yes            | Require both Custy and Commitizen validation.                                             |
+| `commitizen`                      | No or invalid     | Any            | Stop before mutation with a focused configuration error.                                  |
+| `git`                             | Any               | Any            | Require a readable, non-empty UTF-8 message file; allow project-specific message formats. |
 
 </Section>
 
@@ -85,10 +85,22 @@ the same Commitizen policy in local development, containers, and CI.
 <Section title="Properties">
 
 <PropertyTable
-    items={[
-        {property: "provider", type: "auto | custy | commitizen | git", defaultValue: "auto", description: "Select automatic discovery, Custy's internal rules, strict Commitizen integration, or basic Git message-file safety checks."},
-        {property: "require_tool", type: "Boolean", defaultValue: "false", description: "In auto mode, turn a detected invalid or unavailable Commitizen integration from a warning and fallback into an early error."},
-    ]}
+  items={[
+    {
+      property: "provider",
+      type: "auto | custy | commitizen | git",
+      defaultValue: "auto",
+      description:
+        "Select automatic discovery, Custy's internal rules, strict Commitizen integration, or basic Git message-file safety checks.",
+    },
+    {
+      property: "require_tool",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "In auto mode, turn a detected invalid or unavailable Commitizen integration from a warning and fallback into an early error.",
+    },
+  ]}
 />
 
 </Section>
@@ -169,11 +181,23 @@ will execute it.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Commit Configuration", href: "../commands/commit/configuration", description: "Combine provider policy with templates, staging, and backups."},
-        {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Resolve Commitizen and Git-hook failures."},
-        {title: "Docker", href: "../getting-started/docker", description: "Understand container tools and mounted repository hooks."},
-    ]}
+  commands={[
+    {
+      title: "Commit Configuration",
+      href: "../commands/commit/configuration",
+      description: "Combine provider policy with templates, staging, and backups.",
+    },
+    {
+      title: "Commit Troubleshooting",
+      href: "../commands/commit/troubleshooting",
+      description: "Resolve Commitizen and Git-hook failures.",
+    },
+    {
+      title: "Docker",
+      href: "../getting-started/docker",
+      description: "Understand container tools and mounted repository hooks.",
+    },
+  ]}
 />
 
 </Section>

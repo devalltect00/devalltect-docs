@@ -8,40 +8,40 @@ keywords: [contribute to Reflow, Reflow code quality, Reflow pull request]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="make check"
-    title="Contributing to Reflow"
-    description="Turn one understood release-workflow problem into a focused change with verifiable safety evidence."
-    category="Developer Guide"
-    status="Review Checklist"
-    syntax="scope -> implement -> validate -> document -> hand off"
-    tags={["quality", "tests", "dry-run", "documentation", "pre-commit"]}
-    links={[
-        {label: "Setup", href: "./development-setup"},
-        {label: "Testing", href: "./testing"},
-        {label: "Final Checklist", href: "#final-review-checklist"},
-    ]}
+  command="make check"
+  title="Contributing to Reflow"
+  description="Turn one understood release-workflow problem into a focused change with verifiable safety evidence."
+  category="Developer Guide"
+  status="Review Checklist"
+  syntax="scope -> implement -> validate -> document -> hand off"
+  tags={["quality", "tests", "dry-run", "documentation", "pre-commit"]}
+  links={[
+    { label: "Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Final Checklist", href: "#final-review-checklist" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Primary Branches", value: "main and develop", icon: "git"},
-        {label: "Quality Helper", value: "make check", icon: "testing"},
-        {label: "Runtime", value: "Python 3.14+", icon: "python"},
-        {label: "Mutation Policy", value: "Explicit approval", icon: "security"},
-    ]}
+  items={[
+    { label: "Primary Branches", value: "main and develop", icon: "git" },
+    { label: "Quality Helper", value: "make check", icon: "testing" },
+    { label: "Runtime", value: "Python 3.14+", icon: "python" },
+    { label: "Mutation Policy", value: "Explicit approval", icon: "security" },
+  ]}
 />
 
 ## Overview
@@ -56,14 +56,44 @@ focused source change.
 <Section title="Contribution Workflow">
 
 <WorkflowTimeline
-    items={[
-        {title: "Trace the affected flow", description: "Follow CLI resolution through configuration, repository materialization, core behavior, presentation, and external boundaries.", status: "completed"},
-        {title: "Define the safety contract", description: "State targets, effects, dry-run behavior, confirmation, compatibility, and failure outcomes before editing.", status: "completed"},
-        {title: "Implement with tests", description: "Keep responsibilities separated and add focused successful, failing, and non-mutating coverage.", status: "current"},
-        {title: "Run widening validation", description: "Run focused tests, pre-commit checks, make check, and applicable workflow validation.", status: "pending"},
-        {title: "Synchronize documentation", description: "Update commands, configuration, safety, troubleshooting, architecture, and examples when their contracts change.", status: "pending"},
-        {title: "Prepare the handoff", description: "Report files, decisions, commands, outcomes, limits, and anything intentionally unchanged.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Trace the affected flow",
+      description:
+        "Follow CLI resolution through configuration, repository materialization, core behavior, presentation, and external boundaries.",
+      status: "completed",
+    },
+    {
+      title: "Define the safety contract",
+      description:
+        "State targets, effects, dry-run behavior, confirmation, compatibility, and failure outcomes before editing.",
+      status: "completed",
+    },
+    {
+      title: "Implement with tests",
+      description:
+        "Keep responsibilities separated and add focused successful, failing, and non-mutating coverage.",
+      status: "current",
+    },
+    {
+      title: "Run widening validation",
+      description:
+        "Run focused tests, pre-commit checks, make check, and applicable workflow validation.",
+      status: "pending",
+    },
+    {
+      title: "Synchronize documentation",
+      description:
+        "Update commands, configuration, safety, troubleshooting, architecture, and examples when their contracts change.",
+      status: "pending",
+    },
+    {
+      title: "Prepare the handoff",
+      description:
+        "Report files, decisions, commands, outcomes, limits, and anything intentionally unchanged.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -73,13 +103,29 @@ focused source change.
 <Section title="Branch and Scope Conventions">
 
 <FeatureGrid
-    title="Suggested Branch Types"
-    items={[
-        {title: "Feature", icon: <Icon name="feature" />, children: "Use feature/<name> for a focused capability."},
-        {title: "Bug Fix", icon: <Icon name="warning" />, children: "Use bugfix/<name> for a focused correction."},
-        {title: "Release", icon: <Icon name="release" />, children: "Use release/<version> only for intentional release preparation."},
-        {title: "Primary Development", icon: <Icon name="git" />, children: "Treat main and develop as the long-lived project branches."},
-    ]}
+  title="Suggested Branch Types"
+  items={[
+    {
+      title: "Feature",
+      icon: <Icon name="feature" />,
+      children: "Use feature/<name> for a focused capability.",
+    },
+    {
+      title: "Bug Fix",
+      icon: <Icon name="warning" />,
+      children: "Use bugfix/<name> for a focused correction.",
+    },
+    {
+      title: "Release",
+      icon: <Icon name="release" />,
+      children: "Use release/<version> only for intentional release preparation.",
+    },
+    {
+      title: "Primary Development",
+      icon: <Icon name="git" />,
+      children: "Treat main and develop as the long-lived project branches.",
+    },
+  ]}
 />
 
 Do not commit, tag, push, rewrite history, publish packages or images, replay
@@ -92,13 +138,33 @@ tags, or modify release metadata merely because source validation passed.
 <Section title="Implementation Standards">
 
 <CommandChecklist
-    items={[
-        {title: "Keep layers focused", description: "CLI interaction stays under app/cli; reusable behavior belongs in app/core or the appropriate service."},
-        {title: "Preserve repository identity", description: "Never substitute Reflow's source checkout or a registry image for the selected target repository."},
-        {title: "Protect dry-run", description: "Every mutating path requires evidence that dry-run performs no persistent local or external change."},
-        {title: "Handle errors once", description: "Present concise remediation at the CLI boundary and keep sensitive or deep diagnostics out of normal output."},
-        {title: "Document public contracts", description: "Synchronize command, option, configuration, safety, migration, and architecture guidance."},
-    ]}
+  items={[
+    {
+      title: "Keep layers focused",
+      description:
+        "CLI interaction stays under app/cli; reusable behavior belongs in app/core or the appropriate service.",
+    },
+    {
+      title: "Preserve repository identity",
+      description:
+        "Never substitute Reflow's source checkout or a registry image for the selected target repository.",
+    },
+    {
+      title: "Protect dry-run",
+      description:
+        "Every mutating path requires evidence that dry-run performs no persistent local or external change.",
+    },
+    {
+      title: "Handle errors once",
+      description:
+        "Present concise remediation at the CLI boundary and keep sensitive or deep diagnostics out of normal output.",
+    },
+    {
+      title: "Document public contracts",
+      description:
+        "Synchronize command, option, configuration, safety, migration, and architecture guidance.",
+    },
+  ]}
 />
 
 </Section>
@@ -113,10 +179,12 @@ tags, or modify release metadata merely because source validation passed.
 python -m pytest tests/cli/test_repository_targeting.py
 
 # Complete tests and quality checks
+
 python -m pytest
 make check
 
 # Hook configuration and tracked-file checks
+
 make pre-commit-validate
 make pre-commit-run-staged
 make pre-commit-run`}
@@ -138,13 +206,33 @@ against all files. Review every resulting change.
 <Section title="Final Review Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "Scope is coherent", description: "Every changed file supports the stated behavior, tests, or documentation."},
-        {title: "Targets and effects are explicit", description: "Local paths, remote URLs, registries, confirmation, and dry-run behavior remain predictable."},
-        {title: "Tests are isolated", description: "Tests use temporary repositories, mocks, and deterministic configuration instead of personal state or credentials."},
-        {title: "Quality checks are reported", description: "Formatting, lint, tests, and relevant builds have explicit outcomes."},
-        {title: "No unapproved release action occurred", description: "Versions, changelogs, tags, pushes, releases, and publication remain untouched unless explicitly scoped."},
-    ]}
+  items={[
+    {
+      title: "Scope is coherent",
+      description:
+        "Every changed file supports the stated behavior, tests, or documentation.",
+    },
+    {
+      title: "Targets and effects are explicit",
+      description:
+        "Local paths, remote URLs, registries, confirmation, and dry-run behavior remain predictable.",
+    },
+    {
+      title: "Tests are isolated",
+      description:
+        "Tests use temporary repositories, mocks, and deterministic configuration instead of personal state or credentials.",
+    },
+    {
+      title: "Quality checks are reported",
+      description:
+        "Formatting, lint, tests, and relevant builds have explicit outcomes.",
+    },
+    {
+      title: "No unapproved release action occurred",
+      description:
+        "Versions, changelogs, tags, pushes, releases, and publication remain untouched unless explicitly scoped.",
+    },
+  ]}
 />
 
 </Section>
@@ -152,10 +240,26 @@ against all files. Review every resulting change.
 ---
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Create the supported editable environment."},
-        {title: "Testing", href: "./testing", description: "Choose focused and complete validation."},
-        {title: "Configuration", href: "../configuration/overview", description: "Preserve supported precedence and templates."},
-        {title: "Dry Run", href: "../concepts/safety-and-dry-run", description: "Protect non-mutating workflow guarantees."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Create the supported editable environment.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Choose focused and complete validation.",
+    },
+    {
+      title: "Configuration",
+      href: "../configuration/overview",
+      description: "Preserve supported precedence and templates.",
+    },
+    {
+      title: "Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Protect non-mutating workflow guarantees.",
+    },
+  ]}
 />

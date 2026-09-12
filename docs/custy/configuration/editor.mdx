@@ -7,43 +7,87 @@ tags: [custy, configuration, editor, docker]
 keywords: [tool.custy.editor, VISUAL, EDITOR, vscode, micro, nano, vim]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.editor]"
-    title="Editor"
-    description="Choose predictable editors for local and container workflows without embedding arbitrary shell commands in project configuration."
-    category="Configuration"
-    status="Active"
-    syntax={'windows = ["vscode", "notepad"]'}
-    tags={["platform precedence", "safe fallback", "container editors"]}
-    links={[
-        {label: "Docker", href: "../getting-started/docker"},
-        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
-        {label: "Environment", href: "../reference/environment"},
-    ]}
+  command="[tool.custy.editor]"
+  title="Editor"
+  description="Choose predictable editors for local and container workflows without embedding arbitrary shell commands in project configuration."
+  category="Configuration"
+  status="Active"
+  syntax={'windows = ["vscode", "notepad"]'}
+  tags={["platform precedence", "safe fallback", "container editors"]}
+  links={[
+    { label: "Docker", href: "../getting-started/docker" },
+    { label: "Run Troubleshooting", href: "../commands/run/troubleshooting" },
+    { label: "Environment", href: "../reference/environment" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Tables", value: "tool.custy.editor + candidates", icon: "configuration"},
-        {label: "Supported IDs", value: "7", icon: "table"},
-        {label: "Container Default", value: "Micro", icon: "terminal"},
-        {label: "Dry Run", value: "No process launch", icon: "security"},
-    ]}
+  items={[
+    { label: "Tables", value: "tool.custy.editor + candidates", icon: "configuration" },
+    { label: "Supported IDs", value: "7", icon: "table" },
+    { label: "Container Default", value: "Micro", icon: "terminal" },
+    { label: "Dry Run", value: "No process launch", icon: "security" },
+  ]}
 />
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "prefer_environment", type: "Boolean", defaultValue: "true", required: false, description: "Try VISUAL and then EDITOR before project-configured candidates."},
-        {property: "allow_fallback", type: "Boolean", defaultValue: "true", required: false, description: "Append Custy's built-in candidates after the configured list."},
-        {property: "candidates.windows", type: "Editor ID array", defaultValue: '["vscode", "notepad"]', required: false, description: "Ordered candidates for a Windows host."},
-        {property: "candidates.linux", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Ordered candidates for native Linux."},
-        {property: "candidates.macos", type: "Editor ID array", defaultValue: '["vscode", "micro", "nano", "vim", "vi"]', required: false, description: "Ordered candidates for macOS."},
-        {property: "candidates.container", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Ordered candidates when Custy detects its container runtime."},
-    ]}
+  items={[
+    {
+      property: "prefer_environment",
+      type: "Boolean",
+      defaultValue: "true",
+      required: false,
+      description: "Try VISUAL and then EDITOR before project-configured candidates.",
+    },
+    {
+      property: "allow_fallback",
+      type: "Boolean",
+      defaultValue: "true",
+      required: false,
+      description: "Append Custy's built-in candidates after the configured list.",
+    },
+    {
+      property: "candidates.windows",
+      type: "Editor ID array",
+      defaultValue: '["vscode", "notepad"]',
+      required: false,
+      description: "Ordered candidates for a Windows host.",
+    },
+    {
+      property: "candidates.linux",
+      type: "Editor ID array",
+      defaultValue: '["micro", "nano", "vim", "vi"]',
+      required: false,
+      description: "Ordered candidates for native Linux.",
+    },
+    {
+      property: "candidates.macos",
+      type: "Editor ID array",
+      defaultValue: '["vscode", "micro", "nano", "vim", "vi"]',
+      required: false,
+      description: "Ordered candidates for macOS.",
+    },
+    {
+      property: "candidates.container",
+      type: "Editor ID array",
+      defaultValue: '["micro", "nano", "vim", "vi"]',
+      required: false,
+      description: "Ordered candidates when Custy detects its container runtime.",
+    },
+  ]}
 />
 
 <Section title="Recommended Configuration">
@@ -78,12 +122,12 @@ them before starting Custy.
 
 ### Accepted names and values
 
-| Exact variable | Role | Accepted value | Example |
-| --- | --- | --- | --- |
-| `VISUAL` | Primary environment editor | A trusted executable with optional arguments | `code --wait` |
-| `EDITOR` | Secondary environment editor | A trusted executable with optional arguments | `nano` |
-| `PATH` | Executable discovery; it does not select an editor | Operating-system search paths | A directory containing `code.CMD` or `micro` |
-| `CUSTY_CONTAINER` | Selects container candidates; it is not an editor command | `1`, `true`, `yes`, or `on` | The official image sets `1` |
+| Exact variable    | Role                                                      | Accepted value                               | Example                                      |
+| ----------------- | --------------------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `VISUAL`          | Primary environment editor                                | A trusted executable with optional arguments | `code --wait`                                |
+| `EDITOR`          | Secondary environment editor                              | A trusted executable with optional arguments | `nano`                                       |
+| `PATH`            | Executable discovery; it does not select an editor        | Operating-system search paths                | A directory containing `code.CMD` or `micro` |
+| `CUSTY_CONTAINER` | Selects container candidates; it is not an editor command | `1`, `true`, `yes`, or `on`                  | The official image sets `1`                  |
 
 Only `VISUAL` and `EDITOR` accept editor commands. Use these uppercase names
 exactly for portable behavior; environment names are case-sensitive on common
@@ -178,12 +222,12 @@ terminal does not change the environment of an already-running Custy process.
 
 ## Behavior Matrix
 
-| `prefer_environment` | `allow_fallback` | Effective order | Recommended use |
-| --- | --- | --- | --- |
-| `true` | `true` | `VISUAL` → `EDITOR` → configured candidates → built-in defaults | Recommended for most users |
-| `true` | `false` | `VISUAL` → `EDITOR` → configured candidates only | Personal override with a controlled project list |
-| `false` | `true` | Configured candidates → built-in defaults | Predictable team or container behavior with recovery |
-| `false` | `false` | Configured candidates only | Strict, locked-down environments |
+| `prefer_environment` | `allow_fallback` | Effective order                                                 | Recommended use                                      |
+| -------------------- | ---------------- | --------------------------------------------------------------- | ---------------------------------------------------- |
+| `true`               | `true`           | `VISUAL` → `EDITOR` → configured candidates → built-in defaults | Recommended for most users                           |
+| `true`               | `false`          | `VISUAL` → `EDITOR` → configured candidates only                | Personal override with a controlled project list     |
+| `false`              | `true`           | Configured candidates → built-in defaults                       | Predictable team or container behavior with recovery |
+| `false`              | `false`          | Configured candidates only                                      | Strict, locked-down environments                     |
 
 Fallback means Custy appends built-in candidates for the same active runtime.
 It can continue when a candidate is missing or cannot be started. If an editor
@@ -253,11 +297,11 @@ the focused checks.
 
 <Section title="Container Keybindings">
 
-| Editor | Undo | Redo | Notes |
-| --- | --- | --- | --- |
-| Micro | `Ctrl+Z` or `Alt+Z` | `Ctrl+Y` or `Alt+Y` | Custy adds the Alt aliases; Micro's native shortcuts remain available. |
-| Nano | `Alt+U` | `Alt+E` | Custy preserves Nano's native mappings. `Alt+Z` and `Alt+Y` are not replaced because Nano uses them for interface and syntax-color toggles. |
-| Vim / Vi | `u` or `Alt+Z` | `Ctrl+R` or `Alt+Y` | Custy adds Alt aliases in normal and insert mode while preserving native commands. |
+| Editor   | Undo                | Redo                | Notes                                                                                                                                       |
+| -------- | ------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Micro    | `Ctrl+Z` or `Alt+Z` | `Ctrl+Y` or `Alt+Y` | Custy adds the Alt aliases; Micro's native shortcuts remain available.                                                                      |
+| Nano     | `Alt+U`             | `Alt+E`             | Custy preserves Nano's native mappings. `Alt+Z` and `Alt+Y` are not replaced because Nano uses them for interface and syntax-color toggles. |
+| Vim / Vi | `u` or `Alt+Z`      | `Ctrl+R` or `Alt+Y` | Custy adds Alt aliases in normal and insert mode while preserving native commands.                                                          |
 
 These settings apply only to editors launched inside the Custy image. Custy
 does not overwrite VS Code settings or local Micro, Nano, Vim, or Neovim
@@ -277,11 +321,25 @@ without starting an editor process.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Docker", href: "../getting-started/docker", description: "Build the image and run interactive workflows against a mounted project."},
-        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Diagnose TTY, editor discovery, and partial release state."},
-        {title: "Environment", href: "../reference/environment", description: "Review VISUAL, EDITOR, PATH, terminal, and external-tool boundaries."},
-    ]}
+  commands={[
+    {
+      title: "Docker",
+      href: "../getting-started/docker",
+      description:
+        "Build the image and run interactive workflows against a mounted project.",
+    },
+    {
+      title: "Run Troubleshooting",
+      href: "../commands/run/troubleshooting",
+      description: "Diagnose TTY, editor discovery, and partial release state.",
+    },
+    {
+      title: "Environment",
+      href: "../reference/environment",
+      description:
+        "Review VISUAL, EDITOR, PATH, terminal, and external-tool boundaries.",
+    },
+  ]}
 />
 
 </Section>

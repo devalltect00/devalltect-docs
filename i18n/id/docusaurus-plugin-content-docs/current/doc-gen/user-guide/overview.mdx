@@ -6,13 +6,23 @@ sidebar_key: doc-gen-user-guide
 tags: [doc-gen, user-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Doc Gen" title="Panduan Pengguna" description="Pilih alur kerja berdasarkan target dan efeknya." category="Panduan Pengguna" status="Praktis" syntax="doc-gen init" />
+<CommandHero
+  command="Doc Gen"
+  title="Panduan Pengguna"
+  description="Pilih alur kerja berdasarkan target dan efeknya."
+  category="Panduan Pengguna"
+  status="Praktis"
+  syntax="doc-gen init"
+/>
 
 - `doc-gen init`
 - `doc-gen structure generate [TARGET]`
 - `doc-gen structure print [TARGET]`
 - `doc-gen structure analyze [TARGET]`
 
-<InfoBox variant="warning" title="Safety">Generate hanya menulis output Markdown hasil resolution; print dan analyze read-only. Generate dry-run tidak membuat direktori atau file.</InfoBox>
+<InfoBox variant="warning" title="Safety">
+  Generate hanya menulis output Markdown hasil resolution; print dan analyze read-only.
+  Generate dry-run tidak membuat direktori atau file.
+</InfoBox>

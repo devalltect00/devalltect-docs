@@ -16,58 +16,37 @@
  * ============================================================================
  */
 
-import {
-    useCallback,
-    useState,
-} from "react";
+import { useCallback, useState } from "react";
 
-import {
-    copyToClipboard,
-} from "../utils";
+import { copyToClipboard } from "../utils";
 
 /**
  * Clipboard hook.
  */
 export function useClipboard() {
+  const [copied, setCopied] = useState(false);
 
-    const [copied, setCopied] =
-        useState(false);
+  const copy = useCallback(
+    async (value: string) => {
+      const success = await copyToClipboard(value);
 
-    const copy = useCallback(
+      setCopied(success);
 
-        async (
-            value: string,
-        ) => {
+      if (success) {
+        window.setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      }
 
-            const success =
-                await copyToClipboard(value);
+      return success;
+    },
 
-            setCopied(success);
+    []
+  );
 
-            if (success) {
+  return {
+    copied,
 
-                window.setTimeout(() => {
-
-                    setCopied(false);
-
-                }, 2000);
-
-            }
-
-            return success;
-
-        },
-
-        [],
-
-    );
-
-    return {
-
-        copied,
-
-        copy,
-
-    };
-
+    copy,
+  };
 }

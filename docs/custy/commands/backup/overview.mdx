@@ -6,66 +6,62 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Backup Template Files"
-    description="Create backup copies of Custy's commit and tag message templates before modifying them."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup"
-    tags={[
-        "backup",
-        "templates",
-        "workflow",
-    ]}
-    links={[
-        {
-            label: "Requirements",
-            href: "./requirements",
-        },
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Backup Files",
-            href: "./backup-files",
-        },
-        {
-            label: "User Journey",
-            href: "../../user-guide/managing-backups",
-        },
-    ]}
+  command="custy backup"
+  title="Backup Template Files"
+  description="Create backup copies of Custy's commit and tag message templates before modifying them."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup"
+  tags={["backup", "templates", "workflow"]}
+  links={[
+    {
+      label: "Requirements",
+      href: "./requirements",
+    },
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Backup Files",
+      href: "./backup-files",
+    },
+    {
+      label: "User Journey",
+      href: "../../user-guide/managing-backups",
+    },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {
-            label: "Category",
-            value: "Backup",
-        },
-        {
-            label: "Subcommands",
-            value: "commit, tag, all",
-        },
-        {
-            label: "Modifies Repository",
-            value: "No Git history changes",
-        },
-        {
-            label: "Recommended",
-            value: "Before editing templates or preparing releases.",
-        },
-    ]}
+  items={[
+    {
+      label: "Category",
+      value: "Backup",
+    },
+    {
+      label: "Subcommands",
+      value: "commit, tag, all",
+    },
+    {
+      label: "Modifies Repository",
+      value: "No Git history changes",
+    },
+    {
+      label: "Recommended",
+      value: "Before editing templates or preparing releases.",
+    },
+  ]}
 />
 
 ## Overview
@@ -94,37 +90,26 @@ provides an easy recovery point if changes need to be reverted.
 >
 
 <FeatureGrid
-    title="Backup Operations"
-    items={[
-        {
-            title: "Commit",
-            icon: <Icon name="copy" />,
-            children: (
-                <>
-                    Backup the configured commit message template.
-                </>
-            ),
-        },
-        {
-            title: "Tag",
-            icon: <Icon name="release" />,
-            children: (
-                <>
-                    Backup the configured tag message template.
-                </>
-            ),
-        },
-        {
-            title: "All",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Backup both commit and tag message templates in a single
-                    operation.
-                </>
-            ),
-        },
-    ]}
+  title="Backup Operations"
+  items={[
+    {
+      title: "Commit",
+      icon: <Icon name="copy" />,
+      children: <>Backup the configured commit message template.</>,
+    },
+    {
+      title: "Tag",
+      icon: <Icon name="release" />,
+      children: <>Backup the configured tag message template.</>,
+    },
+    {
+      title: "All",
+      icon: <Icon name="directory" />,
+      children: (
+        <>Backup both commit and tag message templates in a single operation.</>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -181,25 +166,22 @@ template changes.
 ---
 
 <RelatedCommands
-    commands={[
-        {
-            name: "init",
-            description:
-                "Generate the template files that can later be backed up.",
-            href: "../init/overview",
-        },
-        {
-            name: "cleanup",
-            description:
-                "Remove old backup files when they are no longer needed.",
-            href: "../cleanup/overview",
-        },
-        {
-            name: "run",
-            description:
-                "Workflow commands may use backed-up templates during release operations.",
-            href: "../run/overview",
-        },
-    ]}
+  commands={[
+    {
+      name: "init",
+      description: "Generate the template files that can later be backed up.",
+      href: "../init/overview",
+    },
+    {
+      name: "cleanup",
+      description: "Remove old backup files when they are no longer needed.",
+      href: "../cleanup/overview",
+    },
+    {
+      name: "run",
+      description:
+        "Workflow commands may use backed-up templates during release operations.",
+      href: "../run/overview",
+    },
+  ]}
 />
-

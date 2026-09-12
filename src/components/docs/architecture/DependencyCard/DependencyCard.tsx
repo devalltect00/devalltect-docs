@@ -23,109 +23,52 @@
 
 import clsx from "clsx";
 
-import {
-    Card,
-    Divider,
-    Heading,
-    Icon,
-} from "../../";
+import { Card, Divider, Heading, Icon } from "../../";
 
 import styles from "./DependencyCard.module.css";
 
-import type {
-    DependencyCardProps,
-} from "./types";
+import type { DependencyCardProps } from "./types";
 
 /**
  * Displays architecture dependencies.
  */
 export default function DependencyCard({
-    title = "Dependencies",
-    description,
-    dependencies,
-    className,
-    ...props
+  title = "Dependencies",
+  description,
+  dependencies,
+  className,
+  ...props
 }: DependencyCardProps) {
+  return (
+    <Card className={clsx(styles.card, className)} {...props}>
+      <Heading
+        level={3}
+        title={title}
+        subtitle={description}
+        icon={<Icon name="dependency" />}
+      />
 
-    return (
+      <div className={styles.list}>
+        {dependencies.map((dependency, index) => (
+          <div key={`${dependency.source}-${dependency.target}`}>
+            <div className={styles.item}>
+              <div className={styles.connection}>
+                <span className={styles.source}>{dependency.source}</span>
 
-        <Card
-            className={clsx(
-                styles.card,
-                className,
-            )}
-            {...props}
-        >
+                <span className={styles.arrow}>→</span>
 
-            <Heading
-                level={3}
-                title={title}
-                subtitle={description}
-                icon={<Icon name="dependency" />}
-            />
+                <span className={styles.target}>{dependency.target}</span>
+              </div>
 
-            <div className={styles.list}>
-
-                {dependencies.map((dependency, index) => (
-
-                    <div
-                        key={`${dependency.source}-${dependency.target}`}
-                    >
-
-                        <div className={styles.item}>
-
-                            <div className={styles.connection}>
-
-                                <span className={styles.source}>
-
-                                    {dependency.source}
-
-                                </span>
-
-                                <span className={styles.arrow}>
-
-                                    →
-
-                                </span>
-
-                                <span className={styles.target}>
-
-                                    {dependency.target}
-
-                                </span>
-
-                            </div>
-
-                            {dependency.description && (
-
-                                <p
-                                    className={
-                                        styles.description
-                                    }
-                                >
-
-                                    {dependency.description}
-
-                                </p>
-
-                            )}
-
-                        </div>
-
-                        {index < dependencies.length - 1 && (
-
-                            <Divider spacing="md" />
-
-                        )}
-
-                    </div>
-
-                ))}
-
+              {dependency.description && (
+                <p className={styles.description}>{dependency.description}</p>
+              )}
             </div>
 
-        </Card>
-
-    );
-
+            {index < dependencies.length - 1 && <Divider spacing="md" />}
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
 }

@@ -6,38 +6,34 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Syntax"
-    description="Learn how to create backups for Custy's template resources."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup commit"
-    tags={[
-        "syntax",
-        "backup",
-        "templates",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy backup"
+  title="Syntax"
+  description="Learn how to create backups for Custy's template resources."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup commit"
+  tags={["syntax", "backup", "templates"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -69,26 +65,23 @@ commit template alone is usually sufficient.
 >
 
 <CommandSyntax
-    examples={[
-        {
-            title: "Backup Commit Template",
-            description:
-                "Create a backup of the configured commit message template.",
-            command: "custy backup commit",
-        },
-        {
-            title: "Backup Tag Template",
-            description:
-                "Create a backup of the configured tag message template.",
-            command: "custy backup tag",
-        },
-        {
-            title: "Backup All Templates",
-            description:
-                "Create backups for both commit and tag message templates.",
-            command: "custy backup all",
-        },
-    ]}
+  examples={[
+    {
+      title: "Backup Commit Template",
+      description: "Create a backup of the configured commit message template.",
+      command: "custy backup commit",
+    },
+    {
+      title: "Backup Tag Template",
+      description: "Create a backup of the configured tag message template.",
+      command: "custy backup tag",
+    },
+    {
+      title: "Backup All Templates",
+      description: "Create backups for both commit and tag message templates.",
+      command: "custy backup all",
+    },
+  ]}
 />
 
 </Section>
@@ -99,11 +92,11 @@ commit template alone is usually sufficient.
     title="Subcommands"
 >
 
-| Subcommand | Purpose |
-|------------|---------|
-| `commit` | Backup the configured commit message template. |
-| `tag` | Backup the configured tag message template. |
-| `all` | Backup both template files in a single operation. |
+| Subcommand | Purpose                                           |
+| ---------- | ------------------------------------------------- |
+| `commit`   | Backup the configured commit message template.    |
+| `tag`      | Backup the configured tag message template.       |
+| `all`      | Backup both template files in a single operation. |
 
 Each subcommand creates timestamped backup files inside the configured backup
 directories.

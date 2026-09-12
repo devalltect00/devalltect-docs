@@ -6,9 +6,22 @@ sidebar_key: doc-gen-structure-analyze
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="Alur Kerja" description="Memeriksa karakteristik repository dan setting struktur tanpa menulis dokumentasi proyek." category="Struktur Proyek" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="Alur Kerja"
+  description="Memeriksa karakteristik repository dan setting struktur tanpa menulis dokumentasi proyek."
+  category="Struktur Proyek"
+  status="Read Only"
+  syntax="doc-gen structure analyze [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ### 1. Tahap 1
 
@@ -26,5 +39,6 @@ Deteksi type dan hitung karakteristik.
 
 Tampilkan analisis tanpa writer.
 
-<InfoBox variant="warning" title="Batas keamanan">Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer.</InfoBox>
-
+<InfoBox variant="warning" title="Batas keamanan">
+  Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer.
+</InfoBox>

@@ -11,7 +11,7 @@ import { resolveProjectFreshness } from "./resolver";
 
 /** Build a focused project fixture for resolver tests. */
 function createProject(
-  freshness: NonNullable<Project["documentation"]>["freshness"],
+  freshness: NonNullable<Project["documentation"]>["freshness"]
 ): Project {
   return {
     id: "example",
@@ -39,7 +39,7 @@ test("returns manual status without querying a remote", async () => {
     async () => {
       queried = true;
       return [];
-    },
+    }
   );
 
   assert.equal(queried, false);
@@ -54,7 +54,7 @@ test("marks documentation as outdated when a newer remote tag exists", async () 
       repositoryUrl: "https://example.com/project.git",
       tagFormat: "semver",
     }),
-    async () => ["v1.9.0", "v2.1.0"],
+    async () => ["v1.9.0", "v2.1.0"]
   );
 
   assert.equal(result?.status, "outdated");
@@ -69,7 +69,7 @@ test("uses unknown fallback when no compatible tags exist", async () => {
       repositoryUrl: "https://example.com/project.git",
       tagFormat: "semver",
     }),
-    async () => ["custom-release"],
+    async () => ["custom-release"]
   );
 
   assert.equal(result?.status, "unknown");
@@ -87,7 +87,7 @@ test("continues with configured fallback after a transient query failure", async
     }),
     async () => {
       throw new Error("network unavailable");
-    },
+    }
   );
 
   assert.equal(result?.status, "current");
@@ -104,8 +104,8 @@ test("rejects invalid automatic timeout configuration", async () => {
         tagFormat: "semver",
         timeoutMs: 50,
       }),
-      async () => [],
+      async () => []
     ),
-    /timeoutMs must be between/u,
+    /timeoutMs must be between/u
   );
 });

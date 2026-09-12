@@ -6,31 +6,36 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner init"
-    title="Initialize Path Header Scanner"
-    description="Create the project-owned configuration used by Path Header Scanner."
-    category="Initialization"
-    status="Writes Configuration"
-    syntax="path-header-scanner init [OPTIONS]"
-    tags={["project setup", "configuration", "dry-run"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Options", href: "./options"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="path-header-scanner init"
+  title="Initialize Path Header Scanner"
+  description="Create the project-owned configuration used by Path Header Scanner."
+  category="Initialization"
+  status="Writes Configuration"
+  syntax="path-header-scanner init [OPTIONS]"
+  tags={["project setup", "configuration", "dry-run"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Default Mode", value: "all", icon: "configuration"},
-        {label: "Supported Modes", value: "all and config", icon: "feature"},
-        {label: "Target", value: ".config/path_header_scanner/config.toml", icon: "file"},
-        {label: "Dry-run", value: "No filesystem writes", icon: "success"},
-    ]}
+  items={[
+    { label: "Default Mode", value: "all", icon: "configuration" },
+    { label: "Supported Modes", value: "all and config", icon: "feature" },
+    { label: "Target", value: ".config/path_header_scanner/config.toml", icon: "file" },
+    { label: "Dry-run", value: "No filesystem writes", icon: "success" },
+  ]}
 />
 
 ## Overview

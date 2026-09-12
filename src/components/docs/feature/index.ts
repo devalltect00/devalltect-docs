@@ -18,16 +18,8 @@ export { default as FeatureList } from "./FeatureList";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    FeatureCardProps,
-} from "./FeatureCard";
+export type { FeatureCardProps } from "./FeatureCard";
 
-export type {
-    FeatureGridItem,
-    FeatureGridProps,
-} from "./FeatureGrid";
+export type { FeatureGridItem, FeatureGridProps } from "./FeatureGrid";
 
-export type {
-    FeatureListItem,
-    FeatureListProps,
-} from "./FeatureList";
+export type { FeatureListItem, FeatureListProps } from "./FeatureList";

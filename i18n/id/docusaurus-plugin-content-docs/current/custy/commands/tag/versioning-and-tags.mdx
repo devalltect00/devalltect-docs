@@ -4,20 +4,52 @@ description: "Pilih Custy versioning strategy dan release modifiers untuk Git ta
 sidebar_position: 6
 sidebar_key: custy-tag-versioning
 ---
-import {CommandHero, PropertyTable, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy tag" title="Versioning and Tags" description="Tentukan exact release identity sebelum membuat tag." category="Versioning" status="Reference" syntax="custy tag --strategy STRATEGY [OPTIONS]" links={[{label:"Options",href:"./options"},{label:"Configuration",href:"./configuration"},{label:"Examples",href:"./examples"}]} />
+import {
+  CommandHero,
+  PropertyTable,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy tag"
+  title="Versioning and Tags"
+  description="Tentukan exact release identity sebelum membuat tag."
+  category="Versioning"
+  status="Reference"
+  syntax="custy tag --strategy STRATEGY [OPTIONS]"
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Ringkasan
 
-<PropertyTable title="Version Strategy Comparison" items={[
- {property:"semver",description:"Semantic versions untuk aplikasi dan library umum."},
- {property:"pep440",description:"Python packaging-compatible versions."},
- {property:"commitizen",description:"Versi dari conventional commit history."},
- {property:"date",description:"Calendar-based release versions."},
- {property:"gitcount",description:"Repository-count-based identifiers."},
-]} />
+<PropertyTable
+  title="Version Strategy Comparison"
+  items={[
+    {
+      property: "semver",
+      description: "Semantic versions untuk aplikasi dan library umum.",
+    },
+    { property: "pep440", description: "Python packaging-compatible versions." },
+    { property: "commitizen", description: "Versi dari conventional commit history." },
+    { property: "date", description: "Calendar-based release versions." },
+    { property: "gitcount", description: "Repository-count-based identifiers." },
+  ]}
+/>
 
-<Section title="Release Modifiers">`--pre`, `--post`, `--dev`, `--meta`, dan `--epoch` menyesuaikan versi bila strategy mendukungnya.</Section>
-<InfoBox variant="warning" title="Do Not Mix Incompatible Formats">Pastikan modifiers valid untuk strategy dan target ecosystem.</InfoBox>
-<Section title="Explicit Release Versions">Gunakan `--tag` bila exact version sudah ditentukan dan tidak perlu dibentuk melalui strategy.</Section>
+<Section title="Release Modifiers">
+  `--pre`, `--post`, `--dev`, `--meta`, dan `--epoch` menyesuaikan versi bila strategy
+  mendukungnya.
+</Section>
+<InfoBox variant="warning" title="Do Not Mix Incompatible Formats">
+  Pastikan modifiers valid untuk strategy dan target ecosystem.
+</InfoBox>
+<Section title="Explicit Release Versions">
+  Gunakan `--tag` bila exact version sudah ditentukan dan tidak perlu dibentuk melalui
+  strategy.
+</Section>

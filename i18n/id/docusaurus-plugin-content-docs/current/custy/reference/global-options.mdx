@@ -4,12 +4,60 @@ description: "Referensi root options Custy, alias, penempatan, configuration res
 sidebar_position: 3
 sidebar_key: custy-reference-global-options
 ---
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy [GLOBAL OPTIONS] COMMAND" title="Global Options" description="Atur behavior tingkat aplikasi sebelum command dipilih." category="Referensi" status="Root Callback" syntax="custy [--dry-run] [--debug] [--log-level LEVEL] COMMAND" links={[{label:"CLI Reference",href:"./cli"},{label:"Dry Run Concept",href:"../concepts/dry-run"},{label:"Execution Config",href:"../configuration/cli/execution"}]} />
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<Section title="Option dan penempatan">Global options mencakup help, version, banner, dry-run, debug, dan log level. Tempatkan option ini sebelum command atau group agar diproses root callback; command-specific options tetap setelah command terkait.</Section>
+<CommandHero
+  command="custy [GLOBAL OPTIONS] COMMAND"
+  title="Global Options"
+  description="Atur behavior tingkat aplikasi sebelum command dipilih."
+  category="Referensi"
+  status="Root Callback"
+  syntax="custy [--dry-run] [--debug] [--log-level LEVEL] COMMAND"
+  links={[
+    { label: "CLI Reference", href: "./cli" },
+    { label: "Dry Run Concept", href: "../concepts/dry-run" },
+    { label: "Execution Config", href: "../configuration/cli/execution" },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Batas dry-run">`--dry-run` tidak menjamin setiap file mutation disimulasikan. Periksa halaman safety untuk command atau pipeline yang digunakan.</InfoBox>
+<Section title="Option dan penempatan">
+  Global options mencakup help, version, banner, dry-run, debug, dan log level.
+  Tempatkan option ini sebelum command atau group agar diproses root callback;
+  command-specific options tetap setelah command terkait.
+</Section>
 
-<RelatedCommands commands={[{title:"CLI Reference",href:"./cli",description:"Pilih command penerima root options."},{title:"Dry Run",href:"../concepts/dry-run",description:"Pahami behavior yang disimulasikan dan tidak."},{title:"Execution Configuration",href:"../configuration/cli/execution",description:"Lihat default persistent dry-run dan debug."},{title:"Errors and Exit Status",href:"./exit-errors",description:"Interpretasikan help, version, parser, dan workflow status."}]} />
+<InfoBox variant="warning" title="Batas dry-run">
+  `--dry-run` tidak menjamin setiap file mutation disimulasikan. Periksa halaman safety
+  untuk command atau pipeline yang digunakan.
+</InfoBox>
+
+<RelatedCommands
+  commands={[
+    {
+      title: "CLI Reference",
+      href: "./cli",
+      description: "Pilih command penerima root options.",
+    },
+    {
+      title: "Dry Run",
+      href: "../concepts/dry-run",
+      description: "Pahami behavior yang disimulasikan dan tidak.",
+    },
+    {
+      title: "Execution Configuration",
+      href: "../configuration/cli/execution",
+      description: "Lihat default persistent dry-run dan debug.",
+    },
+    {
+      title: "Errors and Exit Status",
+      href: "./exit-errors",
+      description: "Interpretasikan help, version, parser, dan workflow status.",
+    },
+  ]}
+/>

@@ -1,13 +1,9 @@
 export { default } from "./CommandOption";
 
-export type {
-    CommandOptionItem,
-    CommandOptionProps,
-} from "./types";
-
+export type { CommandOptionItem, CommandOptionProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandOption
     options={[
         {

@@ -6,13 +6,23 @@ sidebar_key: doc-gen-developer-guide
 tags: [doc-gen, developer-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Doc Gen" title="Panduan Developer" description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanan." category="Pengembangan" status="Panduan Kontributor" syntax="python -m pytest" />
+<CommandHero
+  command="Doc Gen"
+  title="Panduan Developer"
+  description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanan."
+  category="Pengembangan"
+  status="Panduan Kontributor"
+  syntax="python -m pytest"
+/>
 
 - Pisahkan interaksi CLI dari perilaku inti yang dapat digunakan kembali.
 - Pertahankan urutan prioritas konfigurasi dan template milik proyek.
 - Tangani error pada batas CLI.
 - Uji efek mode langsung dan dry-run secara terpisah.
 
-<InfoBox variant="note" title="Extension">Tambahkan behavior di app/doc_gen/core/structure dan CLI di app/doc_gen/cli; test writer boundary.</InfoBox>
+<InfoBox variant="note" title="Extension">
+  Tambahkan behavior di app/doc_gen/core/structure dan CLI di app/doc_gen/cli; test
+  writer boundary.
+</InfoBox>

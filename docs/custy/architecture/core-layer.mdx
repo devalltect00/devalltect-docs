@@ -8,39 +8,39 @@ keywords: [Custy core layer, app core, Custy subsystems]
 ---
 
 import {
-    ArchitectureCard,
-    CommandHero,
-    CommandMetadata,
-    Grid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  ArchitectureCard,
+  CommandHero,
+  CommandMetadata,
+  Grid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/"
-    title="Core Layer"
-    description="Map Custy's pipeline, workflow, Git, changelog, initialization, maintenance, and shared runtime services."
-    category="Architecture"
-    status="Active Source"
-    syntax="orchestration + domain services + infrastructure adapters"
-    tags={["pipeline", "workflow", "git_ops", "changelog"]}
-    links={[
-        {label: "Architecture Overview", href: "./overview"},
-        {label: "Workflow Engine", href: "./workflow-engine"},
-        {label: "Git Operations", href: "./git-operations"},
-        {label: "Changelog", href: "./changelog-system"},
-    ]}
+  command="app/core/"
+  title="Core Layer"
+  description="Map Custy's pipeline, workflow, Git, changelog, initialization, maintenance, and shared runtime services."
+  category="Architecture"
+  status="Active Source"
+  syntax="orchestration + domain services + infrastructure adapters"
+  tags={["pipeline", "workflow", "git_ops", "changelog"]}
+  links={[
+    { label: "Architecture Overview", href: "./overview" },
+    { label: "Workflow Engine", href: "./workflow-engine" },
+    { label: "Git Operations", href: "./git-operations" },
+    { label: "Changelog", href: "./changelog-system" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Orchestration", value: "pipeline and workflow", icon: "pipeline"},
-        {label: "Repository Boundary", value: "git_ops", icon: "git"},
-        {label: "Release Content", value: "changelog and versioning", icon: "release"},
-        {label: "Maintenance", value: "backup and cleanup", icon: "package"},
-    ]}
+  items={[
+    { label: "Orchestration", value: "pipeline and workflow", icon: "pipeline" },
+    { label: "Repository Boundary", value: "git_ops", icon: "git" },
+    { label: "Release Content", value: "changelog and versioning", icon: "release" },
+    { label: "Maintenance", value: "backup and cleanup", icon: "package" },
+  ]}
 />
 
 ## Overview
@@ -168,12 +168,28 @@ facade.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Workflow Engine", href: "./workflow-engine", description: "Inspect the central facade, state, services, and phase methods."},
-        {title: "Git Operations", href: "./git-operations", description: "Follow high-level Git policy into the executor boundary."},
-        {title: "Changelog System", href: "./changelog-system", description: "Trace repository history into rendered Markdown."},
-        {title: "Developer Guide", href: "../developer-guide/overview", description: "Use these boundaries while implementing changes."},
-    ]}
+  commands={[
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "Inspect the central facade, state, services, and phase methods.",
+    },
+    {
+      title: "Git Operations",
+      href: "./git-operations",
+      description: "Follow high-level Git policy into the executor boundary.",
+    },
+    {
+      title: "Changelog System",
+      href: "./changelog-system",
+      description: "Trace repository history into rendered Markdown.",
+    },
+    {
+      title: "Developer Guide",
+      href: "../developer-guide/overview",
+      description: "Use these boundaries while implementing changes.",
+    },
+  ]}
 />
 
 </Section>

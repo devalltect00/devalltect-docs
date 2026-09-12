@@ -4,30 +4,82 @@ description: "Buat atau perbarui CHANGELOG.md dari repository history dan konfig
 sidebar_position: 1
 sidebar_key: custy-changelog-generate
 ---
-import {CommandHero, FeatureGrid, Section, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Generate a Changelog" description="Ubah Git history menjadi release notes terstruktur." category="Changelog" status="Stable" syntax="custy changelog generate [OPTIONS]" links={[
-    {label: "Syntax", href: "./syntax"}, {label: "Options", href: "./options"}, {label: "Examples", href: "./examples"},
-]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  Section,
+  InfoBox,
+  Screenshot,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Generate a Changelog"
+  description="Ubah Git history menjadi release notes terstruktur."
+  category="Changelog"
+  status="Stable"
+  syntax="custy changelog generate [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Ringkasan
 
 Generator membaca repository history, project configuration, dan template sebelum menulis artifact Markdown.
 
-<InfoBox variant="warning" title="Repository File Change">Command ini dapat membuat atau mengubah `CHANGELOG.md`. Gunakan `custy --dry-run changelog generate` dan tinjau diff.</InfoBox>
+<InfoBox variant="warning" title="Repository File Change">
+  Command ini dapat membuat atau mengubah `CHANGELOG.md`. Gunakan `custy --dry-run
+  changelog generate` dan tinjau diff.
+</InfoBox>
 
-<FeatureGrid items={[
-    {title: "Git History", children: "Kumpulkan commit dan release boundaries."},
-    {title: "Cleaning", children: "Hapus presentation-only content sesuai konfigurasi."},
-    {title: "Grouping", children: "Atur entry berdasarkan release, type, dan scope."},
-    {title: "Rendering", children: "Terapkan template, links, metadata, statistics, dan footer."},
-]} />
+<FeatureGrid
+  items={[
+    { title: "Git History", children: "Kumpulkan commit dan release boundaries." },
+    {
+      title: "Cleaning",
+      children: "Hapus presentation-only content sesuai konfigurasi.",
+    },
+    { title: "Grouping", children: "Atur entry berdasarkan release, type, dan scope." },
+    {
+      title: "Rendering",
+      children: "Terapkan template, links, metadata, statistics, dan footer.",
+    },
+  ]}
+/>
 
-<Screenshot src="/img/custy/commands/changelog/generate-terminal.png" alt="Terminal menjalankan Custy changelog generate" title="Changelog Generation" caption="Contoh proses pembuatan changelog dari terminal." />
+<Screenshot
+  src="/img/custy/commands/changelog/generate-terminal.png"
+  alt="Terminal menjalankan Custy changelog generate"
+  title="Changelog Generation"
+  caption="Contoh proses pembuatan changelog dari terminal."
+/>
 
-<RelatedCommands commands={[
-    {name: "file", description: "Lihat output yang dibuat generator.", href: "./output"},
-    {name: "git", description: "Commit changelog melalui command Commit.", href: "../../commit/overview"},
-    {name: "dev", description: "Sertakan generation dalam daily development profile.", href: "../../run/dev/overview"},
-    {name: "release", description: "Gunakan changelog dalam release profile.", href: "../../run/release/overview"},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      name: "file",
+      description: "Lihat output yang dibuat generator.",
+      href: "./output",
+    },
+    {
+      name: "git",
+      description: "Commit changelog melalui command Commit.",
+      href: "../../commit/overview",
+    },
+    {
+      name: "dev",
+      description: "Sertakan generation dalam daily development profile.",
+      href: "../../run/dev/overview",
+    },
+    {
+      name: "release",
+      description: "Gunakan changelog dalam release profile.",
+      href: "../../run/release/overview",
+    },
+  ]}
+/>

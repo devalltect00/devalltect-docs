@@ -4,20 +4,65 @@ description: "Contoh praktis custy commit."
 sidebar_position: 8
 sidebar_key: custy-commit-examples
 ---
-import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy commit" title="Examples" description="Gunakan defaults atau override staging, version file, dan empty commit." category="Git Operations" status="Practical Guide" syntax="custy commit [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, CommandExample, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy commit"
+  title="Examples"
+  description="Gunakan defaults atau override staging, version file, dan empty commit."
+  category="Git Operations"
+  status="Practical Guide"
+  syntax="custy commit [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="tip" title="Mulai dengan Dry Run">Gunakan `custy --dry-run commit` sebelum profile menulis artifacts, mengubah index, atau membuat commit.</InfoBox>
+<InfoBox variant="tip" title="Mulai dengan Dry Run">
+  Gunakan `custy --dry-run commit` sebelum profile menulis artifacts, mengubah index,
+  atau membuat commit.
+</InfoBox>
 
-<CommandExample examples={[
- {title:"Preview Before Changing the Repository",command:"custy --dry-run commit",description:"Tinjau planned pipeline melalui global dry-run mode.",result:"Tidak menerapkan perubahan normal profile."},
- {title:"Project Defaults",command:"custy commit",description:"Gunakan resolved configuration.",result:"Menjalankan seluruh commit profile."},
- {title:"Update Tracked Files",command:"custy commit --auto-stage --stage-mode update",description:"Stage tracked modifications.",result:"Menggunakan update staging behavior."},
- {title:"Alternative Version File",command:"custy commit --version-file src/package_version.py",description:"Override version file.",result:"Menulis resolved version ke file tersebut."},
- {title:"Allow Empty Commit",command:"custy commit --allow-empty-commit",description:"Izinkan deliberate empty commit.",result:"Commit dapat dibuat tanpa normal changes."},
-]} />
+<CommandExample
+  examples={[
+    {
+      title: "Preview Before Changing the Repository",
+      command: "custy --dry-run commit",
+      description: "Tinjau planned pipeline melalui global dry-run mode.",
+      result: "Tidak menerapkan perubahan normal profile.",
+    },
+    {
+      title: "Project Defaults",
+      command: "custy commit",
+      description: "Gunakan resolved configuration.",
+      result: "Menjalankan seluruh commit profile.",
+    },
+    {
+      title: "Update Tracked Files",
+      command: "custy commit --auto-stage --stage-mode update",
+      description: "Stage tracked modifications.",
+      result: "Menggunakan update staging behavior.",
+    },
+    {
+      title: "Alternative Version File",
+      command: "custy commit --version-file src/package_version.py",
+      description: "Override version file.",
+      result: "Menulis resolved version ke file tersebut.",
+    },
+    {
+      title: "Allow Empty Commit",
+      command: "custy commit --allow-empty-commit",
+      description: "Izinkan deliberate empty commit.",
+      result: "Commit dapat dibuat tanpa normal changes.",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Empty Commits Merupakan Pengecualian Disengaja">Gunakan hanya untuk workflow yang memang membutuhkan commit tanpa normal file changes.</InfoBox>
+<InfoBox variant="warning" title="Empty Commits Merupakan Pengecualian Disengaja">
+  Gunakan hanya untuk workflow yang memang membutuhkan commit tanpa normal file changes.
+</InfoBox>

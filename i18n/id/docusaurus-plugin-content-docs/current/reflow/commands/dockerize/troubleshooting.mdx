@@ -6,14 +6,29 @@ sidebar_key: reflow-dockerize-troubleshooting
 tags: [reflow, troubleshooting]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Pemecahan Masalah" description="Diagnosis kegagalan build, push, dan penemuan tag." category="Publikasi Container" status="Perubahan Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Pemecahan Masalah"
+  description="Diagnosis kegagalan build, push, dan penemuan tag."
+  category="Publikasi Container"
+  status="Perubahan Eksternal"
+  syntax="reflow dockerize [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Gejala | Kemungkinan penyebab | Solusi |
-| --- | --- | --- |
-| Build gagal. | Docker tidak aktif atau build context tidak valid. | Jalankan Docker dan uji `docker build`. |
-| Push ditolak. | Autentikasi atau izin tidak tersedia. | Login ke registry dan periksa kepemilikan image. |
-| Tag tidak ditemukan. | Repositori target tidak memiliki tag lokal. | Buat atau fetch tag yang diperlukan. |
+| Gejala               | Kemungkinan penyebab                               | Solusi                                           |
+| -------------------- | -------------------------------------------------- | ------------------------------------------------ |
+| Build gagal.         | Docker tidak aktif atau build context tidak valid. | Jalankan Docker dan uji `docker build`.          |
+| Push ditolak.        | Autentikasi atau izin tidak tersedia.              | Login ke registry dan periksa kepemilikan image. |
+| Tag tidak ditemukan. | Repositori target tidak memiliki tag lokal.        | Buat atau fetch tag yang diperlukan.             |
 
-<InfoBox variant="tip" title="Diagnostik">Gunakan `--debug` sebelum mengulangi perubahan mode langsung.</InfoBox>
+<InfoBox variant="tip" title="Diagnostik">
+  Gunakan `--debug` sebelum mengulangi perubahan mode langsung.
+</InfoBox>

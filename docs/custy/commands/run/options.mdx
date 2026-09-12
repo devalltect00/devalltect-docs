@@ -8,30 +8,26 @@ keywords: [custy run options]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    PropertyTable,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  PropertyTable,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run"
-    title="Command Options"
-    description="Review the combined commit, tag, push, and execution option surface accepted by public Run profiles."
-    category="Pipeline"
-    status="Stable with Limitations"
-    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
-    tags={[
-        "options",
-        "pipeline inputs",
-        "profile inputs",
-    ]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Profiles", href: "./profiles"},
-        {label: "Safety", href: "./safety"},
-    ]}
+  command="custy run"
+  title="Command Options"
+  description="Review the combined commit, tag, push, and execution option surface accepted by public Run profiles."
+  category="Pipeline"
+  status="Stable with Limitations"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  tags={["options", "pipeline inputs", "profile inputs"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+  ]}
 />
 
 ## Overview
@@ -46,15 +42,42 @@ commit, tag, and push inputs.
 >
 
 <PropertyTable
-    title="Run Profile Inputs"
-    items={[
-        {property: "Commit validation and staging", type: "--check-cz, --auto-stage, --stage-mode, --allow-empty-commit", description: "Control commit checks, staging, and intentional empty-commit behavior."},
-        {property: "Commit files and backup", type: "--commit-msg-file, --backup-commit-dir", description: "Select the commit message and its retained backup location."},
-        {property: "Tag files and version", type: "--tag-msg-file, --version-file, --strategy, --bump, --tag, --tag-message", description: "Control version and tag preparation inputs."},
-        {property: "Release modifiers", type: "--pre, --post, --dev, --meta, --epoch", description: "Apply compatible release-version modifiers."},
-        {property: "Tag behavior and backup", type: "--force-tag, --skip-checks, --backup-tag-dir", description: "Control tag validation, forced creation, and message backup location."},
-        {property: "Push selection", type: "--all-remote, --remote, --skip-tag, --sync-backup", description: "Select destinations, tag handling, and eligible backup synchronization for profiles containing push."},
-    ]}
+  title="Run Profile Inputs"
+  items={[
+    {
+      property: "Commit validation and staging",
+      type: "--check-cz, --auto-stage, --stage-mode, --allow-empty-commit",
+      description:
+        "Control commit checks, staging, and intentional empty-commit behavior.",
+    },
+    {
+      property: "Commit files and backup",
+      type: "--commit-msg-file, --backup-commit-dir",
+      description: "Select the commit message and its retained backup location.",
+    },
+    {
+      property: "Tag files and version",
+      type: "--tag-msg-file, --version-file, --strategy, --bump, --tag, --tag-message",
+      description: "Control version and tag preparation inputs.",
+    },
+    {
+      property: "Release modifiers",
+      type: "--pre, --post, --dev, --meta, --epoch",
+      description: "Apply compatible release-version modifiers.",
+    },
+    {
+      property: "Tag behavior and backup",
+      type: "--force-tag, --skip-checks, --backup-tag-dir",
+      description:
+        "Control tag validation, forced creation, and message backup location.",
+    },
+    {
+      property: "Push selection",
+      type: "--all-remote, --remote, --skip-tag, --sync-backup",
+      description:
+        "Select destinations, tag handling, and eligible backup synchronization for profiles containing push.",
+    },
+  ]}
 />
 
 </Section>

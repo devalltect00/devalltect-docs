@@ -20,7 +20,7 @@ export interface ParsedVersionTag {
 /** Parse a tag according to its configured version grammar. */
 export function parseVersionTag(
   tag: string,
-  tagFormat: DocumentationTagFormat,
+  tagFormat: DocumentationTagFormat
 ): ParsedVersionTag | undefined {
   if (tagFormat === "semver") {
     const normalizedVersion = semver.valid(tag) ?? undefined;
@@ -51,7 +51,7 @@ export function parseVersionTag(
 export function compareVersions(
   left: string,
   right: string,
-  tagFormat: DocumentationTagFormat,
+  tagFormat: DocumentationTagFormat
 ): number {
   return tagFormat === "semver"
     ? semver.compare(left, right)
@@ -62,7 +62,7 @@ export function compareVersions(
 export function findLatestVersionTag(
   tags: Iterable<string>,
   tagFormat: DocumentationTagFormat,
-  includePrereleases: boolean,
+  includePrereleases: boolean
 ): { latest?: ParsedVersionTag; matchedTagCount: number } {
   const parsedTags = Array.from(tags)
     .map((tag) => parseVersionTag(tag, tagFormat))
@@ -70,11 +70,7 @@ export function findLatestVersionTag(
     .filter((tag) => includePrereleases || !tag.prerelease);
 
   parsedTags.sort((left, right) =>
-    compareVersions(
-      right.normalizedVersion,
-      left.normalizedVersion,
-      tagFormat,
-    ),
+    compareVersions(right.normalizedVersion, left.normalizedVersion, tagFormat)
   );
 
   return {
@@ -87,22 +83,19 @@ export function findLatestVersionTag(
 export function deriveDocumentationStatus(
   documentationVersion: string,
   latestVersion: string,
-  tagFormat: DocumentationTagFormat,
+  tagFormat: DocumentationTagFormat
 ): DocumentationStatus {
-  const parsedDocumentation = parseVersionTag(
-    documentationVersion,
-    tagFormat,
-  );
+  const parsedDocumentation = parseVersionTag(documentationVersion, tagFormat);
   if (!parsedDocumentation) {
     throw new Error(
-      `Documentation version "${documentationVersion}" is not valid ${tagFormat}.`,
+      `Documentation version "${documentationVersion}" is not valid ${tagFormat}.`
     );
   }
 
   const comparison = compareVersions(
     parsedDocumentation.normalizedVersion,
     latestVersion,
-    tagFormat,
+    tagFormat
   );
 
   if (comparison === 0) {

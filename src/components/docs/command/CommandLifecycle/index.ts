@@ -1,13 +1,9 @@
 export { default } from "./CommandLifecycle";
 
-export type {
-    CommandLifecycleProps,
-    CommandLifecycleStep,
-} from "./types";
-
+export type { CommandLifecycleProps, CommandLifecycleStep } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandLifecycle
     title="Release Lifecycle"
     description="Typical lifecycle for preparing and publishing a release."

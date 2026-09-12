@@ -6,20 +6,33 @@ sidebar_key: reflow-getting-started
 tags: [reflow, docker, container]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="docker pull ghcr.io/devalltect00/reflow:v1.0.0" title="Jalankan Reflow dengan Docker" description="Pilih tag rilis immutable atau alias bergerak yang terkontrol, lalu mount hanya repositori yang ingin dikelola Reflow." category="Memulai" status="Kebijakan Image Stabil" syntax="docker pull ghcr.io/devalltect00/reflow:<tag>" />
+<CommandHero
+  command="docker pull ghcr.io/devalltect00/reflow:v1.0.0"
+  title="Jalankan Reflow dengan Docker"
+  description="Pilih tag rilis immutable atau alias bergerak yang terkontrol, lalu mount hanya repositori yang ingin dikelola Reflow."
+  category="Memulai"
+  status="Kebijakan Image Stabil"
+  syntax="docker pull ghcr.io/devalltect00/reflow:<tag>"
+/>
 
 <Section title="Tag Image yang Dipublikasikan">
 
 Rilis stabil memublikasikan empat referensi terkoordinasi ke image yang sama:
 
-| Tag | Contoh | Perilaku |
-| --- | --- | --- |
-| Eksak | `v1.0.0` | Pilihan rilis immutable; disarankan untuk CI dan otomasi yang dapat direproduksi. |
-| Minor | `v1.0` | Bergerak ke patch stabil terbaru dalam lini 1.0. |
-| Major | `v1` | Bergerak ke rilis stabil terbaru dalam lini 1.x. |
-| Latest | `latest` | Bergerak ke rilis stabil Reflow terbaru. |
+| Tag    | Contoh   | Perilaku                                                                          |
+| ------ | -------- | --------------------------------------------------------------------------------- |
+| Eksak  | `v1.0.0` | Pilihan rilis immutable; disarankan untuk CI dan otomasi yang dapat direproduksi. |
+| Minor  | `v1.0`   | Bergerak ke patch stabil terbaru dalam lini 1.0.                                  |
+| Major  | `v1`     | Bergerak ke rilis stabil terbaru dalam lini 1.x.                                  |
+| Latest | `latest` | Bergerak ke rilis stabil Reflow terbaru.                                          |
 
 <Terminal title="Pull Reflow" language="bash">
 
@@ -62,8 +75,22 @@ dan menggunakan tujuan image yang dikonfigurasi oleh repositori tersebut.
 
 </Section>
 
-<RelatedCommands commands={[
-    {title: "Instalasi dan Workflow Pertama", href: "./first-workflow", description: "Instal Reflow dan pratinjau operasi repositori pertama."},
-    {title: "Dockerize", href: "../commands/dockerize/overview", description: "Publikasikan image untuk repositori target."},
-    {title: "Keamanan dan Dry-run", href: "../concepts/safety-and-dry-run", description: "Tinjau batas tanpa mutasi."},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Instalasi dan Workflow Pertama",
+      href: "./first-workflow",
+      description: "Instal Reflow dan pratinjau operasi repositori pertama.",
+    },
+    {
+      title: "Dockerize",
+      href: "../commands/dockerize/overview",
+      description: "Publikasikan image untuk repositori target.",
+    },
+    {
+      title: "Keamanan dan Dry-run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Tinjau batas tanpa mutasi.",
+    },
+  ]}
+/>

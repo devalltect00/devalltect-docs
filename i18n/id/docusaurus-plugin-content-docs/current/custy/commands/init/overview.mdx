@@ -19,68 +19,64 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    FeatureCard,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  FeatureCard,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Init Proyek"
-    description="Siapkan proyek yang sudah ada untuk digunakan bersama Custy dengan membuat konfigurasi, template, dan resource pendukung khusus proyek."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "configuration",
-        "templates",
-        "project setup",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy init"
+  title="Init Proyek"
+  description="Siapkan proyek yang sudah ada untuk digunakan bersama Custy dengan membuat konfigurasi, template, dan resource pendukung khusus proyek."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["configuration", "templates", "project setup"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {
-            label: "Kategori",
-            value: "Init",
-            icon: "directory",
-        },
-        {
-            label: "Kompleksitas",
-            value: "Pemula",
-            icon: "requirement",
-        },
-        {
-            label: "Mengubah Riwayat Git",
-            value: "Tidak",
-            icon: "git",
-        },
-        {
-            label: "Durasi Umum",
-            value: "Kurang dari satu menit",
-            icon: "timeline",
-        },
-    ]}
+  items={[
+    {
+      label: "Kategori",
+      value: "Init",
+      icon: "directory",
+    },
+    {
+      label: "Kompleksitas",
+      value: "Pemula",
+      icon: "requirement",
+    },
+    {
+      label: "Mengubah Riwayat Git",
+      value: "Tidak",
+      icon: "git",
+    },
+    {
+      label: "Durasi Umum",
+      value: "Kurang dari satu menit",
+      icon: "timeline",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -115,48 +111,41 @@ disesuaikan dengan workflow proyek Anda.
 >
 
 <FeatureGrid
-    title="Yang Dilakukan Command Ini"
-    items={[
-        {
-            title: "Membuat Configuration",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Membuat file configuration utama proyek di
-                    <code>.config/custy/config.toml</code>.
-                </>
-            ),
-        },
-        {
-            title: "Membuat Templates",
-            icon: <Icon name="file" />,
-            children: (
-                <>
-                    Membuat template default untuk commit, tag, dan changelog
-                    yang dapat disesuaikan dengan workflow tim Anda.
-                </>
-            ),
-        },
-        {
-            title: "Menyiapkan Proyek",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Membuat struktur direktori yang diperlukan Custy.
-                </>
-            ),
-        },
-        {
-            title: "Examples Opsional",
-            icon: <Icon name="project" />,
-            children: (
-                <>
-                    Membuat resource contoh untuk memperlihatkan template yang
-                    didukung.
-                </>
-            ),
-        },
-    ]}
+  title="Yang Dilakukan Command Ini"
+  items={[
+    {
+      title: "Membuat Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Membuat file configuration utama proyek di
+          <code>.config/custy/config.toml</code>.
+        </>
+      ),
+    },
+    {
+      title: "Membuat Templates",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Membuat template default untuk commit, tag, dan changelog yang dapat
+          disesuaikan dengan workflow tim Anda.
+        </>
+      ),
+    },
+    {
+      title: "Menyiapkan Proyek",
+      icon: <Icon name="directory" />,
+      children: <>Membuat struktur direktori yang diperlukan Custy.</>,
+    },
+    {
+      title: "Examples Opsional",
+      icon: <Icon name="project" />,
+      children: (
+        <>Membuat resource contoh untuk memperlihatkan template yang didukung.</>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -210,8 +199,7 @@ Setelah init selesai, proyek Anda memiliki workspace Custy khusus.
 
 <Terminal>
 
-{`
-your-project/
+{`your-project/
 └── .config/
     └── custy/
         ├── config.toml
@@ -220,8 +208,7 @@ your-project/
             ├── changelog/
             ├── examples/
             ├── commit-message.txt
-            └── tag-message.txt
-`}
+            └── tag-message.txt`}
 
 </Terminal>
 
@@ -284,32 +271,28 @@ Sebagai contoh:
 - Sesuaikan configuration dan template yang dibuat.
 
 <RelatedCommands
-    commands={[
-        {
-            title: "Validate",
-            href: "../validate/overview",
-            description:
-                "Verifikasi configuration Custy untuk proyek Anda.",
-        },
-        {
-            title: "Run",
-            href: "../run/overview",
-            description:
-                "Jalankan workflow yang telah ditentukan.",
-        },
-        {
-            title: "Workflow",
-            href: "../workflow/overview",
-            description:
-                "Pelajari orchestration workflow.",
-        },
-        {
-            title: "Version",
-            href: "../version/overview",
-            description:
-                "Kelola versi proyek.",
-        },
-    ]}
+  commands={[
+    {
+      title: "Validate",
+      href: "../validate/overview",
+      description: "Verifikasi configuration Custy untuk proyek Anda.",
+    },
+    {
+      title: "Run",
+      href: "../run/overview",
+      description: "Jalankan workflow yang telah ditentukan.",
+    },
+    {
+      title: "Workflow",
+      href: "../workflow/overview",
+      description: "Pelajari orchestration workflow.",
+    },
+    {
+      title: "Version",
+      href: "../version/overview",
+      description: "Kelola versi proyek.",
+    },
+  ]}
 />
 
 </Section>

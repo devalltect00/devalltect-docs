@@ -6,25 +6,25 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Examples"
-    description="Pelajari cara membuat backup template files Custy dalam skenario development umum."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup commit"
-    tags={["examples", "backup", "templates"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Output", href: "./output"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy backup"
+  title="Examples"
+  description="Pelajari cara membuat backup template files Custy dalam skenario development umum."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup commit"
+  tags={["examples", "backup", "templates"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Output", href: "./output" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Ringkasan
@@ -37,26 +37,27 @@ files Custy.
 <Section title="Contoh Umum">
 
 <CommandExample
-    examples={[
-        {
-            title: "Backup Commit Message Template",
-            description: "Buat backup commit message template yang dikonfigurasi.",
-            command: "custy backup commit",
-            result: "Membuat timestamped backup dari configured commit message template.",
-        },
-        {
-            title: "Backup Tag Message Template",
-            description: "Buat backup tag message template yang dikonfigurasi.",
-            command: "custy backup tag",
-            result: "Membuat timestamped backup dari configured tag message template.",
-        },
-        {
-            title: "Backup Semua Templates",
-            description: "Buat backup commit dan tag message templates.",
-            command: "custy backup all",
-            result: "Membuat timestamped backup untuk setiap template resource yang didukung.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Backup Commit Message Template",
+      description: "Buat backup commit message template yang dikonfigurasi.",
+      command: "custy backup commit",
+      result: "Membuat timestamped backup dari configured commit message template.",
+    },
+    {
+      title: "Backup Tag Message Template",
+      description: "Buat backup tag message template yang dikonfigurasi.",
+      command: "custy backup tag",
+      result: "Membuat timestamped backup dari configured tag message template.",
+    },
+    {
+      title: "Backup Semua Templates",
+      description: "Buat backup commit dan tag message templates.",
+      command: "custy backup all",
+      result:
+        "Membuat timestamped backup untuk setiap template resource yang didukung.",
+    },
+  ]}
 />
 
 </Section>
@@ -74,16 +75,18 @@ files Custy.
 `custy backup commit
 
 # Edit commit-message.txt`,
+
             result: "Template asli tetap tersimpan dengan aman di backup directory.",
         },
         {
             title: "Sebelum Memperbarui Release Templates",
             description: "Buat backup sebelum mengubah template terkait release.",
             command:
+
 `custy backup all`,
-            result: "Commit dan tag message templates di-backup sebelum perubahan manual.",
-        },
-    ]}
+result: "Commit dan tag message templates di-backup sebelum perubahan manual.",
+},
+]}
 />
 
 </Section>

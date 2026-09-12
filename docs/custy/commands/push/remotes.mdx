@@ -8,31 +8,27 @@ keywords: [main remote, backup remote, origin]
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Remote Resolution"
-    description="Understand explicit selection, configured main and backup groups, default fallback, and branch safety."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "remotes",
-        "origin",
-        "backup",
-    ]}
-    links={[
-        {label: "Requirements", href: "./requirements"},
-        {label: "Options", href: "./options"},
-        {label: "Workflow", href: "./workflow"},
-    ]}
+  command="custy push"
+  title="Remote Resolution"
+  description="Understand explicit selection, configured main and backup groups, default fallback, and branch safety."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  tags={["remotes", "origin", "backup"]}
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
 />
 
 ## Overview
@@ -47,13 +43,32 @@ when the destination is processed and which safety rules apply.
 >
 
 <FeatureGrid
-    title="Resolved Destination Types"
-    items={[
-        {title: "Explicit Remote", icon: <Icon name="terminal" />, children: "--remote selects exactly one destination and overrides group settings."},
-        {title: "Main Remotes", icon: <Icon name="network" />, children: "Come from main_remotes, falling back to default_remote when the list is empty."},
-        {title: "Backup Remotes", icon: <Icon name="package" />, children: "Come only from backup_remotes and remain subject to branch safety."},
-        {title: "All Remotes", icon: <Icon name="configuration" />, children: "--all-remote selects the de-duplicated union of configured main and backup groups."},
-    ]}
+  title="Resolved Destination Types"
+  items={[
+    {
+      title: "Explicit Remote",
+      icon: <Icon name="terminal" />,
+      children:
+        "--remote selects exactly one destination and overrides group settings.",
+    },
+    {
+      title: "Main Remotes",
+      icon: <Icon name="network" />,
+      children:
+        "Come from main_remotes, falling back to default_remote when the list is empty.",
+    },
+    {
+      title: "Backup Remotes",
+      icon: <Icon name="package" />,
+      children: "Come only from backup_remotes and remain subject to branch safety.",
+    },
+    {
+      title: "All Remotes",
+      icon: <Icon name="configuration" />,
+      children:
+        "--all-remote selects the de-duplicated union of configured main and backup groups.",
+    },
+  ]}
 />
 
 </Section>

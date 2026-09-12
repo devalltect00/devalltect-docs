@@ -6,9 +6,22 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, output]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Output" description="Output" category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Output"
+  description="Output"
+  category="Release Recovery"
+  status="GitHub Workflow Recovery"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 - Target and filters.
 - Missing-release tags.
@@ -20,4 +33,3 @@ Operation  : reflow releases recover
 Dry run    : true/false
 Successful : <count>
 Failed     : <count>`}</Terminal>
-

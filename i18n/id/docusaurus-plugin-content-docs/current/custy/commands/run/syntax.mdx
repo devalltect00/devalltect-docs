@@ -4,13 +4,35 @@ description: "Public custy run profiles dan command forms."
 sidebar_position: 3
 sidebar_key: custy-run-syntax
 ---
-import {CommandHero, CommandSyntax, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Command Syntax" description="Jalankan satu public profile atau gabungkan beberapa profile." category="Pipeline" status="Reference" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Profiles",href:"./profiles"},{label:"Options",href:"./options"},{label:"Custom Sequences",href:"./custom-sequences"}]} />
+import { CommandHero, CommandSyntax, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Command Syntax"
+  description="Jalankan satu public profile atau gabungkan beberapa profile."
+  category="Pipeline"
+  status="Reference"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Options", href: "./options" },
+    { label: "Custom Sequences", href: "./custom-sequences" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandSyntax examples={[
- {title:"Development",command:"custy run dev"},{title:"Release",command:"custy run release"},{title:"Full",command:"custy run full"},{title:"Combined",command:"custy run commit tag push"},{title:"Preview",command:"custy --dry-run run release"},
-]} />
-<InfoBox variant="warning" title="Rejected Names">Gunakan hanya public profile names. Raw step dan internal profile names ditolak oleh typed Run argument.</InfoBox>
+<CommandSyntax
+  examples={[
+    { title: "Development", command: "custy run dev" },
+    { title: "Release", command: "custy run release" },
+    { title: "Full", command: "custy run full" },
+    { title: "Combined", command: "custy run commit tag push" },
+    { title: "Preview", command: "custy --dry-run run release" },
+  ]}
+/>
+<InfoBox variant="warning" title="Rejected Names">
+  Gunakan hanya public profile names. Raw step dan internal profile names ditolak oleh
+  typed Run argument.
+</InfoBox>

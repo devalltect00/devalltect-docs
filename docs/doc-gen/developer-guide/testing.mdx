@@ -8,40 +8,40 @@ keywords: [Doc Gen tests, Doc Gen pytest, Doc Gen dry-run tests]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pytest"
-    title="Testing Doc Gen"
-    description="Validate one scanning, rendering, CLI, or persistence contract before the complete suite."
-    category="Developer Guide"
-    status="Required for Changes"
-    syntax="python -m pytest [PATH] [OPTIONS]"
-    tags={["CLI", "generation", "read-only", "dry-run", "pre-commit"]}
-    links={[
-        {label: "Test Layers", href: "#test-layers"},
-        {label: "Focused Tests", href: "#focused-validation"},
-        {label: "Pre-Commit", href: "#pre-commit-quality-gates"},
-        {label: "Full Validation", href: "#complete-validation"},
-    ]}
+  command="python -m pytest"
+  title="Testing Doc Gen"
+  description="Validate one scanning, rendering, CLI, or persistence contract before the complete suite."
+  category="Developer Guide"
+  status="Required for Changes"
+  syntax="python -m pytest [PATH] [OPTIONS]"
+  tags={["CLI", "generation", "read-only", "dry-run", "pre-commit"]}
+  links={[
+    { label: "Test Layers", href: "#test-layers" },
+    { label: "Focused Tests", href: "#focused-validation" },
+    { label: "Pre-Commit", href: "#pre-commit-quality-gates" },
+    { label: "Full Validation", href: "#complete-validation" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Framework", value: "pytest", icon: "testing"},
-        {label: "Coverage Target", value: "app", icon: "project"},
-        {label: "Test Root", value: "tests", icon: "directory"},
-        {label: "Writable Command", value: "structure generate", icon: "file"},
-    ]}
+  items={[
+    { label: "Framework", value: "pytest", icon: "testing" },
+    { label: "Coverage Target", value: "app", icon: "project" },
+    { label: "Test Root", value: "tests", icon: "directory" },
+    { label: "Writable Command", value: "structure generate", icon: "file" },
+  ]}
 />
 
 ## Overview
@@ -62,13 +62,33 @@ renderer boundary and assert non-invocation at the writer boundary.
 <Section title="Test Layers">
 
 <FeatureGrid
-    title="Where Doc Gen Behavior Is Exercised"
-    items={[
-        {title: "CLI", icon: <Icon name="terminal" />, children: "tests/cli covers entry behavior, initialization, errors, and version output."},
-        {title: "Configuration", icon: <Icon name="configuration" />, children: "tests/config covers loading and defaults, while tests/unit/config validates packaging and pre-commit policy."},
-        {title: "Initialization", icon: <Icon name="architecture" />, children: "tests/core/initialize covers scaffold models, builders, and execution without unsafe overwrites."},
-        {title: "Safety and Workflows", icon: <Icon name="security" />, children: "Dry-run, developer-workflow, utility, service, and theme tests preserve output and integration contracts."},
-    ]}
+  title="Where Doc Gen Behavior Is Exercised"
+  items={[
+    {
+      title: "CLI",
+      icon: <Icon name="terminal" />,
+      children:
+        "tests/cli covers entry behavior, initialization, errors, and version output.",
+    },
+    {
+      title: "Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "tests/config covers loading and defaults, while tests/unit/config validates packaging and pre-commit policy.",
+    },
+    {
+      title: "Initialization",
+      icon: <Icon name="architecture" />,
+      children:
+        "tests/core/initialize covers scaffold models, builders, and execution without unsafe overwrites.",
+    },
+    {
+      title: "Safety and Workflows",
+      icon: <Icon name="security" />,
+      children:
+        "Dry-run, developer-workflow, utility, service, and theme tests preserve output and integration contracts.",
+    },
+  ]}
 />
 
 </Section>
@@ -83,12 +103,15 @@ renderer boundary and assert non-invocation at the writer boundary.
 python -m pytest tests/cli
 
 # Initialization builders and execution
+
 python -m pytest tests/core/initialize
 
 # Generated-output and command dry-run boundaries
+
 python -m pytest tests/test_dry_run.py
 
 # Make, Docker, Compose, and metadata contracts
+
 python -m pytest tests/test_developer_workflows.py tests/unit/config`}
 
 </Terminal>
@@ -103,13 +126,32 @@ directory has inherited ACL restrictions.
 <Section title="What to Test">
 
 <CommandChecklist
-    items={[
-        {title: "Print and analyze", description: "Assert useful output without creating or modifying project files."},
-        {title: "Generate", description: "Assert only the resolved output document is written and unrelated documentation remains untouched."},
-        {title: "Dry-run", description: "Allow safe scanning and rendering but prevent output directories, files, and writer calls."},
-        {title: "Profiles and ignore rules", description: "Cover explicit and default profiles, smart mode, depth, visibility, collapse, project type, and ignored content."},
-        {title: "Configuration", description: "Cover present, missing, defaulted, invalid, and CLI-overridden values at the consuming boundary."},
-    ]}
+  items={[
+    {
+      title: "Print and analyze",
+      description: "Assert useful output without creating or modifying project files.",
+    },
+    {
+      title: "Generate",
+      description:
+        "Assert only the resolved output document is written and unrelated documentation remains untouched.",
+    },
+    {
+      title: "Dry-run",
+      description:
+        "Allow safe scanning and rendering but prevent output directories, files, and writer calls.",
+    },
+    {
+      title: "Profiles and ignore rules",
+      description:
+        "Cover explicit and default profiles, smart mode, depth, visibility, collapse, project type, and ignored content.",
+    },
+    {
+      title: "Configuration",
+      description:
+        "Cover present, missing, defaulted, invalid, and CLI-overridden values at the consuming boundary.",
+    },
+  ]}
 />
 
 </Section>
@@ -154,10 +196,26 @@ dry-runs, Docker and Compose configuration, and development and production CLI
 ---
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Install the complete contributor toolchain."},
-        {title: "Contributing", href: "./contributing", description: "Prepare a focused Doc Gen contribution."},
-        {title: "Safety and Dry Run", href: "../concepts/safety-and-dry-run", description: "Review output non-mutation guarantees."},
-        {title: "Architecture", href: "../architecture/overview", description: "Map tests to scanning, rendering, and writing layers."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Install the complete contributor toolchain.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Prepare a focused Doc Gen contribution.",
+    },
+    {
+      title: "Safety and Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Review output non-mutation guarantees.",
+    },
+    {
+      title: "Architecture",
+      href: "../architecture/overview",
+      description: "Map tests to scanning, rendering, and writing layers.",
+    },
+  ]}
 />

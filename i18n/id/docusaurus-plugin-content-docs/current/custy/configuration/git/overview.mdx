@@ -7,13 +7,96 @@ tags: [custy, configuration, git]
 keywords: [tool.custy.git, git remotes, push_to]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.git]" title="Ringkasan Git" description="Tentukan repositories, push behavior, credential policy, dan safe commit-hook execution." category="Configuration" status="Active + Reserved Key" syntax="[tool.custy.git]" tags={["remotes", "push strategy", "credentials", "commit hooks"]} links={[{label: "Remotes", href: "./remotes"}, {label: "Push Strategy", href: "./push-strategy"}, {label: "Credentials", href: "./credentials"}, {label: "Commit Hooks", href: "./hooks"}]} />
+<CommandHero
+  command="[tool.custy.git]"
+  title="Ringkasan Git"
+  description="Tentukan repositories, push behavior, credential policy, dan safe commit-hook execution."
+  category="Configuration"
+  status="Active + Reserved Key"
+  syntax="[tool.custy.git]"
+  tags={["remotes", "push strategy", "credentials", "commit hooks"]}
+  links={[
+    { label: "Remotes", href: "./remotes" },
+    { label: "Push Strategy", href: "./push-strategy" },
+    { label: "Credentials", href: "./credentials" },
+    { label: "Commit Hooks", href: "./hooks" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Properties", value: "4", icon: "table"}, {label: "Optional Property", value: "backup_remotes", icon: "note"}, {label: "Default Remote", value: "origin", icon: "git"}, {label: "Network Side Effect", value: "Yes", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Properties", value: "4", icon: "table" },
+    { label: "Optional Property", value: "backup_remotes", icon: "note" },
+    { label: "Default Remote", value: "origin", icon: "git" },
+    { label: "Network Side Effect", value: "Yes", icon: "warning" },
+  ]}
+/>
 
-<FeatureGrid items={[{title: "Remote Groups", icon: <Icon name="network" />, children: <>Konfigurasikan default, primary, dan optional backup destinations melalui <a href="./remotes">Git Remotes</a>.</>}, {title: "Push Strategy", icon: <Icon name="workflow" />, children: <>Pilih main, backup, atau all service-level groups dan tinjau reserved auto-push behavior melalui <a href="./push-strategy">Push Strategy</a>.</>}, {title: "Credential Policy", icon: <Icon name="security" />, children: <>Pertahankan native Git lebih dulu dan konfigurasikan optional container fallback melalui <a href="./credentials">Git Credentials</a>.</>}, {title: "Commit Hooks", icon: <Icon name="success" />, children: <>Pertahankan project tanpa hooks pada native Git dan adaptasikan recognized cross-platform pre-commit wrappers melalui <a href="./hooks">Git Commit Hooks</a>.</>}, {title: "CLI Push Defaults", icon: <Icon name="terminal" />, children: <>Konfigurasikan all-remote, skip-tag, dan backup-sync arguments melalui <a href="../cli/push">tool.custy.cli.push</a>.</>}]} />
+<FeatureGrid
+  items={[
+    {
+      title: "Remote Groups",
+      icon: <Icon name="network" />,
+      children: (
+        <>
+          Konfigurasikan default, primary, dan optional backup destinations melalui{" "}
+          <a href="./remotes">Git Remotes</a>.
+        </>
+      ),
+    },
+    {
+      title: "Push Strategy",
+      icon: <Icon name="workflow" />,
+      children: (
+        <>
+          Pilih main, backup, atau all service-level groups dan tinjau reserved
+          auto-push behavior melalui <a href="./push-strategy">Push Strategy</a>.
+        </>
+      ),
+    },
+    {
+      title: "Credential Policy",
+      icon: <Icon name="security" />,
+      children: (
+        <>
+          Pertahankan native Git lebih dulu dan konfigurasikan optional container
+          fallback melalui <a href="./credentials">Git Credentials</a>.
+        </>
+      ),
+    },
+    {
+      title: "Commit Hooks",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Pertahankan project tanpa hooks pada native Git dan adaptasikan recognized
+          cross-platform pre-commit wrappers melalui{" "}
+          <a href="./hooks">Git Commit Hooks</a>.
+        </>
+      ),
+    },
+    {
+      title: "CLI Push Defaults",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Konfigurasikan all-remote, skip-tag, dan backup-sync arguments melalui{" "}
+          <a href="../cli/push">tool.custy.cli.push</a>.
+        </>
+      ),
+    },
+  ]}
+/>
 
 <InfoBox variant="warning" title="Jangan Simpan Credentials di Sini">
 
@@ -23,4 +106,34 @@ external token sources.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Tentukan primary dan backup groups."}, {title: "Push Strategy", href: "./push-strategy", description: "Pilih service-level group."}, {title: "Git Credentials", href: "./credentials", description: "Konfigurasikan native-first container authentication fallback."}, {title: "Commit Hooks", href: "./hooks", description: "Pilih safe native atau pre-commit execution."}, {title: "CLI Push", href: "../cli/push", description: "Konfigurasikan direct command defaults."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Remotes",
+        href: "./remotes",
+        description: "Tentukan primary dan backup groups.",
+      },
+      {
+        title: "Push Strategy",
+        href: "./push-strategy",
+        description: "Pilih service-level group.",
+      },
+      {
+        title: "Git Credentials",
+        href: "./credentials",
+        description: "Konfigurasikan native-first container authentication fallback.",
+      },
+      {
+        title: "Commit Hooks",
+        href: "./hooks",
+        description: "Pilih safe native atau pre-commit execution.",
+      },
+      {
+        title: "CLI Push",
+        href: "../cli/push",
+        description: "Konfigurasikan direct command defaults.",
+      },
+    ]}
+  />
+</Section>

@@ -8,30 +8,26 @@ keywords: [dev profile stages]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run dev"
-    title="Development Workflow"
-    description="Follow the exact registered Dev stages from repository validation through local commit and remote push."
-    category="Pipeline Profile"
-    status="Stable"
-    syntax="custy run dev [OPTIONS]"
-    tags={[
-        "workflow",
-        "development",
-        "commit and push",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Examples", href: "./examples"},
-        {label: "Pipeline Internals", href: "../../../pipelines/development-pipeline"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run dev"
+  title="Development Workflow"
+  description="Follow the exact registered Dev stages from repository validation through local commit and remote push."
+  category="Pipeline Profile"
+  status="Stable"
+  syntax="custy run dev [OPTIONS]"
+  tags={["workflow", "development", "commit and push"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Examples", href: "./examples" },
+    { label: "Pipeline Internals", href: "../../../pipelines/development-pipeline" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 ## Overview
@@ -46,15 +42,40 @@ push. Release preparation and tag operations are intentionally absent.
 >
 
 <WorkflowTimeline
-    title="Dev Profile"
-    items={[
-        {title: "Validate repository", description: "Confirm execution inside a Git repository.", status: "completed"},
-        {title: "Validate commit inputs", description: "Resolve the commit-validation provider, hook policy, message file, and remote.", status: "completed"},
-        {title: "Review the commit message", description: "Open only the commit-message file and validate the saved content.", status: "completed"},
-        {title: "Back up and clean", description: "Back up the commit message and prune retained backups.", status: "completed"},
-        {title: "Stage and commit", description: "Stage resolved files and create the Git commit.", status: "completed"},
-        {title: "Push", description: "Push branch HEAD to resolved remotes without pushing a tag.", status: "completed"},
-    ]}
+  title="Dev Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Confirm execution inside a Git repository.",
+      status: "completed",
+    },
+    {
+      title: "Validate commit inputs",
+      description:
+        "Resolve the commit-validation provider, hook policy, message file, and remote.",
+      status: "completed",
+    },
+    {
+      title: "Review the commit message",
+      description: "Open only the commit-message file and validate the saved content.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Back up the commit message and prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Stage and commit",
+      description: "Stage resolved files and create the Git commit.",
+      status: "completed",
+    },
+    {
+      title: "Push",
+      description: "Push branch HEAD to resolved remotes without pushing a tag.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

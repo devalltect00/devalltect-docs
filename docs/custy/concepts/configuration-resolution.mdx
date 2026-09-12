@@ -16,42 +16,42 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="CLI → config.toml → default"
-    title="Configuration Resolution"
-    description="Understand which value Custy uses when the CLI, project configuration, and application defaults overlap."
-    category="Core Concepts"
-    status="Essential"
-    syntax="custy [GLOBAL OPTIONS] COMMAND [OPTIONS]"
-    tags={[
-        "configuration priority",
-        "project defaults",
-        "CLI overrides",
-    ]}
-    links={[
-        {label: "Initialize Config", href: "../commands/init/configuration"},
-        {label: "Property Reference", href: "../configuration/reference"},
-        {label: "Run Options", href: "../commands/run/options"},
-    ]}
+  command="CLI → config.toml → default"
+  title="Configuration Resolution"
+  description="Understand which value Custy uses when the CLI, project configuration, and application defaults overlap."
+  category="Core Concepts"
+  status="Essential"
+  syntax="custy [GLOBAL OPTIONS] COMMAND [OPTIONS]"
+  tags={["configuration priority", "project defaults", "CLI overrides"]}
+  links={[
+    { label: "Initialize Config", href: "../commands/init/configuration" },
+    { label: "Property Reference", href: "../configuration/reference" },
+    { label: "Run Options", href: "../commands/run/options" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Highest Priority", value: "Explicit CLI value", icon: "terminal"},
-        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Root Table", value: "[tool.custy]", icon: "file"},
-        {label: "Load Scope", value: "Once per process", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Highest Priority", value: "Explicit CLI value", icon: "terminal" },
+    {
+      label: "Project File",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Root Table", value: "[tool.custy]", icon: "file" },
+    { label: "Load Scope", value: "Once per process", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -78,23 +78,26 @@ behavior.
 >
 
 <PropertyTable
-    items={[
-        {
-            property: "1. Explicit CLI value",
-            type: "Highest priority",
-            description: "A value supplied for the current invocation overrides the corresponding project setting.",
-        },
-        {
-            property: "2. Project configuration",
-            type: ".config/custy/config.toml",
-            description: "The value under [tool.custy] is used when the matching CLI value is unspecified.",
-        },
-        {
-            property: "3. Built-in default",
-            type: "Fallback",
-            description: "The command's default is used when neither the CLI nor configuration supplies a value.",
-        },
-    ]}
+  items={[
+    {
+      property: "1. Explicit CLI value",
+      type: "Highest priority",
+      description:
+        "A value supplied for the current invocation overrides the corresponding project setting.",
+    },
+    {
+      property: "2. Project configuration",
+      type: ".config/custy/config.toml",
+      description:
+        "The value under [tool.custy] is used when the matching CLI value is unspecified.",
+    },
+    {
+      property: "3. Built-in default",
+      type: "Fallback",
+      description:
+        "The command's default is used when neither the CLI nor configuration supplies a value.",
+    },
+  ]}
 />
 
 </Section>
@@ -106,29 +109,32 @@ behavior.
 >
 
 <WorkflowTimeline
-    title="Value Selection"
-    items={[
-        {
-            title: "Read the CLI value",
-            description: "Use an explicit value immediately when the command supplied one.",
-            status: "current",
-        },
-        {
-            title: "Read project configuration",
-            description: "When the CLI value is unspecified, look up the corresponding path under [tool.custy].",
-            status: "pending",
-        },
-        {
-            title: "Apply the built-in default",
-            description: "Use the command's fallback when the configuration path is also absent.",
-            status: "pending",
-        },
-        {
-            title: "Validate the result",
-            description: "A required value that remains unresolved raises a configuration error.",
-            status: "pending",
-        },
-    ]}
+  title="Value Selection"
+  items={[
+    {
+      title: "Read the CLI value",
+      description: "Use an explicit value immediately when the command supplied one.",
+      status: "current",
+    },
+    {
+      title: "Read project configuration",
+      description:
+        "When the CLI value is unspecified, look up the corresponding path under [tool.custy].",
+      status: "pending",
+    },
+    {
+      title: "Apply the built-in default",
+      description:
+        "Use the command's fallback when the configuration path is also absent.",
+      status: "pending",
+    },
+    {
+      title: "Validate the result",
+      description:
+        "A required value that remains unresolved raises a configuration error.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -196,13 +202,33 @@ and options pages before relying on a fallback.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Init Configuration", href: "../commands/init/configuration", description: "Generate and understand project-specific Custy resources."},
-        {title: "All Configuration Properties", href: "../configuration/reference", description: "Find every full TOML path, default, and implementation status."},
-        {title: "Run Options", href: "../commands/run/options", description: "Review public pipeline option behavior."},
-        {title: "Changelog Configuration", href: "../commands/changelog/generate/configuration", description: "Configure generated changelog content and paths."},
-        {title: "Version Configuration", href: "../commands/version/configuration", description: "Configure strategy and version synchronization behavior."},
-    ]}
+  commands={[
+    {
+      title: "Init Configuration",
+      href: "../commands/init/configuration",
+      description: "Generate and understand project-specific Custy resources.",
+    },
+    {
+      title: "All Configuration Properties",
+      href: "../configuration/reference",
+      description: "Find every full TOML path, default, and implementation status.",
+    },
+    {
+      title: "Run Options",
+      href: "../commands/run/options",
+      description: "Review public pipeline option behavior.",
+    },
+    {
+      title: "Changelog Configuration",
+      href: "../commands/changelog/generate/configuration",
+      description: "Configure generated changelog content and paths.",
+    },
+    {
+      title: "Version Configuration",
+      href: "../commands/version/configuration",
+      description: "Configure strategy and version synchronization behavior.",
+    },
+  ]}
 />
 
 </Section>

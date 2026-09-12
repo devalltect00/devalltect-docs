@@ -8,38 +8,34 @@ keywords: [changelog generation examples]
 ---
 
 import {
-    CommandExample,
-    CommandHero,
-    InfoBox,
-    Section,
+  CommandExample,
+  CommandHero,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Examples"
-    description="Use practical generation patterns for previews, forced rebuilds, and one-time template overrides."
-    category="Changelog"
-    status="Stable"
-    syntax="custy changelog generate [OPTIONS]"
-    tags={[
-        "examples",
-        "dry-run",
-        "release notes",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy changelog generate"
+  title="Examples"
+  description="Use practical generation patterns for previews, forced rebuilds, and one-time template overrides."
+  category="Changelog"
+  status="Stable"
+  syntax="custy changelog generate [OPTIONS]"
+  tags={["examples", "dry-run", "release notes"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -65,31 +61,36 @@ normal `CHANGELOG.md` diff before committing it.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Generate with project configuration",
-            command: "custy changelog generate",
-            description: "Use the repository's configured templates, collection rules, and render settings.",
-            result: "CHANGELOG.md is generated or updated from the resolved repository history.",
-        },
-        {
-            title: "Preview generation",
-            command: "custy --dry-run changelog generate",
-            description: "Inspect planned execution through the root dry-run option.",
-            notes: "Confirm dry-run output before normal execution when changing configuration.",
-        },
-        {
-            title: "Rebuild existing content",
-            command: "custy changelog generate --force",
-            description: "Request forced regeneration using current history and configuration.",
-            notes: "Review the complete changelog diff because more content may be replaced.",
-        },
-        {
-            title: "Use a release-specific pending message",
-            command: "custy changelog generate --commit-msg-file .config/custy/templates/release-commit.txt",
-            description: "Override the pending commit-message source for one invocation.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Generate with project configuration",
+      command: "custy changelog generate",
+      description:
+        "Use the repository's configured templates, collection rules, and render settings.",
+      result:
+        "CHANGELOG.md is generated or updated from the resolved repository history.",
+    },
+    {
+      title: "Preview generation",
+      command: "custy --dry-run changelog generate",
+      description: "Inspect planned execution through the root dry-run option.",
+      notes:
+        "Confirm dry-run output before normal execution when changing configuration.",
+    },
+    {
+      title: "Rebuild existing content",
+      command: "custy changelog generate --force",
+      description:
+        "Request forced regeneration using current history and configuration.",
+      notes: "Review the complete changelog diff because more content may be replaced.",
+    },
+    {
+      title: "Use a release-specific pending message",
+      command:
+        "custy changelog generate --commit-msg-file .config/custy/templates/release-commit.txt",
+      description: "Override the pending commit-message source for one invocation.",
+    },
+  ]}
 />
 
 </Section>

@@ -5,45 +5,42 @@ sidebar_position: 9
 sidebar_key: custy-version
 
 tags:
-    - version
-    - output
+  - version
+  - output
 
 keywords:
-    - custy version output
+  - custy version output
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Output"
-    description="Learn what information Custy reports after synchronizing project versions."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "output",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy version"
+  title="Output"
+  description="Learn what information Custy reports after synchronizing project versions."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["output", "version"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -73,15 +70,15 @@ are modified.
 
 🐍 Python project detected
 
-✅ app/__version__.py updated → 2.4.0
+✅ app/**version**.py updated → 2.4.0
 
 ✅ pyproject.toml updated
 
 ✅ .cz.toml updated
 
 🎉 Version synchronization completed successfully.`,
-        },
-    ]}
+},
+]}
 />
 
 </Section>
@@ -104,8 +101,8 @@ are modified.
 (dry-run) Would update pyproject.toml
 
 (dry-run) Would update .cz.toml`,
-        },
-    ]}
+},
+]}
 />
 
 </Section>

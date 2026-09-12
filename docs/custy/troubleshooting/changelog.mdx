@@ -4,42 +4,43 @@ description: "Resolve missing or duplicate entries, incorrect release ranges, no
 sidebar_position: 5
 sidebar_key: custy-troubleshooting-changelog
 tags: [custy, troubleshooting, changelog]
-keywords: [Custy changelog missing commit, duplicate changelog, changelog template error]
+keywords:
+  [Custy changelog missing commit, duplicate changelog, changelog template error]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Changelog Troubleshooting"
-    description="Diagnose repository ranges, message sources, semantic processing, release behavior, rendering, and final Markdown separately."
-    category="Troubleshooting"
-    status="Generation Recovery"
-    syntax="history -> providers -> processing -> releases -> Jinja -> CHANGELOG.md"
-    tags={["Git ranges", "providers", "grouping", "rendering"]}
-    links={[
-        {label: "Troubleshooting Hub", href: "./overview"},
-        {label: "Generate Guide", href: "../commands/changelog/generate/troubleshooting"},
-        {label: "Configuration", href: "../configuration/changelog/overview"},
-        {label: "Architecture", href: "../architecture/changelog-system"},
-    ]}
+  command="custy changelog generate"
+  title="Changelog Troubleshooting"
+  description="Diagnose repository ranges, message sources, semantic processing, release behavior, rendering, and final Markdown separately."
+  category="Troubleshooting"
+  status="Generation Recovery"
+  syntax="history -> providers -> processing -> releases -> Jinja -> CHANGELOG.md"
+  tags={["Git ranges", "providers", "grouping", "rendering"]}
+  links={[
+    { label: "Troubleshooting Hub", href: "./overview" },
+    { label: "Generate Guide", href: "../commands/changelog/generate/troubleshooting" },
+    { label: "Configuration", href: "../configuration/changelog/overview" },
+    { label: "Architecture", href: "../architecture/changelog-system" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "History Source", value: "GitProvider", icon: "git"},
-        {label: "Optional Source", value: "PendingCommitProvider", icon: "file"},
-        {label: "Renderer", value: "JinjaRenderer", icon: "template"},
-        {label: "Output", value: "CHANGELOG.md", icon: "release"},
-    ]}
+  items={[
+    { label: "History Source", value: "GitProvider", icon: "git" },
+    { label: "Optional Source", value: "PendingCommitProvider", icon: "file" },
+    { label: "Renderer", value: "JinjaRenderer", icon: "template" },
+    { label: "Output", value: "CHANGELOG.md", icon: "release" },
+  ]}
 />
 
 ## Scope of This Page
@@ -52,15 +53,45 @@ use the [Generate troubleshooting guide](../commands/changelog/generate/troubles
 ## Locate the Unexpected Stage
 
 <WorkflowTimeline
-    title="Generation Boundaries"
-    items={[
-        {title: "Eligibility", description: "Confirm generation was enabled, not skipped, and allowed by release or force conditions.", status: "completed"},
-        {title: "Tag ranges", description: "Confirm local tags, their ordering, stable boundaries, prerelease families, and the HEAD range.", status: "completed"},
-        {title: "Message collection", description: "Compare committed messages with optional latest pending-template content.", status: "current"},
-        {title: "Semantic processing", description: "Review cleaning, ignore rules, parsing, expansion, deduplication, type mapping, and scope grouping.", status: "pending"},
-        {title: "Release behavior", description: "Review hidden, title-only, custom-message, promotion, comparison, and release ordering behavior.", status: "pending"},
-        {title: "Rendering and write", description: "Validate the active Jinja template, render toggles, destination diff, and successful final write.", status: "pending"},
-    ]}
+  title="Generation Boundaries"
+  items={[
+    {
+      title: "Eligibility",
+      description:
+        "Confirm generation was enabled, not skipped, and allowed by release or force conditions.",
+      status: "completed",
+    },
+    {
+      title: "Tag ranges",
+      description:
+        "Confirm local tags, their ordering, stable boundaries, prerelease families, and the HEAD range.",
+      status: "completed",
+    },
+    {
+      title: "Message collection",
+      description:
+        "Compare committed messages with optional latest pending-template content.",
+      status: "current",
+    },
+    {
+      title: "Semantic processing",
+      description:
+        "Review cleaning, ignore rules, parsing, expansion, deduplication, type mapping, and scope grouping.",
+      status: "pending",
+    },
+    {
+      title: "Release behavior",
+      description:
+        "Review hidden, title-only, custom-message, promotion, comparison, and release ordering behavior.",
+      status: "pending",
+    },
+    {
+      title: "Rendering and write",
+      description:
+        "Validate the active Jinja template, render toggles, destination diff, and successful final write.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -121,12 +152,29 @@ does not make an incorrect input correct.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Generate Troubleshooting", href: "../commands/changelog/generate/troubleshooting", description: "Use the focused command symptom and recovery guide."},
-        {title: "Changelog Configuration", href: "../configuration/changelog/overview", description: "Navigate all active, loaded-only, reserved, and advanced settings."},
-        {title: "Changelog Architecture", href: "../architecture/changelog-system", description: "Trace active providers, models, processing, releases, rendering, and writes."},
-        {title: "Git Troubleshooting", href: "./git", description: "Resolve local tag, history, range, and repository problems."},
-    ]}
+  commands={[
+    {
+      title: "Generate Troubleshooting",
+      href: "../commands/changelog/generate/troubleshooting",
+      description: "Use the focused command symptom and recovery guide.",
+    },
+    {
+      title: "Changelog Configuration",
+      href: "../configuration/changelog/overview",
+      description: "Navigate all active, loaded-only, reserved, and advanced settings.",
+    },
+    {
+      title: "Changelog Architecture",
+      href: "../architecture/changelog-system",
+      description:
+        "Trace active providers, models, processing, releases, rendering, and writes.",
+    },
+    {
+      title: "Git Troubleshooting",
+      href: "./git",
+      description: "Resolve local tag, history, range, and repository problems.",
+    },
+  ]}
 />
 
 </Section>

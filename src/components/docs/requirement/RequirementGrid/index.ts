@@ -6,14 +6,10 @@
 
 export { default } from "./RequirementGrid";
 
-export type {
-    RequirementGridItem,
-    RequirementGridProps,
-} from "./types";
-
+export type { RequirementGridItem, RequirementGridProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.RequirementGrid
     title="Before Running custy init"
     description="Make sure your environment is ready before initializing your project."

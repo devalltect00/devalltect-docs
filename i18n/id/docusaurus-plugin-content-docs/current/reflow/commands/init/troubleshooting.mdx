@@ -6,12 +6,24 @@ sidebar_key: reflow-init-troubleshooting
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow init" title="Pemecahan Masalah" description="Solusi initialization failure." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow init"
+  title="Pemecahan Masalah"
+  description="Solusi initialization failure."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="reflow init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Gejala | Penyebab | Solusi |
-| --- | --- | --- |
-| File dilewati. | Penggantian belum disetujui. | Gunakan --ask atau --force. |
-| Tidak ada file dibuat. | Dry-run aktif. | Jalankan tanpa --dry-run setelah review. |
-
+| Gejala                 | Penyebab                     | Solusi                                   |
+| ---------------------- | ---------------------------- | ---------------------------------------- |
+| File dilewati.         | Penggantian belum disetujui. | Gunakan --ask atau --force.              |
+| Tidak ada file dibuat. | Dry-run aktif.               | Jalankan tanpa --dry-run setelah review. |

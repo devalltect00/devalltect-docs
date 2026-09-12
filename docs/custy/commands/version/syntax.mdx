@@ -5,45 +5,42 @@ sidebar_position: 3
 sidebar_key: custy-version
 
 tags:
-    - version
-    - syntax
+  - version
+  - syntax
 
 keywords:
-    - custy version syntax
+  - custy version syntax
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Syntax"
-    description="Learn how to execute Version Update directly or as part of a workflow."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "syntax",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Requirements",
-            href: "./requirements",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy version"
+  title="Syntax"
+  description="Learn how to execute Version Update directly or as part of a workflow."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["syntax", "version"]}
+  links={[
+    {
+      label: "Requirements",
+      href: "./requirements",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -55,15 +52,13 @@ The public interface is the direct `custy version update` subcommand.
 ---
 
 <CommandSyntax
-    examples={[
-        {
-            title: "Direct Command",
-            description:
-                "Run Version Update directly from the command line.",
-            command:
-`custy version update`,
-        },
-    ]}
+  examples={[
+    {
+      title: "Direct Command",
+      description: "Run Version Update directly from the command line.",
+      command: `custy version update`,
+    },
+  ]}
 />
 
 ---

@@ -6,14 +6,10 @@
 
 export { default } from "./DependencyCard";
 
-export type {
-    DependencyCardProps,
-    DependencyItem,
-} from "./types";
-
+export type { DependencyCardProps, DependencyItem } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.DependencyCard
     title="Release Pipeline Dependencies"
     description="Main execution flow for the release pipeline."

@@ -4,14 +4,50 @@ description: "Pahami files, Git history, remotes, prompts, dan recovery risks da
 sidebar_position: 7
 sidebar_key: custy-run-safety
 ---
-import {CommandHero, FeatureGrid, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Safety and Side Effects" description="Tinjau setiap effect category sebelum normal execution." category="Pipeline" status="Safety Guide" syntax="custy --dry-run run PROFILE" links={[{label:"Requirements",href:"./requirements"},{label:"Profiles",href:"./profiles"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, FeatureGrid, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Safety and Side Effects"
+  description="Tinjau setiap effect category sebelum normal execution."
+  category="Pipeline"
+  status="Safety Guide"
+  syntax="custy --dry-run run PROFILE"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<FeatureGrid title="Pipeline Effect Categories" items={[
- {title:"Files",children:"Generate, edit, validate, dan overwrite configured artifacts."},{title:"Git",children:"Stage, commit, dan create local tags."},{title:"Network",children:"Push branch dan tags ke one or more remotes."},{title:"Terminal",children:"Open editors atau interactive destination selection."},{title:"Package",children:"Resolve version formats dan project metadata."},{title:"Workflow",children:"Experimental finalization dapat berjalan setelah publication."},
-]} />
-<InfoBox variant="warning" title="Dry-Run Is the Starting Point">Gunakan `custy --dry-run run PROFILE`, baca resolved stages/destinations, lalu periksa repository state.</InfoBox>
-<Section title="Normal-Execution Checklist">Verifikasi profile, version, files, staging mode, tag, remotes, credentials, backups, dan recovery plan.</Section>
+<FeatureGrid
+  title="Pipeline Effect Categories"
+  items={[
+    {
+      title: "Files",
+      children: "Generate, edit, validate, dan overwrite configured artifacts.",
+    },
+    { title: "Git", children: "Stage, commit, dan create local tags." },
+    { title: "Network", children: "Push branch dan tags ke one or more remotes." },
+    {
+      title: "Terminal",
+      children: "Open editors atau interactive destination selection.",
+    },
+    { title: "Package", children: "Resolve version formats dan project metadata." },
+    {
+      title: "Workflow",
+      children: "Experimental finalization dapat berjalan setelah publication.",
+    },
+  ]}
+/>
+<InfoBox variant="warning" title="Dry-Run Is the Starting Point">
+  Gunakan `custy --dry-run run PROFILE`, baca resolved stages/destinations, lalu periksa
+  repository state.
+</InfoBox>
+<Section title="Normal-Execution Checklist">
+  Verifikasi profile, version, files, staging mode, tag, remotes, credentials, backups,
+  dan recovery plan.
+</Section>

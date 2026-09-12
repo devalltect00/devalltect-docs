@@ -6,13 +6,22 @@ sidebar_key: reflow-tags-convert
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox} from "@site/src/components/docs";
+import { CommandHero, InfoBox } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert" title="Konversi Tag" description="SemVer adalah destination default; pilih local atau remote." category="Git Tags" status="Stabil" syntax="reflow tags convert local|remote [OPTIONS]" />
+<CommandHero
+  command="reflow tags convert"
+  title="Konversi Tag"
+  description="SemVer adalah destination default; pilih local atau remote."
+  category="Git Tags"
+  status="Stabil"
+  syntax="reflow tags convert local|remote [OPTIONS]"
+/>
 
-| Scope | Panduan | Efek |
-| --- | --- | --- |
-| Local | [local](./local/overview) | Checkout persisten saja. |
+| Scope  | Panduan                     | Efek                        |
+| ------ | --------------------------- | --------------------------- |
+| Local  | [local](./local/overview)   | Checkout persisten saja.    |
 | Remote | [remote](./remote/overview) | Atomic remote push terjaga. |
 
-<InfoBox variant="warning" title="Penggantian">Destination dibuat dan source ref dihapus pada scope terpilih.</InfoBox>
+<InfoBox variant="warning" title="Penggantian">
+  Destination dibuat dan source ref dihapus pada scope terpilih.
+</InfoBox>

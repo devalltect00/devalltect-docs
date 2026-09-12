@@ -5,51 +5,44 @@ sidebar_position: 6
 sidebar_key: custy-version
 
 tags:
-    - version
-    - strategy
-    - semver
-    - pep440
+  - version
+  - strategy
+  - semver
+  - pep440
 
 keywords:
-    - custy version strategies
-    - semver
-    - pep440
-    - commitizen
-    - gitcount
-    - date
+  - custy version strategies
+  - semver
+  - pep440
+  - commitizen
+  - gitcount
+  - date
 ---
 
-import {
-    CommandHero,
-    Section,
-    InfoBox,
-} from "@site/src/components/docs";
+import { CommandHero, Section, InfoBox } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Versioning Strategies"
-    description="Choose the strategy that best matches your project's release workflow."
-    category="Versioning"
-    status="Stable"
-    syntax="custy version update"
-    tags={[
-        "strategy",
-        "version",
-    ]}
-    links={[
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy version"
+  title="Versioning Strategies"
+  description="Choose the strategy that best matches your project's release workflow."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  tags={["strategy", "version"]}
+  links={[
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -181,13 +174,13 @@ identifiers without maintaining traditional semantic versions.
 
 A common recommendation is:
 
-| Project Type | Recommended Strategy |
-| --- | --- |
-| General applications | SemVer |
-| Python packages | PEP 440 |
-| Conventional Commits | Commitizen |
-| Calendar-based releases | Date |
-| Continuous internal builds | Git Count |
+| Project Type               | Recommended Strategy |
+| -------------------------- | -------------------- |
+| General applications       | SemVer               |
+| Python packages            | PEP 440              |
+| Conventional Commits       | Commitizen           |
+| Calendar-based releases    | Date                 |
+| Continuous internal builds | Git Count            |
 
 Different projects have different release requirements, and Custy allows each
 project to adopt the strategy that best fits its workflow.

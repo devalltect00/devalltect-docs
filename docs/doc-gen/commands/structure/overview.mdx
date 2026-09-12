@@ -6,14 +6,23 @@ sidebar_key: doc-gen-structure
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox} from "@site/src/components/docs";
+import { CommandHero, InfoBox } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure" title="Structure Commands" description="Choose a writing or read-only structure workflow." category="Project Structure" status="Stable" syntax="doc-gen structure generate|print|analyze" />
+<CommandHero
+  command="doc-gen structure"
+  title="Structure Commands"
+  description="Choose a writing or read-only structure workflow."
+  category="Project Structure"
+  status="Stable"
+  syntax="doc-gen structure generate|print|analyze"
+/>
 
-| Command | Effect |
-| --- | --- |
+| Command                         | Effect                                              |
+| ------------------------------- | --------------------------------------------------- |
 | [generate](./generate/overview) | Writes one resolved Markdown output unless dry-run. |
-| [print](./print/overview) | Terminal only; read-only. |
-| [analyze](./analyze/overview) | Analysis only; read-only. |
+| [print](./print/overview)       | Terminal only; read-only.                           |
+| [analyze](./analyze/overview)   | Analysis only; read-only.                           |
 
-<InfoBox variant="tip" title="Dry run">Use it before generate to verify target, profile, and output without writing.</InfoBox>
+<InfoBox variant="tip" title="Dry run">
+  Use it before generate to verify target, profile, and output without writing.
+</InfoBox>

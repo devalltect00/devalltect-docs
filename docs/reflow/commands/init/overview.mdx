@@ -7,66 +7,89 @@ tags: [reflow, command]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow init"
-    title="Initialize Reflow"
-    description="Create project-owned Reflow configuration in a persistent local target without changing Git history or remote state."
-    category="Initialization"
-    status="Recommended"
-    syntax="reflow init [OPTIONS]"
-    tags={["configuration", "local target", "project setup"]}
-    links={[
-        {label: "Requirements", href: "./requirements"},
-        {label: "Syntax", href: "./syntax"},
-        {label: "Options", href: "./options"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="reflow init"
+  title="Initialize Reflow"
+  description="Create project-owned Reflow configuration in a persistent local target without changing Git history or remote state."
+  category="Initialization"
+  status="Recommended"
+  syntax="reflow init [OPTIONS]"
+  tags={["configuration", "local target", "project setup"]}
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Target", value: "Persistent local directory", icon: "directory"},
-        {label: "Generated Path", value: ".config/reflow/config.toml", icon: "configuration"},
-        {label: "Git History", value: "Not changed", icon: "git"},
-        {label: "Dry-run", value: "No filesystem mutation", icon: "success"},
-    ]}
+  items={[
+    { label: "Target", value: "Persistent local directory", icon: "directory" },
+    {
+      label: "Generated Path",
+      value: ".config/reflow/config.toml",
+      icon: "configuration",
+    },
+    { label: "Git History", value: "Not changed", icon: "git" },
+    { label: "Dry-run", value: "No filesystem mutation", icon: "success" },
+  ]}
 />
 
 <Section title="What This Command Does">
 
 <FeatureGrid
-    items={[
-        {
-            title: "Resolve a Local Target",
-            icon: <Icon name="directory" />,
-            children: <>Use the current directory or an explicit <code>-C/--repository</code> path. Repository URLs are rejected.</>,
-        },
-        {
-            title: "Plan Configuration Resources",
-            icon: <Icon name="configuration" />,
-            children: <>Resolve the supported <code>all</code> or <code>config</code> mode and show the selected project resource.</>,
-        },
-        {
-            title: "Protect Existing Content",
-            icon: <Icon name="security" />,
-            children: <>Preserve an existing project-owned file unless overwrite behavior is explicitly approved.</>,
-        },
-        {
-            title: "Report the Result",
-            icon: <Icon name="success" />,
-            children: <>Show created, skipped, failed, or simulated resources and the resolved mode.</>,
-        },
-    ]}
+  items={[
+    {
+      title: "Resolve a Local Target",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Use the current directory or an explicit <code>-C/--repository</code> path.
+          Repository URLs are rejected.
+        </>
+      ),
+    },
+    {
+      title: "Plan Configuration Resources",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Resolve the supported <code>all</code> or <code>config</code> mode and show
+          the selected project resource.
+        </>
+      ),
+    },
+    {
+      title: "Protect Existing Content",
+      icon: <Icon name="security" />,
+      children: (
+        <>
+          Preserve an existing project-owned file unless overwrite behavior is
+          explicitly approved.
+        </>
+      ),
+    },
+    {
+      title: "Report the Result",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Show created, skipped, failed, or simulated resources and the resolved mode.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -88,9 +111,21 @@ configuration workspace; values such as `templates`, `examples`, and
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Options", href: "./options", description: "Choose a supported mode and overwrite policy."},
-        {title: "Workflow", href: "./workflow", description: "Follow planning, dry-run, and file-write stages."},
-        {title: "Configuration", href: "./configuration", description: "Understand initialization defaults and ownership."},
-    ]}
+  commands={[
+    {
+      title: "Options",
+      href: "./options",
+      description: "Choose a supported mode and overwrite policy.",
+    },
+    {
+      title: "Workflow",
+      href: "./workflow",
+      description: "Follow planning, dry-run, and file-write stages.",
+    },
+    {
+      title: "Configuration",
+      href: "./configuration",
+      description: "Understand initialization defaults and ownership.",
+    },
+  ]}
 />

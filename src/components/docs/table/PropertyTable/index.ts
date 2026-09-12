@@ -6,14 +6,10 @@
 
 export { default } from "./PropertyTable";
 
-export type {
-    PropertyTableItem,
-    PropertyTableProps,
-} from "./types";
-
+export type { PropertyTableItem, PropertyTableProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.PropertyTable
     title="Command Options"
     description="Supported options for the init command."

@@ -4,34 +4,93 @@ description: "Atasi validation, staging, template, dan commit failures."
 sidebar_position: 9
 sidebar_key: custy-commit-troubleshooting
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy commit" title="Commit Troubleshooting" description="Diagnosa version file, staging, editor, validation, dan changelog failures." category="Git Operations" status="Panduan Dukungan" syntax="custy commit [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Requirements",href:"./requirements"},{label:"Configuration",href:"./configuration"},{label:"FAQ",href:"./faq"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy commit"
+  title="Commit Troubleshooting"
+  description="Diagnosa version file, staging, editor, validation, dan changelog failures."
+  category="Git Operations"
+  status="Panduan Dukungan"
+  syntax="custy commit [OPTIONS]"
+  links={[
+    { label: "Pusat Pemecahan Masalah", href: "../../troubleshooting/overview" },
+    { label: "Requirements", href: "./requirements" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "FAQ", href: "./faq" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="tip" title="Periksa Repository Sebelum Retry">Periksa `git status`, Git index, generated artifacts, backups, dan tahap terakhir yang selesai.</InfoBox>
+<InfoBox variant="tip" title="Periksa Repository Sebelum Retry">
+  Periksa `git status`, Git index, generated artifacts, backups, dan tahap terakhir yang
+  selesai.
+</InfoBox>
 
 ## Version File Tidak Ditemukan
-<Section compact>Periksa configured path atau `--version-file`, lalu pastikan file ada dan writable.</Section>
+
+<Section compact>
+  Periksa configured path atau `--version-file`, lalu pastikan file ada dan writable.
+</Section>
 
 ## File yang Salah Ikut Di-stage
-<Section compact>Periksa `auto_stage`, `stage_mode`, dan Git index. Unstage perubahan yang tidak dimaksud sebelum retry.</Section>
+
+<Section compact>
+  Periksa `auto_stage`, `stage_mode`, dan Git index. Unstage perubahan yang tidak
+  dimaksud sebelum retry.
+</Section>
 
 ## Editor Tidak Terbuka
-<Section compact>Periksa template path, [`tool.custy.editor`](../../configuration/editor), `VISUAL`, `EDITOR`, dan apakah invocation mendukung interaksi. Pada Windows, generated default memprioritaskan VS Code lalu Notepad dan me-resolve path `code.CMD`. Di container, gunakan `-it` serta editor yang terinstal di dalam image. Output Custy menjelaskan candidate yang dilewati sebelum memilih fallback.</Section>
+
+<Section compact>
+  Periksa template path, [`tool.custy.editor`](../../configuration/editor), `VISUAL`,
+  `EDITOR`, dan apakah invocation mendukung interaksi. Pada Windows, generated default
+  memprioritaskan VS Code lalu Notepad dan me-resolve path `code.CMD`. Di container,
+  gunakan `-it` serta editor yang terinstal di dalam image. Output Custy menjelaskan
+  candidate yang dilewati sebelum memilih fallback.
+</Section>
 
 ## Commit Validation Gagal
-<Section compact>Perbaiki commit message atau repository checks yang dilaporkan. Jangan melewati validation tanpa memahami penyebabnya.</Section>
+
+<Section compact>
+  Perbaiki commit message atau repository checks yang dilaporkan. Jangan melewati
+  validation tanpa memahami penyebabnya.
+</Section>
 
 ## Commitizen Belum Dikonfigurasi atau Diinstal
-<Section compact>`COMMITIZEN_NOT_CONFIGURED` berarti strict Commitizen validation diminta tanpa `.cz.toml`, `.cz.yaml`, `.cz.yml`, `.cz.json`, atau `[tool.commitizen]`. `COMMITIZEN_NOT_AVAILABLE` berarti configuration tersedia tetapi `cz` tidak tersedia. Instal `custy[commitizen]`, perbaiki configuration, atau pilih `provider = "custy"`. Lihat [provider behavior matrix](../../configuration/commit-validation).</Section>
+
+<Section compact>
+  `COMMITIZEN_NOT_CONFIGURED` berarti strict Commitizen validation diminta tanpa
+  `.cz.toml`, `.cz.yaml`, `.cz.yml`, `.cz.json`, atau `[tool.commitizen]`.
+  `COMMITIZEN_NOT_AVAILABLE` berarti configuration tersedia tetapi `cz` tidak tersedia.
+  Instal `custy[commitizen]`, perbaiki configuration, atau pilih `provider = "custy"`.
+  Lihat [provider behavior matrix](../../configuration/commit-validation).
+</Section>
 
 ## Git Hook Menolak Commit
-<Section compact>`PRE_COMMIT_HOOK_FAILED` berarti Custy berhasil memilih direct pre-commit execution, tetapi configured check menolak atau mengubah files. Baca captured output, perbaiki dan stage result, lalu retry. `GIT_HOOK_FAILED` berarti native Git tetap menolak commit. `GIT_HOOK_POLICY_INVALID` berarti safe adaptation tidak tersedia, misalnya unknown incompatible custom hook atau missing pre-commit executable. Tinjau [hook behavior matrix](../../configuration/git/hooks); Custy tidak melewati hooks secara diam-diam.</Section>
+
+<Section compact>
+  `PRE_COMMIT_HOOK_FAILED` berarti Custy berhasil memilih direct pre-commit execution,
+  tetapi configured check menolak atau mengubah files. Baca captured output, perbaiki
+  dan stage result, lalu retry. `GIT_HOOK_FAILED` berarti native Git tetap menolak
+  commit. `GIT_HOOK_POLICY_INVALID` berarti safe adaptation tidak tersedia, misalnya
+  unknown incompatible custom hook atau missing pre-commit executable. Tinjau [hook
+  behavior matrix](../../configuration/git/hooks); Custy tidak melewati hooks secara
+  diam-diam.
+</Section>
 
 ## Changelog Generation Gagal
-<Section compact>Periksa Git history, changelog configuration, template, dan working-tree diff sebelum menjalankan profile ulang.</Section>
+
+<Section compact>
+  Periksa Git history, changelog configuration, template, dan working-tree diff sebelum
+  menjalankan profile ulang.
+</Section>
 
 ## Commit Berisi Konten yang Salah
-<Section compact>Periksa final commit dengan `git show`, staging configuration, dan artifact diff. Gunakan Git recovery yang sesuai sebelum push.</Section>
+
+<Section compact>
+  Periksa final commit dengan `git show`, staging configuration, dan artifact diff.
+  Gunakan Git recovery yang sesuai sebelum push.
+</Section>

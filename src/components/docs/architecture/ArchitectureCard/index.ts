@@ -6,13 +6,10 @@
 
 export { default } from "./ArchitectureCard";
 
-export type {
-    ArchitectureCardProps,
-} from "./types";
-
+export type { ArchitectureCardProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.ArchitectureCard
     title="Workflow Engine"
     subtitle="Pipeline orchestration"

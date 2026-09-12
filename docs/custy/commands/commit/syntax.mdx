@@ -8,38 +8,34 @@ keywords: [custy commit syntax]
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandSyntax,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy commit"
-    title="Command Syntax"
-    description="Choose the direct commit form for command-specific overrides or the public Run form for profile selection."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy commit [OPTIONS]"
-    tags={[
-        "syntax",
-        "CLI",
-        "commit profile",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy commit"
+  title="Command Syntax"
+  description="Choose the direct commit form for command-specific overrides or the public Run form for profile selection."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy commit [OPTIONS]"
+  tags={["syntax", "CLI", "commit profile"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -54,12 +50,28 @@ overrides. Global options such as dry-run must appear before `commit`.
 >
 
 <CommandSyntax
-    examples={[
-        {title: "Use resolved project settings", command: "custy commit", description: "Run the complete commit profile."},
-        {title: "Stage tracked modifications", command: "custy commit --auto-stage --stage-mode update", description: "Select update staging for tracked modified and deleted files."},
-        {title: "Use another message template", command: "custy commit --commit-msg-file path/to/commit-message.txt", description: "Override the configured commit-message template."},
-        {title: "Preview the profile", command: "custy --dry-run commit", description: "Pass the root dry-run option before the command."},
-    ]}
+  examples={[
+    {
+      title: "Use resolved project settings",
+      command: "custy commit",
+      description: "Run the complete commit profile.",
+    },
+    {
+      title: "Stage tracked modifications",
+      command: "custy commit --auto-stage --stage-mode update",
+      description: "Select update staging for tracked modified and deleted files.",
+    },
+    {
+      title: "Use another message template",
+      command: "custy commit --commit-msg-file path/to/commit-message.txt",
+      description: "Override the configured commit-message template.",
+    },
+    {
+      title: "Preview the profile",
+      command: "custy --dry-run commit",
+      description: "Pass the root dry-run option before the command.",
+    },
+  ]}
 />
 
 </Section>

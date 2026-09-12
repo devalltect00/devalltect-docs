@@ -6,9 +6,23 @@ sidebar_key: reflow-tags-convert-local
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert local" title="Convert Local Tags" description="Replace convertible tag names in one persistent local checkout while preserving tag type and annotated metadata when possible." category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert local"
+  title="Convert Local Tags"
+  description="Replace convertible tag names in one persistent local checkout while preserving tag type and annotated metadata when possible."
+  category="Tag Conversion"
+  status="Stable"
+  syntax="reflow tags convert local [OPTIONS]"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <Section title="Purpose">
 
@@ -16,7 +30,9 @@ Replace convertible tag names in one persistent local checkout while preserving 
 
 </Section>
 
-<InfoBox variant="warning" title="Safety boundary">Changes local refs only, rejects repository URLs, and never pushes.</InfoBox>
+<InfoBox variant="warning" title="Safety boundary">
+  Changes local refs only, rejects repository URLs, and never pushes.
+</InfoBox>
 
 - Resolve the checkout and read tag objects.
 - Build the complete replacement plan.

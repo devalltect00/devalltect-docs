@@ -5,30 +5,35 @@ sidebar_position: 0
 sidebar_key: phs-commands
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner"
-    title="Ringkasan Perintah"
-    description="Pilih inisialisasi proyek atau pemindaian header sesuai bahasa dengan batas preview/apply yang eksplisit."
-    category="Referensi Perintah"
-    status="v1.0.0"
-    syntax="path-header-scanner COMMAND [OPTIONS]"
-    links={[
-        {label: "Inisialisasi", href: "./init/overview"},
-        {label: "Pindai Header", href: "./scan/overview"},
-        {label: "Konsep Inti", href: "../concepts/overview"},
-        {label: "Referensi CLI", href: "../reference/cli"},
-    ]}
+  command="path-header-scanner"
+  title="Ringkasan Perintah"
+  description="Pilih inisialisasi proyek atau pemindaian header sesuai bahasa dengan batas preview/apply yang eksplisit."
+  category="Referensi Perintah"
+  status="v1.0.0"
+  syntax="path-header-scanner COMMAND [OPTIONS]"
+  links={[
+    { label: "Inisialisasi", href: "./init/overview" },
+    { label: "Pindai Header", href: "./scan/overview" },
+    { label: "Konsep Inti", href: "../concepts/overview" },
+    { label: "Referensi CLI", href: "../reference/cli" },
+  ]}
 />
 
 <Section title="Perintah yang didukung">
 
-| Perintah | Tujuan | Menulis secara default |
-| --- | --- | --- |
-| [`path-header-scanner init`](./init/overview) | Membuat konfigurasi proyek | Ya, kecuali dry-run |
-| [`path-header-scanner scan TARGET`](./scan/overview) | Menemukan dan menampilkan pratinjau perubahan header | Tidak |
-| `path-header-scanner scan TARGET --apply` | Menerapkan penyisipan atau pembaruan yang sudah ditinjau | Ya |
+| Perintah                                             | Tujuan                                                   | Menulis secara default |
+| ---------------------------------------------------- | -------------------------------------------------------- | ---------------------- |
+| [`path-header-scanner init`](./init/overview)        | Membuat konfigurasi proyek                               | Ya, kecuali dry-run    |
+| [`path-header-scanner scan TARGET`](./scan/overview) | Menemukan dan menampilkan pratinjau perubahan header     | Tidak                  |
+| `path-header-scanner scan TARGET --apply`            | Menerapkan penyisipan atau pembaruan yang sudah ditinjau | Ya                     |
 
 </Section>
 
@@ -44,9 +49,22 @@ Gunakan `--help` pada setiap perintah untuk melihat opsi yang tepat pada versi
 yang terpasang.
 
 <RelatedCommands
-    commands={[
-        {title: "Alur Kerja Pertama yang Aman", href: "../getting-started/first-workflow", description: "Instal, inisialisasi, pratinjau, dan terapkan dalam urutan yang sudah ditinjau."},
-        {title: "Model Path Header", href: "../concepts/path-headers", description: "Pahami sintaks header sesuai bahasa dan penyelesaian path."},
-        {title: "Konfigurasi", href: "../configuration/reference", description: "Petakan pengaturan proyek ke perilaku init dan scan."},
-    ]}
+  commands={[
+    {
+      title: "Alur Kerja Pertama yang Aman",
+      href: "../getting-started/first-workflow",
+      description:
+        "Instal, inisialisasi, pratinjau, dan terapkan dalam urutan yang sudah ditinjau.",
+    },
+    {
+      title: "Model Path Header",
+      href: "../concepts/path-headers",
+      description: "Pahami sintaks header sesuai bahasa dan penyelesaian path.",
+    },
+    {
+      title: "Konfigurasi",
+      href: "../configuration/reference",
+      description: "Petakan pengaturan proyek ke perilaku init dan scan.",
+    },
+  ]}
 />

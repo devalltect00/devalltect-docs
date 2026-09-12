@@ -8,40 +8,40 @@ keywords: [Custy WorkflowEngine, WorkflowConfig, WorkflowEngineBuilder]
 ---
 
 import {
-    ArchitectureCard,
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  ArchitectureCard,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/workflow/"
-    title="Workflow Engine"
-    description="Inspect the application facade that registered steps use for release, Git, changelog, backup, and branch behavior."
-    category="Architecture"
-    status="Central Application Service"
-    syntax="resolved args -> WorkflowConfig -> builder -> WorkflowEngine"
-    tags={["builder", "facade", "runtime state", "services"]}
-    links={[
-        {label: "Pipeline Engine", href: "./pipeline-engine"},
-        {label: "Git Operations", href: "./git-operations"},
-        {label: "Release Pipeline", href: "../pipelines/release-pipeline"},
-    ]}
+  command="app/core/workflow/"
+  title="Workflow Engine"
+  description="Inspect the application facade that registered steps use for release, Git, changelog, backup, and branch behavior."
+  category="Architecture"
+  status="Central Application Service"
+  syntax="resolved args -> WorkflowConfig -> builder -> WorkflowEngine"
+  tags={["builder", "facade", "runtime state", "services"]}
+  links={[
+    { label: "Pipeline Engine", href: "./pipeline-engine" },
+    { label: "Git Operations", href: "./git-operations" },
+    { label: "Release Pipeline", href: "../pipelines/release-pipeline" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Input Model", value: "WorkflowConfig", icon: "configuration"},
-        {label: "Construction", value: "WorkflowEngineBuilder", icon: "architecture"},
-        {label: "Facade", value: "WorkflowEngine", icon: "workflow"},
-        {label: "Primary Caller", value: "Pipeline steps", icon: "pipeline"},
-    ]}
+  items={[
+    { label: "Input Model", value: "WorkflowConfig", icon: "configuration" },
+    { label: "Construction", value: "WorkflowEngineBuilder", icon: "architecture" },
+    { label: "Facade", value: "WorkflowEngine", icon: "workflow" },
+    { label: "Primary Caller", value: "Pipeline steps", icon: "pipeline" },
+  ]}
 />
 
 ## Overview
@@ -93,14 +93,35 @@ optional cross-step fields. Active steps primarily delegate to engine state.
 <Section title="Constructed Services">
 
 <DependencyCard
-    title="WorkflowEngine Service Graph"
-    dependencies={[
-        {source: "WorkflowEngine", target: "GitService", description: "Repository inspection, staging, commit, tag, push, history, branches, and remotes."},
-        {source: "WorkflowEngine", target: "CommitizenHelper", description: "Commit-convention checks and Commitizen-related version behavior."},
-        {source: "WorkflowEngine", target: "ChangelogGenerator", description: "Collect, transform, render, and write changelog content."},
-        {source: "WorkflowEngine", target: "BackupManager", description: "Create retained commit and tag message backups."},
-        {source: "WorkflowEngine", target: "BranchWorkflowManager", description: "Coordinate initial and final branch transitions."},
-    ]}
+  title="WorkflowEngine Service Graph"
+  dependencies={[
+    {
+      source: "WorkflowEngine",
+      target: "GitService",
+      description:
+        "Repository inspection, staging, commit, tag, push, history, branches, and remotes.",
+    },
+    {
+      source: "WorkflowEngine",
+      target: "CommitizenHelper",
+      description: "Commit-convention checks and Commitizen-related version behavior.",
+    },
+    {
+      source: "WorkflowEngine",
+      target: "ChangelogGenerator",
+      description: "Collect, transform, render, and write changelog content.",
+    },
+    {
+      source: "WorkflowEngine",
+      target: "BackupManager",
+      description: "Create retained commit and tag message backups.",
+    },
+    {
+      source: "WorkflowEngine",
+      target: "BranchWorkflowManager",
+      description: "Coordinate initial and final branch transitions.",
+    },
+  ]}
 />
 
 </Section>
@@ -108,15 +129,45 @@ optional cross-step fields. Active steps primarily delegate to engine state.
 ---
 
 <WorkflowDiagram
-    title="Engine Phase Families"
-    timeline={[
-        {title: "Validate", description: "Check repository, remotes, files, staged state, and commit conventions.", status: "completed"},
-        {title: "Prepare", description: "Resolve the tag, initialize branch policy, and prepare release messages.", status: "completed"},
-        {title: "Generate and review", description: "Create artifacts, open files for editing, and validate edited content.", status: "completed"},
-        {title: "Apply release content", description: "Update supported project versions and conditionally generate the changelog.", status: "completed"},
-        {title: "Protect and commit", description: "Back up messages, prune retained files, stage changes, and create a commit.", status: "current"},
-        {title: "Publish and finalize", description: "Create the tag, push selected remotes, and optionally execute experimental branch finalization.", status: "pending"},
-    ]}
+  title="Engine Phase Families"
+  timeline={[
+    {
+      title: "Validate",
+      description:
+        "Check repository, remotes, files, staged state, and commit conventions.",
+      status: "completed",
+    },
+    {
+      title: "Prepare",
+      description:
+        "Resolve the tag, initialize branch policy, and prepare release messages.",
+      status: "completed",
+    },
+    {
+      title: "Generate and review",
+      description:
+        "Create artifacts, open files for editing, and validate edited content.",
+      status: "completed",
+    },
+    {
+      title: "Apply release content",
+      description:
+        "Update supported project versions and conditionally generate the changelog.",
+      status: "completed",
+    },
+    {
+      title: "Protect and commit",
+      description:
+        "Back up messages, prune retained files, stage changes, and create a commit.",
+      status: "current",
+    },
+    {
+      title: "Publish and finalize",
+      description:
+        "Create the tag, push selected remotes, and optionally execute experimental branch finalization.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -175,12 +226,29 @@ as experimental and inspect repository state before retrying a failure.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Pipeline Engine", href: "./pipeline-engine", description: "See how step objects invoke engine phase methods."},
-        {title: "Git Operations", href: "./git-operations", description: "Inspect the main repository service consumed by the engine."},
-        {title: "Changelog System", href: "./changelog-system", description: "Follow conditional changelog generation through its internal pipeline."},
-        {title: "Release Pipeline", href: "../pipelines/release-pipeline", description: "Review the exact active release profile sequence."},
-    ]}
+  commands={[
+    {
+      title: "Pipeline Engine",
+      href: "./pipeline-engine",
+      description: "See how step objects invoke engine phase methods.",
+    },
+    {
+      title: "Git Operations",
+      href: "./git-operations",
+      description: "Inspect the main repository service consumed by the engine.",
+    },
+    {
+      title: "Changelog System",
+      href: "./changelog-system",
+      description:
+        "Follow conditional changelog generation through its internal pipeline.",
+    },
+    {
+      title: "Release Pipeline",
+      href: "../pipelines/release-pipeline",
+      description: "Review the exact active release profile sequence.",
+    },
+  ]}
 />
 
 </Section>

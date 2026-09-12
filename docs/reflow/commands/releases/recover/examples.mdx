@@ -6,9 +6,22 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, examples]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Examples" description="Dry-run performs discovery and validation without persistent mutation." category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Examples"
+  description="Dry-run performs discovery and validation without persistent mutation."
+  category="Release Recovery"
+  status="GitHub Workflow Recovery"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ### 1. Preview
 
@@ -27,4 +40,3 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 <Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git releases recover --only-stable --limit 5 --yes`}</Terminal>
 
 **Result:** Processes five stable tags maximum.
-

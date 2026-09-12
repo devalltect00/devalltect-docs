@@ -39,10 +39,10 @@
 
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.wordWrap": "on"
+    "editor.wordWrap": "on"
   },
 
-    "[yaml]": {
+  "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
@@ -64,12 +64,7 @@
     "source.organizeImports": "explicit"
   },
 
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
   // =========================================================
   // 📚 MARKDOWN / MDX
@@ -95,7 +90,7 @@
   "files.exclude": {
     "**/.git": false,
     "**/node_modules": true,
-    "**/.docusaurus": true,
+    "**/.docusaurus": true
     // "**/build": true
   },
 
@@ -124,11 +119,9 @@
   // =========================================================
 
   "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow.json":
-    ".github/workflows/*.yml",
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml",
 
-    "https://json.schemastore.org/github-action.json":
-      ".github/actions/*/action.yml"
+    "https://json.schemastore.org/github-action.json": ".github/actions/*/action.yml"
   },
 
   // =========================================================

@@ -8,66 +8,62 @@ keywords: [custy changelog, changelog generate, CHANGELOG.md]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog"
-    title="Changelog Commands"
-    description="Generate structured release notes and maintain CHANGELOG.md from repository history and project configuration."
-    category="Release Documentation"
-    status="Stable"
-    syntax="custy changelog COMMAND"
-    tags={[
-        "changelog",
-        "release notes",
-        "Git history",
-    ]}
-    links={[
-        {
-            label: "Generate",
-            href: "./generate/overview",
-        },
-        {
-            label: "Configuration",
-            href: "./generate/configuration",
-        },
-        {
-            label: "Examples",
-            href: "./generate/examples",
-        },
-    ]}
+  command="custy changelog"
+  title="Changelog Commands"
+  description="Generate structured release notes and maintain CHANGELOG.md from repository history and project configuration."
+  category="Release Documentation"
+  status="Stable"
+  syntax="custy changelog COMMAND"
+  tags={["changelog", "release notes", "Git history"]}
+  links={[
+    {
+      label: "Generate",
+      href: "./generate/overview",
+    },
+    {
+      label: "Configuration",
+      href: "./generate/configuration",
+    },
+    {
+      label: "Examples",
+      href: "./generate/examples",
+    },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {
-            label: "Category",
-            value: "Release Documentation",
-            icon: "release",
-        },
-        {
-            label: "Public Subcommands",
-            value: "1",
-            icon: "command",
-        },
-        {
-            label: "Primary Artifact",
-            value: "CHANGELOG.md",
-            icon: "file",
-        },
-        {
-            label: "Modifies Git History",
-            value: "No",
-            icon: "git",
-        },
-    ]}
+  items={[
+    {
+      label: "Category",
+      value: "Release Documentation",
+      icon: "release",
+    },
+    {
+      label: "Public Subcommands",
+      value: "1",
+      icon: "command",
+    },
+    {
+      label: "Primary Artifact",
+      value: "CHANGELOG.md",
+      icon: "file",
+    },
+    {
+      label: "Modifies Git History",
+      value: "No",
+      icon: "git",
+    },
+  ]}
 />
 
 ## Overview
@@ -94,39 +90,39 @@ public `custy run` profile name.
 >
 
 <FeatureGrid
-    title="Changelog Operations"
-    items={[
-        {
-            title: "Generate CHANGELOG.md",
-            icon: <Icon name="file" />,
-            children: (
-                <>
-                    Use <code>custy changelog generate</code> to collect eligible
-                    history and render the configured changelog artifact.
-                </>
-            ),
-        },
-        {
-            title: "Organize Release Notes",
-            icon: <Icon name="release" />,
-            children: (
-                <>
-                    Group entries by release, commit type, and optional scope
-                    while preserving configured ordering.
-                </>
-            ),
-        },
-        {
-            title: "Control Presentation",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Configure links, summaries, metadata, statistics, pending
-                    content, and footer behavior in the project configuration.
-                </>
-            ),
-        },
-    ]}
+  title="Changelog Operations"
+  items={[
+    {
+      title: "Generate CHANGELOG.md",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Use <code>custy changelog generate</code> to collect eligible history and
+          render the configured changelog artifact.
+        </>
+      ),
+    },
+    {
+      title: "Organize Release Notes",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Group entries by release, commit type, and optional scope while preserving
+          configured ordering.
+        </>
+      ),
+    },
+    {
+      title: "Control Presentation",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Configure links, summaries, metadata, statistics, pending content, and footer
+          behavior in the project configuration.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -151,23 +147,23 @@ configuration.
 >
 
 <RelatedCommands
-    commands={[
-        {
-            title: "custy changelog generate",
-            href: "./generate/overview",
-            description: "Generate or update the project changelog.",
-        },
-        {
-            title: "custy commit",
-            href: "../commit/overview",
-            description: "Run the commit profile, which includes changelog generation.",
-        },
-        {
-            title: "custy run release",
-            href: "../run/release/overview",
-            description: "Generate release notes as part of a complete release pipeline.",
-        },
-    ]}
+  commands={[
+    {
+      title: "custy changelog generate",
+      href: "./generate/overview",
+      description: "Generate or update the project changelog.",
+    },
+    {
+      title: "custy commit",
+      href: "../commit/overview",
+      description: "Run the commit profile, which includes changelog generation.",
+    },
+    {
+      title: "custy run release",
+      href: "../run/release/overview",
+      description: "Generate release notes as part of a complete release pipeline.",
+    },
+  ]}
 />
 
 </Section>

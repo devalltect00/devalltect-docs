@@ -1,13 +1,9 @@
 export { default } from "./WorkflowStep";
 
-export type {
-    WorkflowStepProps,
-    WorkflowStepStatus,
-} from "./types";
-
+export type { WorkflowStepProps, WorkflowStepStatus } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.WorkflowStep
     number={1}
     title="Initialize Project"

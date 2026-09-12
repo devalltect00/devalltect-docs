@@ -8,30 +8,26 @@ keywords: [all-remote, sync-backup, skip-tag]
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Command Options"
-    description="Control the effective remote set, tag handling, and eligible backup synchronization."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "options",
-        "remotes",
-        "selection precedence",
-    ]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Remotes", href: "./remotes"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy push"
+  title="Command Options"
+  description="Control the effective remote set, tag handling, and eligible backup synchronization."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  tags={["options", "remotes", "selection precedence"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Overview
@@ -46,13 +42,40 @@ profiles. An explicit \`--remote\` has the highest selection priority.
 >
 
 <CommandOption
-    options={[
-        {name: "--all-remote", shorthand: "-ar", description: "Push to the de-duplicated main and backup remote groups. An explicit --remote still wins.", example: "--all-remote"},
-        {name: "--remote", shorthand: "-r", description: "Select exactly one remote and override all_remote, push_to, and configured groups.", example: "--remote origin"},
-        {name: "--tag", description: "Push this local tag after HEAD when tag pushing remains enabled.", example: "--tag v1.2.3"},
-        {name: "--skip-tag", shorthand: "-st", description: "Push HEAD without creating or pushing a tag in combined workflows.", example: "--skip-tag"},
-        {name: "--sync-backup", shorthand: "-sb", description: "Add configured backup remotes to a main-group push when branch safety permits.", example: "--sync-backup"},
-    ]}
+  options={[
+    {
+      name: "--all-remote",
+      shorthand: "-ar",
+      description:
+        "Push to the de-duplicated main and backup remote groups. An explicit --remote still wins.",
+      example: "--all-remote",
+    },
+    {
+      name: "--remote",
+      shorthand: "-r",
+      description:
+        "Select exactly one remote and override all_remote, push_to, and configured groups.",
+      example: "--remote origin",
+    },
+    {
+      name: "--tag",
+      description: "Push this local tag after HEAD when tag pushing remains enabled.",
+      example: "--tag v1.2.3",
+    },
+    {
+      name: "--skip-tag",
+      shorthand: "-st",
+      description: "Push HEAD without creating or pushing a tag in combined workflows.",
+      example: "--skip-tag",
+    },
+    {
+      name: "--sync-backup",
+      shorthand: "-sb",
+      description:
+        "Add configured backup remotes to a main-group push when branch safety permits.",
+      example: "--sync-backup",
+    },
+  ]}
 />
 
 </Section>

@@ -8,40 +8,40 @@ keywords: [custy cleanup branches, delete merged branches safely]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Cleaning Branches"
-    description="Select branches through explicit prefix, merge-state, and optional age filters before permanent Git deletion."
-    category="User Guide"
-    status="Destructive Maintenance"
-    syntax="custy --dry-run cleanup brancheses [OPTIONS]"
-    tags={["local branches", "remote branches", "preview required"]}
-    links={[
-        {label: "Branch Configuration", href: "../configuration/cli/cleanup/branch"},
-        {label: "Cleanup Reference", href: "../commands/cleanup/branch/overview"},
-        {label: "Safety", href: "../concepts/safety-and-side-effects"},
-    ]}
+  command="custy cleanup branches"
+  title="Cleaning Branches"
+  description="Select branches through explicit prefix, merge-state, and optional age filters before permanent Git deletion."
+  category="User Guide"
+  status="Destructive Maintenance"
+  syntax="custy --dry-run cleanup brancheses [OPTIONS]"
+  tags={["local branches", "remote branches", "preview required"]}
+  links={[
+    { label: "Branch Configuration", href: "../configuration/cli/cleanup/branch" },
+    { label: "Cleanup Reference", href: "../commands/cleanup/branch/overview" },
+    { label: "Safety", href: "../concepts/safety-and-side-effects" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Active Subcommand", value: "branches", icon: "terminal"},
-        {label: "Default Prefixes", value: "None", icon: "security"},
-        {label: "Default Merge Filter", value: "merged", icon: "git"},
-        {label: "Deletion Scope", value: "Local + origin remote", icon: "warning"},
-    ]}
+  items={[
+    { label: "Active Subcommand", value: "branches", icon: "terminal" },
+    { label: "Default Prefixes", value: "None", icon: "security" },
+    { label: "Default Merge Filter", value: "merged", icon: "git" },
+    { label: "Deletion Scope", value: "Local + origin remote", icon: "warning" },
+  ]}
 />
 
 ## Goal
@@ -64,13 +64,32 @@ removing both copies.
 <Section title="How a Branch Becomes Eligible">
 
 <FeatureGrid
-    title="All Applicable Filters Must Pass"
-    items={[
-        {title: "Protected Name", icon: <Icon name="security" />, children: "main, master, and develop are excluded by the active request defaults."},
-        {title: "Configured Prefix", icon: <Icon name="configuration" />, children: "The branch must begin with one of the explicit prefixes. Empty prefixes select nothing."},
-        {title: "Merge State", icon: <Icon name="git" />, children: "The branch must match merged, unmerged, or all according to resolved policy."},
-        {title: "Optional Time Filter", icon: <Icon name="timeline" />, children: "Use either maximum age or an absolute before date, never both."},
-    ]}
+  title="All Applicable Filters Must Pass"
+  items={[
+    {
+      title: "Protected Name",
+      icon: <Icon name="security" />,
+      children:
+        "main, master, and develop are excluded by the active request defaults.",
+    },
+    {
+      title: "Configured Prefix",
+      icon: <Icon name="configuration" />,
+      children:
+        "The branch must begin with one of the explicit prefixes. Empty prefixes select nothing.",
+    },
+    {
+      title: "Merge State",
+      icon: <Icon name="git" />,
+      children:
+        "The branch must match merged, unmerged, or all according to resolved policy.",
+    },
+    {
+      title: "Optional Time Filter",
+      icon: <Icon name="timeline" />,
+      children: "Use either maximum age or an absolute before date, never both.",
+    },
+  ]}
 />
 
 </Section>
@@ -80,14 +99,36 @@ removing both copies.
 <Section title="Recommended Cleanup Journey">
 
 <WorkflowTimeline
-    title="Review Before Deletion"
-    items={[
-        {title: "Fetch and inspect repository state", description: "Refresh remote knowledge and review local and remote branches manually.", status: "completed"},
-        {title: "Choose narrow prefixes", description: "Select only known branch families such as feature/ or release/.", status: "completed"},
-        {title: "Choose merge and time filters", description: "Prefer merged branches and add one optional age boundary when useful.", status: "completed"},
-        {title: "Dry-run the exact command", description: "Review every candidate and skipped branch before normal execution.", status: "current"},
-        {title: "Execute and verify", description: "Run normally, then confirm local and remote branch lists.", status: "pending"},
-    ]}
+  title="Review Before Deletion"
+  items={[
+    {
+      title: "Fetch and inspect repository state",
+      description:
+        "Refresh remote knowledge and review local and remote branches manually.",
+      status: "completed",
+    },
+    {
+      title: "Choose narrow prefixes",
+      description: "Select only known branch families such as feature/ or release/.",
+      status: "completed",
+    },
+    {
+      title: "Choose merge and time filters",
+      description:
+        "Prefer merged branches and add one optional age boundary when useful.",
+      status: "completed",
+    },
+    {
+      title: "Dry-run the exact command",
+      description: "Review every candidate and skipped branch before normal execution.",
+      status: "current",
+    },
+    {
+      title: "Execute and verify",
+      description: "Run normally, then confirm local and remote branch lists.",
+      status: "pending",
+    },
+  ]}
 />
 
 <Terminal title="Narrow merged-branch cleanup" language="bash">
@@ -96,9 +137,9 @@ removing both copies.
 git branch --all
 
 custy --dry-run cleanup brancheses \
-  --prefix feature/ \
-  --merge-status merged \
-  --max-age 30d`}
+ --prefix feature/ \
+ --merge-status merged \
+ --max-age 30d`}
 
 </Terminal>
 
@@ -122,13 +163,32 @@ to make the command select something.
 <Section title="Before Normal Execution">
 
 <CommandChecklist
-    items={[
-        {title: "Candidates are listed", description: "Every branch selected by dry-run is expected and recoverable if needed."},
-        {title: "Protected work is pushed", description: "Important commits exist in a safe branch, tag, or reviewed remote location."},
-        {title: "Merge status is appropriate", description: "Avoid unmerged or all unless their deletion is explicitly intended."},
-        {title: "Only one time filter resolves", description: "max_age and before are mutually exclusive."},
-        {title: "Remote deletion is acceptable", description: "Confirm matching origin branches may be removed as well as local branches."},
-    ]}
+  items={[
+    {
+      title: "Candidates are listed",
+      description:
+        "Every branch selected by dry-run is expected and recoverable if needed.",
+    },
+    {
+      title: "Protected work is pushed",
+      description:
+        "Important commits exist in a safe branch, tag, or reviewed remote location.",
+    },
+    {
+      title: "Merge status is appropriate",
+      description:
+        "Avoid unmerged or all unless their deletion is explicitly intended.",
+    },
+    {
+      title: "Only one time filter resolves",
+      description: "max_age and before are mutually exclusive.",
+    },
+    {
+      title: "Remote deletion is acceptable",
+      description:
+        "Confirm matching origin branches may be removed as well as local branches.",
+    },
+  ]}
 />
 
 <Terminal title="Execute and verify" language="bash">
@@ -160,12 +220,28 @@ deletion undo journal.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Branch Cleanup Configuration", href: "../configuration/cli/cleanup/branch", description: "Configure prefixes, merge state, and optional time filters."},
-        {title: "Branch Cleanup Workflow", href: "../commands/cleanup/branch/workflow", description: "Review layered selection before deletion."},
-        {title: "Branch Troubleshooting", href: "../commands/cleanup/branch/troubleshooting", description: "Diagnose empty or unexpected candidate sets."},
-        {title: "Managing Backups", href: "./managing-backups", description: "Maintain message-file backups separately from Git branches."},
-    ]}
+  commands={[
+    {
+      title: "Branch Cleanup Configuration",
+      href: "../configuration/cli/cleanup/branch",
+      description: "Configure prefixes, merge state, and optional time filters.",
+    },
+    {
+      title: "Branch Cleanup Workflow",
+      href: "../commands/cleanup/branch/workflow",
+      description: "Review layered selection before deletion.",
+    },
+    {
+      title: "Branch Troubleshooting",
+      href: "../commands/cleanup/branch/troubleshooting",
+      description: "Diagnose empty or unexpected candidate sets.",
+    },
+    {
+      title: "Managing Backups",
+      href: "./managing-backups",
+      description: "Maintain message-file backups separately from Git branches.",
+    },
+  ]}
 />
 
 </Section>

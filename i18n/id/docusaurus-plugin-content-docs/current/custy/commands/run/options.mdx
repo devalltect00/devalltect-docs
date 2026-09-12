@@ -4,15 +4,68 @@ description: "Shared commit, tag, push, dan execution options untuk custy run."
 sidebar_position: 4
 sidebar_key: custy-run-options
 ---
-import {CommandHero, PropertyTable, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Command Options" description="Berikan shared inputs ke stage yang relevan." category="Pipeline" status="Stable with Limitations" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Profiles",href:"./profiles"},{label:"Safety",href:"./safety"}]} />
+import {
+  CommandHero,
+  PropertyTable,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Command Options"
+  description="Berikan shared inputs ke stage yang relevan."
+  category="Pipeline"
+  status="Stable with Limitations"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<PropertyTable title="Run Profile Inputs" items={[
- {property:"Commit files and backup",description:"Commit-message file dan backup directory."},{property:"Commit validation and staging",description:"auto-stage, stage-mode, empty commit, dan validation inputs."},{property:"Tag files and version",description:"Tag message, version file, dan explicit tag."},{property:"Release modifiers",description:"strategy, bump, pre/post/dev, metadata, dan epoch."},{property:"Tag behavior and backup",description:"Force behavior dan tag backup directory."},{property:"Push selection",description:"Tag push, backup sync, dan requested remotes."},
-]} />
-<Section title="Global Execution Options">Global options ditempatkan sebelum `run`, misalnya `custy --dry-run run release`.</Section>
-<InfoBox variant="warning" title="Current Adapter Limitations">Push selection inputs sudah dipropagasikan. Non-push inputs `bump` dan `skip_check` masih belum dipropagasikan secara andal. `check_cz` sudah dipropagasikan sebagai strict Commitizen override. Gunakan profile-specific guide dan dry-run output.</InfoBox>
-<InfoBox variant="note" title="Commit Validation Provider">Untuk reusable behavior pada Run profiles, konfigurasikan [`tool.custy.commit.validation`](../../configuration/commit-validation).</InfoBox>
+<PropertyTable
+  title="Run Profile Inputs"
+  items={[
+    {
+      property: "Commit files and backup",
+      description: "Commit-message file dan backup directory.",
+    },
+    {
+      property: "Commit validation and staging",
+      description: "auto-stage, stage-mode, empty commit, dan validation inputs.",
+    },
+    {
+      property: "Tag files and version",
+      description: "Tag message, version file, dan explicit tag.",
+    },
+    {
+      property: "Release modifiers",
+      description: "strategy, bump, pre/post/dev, metadata, dan epoch.",
+    },
+    {
+      property: "Tag behavior and backup",
+      description: "Force behavior dan tag backup directory.",
+    },
+    {
+      property: "Push selection",
+      description: "Tag push, backup sync, dan requested remotes.",
+    },
+  ]}
+/>
+<Section title="Global Execution Options">
+  Global options ditempatkan sebelum `run`, misalnya `custy --dry-run run release`.
+</Section>
+<InfoBox variant="warning" title="Current Adapter Limitations">
+  Push selection inputs sudah dipropagasikan. Non-push inputs `bump` dan `skip_check`
+  masih belum dipropagasikan secara andal. `check_cz` sudah dipropagasikan sebagai
+  strict Commitizen override. Gunakan profile-specific guide dan dry-run output.
+</InfoBox>
+<InfoBox variant="note" title="Commit Validation Provider">
+  Untuk reusable behavior pada Run profiles, konfigurasikan
+  [`tool.custy.commit.validation`](../../configuration/commit-validation).
+</InfoBox>

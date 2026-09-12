@@ -6,31 +6,36 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner scan"
-    title="Scan Path Headers"
-    description="Discover supported files, validate their path headers, and apply corrections only when explicitly requested."
-    category="Header Scanning"
-    status="Preview First"
-    syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
-    tags={["validation", "preview", "language-aware headers"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Options", href: "./options"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="path-header-scanner scan"
+  title="Scan Path Headers"
+  description="Discover supported files, validate their path headers, and apply corrections only when explicitly requested."
+  category="Header Scanning"
+  status="Preview First"
+  syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
+  tags={["validation", "preview", "language-aware headers"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Default Target", value: "app", icon: "directory"},
-        {label: "Default Effect", value: "Preview only", icon: "success"},
-        {label: "Write Opt-in", value: "--apply", icon: "warning"},
-        {label: "Simulation Override", value: "--dry-run", icon: "security"},
-    ]}
+  items={[
+    { label: "Default Target", value: "app", icon: "directory" },
+    { label: "Default Effect", value: "Preview only", icon: "success" },
+    { label: "Write Opt-in", value: "--apply", icon: "warning" },
+    { label: "Simulation Override", value: "--dry-run", icon: "security" },
+  ]}
 />
 
 ## Overview

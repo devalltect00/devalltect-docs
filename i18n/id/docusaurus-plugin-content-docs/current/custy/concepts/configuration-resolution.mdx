@@ -4,25 +4,83 @@ description: "Cara Custy memilih explicit CLI values, project configuration, dan
 sidebar_position: 2
 sidebar_key: custy-concepts-configuration-resolution
 ---
-import {CommandHero, WorkflowTimeline, PropertyTable, InfoBox, Section, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="CLI → config.toml → default" title="Configuration Resolution" description="Pahami effective value yang digunakan setiap command." category="Concept" status="Core Model" syntax="custy [GLOBAL OPTIONS] COMMAND [OPTIONS]" links={[{label:"Reference",href:"../configuration/reference"},{label:"Run Options",href:"../commands/run/options"}]} />
+import {
+  CommandHero,
+  WorkflowTimeline,
+  PropertyTable,
+  InfoBox,
+  Section,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="CLI → config.toml → default"
+  title="Configuration Resolution"
+  description="Pahami effective value yang digunakan setiap command."
+  category="Concept"
+  status="Core Model"
+  syntax="custy [GLOBAL OPTIONS] COMMAND [OPTIONS]"
+  links={[
+    { label: "Reference", href: "../configuration/reference" },
+    { label: "Run Options", href: "../commands/run/options" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="tip" title="Use Configuration for Repeatability">Simpan team defaults dalam `.config/custy/config.toml`; gunakan CLI overrides untuk satu invocation.</InfoBox>
+<InfoBox variant="tip" title="Use Configuration for Repeatability">
+  Simpan team defaults dalam `.config/custy/config.toml`; gunakan CLI overrides untuk
+  satu invocation.
+</InfoBox>
 
-<WorkflowTimeline title="Resolution Priority" items={[
- {title:"1. Explicit CLI value",description:"Nilai yang diberikan untuk invocation saat ini.",status:"completed"},{title:"2. Project configuration",description:"Nilai dari active config.toml.",status:"completed"},{title:"3. Built-in default",description:"Fallback aplikasi bila sumber sebelumnya tidak memberi nilai.",status:"completed"},
-]} />
+<WorkflowTimeline
+  title="Resolution Priority"
+  items={[
+    {
+      title: "1. Explicit CLI value",
+      description: "Nilai yang diberikan untuk invocation saat ini.",
+      status: "completed",
+    },
+    {
+      title: "2. Project configuration",
+      description: "Nilai dari active config.toml.",
+      status: "completed",
+    },
+    {
+      title: "3. Built-in default",
+      description: "Fallback aplikasi bila sumber sebelumnya tidak memberi nilai.",
+      status: "completed",
+    },
+  ]}
+/>
 
-<PropertyTable title="Value Selection" items={[
- {property:"1. Explicit CLI value",type:"Highest priority",description:"Nilai untuk invocation saat ini."},
- {property:"2. Project configuration",type:".config/custy/config.toml",description:"Reusable project value ketika CLI value tidak diberikan."},
- {property:"3. Built-in default",type:"Fallback",description:"Default command ketika dua sumber sebelumnya tidak memberi nilai."},
-]} />
+<PropertyTable
+  title="Value Selection"
+  items={[
+    {
+      property: "1. Explicit CLI value",
+      type: "Highest priority",
+      description: "Nilai untuk invocation saat ini.",
+    },
+    {
+      property: "2. Project configuration",
+      type: ".config/custy/config.toml",
+      description: "Reusable project value ketika CLI value tidak diberikan.",
+    },
+    {
+      property: "3. Built-in default",
+      type: "Fallback",
+      description: "Default command ketika dua sumber sebelumnya tidak memberi nilai.",
+    },
+  ]}
+/>
 
-<Section title="How Resolution Works">Secara umum: `CLI → config.toml → default`. Akan tetapi, tidak setiap option menggunakan semua sumber; beberapa command juga melakukan project detection atau validation.</Section>
+<Section title="How Resolution Works">
+  Secara umum: `CLI → config.toml → default`. Akan tetapi, tidak setiap option
+  menggunakan semua sumber; beberapa command juga melakukan project detection atau
+  validation.
+</Section>
 
 <Section title="Configuration File Shape">
 ```toml
@@ -31,6 +89,7 @@ dry_run = false
 
 [tool.custy.cli.versioning]
 strategy = "semver"
+
 ```
 </Section>
 
@@ -39,3 +98,4 @@ strategy = "semver"
 <RelatedCommands commands={[
  {name:"init",description:"Initialization configuration.",href:"../commands/init/configuration"},{name:"version",description:"Version configuration.",href:"../commands/version/configuration"},{name:"changelog",description:"Changelog configuration.",href:"../commands/changelog/generate/configuration"},{name:"run",description:"Shared Run options.",href:"../commands/run/options"},{name:"reference",description:"Full property reference.",href:"../configuration/reference"},
 ]} />
+```

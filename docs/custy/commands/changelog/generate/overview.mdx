@@ -8,54 +8,54 @@ keywords: [custy changelog generate, generate CHANGELOG.md]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Screenshot,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Screenshot,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Generate a Changelog"
-    description="Analyze repository history and render a structured CHANGELOG.md using Custy's changelog configuration."
-    category="Changelog"
-    status="Stable"
-    syntax="custy changelog generate [OPTIONS]"
-    tags={["Git history", "release notes", "Markdown"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Options", href: "./options"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy changelog generate"
+  title="Generate a Changelog"
+  description="Analyze repository history and render a structured CHANGELOG.md using Custy's changelog configuration."
+  category="Changelog"
+  status="Stable"
+  syntax="custy changelog generate [OPTIONS]"
+  tags={["Git history", "release notes", "Markdown"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {
-            label: "Category",
-            value: "Changelog",
-            icon: "release",
-        },
-        {
-            label: "Complexity",
-            value: "Intermediate",
-            icon: "requirement",
-        },
-        {
-            label: "Primary Artifact",
-            value: "CHANGELOG.md",
-            icon: "file",
-        },
-        {
-            label: "Creates Git History",
-            value: "No",
-            icon: "git",
-        },
-    ]}
+  items={[
+    {
+      label: "Category",
+      value: "Changelog",
+      icon: "release",
+    },
+    {
+      label: "Complexity",
+      value: "Intermediate",
+      icon: "requirement",
+    },
+    {
+      label: "Primary Artifact",
+      value: "CHANGELOG.md",
+      icon: "file",
+    },
+    {
+      label: "Creates Git History",
+      value: "No",
+      icon: "git",
+    },
+  ]}
 />
 
 ## Overview
@@ -83,29 +83,29 @@ supported: `custy --dry-run changelog generate`.
 >
 
 <FeatureGrid
-    title="From History to Markdown"
-    items={[
-        {
-            title: "Collect History",
-            icon: <Icon name="git" />,
-            children: "Read eligible commits and determine configured release boundaries.",
-        },
-        {
-            title: "Classify Changes",
-            icon: <Icon name="table" />,
-            children: "Parse, clean, deduplicate, group, and sort changelog entries.",
-        },
-        {
-            title: "Render Releases",
-            icon: <Icon name="release" />,
-            children: "Apply release metadata, links, summaries, statistics, and templates.",
-        },
-        {
-            title: "Write Artifact",
-            icon: <Icon name="file" />,
-            children: "Create or update CHANGELOG.md using the resolved generation behavior.",
-        },
-    ]}
+  title="From History to Markdown"
+  items={[
+    {
+      title: "Collect History",
+      icon: <Icon name="git" />,
+      children: "Read eligible commits and determine configured release boundaries.",
+    },
+    {
+      title: "Classify Changes",
+      icon: <Icon name="table" />,
+      children: "Parse, clean, deduplicate, group, and sort changelog entries.",
+    },
+    {
+      title: "Render Releases",
+      icon: <Icon name="release" />,
+      children: "Apply release metadata, links, summaries, statistics, and templates.",
+    },
+    {
+      title: "Write Artifact",
+      icon: <Icon name="file" />,
+      children: "Create or update CHANGELOG.md using the resolved generation behavior.",
+    },
+  ]}
 />
 
 </Section>
@@ -117,11 +117,11 @@ supported: `custy --dry-run changelog generate`.
 >
 
 <Screenshot
-    src="/img/custy/commands/changelog/generate-terminal.png"
-    alt="Terminal output from custy changelog generate"
-    title="Changelog generation"
-    caption="The terminal reports changelog generation and the resulting file."
-    fallback="Terminal screenshot for the changelog generation command will be added later."
+  src="/img/custy/commands/changelog/generate-terminal.png"
+  alt="Terminal output from custy changelog generate"
+  title="Changelog generation"
+  caption="The terminal reports changelog generation and the resulting file."
+  fallback="Terminal screenshot for the changelog generation command will be added later."
 />
 
 </Section>
@@ -133,23 +133,23 @@ supported: `custy --dry-run changelog generate`.
 >
 
 <RelatedCommands
-    commands={[
-        {
-            title: "custy commit",
-            href: "../../commit/overview",
-            description: "Generate the changelog inside the complete commit profile.",
-        },
-        {
-            title: "custy run dev",
-            href: "../../run/dev/overview",
-            description: "Include changelog generation in daily development work.",
-        },
-        {
-            title: "custy run release",
-            href: "../../run/release/overview",
-            description: "Generate release notes before commit, tag, and push stages.",
-        },
-    ]}
+  commands={[
+    {
+      title: "custy commit",
+      href: "../../commit/overview",
+      description: "Generate the changelog inside the complete commit profile.",
+    },
+    {
+      title: "custy run dev",
+      href: "../../run/dev/overview",
+      description: "Include changelog generation in daily development work.",
+    },
+    {
+      title: "custy run release",
+      href: "../../run/release/overview",
+      description: "Generate release notes before commit, tag, and push stages.",
+    },
+  ]}
 />
 
 </Section>

@@ -8,30 +8,26 @@ keywords: [custy tag output]
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy tag"
-    title="Command Output"
-    description="Review updated artifacts, tag-message backups, and the local Git tag created by the profile."
-    category="Git Operations"
-    status="Review Required"
-    syntax="custy tag [OPTIONS]"
-    tags={[
-        "output",
-        "local tag",
-        "verification",
-    ]}
-    links={[
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy tag"
+  title="Command Output"
+  description="Review updated artifacts, tag-message backups, and the local Git tag created by the profile."
+  category="Git Operations"
+  status="Review Required"
+  syntax="custy tag [OPTIONS]"
+  tags={["output", "local tag", "verification"]}
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Overview
@@ -46,16 +42,17 @@ tag. Review both the working tree and the tag reference.
 >
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Successful Tag Profile",
-            description: "Representative high-level progress from tag preparation through creation.",
-            output: `Version and tag artifacts prepared
+  outputs={[
+    {
+      title: "Successful Tag Profile",
+      description:
+        "Representative high-level progress from tag preparation through creation.",
+      output: `Version and tag artifacts prepared
 Tag message backed up
 Local Git tag created`,
-            notes: "Exact wording depends on the installed Custy version and configuration.",
-        },
-    ]}
+      notes: "Exact wording depends on the installed Custy version and configuration.",
+    },
+  ]}
 />
 
 A successful tag profile can produce:

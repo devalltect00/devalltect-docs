@@ -4,21 +4,27 @@ description: "Contoh penggunaan Backup Cleanup."
 sidebar_position: 6
 sidebar_key: custy-cleanup-backup
 ---
-import {CommandHero, CommandExample, Section, InfoBox} from "@site/src/components/docs";
+
+import {
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Examples"
-    description="Pelajari skenario Backup Cleanup umum."
-    category="Maintenance"
-    status="Direkomendasikan"
-    syntax="custy cleanup backups"
-    tags={["examples", "cleanup", "backup"]}
-    links={[
-        {label: "Workflow", href: "./workflow"},
-        {label: "Output", href: "./output"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy cleanup backups"
+  title="Examples"
+  description="Pelajari skenario Backup Cleanup umum."
+  category="Maintenance"
+  status="Direkomendasikan"
+  syntax="custy cleanup backups"
+  tags={["examples", "cleanup", "backup"]}
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Output", href: "./output" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Ringkasan
@@ -27,19 +33,56 @@ Gunakan examples berikut untuk membersihkan semua kategori atau meng-override
 target dan retention count sementara.
 
 <Section title="Contoh Umum">
-<CommandExample examples={[
-    {title: "Gunakan Project Defaults", description: "Jalankan configured cleanup.", command: "custy cleanup backups", result: "Menghapus backup lama sesuai configuration."},
-    {title: "Cleanup Commit Backups", description: "Pilih commit backups.", command: "custy cleanup backups --type commit", result: "Hanya commit backups dievaluasi."},
-    {title: "Cleanup Tag Backups", description: "Pilih tag backups.", command: "custy cleanup backups --type tag", result: "Hanya tag backups dievaluasi."},
-    {title: "Pertahankan 5 Backup", description: "Override retention count.", command: "custy cleanup backups --keep 5", result: "5 file terbaru dipertahankan."},
-    {title: "Pertahankan 20 Backup", description: "Override retention count.", command: "custy cleanup backups --keep 20", result: "20 file terbaru dipertahankan."},
-    {title: "Preview Cleanup", description: "Pratinjau tanpa menghapus.", command: "custy --dry-run cleanup backups", result: "Menampilkan tindakan tanpa menghapus file."},
-    {title: "Debug Cleanup", description: "Tampilkan diagnostik tambahan.", command: "custy --debug cleanup backups", result: "Menjalankan cleanup dengan output debug."},
-]} />
+  <CommandExample
+    examples={[
+      {
+        title: "Gunakan Project Defaults",
+        description: "Jalankan configured cleanup.",
+        command: "custy cleanup backups",
+        result: "Menghapus backup lama sesuai configuration.",
+      },
+      {
+        title: "Cleanup Commit Backups",
+        description: "Pilih commit backups.",
+        command: "custy cleanup backups --type commit",
+        result: "Hanya commit backups dievaluasi.",
+      },
+      {
+        title: "Cleanup Tag Backups",
+        description: "Pilih tag backups.",
+        command: "custy cleanup backups --type tag",
+        result: "Hanya tag backups dievaluasi.",
+      },
+      {
+        title: "Pertahankan 5 Backup",
+        description: "Override retention count.",
+        command: "custy cleanup backups --keep 5",
+        result: "5 file terbaru dipertahankan.",
+      },
+      {
+        title: "Pertahankan 20 Backup",
+        description: "Override retention count.",
+        command: "custy cleanup backups --keep 20",
+        result: "20 file terbaru dipertahankan.",
+      },
+      {
+        title: "Preview Cleanup",
+        description: "Pratinjau tanpa menghapus.",
+        command: "custy --dry-run cleanup backups",
+        result: "Menampilkan tindakan tanpa menghapus file.",
+      },
+      {
+        title: "Debug Cleanup",
+        description: "Tampilkan diagnostik tambahan.",
+        command: "custy --debug cleanup backups",
+        result: "Menjalankan cleanup dengan output debug.",
+      },
+    ]}
+  />
 </Section>
 
 <InfoBox variant="warning" title="Tinjau Retention Count">
-Nilai kecil dapat menghapus lebih banyak history. Gunakan dry run terlebih dahulu.
+  Nilai kecil dapat menghapus lebih banyak history. Gunakan dry run terlebih dahulu.
 </InfoBox>
 
 <Section title="Langkah Berikutnya">Lanjutkan ke **Output**.</Section>

@@ -8,40 +8,40 @@ keywords: [add Custy command, Typer command, Custy CLI architecture]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/cli/commands/&lt;feature&gt;/"
-    title="Adding Commands"
-    description="Carry one user-facing operation from Typer input to tested core behavior without mixing responsibilities."
-    category="Developer Guide"
-    status="Internal Extension"
-    syntax="options -> model -> resolver -> command -> core"
-    tags={["Typer", "argument model", "configuration resolver", "tests"]}
-    links={[
-        {label: "Command Shape", href: "#command-package-shape"},
-        {label: "Registration", href: "#register-the-command"},
-        {label: "Testing", href: "#test-the-complete-boundary"},
-    ]}
+  command="app/cli/commands/&lt;feature&gt;/"
+  title="Adding Commands"
+  description="Carry one user-facing operation from Typer input to tested core behavior without mixing responsibilities."
+  category="Developer Guide"
+  status="Internal Extension"
+  syntax="options -> model -> resolver -> command -> core"
+  tags={["Typer", "argument model", "configuration resolver", "tests"]}
+  links={[
+    { label: "Command Shape", href: "#command-package-shape" },
+    { label: "Registration", href: "#register-the-command" },
+    { label: "Testing", href: "#test-the-complete-boundary" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "CLI Root", value: "app/cli/main.py", icon: "terminal"},
-        {label: "Command Modules", value: "app/cli/commands", icon: "directory"},
-        {label: "Framework", value: "Typer", icon: "dependency"},
-        {label: "Business Logic", value: "app/core", icon: "architecture"},
-    ]}
+  items={[
+    { label: "CLI Root", value: "app/cli/main.py", icon: "terminal" },
+    { label: "Command Modules", value: "app/cli/commands", icon: "directory" },
+    { label: "Framework", value: "Typer", icon: "dependency" },
+    { label: "Business Logic", value: "app/core", icon: "architecture" },
+  ]}
 />
 
 ## Overview
@@ -64,19 +64,39 @@ backup commit` and `custy backup tag`.
 <Section title="Command Package Shape">
 
 <FeatureGrid
-    title="Four Focused Modules"
-    items={[
-        {title: "command.py", icon: <Icon name="terminal" />, children: "Declares Typer callbacks, reads application context, builds resolved arguments, and delegates to a core service or pipeline."},
-        {title: "options.py", icon: <Icon name="configuration" />, children: "Defines reusable Annotated Typer options, aliases, validation, completion, help text, and help-panel grouping."},
-        {title: "models.py", icon: <Icon name="package" />, children: "Defines typed dataclasses for the effective arguments consumed after resolution."},
-        {title: "resolver.py", icon: <Icon name="dependency" />, children: "Applies CLI -> project config -> built-in default precedence and returns the typed argument model."},
-    ]}
+  title="Four Focused Modules"
+  items={[
+    {
+      title: "command.py",
+      icon: <Icon name="terminal" />,
+      children:
+        "Declares Typer callbacks, reads application context, builds resolved arguments, and delegates to a core service or pipeline.",
+    },
+    {
+      title: "options.py",
+      icon: <Icon name="configuration" />,
+      children:
+        "Defines reusable Annotated Typer options, aliases, validation, completion, help text, and help-panel grouping.",
+    },
+    {
+      title: "models.py",
+      icon: <Icon name="package" />,
+      children:
+        "Defines typed dataclasses for the effective arguments consumed after resolution.",
+    },
+    {
+      title: "resolver.py",
+      icon: <Icon name="dependency" />,
+      children:
+        "Applies CLI -> project config -> built-in default precedence and returns the typed argument model.",
+    },
+  ]}
 />
 
 <Terminal title="Recommended package layout" language="text">
 
 {`app/cli/commands/example/
-|- __init__.py
+|- **init**.py
 |- command.py
 |- models.py
 |- options.py
@@ -97,13 +117,38 @@ tests/cli/commands/example/
 <Section title="Implementation Flow">
 
 <WorkflowTimeline
-    items={[
-        {title: "Define the public contract", description: "Choose the command path, required inputs, safe defaults, side effects, help text, and whether global dry-run applies.", status: "completed"},
-        {title: "Create typed options and a result model", description: "Keep CLI declarations reusable and make the resolver return one explicit dataclass.", status: "completed"},
-        {title: "Resolve effective values", description: "Use ConfigLoader.resolve for supported project defaults and leave CLI option defaults unspecified when fallback is intended.", status: "current"},
-        {title: "Delegate from the callback", description: "Merge global AppContext values, construct the required core service or pipeline, and avoid implementing domain logic in command.py.", status: "pending"},
-        {title: "Register and test", description: "Expose the command through the root application and cover every layer before updating public documentation.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Define the public contract",
+      description:
+        "Choose the command path, required inputs, safe defaults, side effects, help text, and whether global dry-run applies.",
+      status: "completed",
+    },
+    {
+      title: "Create typed options and a result model",
+      description:
+        "Keep CLI declarations reusable and make the resolver return one explicit dataclass.",
+      status: "completed",
+    },
+    {
+      title: "Resolve effective values",
+      description:
+        "Use ConfigLoader.resolve for supported project defaults and leave CLI option defaults unspecified when fallback is intended.",
+      status: "current",
+    },
+    {
+      title: "Delegate from the callback",
+      description:
+        "Merge global AppContext values, construct the required core service or pipeline, and avoid implementing domain logic in command.py.",
+      status: "pending",
+    },
+    {
+      title: "Register and test",
+      description:
+        "Expose the command through the root application and cover every layer before updating public documentation.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -118,16 +163,15 @@ Resolvers make precedence visible and independently testable.
 
 {`from app.cli.commands.example.models import ExampleArgs
 
-
 def resolve_example_args(config, cli_args) -> ExampleArgs:
-    """Resolve effective arguments for the example command."""
-    return ExampleArgs(
-        output_file=config.resolve(
-            cli_args.output_file,
-            ["cli", "paths", "example_output"],
-            "example.txt",
-        ),
-    )`}
+"""Resolve effective arguments for the example command."""
+return ExampleArgs(
+output_file=config.resolve(
+cli_args.output_file,
+["cli", "paths", "example_output"],
+"example.txt",
+),
+)`}
 
 </Terminal>
 
@@ -161,14 +205,37 @@ step does not expose a public `custy run` choice.
 <Section title="Command Callback Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "Read the shared configuration", description: "Use get_config() rather than parsing TOML inside the command."},
-        {title: "Create raw CLI arguments", description: "Map Typer values into the existing CliArgs boundary or another explicit input model."},
-        {title: "Resolve effective arguments", description: "Call the feature resolver once and use the returned dataclass downstream."},
-        {title: "Merge global context", description: "Carry dry-run, debug, and log-level values from AppContext when the delegated core flow supports them."},
-        {title: "Delegate business behavior", description: "Invoke a focused core service or construct the appropriate registered pipeline."},
-        {title: "Return actionable failures", description: "Preserve project exception context and give users a corrective next step."},
-    ]}
+  items={[
+    {
+      title: "Read the shared configuration",
+      description: "Use get_config() rather than parsing TOML inside the command.",
+    },
+    {
+      title: "Create raw CLI arguments",
+      description:
+        "Map Typer values into the existing CliArgs boundary or another explicit input model.",
+    },
+    {
+      title: "Resolve effective arguments",
+      description:
+        "Call the feature resolver once and use the returned dataclass downstream.",
+    },
+    {
+      title: "Merge global context",
+      description:
+        "Carry dry-run, debug, and log-level values from AppContext when the delegated core flow supports them.",
+    },
+    {
+      title: "Delegate business behavior",
+      description:
+        "Invoke a focused core service or construct the appropriate registered pipeline.",
+    },
+    {
+      title: "Return actionable failures",
+      description:
+        "Preserve project exception context and give users a corrective next step.",
+    },
+  ]}
 />
 
 </Section>
@@ -205,12 +272,31 @@ safety guidance, and troubleshooting together with the source and tests.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Extending Configuration", href: "./extending-configuration", description: "Carry a command default through the complete configuration lifecycle."},
-        {title: "Adding Pipeline Steps", href: "./adding-pipeline-steps", description: "Delegate multi-stage command behavior through the step system."},
-        {title: "Testing", href: "./testing", description: "Choose the CLI, core, integration, and regression checks for the change."},
-        {title: "Command Reference", href: "../commands/overview", description: "Review the user-facing structure that a public command must update."},
-    ]}
+  commands={[
+    {
+      title: "Extending Configuration",
+      href: "./extending-configuration",
+      description:
+        "Carry a command default through the complete configuration lifecycle.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "./adding-pipeline-steps",
+      description: "Delegate multi-stage command behavior through the step system.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description:
+        "Choose the CLI, core, integration, and regression checks for the change.",
+    },
+    {
+      title: "Command Reference",
+      href: "../commands/overview",
+      description:
+        "Review the user-facing structure that a public command must update.",
+    },
+  ]}
 />
 
 </Section>

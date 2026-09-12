@@ -8,29 +8,25 @@ keywords: [custy push examples]
 ---
 
 import {
-    CommandExample,
-    CommandHero,
-    InfoBox,
-    Section,
+  CommandExample,
+  CommandHero,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Examples"
-    description="Use cautious push patterns that expose actual resolved destinations before remote synchronization."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "examples",
-        "dry-run",
-        "remote safety",
-    ]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Options", href: "./options"},
-        {label: "Remotes", href: "./remotes"},
-    ]}
+  command="custy push"
+  title="Examples"
+  description="Use cautious push patterns that expose actual resolved destinations before remote synchronization."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  tags={["examples", "dry-run", "remote safety"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Remotes", href: "./remotes" },
+  ]}
 />
 
 ## Overview
@@ -55,14 +51,43 @@ intended destination.
 >
 
 <CommandExample
-    examples={[
-        {title: "Preview resolved destinations", command: "custy --dry-run push", description: "Run validation and inspect which main remotes the engine resolves.", notes: "Use this before every unfamiliar repository or configuration."},
-        {title: "Push to exactly one remote", command: "custy push --remote upstream", description: "Override all configured groups and push only to upstream."},
-        {title: "Push all configured groups", command: "custy push --all-remote", description: "Push the de-duplicated main and eligible backup groups."},
-        {title: "Preview HEAD and a release tag", command: "custy --dry-run push --tag v1.4.0", description: "Show the intended HEAD and tag operations for each resolved remote."},
-        {title: "Synchronize an eligible backup", command: "custy push --sync-backup --tag v1.4.0", description: "Request backup synchronization in addition to normal main-remote processing.", notes: "Non-critical branch rules can skip backup synchronization."},
-        {title: "Run only after review", command: "custy push --tag v1.4.0", description: "Push HEAD and the selected tag using the engine's actual resolved destinations."},
-    ]}
+  examples={[
+    {
+      title: "Preview resolved destinations",
+      command: "custy --dry-run push",
+      description: "Run validation and inspect which main remotes the engine resolves.",
+      notes: "Use this before every unfamiliar repository or configuration.",
+    },
+    {
+      title: "Push to exactly one remote",
+      command: "custy push --remote upstream",
+      description: "Override all configured groups and push only to upstream.",
+    },
+    {
+      title: "Push all configured groups",
+      command: "custy push --all-remote",
+      description: "Push the de-duplicated main and eligible backup groups.",
+    },
+    {
+      title: "Preview HEAD and a release tag",
+      command: "custy --dry-run push --tag v1.4.0",
+      description:
+        "Show the intended HEAD and tag operations for each resolved remote.",
+    },
+    {
+      title: "Synchronize an eligible backup",
+      command: "custy push --sync-backup --tag v1.4.0",
+      description:
+        "Request backup synchronization in addition to normal main-remote processing.",
+      notes: "Non-critical branch rules can skip backup synchronization.",
+    },
+    {
+      title: "Run only after review",
+      command: "custy push --tag v1.4.0",
+      description:
+        "Push HEAD and the selected tag using the engine's actual resolved destinations.",
+    },
+  ]}
 />
 
 </Section>

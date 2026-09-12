@@ -7,28 +7,28 @@ tags: [reflow, configuration, reference]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/reflow/config.toml"
-    title="Configuration Reference"
-    description="Map the shipped Reflow configuration to the commands and boundaries that consume it."
-    category="Configuration"
-    status="Reflow 1.0.1"
-    syntax="[tool.reflow.*]"
-    tags={["TOML", "command defaults", "repository targeting"]}
-    links={[
-        {label: "Configuration Overview", href: "./overview"},
-        {label: "Repository Targeting", href: "../concepts/repository-targeting"},
-        {label: "Safety and Dry-run", href: "../concepts/safety-and-dry-run"},
-        {label: "Commands", href: "../commands/overview"},
-    ]}
+  command=".config/reflow/config.toml"
+  title="Configuration Reference"
+  description="Map the shipped Reflow configuration to the commands and boundaries that consume it."
+  category="Configuration"
+  status="Reflow 1.0.1"
+  syntax="[tool.reflow.*]"
+  tags={["TOML", "command defaults", "repository targeting"]}
+  links={[
+    { label: "Configuration Overview", href: "./overview" },
+    { label: "Repository Targeting", href: "../concepts/repository-targeting" },
+    { label: "Safety and Dry-run", href: "../concepts/safety-and-dry-run" },
+    { label: "Commands", href: "../commands/overview" },
+  ]}
 />
 
 ## Resolution and ownership
@@ -55,21 +55,39 @@ is supplied.
 <Section title="Repository and Git">
 
 <PropertyTable
-    title="Target settings"
-    items={[
-        {property: <code>repository.path</code>, type: "path", defaultValue: ".", description: "Existing local directory. Relative values resolve from the invocation directory."},
-        {property: <code>repository.url</code>, type: "Git URL", defaultValue: "unset", description: "Remote repository materialized in a managed temporary clone. Do not embed credentials."},
-        {property: <code>git.default_remote</code>, type: "string", defaultValue: "origin", description: "Remote name used for remote tag replacement and release-recovery pushes."},
-    ]}
+  title="Target settings"
+  items={[
+    {
+      property: <code>repository.path</code>,
+      type: "path",
+      defaultValue: ".",
+      description:
+        "Existing local directory. Relative values resolve from the invocation directory.",
+    },
+    {
+      property: <code>repository.url</code>,
+      type: "Git URL",
+      defaultValue: "unset",
+      description:
+        "Remote repository materialized in a managed temporary clone. Do not embed credentials.",
+    },
+    {
+      property: <code>git.default_remote</code>,
+      type: "string",
+      defaultValue: "origin",
+      description:
+        "Remote name used for remote tag replacement and release-recovery pushes.",
+    },
+  ]}
 />
 
-| Command | `path` target | `url` target | Persistent scope |
-| --- | --- | --- | --- |
-| `reflow init` | Supported | Rejected | Project configuration files |
-| `reflow tags convert local` | Supported | Rejected | Local tag refs only |
-| `reflow tags convert remote` | Uses the checkout's remote | Uses a temporary clone | Guarded atomic remote push |
-| `reflow releases recover` | Uses the checkout's remote | Uses a temporary clone | Delete and re-push selected remote tags |
-| `reflow dockerize` | Uses the checkout as source | Uses a temporary clone as source | Docker and registry operations |
+| Command                      | `path` target               | `url` target                     | Persistent scope                        |
+| ---------------------------- | --------------------------- | -------------------------------- | --------------------------------------- |
+| `reflow init`                | Supported                   | Rejected                         | Project configuration files             |
+| `reflow tags convert local`  | Supported                   | Rejected                         | Local tag refs only                     |
+| `reflow tags convert remote` | Uses the checkout's remote  | Uses a temporary clone           | Guarded atomic remote push              |
+| `reflow releases recover`    | Uses the checkout's remote  | Uses a temporary clone           | Delete and re-push selected remote tags |
+| `reflow dockerize`           | Uses the checkout as source | Uses a temporary clone as source | Docker and registry operations          |
 
 Registry values such as `github.image` and `gitlab.image` never select the Git
 repository.
@@ -79,18 +97,35 @@ repository.
 <Section title="Shared CLI Execution">
 
 <PropertyTable
-    title="[tool.reflow.cli.execution]"
-    items={[
-        {property: <code>debug</code>, type: "boolean", defaultValue: "false", description: "Enable detailed diagnostic output when the CLI flag is omitted."},
-        {property: <code>dry_run</code>, type: "boolean", defaultValue: "false", description: "Simulate persistent local, remote, Docker, and registry mutations while allowing discovery and validation."},
-    ]}
+  title="[tool.reflow.cli.execution]"
+  items={[
+    {
+      property: <code>debug</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Enable detailed diagnostic output when the CLI flag is omitted.",
+    },
+    {
+      property: <code>dry_run</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Simulate persistent local, remote, Docker, and registry mutations while allowing discovery and validation.",
+    },
+  ]}
 />
 
 <PropertyTable
-    title="[tool.reflow.cli.progress]"
-    items={[
-        {property: <code>enabled</code>, type: "boolean", defaultValue: "true", description: "Show Rich spinners and progress bars. This changes presentation, not live or dry-run behavior."},
-    ]}
+  title="[tool.reflow.cli.progress]"
+  items={[
+    {
+      property: <code>enabled</code>,
+      type: "boolean",
+      defaultValue: "true",
+      description:
+        "Show Rich spinners and progress bars. This changes presentation, not live or dry-run behavior.",
+    },
+  ]}
 />
 
 <InfoBox variant="note" title="Dry-run can still read and log">
@@ -107,11 +142,23 @@ simulated.
 <Section title="Initialization">
 
 <PropertyTable
-    title="[tool.reflow.initialization]"
-    items={[
-        {property: <code>force</code>, type: "boolean", defaultValue: "false", description: "Default overwrite behavior for reflow init when --force/--no-force is omitted."},
-        {property: <code>ask</code>, type: "boolean", defaultValue: "false", description: "Prompt before supported creation or replacement decisions when --ask is omitted."},
-    ]}
+  title="[tool.reflow.initialization]"
+  items={[
+    {
+      property: <code>force</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Default overwrite behavior for reflow init when --force/--no-force is omitted.",
+    },
+    {
+      property: <code>ask</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Prompt before supported creation or replacement decisions when --ask is omitted.",
+    },
+  ]}
 />
 
 These settings are consumed only by `reflow init`. The active command accepts
@@ -122,11 +169,23 @@ the `all` and `config` modes and requires a persistent local target.
 <Section title="Tag Conversion">
 
 <PropertyTable
-    title="[tool.reflow.cli.tags.convert]"
-    items={[
-        {property: <code>target_format</code>, type: "semver | pep440", defaultValue: "semver", description: "Destination format shared by local and remote tag conversion when --to is omitted."},
-        {property: <code>yes</code>, type: "boolean", defaultValue: "false", description: "Bypass the live replacement confirmation after the full plan is displayed. Dry-run never prompts."},
-    ]}
+  title="[tool.reflow.cli.tags.convert]"
+  items={[
+    {
+      property: <code>target_format</code>,
+      type: "semver | pep440",
+      defaultValue: "semver",
+      description:
+        "Destination format shared by local and remote tag conversion when --to is omitted.",
+    },
+    {
+      property: <code>yes</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Bypass the live replacement confirmation after the full plan is displayed. Dry-run never prompts.",
+    },
+  ]}
 />
 
 The same defaults feed `reflow tags convert local` and
@@ -138,12 +197,27 @@ local or remote refs can change.
 <Section title="Release Recovery and the Deprecated Alias">
 
 <PropertyTable
-    title="[tool.reflow.cli.releases.recover]"
-    items={[
-        {property: <code>delay</code>, type: "integer >= 0", defaultValue: "2", description: "Seconds between selected remote tag re-push operations."},
-        {property: <code>only_stable</code>, type: "boolean", defaultValue: "false", description: "Exclude prerelease tags when selecting releases to recover."},
-        {property: <code>limit</code>, type: "integer >= 1 | unset", defaultValue: "unlimited", description: "Maximum number of selected missing-release tags."},
-    ]}
+  title="[tool.reflow.cli.releases.recover]"
+  items={[
+    {
+      property: <code>delay</code>,
+      type: "integer >= 0",
+      defaultValue: "2",
+      description: "Seconds between selected remote tag re-push operations.",
+    },
+    {
+      property: <code>only_stable</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Exclude prerelease tags when selecting releases to recover.",
+    },
+    {
+      property: <code>limit</code>,
+      type: "integer >= 1 | unset",
+      defaultValue: "unlimited",
+      description: "Maximum number of selected missing-release tags.",
+    },
+  ]}
 />
 
 `--yes` for `reflow releases recover` is intentionally CLI-only. Recovery
@@ -151,12 +225,28 @@ checks GitHub releases, then deletes and re-pushes selected remote tags to
 retrigger tag-based CI/CD; it does not create release records through an API.
 
 <PropertyTable
-    title="[tool.reflow.cli.tags.replay] (deprecated)"
-    items={[
-        {property: <code>delay</code>, type: "integer >= 0", defaultValue: "2", description: "Legacy fallback when the canonical recovery delay is not configured."},
-        {property: <code>only_stable</code>, type: "boolean", defaultValue: "false", description: "Legacy fallback for the canonical stable-only filter."},
-        {property: <code>limit</code>, type: "integer >= 1 | unset", defaultValue: "unlimited", description: "Legacy fallback for the canonical recovery limit."},
-    ]}
+  title="[tool.reflow.cli.tags.replay] (deprecated)"
+  items={[
+    {
+      property: <code>delay</code>,
+      type: "integer >= 0",
+      defaultValue: "2",
+      description:
+        "Legacy fallback when the canonical recovery delay is not configured.",
+    },
+    {
+      property: <code>only_stable</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Legacy fallback for the canonical stable-only filter.",
+    },
+    {
+      property: <code>limit</code>,
+      type: "integer >= 1 | unset",
+      defaultValue: "unlimited",
+      description: "Legacy fallback for the canonical recovery limit.",
+    },
+  ]}
 />
 
 Keep legacy values only while migrating existing configuration. New
@@ -168,13 +258,37 @@ and `reflow releases recover`.
 <Section title="Docker and Registry Images">
 
 <PropertyTable
-    title="Container publishing"
-    items={[
-        {property: <code>docker.provider</code>, type: "github | gitlab | both", defaultValue: "github", description: "Select which configured registry destinations reflow dockerize publishes to."},
-        {property: <code>docker.keep_local_images</code>, type: "boolean", defaultValue: "false", description: "Keep all built tag images locally instead of removing non-latest images after push."},
-        {property: <code>github.image</code>, type: "image name", defaultValue: "template placeholder", description: "GHCR destination, for example ghcr.io/acme/project. Required for github or both."},
-        {property: <code>gitlab.image</code>, type: "image name", defaultValue: "template placeholder", description: "GitLab Container Registry destination. Required for gitlab or both."},
-    ]}
+  title="Container publishing"
+  items={[
+    {
+      property: <code>docker.provider</code>,
+      type: "github | gitlab | both",
+      defaultValue: "github",
+      description:
+        "Select which configured registry destinations reflow dockerize publishes to.",
+    },
+    {
+      property: <code>docker.keep_local_images</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Keep all built tag images locally instead of removing non-latest images after push.",
+    },
+    {
+      property: <code>github.image</code>,
+      type: "image name",
+      defaultValue: "template placeholder",
+      description:
+        "GHCR destination, for example ghcr.io/acme/project. Required for github or both.",
+    },
+    {
+      property: <code>gitlab.image</code>,
+      type: "image name",
+      defaultValue: "template placeholder",
+      description:
+        "GitLab Container Registry destination. Required for gitlab or both.",
+    },
+  ]}
 />
 
 `reflow dockerize` has no command-specific provider or image flags in Reflow
@@ -187,27 +301,87 @@ non-latest local images.
 <Section title="Console and File Logging">
 
 <PropertyTable
-    title="[tool.reflow.logging]"
-    items={[
-        {property: <code>level</code>, type: "log level", defaultValue: "INFO", description: "Console logging threshold; --log-level overrides it."},
-        {property: <code>markup</code>, type: "boolean", defaultValue: "true", description: "Enable Rich markup in console logging."},
-        {property: <code>rich_tracebacks</code>, type: "boolean", defaultValue: "true", description: "Enable Rich traceback rendering."},
-        {property: <code>show_time</code>, type: "boolean", defaultValue: "false", description: "Show timestamps in console log records."},
-        {property: <code>show_level</code>, type: "boolean", defaultValue: "false", description: "Show severity labels in console log records."},
-        {property: <code>console_format</code>, type: "format string", defaultValue: "%(message)s", description: "Python logging format used for console records."},
-    ]}
+  title="[tool.reflow.logging]"
+  items={[
+    {
+      property: <code>level</code>,
+      type: "log level",
+      defaultValue: "INFO",
+      description: "Console logging threshold; --log-level overrides it.",
+    },
+    {
+      property: <code>markup</code>,
+      type: "boolean",
+      defaultValue: "true",
+      description: "Enable Rich markup in console logging.",
+    },
+    {
+      property: <code>rich_tracebacks</code>,
+      type: "boolean",
+      defaultValue: "true",
+      description: "Enable Rich traceback rendering.",
+    },
+    {
+      property: <code>show_time</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Show timestamps in console log records.",
+    },
+    {
+      property: <code>show_level</code>,
+      type: "boolean",
+      defaultValue: "false",
+      description: "Show severity labels in console log records.",
+    },
+    {
+      property: <code>console_format</code>,
+      type: "format string",
+      defaultValue: "%(message)s",
+      description: "Python logging format used for console records.",
+    },
+  ]}
 />
 
 <PropertyTable
-    title="[tool.reflow.logging.file]"
-    items={[
-        {property: <code>level</code>, type: "log level", defaultValue: "DEBUG", description: "File logging threshold."},
-        {property: <code>log_dir</code>, type: "path", defaultValue: "logs", description: "Directory for persistent logs."},
-        {property: <code>log_file</code>, type: "filename", defaultValue: "reflow.log", description: "Active log filename."},
-        {property: <code>max_bytes</code>, type: "size", defaultValue: "10MB", description: "Rotate the log after this approximate size."},
-        {property: <code>backup_count</code>, type: "integer", defaultValue: "5", description: "Number of rotated log files retained."},
-        {property: <code>file_format</code>, type: "format string", defaultValue: "timestamp | level | logger | message", description: "Python logging format used for file records."},
-    ]}
+  title="[tool.reflow.logging.file]"
+  items={[
+    {
+      property: <code>level</code>,
+      type: "log level",
+      defaultValue: "DEBUG",
+      description: "File logging threshold.",
+    },
+    {
+      property: <code>log_dir</code>,
+      type: "path",
+      defaultValue: "logs",
+      description: "Directory for persistent logs.",
+    },
+    {
+      property: <code>log_file</code>,
+      type: "filename",
+      defaultValue: "reflow.log",
+      description: "Active log filename.",
+    },
+    {
+      property: <code>max_bytes</code>,
+      type: "size",
+      defaultValue: "10MB",
+      description: "Rotate the log after this approximate size.",
+    },
+    {
+      property: <code>backup_count</code>,
+      type: "integer",
+      defaultValue: "5",
+      description: "Number of rotated log files retained.",
+    },
+    {
+      property: <code>file_format</code>,
+      type: "format string",
+      defaultValue: "timestamp | level | logger | message",
+      description: "Python logging format used for file records.",
+    },
+  ]}
 />
 
 Never include credentials, tokens, or secret-bearing URLs in configuration or
@@ -251,9 +425,21 @@ upgrading an existing project-owned configuration.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Configuration Overview", href: "./overview", description: "Understand precedence and project ownership."},
-        {title: "Repository Targeting", href: "../concepts/repository-targeting", description: "Choose a path or URL safely."},
-        {title: "Command Overview", href: "../commands/overview", description: "Match configuration to command mutation scopes."},
-    ]}
+  commands={[
+    {
+      title: "Configuration Overview",
+      href: "./overview",
+      description: "Understand precedence and project ownership.",
+    },
+    {
+      title: "Repository Targeting",
+      href: "../concepts/repository-targeting",
+      description: "Choose a path or URL safely.",
+    },
+    {
+      title: "Command Overview",
+      href: "../commands/overview",
+      description: "Match configuration to command mutation scopes.",
+    },
+  ]}
 />

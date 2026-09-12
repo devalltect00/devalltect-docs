@@ -6,9 +6,16 @@ sidebar_key: path-header-scanner-getting-started
 tags: [path-header-scanner, installation, quick-start]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Path Header Scanner" title="Instalasi dan Alur Kerja Pertama" description="Gunakan environment khusus, pratinjau persiapan, dan tinjau hasil pemindaian sebelum menerapkan perubahan header." category="Memulai" status="Direkomendasikan" syntax="path-header-scanner scan app" />
+<CommandHero
+  command="Path Header Scanner"
+  title="Instalasi dan Alur Kerja Pertama"
+  description="Gunakan environment khusus, pratinjau persiapan, dan tinjau hasil pemindaian sebelum menerapkan perubahan header."
+  category="Memulai"
+  status="Direkomendasikan"
+  syntax="path-header-scanner scan app"
+/>
 
 <Terminal title="Environment" language="bash">{`python -m venv venv
 python -m pip install -e .
@@ -19,9 +26,11 @@ path-header-scanner init --dry-run
 path-header-scanner init
 
 # Scan hanya menampilkan pratinjau secara default
+
 path-header-scanner scan app
 
 # Terapkan hanya setelah meninjau pratinjau
+
 path-header-scanner scan app --apply`}</Terminal>
 
 <InfoBox variant="tip" title="Selesaikan target dari basis proyek lain">
@@ -32,4 +41,6 @@ tetap mengungguli `--apply` dan mode apply dari konfigurasi.
 
 </InfoBox>
 
-<InfoBox variant="note" title="Runtime">Kompatibel dengan Python 3.11+; runtime standar menggunakan Python 3.14</InfoBox>
+<InfoBox variant="note" title="Runtime">
+  Kompatibel dengan Python 3.11+; runtime standar menggunakan Python 3.14
+</InfoBox>

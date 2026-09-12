@@ -4,9 +4,27 @@ description: "Resolved pipeline stages dan per-remote actions custy push."
 sidebar_position: 6
 sidebar_key: custy-push-workflow
 ---
-import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Push Workflow" description="Ikuti resolusi destination hingga optional backup synchronization." category="Git Operations" status="Network Operation" syntax="custy push [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Remotes",href:"./remotes"},{label:"Output",href:"./output"}]} />
+import {
+  CommandHero,
+  WorkflowTimeline,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Push Workflow"
+  description="Ikuti resolusi destination hingga optional backup synchronization."
+  category="Git Operations"
+  status="Network Operation"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Output", href: "./output" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -15,17 +33,64 @@ destination yang eligible. `custy push` dan `custy run push` yang dijalankan
 secara mandiri tidak menginisialisasi release workflow, menghitung versi baru,
 atau meminta konfirmasi release.
 
-<WorkflowTimeline title="Push Profile" items={[
- {title:"Validate repository",description:"Jalankan repository dan pre-push validation.",status:"completed"},
- {title:"Resolve destinations",description:"Terapkan explicit --remote, all_remote, lalu push_to.",status:"completed"},
- {title:"Push HEAD",description:"Kirim current branch/commit.",status:"completed"},
- {title:"Push tag",description:"Kirim requested tag bila tidak dilewati.",status:"optional"},
- {title:"Apply backup safety",description:"Lewati backup destination untuk non-critical branch yang tidak eligible.",status:"optional"},
- {title:"Resolve authentication",description:"Gunakan native Git atau SSH lebih dulu, lalu enabled external token source untuk eligible container HTTPS push.",status:"optional"},
- {title:"Synchronize backup",description:"Kirim HEAD dan tag sesuai resolved behavior.",status:"optional"},
- {title:"Report per destination",description:"Tampilkan sukses, skip, atau failure.",status:"completed"},
-]} />
+<WorkflowTimeline
+  title="Push Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Jalankan repository dan pre-push validation.",
+      status: "completed",
+    },
+    {
+      title: "Resolve destinations",
+      description: "Terapkan explicit --remote, all_remote, lalu push_to.",
+      status: "completed",
+    },
+    {
+      title: "Push HEAD",
+      description: "Kirim current branch/commit.",
+      status: "completed",
+    },
+    {
+      title: "Push tag",
+      description: "Kirim requested tag bila tidak dilewati.",
+      status: "optional",
+    },
+    {
+      title: "Apply backup safety",
+      description:
+        "Lewati backup destination untuk non-critical branch yang tidak eligible.",
+      status: "optional",
+    },
+    {
+      title: "Resolve authentication",
+      description:
+        "Gunakan native Git atau SSH lebih dulu, lalu enabled external token source untuk eligible container HTTPS push.",
+      status: "optional",
+    },
+    {
+      title: "Synchronize backup",
+      description: "Kirim HEAD dan tag sesuai resolved behavior.",
+      status: "optional",
+    },
+    {
+      title: "Report per destination",
+      description: "Tampilkan sukses, skip, atau failure.",
+      status: "completed",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Fail-Fast Behavior">Required main-remote failure menghentikan profile. Periksa destination mana yang sudah menerima perubahan sebelum retry.</InfoBox>
-<InfoBox variant="info" title="Non-Interactive Safety">Recommended credential policy mencegah Git menunggu input tanpa batas ketika terminal tidak tersedia. Sediakan configured file atau environment source sebelum non-interactive container push.</InfoBox>
-<Section title="Retry Safety">Jangan rerun secara buta setelah partial success. Verifikasi branch dan tag pada setiap remote secara terpisah.</Section>
+<InfoBox variant="warning" title="Fail-Fast Behavior">
+  Required main-remote failure menghentikan profile. Periksa destination mana yang sudah
+  menerima perubahan sebelum retry.
+</InfoBox>
+<InfoBox variant="info" title="Non-Interactive Safety">
+  Recommended credential policy mencegah Git menunggu input tanpa batas ketika terminal
+  tidak tersedia. Sediakan configured file atau environment source sebelum
+  non-interactive container push.
+</InfoBox>
+<Section title="Retry Safety">
+  Jangan rerun secara buta setelah partial success. Verifikasi branch dan tag pada
+  setiap remote secara terpisah.
+</Section>

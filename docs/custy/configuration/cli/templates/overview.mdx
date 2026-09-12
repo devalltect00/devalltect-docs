@@ -7,19 +7,65 @@ tags: [custy, configuration, templates]
 keywords: [cli templates, changelog template, message backups]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.templates]" title="Templates Overview" description="Connect project-owned message and Jinja files with their backup locations." category="CLI Configuration" status="Active" syntax="[tool.custy.cli.templates.SUBTABLE]" tags={["files", "directories", "project-owned copies"]} links={[{label: "Template Files", href: "./files"}, {label: "Backup Directories", href: "./directories"}, {label: "Changelog Configuration", href: "../../changelog/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.templates]"
+  title="Templates Overview"
+  description="Connect project-owned message and Jinja files with their backup locations."
+  category="CLI Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.templates.SUBTABLE]"
+  tags={["files", "directories", "project-owned copies"]}
+  links={[
+    { label: "Template Files", href: "./files" },
+    { label: "Backup Directories", href: "./directories" },
+    { label: "Changelog Configuration", href: "../../changelog/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Child Tables", value: "2", icon: "directory"}, {label: "File Properties", value: "3", icon: "file"}, {label: "Directory Properties", value: "2", icon: "package"}, {label: "Created By", value: "custy init", icon: "copy"}]} />
+<CommandMetadata
+  items={[
+    { label: "Child Tables", value: "2", icon: "directory" },
+    { label: "File Properties", value: "3", icon: "file" },
+    { label: "Directory Properties", value: "2", icon: "package" },
+    { label: "Created By", value: "custy init", icon: "copy" },
+  ]}
+/>
 
 ## Template Areas
 
 <FeatureGrid
-    items={[
-        {title: "Template Files", icon: <Icon name="file" />, children: <>Configure changelog, commit-message, and tag-message paths in <a href="./files">cli.templates.file</a>.</>},
-        {title: "Backup Directories", icon: <Icon name="directory" />, children: <>Configure retained message destinations in <a href="./directories">cli.templates.directory</a>.</>},
-    ]}
+  items={[
+    {
+      title: "Template Files",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Configure changelog, commit-message, and tag-message paths in{" "}
+          <a href="./files">cli.templates.file</a>.
+        </>
+      ),
+    },
+    {
+      title: "Backup Directories",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Configure retained message destinations in{" "}
+          <a href="./directories">cli.templates.directory</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 <InfoBox variant="tip" title="Edit project copies, not packaged sources">
@@ -30,4 +76,24 @@ not replace your work.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Template Files", href: "./files", description: "Configure the three project template paths."}, {title: "Backup Directories", href: "./directories", description: "Configure commit and tag backup destinations."}, {title: "Initialization", href: "../../initialization", description: "Understand preservation, prompts, and force replacement."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Template Files",
+        href: "./files",
+        description: "Configure the three project template paths.",
+      },
+      {
+        title: "Backup Directories",
+        href: "./directories",
+        description: "Configure commit and tag backup destinations.",
+      },
+      {
+        title: "Initialization",
+        href: "../../initialization",
+        description: "Understand preservation, prompts, and force replacement.",
+      },
+    ]}
+  />
+</Section>

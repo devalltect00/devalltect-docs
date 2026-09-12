@@ -8,43 +8,43 @@ keywords: [custy pipelines, custy run profiles, release automation]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run"
-    title="Pipeline Guide"
-    description="Learn how Custy turns public profile names into ordered, reviewable Git and release workflows."
-    category="Pipelines"
-    status="User and Developer Guide"
-    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
-    tags={["execution model", "public profiles", "extension guide"]}
-    links={[
-        {label: "Execution Model", href: "./execution-model"},
-        {label: "Profile Comparison", href: "./profiles"},
-        {label: "Complete Reference", href: "./profile-reference"},
-        {label: "Compact Reference", href: "../reference/pipeline-profiles"},
-        {label: "Step Priority", href: "./step-order"},
-        {label: "Troubleshooting", href: "../troubleshooting/workflows"},
-        {label: "Step System", href: "./step-system"},
-        {label: "Pipeline Architecture", href: "../architecture/pipeline-engine"},
-    ]}
+  command="custy run"
+  title="Pipeline Guide"
+  description="Learn how Custy turns public profile names into ordered, reviewable Git and release workflows."
+  category="Pipelines"
+  status="User and Developer Guide"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  tags={["execution model", "public profiles", "extension guide"]}
+  links={[
+    { label: "Execution Model", href: "./execution-model" },
+    { label: "Profile Comparison", href: "./profiles" },
+    { label: "Complete Reference", href: "./profile-reference" },
+    { label: "Compact Reference", href: "../reference/pipeline-profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Troubleshooting", href: "../troubleshooting/workflows" },
+    { label: "Step System", href: "./step-system" },
+    { label: "Pipeline Architecture", href: "../architecture/pipeline-engine" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Public Profiles", value: "6", icon: "pipeline"},
-        {label: "Execution", value: "Sequential", icon: "workflow"},
-        {label: "Failure Policy", value: "Stop and re-raise", icon: "warning"},
-        {label: "Primary Entry Point", value: "custy run", icon: "terminal"},
-    ]}
+  items={[
+    { label: "Public Profiles", value: "6", icon: "pipeline" },
+    { label: "Execution", value: "Sequential", icon: "workflow" },
+    { label: "Failure Policy", value: "Stop and re-raise", icon: "warning" },
+    { label: "Primary Entry Point", value: "custy run", icon: "terminal" },
+  ]}
 />
 
 ## Overview
@@ -70,17 +70,89 @@ contribute code, continue to [Step System](./step-system).
 <Section title="Explore by Goal">
 
 <FeatureGrid
-    title="Pipeline Documentation"
-    items={[
-        {title: "Run a Known Profile", icon: <Icon name="play" />, children: <>Compare the six supported names and choose the smallest flow in <a href="./profiles">Profiles</a>.</>},
-        {title: "Reference Every Profile", icon: <Icon name="table" />, children: <>Find all 20 public, direct-command, nested, and aggregate definitions in the <a href="./profile-reference">Complete Profile Reference</a>.</>},
-        {title: "Understand Priority", icon: <Icon name="timeline" />, children: <>See all 28 priority entries and merged-profile sorting rules in <a href="./step-order">Step Priority and Ordering</a>.</>},
-        {title: "Understand Execution", icon: <Icon name="pipeline" />, children: <>Follow resolution, registration, building, shared context, and failure behavior in <a href="./execution-model">Execution Model</a>.</>},
-        {title: "Combine Profiles", icon: <Icon name="dependency" />, children: <>Learn deduplication and global ordering in <a href="./custom-composition">Custom Composition</a>.</>},
-        {title: "Review Daily Development", icon: <Icon name="git" />, children: <>See exactly what Dev includes and deliberately omits in <a href="./development-pipeline">Development Pipeline</a>.</>},
-        {title: "Review a Release", icon: <Icon name="release" />, children: <>Trace validation through push in <a href="./release-pipeline">Release Pipeline</a>.</>},
-        {title: "Extend Custy", icon: <Icon name="configuration" />, children: <>Understand the internal step contract, registry, builder, and test expectations in <a href="./step-system">Step System</a>.</>},
-    ]}
+  title="Pipeline Documentation"
+  items={[
+    {
+      title: "Run a Known Profile",
+      icon: <Icon name="play" />,
+      children: (
+        <>
+          Compare the six supported names and choose the smallest flow in{" "}
+          <a href="./profiles">Profiles</a>.
+        </>
+      ),
+    },
+    {
+      title: "Reference Every Profile",
+      icon: <Icon name="table" />,
+      children: (
+        <>
+          Find all 20 public, direct-command, nested, and aggregate definitions in the{" "}
+          <a href="./profile-reference">Complete Profile Reference</a>.
+        </>
+      ),
+    },
+    {
+      title: "Understand Priority",
+      icon: <Icon name="timeline" />,
+      children: (
+        <>
+          See all 28 priority entries and merged-profile sorting rules in{" "}
+          <a href="./step-order">Step Priority and Ordering</a>.
+        </>
+      ),
+    },
+    {
+      title: "Understand Execution",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Follow resolution, registration, building, shared context, and failure
+          behavior in <a href="./execution-model">Execution Model</a>.
+        </>
+      ),
+    },
+    {
+      title: "Combine Profiles",
+      icon: <Icon name="dependency" />,
+      children: (
+        <>
+          Learn deduplication and global ordering in{" "}
+          <a href="./custom-composition">Custom Composition</a>.
+        </>
+      ),
+    },
+    {
+      title: "Review Daily Development",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          See exactly what Dev includes and deliberately omits in{" "}
+          <a href="./development-pipeline">Development Pipeline</a>.
+        </>
+      ),
+    },
+    {
+      title: "Review a Release",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Trace validation through push in{" "}
+          <a href="./release-pipeline">Release Pipeline</a>.
+        </>
+      ),
+    },
+    {
+      title: "Extend Custy",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Understand the internal step contract, registry, builder, and test
+          expectations in <a href="./step-system">Step System</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -100,9 +172,11 @@ names.
 custy --dry-run run dev
 
 # Run a complete release pipeline
+
 custy run release
 
 # Merge two supported profiles
+
 custy --dry-run run commit push`}
 
 </Terminal>
@@ -125,14 +199,40 @@ before retrying.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Execution Model", href: "./execution-model", description: "Follow a profile from CLI input to sequential execution."},
-        {title: "Profiles", href: "./profiles", description: "Compare outcomes, side effects, and recommended uses."},
-        {title: "Complete Profile Reference", href: "./profile-reference", description: "Inspect all 20 resolver profiles and exact expanded sequences."},
-        {title: "Step Priority and Ordering", href: "./step-order", description: "Review every priority and the merged-profile algorithm."},
-        {title: "Pipeline Architecture", href: "../architecture/pipeline-engine", description: "Trace profiles through resolution, registration, construction, shared context, and execution."},
-        {title: "Run Command", href: "../commands/run/overview", description: "Use the public command syntax, options, examples, and troubleshooting."},
-    ]}
+  commands={[
+    {
+      title: "Execution Model",
+      href: "./execution-model",
+      description: "Follow a profile from CLI input to sequential execution.",
+    },
+    {
+      title: "Profiles",
+      href: "./profiles",
+      description: "Compare outcomes, side effects, and recommended uses.",
+    },
+    {
+      title: "Complete Profile Reference",
+      href: "./profile-reference",
+      description: "Inspect all 20 resolver profiles and exact expanded sequences.",
+    },
+    {
+      title: "Step Priority and Ordering",
+      href: "./step-order",
+      description: "Review every priority and the merged-profile algorithm.",
+    },
+    {
+      title: "Pipeline Architecture",
+      href: "../architecture/pipeline-engine",
+      description:
+        "Trace profiles through resolution, registration, construction, shared context, and execution.",
+    },
+    {
+      title: "Run Command",
+      href: "../commands/run/overview",
+      description:
+        "Use the public command syntax, options, examples, and troubleshooting.",
+    },
+  ]}
 />
 
 </Section>

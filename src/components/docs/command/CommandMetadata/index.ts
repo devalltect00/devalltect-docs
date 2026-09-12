@@ -1,13 +1,9 @@
 export { default } from "./CommandMetadata";
 
-export type {
-    CommandMetadataItem,
-    CommandMetadataProps,
-} from "./types";
-
+export type { CommandMetadataItem, CommandMetadataProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandMetadata
     items={[
         {

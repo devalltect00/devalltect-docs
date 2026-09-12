@@ -26,78 +26,45 @@
 
 import clsx from "clsx";
 
-import {
-    Card,
-    Divider,
-    Heading,
-    Icon,
-} from "../../";
+import { Card, Divider, Heading, Icon } from "../../";
 
 import styles from "./MermaidCard.module.css";
 
-import type {
-    MermaidCardProps,
-} from "./types";
+import type { MermaidCardProps } from "./types";
 
 /**
  * Displays a Mermaid diagram inside a documentation card.
  */
 export default function MermaidCard({
-    title,
-    description,
-    children,
-    footer,
-    className,
-    ...props
+  title,
+  description,
+  children,
+  footer,
+  className,
+  ...props
 }: MermaidCardProps) {
+  return (
+    <Card className={clsx(styles.card, className)} {...props}>
+      {(title || description) && (
+        <Heading
+          level={2}
+          title={title}
+          subtitle={description}
+          icon={<Icon name="diagram" />}
+        />
+      )}
 
-    return (
+      <Divider />
 
-        <Card
-            className={clsx(
-                styles.card,
-                className,
-            )}
-            {...props}
-        >
+      <div className={styles.diagram}>{children}</div>
 
-            {(title || description) && (
+      {footer && (
+        <>
+          <Divider />
 
-                <Heading
-                    level={2}
-                    title={title}
-                    subtitle={description}
-                    icon={<Icon name="diagram" />}
-                />
-
-            )}
-
-            <Divider />
-
-            <div className={styles.diagram}>
-
-                {children}
-
-            </div>
-
-            {footer && (
-
-                <>
-
-                    <Divider />
-
-                    <div className={styles.footer}>
-
-                        {footer}
-
-                    </div>
-
-                </>
-
-            )}
-
-        </Card>
-
-    );
-
+          <div className={styles.footer}>{footer}</div>
+        </>
+      )}
+    </Card>
+  );
 }

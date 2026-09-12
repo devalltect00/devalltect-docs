@@ -5,21 +5,27 @@ sidebar_position: 5
 sidebar_key: reflow-examples
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow"
-    title="Workflow Examples"
-    description="Preview repository-aware tag, release-recovery, and container workflows before authorizing persistent changes."
-    category="Examples"
-    status="Dry-run First"
-    syntax="reflow [GLOBAL OPTIONS] COMMAND"
-    links={[
-        {label: "Commands", href: "./commands/overview"},
-        {label: "Repository Targets", href: "./concepts/repository-targeting"},
-        {label: "Dry-run Safety", href: "./concepts/safety-and-dry-run"},
-        {label: "Configuration", href: "./configuration/reference"},
-    ]}
+  command="reflow"
+  title="Workflow Examples"
+  description="Preview repository-aware tag, release-recovery, and container workflows before authorizing persistent changes."
+  category="Examples"
+  status="Dry-run First"
+  syntax="reflow [GLOBAL OPTIONS] COMMAND"
+  links={[
+    { label: "Commands", href: "./commands/overview" },
+    { label: "Repository Targets", href: "./concepts/repository-targeting" },
+    { label: "Dry-run Safety", href: "./concepts/safety-and-dry-run" },
+    { label: "Configuration", href: "./configuration/reference" },
+  ]}
 />
 
 <Section title="Replace tag formats">
@@ -28,12 +34,14 @@ import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/sr
 reflow --dry-run -C ../project tags convert local --to semver
 
 # Apply after reviewing the plan
+
 reflow -C ../project tags convert local --to semver --yes`}</Terminal>
 
 <Terminal title="Remote SemVer to PEP 440" language="bash">{`# A URL is cloned into a managed temporary workspace for discovery
 reflow --dry-run --repository-url https://github.com/acme/project.git tags convert remote --to pep440
 
 # Remote scope performs the guarded push; --push is not used
+
 reflow --repository-url https://github.com/acme/project.git tags convert remote --to pep440 --yes`}</Terminal>
 
 </Section>
@@ -44,6 +52,7 @@ reflow --repository-url https://github.com/acme/project.git tags convert remote 
 reflow --dry-run -C ../project releases recover
 
 # Resolve tagged images; do not build, push, or clean images
+
 reflow --dry-run -C ../project dockerize`}</Terminal>
 
 </Section>
@@ -56,10 +65,26 @@ plan, remote, registry image, and confirmation behavior.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Local Tag Conversion", href: "./commands/tags/convert/local/examples", description: "More persistent-checkout examples."},
-        {title: "Remote Tag Conversion", href: "./commands/tags/convert/remote/examples", description: "More guarded remote replacement examples."},
-        {title: "Release Recovery", href: "./commands/releases/recover/examples", description: "Preview and authorize tag re-push recovery."},
-        {title: "Dockerize", href: "./commands/dockerize/examples", description: "Preview tagged image publication."},
-    ]}
+  commands={[
+    {
+      title: "Local Tag Conversion",
+      href: "./commands/tags/convert/local/examples",
+      description: "More persistent-checkout examples.",
+    },
+    {
+      title: "Remote Tag Conversion",
+      href: "./commands/tags/convert/remote/examples",
+      description: "More guarded remote replacement examples.",
+    },
+    {
+      title: "Release Recovery",
+      href: "./commands/releases/recover/examples",
+      description: "Preview and authorize tag re-push recovery.",
+    },
+    {
+      title: "Dockerize",
+      href: "./commands/dockerize/examples",
+      description: "Preview tagged image publication.",
+    },
+  ]}
 />

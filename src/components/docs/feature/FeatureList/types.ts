@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -13,45 +10,40 @@ import {
  * Represents a single feature list item.
  */
 export interface FeatureListItem {
+  /**
+   * Feature title.
+   */
+  title: string;
 
-    /**
-     * Feature title.
-     */
-    title: string;
+  /**
+   * Optional icon.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon.
-     */
-    icon?: ReactNode;
-
-    /**
-     * Feature description.
-     */
-    description?: ReactNode;
-
+  /**
+   * Feature description.
+   */
+  description?: ReactNode;
 }
 
 /**
  * FeatureList component properties.
  */
-export interface FeatureListProps
-    extends HTMLAttributes<HTMLElement> {
+export interface FeatureListProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Section title.
+   *
+   * @default "Features"
+   */
+  title?: string;
 
-    /**
-     * Section title.
-     *
-     * @default "Features"
-     */
-    title?: string;
+  /**
+   * Optional section description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional section description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Feature list.
-     */
-    items: FeatureListItem[];
-
+  /**
+   * Feature list.
+   */
+  items: FeatureListItem[];
 }

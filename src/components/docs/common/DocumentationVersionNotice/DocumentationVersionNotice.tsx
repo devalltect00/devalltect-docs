@@ -98,11 +98,7 @@ export default function DocumentationVersionNotice({
               Latest detected release
             </Translate>
             {": "}
-            {releasesUrl ? (
-              <a href={releasesUrl}>{latestVersion}</a>
-            ) : (
-              latestVersion
-            )}
+            {releasesUrl ? <a href={releasesUrl}>{latestVersion}</a> : latestVersion}
           </p>
         ) : null}
       </div>
@@ -118,7 +114,9 @@ export default function DocumentationVersionNotice({
               latestVersion,
             }}
           >
-            {"These pages describe {projectName} {documentationVersion}, but {latestVersion} is available. Check newer release notes before following version-sensitive instructions."}
+            {
+              "These pages describe {projectName} {documentationVersion}, but {latestVersion} is available. Check newer release notes before following version-sensitive instructions."
+            }
           </Translate>
         ) : null}
         {freshness.status === "preview" ? (
@@ -131,7 +129,9 @@ export default function DocumentationVersionNotice({
               latestVersion,
             }}
           >
-            {"These pages describe {projectName} {documentationVersion}, which is newer than the latest detected release {latestVersion}. Treat this documentation as a preview until that tag is published."}
+            {
+              "These pages describe {projectName} {documentationVersion}, which is newer than the latest detected release {latestVersion}. Treat this documentation as a preview until that tag is published."
+            }
           </Translate>
         ) : null}
         {freshness.status === "unknown" ? (
@@ -143,7 +143,9 @@ export default function DocumentationVersionNotice({
               documentationVersion: documentation.versionTag,
             }}
           >
-            {"The build could not verify the latest {projectName} tag. These pages still describe {documentationVersion}; check the release list before relying on version-sensitive behavior."}
+            {
+              "The build could not verify the latest {projectName} tag. These pages still describe {documentationVersion}; check the release list before relying on version-sensitive behavior."
+            }
           </Translate>
         ) : null}{" "}
         <Link to={statusUrl}>

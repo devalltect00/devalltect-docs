@@ -22,6 +22,6 @@ test("extracts and de-duplicates lightweight and annotated tag references", () =
 test("ignores malformed lines and empty tag names", () => {
   assert.deepEqual(
     parseRemoteTagOutput("malformed\naaaa refs/tags/\nbbbb refs/heads/main"),
-    [],
+    []
   );
 });

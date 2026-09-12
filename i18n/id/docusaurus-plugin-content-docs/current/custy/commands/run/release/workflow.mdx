@@ -4,13 +4,77 @@ description: "Exact registered stages dalam Custy Release profile."
 sidebar_position: 2
 sidebar_key: custy-run-release-workflow
 ---
-import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run release" title="Release Workflow" description="Ikuti exact Release stages hingga commit, tag, dan push." category="Pipeline Profile" status="Stable with Limitations" syntax="custy run release [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Examples",href:"./examples"},{label:"Pipeline Internals",href:"../../../pipelines/release-pipeline"},{label:"Safety",href:"../safety"}]} />
+import {
+  CommandHero,
+  WorkflowTimeline,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run release"
+  title="Release Workflow"
+  description="Ikuti exact Release stages hingga commit, tag, dan push."
+  category="Pipeline Profile"
+  status="Stable with Limitations"
+  syntax="custy run release [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Examples", href: "./examples" },
+    { label: "Pipeline Internals", href: "../../../pipelines/release-pipeline" },
+    { label: "Safety", href: "../safety" },
+  ]}
+/>
 
 ## Ringkasan
-<WorkflowTimeline title="Release Profile" items={[
- {title:"Validate",description:"Repository, pre-commit, pre-tag, dan pre-push validation.",status:"completed"},{title:"Prepare release",description:"Resolve version/workflow state dan prepare tag message.",status:"completed"},{title:"Generate and edit artifacts",description:"Generate, open, dan validate release artifacts.",status:"completed"},{title:"Apply version",description:"Write resolved version.",status:"completed"},{title:"Generate changelog",description:"Update CHANGELOG.md.",status:"completed"},{title:"Back up and clean",description:"Backup commit/tag messages dan prune retention.",status:"completed"},{title:"Commit",description:"Stage dan create release commit.",status:"completed"},{title:"Tag",description:"Create local release tag.",status:"completed"},{title:"Push",description:"Push HEAD dan tag.",status:"completed"},
-]} />
-<InfoBox variant="warning" title="Inspect Partial Release State">Bila gagal, periksa files, commit, local tag, dan setiap remote sebelum retry.</InfoBox>
-<Section title="Completion Boundary">Release berakhir setelah push. Gunakan Full hanya bila experimental finalization diperlukan.</Section>
+
+<WorkflowTimeline
+  title="Release Profile"
+  items={[
+    {
+      title: "Validate",
+      description: "Repository, pre-commit, pre-tag, dan pre-push validation.",
+      status: "completed",
+    },
+    {
+      title: "Prepare release",
+      description: "Resolve version/workflow state dan prepare tag message.",
+      status: "completed",
+    },
+    {
+      title: "Generate and edit artifacts",
+      description: "Generate, open, dan validate release artifacts.",
+      status: "completed",
+    },
+    {
+      title: "Apply version",
+      description: "Write resolved version.",
+      status: "completed",
+    },
+    {
+      title: "Generate changelog",
+      description: "Update CHANGELOG.md.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Backup commit/tag messages dan prune retention.",
+      status: "completed",
+    },
+    {
+      title: "Commit",
+      description: "Stage dan create release commit.",
+      status: "completed",
+    },
+    { title: "Tag", description: "Create local release tag.", status: "completed" },
+    { title: "Push", description: "Push HEAD dan tag.", status: "completed" },
+  ]}
+/>
+<InfoBox variant="warning" title="Inspect Partial Release State">
+  Bila gagal, periksa files, commit, local tag, dan setiap remote sebelum retry.
+</InfoBox>
+<Section title="Completion Boundary">
+  Release berakhir setelah push. Gunakan Full hanya bila experimental finalization
+  diperlukan.
+</Section>

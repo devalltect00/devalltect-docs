@@ -5,21 +5,27 @@ sidebar_position: 5
 sidebar_key: phs-examples
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner"
-    title="Contoh Alur Kerja"
-    description="Selesaikan target pemindaian, pratinjau perubahan path header, lalu aktifkan penulisan hanya setelah ditinjau."
-    category="Contoh"
-    status="Pratinjau Terlebih Dahulu"
-    syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
-    links={[
-        {label: "Panduan Scan", href: "./commands/scan/overview"},
-        {label: "Opsi Scan", href: "./commands/scan/options"},
-        {label: "Path Header", href: "./concepts/path-headers"},
-        {label: "Konfigurasi", href: "./configuration/reference"},
-    ]}
+  command="path-header-scanner"
+  title="Contoh Alur Kerja"
+  description="Selesaikan target pemindaian, pratinjau perubahan path header, lalu aktifkan penulisan hanya setelah ditinjau."
+  category="Contoh"
+  status="Pratinjau Terlebih Dahulu"
+  syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
+  links={[
+    { label: "Panduan Scan", href: "./commands/scan/overview" },
+    { label: "Opsi Scan", href: "./commands/scan/options" },
+    { label: "Path Header", href: "./concepts/path-headers" },
+    { label: "Konfigurasi", href: "./configuration/reference" },
+  ]}
 />
 
 <Section title="Pratinjau dan selesaikan target">
@@ -28,9 +34,11 @@ import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/sr
 path-header-scanner scan app
 
 # Selesaikan app dari basis proyek lain
+
 path-header-scanner scan app --workdir ../project
 
 # Simulasi eksplisit mengungguli apply
+
 path-header-scanner scan app --apply --dry-run`}</Terminal>
 
 </Section>
@@ -50,9 +58,21 @@ dari CLI atau konfigurasi proyek menonaktifkan mode apply efektif.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Alur Kerja Pertama", href: "./getting-started/first-workflow", description: "Instal, inisialisasi, pratinjau, dan terapkan dengan aman."},
-        {title: "Contoh Scan", href: "./commands/scan/examples", description: "Lihat kombinasi target dan mode tambahan."},
-        {title: "Keamanan dan Dry-run", href: "./concepts/safety-and-dry-run", description: "Pahami pratinjau, apply, dan simulasi eksplisit."},
-    ]}
+  commands={[
+    {
+      title: "Alur Kerja Pertama",
+      href: "./getting-started/first-workflow",
+      description: "Instal, inisialisasi, pratinjau, dan terapkan dengan aman.",
+    },
+    {
+      title: "Contoh Scan",
+      href: "./commands/scan/examples",
+      description: "Lihat kombinasi target dan mode tambahan.",
+    },
+    {
+      title: "Keamanan dan Dry-run",
+      href: "./concepts/safety-and-dry-run",
+      description: "Pahami pratinjau, apply, dan simulasi eksplisit.",
+    },
+  ]}
 />

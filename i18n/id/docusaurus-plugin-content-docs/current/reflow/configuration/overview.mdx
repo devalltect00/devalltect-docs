@@ -6,9 +6,16 @@ sidebar_key: reflow-configuration
 tags: [reflow, configuration]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command=".config/reflow/config.toml" title="Konfigurasi" description="Pahami file konfigurasi, urutan prioritas, dan bagian Reflow yang aktif." category="Konfigurasi" status="Milik Proyek" syntax=".config/reflow/config.toml" />
+<CommandHero
+  command=".config/reflow/config.toml"
+  title="Konfigurasi"
+  description="Pahami file konfigurasi, urutan prioritas, dan bagian Reflow yang aktif."
+  category="Konfigurasi"
+  status="Milik Proyek"
+  syntax=".config/reflow/config.toml"
+/>
 
 <Section title="Urutan prioritas">
 
@@ -18,4 +25,7 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 
 </Section>
 
-<InfoBox variant="warning" title="Kepemilikan">Inisialisasi membuat salinan milik proyek. CLI tidak boleh menimpa konfigurasi yang dikelola pengguna secara diam-diam.</InfoBox>
+<InfoBox variant="warning" title="Kepemilikan">
+  Inisialisasi membuat salinan milik proyek. CLI tidak boleh menimpa konfigurasi yang
+  dikelola pengguna secara diam-diam.
+</InfoBox>

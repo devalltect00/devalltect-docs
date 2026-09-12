@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -12,32 +9,29 @@ import {
 /**
  * LayerCard component properties.
  */
-export interface LayerCardProps
-    extends HTMLAttributes<HTMLElement> {
+export interface LayerCardProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Layer name.
+   *
+   * Examples:
+   * - CLI Layer
+   * - Core Layer
+   * - Service Layer
+   */
+  title: string;
 
-    /**
-     * Layer name.
-     *
-     * Examples:
-     * - CLI Layer
-     * - Core Layer
-     * - Service Layer
-     */
-    title: string;
+  /**
+   * Optional icon.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon.
-     */
-    icon?: ReactNode;
+  /**
+   * Optional short description.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Optional short description.
-     */
-    subtitle?: ReactNode;
-
-    /**
-     * Layer responsibilities.
-     */
-    children: ReactNode;
-
+  /**
+   * Layer responsibilities.
+   */
+  children: ReactNode;
 }

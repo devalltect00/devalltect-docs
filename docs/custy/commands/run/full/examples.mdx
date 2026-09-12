@@ -8,29 +8,25 @@ keywords: [custy run full examples]
 ---
 
 import {
-    CommandExample,
-    CommandHero,
-    InfoBox,
-    Section,
+  CommandExample,
+  CommandHero,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run full"
-    title="Examples"
-    description="Use cautious Full-profile patterns only when experimental finalization is intentionally required."
-    category="Pipeline Profile"
-    status="Experimental Finalization"
-    syntax="custy run full [OPTIONS]"
-    tags={[
-        "examples",
-        "full lifecycle",
-        "experimental",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run full"
+  title="Examples"
+  description="Use cautious Full-profile patterns only when experimental finalization is intentionally required."
+  category="Pipeline Profile"
+  status="Experimental Finalization"
+  syntax="custy run full [OPTIONS]"
+  tags={["examples", "full lifecycle", "experimental"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 ## Overview
@@ -55,11 +51,25 @@ experimental workflow engine.
 >
 
 <CommandExample
-    examples={[
-        {title: "Preview the complete lifecycle", command: "custy --dry-run run full", description: "Inspect release and finalization behavior before normal execution."},
-        {title: "Use an approved release tag", command: "custy run full --strategy semver --tag v2.0.0", description: "Execute the complete lifecycle for a pre-approved SemVer release.", notes: "Confirm workflow-transition configuration and remote destinations first."},
-        {title: "Enable backup synchronization", command: "custy run full --tag v2.0.0 --sync-backup", description: "Request eligible backup-remote synchronization before finalization."},
-    ]}
+  examples={[
+    {
+      title: "Preview the complete lifecycle",
+      command: "custy --dry-run run full",
+      description: "Inspect release and finalization behavior before normal execution.",
+    },
+    {
+      title: "Use an approved release tag",
+      command: "custy run full --strategy semver --tag v2.0.0",
+      description: "Execute the complete lifecycle for a pre-approved SemVer release.",
+      notes: "Confirm workflow-transition configuration and remote destinations first.",
+    },
+    {
+      title: "Enable backup synchronization",
+      command: "custy run full --tag v2.0.0 --sync-backup",
+      description:
+        "Request eligible backup-remote synchronization before finalization.",
+    },
+  ]}
 />
 
 </Section>

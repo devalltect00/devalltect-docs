@@ -7,24 +7,173 @@ tags: [custy, changelog, mappings]
 keywords: [scope_map, type_map, Conventional Commits]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.scope_map] + [tool.custy.changelog.type_map]" title="Scope dan Type Mappings" description="Ubah machine-oriented commit classification menjadi stable dan reader-friendly section names." category="Changelog Configuration" status="Active and Extensible" syntax={'RAW_KEY = "Display label"'} tags={["scopes", "types", "display names"]} links={[{label: "Rendering", href: "./rendering"}, {label: "Breaking Changes", href: "./breaking-changes"}, {label: "Core", href: "./core"}]} />
-<CommandMetadata items={[{label: "Generated Scope Keys", value: "9", icon: "table"}, {label: "Generated Type Keys", value: "16", icon: "table"}, {label: "Unknown Scope", value: "Preserved", icon: "success"}, {label: "Unknown Type", value: "Falls back to other", icon: "configuration"}]} />
+<CommandHero
+  command="[tool.custy.changelog.scope_map] + [tool.custy.changelog.type_map]"
+  title="Scope dan Type Mappings"
+  description="Ubah machine-oriented commit classification menjadi stable dan reader-friendly section names."
+  category="Changelog Configuration"
+  status="Active and Extensible"
+  syntax={'RAW_KEY = "Display label"'}
+  tags={["scopes", "types", "display names"]}
+  links={[
+    { label: "Rendering", href: "./rendering" },
+    { label: "Breaking Changes", href: "./breaking-changes" },
+    { label: "Core", href: "./core" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Generated Scope Keys", value: "9", icon: "table" },
+    { label: "Generated Type Keys", value: "16", icon: "table" },
+    { label: "Unknown Scope", value: "Preserved", icon: "success" },
+    { label: "Unknown Type", value: "Falls back to other", icon: "configuration" },
+  ]}
+/>
 
 ## Scope Mapping
 
 Setiap key merupakan raw commit scope; setiap value merupakan displayed scope.
 Unmapped scopes mempertahankan nama aslinya.
 
-<PropertyTable title="Generated scope_map entries" items={[{property: "main", defaultValue: "core", description: "Tampilkan main sebagai core."}, {property: "auth", defaultValue: "authentication", description: "Perluas authentication scope."}, {property: "cli", defaultValue: "cli", description: "Pertahankan CLI labeling."}, {property: "changelog", defaultValue: "changelog", description: "Pertahankan changelog labeling."}, {property: "workflow", defaultValue: "workflow", description: "Pertahankan workflow labeling."}, {property: "template", defaultValue: "template", description: "Pertahankan template labeling."}, {property: "config", defaultValue: "configuration", description: "Perluas config menjadi configuration."}, {property: "docs", defaultValue: "documentation", description: "Perluas docs menjadi documentation."}, {property: "tests", defaultValue: "tests", description: "Pertahankan tests labeling."}]} />
+<PropertyTable
+  title="Generated scope_map entries"
+  items={[
+    {
+      property: "main",
+      defaultValue: "core",
+      description: "Tampilkan main sebagai core.",
+    },
+    {
+      property: "auth",
+      defaultValue: "authentication",
+      description: "Perluas authentication scope.",
+    },
+    { property: "cli", defaultValue: "cli", description: "Pertahankan CLI labeling." },
+    {
+      property: "changelog",
+      defaultValue: "changelog",
+      description: "Pertahankan changelog labeling.",
+    },
+    {
+      property: "workflow",
+      defaultValue: "workflow",
+      description: "Pertahankan workflow labeling.",
+    },
+    {
+      property: "template",
+      defaultValue: "template",
+      description: "Pertahankan template labeling.",
+    },
+    {
+      property: "config",
+      defaultValue: "configuration",
+      description: "Perluas config menjadi configuration.",
+    },
+    {
+      property: "docs",
+      defaultValue: "documentation",
+      description: "Perluas docs menjadi documentation.",
+    },
+    {
+      property: "tests",
+      defaultValue: "tests",
+      description: "Pertahankan tests labeling.",
+    },
+  ]}
+/>
 
 ## Type Mapping
 
 Mapping juga menyediakan stable group order ketika `sort_groups = false`.
 Unknown types menggunakan value milik `other`.
 
-<PropertyTable title="Generated type_map entries" items={[{property: "feat", defaultValue: "✨ Features", description: "New user-facing functionality."}, {property: "fix", defaultValue: "🐛 Bug Fixes", description: "Corrective changes."}, {property: "improvement", defaultValue: "🧠 Improvements", description: "Enhancements yang bukan features."}, {property: "template", defaultValue: "📄 Templates", description: "Template changes."}, {property: "breaking", defaultValue: "⚠️ Breaking Changes", description: "Backward-incompatible changes."}, {property: "docs", defaultValue: "📚 Documentation", description: "Documentation changes."}, {property: "refactor", defaultValue: "🧠 Refactoring", description: "Internal restructuring."}, {property: "perf", defaultValue: "⚡ Performance", description: "Performance improvements."}, {property: "test", defaultValue: "🧪 Tests", description: "Test changes."}, {property: "chore", defaultValue: "🔧 Chores", description: "Maintenance work."}, {property: "ci", defaultValue: "⚙️ CI/CD", description: "Continuous integration dan delivery changes."}, {property: "build", defaultValue: "🏗️ Build", description: "Build-system changes."}, {property: "release", defaultValue: "🚀 Releases", description: "Release-oriented commits."}, {property: "revert", defaultValue: "↩️ Reverts", description: "Reverted changes."}, {property: "style", defaultValue: "🎨 Styling", description: "Formatting atau style-only changes."}, {property: "other", defaultValue: "📦 Others", description: "Fallback title untuk unknown commit types."}]} />
+<PropertyTable
+  title="Generated type_map entries"
+  items={[
+    {
+      property: "feat",
+      defaultValue: "✨ Features",
+      description: "New user-facing functionality.",
+    },
+    {
+      property: "fix",
+      defaultValue: "🐛 Bug Fixes",
+      description: "Corrective changes.",
+    },
+    {
+      property: "improvement",
+      defaultValue: "🧠 Improvements",
+      description: "Enhancements yang bukan features.",
+    },
+    {
+      property: "template",
+      defaultValue: "📄 Templates",
+      description: "Template changes.",
+    },
+    {
+      property: "breaking",
+      defaultValue: "⚠️ Breaking Changes",
+      description: "Backward-incompatible changes.",
+    },
+    {
+      property: "docs",
+      defaultValue: "📚 Documentation",
+      description: "Documentation changes.",
+    },
+    {
+      property: "refactor",
+      defaultValue: "🧠 Refactoring",
+      description: "Internal restructuring.",
+    },
+    {
+      property: "perf",
+      defaultValue: "⚡ Performance",
+      description: "Performance improvements.",
+    },
+    { property: "test", defaultValue: "🧪 Tests", description: "Test changes." },
+    { property: "chore", defaultValue: "🔧 Chores", description: "Maintenance work." },
+    {
+      property: "ci",
+      defaultValue: "⚙️ CI/CD",
+      description: "Continuous integration dan delivery changes.",
+    },
+    {
+      property: "build",
+      defaultValue: "🏗️ Build",
+      description: "Build-system changes.",
+    },
+    {
+      property: "release",
+      defaultValue: "🚀 Releases",
+      description: "Release-oriented commits.",
+    },
+    {
+      property: "revert",
+      defaultValue: "↩️ Reverts",
+      description: "Reverted changes.",
+    },
+    {
+      property: "style",
+      defaultValue: "🎨 Styling",
+      description: "Formatting atau style-only changes.",
+    },
+    {
+      property: "other",
+      defaultValue: "📦 Others",
+      description: "Fallback title untuk unknown commit types.",
+    },
+  ]}
+/>
 
 <Terminal title="Custom mapping" language="toml">{`[tool.custy.changelog.scope_map]
 database = "data layer"
@@ -32,5 +181,28 @@ database = "data layer"
 [tool.custy.changelog.type_map]
 security = "🔐 Security"`}</Terminal>
 
-<InfoBox variant="note" title="Mappings Tidak Menulis Ulang Git History">Mappings hanya memengaruhi changelog classification dan presentation. Original commit messages tetap tidak berubah.</InfoBox>
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Rendering", href: "./rendering", description: "Konfigurasikan grouping, sorting, scopes, dan icons."}, {title: "Breaking Changes", href: "./breaking-changes", description: "Konfigurasikan breaking classification."}, {title: "Core", href: "./core", description: "Kecualikan raw types sebelum mapping."}]} /></Section>
+<InfoBox variant="note" title="Mappings Tidak Menulis Ulang Git History">
+  Mappings hanya memengaruhi changelog classification dan presentation. Original commit
+  messages tetap tidak berubah.
+</InfoBox>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Konfigurasikan grouping, sorting, scopes, dan icons.",
+      },
+      {
+        title: "Breaking Changes",
+        href: "./breaking-changes",
+        description: "Konfigurasikan breaking classification.",
+      },
+      {
+        title: "Core",
+        href: "./core",
+        description: "Kecualikan raw types sebelum mapping.",
+      },
+    ]}
+  />
+</Section>

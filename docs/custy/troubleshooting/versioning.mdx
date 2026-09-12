@@ -8,38 +8,38 @@ keywords: [Custy version error, invalid strategy, tag already exists]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version update"
-    title="Versioning Troubleshooting"
-    description="Separate generation, conversion, file synchronization, local tag creation, and publication before correcting a release value."
-    category="Troubleshooting"
-    status="Version Recovery"
-    syntax="strategy -> generated value -> project file -> optional Git tag"
-    tags={["strategies", "formats", "version file", "tags"]}
-    links={[
-        {label: "Troubleshooting Hub", href: "./overview"},
-        {label: "Version Formats", href: "../reference/version-formats"},
-        {label: "Version Command", href: "../commands/version/troubleshooting"},
-        {label: "Tag Command", href: "../commands/tag/troubleshooting"},
-    ]}
+  command="custy version update"
+  title="Versioning Troubleshooting"
+  description="Separate generation, conversion, file synchronization, local tag creation, and publication before correcting a release value."
+  category="Troubleshooting"
+  status="Version Recovery"
+  syntax="strategy -> generated value -> project file -> optional Git tag"
+  tags={["strategies", "formats", "version file", "tags"]}
+  links={[
+    { label: "Troubleshooting Hub", href: "./overview" },
+    { label: "Version Formats", href: "../reference/version-formats" },
+    { label: "Version Command", href: "../commands/version/troubleshooting" },
+    { label: "Tag Command", href: "../commands/tag/troubleshooting" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Strategies", value: "5", icon: "configuration"},
-        {label: "Default Version File", value: "app/__version__.py", icon: "python"},
-        {label: "Explicit Tag Shape", value: "vX.Y.Z", icon: "release"},
-        {label: "Git Tag", value: "Separate effect", icon: "git"},
-    ]}
+  items={[
+    { label: "Strategies", value: "5", icon: "configuration" },
+    { label: "Default Version File", value: "app/__version__.py", icon: "python" },
+    { label: "Explicit Tag Shape", value: "vX.Y.Z", icon: "release" },
+    { label: "Git Tag", value: "Separate effect", icon: "git" },
+  ]}
 />
 
 ## Scope of This Page
@@ -51,13 +51,33 @@ Version or Tag command guide after the failing responsibility is known.
 ## Identify the Failing Responsibility
 
 <KeyValueTable
-    items={[
-        {key: "Generation", value: "Custy could not calculate a new value from strategy, repository history, bump, or release modifiers."},
-        {key: "Conversion", value: "The release tag and project ecosystem require different compatible representations."},
-        {key: "Synchronization", value: "The selected value exists, but the configured version file is missing, unwritable, or was not updated."},
-        {key: "Tag creation", value: "A local Git tag is missing, invalid, or conflicts with an existing reference."},
-        {key: "Publication", value: "The local version and tag are correct, but a remote push failed or only some destinations succeeded."},
-    ]}
+  items={[
+    {
+      key: "Generation",
+      value:
+        "Custy could not calculate a new value from strategy, repository history, bump, or release modifiers.",
+    },
+    {
+      key: "Conversion",
+      value:
+        "The release tag and project ecosystem require different compatible representations.",
+    },
+    {
+      key: "Synchronization",
+      value:
+        "The selected value exists, but the configured version file is missing, unwritable, or was not updated.",
+    },
+    {
+      key: "Tag creation",
+      value:
+        "A local Git tag is missing, invalid, or conflicts with an existing reference.",
+    },
+    {
+      key: "Publication",
+      value:
+        "The local version and tag are correct, but a remote push failed or only some destinations succeeded.",
+    },
+  ]}
 />
 
 ---
@@ -147,12 +167,30 @@ procedure. Do not move a published tag casually.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Version Troubleshooting", href: "../commands/version/troubleshooting", description: "Resolve focused Version Update failures."},
-        {title: "Tag Troubleshooting", href: "../commands/tag/troubleshooting", description: "Resolve validation, version input, and existing-tag conflicts."},
-        {title: "Version Formats", href: "../reference/version-formats", description: "Compare strategy values, common forms, conversions, and known limits."},
-        {title: "Versioning Concept", href: "../concepts/versioning", description: "Understand selection, preparation, synchronization, and Git tagging."},
-    ]}
+  commands={[
+    {
+      title: "Version Troubleshooting",
+      href: "../commands/version/troubleshooting",
+      description: "Resolve focused Version Update failures.",
+    },
+    {
+      title: "Tag Troubleshooting",
+      href: "../commands/tag/troubleshooting",
+      description: "Resolve validation, version input, and existing-tag conflicts.",
+    },
+    {
+      title: "Version Formats",
+      href: "../reference/version-formats",
+      description:
+        "Compare strategy values, common forms, conversions, and known limits.",
+    },
+    {
+      title: "Versioning Concept",
+      href: "../concepts/versioning",
+      description:
+        "Understand selection, preparation, synchronization, and Git tagging.",
+    },
+  ]}
 />
 
 </Section>

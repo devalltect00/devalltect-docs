@@ -12,27 +12,27 @@ import type { GridProps } from "./types";
  * requirement blocks, and similar content.
  */
 export default function Grid({
-    children,
-    columns = 2,
-    equalHeight = true,
-    responsive = true,
-    className,
-    style,
-    ...props
+  children,
+  columns = 2,
+  equalHeight = true,
+  responsive = true,
+  className,
+  style,
+  ...props
 }: GridProps) {
-    return (
-        <div
-            className={clsx(
-                styles.grid,
-                styles[`columns${columns}`],
-                equalHeight && styles.equalHeight,
-                responsive && styles.responsive,
-                className,
-            )}
-            style={style}
-            {...props}
-        >
-            {children}
-        </div>
-    );
+  return (
+    <div
+      className={clsx(
+        styles.grid,
+        styles[`columns${columns}`],
+        equalHeight && styles.equalHeight,
+        responsive && styles.responsive,
+        className
+      )}
+      style={style}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }

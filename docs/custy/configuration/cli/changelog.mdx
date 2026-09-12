@@ -7,15 +7,53 @@ tags: [custy, configuration, changelog]
 keywords: [cli changelog, force_generation]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.changelog]" title="Changelog Command" description="Configure whether generation proceeds when no new commits or releases are detected." category="CLI Configuration" status="Active" syntax={'force_generation = false'} tags={["force generation", "command behavior", "CHANGELOG.md"]} links={[{label: "Changelog Namespace", href: "../changelog/overview"}, {label: "Generate", href: "../../commands/changelog/generate/overview"}, {label: "Templates", href: "./templates/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.changelog]"
+  title="Changelog Command"
+  description="Configure whether generation proceeds when no new commits or releases are detected."
+  category="CLI Configuration"
+  status="Active"
+  syntax={"force_generation = false"}
+  tags={["force generation", "command behavior", "CHANGELOG.md"]}
+  links={[
+    { label: "Changelog Namespace", href: "../changelog/overview" },
+    { label: "Generate", href: "../../commands/changelog/generate/overview" },
+    { label: "Templates", href: "./templates/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "1", icon: "table"}, {label: "Default", value: "false", icon: "security"}, {label: "Resolver", value: "Changelog command", icon: "terminal"}, {label: "Content Settings", value: "Separate namespace", icon: "configuration"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "1", icon: "table" },
+    { label: "Default", value: "false", icon: "security" },
+    { label: "Resolver", value: "Changelog command", icon: "terminal" },
+    { label: "Content Settings", value: "Separate namespace", icon: "configuration" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "force_generation", type: "Boolean", defaultValue: "false", description: "Allow changelog generation to proceed when normal change detection would not find new releases or commits."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "force_generation",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Allow changelog generation to proceed when normal change detection would not find new releases or commits.",
+    },
+  ]}
+/>
 
 <Terminal title="Generated default" language="toml">
 
@@ -31,4 +69,24 @@ separate `[tool.custy.changelog]` namespace.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Changelog Namespace", href: "../changelog/overview", description: "Configure generated content and presentation."}, {title: "Generate Options", href: "../../commands/changelog/generate/options", description: "Review invocation-level force behavior."}, {title: "Templates", href: "./templates/overview", description: "Configure the Jinja layout path."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Changelog Namespace",
+        href: "../changelog/overview",
+        description: "Configure generated content and presentation.",
+      },
+      {
+        title: "Generate Options",
+        href: "../../commands/changelog/generate/options",
+        description: "Review invocation-level force behavior.",
+      },
+      {
+        title: "Templates",
+        href: "./templates/overview",
+        description: "Configure the Jinja layout path.",
+      },
+    ]}
+  />
+</Section>

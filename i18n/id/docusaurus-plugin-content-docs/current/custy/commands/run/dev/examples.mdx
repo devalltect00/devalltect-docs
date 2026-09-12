@@ -4,12 +4,50 @@ description: "Contoh aman custy run dev."
 sidebar_position: 3
 sidebar_key: custy-run-dev-examples
 ---
-import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy run dev" title="Examples" description="Preview dan jalankan Dev dengan staging atau template overrides." category="Pipeline Profile" status="Practical Guide" syntax="custy run dev [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Workflow",href:"./workflow"},{label:"Safety",href:"../safety"}]} />
+import { CommandHero, CommandExample, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run dev"
+  title="Examples"
+  description="Preview dan jalankan Dev dengan staging atau template overrides."
+  category="Pipeline Profile"
+  status="Practical Guide"
+  syntax="custy run dev [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Safety", href: "../safety" },
+  ]}
+/>
 
 ## Ringkasan
-<InfoBox variant="warning" title="Dev Ends with Push">Pastikan current branch dan destination benar.</InfoBox>
-<CommandExample examples={[
- {title:"Preview",command:"custy --dry-run run dev",result:"Menampilkan commit-message, staging, commit, dan branch-push intent."},{title:"Project Defaults",command:"custy run dev",result:"Menjalankan registered Dev profile tanpa release atau tag side effects."},{title:"Controlled Staging",command:"custy run dev --auto-stage --stage-mode update",result:"Menggunakan update staging mode."},{title:"Message Template",command:"custy run dev --commit-msg-file .config/custy/templates/commit-message.txt",result:"Menggunakan specified commit template."},
-]} />
+
+<InfoBox variant="warning" title="Dev Ends with Push">
+  Pastikan current branch dan destination benar.
+</InfoBox>
+<CommandExample
+  examples={[
+    {
+      title: "Preview",
+      command: "custy --dry-run run dev",
+      result: "Menampilkan commit-message, staging, commit, dan branch-push intent.",
+    },
+    {
+      title: "Project Defaults",
+      command: "custy run dev",
+      result: "Menjalankan registered Dev profile tanpa release atau tag side effects.",
+    },
+    {
+      title: "Controlled Staging",
+      command: "custy run dev --auto-stage --stage-mode update",
+      result: "Menggunakan update staging mode.",
+    },
+    {
+      title: "Message Template",
+      command:
+        "custy run dev --commit-msg-file .config/custy/templates/commit-message.txt",
+      result: "Menggunakan specified commit template.",
+    },
+  ]}
+/>

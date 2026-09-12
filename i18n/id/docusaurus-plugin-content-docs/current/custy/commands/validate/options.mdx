@@ -6,25 +6,25 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Options"
-    description="Pelajari command-line options yang tersedia untuk project validation."
-    category="Validate"
-    status="Direkomendasikan"
-    syntax="custy validate"
-    tags={["options", "validation", "cli"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Validation Checks", href: "./validation-checks"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy validate"
+  title="Options"
+  description="Pelajari command-line options yang tersedia untuk project validation."
+  category="Validate"
+  status="Direkomendasikan"
+  syntax="custy validate"
+  tags={["options", "validation", "cli"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Validation Checks", href: "./validation-checks" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Ringkasan
@@ -48,40 +48,42 @@ configuration tersebut hanya untuk eksekusi saat ini.
 <Section title="Options yang Tersedia">
 
 <CommandOption
-    options={[
-        {
-            name: "--skip-checks",
-            shorthand: "",
-            required: false,
-            description: "Lewati optional validation checks jika didukung oleh workflow saat ini.",
-            defaultValue: "false",
-            example: "custy validate --skip-checks",
-        },
-        {
-            name: "--force-commit",
-            shorthand: "",
-            required: false,
-            description: "Lanjutkan validation walaupun tidak ada staged changes.",
-            defaultValue: "false",
-            example: "custy validate --force-commit",
-        },
-        {
-            name: "--auto-stage",
-            shorthand: "",
-            required: false,
-            description: "Stage modified files secara otomatis sebelum memvalidasi staged changes.",
-            defaultValue: "false",
-            example: "custy validate --auto-stage",
-        },
-        {
-            name: "--stage-mode",
-            shorthand: "",
-            required: false,
-            description: "Pilih cara automatic staging dijalankan.",
-            defaultValue: "all",
-            example: "custy validate --stage-mode update",
-        },
-    ]}
+  options={[
+    {
+      name: "--skip-checks",
+      shorthand: "",
+      required: false,
+      description:
+        "Lewati optional validation checks jika didukung oleh workflow saat ini.",
+      defaultValue: "false",
+      example: "custy validate --skip-checks",
+    },
+    {
+      name: "--force-commit",
+      shorthand: "",
+      required: false,
+      description: "Lanjutkan validation walaupun tidak ada staged changes.",
+      defaultValue: "false",
+      example: "custy validate --force-commit",
+    },
+    {
+      name: "--auto-stage",
+      shorthand: "",
+      required: false,
+      description:
+        "Stage modified files secara otomatis sebelum memvalidasi staged changes.",
+      defaultValue: "false",
+      example: "custy validate --auto-stage",
+    },
+    {
+      name: "--stage-mode",
+      shorthand: "",
+      required: false,
+      description: "Pilih cara automatic staging dijalankan.",
+      defaultValue: "all",
+      example: "custy validate --stage-mode update",
+    },
+  ]}
 />
 
 </Section>

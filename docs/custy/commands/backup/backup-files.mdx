@@ -6,39 +6,35 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  FeatureGrid,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Backup Files"
-    description="Learn which files Custy backs up, where backups are stored, and how they are managed."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup all"
-    tags={[
-        "backup",
-        "templates",
-        "files",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy backup"
+  title="Backup Files"
+  description="Learn which files Custy backs up, where backups are stored, and how they are managed."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup all"
+  tags={["backup", "templates", "files"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -68,38 +64,28 @@ It does not create backups of your entire project or Git repository.
 >
 
 <FeatureGrid
-    title="Available Backup Operations"
-    items={[
-        {
-            title: "Commit Message Template",
-            icon: <Icon name="copy" />,
-            children: (
-                <>
-                    Creates a timestamped backup of the configured commit
-                    message template.
-                </>
-            ),
-        },
-        {
-            title: "Tag Message Template",
-            icon: <Icon name="release" />,
-            children: (
-                <>
-                    Creates a timestamped backup of the configured tag message
-                    template.
-                </>
-            ),
-        },
-        {
-            title: "Combined Backup",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Backs up both template files during a single operation.
-                </>
-            ),
-        },
-    ]}
+  title="Available Backup Operations"
+  items={[
+    {
+      title: "Commit Message Template",
+      icon: <Icon name="copy" />,
+      children: (
+        <>Creates a timestamped backup of the configured commit message template.</>
+      ),
+    },
+    {
+      title: "Tag Message Template",
+      icon: <Icon name="release" />,
+      children: (
+        <>Creates a timestamped backup of the configured tag message template.</>
+      ),
+    },
+    {
+      title: "Combined Backup",
+      icon: <Icon name="directory" />,
+      children: <>Backs up both template files during a single operation.</>,
+    },
+  ]}
 />
 
 </Section>

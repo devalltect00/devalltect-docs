@@ -10,25 +10,17 @@
  * ============================================================================
  */
 
-import {
-    useEffect,
-    useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Returns true after the component mounts.
  */
 export function useMounted() {
+  const [mounted, setMounted] = useState(false);
 
-    const [mounted, setMounted] =
-        useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-    useEffect(() => {
-
-        setMounted(true);
-
-    }, []);
-
-    return mounted;
-
+  return mounted;
 }

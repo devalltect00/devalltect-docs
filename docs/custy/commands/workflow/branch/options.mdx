@@ -8,29 +8,25 @@ keywords: [workflow enforce, check_transition]
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy workflow branch"
-    title="Command Options"
-    description="Review the experimental enforcement, transition, boundary, backup, dry-run, and logging inputs."
-    category="Experimental Workflow"
-    status="Currently Blocked"
-    syntax="custy workflow branch [OPTIONS]"
-    tags={[
-        "options",
-        "transition policy",
-        "experimental",
-    ]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy workflow branch"
+  title="Command Options"
+  description="Review the experimental enforcement, transition, boundary, backup, dry-run, and logging inputs."
+  category="Experimental Workflow"
+  status="Currently Blocked"
+  syntax="custy workflow branch [OPTIONS]"
+  tags={["options", "transition policy", "experimental"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Overview
@@ -45,18 +41,68 @@ known pipeline-construction blocker.
 >
 
 <CommandOption
-    options={[
-        {name: "--enforce", shorthand: "-enf", description: "Request application of configured branch and tag policy.", example: "--enforce"},
-        {name: "--check_transition", shorthand: "-ct", description: "Request transition validation without enforcement.", example: "--check_transition"},
-        {name: "--from-branch", shorthand: "-fb", description: "Override the transition's source branch.", example: "--from-branch develop"},
-        {name: "--to-branch", shorthand: "-tb", description: "Override the transition's target branch.", example: "--to-branch main"},
-        {name: "--from-tag", shorthand: "-ft", description: "Override the source version.", example: "--from-tag v1.2.0"},
-        {name: "--to-tag", shorthand: "-tt", description: "Override the target version.", example: "--to-tag v1.3.0"},
-        {name: "--sync-backup", shorthand: "-sb", description: "Request workflow-related backup synchronization.", example: "--sync-backup"},
-        {name: "--dry-run / --no-dry-run", shorthand: "-dr / -Dr", description: "Toggle local dry-run behavior.", example: "--dry-run"},
-        {name: "--debug / --no-debug", shorthand: "-dbg / -Dbg", description: "Toggle diagnostic output.", example: "--debug"},
-        {name: "--log-level", shorthand: "-ll", description: "Select critical, error, warning, info, or debug output.", example: "--log-level debug"},
-    ]}
+  options={[
+    {
+      name: "--enforce",
+      shorthand: "-enf",
+      description: "Request application of configured branch and tag policy.",
+      example: "--enforce",
+    },
+    {
+      name: "--check_transition",
+      shorthand: "-ct",
+      description: "Request transition validation without enforcement.",
+      example: "--check_transition",
+    },
+    {
+      name: "--from-branch",
+      shorthand: "-fb",
+      description: "Override the transition's source branch.",
+      example: "--from-branch develop",
+    },
+    {
+      name: "--to-branch",
+      shorthand: "-tb",
+      description: "Override the transition's target branch.",
+      example: "--to-branch main",
+    },
+    {
+      name: "--from-tag",
+      shorthand: "-ft",
+      description: "Override the source version.",
+      example: "--from-tag v1.2.0",
+    },
+    {
+      name: "--to-tag",
+      shorthand: "-tt",
+      description: "Override the target version.",
+      example: "--to-tag v1.3.0",
+    },
+    {
+      name: "--sync-backup",
+      shorthand: "-sb",
+      description: "Request workflow-related backup synchronization.",
+      example: "--sync-backup",
+    },
+    {
+      name: "--dry-run / --no-dry-run",
+      shorthand: "-dr / -Dr",
+      description: "Toggle local dry-run behavior.",
+      example: "--dry-run",
+    },
+    {
+      name: "--debug / --no-debug",
+      shorthand: "-dbg / -Dbg",
+      description: "Toggle diagnostic output.",
+      example: "--debug",
+    },
+    {
+      name: "--log-level",
+      shorthand: "-ll",
+      description: "Select critical, error, warning, info, or debug output.",
+      example: "--log-level debug",
+    },
+  ]}
 />
 
 </Section>

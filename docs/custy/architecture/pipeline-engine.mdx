@@ -8,40 +8,40 @@ keywords: [Custy pipeline architecture, StepRegistry, CommandResolver]
 ---
 
 import {
-    ArchitectureCard,
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  ArchitectureCard,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/pipeline/"
-    title="Pipeline Engine"
-    description="Trace a profile name into expanded, registered, ordered, and sequentially executed step objects."
-    category="Architecture"
-    status="Application Orchestration"
-    syntax="profiles -> resolver -> registry -> builder -> pipeline"
-    tags={["profiles", "STEP_ORDER", "StepRegistry", "GitContext"]}
-    links={[
-        {label: "Pipeline Guide", href: "../pipelines/overview"},
-        {label: "Execution Model", href: "../pipelines/execution-model"},
-        {label: "Step System", href: "../pipelines/step-system"},
-    ]}
+  command="app/core/pipeline/"
+  title="Pipeline Engine"
+  description="Trace a profile name into expanded, registered, ordered, and sequentially executed step objects."
+  category="Architecture"
+  status="Application Orchestration"
+  syntax="profiles -> resolver -> registry -> builder -> pipeline"
+  tags={["profiles", "STEP_ORDER", "StepRegistry", "GitContext"]}
+  links={[
+    { label: "Pipeline Guide", href: "../pipelines/overview" },
+    { label: "Execution Model", href: "../pipelines/execution-model" },
+    { label: "Step System", href: "../pipelines/step-system" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Resolver Profiles", value: "20", icon: "workflow"},
-        {label: "Global Priorities", value: "27", icon: "timeline"},
-        {label: "Public Run Names", value: "6", icon: "command"},
-        {label: "Execution", value: "Sequential", icon: "pipeline"},
-    ]}
+  items={[
+    { label: "Resolver Profiles", value: "20", icon: "workflow" },
+    { label: "Global Priorities", value: "27", icon: "timeline" },
+    { label: "Public Run Names", value: "6", icon: "command" },
+    { label: "Execution", value: "Sequential", icon: "pipeline" },
+  ]}
 />
 
 ## Overview
@@ -106,15 +106,44 @@ mutable fields intended for cross-step runtime state.
 ---
 
 <WorkflowDiagram
-    title="Profile to Execution"
-    timeline={[
-        {title: "Select profile names", description: "A direct command chooses an internal profile or custy run accepts one or more typed public names.", status: "completed"},
-        {title: "Register built-in classes", description: "register_all_steps maps every known string name to a concrete BaseStep subclass.", status: "completed"},
-        {title: "Expand profiles", description: "CommandResolver recursively replaces nested profile references with final step definitions.", status: "completed"},
-        {title: "Normalize composition", description: "Merged profiles are deduplicated by first occurrence and stably sorted by STEP_ORDER.", status: "completed"},
-        {title: "Build step objects", description: "PipelineBuilder asks StepRegistry to create each class with any configured constructor args.", status: "current"},
-        {title: "Execute with GitContext", description: "The pipeline invokes execute(context) one step at a time.", status: "pending"},
-    ]}
+  title="Profile to Execution"
+  timeline={[
+    {
+      title: "Select profile names",
+      description:
+        "A direct command chooses an internal profile or custy run accepts one or more typed public names.",
+      status: "completed",
+    },
+    {
+      title: "Register built-in classes",
+      description:
+        "register_all_steps maps every known string name to a concrete BaseStep subclass.",
+      status: "completed",
+    },
+    {
+      title: "Expand profiles",
+      description:
+        "CommandResolver recursively replaces nested profile references with final step definitions.",
+      status: "completed",
+    },
+    {
+      title: "Normalize composition",
+      description:
+        "Merged profiles are deduplicated by first occurrence and stably sorted by STEP_ORDER.",
+      status: "completed",
+    },
+    {
+      title: "Build step objects",
+      description:
+        "PipelineBuilder asks StepRegistry to create each class with any configured constructor args.",
+      status: "current",
+    },
+    {
+      title: "Execute with GitContext",
+      description: "The pipeline invokes execute(context) one step at a time.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -124,20 +153,40 @@ mutable fields intended for cross-step runtime state.
 <Grid columns={2}>
 
 <DependencyCard
-    title="Single Profile"
-    dependencies={[
-        {source: "profile name", target: "declared sequence", description: "Expand nested references recursively."},
-        {source: "declared sequence", target: "pipeline config", description: "Preserve the exact profile order without global re-sorting."},
-    ]}
+  title="Single Profile"
+  dependencies={[
+    {
+      source: "profile name",
+      target: "declared sequence",
+      description: "Expand nested references recursively.",
+    },
+    {
+      source: "declared sequence",
+      target: "pipeline config",
+      description: "Preserve the exact profile order without global re-sorting.",
+    },
+  ]}
 />
 
 <DependencyCard
-    title="Multiple Profiles"
-    dependencies={[
-        {source: "profile names", target: "expanded steps", description: "Concatenate each expanded sequence in input order."},
-        {source: "expanded steps", target: "unique steps", description: "Keep only the first occurrence of each name."},
-        {source: "unique steps", target: "ordered config", description: "Apply a stable STEP_ORDER sort; unknown priorities use 999."},
-    ]}
+  title="Multiple Profiles"
+  dependencies={[
+    {
+      source: "profile names",
+      target: "expanded steps",
+      description: "Concatenate each expanded sequence in input order.",
+    },
+    {
+      source: "expanded steps",
+      target: "unique steps",
+      description: "Keep only the first occurrence of each name.",
+    },
+    {
+      source: "unique steps",
+      target: "ordered config",
+      description: "Apply a stable STEP_ORDER sort; unknown priorities use 999.",
+    },
+  ]}
 />
 
 </Grid>
@@ -183,12 +232,28 @@ business sequence.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Pipeline Guide", href: "../pipelines/overview", description: "Review profiles, exact order, safety, and user behavior."},
-        {title: "Workflow Engine", href: "./workflow-engine", description: "See what registered steps delegate to."},
-        {title: "Adding Pipeline Steps", href: "../developer-guide/adding-pipeline-steps", description: "Preserve registration, priority, composition, and tests."},
-        {title: "Run Command", href: "../commands/run/overview", description: "Use the supported public profile boundary."},
-    ]}
+  commands={[
+    {
+      title: "Pipeline Guide",
+      href: "../pipelines/overview",
+      description: "Review profiles, exact order, safety, and user behavior.",
+    },
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "See what registered steps delegate to.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "../developer-guide/adding-pipeline-steps",
+      description: "Preserve registration, priority, composition, and tests.",
+    },
+    {
+      title: "Run Command",
+      href: "../commands/run/overview",
+      description: "Use the supported public profile boundary.",
+    },
+  ]}
 />
 
 </Section>

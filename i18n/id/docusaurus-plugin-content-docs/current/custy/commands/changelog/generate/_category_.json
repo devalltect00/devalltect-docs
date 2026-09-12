@@ -1,6 +1,6 @@
 {
   "label": "Generate",
   "position": 1,
-  "link": {"type": "doc", "id": "custy/commands/changelog/generate/overview"},
+  "link": { "type": "doc", "id": "custy/commands/changelog/generate/overview" },
   "collapsed": true
 }

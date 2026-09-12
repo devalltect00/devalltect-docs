@@ -1,6 +1,6 @@
 {
   "label": "Branch Cleanup",
   "position": 2,
-  "link": {"type": "doc", "id": "custy/commands/cleanup/branch/overview"},
+  "link": { "type": "doc", "id": "custy/commands/cleanup/branch/overview" },
   "collapsed": true
 }

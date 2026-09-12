@@ -6,25 +6,25 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Examples"
-    description="Pelajari penggunaan command validate dalam skenario development umum."
-    category="Validate"
-    status="Direkomendasikan"
-    syntax="custy validate"
-    tags={["examples", "validation", "workflow"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Output", href: "./output"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy validate"
+  title="Examples"
+  description="Pelajari penggunaan command validate dalam skenario development umum."
+  category="Validate"
+  status="Direkomendasikan"
+  syntax="custy validate"
+  tags={["examples", "validation", "workflow"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Output", href: "./output" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Ringkasan
@@ -37,21 +37,24 @@ menjalankan Git atau Custy workflow.
 <Section title="Contoh Umum">
 
 <CommandExample
-    examples={[
-        {
-            title: "Validate Proyek Saat Ini",
-            description: "Jalankan semua validation checks untuk proyek saat ini.",
-            command: "custy validate",
-            result: "Memeriksa project repository, configuration, templates, version file, dan repository state.",
-        },
-        {
-            title: "Validate Sebelum Release Workflow",
-            description: "Pastikan proyek siap sebelum operasi terkait release.",
-            command: "custy validate",
-            result: "Laporkan prerequisite yang belum tersedia sebelum workflow commit, tag, push, atau release dimulai.",
-            notes: "Langkah ini opsional karena workflow-oriented commands melakukan validation secara otomatis.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Validate Proyek Saat Ini",
+      description: "Jalankan semua validation checks untuk proyek saat ini.",
+      command: "custy validate",
+      result:
+        "Memeriksa project repository, configuration, templates, version file, dan repository state.",
+    },
+    {
+      title: "Validate Sebelum Release Workflow",
+      description: "Pastikan proyek siap sebelum operasi terkait release.",
+      command: "custy validate",
+      result:
+        "Laporkan prerequisite yang belum tersedia sebelum workflow commit, tag, push, atau release dimulai.",
+      notes:
+        "Langkah ini opsional karena workflow-oriented commands melakukan validation secara otomatis.",
+    },
+  ]}
 />
 
 </Section>
@@ -61,28 +64,29 @@ menjalankan Git atau Custy workflow.
 <Section title="Development Workflow yang Umum">
 
 <CommandExample
-    examples={[
-        {
-            title: "Manual Git Workflow",
-            description: "Validate proyek sebelum menjalankan operasi Git secara manual.",
-            command:
-`git add .
+  examples={[
+    {
+      title: "Manual Git Workflow",
+      description: "Validate proyek sebelum menjalankan operasi Git secara manual.",
+      command: `git add .
 custy validate
 custy commit
 custy tag
 custy push`,
-            result: "Validation memastikan repository siap sebelum setiap command Custy dijalankan.",
-        },
-        {
-            title: "Workflow-Oriented Development",
-            description: "Jalankan workflow lengkap melalui pipeline system Custy.",
-            command:
-`git add .
+      result:
+        "Validation memastikan repository siap sebelum setiap command Custy dijalankan.",
+    },
+    {
+      title: "Workflow-Oriented Development",
+      description: "Jalankan workflow lengkap melalui pipeline system Custy.",
+      command: `git add .
 custy run release`,
-            result: "Workflow otomatis melakukan validation sebelum melanjutkan ke stages berikutnya.",
-            notes: "Menjalankan custy validate secara terpisah biasanya tidak diperlukan ketika menggunakan workflow commands.",
-        },
-    ]}
+      result:
+        "Workflow otomatis melakukan validation sebelum melanjutkan ke stages berikutnya.",
+      notes:
+        "Menjalankan custy validate secara terpisah biasanya tidak diperlukan ketika menggunakan workflow commands.",
+    },
+  ]}
 />
 
 </Section>

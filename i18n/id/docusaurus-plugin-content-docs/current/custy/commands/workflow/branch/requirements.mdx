@@ -4,14 +4,53 @@ description: "Prasyarat dan restrictions untuk experimental workflow branch comm
 sidebar_position: 2
 sidebar_key: custy-workflow-branch-requirements
 ---
-import {CommandHero, RequirementGrid, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Requirements" description="Pahami evaluation inputs dan implementation blocker." category="Workflow" status="Blocked" syntax="custy workflow branch [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Workflow",href:"./workflow"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, RequirementGrid, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Requirements"
+  description="Pahami evaluation inputs dan implementation blocker."
+  category="Workflow"
+  status="Blocked"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<RequirementGrid title="Evaluation Requirements" items={[
- {title:"Git Repository",level:"required",children:"Branch/tag references harus dapat dibaca."},{title:"Transition Inputs",level:"required",children:"Source dan target values harus merepresentasikan intended transition."},{title:"Custy Configuration",level:"required",children:"Workflow configuration harus valid tetapi tidak dapat memperbaiki source mismatch."},{title:"Non-Production Environment",level:"required",children:"Gunakan hanya untuk interface review atau development."},
-]} />
+<RequirementGrid
+  title="Evaluation Requirements"
+  items={[
+    {
+      title: "Git Repository",
+      level: "required",
+      children: "Branch/tag references harus dapat dibaca.",
+    },
+    {
+      title: "Transition Inputs",
+      level: "required",
+      children: "Source dan target values harus merepresentasikan intended transition.",
+    },
+    {
+      title: "Custy Configuration",
+      level: "required",
+      children:
+        "Workflow configuration harus valid tetapi tidak dapat memperbaiki source mismatch.",
+    },
+    {
+      title: "Non-Production Environment",
+      level: "required",
+      children: "Gunakan hanya untuk interface review atau development.",
+    },
+  ]}
+/>
 
-<InfoBox variant="danger" title="Implementation Fix Required">Tidak ada configuration value yang dapat mendaftarkan missing `finalize` pipeline step secara aman. Source implementation harus diperbaiki dan diuji.</InfoBox>
+<InfoBox variant="danger" title="Implementation Fix Required">
+  Tidak ada configuration value yang dapat mendaftarkan missing `finalize` pipeline step
+  secara aman. Source implementation harus diperbaiki dan diuji.
+</InfoBox>

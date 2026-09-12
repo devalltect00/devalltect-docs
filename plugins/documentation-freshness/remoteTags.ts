@@ -34,9 +34,7 @@ export function parseRemoteTagOutput(output: string): string[] {
       continue;
     }
 
-    const tag = reference
-      .slice("refs/tags/".length)
-      .replace(/\^\{\}$/u, "");
+    const tag = reference.slice("refs/tags/".length).replace(/\^\{\}$/u, "");
     if (tag) {
       tags.add(tag);
     }
@@ -48,7 +46,7 @@ export function parseRemoteTagOutput(output: string): string[] {
 /** Query all direct tag references from a remote Git repository. */
 export async function fetchRemoteTags(
   repositoryUrl: string,
-  timeoutMs: number,
+  timeoutMs: number
 ): Promise<string[]> {
   try {
     const { stdout } = await execFileAsync(
@@ -59,7 +57,7 @@ export async function fetchRemoteTags(
         maxBuffer: 10 * 1024 * 1024,
         timeout: timeoutMs,
         windowsHide: true,
-      },
+      }
     );
     return parseRemoteTagOutput(stdout);
   } catch (error) {
@@ -68,7 +66,7 @@ export async function fetchRemoteTags(
       throw new RemoteTagError(
         "git-unavailable",
         "Git is not installed or is not available on PATH.",
-        error,
+        error
       );
     }
 
@@ -76,14 +74,14 @@ export async function fetchRemoteTags(
       throw new RemoteTagError(
         "remote-timeout",
         `Remote tag query exceeded ${timeoutMs} ms.`,
-        error,
+        error
       );
     }
 
     throw new RemoteTagError(
       "remote-query-failed",
       `Unable to retrieve tags from ${repositoryUrl}.`,
-      error,
+      error
     );
   }
 }

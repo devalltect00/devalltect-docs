@@ -6,9 +6,22 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="FAQ" description="FAQ" category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="FAQ"
+  description="FAQ"
+  category="Pemindaian Header"
+  status="Preview First"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ## Apakah scan menulis secara default?
 
@@ -25,4 +38,3 @@ Python, JavaScript, shell, HTML, PHP, dan Markdown.
 ## Apa fungsi workdir?
 
 Base untuk resolve target relatif.
-

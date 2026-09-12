@@ -4,20 +4,45 @@ description: "Pertanyaan umum tentang Custy changelog generation."
 sidebar_position: 10
 sidebar_key: custy-changelog-generate-faq
 ---
-import {CommandHero, Section, InfoBox, Terminal} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang history, force generation, manual content, dan configuration." category="Changelog" status="Reference" syntax="custy changelog generate" links={[
-    {label: "Ringkasan", href: "./overview"}, {label: "Configuration", href: "./configuration"}, {label: "Troubleshooting", href: "./troubleshooting"},
-]} />
+import { CommandHero, Section, InfoBox, Terminal } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang history, force generation, manual content, dan configuration."
+  category="Changelog"
+  status="Reference"
+  syntax="custy changelog generate"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="info" title="Gunakan Direct Command">Untuk operasi terfokus, gunakan `custy changelog generate`.</InfoBox>
+<InfoBox variant="info" title="Gunakan Direct Command">
+  Untuk operasi terfokus, gunakan `custy changelog generate`.
+</InfoBox>
 
-<Section title="Apakah Generation Mengubah Git History?">Tidak. Generator menulis changelog artifact tetapi tidak membuat commit, tag, atau push.</Section>
-<Section title="Dapatkah Saya Menjalankan custy run changelog?">Jangan dokumentasikan internal stage sebagai public profile. Gunakan direct command; profile besar dapat menjalankannya secara internal.</Section>
-<Section title="Haruskah Semua Commit Menggunakan Conventional Commits?">Tidak selalu, tetapi structured messages menghasilkan classification dan grouping yang lebih dapat diprediksi.</Section>
-<Section title="Apakah --force Mengabaikan Semua Configuration?">Tidak. Option tersebut mengubah keputusan force-generation, bukan menonaktifkan seluruh aturan collection dan rendering.</Section>
+<Section title="Apakah Generation Mengubah Git History?">
+  Tidak. Generator menulis changelog artifact tetapi tidak membuat commit, tag, atau
+  push.
+</Section>
+<Section title="Dapatkah Saya Menjalankan custy run changelog?">
+  Jangan dokumentasikan internal stage sebagai public profile. Gunakan direct command;
+  profile besar dapat menjalankannya secara internal.
+</Section>
+<Section title="Haruskah Semua Commit Menggunakan Conventional Commits?">
+  Tidak selalu, tetapi structured messages menghasilkan classification dan grouping yang
+  lebih dapat diprediksi.
+</Section>
+<Section title="Apakah --force Mengabaikan Semua Configuration?">
+  Tidak. Option tersebut mengubah keputusan force-generation, bukan menonaktifkan
+  seluruh aturan collection dan rendering.
+</Section>
 
 ## Bagaimana Cara Membuat Changelog Hanya dari Riwayat Git?
 
@@ -43,5 +68,11 @@ untuk perbandingan pengaturan dan contoh pembuatan ulang changelog.
 
 </Section>
 
-<Section title="Dapatkah Manual Content Dipertahankan dalam CHANGELOG.md?">Tergantung template dan generation behavior. Selalu uji dengan dry run dan tinjau diff sebelum mengandalkan preservation.</Section>
-<Section title="Di Mana Generator Dikonfigurasi?">Edit `.config/custy/config.toml` dan template dalam `.config/custy/templates/`; jangan mengedit source template internal aplikasi.</Section>
+<Section title="Dapatkah Manual Content Dipertahankan dalam CHANGELOG.md?">
+  Tergantung template dan generation behavior. Selalu uji dengan dry run dan tinjau diff
+  sebelum mengandalkan preservation.
+</Section>
+<Section title="Di Mana Generator Dikonfigurasi?">
+  Edit `.config/custy/config.toml` dan template dalam `.config/custy/templates/`; jangan
+  mengedit source template internal aplikasi.
+</Section>

@@ -8,38 +8,41 @@ keywords: [Custy documentation version, Custy 2.1.1 docs, documentation baseline
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    PropertyTable,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  PropertyTable,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Documentation Status"
-    description="Identify the Custy release represented by this site and decide when release-specific verification is needed."
-    category="Reference"
-    status="Auto-checked for v2.1.1"
-    syntax="custy --version"
-    tags={["documentation baseline", "release alignment", "maintenance"]}
-    links={[
-        {label: "Custy v2.1.1 Release", href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1"},
-        {label: "All Releases", href: "https://github.com/devalltect00/Custy/releases"},
-        {label: "Reference", href: "./overview"},
-    ]}
+  command="custy"
+  title="Documentation Status"
+  description="Identify the Custy release represented by this site and decide when release-specific verification is needed."
+  category="Reference"
+  status="Auto-checked for v2.1.1"
+  syntax="custy --version"
+  tags={["documentation baseline", "release alignment", "maintenance"]}
+  links={[
+    {
+      label: "Custy v2.1.1 Release",
+      href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1",
+    },
+    { label: "All Releases", href: "https://github.com/devalltect00/Custy/releases" },
+    { label: "Reference", href: "./overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Documentation Baseline", value: "Custy v2.1.1", icon: "release"},
-        {label: "Last Reviewed", value: "August 25, 2026", icon: "success"},
-        {label: "Languages", value: "English and Indonesian", icon: "feature"},
-        {label: "Freshness Mode", value: "Automatic · SemVer", icon: "configuration"},
-    ]}
+  items={[
+    { label: "Documentation Baseline", value: "Custy v2.1.1", icon: "release" },
+    { label: "Last Reviewed", value: "August 25, 2026", icon: "success" },
+    { label: "Languages", value: "English and Indonesian", icon: "feature" },
+    { label: "Freshness Mode", value: "Automatic · SemVer", icon: "configuration" },
+  ]}
 />
 
 ## Current baseline
@@ -87,28 +90,32 @@ as release-specific references.
 <Section title="Freshness States">
 
 <FeatureGrid
-    items={[
-        {
-            title: "Current",
-            icon: <Icon name="success" />,
-            children: "The documented version equals the latest compatible remote tag. The global notice is hidden to avoid repeating non-actionable information.",
-        },
-        {
-            title: "Outdated",
-            icon: <Icon name="warning" />,
-            children: "A newer compatible tag exists. A warning appears at the top of every affected project page before readers follow version-sensitive instructions.",
-        },
-        {
-            title: "Preview",
-            icon: <Icon name="info" />,
-            children: "The documented version is newer than the latest compatible remote tag. An informational notice identifies the documentation as a preview.",
-        },
-        {
-            title: "Unknown",
-            icon: <Icon name="configuration" />,
-            children: "The latest release could not be verified and no current fallback was selected. A neutral notice asks readers to check the release list.",
-        },
-    ]}
+  items={[
+    {
+      title: "Current",
+      icon: <Icon name="success" />,
+      children:
+        "The documented version equals the latest compatible remote tag. The global notice is hidden to avoid repeating non-actionable information.",
+    },
+    {
+      title: "Outdated",
+      icon: <Icon name="warning" />,
+      children:
+        "A newer compatible tag exists. A warning appears at the top of every affected project page before readers follow version-sensitive instructions.",
+    },
+    {
+      title: "Preview",
+      icon: <Icon name="info" />,
+      children:
+        "The documented version is newer than the latest compatible remote tag. An informational notice identifies the documentation as a preview.",
+    },
+    {
+      title: "Unknown",
+      icon: <Icon name="configuration" />,
+      children:
+        "The latest release could not be verified and no current fallback was selected. A neutral notice asks readers to check the release list.",
+    },
+  ]}
 />
 
 </Section>
@@ -122,27 +129,95 @@ configure the documentation portal itself; they are not Custy CLI settings and
 do not belong in `.config/custy/config.toml`.
 
 <PropertyTable
-    title="Shared documentation fields"
-    items={[
-        {property: "version", type: "string", required: true, description: "Normalized application version represented by these pages, without requiring a v prefix."},
-        {property: "versionTag", type: "string", required: true, description: "Repository tag intended to represent the documented release, such as v2.1.1."},
-        {property: "lastReviewed", type: "YYYY-MM-DD", required: true, description: "Date when maintainers deliberately reviewed the documentation against source."},
-        {property: "releaseUrl", type: "URL", required: true, description: "Release page for the documented baseline."},
-        {property: "statusPath", type: "site path", required: true, description: "Locale-independent route to this documentation-status page."},
-        {property: "freshness.mode", type: "manual | auto", required: true, description: "Select maintainer-controlled status or build-time remote-tag detection."},
-    ]}
+  title="Shared documentation fields"
+  items={[
+    {
+      property: "version",
+      type: "string",
+      required: true,
+      description:
+        "Normalized application version represented by these pages, without requiring a v prefix.",
+    },
+    {
+      property: "versionTag",
+      type: "string",
+      required: true,
+      description:
+        "Repository tag intended to represent the documented release, such as v2.1.1.",
+    },
+    {
+      property: "lastReviewed",
+      type: "YYYY-MM-DD",
+      required: true,
+      description:
+        "Date when maintainers deliberately reviewed the documentation against source.",
+    },
+    {
+      property: "releaseUrl",
+      type: "URL",
+      required: true,
+      description: "Release page for the documented baseline.",
+    },
+    {
+      property: "statusPath",
+      type: "site path",
+      required: true,
+      description: "Locale-independent route to this documentation-status page.",
+    },
+    {
+      property: "freshness.mode",
+      type: "manual | auto",
+      required: true,
+      description:
+        "Select maintainer-controlled status or build-time remote-tag detection.",
+    },
+  ]}
 />
 
 <PropertyTable
-    title="Automatic-mode fields"
-    items={[
-        {property: "repositoryUrl", type: "Git URL", required: true, description: "Remote queried with git ls-remote. Public HTTPS URLs are the simplest choice for CI."},
-        {property: "tagFormat", type: "semver | pep440", required: true, description: "Version grammar used to validate and order tags. Custom formats are intentionally unsupported."},
-        {property: "releasesUrl", type: "URL", description: "Optional release-list link shown when readers need another version."},
-        {property: "includePrereleases", type: "boolean", defaultValue: "false", description: "Include alpha, beta, rc, and development tags when selecting the latest version. PEP 440 post releases remain stable candidates."},
-        {property: "timeoutMs", type: "number", defaultValue: "10000", description: "Remote-query timeout from 1000 through 60000 milliseconds."},
-        {property: "fallbackStatus", type: "current | unknown", defaultValue: "unknown", description: "Status used only when automatic verification fails. Use current only when maintainers accept that explicit fallback."},
-    ]}
+  title="Automatic-mode fields"
+  items={[
+    {
+      property: "repositoryUrl",
+      type: "Git URL",
+      required: true,
+      description:
+        "Remote queried with git ls-remote. Public HTTPS URLs are the simplest choice for CI.",
+    },
+    {
+      property: "tagFormat",
+      type: "semver | pep440",
+      required: true,
+      description:
+        "Version grammar used to validate and order tags. Custom formats are intentionally unsupported.",
+    },
+    {
+      property: "releasesUrl",
+      type: "URL",
+      description:
+        "Optional release-list link shown when readers need another version.",
+    },
+    {
+      property: "includePrereleases",
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Include alpha, beta, rc, and development tags when selecting the latest version. PEP 440 post releases remain stable candidates.",
+    },
+    {
+      property: "timeoutMs",
+      type: "number",
+      defaultValue: "10000",
+      description: "Remote-query timeout from 1000 through 60000 milliseconds.",
+    },
+    {
+      property: "fallbackStatus",
+      type: "current | unknown",
+      defaultValue: "unknown",
+      description:
+        "Status used only when automatic verification fails. Use current only when maintainers accept that explicit fallback.",
+    },
+  ]}
 />
 
 ### Automatic mode
@@ -245,28 +320,32 @@ freshness resolver.
 <Section title="What the Baseline Covers">
 
 <FeatureGrid
-    items={[
-        {
-            title: "Public CLI",
-            icon: <Icon name="terminal" />,
-            children: "Documented command names, options, output, side effects, and supported public pipeline profiles are aligned with v2.1.1.",
-        },
-        {
-            title: "Configuration",
-            icon: <Icon name="configuration" />,
-            children: "Configuration sections and properties are based on the v2.1.1 templates and active resolution behavior.",
-        },
-        {
-            title: "Developer Internals",
-            icon: <Icon name="workflow" />,
-            children: "Architecture, extension, testing, and pipeline material reflects the source reviewed for the v2.1.1 documentation baseline.",
-        },
-        {
-            title: "Known Limitations",
-            icon: <Icon name="warning" />,
-            children: "Experimental, internal-only, loaded-only, or currently limited behavior is identified on the affected pages.",
-        },
-    ]}
+  items={[
+    {
+      title: "Public CLI",
+      icon: <Icon name="terminal" />,
+      children:
+        "Documented command names, options, output, side effects, and supported public pipeline profiles are aligned with v2.1.1.",
+    },
+    {
+      title: "Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "Configuration sections and properties are based on the v2.1.1 templates and active resolution behavior.",
+    },
+    {
+      title: "Developer Internals",
+      icon: <Icon name="workflow" />,
+      children:
+        "Architecture, extension, testing, and pipeline material reflects the source reviewed for the v2.1.1 documentation baseline.",
+    },
+    {
+      title: "Known Limitations",
+      icon: <Icon name="warning" />,
+      children:
+        "Experimental, internal-only, loaded-only, or currently limited behavior is identified on the affected pages.",
+    },
+  ]}
 />
 
 </Section>

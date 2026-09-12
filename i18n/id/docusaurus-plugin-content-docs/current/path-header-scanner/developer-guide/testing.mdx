@@ -6,12 +6,22 @@ sidebar_key: path-header-scanner-developer-guide
 tags: [path-header-scanner, testing]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Path Header Scanner" title="Pengembangan dan Pengujian" description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanannya." category="Pengembangan" status="Wajib" syntax="python -m pytest" />
+<CommandHero
+  command="Path Header Scanner"
+  title="Pengembangan dan Pengujian"
+  description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanannya."
+  category="Pengembangan"
+  status="Wajib"
+  syntax="python -m pytest"
+/>
 
 <Terminal language="bash">{`python -m venv venv
 python -m pip install -e .
 python -m pytest`}</Terminal>
 
-<InfoBox variant="warning" title="Efek eksternal">Gunakan mock, proyek sementara, dan dry-run. Jangan publish, push, atau menulis ulang target produksi selama validasi biasa.</InfoBox>
+<InfoBox variant="warning" title="Efek eksternal">
+  Gunakan mock, proyek sementara, dan dry-run. Jangan publish, push, atau menulis ulang
+  target produksi selama validasi biasa.
+</InfoBox>

@@ -5,74 +5,70 @@ sidebar_position: 1
 sidebar_key: custy-cleanup-backup
 
 tags:
-    - cleanup
-    - backup
-    - maintenance
+  - cleanup
+  - backup
+  - maintenance
 
 keywords:
-    - custy cleanup backups
-    - cleanup backups
-    - backup retention
+  - custy cleanup backups
+  - cleanup backups
+  - backup retention
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Screenshot,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Screenshot,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Backup Cleanup"
-    description="Automatically remove older backup files while preserving the most recent backups according to your project's retention policy."
-    category="Maintenance"
-    status="Recommended"
-    syntax="custy cleanup backups"
-    tags={[
-        "cleanup",
-        "backup",
-        "maintenance",
-    ]}
-    links={[
-        {
-            label: "Requirements",
-            href: "./requirements",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy cleanup backups"
+  title="Backup Cleanup"
+  description="Automatically remove older backup files while preserving the most recent backups according to your project's retention policy."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup backups"
+  tags={["cleanup", "backup", "maintenance"]}
+  links={[
+    {
+      label: "Requirements",
+      href: "./requirements",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 <CommandMetadata
-    metadata={[
-        {
-            label: "Category",
-            value: "Maintenance",
-        },
-        {
-            label: "Resource",
-            value: "Backup Files",
-        },
-        {
-            label: "Workflow",
-            value: "Supported",
-        },
-        {
-            label: "Configuration",
-            value: "config.toml",
-        },
-    ]}
+  metadata={[
+    {
+      label: "Category",
+      value: "Maintenance",
+    },
+    {
+      label: "Resource",
+      value: "Backup Files",
+    },
+    {
+      label: "Workflow",
+      value: "Supported",
+    },
+    {
+      label: "Configuration",
+      value: "config.toml",
+    },
+  ]}
 />
 
 ## Overview
@@ -106,49 +102,35 @@ It does not modify project source files, commits, branches, or tags.
 >
 
 <FeatureGrid
-    title="Responsibilities"
-    items={[
-        {
-            title: "Find Backup Files",
-            icon: <Icon name="compare" />,
-            children: (
-                <>
-                    Locate backup files inside the configured backup
-                    directories.
-                </>
-            ),
-        },
-        {
-            title: "Apply Retention Policy",
-            icon: <Icon name="timeline" />,
-            children: (
-                <>
-                    Preserve the newest backups while selecting older backups
-                    for removal.
-                </>
-            ),
-        },
-        {
-            title: "Remove Old Backups",
-            icon: <Icon name="danger" />,
-            children: (
-                <>
-                    Delete obsolete backup files that exceed the configured
-                    retention count.
-                </>
-            ),
-        },
-        {
-            title: "Keep Workspace Organized",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Prevent backup directories from accumulating unnecessary
-                    historical files.
-                </>
-            ),
-        },
-    ]}
+  title="Responsibilities"
+  items={[
+    {
+      title: "Find Backup Files",
+      icon: <Icon name="compare" />,
+      children: <>Locate backup files inside the configured backup directories.</>,
+    },
+    {
+      title: "Apply Retention Policy",
+      icon: <Icon name="timeline" />,
+      children: (
+        <>Preserve the newest backups while selecting older backups for removal.</>
+      ),
+    },
+    {
+      title: "Remove Old Backups",
+      icon: <Icon name="danger" />,
+      children: (
+        <>Delete obsolete backup files that exceed the configured retention count.</>
+      ),
+    },
+    {
+      title: "Keep Workspace Organized",
+      icon: <Icon name="directory" />,
+      children: (
+        <>Prevent backup directories from accumulating unnecessary historical files.</>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -156,10 +138,10 @@ It does not modify project source files, commits, branches, or tags.
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
-    alt="Backup cleanup process"
-    title="Backup Cleanup"
-    caption="Example output after removing obsolete backup files according to the configured retention policy."
+  src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+  alt="Backup cleanup process"
+  title="Backup Cleanup"
+  caption="Example output after removing obsolete backup files according to the configured retention policy."
 />
 
 ---
@@ -214,21 +196,21 @@ demand.
 ---
 
 <RelatedCommands
-    commands={[
-        {
-            name: "backup",
-            description: "Create backup files before cleaning them.",
-            href: "../../backup/overview",
-        },
-        {
-            name: "cleanup",
-            description: "Return to the Cleanup command overview.",
-            href: "../overview",
-        },
-        {
-            name: "run",
-            description: "Learn how Backup Cleanup participates in workflow pipelines.",
-            href: "../../run/overview",
-        },
-    ]}
+  commands={[
+    {
+      name: "backup",
+      description: "Create backup files before cleaning them.",
+      href: "../../backup/overview",
+    },
+    {
+      name: "cleanup",
+      description: "Return to the Cleanup command overview.",
+      href: "../overview",
+    },
+    {
+      name: "run",
+      description: "Learn how Backup Cleanup participates in workflow pipelines.",
+      href: "../../run/overview",
+    },
+  ]}
 />

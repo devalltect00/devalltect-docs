@@ -4,19 +4,71 @@ description: "Options custy push dan urutan prioritas pemilihan destination."
 sidebar_position: 4
 sidebar_key: custy-push-options
 ---
-import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Command Options" description="Atur effective remote set, tag handling, dan eligible backup synchronization." category="Git Operations" status="Stable" syntax="custy push [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Remotes",href:"./remotes"},{label:"Examples",href:"./examples"}]} />
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Command Options"
+  description="Atur effective remote set, tag handling, dan eligible backup synchronization."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOption options={[
- {name:"--tag",description:"Push tag tertentu bersama current HEAD.",example:"--tag v1.2.3"},
- {name:"--sync-backup",shorthand:"-sb",description:"Tambahkan configured backup remotes ke main-group push jika branch diizinkan.",example:"--sync-backup"},
- {name:"--skip-tag",shorthand:"-st",description:"Push HEAD tanpa membuat atau melakukan push tag dalam combined workflow.",example:"--skip-tag"},
- {name:"--remote",shorthand:"-r",description:"Pilih tepat satu destination dan override semua group settings.",example:"--remote origin"},
- {name:"--all-remote",shorthand:"-ar",description:"Pilih de-duplicated main dan backup remote groups.",example:"--all-remote"},
-]} />
+<CommandOption
+  options={[
+    {
+      name: "--tag",
+      description: "Push tag tertentu bersama current HEAD.",
+      example: "--tag v1.2.3",
+    },
+    {
+      name: "--sync-backup",
+      shorthand: "-sb",
+      description:
+        "Tambahkan configured backup remotes ke main-group push jika branch diizinkan.",
+      example: "--sync-backup",
+    },
+    {
+      name: "--skip-tag",
+      shorthand: "-st",
+      description:
+        "Push HEAD tanpa membuat atau melakukan push tag dalam combined workflow.",
+      example: "--skip-tag",
+    },
+    {
+      name: "--remote",
+      shorthand: "-r",
+      description: "Pilih tepat satu destination dan override semua group settings.",
+      example: "--remote origin",
+    },
+    {
+      name: "--all-remote",
+      shorthand: "-ar",
+      description: "Pilih de-duplicated main dan backup remote groups.",
+      example: "--all-remote",
+    },
+  ]}
+/>
 
-<Section title="Global Execution Options">Gunakan `custy --dry-run push`, `custy --debug push`, atau `custy --log-level debug push`.</Section>
-<InfoBox variant="warning" title="Preview Consequential Pushes">Gunakan dry-run dan baca setiap resolved destination sebelum normal push. Remote validation dan repository discovery tetap read-only.</InfoBox>
+<Section title="Global Execution Options">
+  Gunakan `custy --dry-run push`, `custy --debug push`, atau `custy --log-level debug
+  push`.
+</Section>
+<InfoBox variant="warning" title="Preview Consequential Pushes">
+  Gunakan dry-run dan baca setiap resolved destination sebelum normal push. Remote
+  validation dan repository discovery tetap read-only.
+</InfoBox>

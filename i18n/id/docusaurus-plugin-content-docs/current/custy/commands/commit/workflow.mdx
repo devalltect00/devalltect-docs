@@ -4,23 +4,86 @@ description: "Resolved pipeline stages yang dijalankan custy commit."
 sidebar_position: 6
 sidebar_key: custy-commit-workflow
 ---
-import {CommandHero, InfoBox, Section, WorkflowTimeline} from "@site/src/components/docs";
 
-<CommandHero command="custy commit" title="Commit Workflow" description="Ikuti profile dari validation hingga local commit creation." category="Git Operations" status="Stable" syntax="custy commit [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Options",href:"./options"},{label:"Output",href:"./output"}]} />
+import {
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy commit"
+  title="Commit Workflow"
+  description="Ikuti profile dari validation hingga local commit creation."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy commit [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Output", href: "./output" },
+  ]}
+/>
 
 ## Ringkasan
 
-<WorkflowTimeline title="Commit Profile" items={[
- {title:"Validate repository",description:"Jalankan repository dan pre-commit validation.",status:"completed"},
- {title:"Prepare version",description:"Resolve version dan inisialisasi workflow state.",status:"completed"},
- {title:"Generate artifacts",description:"Buat dan buka release/message artifacts.",status:"completed"},
- {title:"Validate edits",description:"Periksa edited artifacts.",status:"completed"},
- {title:"Apply version",description:"Tulis resolved version ke configured file.",status:"completed"},
- {title:"Generate changelog",description:"Perbarui CHANGELOG.md.",status:"completed"},
- {title:"Back up and clean",description:"Backup commit message dan prune retained backups.",status:"completed"},
- {title:"Stage changes",description:"Stage sesuai resolved stage mode.",status:"completed"},
- {title:"Create commit",description:"Buat final local Git commit.",status:"completed"},
-]} />
+<WorkflowTimeline
+  title="Commit Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Jalankan repository dan pre-commit validation.",
+      status: "completed",
+    },
+    {
+      title: "Prepare version",
+      description: "Resolve version dan inisialisasi workflow state.",
+      status: "completed",
+    },
+    {
+      title: "Generate artifacts",
+      description: "Buat dan buka release/message artifacts.",
+      status: "completed",
+    },
+    {
+      title: "Validate edits",
+      description: "Periksa edited artifacts.",
+      status: "completed",
+    },
+    {
+      title: "Apply version",
+      description: "Tulis resolved version ke configured file.",
+      status: "completed",
+    },
+    {
+      title: "Generate changelog",
+      description: "Perbarui CHANGELOG.md.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Backup commit message dan prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Stage changes",
+      description: "Stage sesuai resolved stage mode.",
+      status: "completed",
+    },
+    {
+      title: "Create commit",
+      description: "Buat final local Git commit.",
+      status: "completed",
+    },
+  ]}
+/>
 
-<InfoBox variant="note" title="Local History Boundary">Profile berhenti setelah commit. Tag dan push adalah command atau later stages terpisah.</InfoBox>
-<Section title="Failure Behavior">Jika required stage gagal, periksa working tree, artifacts, backups, dan Git index. Temukan tahap terakhir yang selesai sebelum retry.</Section>
+<InfoBox variant="note" title="Local History Boundary">
+  Profile berhenti setelah commit. Tag dan push adalah command atau later stages
+  terpisah.
+</InfoBox>
+<Section title="Failure Behavior">
+  Jika required stage gagal, periksa working tree, artifacts, backups, dan Git index.
+  Temukan tahap terakhir yang selesai sebelum retry.
+</Section>

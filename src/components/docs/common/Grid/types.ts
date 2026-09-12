@@ -3,13 +3,7 @@ import { HTMLAttributes, ReactNode } from "react";
 /**
  * Number of columns to display.
  */
-export type GridColumns =
-    | 1
-    | 2
-    | 3
-    | 4
-    | 5
-    | 6;
+export type GridColumns = 1 | 2 | 3 | 4 | 5 | 6;
 
 /**
  * Generic documentation grid.
@@ -18,29 +12,29 @@ export type GridColumns =
  * the documentation site.
  */
 export interface GridProps extends HTMLAttributes<HTMLDivElement> {
-    /**
-     * Grid items.
-     */
-    children: ReactNode;
+  /**
+   * Grid items.
+   */
+  children: ReactNode;
 
-    /**
-     * Number of desktop columns.
-     *
-     * @default 2
-     */
-    columns?: GridColumns;
+  /**
+   * Number of desktop columns.
+   *
+   * @default 2
+   */
+  columns?: GridColumns;
 
-    /**
-     * Stretch items to equal height.
-     *
-     * @default true
-     */
-    equalHeight?: boolean;
+  /**
+   * Stretch items to equal height.
+   *
+   * @default true
+   */
+  equalHeight?: boolean;
 
-    /**
-     * Collapse into a single column on mobile.
-     *
-     * @default true
-     */
-    responsive?: boolean;
+  /**
+   * Collapse into a single column on mobile.
+   *
+   * @default true
+   */
+  responsive?: boolean;
 }

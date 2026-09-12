@@ -8,51 +8,96 @@ keywords: [Custy version formats, SemVer PEP440 conversion, Custy tags]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version update"
-    title="Version Formats"
-    description="Compare generated tag shapes, release stages, project-file conversion, and existing-tag ordering."
-    category="Reference"
-    status="Five Strategy Choices"
-    syntax="strategy + bump + release modifiers -> version"
-    tags={["semver", "pep440", "commitizen", "date", "gitcount"]}
-    links={[
-        {label: "Versioning Concept", href: "../concepts/versioning"},
-        {label: "Version Command", href: "../commands/version/overview"},
-        {label: "Strategy Architecture", href: "../architecture/strategy-pattern"},
-    ]}
+  command="custy version update"
+  title="Version Formats"
+  description="Compare generated tag shapes, release stages, project-file conversion, and existing-tag ordering."
+  category="Reference"
+  status="Five Strategy Choices"
+  syntax="strategy + bump + release modifiers -> version"
+  tags={["semver", "pep440", "commitizen", "date", "gitcount"]}
+  links={[
+    { label: "Versioning Concept", href: "../concepts/versioning" },
+    { label: "Version Command", href: "../commands/version/overview" },
+    { label: "Strategy Architecture", href: "../architecture/strategy-pattern" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Strategies", value: "5", icon: "configuration"},
-        {label: "Bump Values", value: "patch, minor, major, auto", icon: "release"},
-        {label: "Detected Stages", value: "6", icon: "timeline"},
-        {label: "Explicit Tag Validator", value: "Stable + lifecycle", icon: "security"},
-    ]}
+  items={[
+    { label: "Strategies", value: "5", icon: "configuration" },
+    { label: "Bump Values", value: "patch, minor, major, auto", icon: "release" },
+    { label: "Detected Stages", value: "6", icon: "timeline" },
+    { label: "Explicit Tag Validator", value: "Stable + lifecycle", icon: "security" },
+  ]}
 />
 
 ## Strategy and Format Index
 
 <PropertyTable
-    title="Generated Version Families"
-    items={[
-        {property: "semver", type: "Semantic version", defaultValue: "v1.2.3", description: <>Supports major, minor, patch, prerelease, development, post-style, and build metadata inputs through Custy's semantic-version helper.</>},
-        {property: "pep440", type: "Python package version", defaultValue: "1.2.3", description: <>Supports PEP 440 alpha, beta, release candidate, development, post-release, local metadata, and epoch inputs.</>},
-        {property: "commitizen", type: "Commit-derived SemVer", description: <>Runs <code>cz bump --dry-run --changelog</code>, infers a bump, and is intended to delegate final generation to SemVer.</>},
-        {property: "date", type: "Calendar version", defaultValue: "vYYYY.MM.DD", description: <>Uses the current local date and includes the <code>v</code> prefix by default.</>},
-        {property: "gitcount", type: "Repository count", defaultValue: "v123", description: <>Uses the repository's total commit count as the numeric tag body.</>},
-    ]}
+  title="Generated Version Families"
+  items={[
+    {
+      property: "semver",
+      type: "Semantic version",
+      defaultValue: "v1.2.3",
+      description: (
+        <>
+          Supports major, minor, patch, prerelease, development, post-style, and build
+          metadata inputs through Custy's semantic-version helper.
+        </>
+      ),
+    },
+    {
+      property: "pep440",
+      type: "Python package version",
+      defaultValue: "1.2.3",
+      description: (
+        <>
+          Supports PEP 440 alpha, beta, release candidate, development, post-release,
+          local metadata, and epoch inputs.
+        </>
+      ),
+    },
+    {
+      property: "commitizen",
+      type: "Commit-derived SemVer",
+      description: (
+        <>
+          Runs <code>cz bump --dry-run --changelog</code>, infers a bump, and is
+          intended to delegate final generation to SemVer.
+        </>
+      ),
+    },
+    {
+      property: "date",
+      type: "Calendar version",
+      defaultValue: "vYYYY.MM.DD",
+      description: (
+        <>
+          Uses the current local date and includes the <code>v</code> prefix by default.
+        </>
+      ),
+    },
+    {
+      property: "gitcount",
+      type: "Repository count",
+      defaultValue: "v123",
+      description: (
+        <>Uses the repository's total commit count as the numeric tag body.</>
+      ),
+    },
+  ]}
 />
 
 ---
@@ -60,17 +105,74 @@ import {
 <Section title="Common Shapes">
 
 <KeyValueTable
-    title="Examples"
-    items={[
-        {key: "Final", value: <><code>v1.2.3</code> or <code>1.2.3</code></>},
-        {key: "Alpha", value: <><code>v1.2.3-alpha.1</code> or <code>1.2.3a1</code></>},
-        {key: "Beta", value: <><code>v1.2.3-beta.1</code> or <code>1.2.3b1</code></>},
-        {key: "Release candidate", value: <><code>v1.2.3-rc.1</code> or <code>1.2.3rc1</code></>},
-        {key: "Development", value: <><code>v1.2.3-dev.1</code> or <code>1.2.3.dev1</code></>},
-        {key: "Post release", value: <><code>v1.2.3-post.1</code> or <code>1.2.3.post1</code></>},
-        {key: "Local/build metadata", value: <><code>v1.2.3+linux</code> or <code>1.2.3+linux</code></>},
-        {key: "PEP 440 epoch", value: <><code>1!2.0.0</code>; generation supports epoch input, while the basic bridge does not preserve every advanced PEP 440 form.</>},
-    ]}
+  title="Examples"
+  items={[
+    {
+      key: "Final",
+      value: (
+        <>
+          <code>v1.2.3</code> or <code>1.2.3</code>
+        </>
+      ),
+    },
+    {
+      key: "Alpha",
+      value: (
+        <>
+          <code>v1.2.3-alpha.1</code> or <code>1.2.3a1</code>
+        </>
+      ),
+    },
+    {
+      key: "Beta",
+      value: (
+        <>
+          <code>v1.2.3-beta.1</code> or <code>1.2.3b1</code>
+        </>
+      ),
+    },
+    {
+      key: "Release candidate",
+      value: (
+        <>
+          <code>v1.2.3-rc.1</code> or <code>1.2.3rc1</code>
+        </>
+      ),
+    },
+    {
+      key: "Development",
+      value: (
+        <>
+          <code>v1.2.3-dev.1</code> or <code>1.2.3.dev1</code>
+        </>
+      ),
+    },
+    {
+      key: "Post release",
+      value: (
+        <>
+          <code>v1.2.3-post.1</code> or <code>1.2.3.post1</code>
+        </>
+      ),
+    },
+    {
+      key: "Local/build metadata",
+      value: (
+        <>
+          <code>v1.2.3+linux</code> or <code>1.2.3+linux</code>
+        </>
+      ),
+    },
+    {
+      key: "PEP 440 epoch",
+      value: (
+        <>
+          <code>1!2.0.0</code>; generation supports epoch input, while the basic bridge
+          does not preserve every advanced PEP 440 form.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -138,12 +240,29 @@ implementation limitation until the source is corrected and validated.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Versioning Concept", href: "../concepts/versioning", description: "Understand the lifecycle from selection to project-file application and Git tagging."},
-        {title: "Version Strategies", href: "../commands/version/versioning-strategies", description: "Review user-facing strategy inputs and examples."},
-        {title: "Versioning and Tags", href: "../commands/tag/versioning-and-tags", description: "Understand explicit tags and local Git reference creation."},
-        {title: "Strategy Architecture", href: "../architecture/strategy-pattern", description: "Inspect generation, factory, sorter, and bridge responsibilities."},
-    ]}
+  commands={[
+    {
+      title: "Versioning Concept",
+      href: "../concepts/versioning",
+      description:
+        "Understand the lifecycle from selection to project-file application and Git tagging.",
+    },
+    {
+      title: "Version Strategies",
+      href: "../commands/version/versioning-strategies",
+      description: "Review user-facing strategy inputs and examples.",
+    },
+    {
+      title: "Versioning and Tags",
+      href: "../commands/tag/versioning-and-tags",
+      description: "Understand explicit tags and local Git reference creation.",
+    },
+    {
+      title: "Strategy Architecture",
+      href: "../architecture/strategy-pattern",
+      description: "Inspect generation, factory, sorter, and bridge responsibilities.",
+    },
+  ]}
 />
 
 </Section>

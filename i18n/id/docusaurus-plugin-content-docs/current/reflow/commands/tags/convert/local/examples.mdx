@@ -6,9 +6,22 @@ sidebar_key: reflow-tags-convert-local
 tags: [reflow, examples]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert local" title="Contoh" description="Dry-run menjalankan discovery dan validation tanpa mutasi persisten." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert local"
+  title="Contoh"
+  description="Dry-run menjalankan discovery dan validation tanpa mutasi persisten."
+  category="Konversi Tag"
+  status="Stabil"
+  syntax="reflow tags convert local [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ### 1. Preview
 
@@ -27,4 +40,3 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 <Terminal language="bash">{`reflow -C ../project tags convert local --to pep440 --yes`}</Terminal>
 
 **Hasil:** Uses PEP 440 names.
-

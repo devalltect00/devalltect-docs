@@ -7,13 +7,96 @@ tags: [custy, configuration, git]
 keywords: [tool.custy.git, git remotes, push_to]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.git]" title="Git Overview" description="Define repositories, push behavior, credential policy, and safe commit-hook execution." category="Configuration" status="Active + Reserved Key" syntax="[tool.custy.git]" tags={["remotes", "push strategy", "credentials", "commit hooks"]} links={[{label: "Remotes", href: "./remotes"}, {label: "Push Strategy", href: "./push-strategy"}, {label: "Credentials", href: "./credentials"}, {label: "Commit Hooks", href: "./hooks"}]} />
+<CommandHero
+  command="[tool.custy.git]"
+  title="Git Overview"
+  description="Define repositories, push behavior, credential policy, and safe commit-hook execution."
+  category="Configuration"
+  status="Active + Reserved Key"
+  syntax="[tool.custy.git]"
+  tags={["remotes", "push strategy", "credentials", "commit hooks"]}
+  links={[
+    { label: "Remotes", href: "./remotes" },
+    { label: "Push Strategy", href: "./push-strategy" },
+    { label: "Credentials", href: "./credentials" },
+    { label: "Commit Hooks", href: "./hooks" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Properties", value: "4", icon: "table"}, {label: "Optional Property", value: "backup_remotes", icon: "note"}, {label: "Default Remote", value: "origin", icon: "git"}, {label: "Network Side Effect", value: "Yes", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Properties", value: "4", icon: "table" },
+    { label: "Optional Property", value: "backup_remotes", icon: "note" },
+    { label: "Default Remote", value: "origin", icon: "git" },
+    { label: "Network Side Effect", value: "Yes", icon: "warning" },
+  ]}
+/>
 
-<FeatureGrid items={[{title: "Remote Groups", icon: <Icon name="network" />, children: <>Configure default, primary, and optional backup destinations in <a href="./remotes">Git Remotes</a>.</>}, {title: "Push Strategy", icon: <Icon name="workflow" />, children: <>Choose main, backup, or all service-level groups and review reserved auto-push behavior in <a href="./push-strategy">Push Strategy</a>.</>}, {title: "Credential Policy", icon: <Icon name="security" />, children: <>Keep native Git first and optionally configure external container fallback in <a href="./credentials">Git Credentials</a>.</>}, {title: "Commit Hooks", icon: <Icon name="success" />, children: <>Keep projects with no hooks on native Git while adapting recognized cross-platform pre-commit wrappers through <a href="./hooks">Git Commit Hooks</a>.</>}, {title: "CLI Push Defaults", icon: <Icon name="terminal" />, children: <>Configure all-remote, skip-tag, and backup-sync arguments in <a href="../cli/push">tool.custy.cli.push</a>.</>}]} />
+<FeatureGrid
+  items={[
+    {
+      title: "Remote Groups",
+      icon: <Icon name="network" />,
+      children: (
+        <>
+          Configure default, primary, and optional backup destinations in{" "}
+          <a href="./remotes">Git Remotes</a>.
+        </>
+      ),
+    },
+    {
+      title: "Push Strategy",
+      icon: <Icon name="workflow" />,
+      children: (
+        <>
+          Choose main, backup, or all service-level groups and review reserved auto-push
+          behavior in <a href="./push-strategy">Push Strategy</a>.
+        </>
+      ),
+    },
+    {
+      title: "Credential Policy",
+      icon: <Icon name="security" />,
+      children: (
+        <>
+          Keep native Git first and optionally configure external container fallback in{" "}
+          <a href="./credentials">Git Credentials</a>.
+        </>
+      ),
+    },
+    {
+      title: "Commit Hooks",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Keep projects with no hooks on native Git while adapting recognized
+          cross-platform pre-commit wrappers through{" "}
+          <a href="./hooks">Git Commit Hooks</a>.
+        </>
+      ),
+    },
+    {
+      title: "CLI Push Defaults",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Configure all-remote, skip-tag, and backup-sync arguments in{" "}
+          <a href="../cli/push">tool.custy.cli.push</a>.
+        </>
+      ),
+    },
+  ]}
+/>
 
 <InfoBox variant="warning" title="Do not store credentials here">
 
@@ -22,4 +105,34 @@ never token values. Use native Git/SSH or protected external token sources.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Define primary and backup groups."}, {title: "Push Strategy", href: "./push-strategy", description: "Select a service-level group."}, {title: "Git Credentials", href: "./credentials", description: "Configure native-first container authentication fallback."}, {title: "Commit Hooks", href: "./hooks", description: "Choose safe native or pre-commit execution."}, {title: "CLI Push", href: "../cli/push", description: "Configure direct command defaults."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Remotes",
+        href: "./remotes",
+        description: "Define primary and backup groups.",
+      },
+      {
+        title: "Push Strategy",
+        href: "./push-strategy",
+        description: "Select a service-level group.",
+      },
+      {
+        title: "Git Credentials",
+        href: "./credentials",
+        description: "Configure native-first container authentication fallback.",
+      },
+      {
+        title: "Commit Hooks",
+        href: "./hooks",
+        description: "Choose safe native or pre-commit execution.",
+      },
+      {
+        title: "CLI Push",
+        href: "../cli/push",
+        description: "Configure direct command defaults.",
+      },
+    ]}
+  />
+</Section>

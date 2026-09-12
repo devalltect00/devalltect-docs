@@ -5,49 +5,45 @@ sidebar_position: 3
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - syntax
+  - cleanup
+  - branch
+  - syntax
 
 keywords:
-    - custy cleanup branches syntax
-    - cleanup branch command
+  - custy cleanup branches syntax
+  - cleanup branch command
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    Section,
-    InfoBox,
-    Terminal,
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Syntax"
-    description="Learn how to execute Branch Cleanup using direct commands or workflow stages."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "cleanup",
-        "branch",
-        "syntax",
-    ]}
-    links={[
-        {
-            label: "Requirements",
-            href: "./requirements",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Syntax"
+  description="Learn how to execute Branch Cleanup using direct commands or workflow stages."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["cleanup", "branch", "syntax"]}
+  links={[
+    {
+      label: "Requirements",
+      href: "./requirements",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+  ]}
 />
 
 ## Overview
@@ -67,14 +63,13 @@ Branch selection is always determined by your project's cleanup configuration.
 >
 
 <CommandSyntax
-    examples={[
-        {
-            title: "Branch Cleanup",
-            description:
-                "Remove eligible Git branches using the configured cleanup rules.",
-            command: "custy cleanup branches",
-        },
-    ]}
+  examples={[
+    {
+      title: "Branch Cleanup",
+      description: "Remove eligible Git branches using the configured cleanup rules.",
+      command: "custy cleanup branches",
+    },
+  ]}
 />
 
 </Section>

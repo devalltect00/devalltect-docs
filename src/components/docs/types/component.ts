@@ -8,10 +8,7 @@
  * ============================================================================
  */
 
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /* -------------------------------------------------------------------------- */
 /* Base Interfaces                                                             */
@@ -21,59 +18,48 @@ import {
  * Adds a title.
  */
 export interface WithTitle {
-
-    /**
-     * Display title.
-     */
-    title?: ReactNode;
-
+  /**
+   * Display title.
+   */
+  title?: ReactNode;
 }
 
 /**
  * Adds a subtitle.
  */
 export interface WithSubtitle {
-
-    /**
-     * Display subtitle.
-     */
-    subtitle?: ReactNode;
-
+  /**
+   * Display subtitle.
+   */
+  subtitle?: ReactNode;
 }
 
 /**
  * Adds a description.
  */
 export interface WithDescription {
-
-    /**
-     * Description.
-     */
-    description?: ReactNode;
-
+  /**
+   * Description.
+   */
+  description?: ReactNode;
 }
 
 /**
  * Adds children.
  */
 export interface WithChildren {
-
-    /**
-     * Child elements.
-     */
-    children: ReactNode;
-
+  /**
+   * Child elements.
+   */
+  children: ReactNode;
 }
 
 /**
  * Base props shared by most documentation components.
  */
-export interface BaseComponentProps
-    extends HTMLAttributes<HTMLElement> {
-
-    /**
-     * Additional CSS class.
-     */
-    className?: string;
-
+export interface BaseComponentProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Additional CSS class.
+   */
+  className?: string;
 }

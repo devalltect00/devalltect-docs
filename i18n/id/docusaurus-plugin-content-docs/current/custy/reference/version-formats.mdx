@@ -4,14 +4,70 @@ description: "Referensi SemVer, PEP 440, Commitizen, date, dan Git-count form se
 sidebar_position: 5
 sidebar_key: custy-reference-version-formats
 ---
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy version update" title="Version Formats" description="Bedakan strategy input, generated version, project-file format, dan Git tag." category="Referensi" status="Multiple Strategies" syntax="current version + strategy -> next version -> project files -> tag" links={[{label:"Versioning Concept",href:"../concepts/versioning"},{label:"Version Command",href:"../commands/version/overview"},{label:"Strategy Architecture",href:"../architecture/strategy-pattern"}]} />
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<Section title="Format yang perlu dibedakan">SemVer dan PEP 440 memiliki aturan pre-release berbeda. Commitizen dapat menjadi provider workflow. Date dan Git-count strategy menghasilkan bentuk yang bergantung pada waktu atau repository state. Prefix seperti `v` adalah bagian presentasi tag, bukan selalu bagian version file.</Section>
+<CommandHero
+  command="custy version update"
+  title="Version Formats"
+  description="Bedakan strategy input, generated version, project-file format, dan Git tag."
+  category="Referensi"
+  status="Multiple Strategies"
+  syntax="current version + strategy -> next version -> project files -> tag"
+  links={[
+    { label: "Versioning Concept", href: "../concepts/versioning" },
+    { label: "Version Command", href: "../commands/version/overview" },
+    { label: "Strategy Architecture", href: "../architecture/strategy-pattern" },
+  ]}
+/>
 
-<InfoBox variant="info" title="Explicit CLI tag mendukung release lifecycle">Shared validator untuk `--tag` menerima stable three-part version serta format alpha, beta, release candidate, development, post-release, dan build/local metadata yang didukung Custy. Prefix `v` yang tidak ditulis akan ditambahkan secara otomatis. Gunakan format SemVer seperti `v2.0.0-rc.1` atau format umum PEP 440 seperti `2.0.0rc1`. Lifecycle name arbitrary dan format tidak lengkap seperti `v2.0-rc.1` tetap ditolak.</InfoBox>
+<Section title="Format yang perlu dibedakan">
+  SemVer dan PEP 440 memiliki aturan pre-release berbeda. Commitizen dapat menjadi
+  provider workflow. Date dan Git-count strategy menghasilkan bentuk yang bergantung
+  pada waktu atau repository state. Prefix seperti `v` adalah bagian presentasi tag,
+  bukan selalu bagian version file.
+</Section>
 
-<InfoBox variant="warning" title="Conversion bersifat terbatas">Jangan menganggap setiap string valid dapat dikonversi losslessly antarformat. Uji pre-release, local version, prefix, dan invalid input sebelum mengubah strategy.</InfoBox>
+<InfoBox variant="info" title="Explicit CLI tag mendukung release lifecycle">
+  Shared validator untuk `--tag` menerima stable three-part version serta format alpha,
+  beta, release candidate, development, post-release, dan build/local metadata yang
+  didukung Custy. Prefix `v` yang tidak ditulis akan ditambahkan secara otomatis.
+  Gunakan format SemVer seperti `v2.0.0-rc.1` atau format umum PEP 440 seperti
+  `2.0.0rc1`. Lifecycle name arbitrary dan format tidak lengkap seperti `v2.0-rc.1`
+  tetap ditolak.
+</InfoBox>
 
-<RelatedCommands commands={[{title:"Versioning Concept",href:"../concepts/versioning",description:"Pahami lifecycle dari selection sampai Git tag."},{title:"Version Strategies",href:"../commands/version/versioning-strategies",description:"Pelajari input strategy dan examples."},{title:"Versioning and Tags",href:"../commands/tag/versioning-and-tags",description:"Pahami explicit tag dan local Git reference."},{title:"Strategy Architecture",href:"../architecture/strategy-pattern",description:"Pelajari generation, factory, sorter, dan bridge."}]} />
+<InfoBox variant="warning" title="Conversion bersifat terbatas">
+  Jangan menganggap setiap string valid dapat dikonversi losslessly antarformat. Uji
+  pre-release, local version, prefix, dan invalid input sebelum mengubah strategy.
+</InfoBox>
+
+<RelatedCommands
+  commands={[
+    {
+      title: "Versioning Concept",
+      href: "../concepts/versioning",
+      description: "Pahami lifecycle dari selection sampai Git tag.",
+    },
+    {
+      title: "Version Strategies",
+      href: "../commands/version/versioning-strategies",
+      description: "Pelajari input strategy dan examples.",
+    },
+    {
+      title: "Versioning and Tags",
+      href: "../commands/tag/versioning-and-tags",
+      description: "Pahami explicit tag dan local Git reference.",
+    },
+    {
+      title: "Strategy Architecture",
+      href: "../architecture/strategy-pattern",
+      description: "Pelajari generation, factory, sorter, dan bridge.",
+    },
+  ]}
+/>

@@ -6,14 +6,27 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, options]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Opsi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Konversi Tag" status="Perubahan Jarak Jauh Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Opsi"
+  description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal."
+  category="Konversi Tag"
+  status="Perubahan Jarak Jauh Terjaga"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Flag / nilai | Bawaan | Efek |
-| --- | --- | --- |
-| `--to, --format, --target-format` | semver | Pilih `semver` atau `pep440`. |
-| `--yes, -y` | false | Terapkan rencana jarak jauh tanpa prompt interaktif. |
-| `--repository-url` | target terkonfigurasi | Gunakan clone sementara yang dikelola. |
-| `--repository, --repo, -C` | path yang ditentukan | Gunakan checkout beserta remote-nya. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Jalankan penemuan tanpa melakukan push. |
+| Flag / nilai                      | Bawaan                | Efek                                                 |
+| --------------------------------- | --------------------- | ---------------------------------------------------- |
+| `--to, --format, --target-format` | semver                | Pilih `semver` atau `pep440`.                        |
+| `--yes, -y`                       | false                 | Terapkan rencana jarak jauh tanpa prompt interaktif. |
+| `--repository-url`                | target terkonfigurasi | Gunakan clone sementara yang dikelola.               |
+| `--repository, --repo, -C`        | path yang ditentukan  | Gunakan checkout beserta remote-nya.                 |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false                 | Jalankan penemuan tanpa melakukan push.              |

@@ -6,12 +6,24 @@ sidebar_key: doc-gen-init-troubleshooting
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Troubleshooting" description="Troubleshooting" category="Initialization" status="Recommended" syntax="doc-gen init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Troubleshooting"
+  description="Troubleshooting"
+  category="Initialization"
+  status="Recommended"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Symptom | Likely cause | Solution |
-| --- | --- | --- |
-| Resource skipped. | Replacement not approved. | Use --ask or --force. |
-| Nothing written. | Dry-run active. | Rerun without dry-run after review. |
-
+| Symptom           | Likely cause              | Solution                            |
+| ----------------- | ------------------------- | ----------------------------------- |
+| Resource skipped. | Replacement not approved. | Use --ask or --force.               |
+| Nothing written.  | Dry-run active.           | Rerun without dry-run after review. |

@@ -6,16 +6,26 @@ sidebar_key: reflow-user-guide
 tags: [reflow, workflows]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Alur Kerja Praktis" description="Pilih alur kerja berdasarkan target dan efek samping." category="Panduan Pengguna" status="Praktis" syntax="reflow --dry-run -C ../project tags convert local" />
+<CommandHero
+  command="Reflow"
+  title="Alur Kerja Praktis"
+  description="Pilih alur kerja berdasarkan target dan efek samping."
+  category="Panduan Pengguna"
+  status="Praktis"
+  syntax="reflow --dry-run -C ../project tags convert local"
+/>
 
-| Perintah | Efek |
-| --- | --- |
-| `reflow init` | Menyiapkan konfigurasi proyek |
-| `reflow tags convert local` | Mengganti tag hanya pada checkout lokal |
-| `reflow tags convert remote` | Mengganti tag jarak jauh secara eksplisit |
-| `reflow releases recover` | Memicu kembali automasi rilis berbasis tag |
-| `reflow dockerize` | Membangun dan memublikasikan image bertag |
+| Perintah                     | Efek                                       |
+| ---------------------------- | ------------------------------------------ |
+| `reflow init`                | Menyiapkan konfigurasi proyek              |
+| `reflow tags convert local`  | Mengganti tag hanya pada checkout lokal    |
+| `reflow tags convert remote` | Mengganti tag jarak jauh secara eksplisit  |
+| `reflow releases recover`    | Memicu kembali automasi rilis berbasis tag |
+| `reflow dockerize`           | Membangun dan memublikasikan image bertag  |
 
-<InfoBox variant="tip" title="Pratinjau">Konversi tag lokal dan jarak jauh memakai perintah terpisah. Push jarak jauh, pemulihan rilis, dan publikasi registry merupakan perubahan eksternal yang eksplisit.</InfoBox>
+<InfoBox variant="tip" title="Pratinjau">
+  Konversi tag lokal dan jarak jauh memakai perintah terpisah. Push jarak jauh,
+  pemulihan rilis, dan publikasi registry merupakan perubahan eksternal yang eksplisit.
+</InfoBox>

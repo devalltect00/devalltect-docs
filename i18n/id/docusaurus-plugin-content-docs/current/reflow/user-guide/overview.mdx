@@ -6,9 +6,16 @@ sidebar_key: reflow-user-guide
 tags: [reflow, user-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Panduan Pengguna" description="Pilih workflow berdasarkan target dan efek samping." category="User Guide" status="Practical" syntax="reflow init" />
+<CommandHero
+  command="Reflow"
+  title="Panduan Pengguna"
+  description="Pilih workflow berdasarkan target dan efek samping."
+  category="User Guide"
+  status="Practical"
+  syntax="reflow init"
+/>
 
 - `reflow init`
 - `reflow tags convert local`
@@ -16,5 +23,7 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 - `reflow releases recover`
 - `reflow dockerize`
 
-<InfoBox variant="warning" title="Safety">Konversi tag local dan remote memakai command terpisah. Remote push, release recovery, dan registry publishing adalah mutasi eksternal eksplisit.</InfoBox>
-
+<InfoBox variant="warning" title="Safety">
+  Konversi tag local dan remote memakai command terpisah. Remote push, release recovery,
+  dan registry publishing adalah mutasi eksternal eksplisit.
+</InfoBox>

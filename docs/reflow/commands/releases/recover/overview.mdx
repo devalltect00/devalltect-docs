@@ -6,9 +6,23 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Recover Release Automation" description="Find version tags without corresponding GitHub releases and re-push them to retrigger tag-based CI/CD." category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Recover Release Automation"
+  description="Find version tags without corresponding GitHub releases and re-push them to retrigger tag-based CI/CD."
+  category="Release Recovery"
+  status="GitHub Workflow Recovery"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <Section title="Purpose">
 
@@ -16,7 +30,10 @@ Find version tags without corresponding GitHub releases and re-push them to retr
 
 </Section>
 
-<InfoBox variant="warning" title="Safety boundary">Deletes and re-pushes selected tags; it does not create release records through the website or API.</InfoBox>
+<InfoBox variant="warning" title="Safety boundary">
+  Deletes and re-pushes selected tags; it does not create release records through the
+  website or API.
+</InfoBox>
 
 - Read version tags and releases.
 - Select tags lacking releases.

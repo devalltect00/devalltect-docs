@@ -8,29 +8,29 @@ keywords: [Custy BaseStep, StepRegistry, PipelineBuilder, GitContext]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandChecklist,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/pipeline/"
-    title="Pipeline Step System"
-    description="Understand the internal contracts a contributor must preserve when adding or changing pipeline behavior."
-    category="Developer Guide"
-    status="Internal API"
-    syntax="resolve → create registered steps → execute(context)"
-    tags={["BaseStep", "StepRegistry", "PipelineBuilder", "GitContext"]}
-    links={[
-        {label: "Execution Model", href: "./execution-model"},
-        {label: "Profiles", href: "./profiles"},
-        {label: "Step Priority", href: "./step-order"},
-        {label: "Composition", href: "./custom-composition"},
-    ]}
+  command="app/core/pipeline/"
+  title="Pipeline Step System"
+  description="Understand the internal contracts a contributor must preserve when adding or changing pipeline behavior."
+  category="Developer Guide"
+  status="Internal API"
+  syntax="resolve → create registered steps → execute(context)"
+  tags={["BaseStep", "StepRegistry", "PipelineBuilder", "GitContext"]}
+  links={[
+    { label: "Execution Model", href: "./execution-model" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Composition", href: "./custom-composition" },
+  ]}
 />
 
 ## Overview
@@ -52,15 +52,48 @@ these modules as contributor-facing internals that may evolve with the source.
 <Section title="Core Responsibilities">
 
 <FeatureGrid
-    title="Pipeline Building Blocks"
-    items={[
-        {title: "BaseStep", icon: <Icon name="dependency" />, children: <>Defines the required <code>execute(context)</code> interface for every step.</>},
-        {title: "StepRegistry", icon: <Icon name="configuration" />, children: "Maps a unique string name to a step class and creates instances on demand."},
-        {title: "Step Registration", icon: <Icon name="project" />, children: "Registers Custy's built-in validation, preparation, generation, backup, cleanup, execution, and finalization steps."},
-        {title: "CommandResolver", icon: <Icon name="pipeline" />, children: "Expands profiles and normalizes multi-profile composition before building begins."},
-        {title: "PipelineBuilder", icon: <Icon name="architecture" />, children: "Converts resolved step dictionaries into concrete objects through the registry."},
-        {title: "GitContext", icon: <Icon name="git" />, children: "Carries the workflow engine, shared services, and mutable runtime values across steps."},
-    ]}
+  title="Pipeline Building Blocks"
+  items={[
+    {
+      title: "BaseStep",
+      icon: <Icon name="dependency" />,
+      children: (
+        <>
+          Defines the required <code>execute(context)</code> interface for every step.
+        </>
+      ),
+    },
+    {
+      title: "StepRegistry",
+      icon: <Icon name="configuration" />,
+      children:
+        "Maps a unique string name to a step class and creates instances on demand.",
+    },
+    {
+      title: "Step Registration",
+      icon: <Icon name="project" />,
+      children:
+        "Registers Custy's built-in validation, preparation, generation, backup, cleanup, execution, and finalization steps.",
+    },
+    {
+      title: "CommandResolver",
+      icon: <Icon name="pipeline" />,
+      children:
+        "Expands profiles and normalizes multi-profile composition before building begins.",
+    },
+    {
+      title: "PipelineBuilder",
+      icon: <Icon name="architecture" />,
+      children:
+        "Converts resolved step dictionaries into concrete objects through the registry.",
+    },
+    {
+      title: "GitContext",
+      icon: <Icon name="git" />,
+      children:
+        "Carries the workflow engine, shared services, and mutable runtime values across steps.",
+    },
+  ]}
 />
 
 </Section>
@@ -88,14 +121,38 @@ these modules as contributor-facing internals that may evolve with the source.
 <Section title="Contributor Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "Implement one focused step", description: "Subclass BaseStep and provide a documented execute(context) method with one clear responsibility."},
-        {title: "Register a unique name", description: "Add the class to register_all_steps(); duplicate names raise ValueError."},
-        {title: "Assign phase order", description: "Add the name to STEP_ORDER so merged profiles cannot place it in an unsafe phase."},
-        {title: "Add it to intentional profiles", description: "Update only profiles that truly require the new behavior; do not hide profile logic in the resolver."},
-        {title: "Test resolution and execution", description: "Cover profile membership, ordering, deduplication, failure behavior, and the expected engine call."},
-        {title: "Update user and developer docs", description: "Document changed requirements, side effects, output, recovery, and extension behavior."},
-    ]}
+  items={[
+    {
+      title: "Implement one focused step",
+      description:
+        "Subclass BaseStep and provide a documented execute(context) method with one clear responsibility.",
+    },
+    {
+      title: "Register a unique name",
+      description:
+        "Add the class to register_all_steps(); duplicate names raise ValueError.",
+    },
+    {
+      title: "Assign phase order",
+      description:
+        "Add the name to STEP_ORDER so merged profiles cannot place it in an unsafe phase.",
+    },
+    {
+      title: "Add it to intentional profiles",
+      description:
+        "Update only profiles that truly require the new behavior; do not hide profile logic in the resolver.",
+    },
+    {
+      title: "Test resolution and execution",
+      description:
+        "Cover profile membership, ordering, deduplication, failure behavior, and the expected engine call.",
+    },
+    {
+      title: "Update user and developer docs",
+      description:
+        "Document changed requirements, side effects, output, recovery, and extension behavior.",
+    },
+  ]}
 />
 
 </Section>
@@ -146,13 +203,34 @@ behind all known steps. Review the complete contract in
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Execution Model", href: "./execution-model", description: "See how these internal pieces collaborate at runtime."},
-        {title: "Step Priority and Ordering", href: "./step-order", description: "Review all priorities and contributor ordering requirements."},
-        {title: "Custom Composition", href: "./custom-composition", description: "Review the resolver behavior affected by step ordering."},
-        {title: "Adding Pipeline Steps", href: "../developer-guide/adding-pipeline-steps", description: "Follow the complete implementation, registration, ordering, and test workflow."},
-        {title: "Release Pipeline", href: "./release-pipeline", description: "Trace the most complete stable profile through its phases."},
-    ]}
+  commands={[
+    {
+      title: "Execution Model",
+      href: "./execution-model",
+      description: "See how these internal pieces collaborate at runtime.",
+    },
+    {
+      title: "Step Priority and Ordering",
+      href: "./step-order",
+      description: "Review all priorities and contributor ordering requirements.",
+    },
+    {
+      title: "Custom Composition",
+      href: "./custom-composition",
+      description: "Review the resolver behavior affected by step ordering.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "../developer-guide/adding-pipeline-steps",
+      description:
+        "Follow the complete implementation, registration, ordering, and test workflow.",
+    },
+    {
+      title: "Release Pipeline",
+      href: "./release-pipeline",
+      description: "Trace the most complete stable profile through its phases.",
+    },
+  ]}
 />
 
 </Section>

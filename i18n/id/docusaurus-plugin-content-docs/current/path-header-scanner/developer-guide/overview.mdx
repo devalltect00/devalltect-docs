@@ -6,13 +6,23 @@ sidebar_key: path-header-scanner-developer-guide
 tags: [path-header-scanner, developer-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Path Header Scanner" title="Panduan Developer" description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanannya." category="Pengembangan" status="Panduan Kontributor" syntax="python -m pytest" />
+<CommandHero
+  command="Path Header Scanner"
+  title="Panduan Developer"
+  description="Siapkan, uji, dan kembangkan proyek tanpa melemahkan batas keamanannya."
+  category="Pengembangan"
+  status="Panduan Kontributor"
+  syntax="python -m pytest"
+/>
 
 - Pisahkan interaksi CLI dari perilaku core yang dapat digunakan kembali.
 - Pertahankan urutan prioritas konfigurasi dan template milik proyek.
 - Tambahkan penanganan error pada batas CLI.
 - Uji efek samping mode live dan dry-run secara terpisah.
 
-<InfoBox variant="note" title="Ekstensi">Tambahkan sintaks bahasa di `app/languages` dan perilaku pemindaian di `app/core/scan`; uji preview, apply, dan dry-run.</InfoBox>
+<InfoBox variant="note" title="Ekstensi">
+  Tambahkan sintaks bahasa di `app/languages` dan perilaku pemindaian di
+  `app/core/scan`; uji preview, apply, dan dry-run.
+</InfoBox>

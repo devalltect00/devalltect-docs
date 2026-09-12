@@ -4,20 +4,75 @@ description: "Experimental Custy commands untuk branch dan version transition po
 sidebar_position: 1
 sidebar_key: custy-workflow
 ---
-import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow" title="Workflow Commands" description="Tinjau experimental interface untuk branch dan version transitions." category="Workflow" status="Not Production Ready" syntax="custy workflow COMMAND" links={[{label:"Branch Interface",href:"./branch/overview"},{label:"Known Issues",href:"./branch/troubleshooting"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Screenshot,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow"
+  title="Workflow Commands"
+  description="Tinjau experimental interface untuk branch dan version transitions."
+  category="Workflow"
+  status="Not Production Ready"
+  syntax="custy workflow COMMAND"
+  links={[
+    { label: "Branch Interface", href: "./branch/overview" },
+    { label: "Known Issues", href: "./branch/troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="danger" title="Not Production-Ready">Current implementation memiliki pipeline-construction blocker. Jangan gunakan Workflow command untuk production atau CI/CD.</InfoBox>
+<InfoBox variant="danger" title="Not Production-Ready">
+  Current implementation memiliki pipeline-construction blocker. Jangan gunakan Workflow
+  command untuk production atau CI/CD.
+</InfoBox>
 
-<FeatureGrid title="Workflow Interface" items={[
- {title:"Branch Transition",children:"Bandingkan source/target branch dan tag inputs."},{title:"Validation",children:"Maksudnya mengevaluasi transition policy sebelum perubahan."},{title:"Enforcement",children:"Interface tersedia tetapi operational behavior belum siap."},{title:"Finalization",children:"Current pipeline gagal karena unregistered finalize step."},
-]} />
+<FeatureGrid
+  title="Workflow Interface"
+  items={[
+    {
+      title: "Branch Transition",
+      children: "Bandingkan source/target branch dan tag inputs.",
+    },
+    {
+      title: "Validation",
+      children: "Maksudnya mengevaluasi transition policy sebelum perubahan.",
+    },
+    {
+      title: "Enforcement",
+      children: "Interface tersedia tetapi operational behavior belum siap.",
+    },
+    {
+      title: "Finalization",
+      children: "Current pipeline gagal karena unregistered finalize step.",
+    },
+  ]}
+/>
 
-<Screenshot src="/img/custy/commands/workflow/experimental-warning.png" alt="Peringatan fitur Workflow eksperimental" title="Experimental Feature Warning" caption="Workflow command belum siap digunakan pada repository produksi." />
+<Screenshot
+  src="/img/custy/commands/workflow/experimental-warning.png"
+  alt="Peringatan fitur Workflow eksperimental"
+  title="Experimental Feature Warning"
+  caption="Workflow command belum siap digunakan pada repository produksi."
+/>
 
-<RelatedCommands commands={[
- {name:"configuration",description:"Gunakan stable validation command.",href:"../validate/overview"},{name:"git",description:"Lihat Full profile dan experimental finalization.",href:"../run/full/overview"},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      name: "configuration",
+      description: "Gunakan stable validation command.",
+      href: "../validate/overview",
+    },
+    {
+      name: "git",
+      description: "Lihat Full profile dan experimental finalization.",
+      href: "../run/full/overview",
+    },
+  ]}
+/>

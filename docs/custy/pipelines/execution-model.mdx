@@ -8,29 +8,29 @@ keywords: [custy pipeline execution, command resolver, pipeline builder]
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run PROFILE"
-    title="Pipeline Execution Model"
-    description="Trace the active runtime from resolved CLI configuration to the last registered step."
-    category="Pipelines"
-    status="Implementation-Aligned"
-    syntax="CLI input → profile resolution → build → sequential execution"
-    tags={["resolver", "registry", "context", "failure behavior"]}
-    links={[
-        {label: "Pipeline Overview", href: "./overview"},
-        {label: "Profiles", href: "./profiles"},
-        {label: "Step Priority", href: "./step-order"},
-        {label: "Step System", href: "./step-system"},
-    ]}
+  command="custy run PROFILE"
+  title="Pipeline Execution Model"
+  description="Trace the active runtime from resolved CLI configuration to the last registered step."
+  category="Pipelines"
+  status="Implementation-Aligned"
+  syntax="CLI input → profile resolution → build → sequential execution"
+  tags={["resolver", "registry", "context", "failure behavior"]}
+  links={[
+    { label: "Pipeline Overview", href: "./overview" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Step System", href: "./step-system" },
+  ]}
 />
 
 ## Overview
@@ -45,15 +45,42 @@ context through the resulting sequence.
 <Section title="Runtime Lifecycle">
 
 <WorkflowTimeline
-    title="From Command to Completion"
-    items={[
-        {title: "Resolve command inputs", description: "Combine command options, project configuration, and global dry-run, debug, and logging values.", status: "completed"},
-        {title: "Register step classes", description: "Register every built-in step name before a pipeline is built.", status: "completed"},
-        {title: "Resolve profiles", description: "Expand nested profiles; merged profiles are deduplicated and globally ordered.", status: "completed"},
-        {title: "Build services and context", description: "Create the workflow engine and wrap it in the shared GitContext.", status: "completed"},
-        {title: "Build the pipeline", description: "Instantiate each resolved step through the StepRegistry.", status: "completed"},
-        {title: "Execute sequentially", description: "Run every step with the same context while updating the Rich progress display.", status: "current"},
-    ]}
+  title="From Command to Completion"
+  items={[
+    {
+      title: "Resolve command inputs",
+      description:
+        "Combine command options, project configuration, and global dry-run, debug, and logging values.",
+      status: "completed",
+    },
+    {
+      title: "Register step classes",
+      description: "Register every built-in step name before a pipeline is built.",
+      status: "completed",
+    },
+    {
+      title: "Resolve profiles",
+      description:
+        "Expand nested profiles; merged profiles are deduplicated and globally ordered.",
+      status: "completed",
+    },
+    {
+      title: "Build services and context",
+      description: "Create the workflow engine and wrap it in the shared GitContext.",
+      status: "completed",
+    },
+    {
+      title: "Build the pipeline",
+      description: "Instantiate each resolved step through the StepRegistry.",
+      status: "completed",
+    },
+    {
+      title: "Execute sequentially",
+      description:
+        "Run every step with the same context while updating the Rich progress display.",
+      status: "current",
+    },
+  ]}
 />
 
 </Section>
@@ -63,13 +90,31 @@ context through the resulting sequence.
 <Section title="Single and Multiple Profiles">
 
 <FeatureGrid
-    title="Resolver Behavior"
-    items={[
-        {title: "One Profile", icon: <Icon name="workflow" />, children: "Nested profile references are expanded while the profile's declared order is preserved."},
-        {title: "Several Profiles", icon: <Icon name="dependency" />, children: "Expanded steps are combined, duplicate names are removed, and the global phase order is applied."},
-        {title: "Unknown Name", icon: <Icon name="warning" />, children: "Resolution fails before the pipeline is built."},
-        {title: "Circular Reference", icon: <Icon name="danger" />, children: "Nested profile expansion raises an error when it detects a cycle."},
-    ]}
+  title="Resolver Behavior"
+  items={[
+    {
+      title: "One Profile",
+      icon: <Icon name="workflow" />,
+      children:
+        "Nested profile references are expanded while the profile's declared order is preserved.",
+    },
+    {
+      title: "Several Profiles",
+      icon: <Icon name="dependency" />,
+      children:
+        "Expanded steps are combined, duplicate names are removed, and the global phase order is applied.",
+    },
+    {
+      title: "Unknown Name",
+      icon: <Icon name="warning" />,
+      children: "Resolution fails before the pipeline is built.",
+    },
+    {
+      title: "Circular Reference",
+      icon: <Icon name="danger" />,
+      children: "Nested profile expansion raises an error when it detects a cycle.",
+    },
+  ]}
 />
 
 <InfoBox variant="info" title="Input order is not execution order">
@@ -147,12 +192,28 @@ step implement `execute(context)`.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Profiles", href: "./profiles", description: "See what each public name resolves into at a practical level."},
-        {title: "Step Priority and Ordering", href: "./step-order", description: "Review the exact single- and multi-profile ordering rules."},
-        {title: "Custom Composition", href: "./custom-composition", description: "Understand merged-profile normalization."},
-        {title: "Step System", href: "./step-system", description: "Review the internal contracts and source responsibilities."},
-    ]}
+  commands={[
+    {
+      title: "Profiles",
+      href: "./profiles",
+      description: "See what each public name resolves into at a practical level.",
+    },
+    {
+      title: "Step Priority and Ordering",
+      href: "./step-order",
+      description: "Review the exact single- and multi-profile ordering rules.",
+    },
+    {
+      title: "Custom Composition",
+      href: "./custom-composition",
+      description: "Understand merged-profile normalization.",
+    },
+    {
+      title: "Step System",
+      href: "./step-system",
+      description: "Review the internal contracts and source responsibilities.",
+    },
+  ]}
 />
 
 </Section>

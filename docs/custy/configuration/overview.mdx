@@ -8,41 +8,45 @@ keywords: [custy config, tool.custy, config.toml]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/custy/config.toml"
-    title="Configuration Overview"
-    description="Understand the complete project-owned configuration, from initialization and CLI defaults to changelog rendering and Git remotes."
-    category="Configuration"
-    status="Complete Reference"
-    syntax="[tool.custy]"
-    tags={["TOML hierarchy", "project defaults", "implementation status"]}
-    links={[
-        {label: "Configuration File", href: "./config-file"},
-        {label: "All Properties", href: "./reference"},
-        {label: "Compact Reference", href: "../reference/configuration"},
-        {label: "Resolution", href: "./resolution"},
-        {label: "Troubleshooting", href: "../troubleshooting/configuration"},
-        {label: "System Architecture", href: "../architecture/configuration-system"},
-    ]}
+  command=".config/custy/config.toml"
+  title="Configuration Overview"
+  description="Understand the complete project-owned configuration, from initialization and CLI defaults to changelog rendering and Git remotes."
+  category="Configuration"
+  status="Complete Reference"
+  syntax="[tool.custy]"
+  tags={["TOML hierarchy", "project defaults", "implementation status"]}
+  links={[
+    { label: "Configuration File", href: "./config-file" },
+    { label: "All Properties", href: "./reference" },
+    { label: "Compact Reference", href: "../reference/configuration" },
+    { label: "Resolution", href: "./resolution" },
+    { label: "Troubleshooting", href: "../troubleshooting/configuration" },
+    { label: "System Architecture", href: "../architecture/configuration-system" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Root Namespace", value: "tool.custy", icon: "project"},
-        {label: "Generated Tables", value: "32", icon: "table"},
-        {label: "Ownership", value: "Your project", icon: "file"},
-    ]}
+  items={[
+    {
+      label: "Project File",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Root Namespace", value: "tool.custy", icon: "project" },
+    { label: "Generated Tables", value: "32", icon: "table" },
+    { label: "Ownership", value: "Your project", icon: "file" },
+  ]}
 />
 
 ## Overview
@@ -64,17 +68,98 @@ full TOML path.
 <Section title="Top-Level Namespaces">
 
 <FeatureGrid
-    items={[
-        {title: "Project", icon: <Icon name="project" />, children: <>Define the source directory under <a href="./project">tool.custy.project</a>.</>},
-        {title: "Release", icon: <Icon name="release" />, children: <>Review generated release metadata and its <a href="./release">current compatibility gap</a>.</>},
-        {title: "Initialization", icon: <Icon name="copy" />, children: <>Control default overwrite and prompting behavior for <a href="./initialization">custy init</a>.</>},
-        {title: "Editor", icon: <Icon name="terminal" />, children: <>Select local and container editor precedence under <a href="./editor">tool.custy.editor</a>.</>},
-        {title: "Commit Validation", icon: <Icon name="success" />, children: <>Choose built-in, automatic, Commitizen, or Git-only message checks under <a href="./commit-validation">tool.custy.commit.validation</a>.</>},
-        {title: "CLI", icon: <Icon name="terminal" />, children: <>Configure paths, versioning, templates, execution, push, cleanup, changelog command behavior, and workflow defaults under <a href="./cli/overview">tool.custy.cli</a>.</>},
-        {title: "Logging", icon: <Icon name="file" />, children: <>Configure Rich console output and rotating files under <a href="./logging/overview">tool.custy.logging</a>.</>},
-        {title: "Changelog", icon: <Icon name="release" />, children: <>Control collection, cleaning, releases, mapping, and rendering under <a href="./changelog/overview">tool.custy.changelog</a>.</>},
-        {title: "Git", icon: <Icon name="git" />, children: <>Define default, primary, and backup remote behavior under <a href="./git/overview">tool.custy.git</a>.</>},
-    ]}
+  items={[
+    {
+      title: "Project",
+      icon: <Icon name="project" />,
+      children: (
+        <>
+          Define the source directory under <a href="./project">tool.custy.project</a>.
+        </>
+      ),
+    },
+    {
+      title: "Release",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Review generated release metadata and its{" "}
+          <a href="./release">current compatibility gap</a>.
+        </>
+      ),
+    },
+    {
+      title: "Initialization",
+      icon: <Icon name="copy" />,
+      children: (
+        <>
+          Control default overwrite and prompting behavior for{" "}
+          <a href="./initialization">custy init</a>.
+        </>
+      ),
+    },
+    {
+      title: "Editor",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Select local and container editor precedence under{" "}
+          <a href="./editor">tool.custy.editor</a>.
+        </>
+      ),
+    },
+    {
+      title: "Commit Validation",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Choose built-in, automatic, Commitizen, or Git-only message checks under{" "}
+          <a href="./commit-validation">tool.custy.commit.validation</a>.
+        </>
+      ),
+    },
+    {
+      title: "CLI",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Configure paths, versioning, templates, execution, push, cleanup, changelog
+          command behavior, and workflow defaults under{" "}
+          <a href="./cli/overview">tool.custy.cli</a>.
+        </>
+      ),
+    },
+    {
+      title: "Logging",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Configure Rich console output and rotating files under{" "}
+          <a href="./logging/overview">tool.custy.logging</a>.
+        </>
+      ),
+    },
+    {
+      title: "Changelog",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Control collection, cleaning, releases, mapping, and rendering under{" "}
+          <a href="./changelog/overview">tool.custy.changelog</a>.
+        </>
+      ),
+    },
+    {
+      title: "Git",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Define default, primary, and backup remote behavior under{" "}
+          <a href="./git/overview">tool.custy.git</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -123,16 +208,51 @@ default_remote = "origin"`}
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Configuration File", href: "./config-file", description: "Learn ownership, initialization, TOML shape, and overwrite safety."},
-        {title: "Configuration Architecture", href: "../architecture/configuration-system", description: "Trace initialization, loading, caching, typed resolution, and runtime consumers."},
-        {title: "All Properties", href: "./reference", description: "Find every generated and supported configuration path."},
-        {title: "CLI Configuration", href: "./cli/overview", description: "Review command-level defaults and nested CLI tables."},
-        {title: "Changelog Configuration", href: "./changelog/overview", description: "Navigate the complete changelog subsystem."},
-        {title: "Editor Configuration", href: "./editor", description: "Configure supported editors, platform precedence, Docker behavior, and keybindings."},
-        {title: "Commit Validation", href: "./commit-validation", description: "Choose a provider and understand optional Commitizen discovery."},
-        {title: "Git Credentials", href: "./git/credentials", description: "Keep native Git first and configure optional external token fallback for containers."},
-    ]}
+  commands={[
+    {
+      title: "Configuration File",
+      href: "./config-file",
+      description: "Learn ownership, initialization, TOML shape, and overwrite safety.",
+    },
+    {
+      title: "Configuration Architecture",
+      href: "../architecture/configuration-system",
+      description:
+        "Trace initialization, loading, caching, typed resolution, and runtime consumers.",
+    },
+    {
+      title: "All Properties",
+      href: "./reference",
+      description: "Find every generated and supported configuration path.",
+    },
+    {
+      title: "CLI Configuration",
+      href: "./cli/overview",
+      description: "Review command-level defaults and nested CLI tables.",
+    },
+    {
+      title: "Changelog Configuration",
+      href: "./changelog/overview",
+      description: "Navigate the complete changelog subsystem.",
+    },
+    {
+      title: "Editor Configuration",
+      href: "./editor",
+      description:
+        "Configure supported editors, platform precedence, Docker behavior, and keybindings.",
+    },
+    {
+      title: "Commit Validation",
+      href: "./commit-validation",
+      description: "Choose a provider and understand optional Commitizen discovery.",
+    },
+    {
+      title: "Git Credentials",
+      href: "./git/credentials",
+      description:
+        "Keep native Git first and configure optional external token fallback for containers.",
+    },
+  ]}
 />
 
 </Section>

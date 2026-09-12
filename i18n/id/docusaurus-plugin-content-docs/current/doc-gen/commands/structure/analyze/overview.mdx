@@ -6,13 +6,31 @@ sidebar_key: doc-gen-structure-analyze
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="Analisis Struktur Proyek" description="Periksa karakteristik repositori dan pengaturan struktur tanpa menulis dokumentasi proyek." category="Struktur Proyek" status="Hanya Baca" syntax="doc-gen structure analyze [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="Analisis Struktur Proyek"
+  description="Periksa karakteristik repositori dan pengaturan struktur tanpa menulis dokumentasi proyek."
+  category="Struktur Proyek"
+  status="Hanya Baca"
+  syntax="doc-gen structure analyze [TARGET_DIRECTORY] [OPTIONS]"
+  links={[
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-<Section title="Purpose">Memeriksa karakteristik repository dan setting struktur tanpa menulis dokumentasi proyek.</Section>
+<Section title="Purpose">
+  Memeriksa karakteristik repository dan setting struktur tanpa menulis dokumentasi
+  proyek.
+</Section>
 
-<InfoBox variant="warning" title="Batas keamanan">Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer.</InfoBox>
+<InfoBox variant="warning" title="Batas keamanan">
+  Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer.
+</InfoBox>
 
 - Resolve target/setting.
 - Scan entry.

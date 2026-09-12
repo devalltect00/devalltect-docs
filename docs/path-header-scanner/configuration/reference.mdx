@@ -6,19 +6,26 @@ sidebar_key: path-header-scanner-configuration
 tags: [path-header-scanner, configuration, reference]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command=".config/path_header_scanner/config.toml" title="Configuration Reference" description="Map supported configuration keys to the commands that consume them." category="Configuration" status="v1.0.0 Reference" syntax="CLI option > project configuration > internal default" />
+<CommandHero
+  command=".config/path_header_scanner/config.toml"
+  title="Configuration Reference"
+  description="Map supported configuration keys to the commands that consume them."
+  category="Configuration"
+  status="v1.0.0 Reference"
+  syntax="CLI option > project configuration > internal default"
+/>
 
 <Section title="Supported sections">
 
-| TOML section | Supported keys | Used by |
-| --- | --- | --- |
-| `[tool.path-header-scanner.cli.execution]` | `dry_run`, `debug` | Shared execution defaults; `dry_run` affects `init` and `scan` |
-| `[tool.path-header-scanner.initialization]` | `force`, `ask` | `path-header-scanner init` |
-| `[tool.path-header-scanner.cli.scan]` | `target_directory`, `apply`, `include_target_directory` | `path-header-scanner scan` |
-| `[tool.path-header-scanner.logging]` | `level`, Rich display flags, `console_format` | Console diagnostics |
-| `[tool.path-header-scanner.logging.file]` | file level/path, rotation, and `file_format` | Persistent diagnostics |
+| TOML section                                | Supported keys                                          | Used by                                                        |
+| ------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------- |
+| `[tool.path-header-scanner.cli.execution]`  | `dry_run`, `debug`                                      | Shared execution defaults; `dry_run` affects `init` and `scan` |
+| `[tool.path-header-scanner.initialization]` | `force`, `ask`                                          | `path-header-scanner init`                                     |
+| `[tool.path-header-scanner.cli.scan]`       | `target_directory`, `apply`, `include_target_directory` | `path-header-scanner scan`                                     |
+| `[tool.path-header-scanner.logging]`        | `level`, Rich display flags, `console_format`           | Console diagnostics                                            |
+| `[tool.path-header-scanner.logging.file]`   | file level/path, rotation, and `file_format`            | Persistent diagnostics                                         |
 
 </Section>
 

@@ -8,40 +8,40 @@ keywords: [custy run release, prepare Custy release]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run release"
-    title="Preparing Releases"
-    description="Move from an approved release state through version, changelog, commit, tag, and remote publication."
-    category="User Guide"
-    status="Consequential Workflow"
-    syntax="custy --dry-run run release [OPTIONS]"
-    tags={["preflight", "version", "changelog", "tag", "push"]}
-    links={[
-        {label: "Release Pipeline", href: "../pipelines/release-pipeline"},
-        {label: "Release Reference", href: "../commands/run/release/overview"},
-        {label: "Release Lifecycle", href: "../concepts/release-lifecycle"},
-    ]}
+  command="custy run release"
+  title="Preparing Releases"
+  description="Move from an approved release state through version, changelog, commit, tag, and remote publication."
+  category="User Guide"
+  status="Consequential Workflow"
+  syntax="custy --dry-run run release [OPTIONS]"
+  tags={["preflight", "version", "changelog", "tag", "push"]}
+  links={[
+    { label: "Release Pipeline", href: "../pipelines/release-pipeline" },
+    { label: "Release Reference", href: "../commands/run/release/overview" },
+    { label: "Release Lifecycle", href: "../concepts/release-lifecycle" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Profile", value: "release", icon: "pipeline"},
-        {label: "Creates Commit", value: "Yes", icon: "git"},
-        {label: "Creates Tag", value: "Yes", icon: "release"},
-        {label: "Publishes Remotely", value: "Yes", icon: "network"},
-    ]}
+  items={[
+    { label: "Profile", value: "release", icon: "pipeline" },
+    { label: "Creates Commit", value: "Yes", icon: "git" },
+    { label: "Creates Tag", value: "Yes", icon: "release" },
+    { label: "Publishes Remotely", value: "Yes", icon: "network" },
+  ]}
 />
 
 ## Goal
@@ -62,14 +62,38 @@ before a later failure. Custy does not roll those effects back as one unit.
 <Section title="Release Readiness Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "The release scope is approved", description: "Included changes, version intent, and publication timing are agreed."},
-        {title: "Messages are reviewed", description: "Commit and tag message files exist and satisfy the configured convention."},
-        {title: "Version configuration is correct", description: "Review the version file, strategy, bump behavior, and any explicit tag input."},
-        {title: "Changelog policy is understood", description: "Confirm templates, mappings, final-version behavior, and output path."},
-        {title: "Every remote is verified", description: "Inspect origin, primary, backup, and synchronization policy before publication."},
-        {title: "Recovery is planned", description: "Know how you will inspect a partial file update, commit, tag, or multi-remote push."},
-    ]}
+  items={[
+    {
+      title: "The release scope is approved",
+      description:
+        "Included changes, version intent, and publication timing are agreed.",
+    },
+    {
+      title: "Messages are reviewed",
+      description:
+        "Commit and tag message files exist and satisfy the configured convention.",
+    },
+    {
+      title: "Version configuration is correct",
+      description:
+        "Review the version file, strategy, bump behavior, and any explicit tag input.",
+    },
+    {
+      title: "Changelog policy is understood",
+      description:
+        "Confirm templates, mappings, final-version behavior, and output path.",
+    },
+    {
+      title: "Every remote is verified",
+      description:
+        "Inspect origin, primary, backup, and synchronization policy before publication.",
+    },
+    {
+      title: "Recovery is planned",
+      description:
+        "Know how you will inspect a partial file update, commit, tag, or multi-remote push.",
+    },
+  ]}
 />
 
 <Terminal title="Release preflight" language="bash">
@@ -90,14 +114,39 @@ custy validate`}
 <Section title="Recommended Release Journey">
 
 <WorkflowTimeline
-    title="Reviewed Publication"
-    items={[
-        {title: "Validate readiness", description: "Resolve repository, message, version, tag, and remote prerequisites.", status: "completed"},
-        {title: "Preview the complete profile", description: "Dry-run Release and read every resolved path, version, tag, and destination.", status: "completed"},
-        {title: "Review editable artifacts", description: "Confirm the intended commit message, tag message, version output, and changelog result.", status: "completed"},
-        {title: "Execute Release", description: "Run normally only after the preview and team release checks are complete.", status: "current"},
-        {title: "Verify publication", description: "Confirm local files, commit, tag, and every intended remote independently.", status: "pending"},
-    ]}
+  title="Reviewed Publication"
+  items={[
+    {
+      title: "Validate readiness",
+      description:
+        "Resolve repository, message, version, tag, and remote prerequisites.",
+      status: "completed",
+    },
+    {
+      title: "Preview the complete profile",
+      description:
+        "Dry-run Release and read every resolved path, version, tag, and destination.",
+      status: "completed",
+    },
+    {
+      title: "Review editable artifacts",
+      description:
+        "Confirm the intended commit message, tag message, version output, and changelog result.",
+      status: "completed",
+    },
+    {
+      title: "Execute Release",
+      description:
+        "Run normally only after the preview and team release checks are complete.",
+      status: "current",
+    },
+    {
+      title: "Verify publication",
+      description:
+        "Confirm local files, commit, tag, and every intended remote independently.",
+      status: "pending",
+    },
+  ]}
 />
 
 <Terminal title="Preview and publish" language="bash">
@@ -114,13 +163,30 @@ custy run release`}
 <Section title="Release Completion Boundaries">
 
 <FeatureGrid
-    title="State to Verify"
-    items={[
-        {title: "Project Files", icon: <Icon name="file" />, children: "Version-bearing files, generated artifacts, and conditional CHANGELOG.md output."},
-        {title: "Recovery Files", icon: <Icon name="package" />, children: "Commit and tag message backups after retention cleanup."},
-        {title: "Local Git", icon: <Icon name="git" />, children: "The release commit and local release tag."},
-        {title: "Remote State", icon: <Icon name="network" />, children: "HEAD and tag at every destination that was supposed to receive them."},
-    ]}
+  title="State to Verify"
+  items={[
+    {
+      title: "Project Files",
+      icon: <Icon name="file" />,
+      children:
+        "Version-bearing files, generated artifacts, and conditional CHANGELOG.md output.",
+    },
+    {
+      title: "Recovery Files",
+      icon: <Icon name="package" />,
+      children: "Commit and tag message backups after retention cleanup.",
+    },
+    {
+      title: "Local Git",
+      icon: <Icon name="git" />,
+      children: "The release commit and local release tag.",
+    },
+    {
+      title: "Remote State",
+      icon: <Icon name="network" />,
+      children: "HEAD and tag at every destination that was supposed to receive them.",
+    },
+  ]}
 />
 
 The [Release Pipeline](../pipelines/release-pipeline) documents the exact
@@ -162,12 +228,29 @@ unless you deliberately require and understand that additional boundary.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Release Pipeline", href: "../pipelines/release-pipeline", description: "Review all 24 expanded steps and failure boundaries."},
-        {title: "Release Examples", href: "../commands/run/release/examples", description: "Use practical Release invocations."},
-        {title: "Configuration Guide", href: "../configuration/overview", description: "Review project-owned version, template, changelog, and remote policy."},
-        {title: "Troubleshooting Workflows", href: "./troubleshooting-workflows", description: "Recover from partial release state safely."},
-    ]}
+  commands={[
+    {
+      title: "Release Pipeline",
+      href: "../pipelines/release-pipeline",
+      description: "Review all 24 expanded steps and failure boundaries.",
+    },
+    {
+      title: "Release Examples",
+      href: "../commands/run/release/examples",
+      description: "Use practical Release invocations.",
+    },
+    {
+      title: "Configuration Guide",
+      href: "../configuration/overview",
+      description:
+        "Review project-owned version, template, changelog, and remote policy.",
+    },
+    {
+      title: "Troubleshooting Workflows",
+      href: "./troubleshooting-workflows",
+      description: "Recover from partial release state safely.",
+    },
+  ]}
 />
 
 </Section>

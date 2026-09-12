@@ -4,38 +4,35 @@ import { HTMLAttributes } from "react";
  * Single command example.
  */
 export interface CommandSyntaxExample {
+  /**
+   * Example title.
+   */
+  title?: string;
 
-    /**
-     * Example title.
-     */
-    title?: string;
+  /**
+   * Command string.
+   */
+  command: string;
 
-    /**
-     * Command string.
-     */
-    command: string;
-
-    /**
-     * Optional explanation.
-     */
-    description?: string;
+  /**
+   * Optional explanation.
+   */
+  description?: string;
 }
 
 /**
  * Command syntax component.
  */
-export interface CommandSyntaxProps
-    extends HTMLAttributes<HTMLElement> {
+export interface CommandSyntaxProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Syntax examples.
+   */
+  examples: CommandSyntaxExample[];
 
-    /**
-     * Syntax examples.
-     */
-    examples: CommandSyntaxExample[];
-
-    /**
-     * Programming language.
-     *
-     * @default "bash"
-     */
-    language?: string;
+  /**
+   * Programming language.
+   *
+   * @default "bash"
+   */
+  language?: string;
 }

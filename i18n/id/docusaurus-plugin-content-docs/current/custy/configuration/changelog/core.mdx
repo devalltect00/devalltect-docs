@@ -7,15 +7,87 @@ tags: [custy, changelog, configuration, commits]
 keywords: [ignore_merge_commits, ignore_types]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.core]" title="Core Collection" description="Kecualikan commits sebelum cleaning, grouping, release processing, dan rendering." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.core]" tags={["merge commits", "ignored types", "collection"]} links={[{label: "Pending Commit", href: "./pending-commit"}, {label: "Cleaning", href: "./cleaning"}, {label: "Mappings", href: "./mappings"}]} />
-<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Merge Commits", value: "Ignored", icon: "git"}, {label: "Ignored Type", value: "chore", icon: "configuration"}, {label: "Stage", value: "Collection", icon: "pipeline"}]} />
+<CommandHero
+  command="[tool.custy.changelog.core]"
+  title="Core Collection"
+  description="Kecualikan commits sebelum cleaning, grouping, release processing, dan rendering."
+  category="Changelog Configuration"
+  status="Active"
+  syntax="[tool.custy.changelog.core]"
+  tags={["merge commits", "ignored types", "collection"]}
+  links={[
+    { label: "Pending Commit", href: "./pending-commit" },
+    { label: "Cleaning", href: "./cleaning" },
+    { label: "Mappings", href: "./mappings" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Merge Commits", value: "Ignored", icon: "git" },
+    { label: "Ignored Type", value: "chore", icon: "configuration" },
+    { label: "Stage", value: "Collection", icon: "pipeline" },
+  ]}
+/>
 
 ## Properties
-<PropertyTable items={[{property: "ignore_merge_commits", type: "Boolean", defaultValue: "true", description: "Kecualikan subjects yang diawali merge-style history sebelum processing berikutnya."}, {property: "ignore_types", type: "String array", defaultValue: "[\"chore\"]", description: "Kecualikan commits dengan parsed Conventional Commit type yang cocok secara case-insensitive."}]} />
-<Terminal title="Generated collection rules" language="toml">{`[tool.custy.changelog.core]
+
+<PropertyTable
+  items={[
+    {
+      property: "ignore_merge_commits",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Kecualikan subjects yang diawali merge-style history sebelum processing berikutnya.",
+    },
+    {
+      property: "ignore_types",
+      type: "String array",
+      defaultValue: '["chore"]',
+      description:
+        "Kecualikan commits dengan parsed Conventional Commit type yang cocok secara case-insensitive.",
+    },
+  ]}
+/>
+<Terminal
+  title="Generated collection rules"
+  language="toml"
+>{`[tool.custy.changelog.core]
 ignore_merge_commits = true
 ignore_types = ["chore"]`}</Terminal>
-<InfoBox variant="note" title="Filtering Terjadi Sebelum Rendering">Ignored commit tidak dapat dikembalikan oleh rendering option atau mapping. Ubah collection rules secara sengaja dan review history coverage setelahnya.</InfoBox>
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Pending Commit", href: "./pending-commit", description: "Tambahkan uncommitted project content."}, {title: "Mappings", href: "./mappings", description: "Ganti nama retained types dan scopes."}, {title: "Generate Workflow", href: "../../commands/changelog/generate/workflow", description: "Ikuti complete generation order."}]} /></Section>
+<InfoBox variant="note" title="Filtering Terjadi Sebelum Rendering">
+  Ignored commit tidak dapat dikembalikan oleh rendering option atau mapping. Ubah
+  collection rules secara sengaja dan review history coverage setelahnya.
+</InfoBox>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Pending Commit",
+        href: "./pending-commit",
+        description: "Tambahkan uncommitted project content.",
+      },
+      {
+        title: "Mappings",
+        href: "./mappings",
+        description: "Ganti nama retained types dan scopes.",
+      },
+      {
+        title: "Generate Workflow",
+        href: "../../commands/changelog/generate/workflow",
+        description: "Ikuti complete generation order.",
+      },
+    ]}
+  />
+</Section>

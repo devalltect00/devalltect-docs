@@ -6,9 +6,22 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, workflow]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Workflow" description="Replace tag names on a selected Git remote through one guarded atomic push." category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Workflow"
+  description="Replace tag names on a selected Git remote through one guarded atomic push."
+  category="Tag Conversion"
+  status="Guarded Remote Mutation"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ### 1. Stage 1
 
@@ -30,5 +43,7 @@ Display target, remote, and replacements.
 
 After confirmation, atomically push creations and deletions.
 
-<InfoBox variant="warning" title="Safety boundary">Mutates remote refs only after full validation and confirmation unless --yes is supplied.</InfoBox>
-
+<InfoBox variant="warning" title="Safety boundary">
+  Mutates remote refs only after full validation and confirmation unless --yes is
+  supplied.
+</InfoBox>

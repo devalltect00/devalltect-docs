@@ -8,39 +8,35 @@ keywords: [custy commit output]
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy commit"
-    title="Command Output"
-    description="Review generated artifacts, backups, staging changes, and the local commit created by the profile."
-    category="Git Operations"
-    status="Review Required"
-    syntax="custy commit [OPTIONS]"
-    tags={[
-        "output",
-        "Git history",
-        "verification",
-    ]}
-    links={[
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy commit"
+  title="Command Output"
+  description="Review generated artifacts, backups, staging changes, and the local commit created by the profile."
+  category="Git Operations"
+  status="Review Required"
+  syntax="custy commit [OPTIONS]"
+  tags={["output", "Git history", "verification"]}
+  links={[
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -55,18 +51,19 @@ Review each category rather than relying on the final success message alone.
 >
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Successful Commit Profile",
-            description: "Representative high-level progress from a completed profile.",
-            output: `Version and artifacts prepared
+  outputs={[
+    {
+      title: "Successful Commit Profile",
+      description: "Representative high-level progress from a completed profile.",
+      output: `Version and artifacts prepared
 CHANGELOG.md updated
 Commit message backed up
 Resolved changes staged
 Git commit created`,
-            notes: "Exact terminal wording depends on the installed Custy version and project configuration.",
-        },
-    ]}
+      notes:
+        "Exact terminal wording depends on the installed Custy version and project configuration.",
+    },
+  ]}
 />
 
 A successful run can produce:

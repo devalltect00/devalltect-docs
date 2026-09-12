@@ -6,16 +6,29 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, configuration]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Configuration"
+  description="CLI values override project configuration, which overrides internal defaults."
+  category="Tag Conversion"
+  status="Guarded Remote Mutation"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Configuration key | Default | Effect |
-| --- | --- | --- |
-| `tool.reflow.repository.url` | none | Managed-clone target. |
-| `tool.reflow.repository.path` | current directory | Mutually exclusive alternative. |
-| `tool.reflow.cli.tags.convert.target_format` | semver | Destination format. |
-| `tool.reflow.cli.tags.convert.yes` | false | Prompt bypass. |
+| Configuration key                            | Default           | Effect                          |
+| -------------------------------------------- | ----------------- | ------------------------------- |
+| `tool.reflow.repository.url`                 | none              | Managed-clone target.           |
+| `tool.reflow.repository.path`                | current directory | Mutually exclusive alternative. |
+| `tool.reflow.cli.tags.convert.target_format` | semver            | Destination format.             |
+| `tool.reflow.cli.tags.convert.yes`           | false             | Prompt bypass.                  |
 
 ```toml
 [tool.reflow.repository]
@@ -25,4 +38,3 @@ url = "https://github.com/acme/project.git"
 target_format = "semver"
 yes = false
 ```
-

@@ -16,42 +16,38 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy version"
-    title="Versioning"
-    description="Separate version selection, artifact preparation, project-file synchronization, and Git tagging."
-    category="Core Concepts"
-    status="Stable"
-    syntax="custy version COMMAND [OPTIONS]"
-    tags={[
-        "version strategies",
-        "synchronization",
-        "release tags",
-    ]}
-    links={[
-        {label: "Version Command", href: "../commands/version/overview"},
-        {label: "Strategies", href: "../commands/version/versioning-strategies"},
-        {label: "Tags", href: "../commands/tag/versioning-and-tags"},
-    ]}
+  command="custy version"
+  title="Versioning"
+  description="Separate version selection, artifact preparation, project-file synchronization, and Git tagging."
+  category="Core Concepts"
+  status="Stable"
+  syntax="custy version COMMAND [OPTIONS]"
+  tags={["version strategies", "synchronization", "release tags"]}
+  links={[
+    { label: "Version Command", href: "../commands/version/overview" },
+    { label: "Strategies", href: "../commands/version/versioning-strategies" },
+    { label: "Tags", href: "../commands/tag/versioning-and-tags" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Strategies", value: "5", icon: "configuration"},
-        {label: "Bump Modes", value: "Patch, Minor, Major, Auto", icon: "release"},
-        {label: "Synchronization", value: "Project-aware", icon: "dependency"},
-        {label: "Git Tag", value: "Separate later effect", icon: "git"},
-    ]}
+  items={[
+    { label: "Strategies", value: "5", icon: "configuration" },
+    { label: "Bump Modes", value: "Patch, Minor, Major, Auto", icon: "release" },
+    { label: "Synchronization", value: "Project-aware", icon: "dependency" },
+    { label: "Git Tag", value: "Separate later effect", icon: "git" },
+  ]}
 />
 
 ## Overview
@@ -80,34 +76,42 @@ and side effects.
 >
 
 <FeatureGrid
-    title="Version Sources"
-    items={[
-        {
-            title: "Semantic Versioning",
-            icon: <Icon name="release" />,
-            children: <>Use <code>major.minor.patch</code> releases and familiar prerelease or build metadata.</>,
-        },
-        {
-            title: "PEP 440",
-            icon: <Icon name="package" />,
-            children: "Use the Python packaging version format understood by Python build and distribution tools.",
-        },
-        {
-            title: "Commitizen",
-            icon: <Icon name="git" />,
-            children: "Derive the next value from a Conventional Commits and Commitizen workflow.",
-        },
-        {
-            title: "Date",
-            icon: <Icon name="feature" />,
-            children: "Generate a calendar-oriented release value from the current date.",
-        },
-        {
-            title: "Git Count",
-            icon: <Icon name="dependency" />,
-            children: "Derive an increasing value from repository history rather than a manually maintained sequence.",
-        },
-    ]}
+  title="Version Sources"
+  items={[
+    {
+      title: "Semantic Versioning",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Use <code>major.minor.patch</code> releases and familiar prerelease or build
+          metadata.
+        </>
+      ),
+    },
+    {
+      title: "PEP 440",
+      icon: <Icon name="package" />,
+      children:
+        "Use the Python packaging version format understood by Python build and distribution tools.",
+    },
+    {
+      title: "Commitizen",
+      icon: <Icon name="git" />,
+      children:
+        "Derive the next value from a Conventional Commits and Commitizen workflow.",
+    },
+    {
+      title: "Date",
+      icon: <Icon name="feature" />,
+      children: "Generate a calendar-oriented release value from the current date.",
+    },
+    {
+      title: "Git Count",
+      icon: <Icon name="dependency" />,
+      children:
+        "Derive an increasing value from repository history rather than a manually maintained sequence.",
+    },
+  ]}
 />
 
 </Section>
@@ -119,34 +123,39 @@ and side effects.
 >
 
 <WorkflowTimeline
-    title="From Strategy to Release Tag"
-    items={[
-        {
-            title: "Resolve the strategy",
-            description: "Select SemVer, PEP 440, Commitizen, Date, or Git Count from CLI input or project configuration.",
-            status: "current",
-        },
-        {
-            title: "Generate the next value",
-            description: "Apply the chosen strategy and any patch, minor, major, or automatic bump behavior.",
-            status: "pending",
-        },
-        {
-            title: "Prepare release context",
-            description: "Make the resolved value available to artifact, message, changelog, and synchronization steps.",
-            status: "pending",
-        },
-        {
-            title: "Apply project versions",
-            description: "Write the compatible representation to configured project version files.",
-            status: "pending",
-        },
-        {
-            title: "Create a Git tag",
-            description: "After review and validation, a separate tag step records the release in repository history.",
-            status: "pending",
-        },
-    ]}
+  title="From Strategy to Release Tag"
+  items={[
+    {
+      title: "Resolve the strategy",
+      description:
+        "Select SemVer, PEP 440, Commitizen, Date, or Git Count from CLI input or project configuration.",
+      status: "current",
+    },
+    {
+      title: "Generate the next value",
+      description:
+        "Apply the chosen strategy and any patch, minor, major, or automatic bump behavior.",
+      status: "pending",
+    },
+    {
+      title: "Prepare release context",
+      description:
+        "Make the resolved value available to artifact, message, changelog, and synchronization steps.",
+      status: "pending",
+    },
+    {
+      title: "Apply project versions",
+      description:
+        "Write the compatible representation to configured project version files.",
+      status: "pending",
+    },
+    {
+      title: "Create a Git tag",
+      description:
+        "After review and validation, a separate tag step records the release in repository history.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -199,12 +208,28 @@ development, post-release, or build metadata is involved.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Version Overview", href: "../commands/version/overview", description: "Use Custy's public version command group."},
-        {title: "Versioning Strategies", href: "../commands/version/versioning-strategies", description: "Compare all five supported strategies."},
-        {title: "Versioning and Tags", href: "../commands/tag/versioning-and-tags", description: "Understand tag inputs and Git reference creation."},
-        {title: "Release Workflow", href: "../commands/run/release/workflow", description: "See where version preparation and application occur in a release."},
-    ]}
+  commands={[
+    {
+      title: "Version Overview",
+      href: "../commands/version/overview",
+      description: "Use Custy's public version command group.",
+    },
+    {
+      title: "Versioning Strategies",
+      href: "../commands/version/versioning-strategies",
+      description: "Compare all five supported strategies.",
+    },
+    {
+      title: "Versioning and Tags",
+      href: "../commands/tag/versioning-and-tags",
+      description: "Understand tag inputs and Git reference creation.",
+    },
+    {
+      title: "Release Workflow",
+      href: "../commands/run/release/workflow",
+      description: "See where version preparation and application occur in a release.",
+    },
+  ]}
 />
 
 </Section>

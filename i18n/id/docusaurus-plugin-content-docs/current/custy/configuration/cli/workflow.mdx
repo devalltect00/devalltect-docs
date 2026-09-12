@@ -7,20 +7,64 @@ tags: [custy, configuration, workflow, experimental]
 keywords: [cli workflow, enforce, check_transition]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.workflow]" title="Workflow Defaults" description="Konfigurasikan experimental branch dan tag transition policy secara terpisah dari stable run profiles." category="CLI Configuration" status="Experimental / Currently Blocked" syntax="[tool.custy.cli.workflow]" tags={["transition policy", "enforcement", "experimental"]} links={[{label: "Workflow Warning", href: "../../commands/workflow/overview"}, {label: "Branch Workflow", href: "../../commands/workflow/branch/overview"}, {label: "Run Profiles", href: "../../commands/run/profiles"}]} />
+<CommandHero
+  command="[tool.custy.cli.workflow]"
+  title="Workflow Defaults"
+  description="Konfigurasikan experimental branch dan tag transition policy secara terpisah dari stable run profiles."
+  category="CLI Configuration"
+  status="Experimental / Currently Blocked"
+  syntax="[tool.custy.cli.workflow]"
+  tags={["transition policy", "enforcement", "experimental"]}
+  links={[
+    { label: "Workflow Warning", href: "../../commands/workflow/overview" },
+    { label: "Branch Workflow", href: "../../commands/workflow/branch/overview" },
+    { label: "Run Profiles", href: "../../commands/run/profiles" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enforce", value: "false", icon: "security"}, {label: "Transition Check", value: "false", icon: "workflow"}, {label: "Production Ready", value: "No", icon: "danger"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Enforce", value: "false", icon: "security" },
+    { label: "Transition Check", value: "false", icon: "workflow" },
+    { label: "Production Ready", value: "No", icon: "danger" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "enforce", type: "Boolean", defaultValue: "false", description: "Pilih enforcement, bukan information-only workflow behavior."},
-        {property: "check_transition", type: "Boolean", defaultValue: "false", description: "Validasi configured branch dan tag transitions."},
-        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Aktifkan backup synchronization setelah supported workflow completion."},
-    ]}
+  items={[
+    {
+      property: "enforce",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Pilih enforcement, bukan information-only workflow behavior.",
+    },
+    {
+      property: "check_transition",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Validasi configured branch dan tag transitions.",
+    },
+    {
+      property: "sync_backup",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Aktifkan backup synchronization setelah supported workflow completion.",
+    },
+  ]}
 />
 
 <Terminal title="Generated defaults" language="toml">
@@ -40,4 +84,24 @@ governance hingga implementation diperbaiki dan diuji end to end.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Workflow Overview", href: "../../commands/workflow/overview", description: "Tinjau current blocker."}, {title: "Run Profiles", href: "../../commands/run/profiles", description: "Gunakan supported public pipelines."}, {title: "Validate", href: "../../commands/validate/overview", description: "Gunakan supported readiness checks."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Workflow Overview",
+        href: "../../commands/workflow/overview",
+        description: "Tinjau current blocker.",
+      },
+      {
+        title: "Run Profiles",
+        href: "../../commands/run/profiles",
+        description: "Gunakan supported public pipelines.",
+      },
+      {
+        title: "Validate",
+        href: "../../commands/validate/overview",
+        description: "Gunakan supported readiness checks.",
+      },
+    ]}
+  />
+</Section>

@@ -6,16 +6,29 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner init" title="Opsi" description="Nilai CLI mengungguli project configuration, lalu internal default." category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner init"
+  title="Opsi"
+  description="Nilai CLI mengungguli project configuration, lalu internal default."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="path-header-scanner init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Flag / nilai | Default | Efek |
-| --- | --- | --- |
-| `--mode, -m` | `all` | Pilih `all` atau `config`. Keduanya saat ini menginisialisasi resource konfigurasi. |
-| `--force/--no-force, -f/-F` | `false` | Timpa resource terpilih yang sudah ada tanpa prompt. |
-| `--ask, -a` | `false` | Minta keputusan sebelum membuat atau mengganti resource bila diperlukan. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | nilai konfigurasi, lalu `false` | Tampilkan rencana tanpa membuat direktori, menulis file, atau meminta konfirmasi. |
+| Flag / nilai                      | Default                         | Efek                                                                                |
+| --------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------- |
+| `--mode, -m`                      | `all`                           | Pilih `all` atau `config`. Keduanya saat ini menginisialisasi resource konfigurasi. |
+| `--force/--no-force, -f/-F`       | `false`                         | Timpa resource terpilih yang sudah ada tanpa prompt.                                |
+| `--ask, -a`                       | `false`                         | Minta keputusan sebelum membuat atau mengganti resource bila diperlukan.            |
+| `--dry-run/--no-dry-run, -dr/-Dr` | nilai konfigurasi, lalu `false` | Tampilkan rencana tanpa membuat direktori, menulis file, atau meminta konfirmasi.   |
 
 <InfoBox variant="note" title="Cakupan mode pada v1.0.0">
 

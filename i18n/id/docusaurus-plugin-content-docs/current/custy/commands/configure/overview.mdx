@@ -7,11 +7,39 @@ tags: [configure, credentials, preferensi]
 keywords: [custy configure, custy credentials]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy configure" title="Konfigurasikan Preferensi Custy" description="Kelola preferensi pengguna melalui command yang aman dan memiliki tujuan khusus." category="Configuration" status="Stable" syntax="custy configure COMMAND" tags={["preferensi", "credentials", "safe setup"]} links={[{label: "Credentials", href: "./credentials/overview"}, {label: "Configuration", href: "../../configuration/overview"}, {label: "Push", href: "../push/overview"}]} />
+<CommandHero
+  command="custy configure"
+  title="Konfigurasikan Preferensi Custy"
+  description="Kelola preferensi pengguna melalui command yang aman dan memiliki tujuan khusus."
+  category="Configuration"
+  status="Stable"
+  syntax="custy configure COMMAND"
+  tags={["preferensi", "credentials", "safe setup"]}
+  links={[
+    { label: "Credentials", href: "./credentials/overview" },
+    { label: "Configuration", href: "../../configuration/overview" },
+    { label: "Push", href: "../push/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Command Saat Ini", value: "credentials", icon: "security"}, {label: "Secret di config.toml", value: "Tidak pernah", icon: "success"}, {label: "Git Providers", value: "GitHub + GitLab", icon: "git"}, {label: "Dry-Run", value: "Didukung", icon: "dry-run"}]} />
+<CommandMetadata
+  items={[
+    { label: "Command Saat Ini", value: "credentials", icon: "security" },
+    { label: "Secret di config.toml", value: "Tidak pernah", icon: "success" },
+    { label: "Git Providers", value: "GitHub + GitLab", icon: "git" },
+    { label: "Dry-Run", value: "Didukung", icon: "dry-run" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -26,6 +54,55 @@ environment-variable name. Nilai token tetap berada di luar proyek.
 
 </InfoBox>
 
-<Section title="Configuration yang Tersedia"><FeatureGrid items={[{title: "Guided Setup", icon: <Icon name="terminal" />, children: "Jalankan custy configure credentials tanpa subcommand untuk hidden token input dan safe defaults."}, {title: "Provider Management", icon: <Icon name="security" />, children: "Aktifkan, periksa, uji, atau hapus preferensi fallback GitHub dan GitLab."}, {title: "Native Git Lebih Dulu", icon: <Icon name="git" />, children: "Pertahankan credential manager dan SSH sebagai otoritas utama; gunakan helper Custy hanya sebagai HTTPS fallback."}, {title: "Docker Boundary", icon: <Icon name="docker" />, children: "Jangan ubah local credentials saat memberikan secret secara eksplisit kepada container."}]} /></Section>
+<Section title="Configuration yang Tersedia">
+  <FeatureGrid
+    items={[
+      {
+        title: "Guided Setup",
+        icon: <Icon name="terminal" />,
+        children:
+          "Jalankan custy configure credentials tanpa subcommand untuk hidden token input dan safe defaults.",
+      },
+      {
+        title: "Provider Management",
+        icon: <Icon name="security" />,
+        children:
+          "Aktifkan, periksa, uji, atau hapus preferensi fallback GitHub dan GitLab.",
+      },
+      {
+        title: "Native Git Lebih Dulu",
+        icon: <Icon name="git" />,
+        children:
+          "Pertahankan credential manager dan SSH sebagai otoritas utama; gunakan helper Custy hanya sebagai HTTPS fallback.",
+      },
+      {
+        title: "Docker Boundary",
+        icon: <Icon name="docker" />,
+        children:
+          "Jangan ubah local credentials saat memberikan secret secara eksplisit kepada container.",
+      },
+    ]}
+  />
+</Section>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Configure Credentials", href: "./credentials/overview", description: "Pilih file, environment, prompt, atau native Git behavior."}, {title: "Git Credentials", href: "../../configuration/git/credentials", description: "Pelajari setiap property dan behavior matrix."}, {title: "Push", href: "../push/overview", description: "Sinkronkan HEAD dan tag dengan configured remotes."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Configure Credentials",
+        href: "./credentials/overview",
+        description: "Pilih file, environment, prompt, atau native Git behavior.",
+      },
+      {
+        title: "Git Credentials",
+        href: "../../configuration/git/credentials",
+        description: "Pelajari setiap property dan behavior matrix.",
+      },
+      {
+        title: "Push",
+        href: "../push/overview",
+        description: "Sinkronkan HEAD dan tag dengan configured remotes.",
+      },
+    ]}
+  />
+</Section>

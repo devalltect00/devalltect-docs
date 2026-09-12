@@ -4,26 +4,116 @@ description: "Pahami perbedaan focused CLI commands, ordered pipeline profiles, 
 sidebar_position: 1
 sidebar_key: custy-concepts-execution-model
 ---
-import {CommandHero, FeatureGrid, InfoBox, Section, WorkflowTimeline, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy COMMAND | custy run PROFILE" title="Commands, Pipelines, and Workflows" description="Pilih execution layer terkecil yang mencapai hasil Anda." category="Concept" status="Core Model" syntax="custy COMMAND [OPTIONS]" links={[{label:"Commands",href:"../commands/overview"},{label:"Run",href:"../commands/run/overview"},{label:"Pipelines",href:"../pipelines/overview"}]} />
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
+  RelatedCommands,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy COMMAND | custy run PROFILE"
+  title="Commands, Pipelines, and Workflows"
+  description="Pilih execution layer terkecil yang mencapai hasil Anda."
+  category="Concept"
+  status="Core Model"
+  syntax="custy COMMAND [OPTIONS]"
+  links={[
+    { label: "Commands", href: "../commands/overview" },
+    { label: "Run", href: "../commands/run/overview" },
+    { label: "Pipelines", href: "../pipelines/overview" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="tip" title="The Practical Rule">Gunakan direct command untuk operasi terfokus, Run profile untuk ordered multi-stage operation, dan hindari experimental Workflow command dalam production.</InfoBox>
+<InfoBox variant="tip" title="The Practical Rule">
+  Gunakan direct command untuk operasi terfokus, Run profile untuk ordered multi-stage
+  operation, dan hindari experimental Workflow command dalam production.
+</InfoBox>
 
-<FeatureGrid title="Three Different Layers" description="Memisahkan layer membuat behavior dan side effects lebih mudah diprediksi." items={[
- {title:"Command",children:"Satu public CLI operation seperti Validate, Commit, Tag, atau Push."},{title:"Pipeline Profile",children:"Registered ordered stages seperti dev, release, atau full."},{title:"Workflow Engine",children:"Internal orchestration/resolution yang dipakai pipeline."},{title:"Workflow Command",children:"Experimental transition interface yang saat ini blocked."},
-]} />
+<FeatureGrid
+  title="Three Different Layers"
+  description="Memisahkan layer membuat behavior dan side effects lebih mudah diprediksi."
+  items={[
+    {
+      title: "Command",
+      children: "Satu public CLI operation seperti Validate, Commit, Tag, atau Push.",
+    },
+    {
+      title: "Pipeline Profile",
+      children: "Registered ordered stages seperti dev, release, atau full.",
+    },
+    {
+      title: "Workflow Engine",
+      children: "Internal orchestration/resolution yang dipakai pipeline.",
+    },
+    {
+      title: "Workflow Command",
+      children: "Experimental transition interface yang saat ini blocked.",
+    },
+  ]}
+/>
 
 <Section title="How a Run Profile Becomes a Pipeline">
-<WorkflowTimeline title="Pipeline Resolution" items={[
- {title:"Accept public profile",description:"Terima commit, tag, push, dev, release, atau full.",status:"completed"},{title:"Expand stages",description:"Ubah profile menjadi registered step list.",status:"completed"},{title:"Normalize order",description:"Deduplicate dan urutkan melalui global step order.",status:"completed"},{title:"Execute",description:"Jalankan stages dengan fail-fast behavior.",status:"completed"},
-]} />
+  <WorkflowTimeline
+    title="Pipeline Resolution"
+    items={[
+      {
+        title: "Accept public profile",
+        description: "Terima commit, tag, push, dev, release, atau full.",
+        status: "completed",
+      },
+      {
+        title: "Expand stages",
+        description: "Ubah profile menjadi registered step list.",
+        status: "completed",
+      },
+      {
+        title: "Normalize order",
+        description: "Deduplicate dan urutkan melalui global step order.",
+        status: "completed",
+      },
+      {
+        title: "Execute",
+        description: "Jalankan stages dengan fail-fast behavior.",
+        status: "completed",
+      },
+    ]}
+  />
 </Section>
 
-<InfoBox variant="warning" title="The Workflow Command Group Is Experimental">`custy workflow` berbeda dari internal workflow engine dan belum siap produksi.</InfoBox>
+<InfoBox variant="warning" title="The Workflow Command Group Is Experimental">
+  `custy workflow` berbeda dari internal workflow engine dan belum siap produksi.
+</InfoBox>
 
-<RelatedCommands commands={[
- {name:"terminal",description:"Command overview.",href:"../commands/overview"},{name:"play",description:"Public Run profiles.",href:"../commands/run/profiles"},{name:"pipeline",description:"Pipeline model.",href:"../pipelines/overview"},{name:"workflow",description:"Experimental Workflow command.",href:"../commands/workflow/overview"},{name:"git",description:"Safety model.",href:"./safety-and-side-effects"},{name:"network",description:"Run overview.",href:"../commands/run/overview"},{name:"release",description:"Choose execution scope.",href:"../commands/run/overview"},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      name: "terminal",
+      description: "Command overview.",
+      href: "../commands/overview",
+    },
+    {
+      name: "play",
+      description: "Public Run profiles.",
+      href: "../commands/run/profiles",
+    },
+    { name: "pipeline", description: "Pipeline model.", href: "../pipelines/overview" },
+    {
+      name: "workflow",
+      description: "Experimental Workflow command.",
+      href: "../commands/workflow/overview",
+    },
+    { name: "git", description: "Safety model.", href: "./safety-and-side-effects" },
+    { name: "network", description: "Run overview.", href: "../commands/run/overview" },
+    {
+      name: "release",
+      description: "Choose execution scope.",
+      href: "../commands/run/overview",
+    },
+  ]}
+/>

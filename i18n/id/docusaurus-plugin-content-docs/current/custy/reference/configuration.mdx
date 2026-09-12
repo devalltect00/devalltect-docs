@@ -4,12 +4,71 @@ description: "Referensi TOML project-owned, namespace, precedence, lifecycle, ca
 sidebar_position: 4
 sidebar_key: custy-reference-configuration
 ---
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
 
-<CommandHero command=".config/custy/config.toml" title="Configuration Reference" description="Temukan sumber, precedence, dan status setiap setting tanpa mengubah nama key literal." category="Referensi" status="Project-owned" syntax="CLI value -> project config -> built-in default" links={[{label:"All Properties",href:"../configuration/reference"},{label:"Configuration Guide",href:"../configuration/overview"},{label:"Resolution",href:"../configuration/resolution"}]} />
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<Section title="Aturan utama">`custy init` membuat konfigurasi dari packaged template. File hasilnya menjadi milik project. CLI value biasanya memiliki prioritas tertinggi, kemudian project configuration, lalu built-in fallback; halaman resolution mencatat pengecualian.</Section>
+<CommandHero
+  command=".config/custy/config.toml"
+  title="Configuration Reference"
+  description="Temukan sumber, precedence, dan status setiap setting tanpa mengubah nama key literal."
+  category="Referensi"
+  status="Project-owned"
+  syntax="CLI value -> project config -> built-in default"
+  links={[
+    { label: "All Properties", href: "../configuration/reference" },
+    { label: "Configuration Guide", href: "../configuration/overview" },
+    { label: "Resolution", href: "../configuration/resolution" },
+  ]}
+/>
 
-<InfoBox variant="info" title="Baca status property">Label active, loaded-only, reserved, atau advanced menjelaskan apakah key benar-benar memengaruhi runtime. Keberadaan key pada template saja bukan bukti behavior aktif.</InfoBox>
+<Section title="Aturan utama">
+  `custy init` membuat konfigurasi dari packaged template. File hasilnya menjadi milik
+  project. CLI value biasanya memiliki prioritas tertinggi, kemudian project
+  configuration, lalu built-in fallback; halaman resolution mencatat pengecualian.
+</Section>
 
-<RelatedCommands commands={[{title:"All Configuration Properties",href:"../configuration/reference",description:"Cari full TOML path, generated default, dan status."},{title:"Editor Configuration",href:"../configuration/editor",description:"Atur prioritas editor lokal dan container."},{title:"Commit Validation",href:"../configuration/commit-validation",description:"Pilih built-in, automatic, Commitizen, atau basic Git message validation."},{title:"Configuration File",href:"../configuration/config-file",description:"Pahami ownership dan replacement safety."},{title:"Configuration Resolution",href:"../configuration/resolution",description:"Pelajari precedence dan known exceptions."},{title:"Configuration Architecture",href:"../architecture/configuration-system",description:"Telusuri loader, cache, typed model, dan consumer."}]} />
+<InfoBox variant="info" title="Baca status property">
+  Label active, loaded-only, reserved, atau advanced menjelaskan apakah key benar-benar
+  memengaruhi runtime. Keberadaan key pada template saja bukan bukti behavior aktif.
+</InfoBox>
+
+<RelatedCommands
+  commands={[
+    {
+      title: "All Configuration Properties",
+      href: "../configuration/reference",
+      description: "Cari full TOML path, generated default, dan status.",
+    },
+    {
+      title: "Editor Configuration",
+      href: "../configuration/editor",
+      description: "Atur prioritas editor lokal dan container.",
+    },
+    {
+      title: "Commit Validation",
+      href: "../configuration/commit-validation",
+      description:
+        "Pilih built-in, automatic, Commitizen, atau basic Git message validation.",
+    },
+    {
+      title: "Configuration File",
+      href: "../configuration/config-file",
+      description: "Pahami ownership dan replacement safety.",
+    },
+    {
+      title: "Configuration Resolution",
+      href: "../configuration/resolution",
+      description: "Pelajari precedence dan known exceptions.",
+    },
+    {
+      title: "Configuration Architecture",
+      href: "../architecture/configuration-system",
+      description: "Telusuri loader, cache, typed model, dan consumer.",
+    },
+  ]}
+/>

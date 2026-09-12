@@ -1,1 +1,6 @@
-{"label":"Path Header Scanner","position":1,"collapsed":false,"link":{"type":"doc","id":"path-header-scanner/index"}}
+{
+  "label": "Path Header Scanner",
+  "position": 1,
+  "collapsed": false,
+  "link": { "type": "doc", "id": "path-header-scanner/index" }
+}

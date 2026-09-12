@@ -8,42 +8,42 @@ keywords: [Custy troubleshooting, Custy failed, Custy recovery]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy --debug COMMAND"
-    title="Troubleshooting"
-    description="Find the first failing boundary, preserve evidence, correct the cause, and recover without duplicating successful effects."
-    category="Troubleshooting"
-    status="Central Support Guide"
-    syntax="observe -> inspect -> isolate -> correct -> verify"
-    tags={["diagnosis", "partial state", "safe recovery"]}
-    links={[
-        {label: "Git", href: "./git"},
-        {label: "Configuration", href: "./configuration"},
-        {label: "Versioning", href: "./versioning"},
-        {label: "Changelog", href: "./changelog"},
-        {label: "Workflows", href: "./workflows"},
-    ]}
+  command="custy --debug COMMAND"
+  title="Troubleshooting"
+  description="Find the first failing boundary, preserve evidence, correct the cause, and recover without duplicating successful effects."
+  category="Troubleshooting"
+  status="Central Support Guide"
+  syntax="observe -> inspect -> isolate -> correct -> verify"
+  tags={["diagnosis", "partial state", "safe recovery"]}
+  links={[
+    { label: "Git", href: "./git" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Versioning", href: "./versioning" },
+    { label: "Changelog", href: "./changelog" },
+    { label: "Workflows", href: "./workflows" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "First Evidence", value: "First error or failed step", icon: "warning"},
-        {label: "Automatic Rollback", value: "No", icon: "security"},
-        {label: "Primary State", value: "Files and Git", icon: "git"},
-        {label: "Detailed Log", value: "logs/custy.log", icon: "file"},
-    ]}
+  items={[
+    { label: "First Evidence", value: "First error or failed step", icon: "warning" },
+    { label: "Automatic Rollback", value: "No", icon: "security" },
+    { label: "Primary State", value: "Files and Git", icon: "git" },
+    { label: "Detailed Log", value: "logs/custy.log", icon: "file" },
+  ]}
 />
 
 ## How These Guides Are Organized
@@ -81,14 +81,39 @@ pushed to some remotes before a later stage failed.
 <Section title="Diagnosis Method">
 
 <WorkflowTimeline
-    title="Safe Troubleshooting Sequence"
-    items={[
-        {title: "Capture the first failure", description: "Save the failed step, exact message, hint, diagnostic label, path, and destination.", status: "completed"},
-        {title: "Inspect current state", description: "Review the working tree, index, latest commit, tags, branches, backups, changelog, and every remote.", status: "completed"},
-        {title: "Choose the failure family", description: "Separate environment, configuration, Git, version, changelog, or orchestration behavior.", status: "current"},
-        {title: "Correct the smallest cause", description: "Fix the first invalid input or state without rewriting unrelated or published work.", status: "pending"},
-        {title: "Preview and verify", description: "Use the narrowest applicable dry-run or direct command, then inspect state again.", status: "pending"},
-    ]}
+  title="Safe Troubleshooting Sequence"
+  items={[
+    {
+      title: "Capture the first failure",
+      description:
+        "Save the failed step, exact message, hint, diagnostic label, path, and destination.",
+      status: "completed",
+    },
+    {
+      title: "Inspect current state",
+      description:
+        "Review the working tree, index, latest commit, tags, branches, backups, changelog, and every remote.",
+      status: "completed",
+    },
+    {
+      title: "Choose the failure family",
+      description:
+        "Separate environment, configuration, Git, version, changelog, or orchestration behavior.",
+      status: "current",
+    },
+    {
+      title: "Correct the smallest cause",
+      description:
+        "Fix the first invalid input or state without rewriting unrelated or published work.",
+      status: "pending",
+    },
+    {
+      title: "Preview and verify",
+      description:
+        "Use the narrowest applicable dry-run or direct command, then inspect state again.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -98,14 +123,68 @@ pushed to some remotes before a later stage failed.
 <Section title="Choose by Symptom">
 
 <FeatureGrid
-    items={[
-        {title: "Repository, Remotes, or Branches", icon: <Icon name="git" />, children: <>Use <a href="./git">Git Troubleshooting</a> for repository detection, staging, commits, tags, authentication, pushes, and cleanup.</>},
-        {title: "TOML, Paths, or Templates", icon: <Icon name="configuration" />, children: <>Use <a href="./configuration">Configuration Troubleshooting</a> for working-directory, precedence, cache, initialization, and file resolution.</>},
-        {title: "Versions or Tags", icon: <Icon name="release" />, children: <>Use <a href="./versioning">Versioning Troubleshooting</a> for strategy, format, file synchronization, Commitizen, and explicit tags.</>},
-        {title: "CHANGELOG.md", icon: <Icon name="file" />, children: <>Use <a href="./changelog">Changelog Troubleshooting</a> for missing or duplicate entries, grouping, range, links, templates, and output.</>},
-        {title: "Run Profiles or Partial Pipelines", icon: <Icon name="pipeline" />, children: <>Use <a href="./workflows">Workflow Troubleshooting</a> for profile names, merged ordering, failed steps, ignored adapters, and experimental behavior.</>},
-        {title: "Installation, Terminal, or Exit Status", icon: <Icon name="terminal" />, children: <>Use the <a href="../reference/environment">Environment</a> and <a href="../reference/exit-errors">Errors and Exit Status</a> references.</>},
-    ]}
+  items={[
+    {
+      title: "Repository, Remotes, or Branches",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Use <a href="./git">Git Troubleshooting</a> for repository detection, staging,
+          commits, tags, authentication, pushes, and cleanup.
+        </>
+      ),
+    },
+    {
+      title: "TOML, Paths, or Templates",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Use <a href="./configuration">Configuration Troubleshooting</a> for
+          working-directory, precedence, cache, initialization, and file resolution.
+        </>
+      ),
+    },
+    {
+      title: "Versions or Tags",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Use <a href="./versioning">Versioning Troubleshooting</a> for strategy,
+          format, file synchronization, Commitizen, and explicit tags.
+        </>
+      ),
+    },
+    {
+      title: "CHANGELOG.md",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Use <a href="./changelog">Changelog Troubleshooting</a> for missing or
+          duplicate entries, grouping, range, links, templates, and output.
+        </>
+      ),
+    },
+    {
+      title: "Run Profiles or Partial Pipelines",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Use <a href="./workflows">Workflow Troubleshooting</a> for profile names,
+          merged ordering, failed steps, ignored adapters, and experimental behavior.
+        </>
+      ),
+    },
+    {
+      title: "Installation, Terminal, or Exit Status",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Use the <a href="../reference/environment">Environment</a> and{" "}
+          <a href="../reference/exit-errors">Errors and Exit Status</a> references.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -127,14 +206,38 @@ git remote -v`}
 </Terminal>
 
 <CommandChecklist
-    items={[
-        {title: "Read output from the beginning", description: "Begin with the first error, not the final summary or traceback consequence."},
-        {title: "Open the detailed log", description: "Use logs/custy.log and increase the root log level when more context is needed."},
-        {title: "Inspect generated files", description: "Check the version file, editable messages, CHANGELOG.md, and unexpected diffs."},
-        {title: "Inspect durable Git effects", description: "Determine whether staging, commit, tag, branch deletion, or any remote push succeeded."},
-        {title: "Protect unrelated work", description: "Do not discard, overwrite, reset, or clean files merely to make Custy retry."},
-        {title: "Redact shared diagnostics", description: "Remove credentials, tokens, private URLs, and sensitive commit content before sharing output."},
-    ]}
+  items={[
+    {
+      title: "Read output from the beginning",
+      description:
+        "Begin with the first error, not the final summary or traceback consequence.",
+    },
+    {
+      title: "Open the detailed log",
+      description:
+        "Use logs/custy.log and increase the root log level when more context is needed.",
+    },
+    {
+      title: "Inspect generated files",
+      description:
+        "Check the version file, editable messages, CHANGELOG.md, and unexpected diffs.",
+    },
+    {
+      title: "Inspect durable Git effects",
+      description:
+        "Determine whether staging, commit, tag, branch deletion, or any remote push succeeded.",
+    },
+    {
+      title: "Protect unrelated work",
+      description:
+        "Do not discard, overwrite, reset, or clean files merely to make Custy retry.",
+    },
+    {
+      title: "Redact shared diagnostics",
+      description:
+        "Remove credentials, tokens, private URLs, and sensitive commit content before sharing output.",
+    },
+  ]}
 />
 
 </Section>
@@ -175,12 +278,29 @@ Preserve current state and logs while the decision is reviewed.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Troubleshooting Workflows", href: "../user-guide/troubleshooting-workflows", description: "Follow the task-oriented partial-pipeline recovery journey."},
-        {title: "Errors and Exit Status", href: "../reference/exit-errors", description: "Interpret process status, validation labels, and exception families."},
-        {title: "Safety and Side Effects", href: "../concepts/safety-and-side-effects", description: "Review effects, dry-run boundaries, and recovery responsibility."},
-        {title: "Command Reference", href: "../commands/overview", description: "Open command-specific troubleshooting from the selected operation."},
-    ]}
+  commands={[
+    {
+      title: "Troubleshooting Workflows",
+      href: "../user-guide/troubleshooting-workflows",
+      description: "Follow the task-oriented partial-pipeline recovery journey.",
+    },
+    {
+      title: "Errors and Exit Status",
+      href: "../reference/exit-errors",
+      description:
+        "Interpret process status, validation labels, and exception families.",
+    },
+    {
+      title: "Safety and Side Effects",
+      href: "../concepts/safety-and-side-effects",
+      description: "Review effects, dry-run boundaries, and recovery responsibility.",
+    },
+    {
+      title: "Command Reference",
+      href: "../commands/overview",
+      description: "Open command-specific troubleshooting from the selected operation.",
+    },
+  ]}
 />
 
 </Section>

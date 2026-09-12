@@ -31,18 +31,14 @@ export default function About(): React.JSX.Element {
           <h2>Project Maintainer</h2>
 
           <p className={styles.description}>
-            Devalltect Docs is the centralized documentation
-            portal for projects, tools, platforms, and
-            technical resources maintained by Rizky
-            P Fernandes.
+            Devalltect Docs is the centralized documentation portal for projects, tools,
+            platforms, and technical resources maintained by Rizky P Fernandes.
           </p>
 
           <p className={styles.description}>
-            The goal of this documentation portal is to
-            provide a consistent, organized, and scalable
-            documentation experience across projects while
-            making technical knowledge easier to discover,
-            maintain, and share.
+            The goal of this documentation portal is to provide a consistent, organized,
+            and scalable documentation experience across projects while making technical
+            knowledge easier to discover, maintain, and share.
           </p>
 
           <div className={styles.links}>

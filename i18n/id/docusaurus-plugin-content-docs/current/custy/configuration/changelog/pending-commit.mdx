@@ -7,14 +7,70 @@ tags: [custy, changelog, pending commit]
 keywords: [pending_commit enabled, generation, placement]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.pending_commit]" title="Pending Commit" description="Sertakan project-owned pending message content dan pahami batas generation serta placement settings saat ini." category="Changelog Configuration" status="Active + Loaded Only" syntax="[tool.custy.changelog.pending_commit]" tags={["commit-message.txt", "provider", "loaded-only settings"]} links={[{label: "Template Files", href: "../cli/templates/files"}, {label: "Core", href: "./core"}, {label: "Troubleshooting", href: "../../troubleshooting/changelog"}]} />
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enabled", value: "Active", icon: "success"}, {label: "Generation", value: "Loaded only", icon: "workflow"}, {label: "Placement", value: "Loaded only", icon: "file"}]} />
+<CommandHero
+  command="[tool.custy.changelog.pending_commit]"
+  title="Pending Commit"
+  description="Sertakan project-owned pending message content dan pahami batas generation serta placement settings saat ini."
+  category="Changelog Configuration"
+  status="Active + Loaded Only"
+  syntax="[tool.custy.changelog.pending_commit]"
+  tags={["commit-message.txt", "provider", "loaded-only settings"]}
+  links={[
+    { label: "Template Files", href: "../cli/templates/files" },
+    { label: "Core", href: "./core" },
+    { label: "Troubleshooting", href: "../../troubleshooting/changelog" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Enabled", value: "Active", icon: "success" },
+    { label: "Generation", value: "Loaded only", icon: "workflow" },
+    { label: "Placement", value: "Loaded only", icon: "file" },
+  ]}
+/>
 
 ## Properties
-<PropertyTable items={[{property: "enabled", type: "Boolean", defaultValue: "true", description: "Active. Sertakan configured commit-message file melalui PendingCommitProvider untuk newest unreleased range."}, {property: "generation", type: "append | regenerate", defaultValue: "regenerate", description: "Loaded only. Active generator tidak memanggil integrator yang menerapkan mode ini."}, {property: "placement", type: "before | after", defaultValue: "before", description: "Loaded only. Active generator saat ini tidak memindahkan pending content."}]} />
-<Terminal title="Generated pending behavior" language="toml">{`[tool.custy.changelog.pending_commit]
+
+<PropertyTable
+  items={[
+    {
+      property: "enabled",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Active. Sertakan configured commit-message file melalui PendingCommitProvider untuk newest unreleased range.",
+    },
+    {
+      property: "generation",
+      type: "append | regenerate",
+      defaultValue: "regenerate",
+      description:
+        "Loaded only. Active generator tidak memanggil integrator yang menerapkan mode ini.",
+    },
+    {
+      property: "placement",
+      type: "before | after",
+      defaultValue: "before",
+      description:
+        "Loaded only. Active generator saat ini tidak memindahkan pending content.",
+    },
+  ]}
+/>
+<Terminal
+  title="Generated pending behavior"
+  language="toml"
+>{`[tool.custy.changelog.pending_commit]
 enabled = true
 generation = "regenerate"
 placement = "before"`}</Terminal>
@@ -25,10 +81,10 @@ placement = "before"`}</Terminal>
 Gunakan `enabled` untuk memilih apakah file commit message yang dikonfigurasi
 menambahkan konten ke changelog:
 
-| Pengaturan | Sumber pesan changelog |
-| --- | --- |
-| `enabled = true` | Riwayat commit Git ditambah pesan pending commit, jika tersedia, pada rentang unreleased terbaru. |
-| `enabled = false` | Hanya riwayat commit Git; pesan pending commit tidak disertakan sebagai sumber tambahan. |
+| Pengaturan        | Sumber pesan changelog                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------- |
+| `enabled = true`  | Riwayat commit Git ditambah pesan pending commit, jika tersedia, pada rentang unreleased terbaru. |
+| `enabled = false` | Hanya riwayat commit Git; pesan pending commit tidak disertakan sebagai sumber tambahan.          |
 
 Edit bagian yang sudah ada di `.config/custy/config.toml` milik proyek Anda;
 jangan menambahkan bagian kedua dengan nama yang sama:
@@ -71,6 +127,33 @@ Untuk jawaban singkat, lihat [FAQ pembuatan changelog](../../commands/changelog/
 
 </Section>
 
-<InfoBox variant="tip" title="Message Path Dikonfigurasikan di Tempat Lain">Pending content membaca `tool.custy.cli.templates.file.commit_message`. Selaraskan file path dan pending behavior.</InfoBox>
-<InfoBox variant="warning" title="Generation dan Placement Belum Mengubah Output">Active generator dapat menyertakan pending content, tetapi tidak memanggil `PendingCommitIntegrator`. Perlakukan `generation` dan `placement` sebagai loaded-only settings sampai integration path tersebut active.</InfoBox>
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Template Files", href: "../cli/templates/files", description: "Konfigurasikan commit_message."}, {title: "Cleaning", href: "./cleaning", description: "Hapus template-only content sebelum rendering."}, {title: "Commit Command", href: "../../commands/commit/overview", description: "Kelola Git operation untuk message."}]} /></Section>
+<InfoBox variant="tip" title="Message Path Dikonfigurasikan di Tempat Lain">
+  Pending content membaca `tool.custy.cli.templates.file.commit_message`. Selaraskan
+  file path dan pending behavior.
+</InfoBox>
+<InfoBox variant="warning" title="Generation dan Placement Belum Mengubah Output">
+  Active generator dapat menyertakan pending content, tetapi tidak memanggil
+  `PendingCommitIntegrator`. Perlakukan `generation` dan `placement` sebagai loaded-only
+  settings sampai integration path tersebut active.
+</InfoBox>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Template Files",
+        href: "../cli/templates/files",
+        description: "Konfigurasikan commit_message.",
+      },
+      {
+        title: "Cleaning",
+        href: "./cleaning",
+        description: "Hapus template-only content sebelum rendering.",
+      },
+      {
+        title: "Commit Command",
+        href: "../../commands/commit/overview",
+        description: "Kelola Git operation untuk message.",
+      },
+    ]}
+  />
+</Section>

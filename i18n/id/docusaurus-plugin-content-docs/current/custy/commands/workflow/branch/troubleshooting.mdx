@@ -4,20 +4,53 @@ description: "Atasi interface dan known implementation issues dalam workflow bra
 sidebar_position: 8
 sidebar_key: custy-workflow-branch-troubleshooting
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Workflow Branch Troubleshooting" description="Bedakan syntax issues dari known source blocker." category="Workflow" status="Known Issues" syntax="custy workflow branch [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../../troubleshooting/overview"},{label:"Requirements",href:"./requirements"},{label:"Workflow",href:"./workflow"},{label:"FAQ",href:"./faq"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Workflow Branch Troubleshooting"
+  description="Bedakan syntax issues dari known source blocker."
+  category="Workflow"
+  status="Known Issues"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Pusat Pemecahan Masalah", href: "../../../troubleshooting/overview" },
+    { label: "Requirements", href: "./requirements" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "FAQ", href: "./faq" },
+  ]}
+/>
 
 ## Ringkasan
-<InfoBox variant="danger" title="Do Not Work Around the Source Mismatch in Configuration">Perbaikan harus dilakukan pada source registration/resolution dan diverifikasi dengan tests.</InfoBox>
+
+<InfoBox
+  variant="danger"
+  title="Do Not Work Around the Source Mismatch in Configuration"
+>
+  Perbaikan harus dilakukan pada source registration/resolution dan diverifikasi dengan
+  tests.
+</InfoBox>
 
 ## Unknown finalize Step Dilaporkan
-<Section compact>Ini known implementation blocker. Hentikan operational use sampai source diperbaiki.</Section>
+
+<Section compact>
+  Ini known implementation blocker. Hentikan operational use sampai source diperbaiki.
+</Section>
 ## --check-transition Ditolak
-<Section compact>Gunakan current spelling `--check_transition` dengan underscore.</Section>
+<Section compact>
+  Gunakan current spelling `--check_transition` dengan underscore.
+</Section>
 ## Tag Override Ditolak
-<Section compact>Periksa exact `--from-tag`/`--to-tag` syntax, tetapi ingat pipeline tetap blocked.</Section>
+<Section compact>
+  Periksa exact `--from-tag`/`--to-tag` syntax, tetapi ingat pipeline tetap blocked.
+</Section>
 ## Enforcement Behavior Tidak Jelas
-<Section compact>Jangan mengandalkan `--enforce` sampai implementation fix dan behavior tests tersedia.</Section>
+<Section compact>
+  Jangan mengandalkan `--enforce` sampai implementation fix dan behavior tests tersedia.
+</Section>
 ## Backup Synchronization Dilewati
-<Section compact>Jangan mendiagnosis backup stage sebelum pipeline construction berhasil; execution mungkin belum mencapainya.</Section>
+<Section compact>
+  Jangan mendiagnosis backup stage sebelum pipeline construction berhasil; execution
+  mungkin belum mencapainya.
+</Section>

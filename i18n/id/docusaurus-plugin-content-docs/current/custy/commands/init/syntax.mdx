@@ -15,39 +15,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandSyntax,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Command Syntax"
-    description="Pahami pola pemanggilan yang didukung untuk menjalankan init pada proyek dengan Custy."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "syntax",
-        "cli",
-        "command",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy init"
+  title="Command Syntax"
+  description="Pahami pola pemanggilan yang didukung untuk menjalankan init pada proyek dengan Custy."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["syntax", "cli", "command"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -74,21 +70,19 @@ Profile init internal tidak diekspos oleh argumen public `custy run` saat ini.
 >
 
 <CommandSyntax
-    examples={[
-        {
-            title: "Init Proyek",
-            command: "custy init",
-            description:
-                "Jalankan init pada proyek saat ini menggunakan configuration default.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Init Proyek",
+      command: "custy init",
+      description:
+        "Jalankan init pada proyek saat ini menggunakan configuration default.",
+    },
+  ]}
 />
 
 <Terminal>
 
-{`
-custy init
-`}
+{`custy init`}
 
 </Terminal>
 
@@ -108,13 +102,11 @@ Custy, jalankan command terhadap proyek yang di-mount.
 
 <Terminal>
 
-{`
-docker run -it --rm \
+{`docker run -it --rm \
     -v "<project>:/workspace" \
     -w /workspace \
     custy-prod:latest \
-    init
-`}
+    init`}
 
 </Terminal>
 

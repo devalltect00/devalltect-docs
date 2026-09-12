@@ -6,9 +6,22 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, requirements]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Persyaratan" description="Sebelum menjalankannya" category="Pemulihan Release" status="Pemulihan Workflow GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Persyaratan"
+  description="Sebelum menjalankannya"
+  category="Pemulihan Release"
+  status="Pemulihan Workflow GitHub"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ## Sebelum menjalankannya
 
@@ -16,5 +29,6 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 - Remote push-capable.
 - Workflow berbasis tag yang aman dipicu ulang.
 
-<InfoBox variant="tip" title="Dry run">Dry-run menjalankan discovery dan validation tanpa mutasi persisten.</InfoBox>
-
+<InfoBox variant="tip" title="Dry run">
+  Dry-run menjalankan discovery dan validation tanpa mutasi persisten.
+</InfoBox>

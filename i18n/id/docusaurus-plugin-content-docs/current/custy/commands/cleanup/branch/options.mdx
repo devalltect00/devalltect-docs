@@ -4,21 +4,68 @@ description: "Options yang tersedia untuk Branch Cleanup."
 sidebar_position: 4
 sidebar_key: custy-cleanup-branch
 ---
-import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup branches" title="Options" description="Sesuaikan filter Branch Cleanup untuk satu kali eksekusi." category="Maintenance" status="Reference" syntax="custy cleanup branches" links={[
-    {label: "Syntax", href: "./syntax"}, {label: "Configuration", href: "./configuration"}, {label: "Workflow", href: "./workflow"},
-]} />
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup branches"
+  title="Options"
+  description="Sesuaikan filter Branch Cleanup untuk satu kali eksekusi."
+  category="Maintenance"
+  status="Reference"
+  syntax="custy cleanup branches"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOption options={[
-    {name: "--include-prefix", shorthand: "-i", required: false, description: "Batasi kandidat ke branch dengan prefix tertentu.", example: "--include-prefix release/"},
-    {name: "--merge-status", shorthand: "-m", required: false, description: "Pilih branch berdasarkan merge status.", defaultValue: "merged", example: "--merge-status all"},
-    {name: "--max-age", required: false, description: "Pilih branch yang lebih lama dari durasi relatif.", example: "--max-age 30d"},
-    {name: "--before", required: false, description: "Pilih branch sebelum tanggal tertentu.", example: "--before 2026-07-01"},
-]} />
+<CommandOption
+  options={[
+    {
+      name: "--include-prefix",
+      shorthand: "-i",
+      required: false,
+      description: "Batasi kandidat ke branch dengan prefix tertentu.",
+      example: "--include-prefix release/",
+    },
+    {
+      name: "--merge-status",
+      shorthand: "-m",
+      required: false,
+      description: "Pilih branch berdasarkan merge status.",
+      defaultValue: "merged",
+      example: "--merge-status all",
+    },
+    {
+      name: "--max-age",
+      required: false,
+      description: "Pilih branch yang lebih lama dari durasi relatif.",
+      example: "--max-age 30d",
+    },
+    {
+      name: "--before",
+      required: false,
+      description: "Pilih branch sebelum tanggal tertentu.",
+      example: "--before 2026-07-01",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Configuration Takes Priority">Nilai yang telah ditetapkan dalam configuration dapat mengendalikan hasil akhir. Periksa halaman Configuration sebelum mengandalkan override sementara.</InfoBox>
+<InfoBox variant="warning" title="Configuration Takes Priority">
+  Nilai yang telah ditetapkan dalam configuration dapat mengendalikan hasil akhir.
+  Periksa halaman Configuration sebelum mengandalkan override sementara.
+</InfoBox>
 
-<Section title="Global Options">Contoh: `custy --dry-run cleanup branches`. Gunakan global option sebelum `cleanup branches`.</Section>
+<Section title="Global Options">
+  Contoh: `custy --dry-run cleanup branches`. Gunakan global option sebelum `cleanup
+  branches`.
+</Section>

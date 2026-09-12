@@ -6,27 +6,51 @@ sidebar_key: custy-cleanup-backup
 tags: [cleanup, backup, faq]
 keywords: [custy cleanup backups faq]
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup backups" title="Pertanyaan yang Sering Diajukan" description="Jawaban atas pertanyaan umum tentang Backup Cleanup." category="Maintenance" status="Direkomendasikan" syntax="custy cleanup backups" tags={["faq", "cleanup", "backup"]} links={[
-    {label: "Ringkasan", href: "./overview"},
-    {label: "Pemecahan Masalah", href: "./troubleshooting"},
-    {label: "Workflow", href: "./workflow"},
-]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup backups"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban atas pertanyaan umum tentang Backup Cleanup."
+  category="Maintenance"
+  status="Direkomendasikan"
+  syntax="custy cleanup backups"
+  tags={["faq", "cleanup", "backup"]}
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Pemecahan Masalah", href: "./troubleshooting" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
 Backup Cleanup merupakan tugas pemeliharaan rutin dan dapat berjalan otomatis dalam workflow Custy yang lebih besar.
 
-<Section title="Apa yang dihapus oleh Backup Cleanup?">Backup pesan commit, backup pesan tag, atau keduanya—sesuai target yang dipilih. File source proyek tidak pernah dihapus.</Section>
+<Section title="Apa yang dihapus oleh Backup Cleanup?">
+  Backup pesan commit, backup pesan tag, atau keduanya—sesuai target yang dipilih. File
+  source proyek tidak pernah dihapus.
+</Section>
 
-<Section title="Apakah Backup Cleanup mengubah Git repository?">Tidak. Command ini tidak mengubah branch, membuat commit, menghapus tag, melakukan push, atau mengubah Git history.</Section>
+<Section title="Apakah Backup Cleanup mengubah Git repository?">
+  Tidak. Command ini tidak mengubah branch, membuat commit, menghapus tag, melakukan
+  push, atau mengubah Git history.
+</Section>
 
-<Section title="Dapatkah Backup Cleanup dijalankan secara manual?">Ya. Jalankan `custy cleanup backups` kapan pun diperlukan.</Section>
+<Section title="Dapatkah Backup Cleanup dijalankan secara manual?">
+  Ya. Jalankan `custy cleanup backups` kapan pun diperlukan.
+</Section>
 
-<Section title="Mengapa tidak ada file yang dihapus?">Mungkin tidak ada backup, seluruh file masih dalam batas retensi, atau tidak ada file yang cocok dengan cleanup type. Ini tetap merupakan hasil sukses.</Section>
+<Section title="Mengapa tidak ada file yang dihapus?">
+  Mungkin tidak ada backup, seluruh file masih dalam batas retensi, atau tidak ada file
+  yang cocok dengan cleanup type. Ini tetap merupakan hasil sukses.
+</Section>
 
-<Section title="Berapa banyak backup yang dipertahankan?">Jumlahnya mengikuti konfigurasi retensi. Option command line dapat mengganti nilai tersebut untuk satu eksekusi.</Section>
+<Section title="Berapa banyak backup yang dipertahankan?">
+  Jumlahnya mengikuti konfigurasi retensi. Option command line dapat mengganti nilai
+  tersebut untuk satu eksekusi.
+</Section>
 
 <Section title="Dapatkah cleanup dipratinjau?">
 
@@ -38,8 +62,16 @@ custy --dry-run cleanup backups
 
 </Section>
 
-<Section title="Apakah backup terbaru ikut dihapus?">Tidak. Custy mempertahankan jumlah backup terbaru yang dikonfigurasi.</Section>
+<Section title="Apakah backup terbaru ikut dihapus?">
+  Tidak. Custy mempertahankan jumlah backup terbaru yang dikonfigurasi.
+</Section>
 
-<Section title="Dapatkah Backup Cleanup digunakan dalam pipeline?">Cleanup ini digunakan secara internal oleh beberapa profile, tetapi nama profile internalnya bukan nilai publik untuk `custy run`. Gunakan `custy cleanup backups` untuk operasi terfokus.</Section>
+<Section title="Dapatkah Backup Cleanup digunakan dalam pipeline?">
+  Cleanup ini digunakan secara internal oleh beberapa profile, tetapi nama profile
+  internalnya bukan nilai publik untuk `custy run`. Gunakan `custy cleanup backups`
+  untuk operasi terfokus.
+</Section>
 
-<InfoBox variant="note" title="Langkah Berikutnya">Untuk membersihkan Git branch, lanjutkan ke dokumentasi **Branch Cleanup**.</InfoBox>
+<InfoBox variant="note" title="Langkah Berikutnya">
+  Untuk membersihkan Git branch, lanjutkan ke dokumentasi **Branch Cleanup**.
+</InfoBox>

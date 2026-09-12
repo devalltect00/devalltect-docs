@@ -8,29 +8,25 @@ keywords: [custy run commit tag push]
 ---
 
 import {
-    CommandExample,
-    CommandHero,
-    InfoBox,
-    Section,
+  CommandExample,
+  CommandHero,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run"
-    title="Custom Profile Sequences"
-    description="Merge supported public profiles into one deduplicated and globally ordered pipeline."
-    category="Pipeline"
-    status="Advanced"
-    syntax="custy run PROFILE PROFILE [OPTIONS]"
-    tags={[
-        "composition",
-        "deduplication",
-        "pipeline order",
-    ]}
-    links={[
-        {label: "Profiles", href: "./profiles"},
-        {label: "Syntax", href: "./syntax"},
-        {label: "Safety", href: "./safety"},
-    ]}
+  command="custy run"
+  title="Custom Profile Sequences"
+  description="Merge supported public profiles into one deduplicated and globally ordered pipeline."
+  category="Pipeline"
+  status="Advanced"
+  syntax="custy run PROFILE PROFILE [OPTIONS]"
+  tags={["composition", "deduplication", "pipeline order"]}
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Safety", href: "./safety" },
+  ]}
 />
 
 ## Overview
@@ -46,11 +42,25 @@ the global pipeline order.
 >
 
 <CommandExample
-    examples={[
-        {title: "Commit and push", command: "custy run commit push", description: "Merge preparation, commit, and push stages into one ordered pipeline."},
-        {title: "Commit, tag, and push", command: "custy run commit tag push", description: "Build a release-like sequence from three public profiles."},
-        {title: "Preview tag and push", command: "custy --dry-run run tag push", description: "Inspect the normalized stages before creating or publishing references."},
-    ]}
+  examples={[
+    {
+      title: "Commit and push",
+      command: "custy run commit push",
+      description:
+        "Merge preparation, commit, and push stages into one ordered pipeline.",
+    },
+    {
+      title: "Commit, tag, and push",
+      command: "custy run commit tag push",
+      description: "Build a release-like sequence from three public profiles.",
+    },
+    {
+      title: "Preview tag and push",
+      command: "custy --dry-run run tag push",
+      description:
+        "Inspect the normalized stages before creating or publishing references.",
+    },
+  ]}
 />
 
 </Section>

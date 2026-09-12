@@ -7,23 +7,82 @@ tags: [custy, configuration, logging, rich]
 keywords: [logging level, markup, rich_tracebacks, show_time]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.logging]" title="Console Logging" description="Atur records yang sampai ke terminal dan cara Rich menampilkannya." category="Logging Configuration" status="Active" syntax="[tool.custy.logging]" tags={["log level", "Rich markup", "tracebacks"]} links={[{label: "File Logging", href: "./file"}, {label: "Execution", href: "../cli/execution"}, {label: "Run Troubleshooting", href: "../../commands/run/troubleshooting"}]} />
+<CommandHero
+  command="[tool.custy.logging]"
+  title="Console Logging"
+  description="Atur records yang sampai ke terminal dan cara Rich menampilkannya."
+  category="Logging Configuration"
+  status="Active"
+  syntax="[tool.custy.logging]"
+  tags={["log level", "Rich markup", "tracebacks"]}
+  links={[
+    { label: "File Logging", href: "./file" },
+    { label: "Execution", href: "../cli/execution" },
+    { label: "Run Troubleshooting", href: "../../commands/run/troubleshooting" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "6", icon: "table"}, {label: "Default Level", value: "INFO", icon: "info"}, {label: "Rich Markup", value: "Enabled", icon: "success"}, {label: "Timestamps", value: "Hidden", icon: "terminal"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "6", icon: "table" },
+    { label: "Default Level", value: "INFO", icon: "info" },
+    { label: "Rich Markup", value: "Enabled", icon: "success" },
+    { label: "Timestamps", value: "Hidden", icon: "terminal" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "level", type: "DEBUG | INFO | WARNING | ERROR | CRITICAL", defaultValue: "INFO", description: "Console threshold yang digunakan jika tidak ada explicit global log level atau debug mode yang menggantikannya."},
-        {property: "markup", type: "Boolean", defaultValue: "true", description: "Izinkan Rich markup tags dalam console messages."},
-        {property: "rich_tracebacks", type: "Boolean", defaultValue: "true", description: "Tampilkan enhanced exception tracebacks menggunakan Rich."},
-        {property: "show_time", type: "Boolean", defaultValue: "false", description: "Tampilkan timestamp column dalam console records."},
-        {property: "show_level", type: "Boolean", defaultValue: "false", description: "Tampilkan log-level column. Runtime debug mode mengaktifkannya."},
-        {property: "console_format", type: "Logging format", defaultValue: "%(message)s", description: "Python logging format yang diterapkan sebelum Rich presentation."},
-    ]}
+  items={[
+    {
+      property: "level",
+      type: "DEBUG | INFO | WARNING | ERROR | CRITICAL",
+      defaultValue: "INFO",
+      description:
+        "Console threshold yang digunakan jika tidak ada explicit global log level atau debug mode yang menggantikannya.",
+    },
+    {
+      property: "markup",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Izinkan Rich markup tags dalam console messages.",
+    },
+    {
+      property: "rich_tracebacks",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Tampilkan enhanced exception tracebacks menggunakan Rich.",
+    },
+    {
+      property: "show_time",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Tampilkan timestamp column dalam console records.",
+    },
+    {
+      property: "show_level",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Tampilkan log-level column. Runtime debug mode mengaktifkannya.",
+    },
+    {
+      property: "console_format",
+      type: "Logging format",
+      defaultValue: "%(message)s",
+      description: "Python logging format yang diterapkan sebelum Rich presentation.",
+    },
+  ]}
 />
 
 <Terminal title="Generated console logging" language="toml">
@@ -46,4 +105,24 @@ process tersebut.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "File Logging", href: "./file", description: "Simpan detailed diagnostics secara persistent."}, {title: "Execution", href: "../cli/execution", description: "Tinjau no_debug behavior."}, {title: "Run Troubleshooting", href: "../../commands/run/troubleshooting", description: "Gunakan logs untuk diagnosis pipeline failures."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "File Logging",
+        href: "./file",
+        description: "Simpan detailed diagnostics secara persistent.",
+      },
+      {
+        title: "Execution",
+        href: "../cli/execution",
+        description: "Tinjau no_debug behavior.",
+      },
+      {
+        title: "Run Troubleshooting",
+        href: "../../commands/run/troubleshooting",
+        description: "Gunakan logs untuk diagnosis pipeline failures.",
+      },
+    ]}
+  />
+</Section>

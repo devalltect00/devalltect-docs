@@ -7,20 +7,72 @@ tags: [custy, changelog, links]
 keywords: [repository, enable_compare, compare link]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.links]" title="Repository dan Compare Links" description="Buat version comparison URLs di bawah release headings." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.links]" tags={["repository URL", "compare", "releases"]} links={[{label: "Releases", href: "./releases"}, {label: "Rendering", href: "./rendering"}, {label: "Git Remotes", href: "../git/remotes"}]} />
-<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Default yang Dibuat", value: "Nonaktif", icon: "security"}, {label: "Host", value: "Dapat dikonfigurasi", icon: "network"}, {label: "Penanganan Masalah", value: "Peringatkan dan lewati", icon: "warning"}]} />
+<CommandHero
+  command="[tool.custy.changelog.links]"
+  title="Repository dan Compare Links"
+  description="Buat version comparison URLs di bawah release headings."
+  category="Changelog Configuration"
+  status="Active"
+  syntax="[tool.custy.changelog.links]"
+  tags={["repository URL", "compare", "releases"]}
+  links={[
+    { label: "Releases", href: "./releases" },
+    { label: "Rendering", href: "./rendering" },
+    { label: "Git Remotes", href: "../git/remotes" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Default yang Dibuat", value: "Nonaktif", icon: "security" },
+    { label: "Host", value: "Dapat dikonfigurasi", icon: "network" },
+    { label: "Penanganan Masalah", value: "Peringatkan dan lewati", icon: "warning" },
+  ]}
+/>
 
 ## Properties
-<PropertyTable items={[{property: "repository", type: "HTTP(S) URL string", defaultValue: "Kosong", description: "URL browser repository proyek yang hanya digunakan untuk membuat changelog comparison links. Nilai ini bukan nama Git remote atau tujuan push."}, {property: "enable_compare", type: "Boolean", defaultValue: "false", description: "Membuat comparison URLs ketika repository berisi URL browser yang valid dan bukan placeholder."}]} />
-<Terminal title="Default aman yang dibuat" language="toml">{`[tool.custy.changelog.links]
+
+<PropertyTable
+  items={[
+    {
+      property: "repository",
+      type: "HTTP(S) URL string",
+      defaultValue: "Kosong",
+      description:
+        "URL browser repository proyek yang hanya digunakan untuk membuat changelog comparison links. Nilai ini bukan nama Git remote atau tujuan push.",
+    },
+    {
+      property: "enable_compare",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Membuat comparison URLs ketika repository berisi URL browser yang valid dan bukan placeholder.",
+    },
+  ]}
+/>
+<Terminal
+  title="Default aman yang dibuat"
+  language="toml"
+>{`[tool.custy.changelog.links]
 repository = ""
 enable_compare = false`}</Terminal>
 
 Untuk mengaktifkan links, ganti nilai kosong dengan URL repository proyek yang sebenarnya:
 
-<Terminal title="Aktifkan comparison links" language="toml">{`[tool.custy.changelog.links]
+<Terminal
+  title="Aktifkan comparison links"
+  language="toml"
+>{`[tool.custy.changelog.links]
 repository = "https://github.com/your-org/your-project"
 enable_compare = true`}</Terminal>
 
@@ -33,16 +85,37 @@ Command changelog tidak gagal karena pengaturan yang dapat dipulihkan ini.
 
 </InfoBox>
 
-<InfoBox variant="note" title="Dua Switch Memengaruhi Visibility">`enable_compare` membuat comparison URLs. `render.show_compare_link` menentukan apakah Jinja template menampilkan available URLs.</InfoBox>
+<InfoBox variant="note" title="Dua Switch Memengaruhi Visibility">
+  `enable_compare` membuat comparison URLs. `render.show_compare_link` menentukan apakah
+  Jinja template menampilkan available URLs.
+</InfoBox>
 
 ## Repository URL vs Git remotes
 
-| Setting | Nilai | Tujuan |
-| --- | --- | --- |
-| `changelog.links.repository` | URL browser, seperti `https://github.com/org/project` | Membuat links di `CHANGELOG.md` |
-| `git.default_remote` | Satu nama remote, seperti `origin` | Menjadi fallback untuk operation yang menggunakan satu remote |
-| `git.main_remotes` / `git.backup_remotes` | Daftar nama remote | Mengelompokkan tujuan utama dan mirror |
+| Setting                                   | Nilai                                                 | Tujuan                                                        |
+| ----------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------- |
+| `changelog.links.repository`              | URL browser, seperti `https://github.com/org/project` | Membuat links di `CHANGELOG.md`                               |
+| `git.default_remote`                      | Satu nama remote, seperti `origin`                    | Menjadi fallback untuk operation yang menggunakan satu remote |
+| `git.main_remotes` / `git.backup_remotes` | Daftar nama remote                                    | Mengelompokkan tujuan utama dan mirror                        |
 
 Gunakan `git remote -v` untuk melihat nama dan URL remote. Jangan menyalin nama
 remote seperti `origin` ke `changelog.links.repository`.
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Rendering", href: "./rendering", description: "Konfigurasikan show_compare_link."}, {title: "Releases", href: "./releases", description: "Atur visible versions."}, {title: "Git Remotes", href: "../git/remotes", description: "Konfigurasikan operational remotes terpisah dari documentation links."}]} /></Section>
+
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Konfigurasikan show_compare_link.",
+      },
+      { title: "Releases", href: "./releases", description: "Atur visible versions." },
+      {
+        title: "Git Remotes",
+        href: "../git/remotes",
+        description:
+          "Konfigurasikan operational remotes terpisah dari documentation links.",
+      },
+    ]}
+  />
+</Section>

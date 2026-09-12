@@ -8,49 +8,68 @@ keywords: [Custy exit codes, Custy errors, Custy validation code]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy COMMAND"
-    title="Errors and Exit Status"
-    description="Interpret parser feedback, structured validation labels, pipeline failures, subprocess errors, and current process status."
-    category="Reference"
-    status="Current Runtime Behavior"
-    syntax="status + message + optional diagnostic label"
-    tags={["exit 0", "exit 1", "usage 2", "ValidationError"]}
-    links={[
-        {label: "Troubleshooting Workflows", href: "../user-guide/troubleshooting-workflows"},
-        {label: "Global Options", href: "./global-options"},
-        {label: "Environment", href: "./environment"},
-    ]}
+  command="custy COMMAND"
+  title="Errors and Exit Status"
+  description="Interpret parser feedback, structured validation labels, pipeline failures, subprocess errors, and current process status."
+  category="Reference"
+  status="Current Runtime Behavior"
+  syntax="status + message + optional diagnostic label"
+  tags={["exit 0", "exit 1", "usage 2", "ValidationError"]}
+  links={[
+    {
+      label: "Troubleshooting Workflows",
+      href: "../user-guide/troubleshooting-workflows",
+    },
+    { label: "Global Options", href: "./global-options" },
+    { label: "Environment", href: "./environment" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Success", value: "0", icon: "success"},
-        {label: "Explicit/Application Failure", value: "1", icon: "error"},
-        {label: "Typer/Click Usage Error", value: "2", icon: "warning"},
-        {label: "Rollback", value: "None", icon: "security"},
-    ]}
+  items={[
+    { label: "Success", value: "0", icon: "success" },
+    { label: "Explicit/Application Failure", value: "1", icon: "error" },
+    { label: "Typer/Click Usage Error", value: "2", icon: "warning" },
+    { label: "Rollback", value: "None", icon: "security" },
+  ]}
 />
 
 ## Process Status Reference
 
 <KeyValueTable
-    title="Current Status Behavior"
-    items={[
-        {key: "0 - successful completion", value: "A command or pipeline reached its normal completion boundary without an uncaught failure."},
-        {key: "1 - explicit or application failure", value: "Used by Custy validators, progress wrappers, root no-command behavior, and most uncaught application exceptions."},
-        {key: "2 - command-line usage error", value: "Typer/Click uses this for unknown commands, unknown options, missing required values, and invalid parameter input."},
-        {key: "Subprocess status", value: "Git, Commitizen, or editor commands have their own return codes. Custy may wrap, normalize, log, or re-raise those failures rather than expose the same numeric value."},
-    ]}
+  title="Current Status Behavior"
+  items={[
+    {
+      key: "0 - successful completion",
+      value:
+        "A command or pipeline reached its normal completion boundary without an uncaught failure.",
+    },
+    {
+      key: "1 - explicit or application failure",
+      value:
+        "Used by Custy validators, progress wrappers, root no-command behavior, and most uncaught application exceptions.",
+    },
+    {
+      key: "2 - command-line usage error",
+      value:
+        "Typer/Click uses this for unknown commands, unknown options, missing required values, and invalid parameter input.",
+    },
+    {
+      key: "Subprocess status",
+      value:
+        "Git, Commitizen, or editor commands have their own return codes. Custy may wrap, normalize, log, or re-raise those failures rather than expose the same numeric value.",
+    },
+  ]}
 />
 
 <InfoBox variant="warning" title="Root help and version currently exit with 1">
@@ -67,17 +86,48 @@ zero in automation until the implementation changes.
 <Section title="Error Families">
 
 <KeyValueTable
-    title="How Failures Surface"
-    items={[
-        {key: "CLI parsing", value: "Typer explains the invalid command, option, enum, tag, or missing argument before command execution begins."},
-        {key: "ConfigurationError", value: "Invalid TOML, an unreadable configuration file, a required missing property, or an invalid project-source directory."},
-        {key: "ValidationError", value: "A workflow precondition with a message, optional hint, diagnostic label, default exit_code of 1, and optional context."},
-        {key: "GitOperationError", value: "A repository operation failed at the high-level Git service boundary."},
-        {key: "BranchCleanupError", value: "Branch cleanup could not evaluate or delete an eligible branch; protected and deletion failures have dedicated subclasses."},
-        {key: "Pipeline failure", value: "The active progress UI identifies the failing step, stops execution, and re-raises the original exception."},
-        {key: "External tool failure", value: "Git, Commitizen, or a configured editor could not be launched or returned an unsuccessful result."},
-        {key: "Unexpected exception", value: "Typer's pretty-exception behavior or Python traceback reports an unhandled implementation failure."},
-    ]}
+  title="How Failures Surface"
+  items={[
+    {
+      key: "CLI parsing",
+      value:
+        "Typer explains the invalid command, option, enum, tag, or missing argument before command execution begins.",
+    },
+    {
+      key: "ConfigurationError",
+      value:
+        "Invalid TOML, an unreadable configuration file, a required missing property, or an invalid project-source directory.",
+    },
+    {
+      key: "ValidationError",
+      value:
+        "A workflow precondition with a message, optional hint, diagnostic label, default exit_code of 1, and optional context.",
+    },
+    {
+      key: "GitOperationError",
+      value: "A repository operation failed at the high-level Git service boundary.",
+    },
+    {
+      key: "BranchCleanupError",
+      value:
+        "Branch cleanup could not evaluate or delete an eligible branch; protected and deletion failures have dedicated subclasses.",
+    },
+    {
+      key: "Pipeline failure",
+      value:
+        "The active progress UI identifies the failing step, stops execution, and re-raises the original exception.",
+    },
+    {
+      key: "External tool failure",
+      value:
+        "Git, Commitizen, or a configured editor could not be launched or returned an unsuccessful result.",
+    },
+    {
+      key: "Unexpected exception",
+      value:
+        "Typer's pretty-exception behavior or Python traceback reports an unhandled implementation failure.",
+    },
+  ]}
 />
 
 </Section>
@@ -160,12 +210,29 @@ implementation.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Troubleshooting Workflows", href: "../user-guide/troubleshooting-workflows", description: "Follow a safe diagnosis and recovery sequence."},
-        {title: "Environment", href: "./environment", description: "Check runtime, encoding, editor, Git, and working-directory assumptions."},
-        {title: "Global Options", href: "./global-options", description: "Use debug, log-level, no-banner, and dry-run behavior correctly."},
-        {title: "Safety and Side Effects", href: "../concepts/safety-and-side-effects", description: "Understand non-transactional changes and recovery responsibility."},
-    ]}
+  commands={[
+    {
+      title: "Troubleshooting Workflows",
+      href: "../user-guide/troubleshooting-workflows",
+      description: "Follow a safe diagnosis and recovery sequence.",
+    },
+    {
+      title: "Environment",
+      href: "./environment",
+      description:
+        "Check runtime, encoding, editor, Git, and working-directory assumptions.",
+    },
+    {
+      title: "Global Options",
+      href: "./global-options",
+      description: "Use debug, log-level, no-banner, and dry-run behavior correctly.",
+    },
+    {
+      title: "Safety and Side Effects",
+      href: "../concepts/safety-and-side-effects",
+      description: "Understand non-transactional changes and recovery responsibility.",
+    },
+  ]}
 />
 
 </Section>

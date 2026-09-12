@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -13,57 +10,52 @@ import {
  * Represents a property displayed in the table.
  */
 export interface PropertyTableItem {
+  /**
+   * Property name.
+   */
+  property: ReactNode;
 
-    /**
-     * Property name.
-     */
-    property: ReactNode;
+  /**
+   * Property type.
+   */
+  type?: ReactNode;
 
-    /**
-     * Property type.
-     */
-    type?: ReactNode;
+  /**
+   * Property description.
+   */
+  description: ReactNode;
 
-    /**
-     * Property description.
-     */
-    description: ReactNode;
+  /**
+   * Default value.
+   */
+  defaultValue?: ReactNode;
 
-    /**
-     * Default value.
-     */
-    defaultValue?: ReactNode;
-
-    /**
-     * Indicates whether the property is required.
-     *
-     * @default false
-     */
-    required?: boolean;
-
+  /**
+   * Indicates whether the property is required.
+   *
+   * @default false
+   */
+  required?: boolean;
 }
 
 /**
  * PropertyTable component properties.
  */
-export interface PropertyTableProps
-    extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+export interface PropertyTableProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+  /**
+   * Table title.
+   *
+   * @default "Properties"
+   */
+  title?: ReactNode;
 
-    /**
-     * Table title.
-     *
-     * @default "Properties"
-     */
-    title?: ReactNode;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Table entries.
-     */
-    items: PropertyTableItem[];
-
+  /**
+   * Table entries.
+   */
+  items: PropertyTableItem[];
 }

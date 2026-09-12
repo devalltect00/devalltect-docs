@@ -21,41 +21,29 @@ import clsx from "clsx";
 
 import styles from "./Icon.module.css";
 
-import type {
-    IconProps,
-} from "./types";
+import type { IconProps } from "./types";
 
-import {
-    getIcon,
-} from "../../shared/icons";
+import { getIcon } from "../../shared/icons";
 
 /**
  * Displays a semantic documentation icon.
  */
 export default function Icon({
-    name,
-    children,
-    size = "md",
-    className,
-    ...props
+  name,
+  children,
+  size = "md",
+  className,
+  ...props
 }: IconProps) {
+  const icon = children ?? getIcon(name);
 
-    const icon = children ?? getIcon(name);
-
-    return (
-
-        <span
-            className={clsx(
-                styles.icon,
-                styles[size],
-                className,
-            )}
-            aria-hidden="true"
-            {...props}
-        >
-            {icon}
-        </span>
-
-    );
-
+  return (
+    <span
+      className={clsx(styles.icon, styles[size], className)}
+      aria-hidden="true"
+      {...props}
+    >
+      {icon}
+    </span>
+  );
 }

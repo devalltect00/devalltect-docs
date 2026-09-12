@@ -7,21 +7,72 @@ tags: [custy, configuration, cleanup, branches]
 keywords: [include_prefixes, merge_status, max_age, before]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.cleanup.branch]" title="Branch Cleanup" description="Jadikan Git branch deletion sebagai opt-in melalui layered dan explicit selection filters." category="Cleanup Configuration" status="Active + Optional Keys" syntax="[tool.custy.cli.cleanup.branch]" tags={["prefix filter", "merge status", "age"]} links={[{label: "Branch Command", href: "../../../commands/cleanup/branch/overview"}, {label: "Workflow", href: "../../../commands/cleanup/branch/workflow"}, {label: "Safety", href: "../../../concepts/safety-and-side-effects"}]} />
+<CommandHero
+  command="[tool.custy.cli.cleanup.branch]"
+  title="Branch Cleanup"
+  description="Jadikan Git branch deletion sebagai opt-in melalui layered dan explicit selection filters."
+  category="Cleanup Configuration"
+  status="Active + Optional Keys"
+  syntax="[tool.custy.cli.cleanup.branch]"
+  tags={["prefix filter", "merge status", "age"]}
+  links={[
+    { label: "Branch Command", href: "../../../commands/cleanup/branch/overview" },
+    { label: "Workflow", href: "../../../commands/cleanup/branch/workflow" },
+    { label: "Safety", href: "../../../concepts/safety-and-side-effects" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Properties", value: "2", icon: "table"}, {label: "Optional Properties", value: "2", icon: "note"}, {label: "Default Prefixes", value: "None", icon: "security"}, {label: "Default Merge State", value: "merged", icon: "git"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Properties", value: "2", icon: "table" },
+    { label: "Optional Properties", value: "2", icon: "note" },
+    { label: "Default Prefixes", value: "None", icon: "security" },
+    { label: "Default Merge State", value: "merged", icon: "git" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "include_prefixes", type: "String array", defaultValue: "[]", description: "Hanya branches yang diawali configured prefix yang dapat lanjut ke filter berikutnya. Empty array tidak memilih branch apa pun."},
-        {property: "merge_status", type: "merged | unmerged | all", defaultValue: "merged", description: "Batasi eligible branches berdasarkan integration state."},
-        {property: "max_age", type: "Duration", defaultValue: "unset", description: "Optional active relative cutoff seperti 30d, 2w, 6mo, atau 1y. Dikomentari dalam generated file."},
-        {property: "before", type: "YYYY-MM-DD", defaultValue: "unset", description: "Optional active absolute latest-commit cutoff. Dikomentari dalam generated file."},
-    ]}
+  items={[
+    {
+      property: "include_prefixes",
+      type: "String array",
+      defaultValue: "[]",
+      description:
+        "Hanya branches yang diawali configured prefix yang dapat lanjut ke filter berikutnya. Empty array tidak memilih branch apa pun.",
+    },
+    {
+      property: "merge_status",
+      type: "merged | unmerged | all",
+      defaultValue: "merged",
+      description: "Batasi eligible branches berdasarkan integration state.",
+    },
+    {
+      property: "max_age",
+      type: "Duration",
+      defaultValue: "unset",
+      description:
+        "Optional active relative cutoff seperti 30d, 2w, 6mo, atau 1y. Dikomentari dalam generated file.",
+    },
+    {
+      property: "before",
+      type: "YYYY-MM-DD",
+      defaultValue: "unset",
+      description:
+        "Optional active absolute latest-commit cutoff. Dikomentari dalam generated file.",
+    },
+  ]}
 />
 
 <Terminal title="Narrow policy" language="toml">
@@ -32,6 +83,7 @@ merge_status = "merged"
 max_age = "30d"
 
 # Gunakan before sebagai pengganti max_age, jangan keduanya.
+
 # before = "2026-07-01"`}
 
 </Terminal>
@@ -51,4 +103,24 @@ layer, bukan pengganti careful prefix selection.
 
 </Section>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Branch Configuration", href: "../../../commands/cleanup/branch/configuration", description: "Tinjau command-specific syntax dan duration units."}, {title: "Branch Workflow", href: "../../../commands/cleanup/branch/workflow", description: "Lihat layered selection sebelum deletion."}, {title: "Troubleshooting", href: "../../../commands/cleanup/branch/troubleshooting", description: "Diagnosis empty atau unexpected selection."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Branch Configuration",
+        href: "../../../commands/cleanup/branch/configuration",
+        description: "Tinjau command-specific syntax dan duration units.",
+      },
+      {
+        title: "Branch Workflow",
+        href: "../../../commands/cleanup/branch/workflow",
+        description: "Lihat layered selection sebelum deletion.",
+      },
+      {
+        title: "Troubleshooting",
+        href: "../../../commands/cleanup/branch/troubleshooting",
+        description: "Diagnosis empty atau unexpected selection.",
+      },
+    ]}
+  />
+</Section>

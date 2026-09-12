@@ -8,38 +8,38 @@ keywords: [add Custy pipeline step, StepRegistry, STEP_ORDER]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/pipeline/steps/"
-    title="Adding Pipeline Steps"
-    description="Introduce one pipeline responsibility without weakening registration, ordering, composition, or failure contracts."
-    category="Developer Guide"
-    status="Internal Extension"
-    syntax="implement -> export -> register -> order -> compose -> test"
-    tags={["BaseStep", "StepRegistry", "STEP_ORDER", "profiles"]}
-    links={[
-        {label: "Step System", href: "../pipelines/step-system"},
-        {label: "Step Priority", href: "../pipelines/step-order"},
-        {label: "Profiles", href: "../pipelines/profile-reference"},
-    ]}
+  command="app/core/pipeline/steps/"
+  title="Adding Pipeline Steps"
+  description="Introduce one pipeline responsibility without weakening registration, ordering, composition, or failure contracts."
+  category="Developer Guide"
+  status="Internal Extension"
+  syntax="implement -> export -> register -> order -> compose -> test"
+  tags={["BaseStep", "StepRegistry", "STEP_ORDER", "profiles"]}
+  links={[
+    { label: "Step System", href: "../pipelines/step-system" },
+    { label: "Step Priority", href: "../pipelines/step-order" },
+    { label: "Profiles", href: "../pipelines/profile-reference" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Interface", value: "BaseStep.execute", icon: "dependency"},
-        {label: "Registry", value: "StepRegistry", icon: "configuration"},
-        {label: "Composition", value: "PIPELINE_PROFILES", icon: "pipeline"},
-        {label: "Global Priority", value: "STEP_ORDER", icon: "timeline"},
-    ]}
+  items={[
+    { label: "Interface", value: "BaseStep.execute", icon: "dependency" },
+    { label: "Registry", value: "StepRegistry", icon: "configuration" },
+    { label: "Composition", value: "PIPELINE_PROFILES", icon: "pipeline" },
+    { label: "Global Priority", value: "STEP_ORDER", icon: "timeline" },
+  ]}
 />
 
 ## Overview
@@ -64,9 +64,8 @@ unless the public typed CLI boundary is extended separately.
 
 {`from app.core.pipeline.steps.base_step import BaseStep
 
-
 class PublishReportStep(BaseStep):
-    """Delegate report publication to the workflow engine."""
+"""Delegate report publication to the workflow engine."""
 
     def execute(self, context) -> None:
         """Publish the prepared report for the active workflow."""
@@ -85,14 +84,44 @@ focused service or the workflow engine.
 <Section title="Wire the Step Through the System">
 
 <WorkflowTimeline
-    items={[
-        {title: "Implement the class", description: "Add a documented BaseStep subclass under app/core/pipeline/steps with one clear execute(context) responsibility.", status: "completed"},
-        {title: "Export the class", description: "Expose it through the appropriate steps package __init__.py so the registration module can import it.", status: "completed"},
-        {title: "Register a unique name", description: "Add the class to register_all_steps() in app/core/pipeline/step_registry.py.", status: "current"},
-        {title: "Assign global priority", description: "Add the same registered name to STEP_ORDER at the safe phase boundary.", status: "pending"},
-        {title: "Compose intentional profiles", description: "Add the name only to PIPELINE_PROFILES flows that require the behavior.", status: "pending"},
-        {title: "Test and document", description: "Cover delegation, registry, profile expansion, ordering, failures, side effects, and changed user behavior.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Implement the class",
+      description:
+        "Add a documented BaseStep subclass under app/core/pipeline/steps with one clear execute(context) responsibility.",
+      status: "completed",
+    },
+    {
+      title: "Export the class",
+      description:
+        "Expose it through the appropriate steps package __init__.py so the registration module can import it.",
+      status: "completed",
+    },
+    {
+      title: "Register a unique name",
+      description:
+        "Add the class to register_all_steps() in app/core/pipeline/step_registry.py.",
+      status: "current",
+    },
+    {
+      title: "Assign global priority",
+      description:
+        "Add the same registered name to STEP_ORDER at the safe phase boundary.",
+      status: "pending",
+    },
+    {
+      title: "Compose intentional profiles",
+      description:
+        "Add the name only to PIPELINE_PROFILES flows that require the behavior.",
+      status: "pending",
+    },
+    {
+      title: "Test and document",
+      description:
+        "Cover delegation, registry, profile expansion, ordering, failures, side effects, and changed user behavior.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -130,14 +159,38 @@ push, cleanup, and finalization.
 <Section title="Testing Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "Step delegation", description: "A focused unit test verifies execute(context) calls the intended engine or service method once with the right arguments."},
-        {title: "Registry construction", description: "The registered name resolves to the intended class and unknown names still fail clearly."},
-        {title: "Profile membership", description: "Only intentional profiles contain the new name and expansion produces the expected sequence."},
-        {title: "Merged ordering", description: "Composition with overlapping profiles deduplicates the step and places it at the intended global priority."},
-        {title: "Failure behavior", description: "An exception stops later steps, preserves useful context, and does not imply rollback of earlier effects."},
-        {title: "Integration effects", description: "Use temporary repositories or mocked boundaries for any file, Git, subprocess, or remote behavior."},
-    ]}
+  items={[
+    {
+      title: "Step delegation",
+      description:
+        "A focused unit test verifies execute(context) calls the intended engine or service method once with the right arguments.",
+    },
+    {
+      title: "Registry construction",
+      description:
+        "The registered name resolves to the intended class and unknown names still fail clearly.",
+    },
+    {
+      title: "Profile membership",
+      description:
+        "Only intentional profiles contain the new name and expansion produces the expected sequence.",
+    },
+    {
+      title: "Merged ordering",
+      description:
+        "Composition with overlapping profiles deduplicates the step and places it at the intended global priority.",
+    },
+    {
+      title: "Failure behavior",
+      description:
+        "An exception stops later steps, preserves useful context, and does not imply rollback of earlier effects.",
+    },
+    {
+      title: "Integration effects",
+      description:
+        "Use temporary repositories or mocked boundaries for any file, Git, subprocess, or remote behavior.",
+    },
+  ]}
 />
 
 </Section>
@@ -159,12 +212,29 @@ remain internal unless a stable user contract is deliberately designed.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Pipeline Step System", href: "../pipelines/step-system", description: "Review the registry, builder, context, and execution contracts."},
-        {title: "Step Priority and Ordering", href: "../pipelines/step-order", description: "Select a safe priority using the complete 27-entry order."},
-        {title: "Profile Reference", href: "../pipelines/profile-reference", description: "Inspect every current resolver profile before changing composition."},
-        {title: "Testing", href: "./testing", description: "Run focused step, profile, integration, and regression checks."},
-    ]}
+  commands={[
+    {
+      title: "Pipeline Step System",
+      href: "../pipelines/step-system",
+      description: "Review the registry, builder, context, and execution contracts.",
+    },
+    {
+      title: "Step Priority and Ordering",
+      href: "../pipelines/step-order",
+      description: "Select a safe priority using the complete 27-entry order.",
+    },
+    {
+      title: "Profile Reference",
+      href: "../pipelines/profile-reference",
+      description:
+        "Inspect every current resolver profile before changing composition.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Run focused step, profile, integration, and regression checks.",
+    },
+  ]}
 />
 
 </Section>

@@ -6,9 +6,22 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="Alur Kerja" description="Menemukan file didukung, memvalidasi path header, menampilkan preview, dan menerapkan koreksi hanya jika diminta." category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="Alur Kerja"
+  description="Menemukan file didukung, memvalidasi path header, menampilkan preview, dan menerapkan koreksi hanya jika diminta."
+  category="Pemindaian Header"
+  status="Preview First"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ### 1. Tahap 1
 
@@ -30,5 +43,7 @@ Hitung status valid/inserted/updated/failed.
 
 Tulis hanya pada live --apply; mode lain hanya preview.
 
-<InfoBox variant="warning" title="Batas keamanan">Preview adalah default. --apply mengaktifkan write; --dry-run mengungguli apply dari CLI/configuration dan menjamin target tidak berubah.</InfoBox>
-
+<InfoBox variant="warning" title="Batas keamanan">
+  Preview adalah default. --apply mengaktifkan write; --dry-run mengungguli apply dari
+  CLI/configuration dan menjamin target tidak berubah.
+</InfoBox>

@@ -16,39 +16,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Configuration"
-    description="Understand how the generated configuration file controls Custy's behavior."
-    category="Initialization"
-    status="Recommended"
-    syntax="custy init"
-    tags={[
-        "configuration",
-        "customization",
-        "config.toml",
-    ]}
-    links={[
-        {
-            label: "Generated Files",
-            href: "./generated-files",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy init"
+  title="Configuration"
+  description="Understand how the generated configuration file controls Custy's behavior."
+  category="Initialization"
+  status="Recommended"
+  syntax="custy init"
+  tags={["configuration", "customization", "config.toml"]}
+  links={[
+    {
+      label: "Generated Files",
+      href: "./generated-files",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Overview
@@ -82,9 +78,7 @@ After initialization, the primary configuration file is located at:
 
 <Terminal>
 
-{`
-.config/custy/config.toml
-`}
+{`.config/custy/config.toml`}
 
 </Terminal>
 
@@ -99,45 +93,45 @@ Future Custy commands automatically load this file whenever it exists.
 >
 
 <FeatureGrid
-    title="Configuration Categories"
-    items={[
-        {
-            title: "Project",
-            children: (
-                <>
-                    Define project-specific information such as the primary
-                    source directory used by Custy.
-                </>
-            ),
-        },
-        {
-            title: "Initialization",
-            children: (
-                <>
-                    Configure default behavior for initialization, including
-                    overwrite and confirmation settings.
-                </>
-            ),
-        },
-        {
-            title: "Release",
-            children: (
-                <>
-                    Configure release metadata such as the default author and
-                    release date handling.
-                </>
-            ),
-        },
-        {
-            title: "Versioning",
-            children: (
-                <>
-                    Define the preferred versioning strategy and default bump
-                    behavior used by release-related commands.
-                </>
-            ),
-        },
-    ]}
+  title="Configuration Categories"
+  items={[
+    {
+      title: "Project",
+      children: (
+        <>
+          Define project-specific information such as the primary source directory used
+          by Custy.
+        </>
+      ),
+    },
+    {
+      title: "Initialization",
+      children: (
+        <>
+          Configure default behavior for initialization, including overwrite and
+          confirmation settings.
+        </>
+      ),
+    },
+    {
+      title: "Release",
+      children: (
+        <>
+          Configure release metadata such as the default author and release date
+          handling.
+        </>
+      ),
+    },
+    {
+      title: "Versioning",
+      children: (
+        <>
+          Define the preferred versioning strategy and default bump behavior used by
+          release-related commands.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>

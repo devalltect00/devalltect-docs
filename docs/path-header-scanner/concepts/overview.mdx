@@ -6,37 +6,46 @@ sidebar_key: path-header-scanner-concepts
 tags: [path-header-scanner, concepts, safety]
 ---
 
-import {CommandHero, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="path-header-scanner scan"
-    title="Core Concepts"
-    description="Understand what the scanner validates and where its write boundary begins."
-    category="Concepts"
-    status="Preview First"
-    syntax="discover -> validate -> preview -> apply"
-    links={[
-        {label: "Path Headers", href: "./path-headers"},
-        {label: "Safety and Dry-run", href: "./safety-and-dry-run"},
-        {label: "Scan Command", href: "../commands/scan/overview"},
-    ]}
+  command="path-header-scanner scan"
+  title="Core Concepts"
+  description="Understand what the scanner validates and where its write boundary begins."
+  category="Concepts"
+  status="Preview First"
+  syntax="discover -> validate -> preview -> apply"
+  links={[
+    { label: "Path Headers", href: "./path-headers" },
+    { label: "Safety and Dry-run", href: "./safety-and-dry-run" },
+    { label: "Scan Command", href: "../commands/scan/overview" },
+  ]}
 />
 
 <Section title="Two concepts to understand first">
 
 <FeatureGrid
-    items={[
-        {
-            title: "Language-aware path headers",
-            icon: <Icon name="file" />,
-            children: "Each supported extension uses a strategy that recognizes and renders valid comment syntax while preserving required leading lines.",
-        },
-        {
-            title: "Explicit mutation",
-            icon: <Icon name="security" />,
-            children: "A normal scan previews changes. Only effective --apply writes headers, and --dry-run always disables those writes.",
-        },
-    ]}
+  items={[
+    {
+      title: "Language-aware path headers",
+      icon: <Icon name="file" />,
+      children:
+        "Each supported extension uses a strategy that recognizes and renders valid comment syntax while preserving required leading lines.",
+    },
+    {
+      title: "Explicit mutation",
+      icon: <Icon name="security" />,
+      children:
+        "A normal scan previews changes. Only effective --apply writes headers, and --dry-run always disables those writes.",
+    },
+  ]}
 />
 
 </Section>
@@ -49,9 +58,21 @@ result remains useful. They differ from apply mode at the persistence boundary.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Path Headers", href: "./path-headers", description: "Review supported syntax and leading-line preservation."},
-        {title: "Safety and Dry-run", href: "./safety-and-dry-run", description: "Compare preview, apply, and explicit simulation."},
-        {title: "Practical Workflows", href: "../user-guide/workflows", description: "Choose a command based on its intended side effects."},
-    ]}
+  commands={[
+    {
+      title: "Path Headers",
+      href: "./path-headers",
+      description: "Review supported syntax and leading-line preservation.",
+    },
+    {
+      title: "Safety and Dry-run",
+      href: "./safety-and-dry-run",
+      description: "Compare preview, apply, and explicit simulation.",
+    },
+    {
+      title: "Practical Workflows",
+      href: "../user-guide/workflows",
+      description: "Choose a command based on its intended side effects.",
+    },
+  ]}
 />

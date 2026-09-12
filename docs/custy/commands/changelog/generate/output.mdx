@@ -8,39 +8,35 @@ keywords: [generated CHANGELOG.md, changelog output]
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Screenshot,
-    Section,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Screenshot,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Command Output"
-    description="Understand the generated CHANGELOG.md structure and the checks required before committing it."
-    category="Changelog"
-    status="Review Required"
-    syntax="custy changelog generate"
-    tags={[
-        "output",
-        "Markdown",
-        "review",
-    ]}
-    links={[
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy changelog generate"
+  title="Command Output"
+  description="Understand the generated CHANGELOG.md structure and the checks required before committing it."
+  category="Changelog"
+  status="Review Required"
+  syntax="custy changelog generate"
+  tags={["output", "Markdown", "review"]}
+  links={[
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -60,24 +56,25 @@ discovered Git tag. The visible description changes from `Processing
 Unreleased changes` to `Processing release TAG` as each range is collected.
 
 <CommandOutput
-    outputs={[
-        {
-            title: "History Collection",
-            description: "Representative progress for a repository with two tags.",
-            output: `Processing Unreleased changes   ━━━━━━━━━━━━━ 1/3
+  outputs={[
+    {
+      title: "History Collection",
+      description: "Representative progress for a repository with two tags.",
+      output: `Processing Unreleased changes   ━━━━━━━━━━━━━ 1/3
 Processing release v2.0.0-rc.1 ━━━━━━━━━━━━━ 2/3
 Generating changelog ✔          ━━━━━━━━━━━━━ 3/3`,
-            notes: "The exact display, timing, and tags depend on the current terminal and repository.",
-        },
-    ]}
+      notes:
+        "The exact display, timing, and tags depend on the current terminal and repository.",
+    },
+  ]}
 />
 
 <Screenshot
-    src="/img/custy/commands/changelog/generate-terminal.png"
-    alt="Custy changelog generation progress in a terminal"
-    title="Changelog generation progress"
-    caption="The progress bar reports Unreleased content and each discovered release range."
-    fallback="A terminal screenshot of changelog generation will be added later."
+  src="/img/custy/commands/changelog/generate-terminal.png"
+  alt="Custy changelog generation progress in a terminal"
+  title="Changelog generation progress"
+  caption="The progress bar reports Unreleased content and each discovered release range."
+  fallback="A terminal screenshot of changelog generation will be added later."
 />
 
 <InfoBox variant="info" title="Progress completion is not a write confirmation">
@@ -106,14 +103,16 @@ the progress and renders a preview, but it does not replace `CHANGELOG.md`.
 ## v1.4.0 - 2026-08-12
 
 ### Features
+
 - Add structured release metadata
 
 ### Bug Fixes
+
 - Preserve configured changelog grouping`,
-            notes: "Release titles, dates, sections, links, and metadata can differ by repository.",
-        },
-    ]}
-/>
+  notes: "Release titles, dates, sections, links, and metadata can differ by repository.",
+  },
+  ]}
+  />
 
 </Section>
 
@@ -142,11 +141,11 @@ Depending on configuration and available history, the file can contain:
 >
 
 <Screenshot
-    src="/img/custy/commands/changelog/generated-changelog.png"
-    alt="Generated CHANGELOG.md with releases and grouped changes"
-    title="Generated changelog"
-    caption="The generated Markdown is grouped and rendered according to project configuration."
-    fallback="Preview of the generated CHANGELOG.md file will be added later."
+  src="/img/custy/commands/changelog/generated-changelog.png"
+  alt="Generated CHANGELOG.md with releases and grouped changes"
+  title="Generated changelog"
+  caption="The generated Markdown is grouped and rendered according to project configuration."
+  fallback="Preview of the generated CHANGELOG.md file will be added later."
 />
 
 </Section>

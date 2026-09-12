@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -13,43 +10,38 @@ import {
  * Represents a dependency between two modules.
  */
 export interface DependencyItem {
+  /**
+   * Source component.
+   */
+  source: string;
 
-    /**
-     * Source component.
-     */
-    source: string;
+  /**
+   * Target component.
+   */
+  target: string;
 
-    /**
-     * Target component.
-     */
-    target: string;
-
-    /**
-     * Optional dependency description.
-     */
-    description?: ReactNode;
-
+  /**
+   * Optional dependency description.
+   */
+  description?: ReactNode;
 }
 
 /**
  * DependencyCard component properties.
  */
-export interface DependencyCardProps
-    extends HTMLAttributes<HTMLElement> {
+export interface DependencyCardProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Card title.
+   */
+  title?: string;
 
-    /**
-     * Card title.
-     */
-    title?: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Dependency list.
-     */
-    dependencies: DependencyItem[];
-
+  /**
+   * Dependency list.
+   */
+  dependencies: DependencyItem[];
 }

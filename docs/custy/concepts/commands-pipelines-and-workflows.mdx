@@ -17,44 +17,40 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy COMMAND | custy run PROFILE"
-    title="Commands, Pipelines, and Workflows"
-    description="Choose the smallest Custy execution model that reaches the outcome you need."
-    category="Core Concepts"
-    status="Essential"
-    syntax="custy COMMAND [OPTIONS]"
-    tags={[
-        "CLI model",
-        "pipeline resolution",
-        "workflow policy",
-    ]}
-    links={[
-        {label: "Command Reference", href: "../commands/overview"},
-        {label: "Run Profiles", href: "../commands/run/profiles"},
-        {label: "Pipeline Guide", href: "../pipelines/overview"},
-        {label: "Safety Model", href: "./safety-and-side-effects"},
-    ]}
+  command="custy COMMAND | custy run PROFILE"
+  title="Commands, Pipelines, and Workflows"
+  description="Choose the smallest Custy execution model that reaches the outcome you need."
+  category="Core Concepts"
+  status="Essential"
+  syntax="custy COMMAND [OPTIONS]"
+  tags={["CLI model", "pipeline resolution", "workflow policy"]}
+  links={[
+    { label: "Command Reference", href: "../commands/overview" },
+    { label: "Run Profiles", href: "../commands/run/profiles" },
+    { label: "Pipeline Guide", href: "../pipelines/overview" },
+    { label: "Safety Model", href: "./safety-and-side-effects" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Command", value: "One focused entry point", icon: "command"},
-        {label: "Pipeline", value: "Ordered registered steps", icon: "pipeline"},
-        {label: "Workflow", value: "Policy and lifecycle", icon: "workflow"},
-        {label: "Workflow CLI", value: "Experimental", icon: "warning"},
-    ]}
+  items={[
+    { label: "Command", value: "One focused entry point", icon: "command" },
+    { label: "Pipeline", value: "Ordered registered steps", icon: "pipeline" },
+    { label: "Workflow", value: "Policy and lifecycle", icon: "workflow" },
+    { label: "Workflow CLI", value: "Experimental", icon: "warning" },
+  ]}
 />
 
 ## Overview
@@ -83,24 +79,39 @@ order.
 >
 
 <FeatureGrid
-    title="Execution Model"
-    items={[
-        {
-            title: "Command",
-            icon: <Icon name="terminal" />,
-            children: <>A public CLI entry point such as <code>custy validate</code>, <code>custy commit</code>, or <code>custy changelog generate</code>.</>,
-        },
-        {
-            title: "Pipeline",
-            icon: <Icon name="pipeline" />,
-            children: <>A resolved, globally ordered list of registered steps. Public profile names are expanded before execution begins.</>,
-        },
-        {
-            title: "Workflow",
-            icon: <Icon name="workflow" />,
-            children: <>The policy and lifecycle surrounding preparation, review, release, and finalization. It is broader than one command or profile.</>,
-        },
-    ]}
+  title="Execution Model"
+  items={[
+    {
+      title: "Command",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          A public CLI entry point such as <code>custy validate</code>,{" "}
+          <code>custy commit</code>, or <code>custy changelog generate</code>.
+        </>
+      ),
+    },
+    {
+      title: "Pipeline",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          A resolved, globally ordered list of registered steps. Public profile names
+          are expanded before execution begins.
+        </>
+      ),
+    },
+    {
+      title: "Workflow",
+      icon: <Icon name="workflow" />,
+      children: (
+        <>
+          The policy and lifecycle surrounding preparation, review, release, and
+          finalization. It is broader than one command or profile.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -112,34 +123,41 @@ order.
 >
 
 <WorkflowTimeline
-    title="Pipeline Resolution"
-    items={[
-        {
-            title: "Select public profiles",
-            description: <>Pass one or more supported names to <code>custy run</code>.</>,
-            status: "current",
-        },
-        {
-            title: "Expand profile definitions",
-            description: "Custy replaces each profile name with its configured internal step list.",
-            status: "pending",
-        },
-        {
-            title: "Merge and deduplicate",
-            description: "When profiles overlap, repeated steps are included only once.",
-            status: "pending",
-        },
-        {
-            title: "Apply global ordering",
-            description: "The resolver sorts the combined steps into Custy's required execution order.",
-            status: "pending",
-        },
-        {
-            title: "Execute sequentially",
-            description: "The pipeline builds registered step objects and runs them one after another.",
-            status: "pending",
-        },
-    ]}
+  title="Pipeline Resolution"
+  items={[
+    {
+      title: "Select public profiles",
+      description: (
+        <>
+          Pass one or more supported names to <code>custy run</code>.
+        </>
+      ),
+      status: "current",
+    },
+    {
+      title: "Expand profile definitions",
+      description:
+        "Custy replaces each profile name with its configured internal step list.",
+      status: "pending",
+    },
+    {
+      title: "Merge and deduplicate",
+      description: "When profiles overlap, repeated steps are included only once.",
+      status: "pending",
+    },
+    {
+      title: "Apply global ordering",
+      description:
+        "The resolver sorts the combined steps into Custy's required execution order.",
+      status: "pending",
+    },
+    {
+      title: "Execute sequentially",
+      description:
+        "The pipeline builds registered step objects and runs them one after another.",
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -153,15 +171,40 @@ order.
 The current public `custy run` argument accepts six profile names:
 
 <FeatureGrid
-    title="Supported Profiles"
-    items={[
-        {title: "Commit", icon: <Icon name="git" />, children: "Prepare project artifacts and create a local commit."},
-        {title: "Tag", icon: <Icon name="release" />, children: "Prepare version state and create a local tag."},
-        {title: "Push", icon: <Icon name="network" />, children: "Synchronize HEAD and an optional tag with resolved remotes."},
-        {title: "Dev", icon: <Icon name="play" />, children: "Validate and review the commit message, create a commit, and push branch HEAD without release side effects."},
-        {title: "Release", icon: <Icon name="pipeline" />, children: "Apply a version, commit, tag, and push a release."},
-        {title: "Full", icon: <Icon name="workflow" />, children: "Run Release and then invoke experimental finalization."},
-    ]}
+  title="Supported Profiles"
+  items={[
+    {
+      title: "Commit",
+      icon: <Icon name="git" />,
+      children: "Prepare project artifacts and create a local commit.",
+    },
+    {
+      title: "Tag",
+      icon: <Icon name="release" />,
+      children: "Prepare version state and create a local tag.",
+    },
+    {
+      title: "Push",
+      icon: <Icon name="network" />,
+      children: "Synchronize HEAD and an optional tag with resolved remotes.",
+    },
+    {
+      title: "Dev",
+      icon: <Icon name="play" />,
+      children:
+        "Validate and review the commit message, create a commit, and push branch HEAD without release side effects.",
+    },
+    {
+      title: "Release",
+      icon: <Icon name="pipeline" />,
+      children: "Apply a version, commit, tag, and push a release.",
+    },
+    {
+      title: "Full",
+      icon: <Icon name="workflow" />,
+      children: "Run Release and then invoke experimental finalization.",
+    },
+  ]}
 />
 
 Internal resolver profiles are implementation details. A profile appearing in
@@ -174,9 +217,11 @@ argument accepts it.
 custy changelog generate
 
 # One supported coordinated pipeline
+
 custy --dry-run run dev
 
 # Multiple public profiles are merged into one ordered pipeline
+
 custy --dry-run run commit push`}
 
 </Terminal>
@@ -221,12 +266,29 @@ mismatch, so do not treat it as a supported replacement for `custy run dev`,
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Command Reference", href: "../commands/overview", description: "Choose a focused public Custy command."},
-        {title: "Run Overview", href: "../commands/run/overview", description: "Execute supported public pipeline profiles."},
-        {title: "Pipeline Guide", href: "../pipelines/overview", description: "Understand resolution, execution, profile flows, and internal steps."},
-        {title: "Workflow Command", href: "../commands/workflow/overview", description: "Review the experimental command group's current limitation."},
-    ]}
+  commands={[
+    {
+      title: "Command Reference",
+      href: "../commands/overview",
+      description: "Choose a focused public Custy command.",
+    },
+    {
+      title: "Run Overview",
+      href: "../commands/run/overview",
+      description: "Execute supported public pipeline profiles.",
+    },
+    {
+      title: "Pipeline Guide",
+      href: "../pipelines/overview",
+      description:
+        "Understand resolution, execution, profile flows, and internal steps.",
+    },
+    {
+      title: "Workflow Command",
+      href: "../commands/workflow/overview",
+      description: "Review the experimental command group's current limitation.",
+    },
+  ]}
 />
 
 </Section>

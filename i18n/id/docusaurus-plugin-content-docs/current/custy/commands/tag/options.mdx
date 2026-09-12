@@ -4,28 +4,111 @@ description: "Options yang diterima custy tag."
 sidebar_position: 4
 sidebar_key: custy-tag-options
 ---
-import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy tag" title="Command Options" description="Atur version, modifiers, templates, backups, dan tag creation behavior." category="Git Operations" status="Stable with Limitations" syntax="custy tag [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Configuration",href:"./configuration"},{label:"Versioning and Tags",href:"./versioning-and-tags"}]} />
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy tag"
+  title="Command Options"
+  description="Atur version, modifiers, templates, backups, dan tag creation behavior."
+  category="Git Operations"
+  status="Stable with Limitations"
+  syntax="custy tag [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Versioning and Tags", href: "./versioning-and-tags" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOption options={[
- {name:"--tag",description:"Gunakan exact stable atau supported lifecycle version. Prefix v yang tidak ditulis akan ditambahkan otomatis.",example:"--tag v1.2.3-rc.1"},
- {name:"--strategy",description:"Pilih versioning strategy.",example:"--strategy semver"},
- {name:"--bump",description:"Pilih version bump level.",example:"--bump minor"},
- {name:"--pre",description:"Tambahkan pre-release modifier.",example:"--pre rc"},
- {name:"--post",description:"Tambahkan post-release modifier.",example:"--post"},
- {name:"--dev",description:"Tambahkan development-release modifier.",example:"--dev"},
- {name:"--meta",description:"Tambahkan metadata.",example:"--meta sha.abc123"},
- {name:"--epoch",description:"Tambahkan PEP 440 epoch.",example:"--epoch 1"},
- {name:"--tag-message",description:"Gunakan inline tag message.",example:"--tag-message \"Release v1.2.3\""},
- {name:"--tag-msg-file",shorthand:"-tmsg",description:"Override existing tag-message template.",example:"--tag-msg-file templates/tag-message.txt"},
- {name:"--backup-tag-dir",shorthand:"-btd",description:"Override tag-message backup directory.",example:"--backup-tag-dir .config/custy/templates/backups/tag"},
- {name:"--version-file",shorthand:"-vf",description:"Override project version file.",example:"--version-file app/__version__.py"},
- {name:"--force-tag / --no-force-tag",shorthand:"-ft / -Ft",description:"Izinkan atau tolak replacement terhadap local tag conflict.",example:"--force-tag"},
- {name:"--skip-checks",description:"Minta pre-tag checks dilewati jika adapter mendukungnya.",example:"--skip-checks"},
-]} />
+<CommandOption
+  options={[
+    {
+      name: "--tag",
+      description:
+        "Gunakan exact stable atau supported lifecycle version. Prefix v yang tidak ditulis akan ditambahkan otomatis.",
+      example: "--tag v1.2.3-rc.1",
+    },
+    {
+      name: "--strategy",
+      description: "Pilih versioning strategy.",
+      example: "--strategy semver",
+    },
+    {
+      name: "--bump",
+      description: "Pilih version bump level.",
+      example: "--bump minor",
+    },
+    {
+      name: "--pre",
+      description: "Tambahkan pre-release modifier.",
+      example: "--pre rc",
+    },
+    {
+      name: "--post",
+      description: "Tambahkan post-release modifier.",
+      example: "--post",
+    },
+    {
+      name: "--dev",
+      description: "Tambahkan development-release modifier.",
+      example: "--dev",
+    },
+    {
+      name: "--meta",
+      description: "Tambahkan metadata.",
+      example: "--meta sha.abc123",
+    },
+    { name: "--epoch", description: "Tambahkan PEP 440 epoch.", example: "--epoch 1" },
+    {
+      name: "--tag-message",
+      description: "Gunakan inline tag message.",
+      example: '--tag-message "Release v1.2.3"',
+    },
+    {
+      name: "--tag-msg-file",
+      shorthand: "-tmsg",
+      description: "Override existing tag-message template.",
+      example: "--tag-msg-file templates/tag-message.txt",
+    },
+    {
+      name: "--backup-tag-dir",
+      shorthand: "-btd",
+      description: "Override tag-message backup directory.",
+      example: "--backup-tag-dir .config/custy/templates/backups/tag",
+    },
+    {
+      name: "--version-file",
+      shorthand: "-vf",
+      description: "Override project version file.",
+      example: "--version-file app/__version__.py",
+    },
+    {
+      name: "--force-tag / --no-force-tag",
+      shorthand: "-ft / -Ft",
+      description: "Izinkan atau tolak replacement terhadap local tag conflict.",
+      example: "--force-tag",
+    },
+    {
+      name: "--skip-checks",
+      description: "Minta pre-tag checks dilewati jika adapter mendukungnya.",
+      example: "--skip-checks",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Current Adapter Limitations">Tinjau sumber implementasi sebelum mengandalkan modifier atau validation override yang ditandai belum dipropagasikan oleh adapter.</InfoBox>
-<Section title="Global Dry-Run">Gunakan `custy --dry-run tag --tag v1.2.3` untuk memeriksa exact tag sebelum membuat Git reference.</Section>
+<InfoBox variant="warning" title="Current Adapter Limitations">
+  Tinjau sumber implementasi sebelum mengandalkan modifier atau validation override yang
+  ditandai belum dipropagasikan oleh adapter.
+</InfoBox>
+<Section title="Global Dry-Run">
+  Gunakan `custy --dry-run tag --tag v1.2.3` untuk memeriksa exact tag sebelum membuat
+  Git reference.
+</Section>

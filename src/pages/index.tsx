@@ -5,7 +5,6 @@ import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import About from "@site/src/components/homepage/About";
 import Audiences from "@site/src/components/homepage/Audiences";
-import DocumentationModel from "@site/src/components/homepage/DocumentationModel";
 import DocumentationOverview from "@site/src/components/homepage/DocumentationOverview";
 import Hero from "@site/src/components/homepage/Hero";
 import ProjectGrid from "@site/src/components/homepage/ProjectGrid";
@@ -41,8 +40,6 @@ export default function Home(): React.JSX.Element {
         <ProjectGrid showPreviews />
 
         <DocumentationOverview />
-
-        <DocumentationModel />
 
         <Audiences />
 

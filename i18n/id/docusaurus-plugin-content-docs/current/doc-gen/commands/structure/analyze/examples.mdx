@@ -6,9 +6,22 @@ sidebar_key: doc-gen-structure-analyze
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="Contoh" description="Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer." category="Struktur Proyek" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="Contoh"
+  description="Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer."
+  category="Struktur Proyek"
+  status="Read Only"
+  syntax="doc-gen structure analyze [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 ### 1. Analyze current project
 
@@ -33,4 +46,3 @@ import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs
 <Terminal language="bash">{`doc-gen structure analyze . --dry-run`}</Terminal>
 
 **Hasil:** Remains read-only.
-

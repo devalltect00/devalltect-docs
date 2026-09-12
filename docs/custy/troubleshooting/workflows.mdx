@@ -8,40 +8,40 @@ keywords: [Custy run failed, partial pipeline, Custy workflow error]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy --debug run PROFILE"
-    title="Workflow Troubleshooting"
-    description="Find the last completed step and recover from current state instead of assuming the profile rolled back."
-    category="Troubleshooting"
-    status="Pipeline Recovery"
-    syntax="profile -> expanded steps -> first failure -> narrow recovery"
-    tags={["profiles", "ordering", "partial state", "experimental workflow"]}
-    links={[
-        {label: "Troubleshooting Hub", href: "./overview"},
-        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
-        {label: "Recovery Journey", href: "../user-guide/troubleshooting-workflows"},
-        {label: "Profiles", href: "../reference/pipeline-profiles"},
-    ]}
+  command="custy --debug run PROFILE"
+  title="Workflow Troubleshooting"
+  description="Find the last completed step and recover from current state instead of assuming the profile rolled back."
+  category="Troubleshooting"
+  status="Pipeline Recovery"
+  syntax="profile -> expanded steps -> first failure -> narrow recovery"
+  tags={["profiles", "ordering", "partial state", "experimental workflow"]}
+  links={[
+    { label: "Troubleshooting Hub", href: "./overview" },
+    { label: "Run Troubleshooting", href: "../commands/run/troubleshooting" },
+    { label: "Recovery Journey", href: "../user-guide/troubleshooting-workflows" },
+    { label: "Profiles", href: "../reference/pipeline-profiles" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Public Run Names", value: "6", icon: "pipeline"},
-        {label: "Execution", value: "Sequential", icon: "timeline"},
-        {label: "Failure Policy", value: "Stop and re-raise", icon: "warning"},
-        {label: "Rollback", value: "None", icon: "security"},
-    ]}
+  items={[
+    { label: "Public Run Names", value: "6", icon: "pipeline" },
+    { label: "Execution", value: "Sequential", icon: "timeline" },
+    { label: "Failure Policy", value: "Stop and re-raise", icon: "warning" },
+    { label: "Rollback", value: "None", icon: "security" },
+  ]}
 />
 
 ## Scope of This Page
@@ -53,14 +53,39 @@ guide when the failing invocation and symptom are already clear.
 ## Find the Last Completed Boundary
 
 <WorkflowTimeline
-    title="Partial Pipeline Recovery"
-    items={[
-        {title: "Read the failed step", description: "Capture its name, message, hint, diagnostic label, and reported paths or remotes.", status: "completed"},
-        {title: "List earlier durable effects", description: "Check files, backups, index, commits, tags, branches, and all destinations.", status: "completed"},
-        {title: "Correct the original cause", description: "Fix the first validation, configuration, content, Git, authentication, or implementation problem.", status: "current"},
-        {title: "Choose narrow recovery", description: "Use a direct command or manual action only for the remaining intended result.", status: "pending"},
-        {title: "Verify final state", description: "Confirm local files, Git references, logs, and every remote before declaring recovery complete.", status: "pending"},
-    ]}
+  title="Partial Pipeline Recovery"
+  items={[
+    {
+      title: "Read the failed step",
+      description:
+        "Capture its name, message, hint, diagnostic label, and reported paths or remotes.",
+      status: "completed",
+    },
+    {
+      title: "List earlier durable effects",
+      description:
+        "Check files, backups, index, commits, tags, branches, and all destinations.",
+      status: "completed",
+    },
+    {
+      title: "Correct the original cause",
+      description:
+        "Fix the first validation, configuration, content, Git, authentication, or implementation problem.",
+      status: "current",
+    },
+    {
+      title: "Choose narrow recovery",
+      description:
+        "Use a direct command or manual action only for the remaining intended result.",
+      status: "pending",
+    },
+    {
+      title: "Verify final state",
+      description:
+        "Confirm local files, Git references, logs, and every remote before declaring recovery complete.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -68,16 +93,48 @@ guide when the failing invocation and symptom are already clear.
 <Section title="Common Symptoms">
 
 <KeyValueTable
-    items={[
-        {key: "Profile name rejected", value: "Use commit, tag, push, dev, release, or full. Other resolver profiles are not additional public Run names."},
-        {key: "Combined profiles run in another order", value: "Multiple profiles are expanded, deduplicated, and stably sorted by global STEP_ORDER priority. This is intentional."},
-        {key: "Duplicate or mixed input rejected", value: "Remove duplicate values and follow the typed validator's supported manual or profile composition rules."},
-        {key: "Validation stops execution", value: "Correct the first prerequisite. Later mutation steps intentionally do not run after validation raises."},
-        {key: "Files changed before failure", value: "Inspect generated artifacts, messages, changelog, backups, and the Git index before retrying."},
-        {key: "A Run option has no effect", value: "Some accepted fields are not mapped into WorkflowEngine because model and builder names differ. Confirm current option status before relying on it."},
-        {key: "Push failed after commit or tag", value: "Verify whether local history is already complete and recover only publication rather than recreating commit or tag state."},
-        {key: "Full finalization failed", value: "The release may already be published; inspect branch transitions separately instead of rerunning Full."},
-    ]}
+  items={[
+    {
+      key: "Profile name rejected",
+      value:
+        "Use commit, tag, push, dev, release, or full. Other resolver profiles are not additional public Run names.",
+    },
+    {
+      key: "Combined profiles run in another order",
+      value:
+        "Multiple profiles are expanded, deduplicated, and stably sorted by global STEP_ORDER priority. This is intentional.",
+    },
+    {
+      key: "Duplicate or mixed input rejected",
+      value:
+        "Remove duplicate values and follow the typed validator's supported manual or profile composition rules.",
+    },
+    {
+      key: "Validation stops execution",
+      value:
+        "Correct the first prerequisite. Later mutation steps intentionally do not run after validation raises.",
+    },
+    {
+      key: "Files changed before failure",
+      value:
+        "Inspect generated artifacts, messages, changelog, backups, and the Git index before retrying.",
+    },
+    {
+      key: "A Run option has no effect",
+      value:
+        "Some accepted fields are not mapped into WorkflowEngine because model and builder names differ. Confirm current option status before relying on it.",
+    },
+    {
+      key: "Push failed after commit or tag",
+      value:
+        "Verify whether local history is already complete and recover only publication rather than recreating commit or tag state.",
+    },
+    {
+      key: "Full finalization failed",
+      value:
+        "The release may already be published; inspect branch transitions separately instead of rerunning Full.",
+    },
+  ]}
 />
 
 </Section>
@@ -98,13 +155,33 @@ git remote -v`}
 </Terminal>
 
 <CommandChecklist
-    items={[
-        {title: "Generated files", description: "Inspect version files, editable artifacts, CHANGELOG.md, and message templates."},
-        {title: "Backup retention", description: "Confirm whether backups were created and whether cleanup already pruned older files."},
-        {title: "Commit and tag", description: "Determine whether either object already exists before invoking a direct command."},
-        {title: "Every remote", description: "Check each configured destination; one successful push does not prove all succeeded."},
-        {title: "Original error", description: "Fix the first raised condition instead of bypassing validation or forcing a later effect."},
-    ]}
+  items={[
+    {
+      title: "Generated files",
+      description:
+        "Inspect version files, editable artifacts, CHANGELOG.md, and message templates.",
+    },
+    {
+      title: "Backup retention",
+      description:
+        "Confirm whether backups were created and whether cleanup already pruned older files.",
+    },
+    {
+      title: "Commit and tag",
+      description:
+        "Determine whether either object already exists before invoking a direct command.",
+    },
+    {
+      title: "Every remote",
+      description:
+        "Check each configured destination; one successful push does not prove all succeeded.",
+    },
+    {
+      title: "Original error",
+      description:
+        "Fix the first raised condition instead of bypassing validation or forcing a later effect.",
+    },
+  ]}
 />
 
 </Section>
@@ -158,12 +235,29 @@ left by earlier successful steps.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Resolve focused profile, order, validation, option, and push symptoms."},
-        {title: "Recovery Journey", href: "../user-guide/troubleshooting-workflows", description: "Follow the full user-oriented partial-state recovery method."},
-        {title: "Pipeline Profiles", href: "../reference/pipeline-profiles", description: "Distinguish public values and inspect ordering rules."},
-        {title: "Workflow Branch Troubleshooting", href: "../commands/workflow/branch/troubleshooting", description: "Review the active experimental blocker and interface limitations."},
-    ]}
+  commands={[
+    {
+      title: "Run Troubleshooting",
+      href: "../commands/run/troubleshooting",
+      description:
+        "Resolve focused profile, order, validation, option, and push symptoms.",
+    },
+    {
+      title: "Recovery Journey",
+      href: "../user-guide/troubleshooting-workflows",
+      description: "Follow the full user-oriented partial-state recovery method.",
+    },
+    {
+      title: "Pipeline Profiles",
+      href: "../reference/pipeline-profiles",
+      description: "Distinguish public values and inspect ordering rules.",
+    },
+    {
+      title: "Workflow Branch Troubleshooting",
+      href: "../commands/workflow/branch/troubleshooting",
+      description: "Review the active experimental blocker and interface limitations.",
+    },
+  ]}
 />
 
 </Section>

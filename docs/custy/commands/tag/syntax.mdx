@@ -8,38 +8,34 @@ keywords: [custy tag syntax]
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandSyntax,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy tag"
-    title="Command Syntax"
-    description="Use the direct tag command for version and message overrides or select the registered profile through Run."
-    category="Git Operations"
-    status="Stable"
-    syntax="custy tag [OPTIONS]"
-    tags={[
-        "syntax",
-        "CLI",
-        "version tag",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy tag"
+  title="Command Syntax"
+  description="Use the direct tag command for version and message overrides or select the registered profile through Run."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy tag [OPTIONS]"
+  tags={["syntax", "CLI", "version tag"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -54,13 +50,33 @@ backup option surface. Place global dry-run before `tag`.
 >
 
 <CommandSyntax
-    examples={[
-        {title: "Use project version settings", command: "custy tag", description: "Resolve and create the tag through the configured strategy."},
-        {title: "Provide an exact tag", command: "custy tag --tag v1.2.3", description: "Use a manually selected tag value."},
-        {title: "Select PEP 440", command: "custy tag --strategy pep440", description: "Generate a PEP 440 version from repository state."},
-        {title: "Provide an exact pre-release", command: "custy tag --strategy semver --tag v1.3.0-beta.1", description: "Use a supported explicit lifecycle tag."},
-        {title: "Preview tag preparation", command: "custy --dry-run tag --tag v1.2.3", description: "Inspect the planned tag profile without normal mutations."},
-    ]}
+  examples={[
+    {
+      title: "Use project version settings",
+      command: "custy tag",
+      description: "Resolve and create the tag through the configured strategy.",
+    },
+    {
+      title: "Provide an exact tag",
+      command: "custy tag --tag v1.2.3",
+      description: "Use a manually selected tag value.",
+    },
+    {
+      title: "Select PEP 440",
+      command: "custy tag --strategy pep440",
+      description: "Generate a PEP 440 version from repository state.",
+    },
+    {
+      title: "Provide an exact pre-release",
+      command: "custy tag --strategy semver --tag v1.3.0-beta.1",
+      description: "Use a supported explicit lifecycle tag.",
+    },
+    {
+      title: "Preview tag preparation",
+      command: "custy --dry-run tag --tag v1.2.3",
+      description: "Inspect the planned tag profile without normal mutations.",
+    },
+  ]}
 />
 
 </Section>

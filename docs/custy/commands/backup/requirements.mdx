@@ -6,39 +6,35 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    RequirementGrid,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Requirements"
-    description="Understand the prerequisites for creating Custy template backups."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup commit"
-    tags={[
-        "requirements",
-        "backup",
-        "templates",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Backup Files",
-            href: "./backup-files",
-        },
-    ]}
+  command="custy backup"
+  title="Requirements"
+  description="Understand the prerequisites for creating Custy template backups."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup commit"
+  tags={["requirements", "backup", "templates"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Backup Files",
+      href: "./backup-files",
+    },
+  ]}
 />
 
 ## Overview
@@ -71,49 +67,49 @@ command operates on.
 >
 
 <RequirementGrid
-    title="Required Environment"
-    items={[
-        {
-            title: "Initialized Project",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    The project should already contain Custy's generated
-                    configuration and template files.
-                </>
-            ),
-        },
-        {
-            title: "Template Files",
-            icon: <Icon name="file" />,
-            children: (
-                <>
-                    Commit message and tag message templates should exist
-                    before they can be backed up.
-                </>
-            ),
-        },
-        {
-            title: "Writable Backup Directory",
-            icon: <Icon name="copy" />,
-            children: (
-                <>
-                    Custy must be able to create backup files inside the
-                    configured backup directory.
-                </>
-            ),
-        },
-        {
-            title: "Project Configuration",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Backup locations and related settings are resolved from
-                    your project's configuration whenever available.
-                </>
-            ),
-        },
-    ]}
+  title="Required Environment"
+  items={[
+    {
+      title: "Initialized Project",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          The project should already contain Custy's generated configuration and
+          template files.
+        </>
+      ),
+    },
+    {
+      title: "Template Files",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Commit message and tag message templates should exist before they can be
+          backed up.
+        </>
+      ),
+    },
+    {
+      title: "Writable Backup Directory",
+      icon: <Icon name="copy" />,
+      children: (
+        <>
+          Custy must be able to create backup files inside the configured backup
+          directory.
+        </>
+      ),
+    },
+    {
+      title: "Project Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Backup locations and related settings are resolved from your project's
+          configuration whenever available.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>

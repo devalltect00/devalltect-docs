@@ -4,20 +4,41 @@ description: "Command forms custy push dan remote-selection behavior."
 sidebar_position: 3
 sidebar_key: custy-push-syntax
 ---
-import {CommandHero, CommandSyntax, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Command Syntax" description="Push HEAD dengan explicit, grouped, backup-aware, atau dry-run selection." category="Git Operations" status="Stable" syntax="custy push [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Options",href:"./options"},{label:"Remotes",href:"./remotes"}]} />
+import { CommandHero, CommandSyntax, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Command Syntax"
+  description="Push HEAD dengan explicit, grouped, backup-aware, atau dry-run selection."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Remotes", href: "./remotes" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandSyntax examples={[
- {title:"Default Push",command:"custy push"},
- {title:"Specific Remote",command:"custy push --remote upstream"},
- {title:"All Configured Remotes",command:"custy push --all-remote"},
- {title:"Push with Tag",command:"custy push --tag v1.2.3"},
- {title:"Synchronize Backup",command:"custy push --sync-backup"},
- {title:"Preview",command:"custy --dry-run push --tag v1.2.3"},
-]} />
+<CommandSyntax
+  examples={[
+    { title: "Default Push", command: "custy push" },
+    { title: "Specific Remote", command: "custy push --remote upstream" },
+    { title: "All Configured Remotes", command: "custy push --all-remote" },
+    { title: "Push with Tag", command: "custy push --tag v1.2.3" },
+    { title: "Synchronize Backup", command: "custy push --sync-backup" },
+    { title: "Preview", command: "custy --dry-run push --tag v1.2.3" },
+  ]}
+/>
 
-<InfoBox variant="info" title="Direct Command and Run Profile">`custy run push` menggunakan registered profile; direct command menyediakan push-specific overrides.</InfoBox>
-<InfoBox variant="info" title="Selection Precedence">Explicit `--remote` override `--all-remote`, `push_to`, dan configured groups. Tanpa explicit remote, `--all-remote` override `push_to`.</InfoBox>
+<InfoBox variant="info" title="Direct Command and Run Profile">
+  `custy run push` menggunakan registered profile; direct command menyediakan
+  push-specific overrides.
+</InfoBox>
+<InfoBox variant="info" title="Selection Precedence">
+  Explicit `--remote` override `--all-remote`, `push_to`, dan configured groups. Tanpa
+  explicit remote, `--all-remote` override `push_to`.
+</InfoBox>

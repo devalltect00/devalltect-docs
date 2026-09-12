@@ -6,14 +6,23 @@ sidebar_key: reflow-architecture
 tags: [reflow, architecture]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Reflow" title="Architecture" description="Understand responsibilities and execution flow." category="Architecture" status="v1.0.1" syntax="reflow init" />
+<CommandHero
+  command="Reflow"
+  title="Architecture"
+  description="Understand responsibilities and execution flow."
+  category="Architecture"
+  status="v1.0.1"
+  syntax="reflow init"
+/>
 
 1. Typer/Rich CLI and confirmation layer
 2. Repository workspace and target resolution
 3. Git tag conversion and release-recovery services
 4. Docker build and registry services
 
-<InfoBox variant="note" title="Separation of responsibilities">Local and remote tag replacement are separate commands. Remote pushes, release recovery, and registry publishing are explicit external mutations.</InfoBox>
-
+<InfoBox variant="note" title="Separation of responsibilities">
+  Local and remote tag replacement are separate commands. Remote pushes, release
+  recovery, and registry publishing are explicit external mutations.
+</InfoBox>

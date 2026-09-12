@@ -1,1 +1,6 @@
-{"label":"Konsep","position":3,"link":{"type":"doc","id":"custy/concepts/commands-pipelines-and-workflows"},"collapsed":true}
+{
+  "label": "Konsep",
+  "position": 3,
+  "link": { "type": "doc", "id": "custy/concepts/commands-pipelines-and-workflows" },
+  "collapsed": true
+}

@@ -6,39 +6,35 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    RequirementGrid,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Requirements"
-    description="Understand the prerequisites required before validating a project."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "requirements",
-        "validation",
-        "git",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Validation Checks",
-            href: "./validation-checks",
-        },
-    ]}
+  command="custy validate"
+  title="Requirements"
+  description="Understand the prerequisites required before validating a project."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["requirements", "validation", "git"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Validation Checks",
+      href: "./validation-checks",
+    },
+  ]}
 />
 
 ## Overview
@@ -69,50 +65,43 @@ validator when Commitizen is not configured or installed.
 >
 
 <RequirementGrid
-    title="Required Environment"
-    items={[
-        {
-            title: "Git Repository",
-            icon: <Icon name="git" />,
-            children: (
-                <>
-                    The current directory should already be initialized as a
-                    Git repository.
-                </>
-            ),
-        },
-        {
-            title: "Custy Configuration",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Running <code>custy init</code> beforehand is highly
-                    recommended so that configuration and template files are
-                    available.
-                </>
-            ),
-        },
-        {
-            title: "Git Remote",
-            icon: <Icon name="network" />,
-            children: (
-                <>
-                    The configured Git remote should already exist if your
-                    workflow requires remote validation.
-                </>
-            ),
-        },
-        {
-            title: "Project Resources",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Version files and template files should exist in the
-                    configured locations.
-                </>
-            ),
-        },
-    ]}
+  title="Required Environment"
+  items={[
+    {
+      title: "Git Repository",
+      icon: <Icon name="git" />,
+      children: (
+        <>The current directory should already be initialized as a Git repository.</>
+      ),
+    },
+    {
+      title: "Custy Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Running <code>custy init</code> beforehand is highly recommended so that
+          configuration and template files are available.
+        </>
+      ),
+    },
+    {
+      title: "Git Remote",
+      icon: <Icon name="network" />,
+      children: (
+        <>
+          The configured Git remote should already exist if your workflow requires
+          remote validation.
+        </>
+      ),
+    },
+    {
+      title: "Project Resources",
+      icon: <Icon name="directory" />,
+      children: (
+        <>Version files and template files should exist in the configured locations.</>
+      ),
+    },
+  ]}
 />
 
 </Section>

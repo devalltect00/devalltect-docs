@@ -16,39 +16,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Configuration"
-    description="Pahami bagaimana file configuration yang dibuat mengendalikan perilaku Custy."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "configuration",
-        "customization",
-        "config.toml",
-    ]}
-    links={[
-        {
-            label: "Generated Files",
-            href: "./generated-files",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy init"
+  title="Configuration"
+  description="Pahami bagaimana file configuration yang dibuat mengendalikan perilaku Custy."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["configuration", "customization", "config.toml"]}
+  links={[
+    {
+      label: "Generated Files",
+      href: "./generated-files",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -82,9 +78,7 @@ Setelah init, file configuration utama berada di:
 
 <Terminal>
 
-{`
-.config/custy/config.toml
-`}
+{`.config/custy/config.toml`}
 
 </Terminal>
 
@@ -99,45 +93,45 @@ Command Custy berikutnya otomatis memuat file ini ketika tersedia.
 >
 
 <FeatureGrid
-    title="Kategori Configuration"
-    items={[
-        {
-            title: "Project",
-            children: (
-                <>
-                    Tentukan informasi khusus proyek, seperti source directory
-                    utama yang digunakan Custy.
-                </>
-            ),
-        },
-        {
-            title: "Initialization",
-            children: (
-                <>
-                    Konfigurasikan perilaku default init, termasuk pengaturan
-                    overwrite dan konfirmasi.
-                </>
-            ),
-        },
-        {
-            title: "Release",
-            children: (
-                <>
-                    Konfigurasikan release metadata, seperti author default dan
-                    penanganan release date.
-                </>
-            ),
-        },
-        {
-            title: "Versioning",
-            children: (
-                <>
-                    Tentukan versioning strategy dan perilaku bump default yang
-                    digunakan command terkait release.
-                </>
-            ),
-        },
-    ]}
+  title="Kategori Configuration"
+  items={[
+    {
+      title: "Project",
+      children: (
+        <>
+          Tentukan informasi khusus proyek, seperti source directory utama yang
+          digunakan Custy.
+        </>
+      ),
+    },
+    {
+      title: "Initialization",
+      children: (
+        <>
+          Konfigurasikan perilaku default init, termasuk pengaturan overwrite dan
+          konfirmasi.
+        </>
+      ),
+    },
+    {
+      title: "Release",
+      children: (
+        <>
+          Konfigurasikan release metadata, seperti author default dan penanganan release
+          date.
+        </>
+      ),
+    },
+    {
+      title: "Versioning",
+      children: (
+        <>
+          Tentukan versioning strategy dan perilaku bump default yang digunakan command
+          terkait release.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>

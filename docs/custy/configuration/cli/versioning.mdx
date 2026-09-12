@@ -7,20 +7,66 @@ tags: [custy, configuration, versioning]
 keywords: [strategy, bump, date_format]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.versioning]" title="Versioning" description="Align Custy's version calculation and tag ordering with the project's version scheme." category="CLI Configuration" status="Active + Optional Key" syntax={'strategy = "semver"'} tags={["semver", "PEP 440", "bump"]} links={[{label: "Paths", href: "./paths"}, {label: "Version Command", href: "../../commands/version/overview"}, {label: "Tag", href: "../../commands/tag/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.versioning]"
+  title="Versioning"
+  description="Align Custy's version calculation and tag ordering with the project's version scheme."
+  category="CLI Configuration"
+  status="Active + Optional Key"
+  syntax={'strategy = "semver"'}
+  tags={["semver", "PEP 440", "bump"]}
+  links={[
+    { label: "Paths", href: "./paths" },
+    { label: "Version Command", href: "../../commands/version/overview" },
+    { label: "Tag", href: "../../commands/tag/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Properties", value: "2", icon: "table"}, {label: "Optional Property", value: "date_format", icon: "note"}, {label: "Strategy Default", value: "semver", icon: "release"}, {label: "Bump Default", value: "auto", icon: "workflow"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Properties", value: "2", icon: "table" },
+    { label: "Optional Property", value: "date_format", icon: "note" },
+    { label: "Strategy Default", value: "semver", icon: "release" },
+    { label: "Bump Default", value: "auto", icon: "workflow" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "strategy", type: "semver | pep440 | commitizen | date | gitcount", defaultValue: "semver", description: "Version strategy resolved by version, tag, Git operations, and run flows. Remove it to allow the built-in project detector to participate."},
-        {property: "bump", type: "auto | patch | minor | major", defaultValue: "auto", description: "Default requested bump when a command does not provide one. The version resolver itself has no non-configuration bump fallback."},
-        {property: "date_format", type: "Format string", defaultValue: "%Y.%m.%d", description: "Optional active key used by Git tag sorting for the date strategy. It is supported but omitted from the generated file."},
-    ]}
+  items={[
+    {
+      property: "strategy",
+      type: "semver | pep440 | commitizen | date | gitcount",
+      defaultValue: "semver",
+      description:
+        "Version strategy resolved by version, tag, Git operations, and run flows. Remove it to allow the built-in project detector to participate.",
+    },
+    {
+      property: "bump",
+      type: "auto | patch | minor | major",
+      defaultValue: "auto",
+      description:
+        "Default requested bump when a command does not provide one. The version resolver itself has no non-configuration bump fallback.",
+    },
+    {
+      property: "date_format",
+      type: "Format string",
+      defaultValue: "%Y.%m.%d",
+      description:
+        "Optional active key used by Git tag sorting for the date strategy. It is supported but omitted from the generated file.",
+    },
+  ]}
 />
 
 <Terminal title="Semantic versions" language="toml">
@@ -46,4 +92,24 @@ detection. Remove or comment it only when you intentionally want detection.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Version Configuration", href: "../../commands/version/configuration", description: "See direct-command behavior."}, {title: "Versioning and Tags", href: "../../commands/tag/versioning-and-tags", description: "Connect strategy to Git tags."}, {title: "Paths", href: "./paths", description: "Configure the source version file."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Version Configuration",
+        href: "../../commands/version/configuration",
+        description: "See direct-command behavior.",
+      },
+      {
+        title: "Versioning and Tags",
+        href: "../../commands/tag/versioning-and-tags",
+        description: "Connect strategy to Git tags.",
+      },
+      {
+        title: "Paths",
+        href: "./paths",
+        description: "Configure the source version file.",
+      },
+    ]}
+  />
+</Section>

@@ -17,39 +17,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Generated Files"
-    description="Understand the project resources created during initialization."
-    category="Initialization"
-    status="Recommended"
-    syntax="custy init"
-    tags={[
-        "configuration",
-        "templates",
-        "generated files",
-    ]}
-    links={[
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy init"
+  title="Generated Files"
+  description="Understand the project resources created during initialization."
+  category="Initialization"
+  status="Recommended"
+  syntax="custy init"
+  tags={["configuration", "templates", "generated files"]}
+  links={[
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -77,46 +73,41 @@ every contributor uses the same Custy configuration and templates.
 >
 
 <FeatureGrid
-    title="Resources Created"
-    items={[
-        {
-            title: "Configuration",
-            children: (
-                <>
-                    Generates the primary
-                    <code>.config/custy/config.toml</code>
-                    configuration file.
-                </>
-            ),
-        },
-        {
-            title: "Templates",
-            children: (
-                <>
-                    Creates the default commit, tag, and changelog
-                    templates used by future Custy workflows.
-                </>
-            ),
-        },
-        {
-            title: "Examples",
-            children: (
-                <>
-                    Optionally generates example message templates for
-                    experimentation and customization.
-                </>
-            ),
-        },
-        {
-            title: "Directory Structure",
-            children: (
-                <>
-                    Creates the directory layout expected by future
-                    Custy commands.
-                </>
-            ),
-        },
-    ]}
+  title="Resources Created"
+  items={[
+    {
+      title: "Configuration",
+      children: (
+        <>
+          Generates the primary
+          <code>.config/custy/config.toml</code>
+          configuration file.
+        </>
+      ),
+    },
+    {
+      title: "Templates",
+      children: (
+        <>
+          Creates the default commit, tag, and changelog templates used by future Custy
+          workflows.
+        </>
+      ),
+    },
+    {
+      title: "Examples",
+      children: (
+        <>
+          Optionally generates example message templates for experimentation and
+          customization.
+        </>
+      ),
+    },
+    {
+      title: "Directory Structure",
+      children: <>Creates the directory layout expected by future Custy commands.</>,
+    },
+  ]}
 />
 
 </Section>
@@ -132,8 +123,7 @@ to the following.
 
 <Terminal>
 
-{`
-.config/
+{`.config/
 └── custy/
     ├── config.toml
     └── templates/
@@ -150,8 +140,7 @@ to the following.
         │       ├── since_custy_v1/
         │       └── since_custy_v2/
         ├── commit-message.txt
-        └── tag-message.txt
-`}
+        └── tag-message.txt`}
 
 </Terminal>
 

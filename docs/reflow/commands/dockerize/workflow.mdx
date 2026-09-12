@@ -6,9 +6,22 @@ sidebar_key: reflow-dockerize
 tags: [reflow, workflow]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Workflow" description="Build an image for every repository tag and publish it to configured GitHub and/or GitLab registries." category="Container Publishing" status="External Mutation" syntax="reflow dockerize [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Workflow"
+  description="Build an image for every repository tag and publish it to configured GitHub and/or GitLab registries."
+  category="Container Publishing"
+  status="External Mutation"
+  syntax="reflow dockerize [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ### 1. Stage 1
 
@@ -30,5 +43,6 @@ Mark latest ordered version as latest.
 
 Remove non-latest local images unless retained; show totals.
 
-<InfoBox variant="warning" title="Safety boundary">Live mode builds/pushes and may remove local images. Dry-run simulates all mutation.</InfoBox>
-
+<InfoBox variant="warning" title="Safety boundary">
+  Live mode builds/pushes and may remove local images. Dry-run simulates all mutation.
+</InfoBox>

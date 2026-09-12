@@ -16,45 +16,41 @@ keywords:
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy --dry-run run dev"
-    title="Alur Kerja Custy Pertama Anda"
-    description="Pahami, pratinjau, dan jalankan pipeline development Custy untuk pertama kalinya secara terencana."
-    category="Memulai"
-    status="Pratinjau Dahulu"
-    syntax="custy [GLOBAL OPTIONS] run dev [OPTIONS]"
-    tags={[
-        "profil Dev",
-        "commit",
-        "push",
-    ]}
-    links={[
-        {label: "Pemeriksaan Awal", href: "#preflight-checklist"},
-        {label: "Pratinjau", href: "#preview-the-workflow"},
-        {label: "Referensi Dev", href: "../commands/run/dev/overview"},
-        {label: "Pengembangan Sehari-hari", href: "../user-guide/everyday-development"},
-    ]}
+  command="custy --dry-run run dev"
+  title="Alur Kerja Custy Pertama Anda"
+  description="Pahami, pratinjau, dan jalankan pipeline development Custy untuk pertama kalinya secara terencana."
+  category="Memulai"
+  status="Pratinjau Dahulu"
+  syntax="custy [GLOBAL OPTIONS] run dev [OPTIONS]"
+  tags={["profil Dev", "commit", "push"]}
+  links={[
+    { label: "Pemeriksaan Awal", href: "#preflight-checklist" },
+    { label: "Pratinjau", href: "#preview-the-workflow" },
+    { label: "Referensi Dev", href: "../commands/run/dev/overview" },
+    { label: "Pengembangan Sehari-hari", href: "../user-guide/everyday-development" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Profil", value: "dev", icon: "pipeline"},
-        {label: "Membuat Commit", value: "Ya, dalam mode normal", icon: "git"},
-        {label: "Melakukan Push", value: "Ya, dalam mode normal", icon: "network"},
-        {label: "Eksekusi Pertama", value: "Dry run", icon: "success"},
-    ]}
+  items={[
+    { label: "Profil", value: "dev", icon: "pipeline" },
+    { label: "Membuat Commit", value: "Ya, dalam mode normal", icon: "git" },
+    { label: "Melakukan Push", value: "Ya, dalam mode normal", icon: "network" },
+    { label: "Eksekusi Pertama", value: "Dry run", icon: "success" },
+  ]}
 />
 
 ## Ringkasan
@@ -85,28 +81,37 @@ memerlukan profil commit lokal yang didokumentasikan.
 >
 
 <CommandChecklist
-    items={[
-        {
-            title: "Inisialisasi sudah ditinjau",
-            description: "Konfigurasi proyek, template, dan resource versi tersedia di lokasi yang dimaksud.",
-        },
-        {
-            title: "Validasi berhasil",
-            description: <><code>custy validate</code> selesai tanpa kegagalan kesiapan yang belum diselesaikan.</>,
-        },
-        {
-            title: "Perubahan working tree dipahami",
-            description: "Hanya file yang ditujukan untuk commit berikutnya yang tersedia atau sudah di-stage.",
-        },
-        {
-            title: "Pesan commit sudah siap",
-            description: "File pesan commit yang dikonfigurasi berisi pesan yang sudah ditinjau untuk perubahan ini.",
-        },
-        {
-            title: "Tujuan remote sudah dipastikan",
-            description: "Remote yang dikonfigurasi dapat dijangkau dan mengarah ke repositori yang dimaksud.",
-        },
-    ]}
+  items={[
+    {
+      title: "Inisialisasi sudah ditinjau",
+      description:
+        "Konfigurasi proyek, template, dan resource versi tersedia di lokasi yang dimaksud.",
+    },
+    {
+      title: "Validasi berhasil",
+      description: (
+        <>
+          <code>custy validate</code> selesai tanpa kegagalan kesiapan yang belum
+          diselesaikan.
+        </>
+      ),
+    },
+    {
+      title: "Perubahan working tree dipahami",
+      description:
+        "Hanya file yang ditujukan untuk commit berikutnya yang tersedia atau sudah di-stage.",
+    },
+    {
+      title: "Pesan commit sudah siap",
+      description:
+        "File pesan commit yang dikonfigurasi berisi pesan yang sudah ditinjau untuk perubahan ini.",
+    },
+    {
+      title: "Tujuan remote sudah dipastikan",
+      description:
+        "Remote yang dikonfigurasi dapat dijangkau dan mengarah ke repositori yang dimaksud.",
+    },
+  ]}
 />
 
 <Terminal title="Tinjau kondisi repositori" language="bash">
@@ -128,34 +133,36 @@ custy validate`}
 >
 
 <WorkflowTimeline
-    title="Urutan Development yang Terdaftar"
-    items={[
-        {
-            title: "Validasi repositori",
-            description: "Pastikan eksekusi dimulai di dalam repositori Git.",
-            status: "completed",
-        },
-        {
-            title: "Validasi input commit dan remote",
-            description: "Tentukan commit validator, hook policy, message file, dan remote.",
-            status: "completed",
-        },
-        {
-            title: "Tinjau pesan commit",
-            description: "Buka hanya commit-message file dan validasi hasil yang disimpan.",
-            status: "completed",
-        },
-        {
-            title: "Tinjau dan simpan pesan",
-            description: "Validasi dan backup pesan commit, lalu bersihkan backup yang disimpan.",
-            status: "completed",
-        },
-        {
-            title: "Publikasikan pekerjaan development",
-            description: "Stage perubahan yang ditentukan, buat commit, lalu push branch HEAD tanpa mendorong tag.",
-            status: "current",
-        },
-    ]}
+  title="Urutan Development yang Terdaftar"
+  items={[
+    {
+      title: "Validasi repositori",
+      description: "Pastikan eksekusi dimulai di dalam repositori Git.",
+      status: "completed",
+    },
+    {
+      title: "Validasi input commit dan remote",
+      description: "Tentukan commit validator, hook policy, message file, dan remote.",
+      status: "completed",
+    },
+    {
+      title: "Tinjau pesan commit",
+      description: "Buka hanya commit-message file dan validasi hasil yang disimpan.",
+      status: "completed",
+    },
+    {
+      title: "Tinjau dan simpan pesan",
+      description:
+        "Validasi dan backup pesan commit, lalu bersihkan backup yang disimpan.",
+      status: "completed",
+    },
+    {
+      title: "Publikasikan pekerjaan development",
+      description:
+        "Stage perubahan yang ditentukan, buat commit, lalu push branch HEAD tanpa mendorong tag.",
+      status: "current",
+    },
+  ]}
 />
 
 <InfoBox
@@ -237,29 +244,51 @@ tinjau dokumentasi Push khusus sebelum eksekusi normal.
 >
 
 <FeatureGrid
-    title="Alternatif yang Umum"
-    items={[
-        {
-            title: "Commit",
-            icon: <Icon name="git" />,
-            children: <>Gunakan <a href="../commands/commit/overview">custy commit</a> atau profil Commit dari perintah run untuk persiapan commit lokal yang didokumentasikan tanpa tahap push terakhir dari profil Dev.</>,
-        },
-        {
-            title: "Release",
-            icon: <Icon name="release" />,
-            children: <>Gunakan <a href="../commands/run/release/overview">custy run release</a> hanya setelah meninjau persyaratan versi, changelog, commit, tag, dan push.</>,
-        },
-        {
-            title: "Full",
-            icon: <Icon name="pipeline" />,
-            children: <>Gunakan <a href="../commands/run/full/overview">custy run full</a> ketika tahap rilis dan perilaku finalisasi eksperimental sama-sama memang diinginkan.</>,
-        },
-        {
-            title: "Perintah Langsung",
-            icon: <Icon name="terminal" />,
-            children: <>Pilih perintah tertentu dari <a href="../commands/overview">referensi perintah</a> ketika pipeline multi-langkah tidak diperlukan.</>,
-        },
-    ]}
+  title="Alternatif yang Umum"
+  items={[
+    {
+      title: "Commit",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Gunakan <a href="../commands/commit/overview">custy commit</a> atau profil
+          Commit dari perintah run untuk persiapan commit lokal yang didokumentasikan
+          tanpa tahap push terakhir dari profil Dev.
+        </>
+      ),
+    },
+    {
+      title: "Release",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Gunakan <a href="../commands/run/release/overview">custy run release</a> hanya
+          setelah meninjau persyaratan versi, changelog, commit, tag, dan push.
+        </>
+      ),
+    },
+    {
+      title: "Full",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Gunakan <a href="../commands/run/full/overview">custy run full</a> ketika
+          tahap rilis dan perilaku finalisasi eksperimental sama-sama memang diinginkan.
+        </>
+      ),
+    },
+    {
+      title: "Perintah Langsung",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Pilih perintah tertentu dari{" "}
+          <a href="../commands/overview">referensi perintah</a> ketika pipeline
+          multi-langkah tidak diperlukan.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -271,12 +300,28 @@ tinjau dokumentasi Push khusus sebelum eksekusi normal.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Profil Dev", href: "../commands/run/dev/overview", description: "Tinjau perilaku, keterbatasan, dan contoh secara tepat."},
-        {title: "Keamanan Run", href: "../commands/run/safety", description: "Pahami batas dry run dan tahap yang berdampak."},
-        {title: "Push", href: "../commands/push/overview", description: "Tinjau resolusi remote dan perilaku sinkronisasi."},
-        {title: "Profil Run", href: "../commands/run/profiles", description: "Bandingkan semua nama profil publik yang didukung."},
-    ]}
+  commands={[
+    {
+      title: "Profil Dev",
+      href: "../commands/run/dev/overview",
+      description: "Tinjau perilaku, keterbatasan, dan contoh secara tepat.",
+    },
+    {
+      title: "Keamanan Run",
+      href: "../commands/run/safety",
+      description: "Pahami batas dry run dan tahap yang berdampak.",
+    },
+    {
+      title: "Push",
+      href: "../commands/push/overview",
+      description: "Tinjau resolusi remote dan perilaku sinkronisasi.",
+    },
+    {
+      title: "Profil Run",
+      href: "../commands/run/profiles",
+      description: "Bandingkan semua nama profil publik yang didukung.",
+    },
+  ]}
 />
 
 </Section>

@@ -1,5 +1,3 @@
 export { default } from "./Card";
 
-export type {
-    CardProps,
-} from "./types";
+export type { CardProps } from "./types";

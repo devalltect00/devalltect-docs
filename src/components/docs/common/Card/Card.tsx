@@ -13,55 +13,42 @@ import type { CardProps } from "./types";
  * instead of duplicating layout and styling.
  */
 export default function Card({
-    title,
-    subtitle,
-    icon,
-    children,
-    className,
-    noPadding = false,
-    hoverable = true,
-    bordered = false,
-    ...props
+  title,
+  subtitle,
+  icon,
+  children,
+  className,
+  noPadding = false,
+  hoverable = true,
+  bordered = false,
+  ...props
 }: CardProps) {
-    return (
-        <article
-            className={clsx(
-                styles.card,
-                hoverable && styles.hoverable,
-                bordered && styles.bordered,
-                noPadding && styles.noPadding,
-                className,
-            )}
-            {...props}
-        >
-            {(title || subtitle) && (
-                <header className={styles.header}>
-                    {title && (
-                        <Heading
-                            as="h3"
-                            className={styles.title}
-                        >
-                            {icon && (
-                                <span className={styles.icon}>
-                                    {icon}
-                                </span>
-                            )}
+  return (
+    <article
+      className={clsx(
+        styles.card,
+        hoverable && styles.hoverable,
+        bordered && styles.bordered,
+        noPadding && styles.noPadding,
+        className
+      )}
+      {...props}
+    >
+      {(title || subtitle) && (
+        <header className={styles.header}>
+          {title && (
+            <Heading as="h3" className={styles.title}>
+              {icon && <span className={styles.icon}>{icon}</span>}
 
-                            {title}
-                        </Heading>
-                    )}
+              {title}
+            </Heading>
+          )}
 
-                    {subtitle && (
-                        <p className={styles.subtitle}>
-                            {subtitle}
-                        </p>
-                    )}
-                </header>
-            )}
+          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        </header>
+      )}
 
-            <div className={styles.body}>
-                {children}
-            </div>
-        </article>
-    );
+      <div className={styles.body}>{children}</div>
+    </article>
+  );
 }

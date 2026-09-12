@@ -1,13 +1,9 @@
 export { default } from "./CommandHero";
 
-export type {
-    CommandHeroLink,
-    CommandHeroProps,
-} from "./types";
-
+export type { CommandHeroLink, CommandHeroProps } from "./types";
 
 /** Example Usage
- * 
+ *
 import * as Docs from "@site/src/components/docs";
 
 <Docs.CommandHero

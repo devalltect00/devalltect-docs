@@ -18,47 +18,51 @@ keywords:
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pip install --index-url $PRIVATE_INDEX_URL custy==2.1.1"
-    title="Instal Custy"
-    description="Pilih metode instalasi native yang didukung, siapkan persyaratannya, dan verifikasi CLI Custy."
-    category="Memulai"
-    status="Python 3.14+"
-    syntax="python -m pip install [OPTIONS] SOURCE"
-    tags={[
-        "GitLab PyPI privat",
-        "source checkout",
-        "artefak rilis",
-        "penyiapan developer",
-    ]}
-    links={[
-        {label: "Persyaratan", href: "#requirements"},
-        {label: "Metode Instalasi", href: "#choose-an-installation-method"},
-        {label: "Penyiapan Developer", href: "#editable-developer-installation"},
-        {label: "Verifikasi", href: "#verify-the-installation"},
-    ]}
+  command="python -m pip install --index-url $PRIVATE_INDEX_URL custy==2.1.1"
+  title="Instal Custy"
+  description="Pilih metode instalasi native yang didukung, siapkan persyaratannya, dan verifikasi CLI Custy."
+  category="Memulai"
+  status="Python 3.14+"
+  syntax="python -m pip install [OPTIONS] SOURCE"
+  tags={[
+    "GitLab PyPI privat",
+    "source checkout",
+    "artefak rilis",
+    "penyiapan developer",
+  ]}
+  links={[
+    { label: "Persyaratan", href: "#requirements" },
+    { label: "Metode Instalasi", href: "#choose-an-installation-method" },
+    { label: "Penyiapan Developer", href: "#editable-developer-installation" },
+    { label: "Verifikasi", href: "#verify-the-installation" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Python Native", value: "3.14 atau lebih baru", icon: "requirement"},
-        {label: "Tool Sistem Utama", value: "Git", icon: "git"},
-        {label: "Isolasi yang Disarankan", value: "Virtual environment", icon: "directory"},
-        {label: "Registry Privat", value: "GitLab PyPI", icon: "package"},
-        {label: "Alternatif Container", value: "Build Docker lokal", icon: "docker"},
-    ]}
+  items={[
+    { label: "Python Native", value: "3.14 atau lebih baru", icon: "requirement" },
+    { label: "Tool Sistem Utama", value: "Git", icon: "git" },
+    {
+      label: "Isolasi yang Disarankan",
+      value: "Virtual environment",
+      icon: "directory",
+    },
+    { label: "Registry Privat", value: "GitLab PyPI", icon: "package" },
+    { label: "Alternatif Container", value: "Build Docker lokal", icon: "docker" },
+  ]}
 />
 
 ## Ringkasan
@@ -89,38 +93,44 @@ didukung sebagai alternatif.
 >
 
 <RequirementGrid
-    items={[
-        {
-            title: "Python 3.14+",
-            level: "required",
-            children: "Diperlukan untuk instalasi native. Ini adalah versi minimum yang dinyatakan oleh metadata package saat ini.",
-        },
-        {
-            title: "pip",
-            level: "required",
-            children: "Diperlukan untuk instalasi native. Jalankan melalui interpreter Python yang dipilih.",
-        },
-        {
-            title: "Git",
-            level: "required",
-            children: "Diperlukan pada host native untuk operasi repositori, versi, changelog, commit, tag, push, dan pipeline Custy.",
-        },
-        {
-            title: "Virtual Environment",
-            level: "recommended",
-            children: "Pisahkan Custy dan dependensinya dari Python sistem serta proyek lain.",
-        },
-        {
-            title: "Docker",
-            level: "optional",
-            children: "Gunakan cara container sebagai pengganti instalasi Python, pip, atau Git di host.",
-        },
-        {
-            title: "Make",
-            level: "optional",
-            children: "Gunakan target Make repositori sebagai helper development dan container; Make tidak diperlukan oleh CLI Custy itu sendiri.",
-        },
-    ]}
+  items={[
+    {
+      title: "Python 3.14+",
+      level: "required",
+      children:
+        "Diperlukan untuk instalasi native. Ini adalah versi minimum yang dinyatakan oleh metadata package saat ini.",
+    },
+    {
+      title: "pip",
+      level: "required",
+      children:
+        "Diperlukan untuk instalasi native. Jalankan melalui interpreter Python yang dipilih.",
+    },
+    {
+      title: "Git",
+      level: "required",
+      children:
+        "Diperlukan pada host native untuk operasi repositori, versi, changelog, commit, tag, push, dan pipeline Custy.",
+    },
+    {
+      title: "Virtual Environment",
+      level: "recommended",
+      children:
+        "Pisahkan Custy dan dependensinya dari Python sistem serta proyek lain.",
+    },
+    {
+      title: "Docker",
+      level: "optional",
+      children:
+        "Gunakan cara container sebagai pengganti instalasi Python, pip, atau Git di host.",
+    },
+    {
+      title: "Make",
+      level: "optional",
+      children:
+        "Gunakan target Make repositori sebagai helper development dan container; Make tidak diperlukan oleh CLI Custy itu sendiri.",
+    },
+  ]}
 />
 
 </Section>
@@ -132,34 +142,49 @@ didukung sebagai alternatif.
 >
 
 <FeatureGrid
-    title="Instal Hanya Saat Diperlukan"
-    items={[
-        {
-            title: "Commitizen",
-            icon: <Icon name="git" />,
-            children: <>Instal <code>custy[commitizen]</code> ketika menggunakan Commitizen versioning atau commit-message validation. Tool ini tetap optional untuk normal Custy workflows dan disertakan dalam production Docker image.</>,
-        },
-        {
-            title: "Pre-Commit Hooks",
-            icon: <Icon name="success" />,
-            children: <>Instal <code>custy[hooks]</code> ketika local Custy harus menjalankan pre-commit-managed hooks secara langsung. Project tanpa pre-commit tidak memerlukan extra ini. Production image sudah menyertakannya.</>,
-        },
-        {
-            title: "Editor Interaktif",
-            icon: <Icon name="file" />,
-            children: "Instal setidaknya satu configured editor untuk meninjau commit, tag, atau release message. Windows menggunakan VS Code lalu Notepad secara default; Docker menyertakan Micro, Nano, Vim, dan Vi.",
-        },
-        {
-            title: "Kredensial Remote",
-            icon: <Icon name="security" />,
-            children: "Konfigurasikan SSH atau kredensial Git yang didukung di luar Custy sebelum operasi push berkomunikasi dengan remote.",
-        },
-        {
-            title: "Docker Compose",
-            icon: <Icon name="docker" />,
-            children: "Instal plugin Compose hanya ketika menggunakan service development atau production dari repositori.",
-        },
-    ]}
+  title="Instal Hanya Saat Diperlukan"
+  items={[
+    {
+      title: "Commitizen",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Instal <code>custy[commitizen]</code> ketika menggunakan Commitizen versioning
+          atau commit-message validation. Tool ini tetap optional untuk normal Custy
+          workflows dan disertakan dalam production Docker image.
+        </>
+      ),
+    },
+    {
+      title: "Pre-Commit Hooks",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Instal <code>custy[hooks]</code> ketika local Custy harus menjalankan
+          pre-commit-managed hooks secara langsung. Project tanpa pre-commit tidak
+          memerlukan extra ini. Production image sudah menyertakannya.
+        </>
+      ),
+    },
+    {
+      title: "Editor Interaktif",
+      icon: <Icon name="file" />,
+      children:
+        "Instal setidaknya satu configured editor untuk meninjau commit, tag, atau release message. Windows menggunakan VS Code lalu Notepad secara default; Docker menyertakan Micro, Nano, Vim, dan Vi.",
+    },
+    {
+      title: "Kredensial Remote",
+      icon: <Icon name="security" />,
+      children:
+        "Konfigurasikan SSH atau kredensial Git yang didukung di luar Custy sebelum operasi push berkomunikasi dengan remote.",
+    },
+    {
+      title: "Docker Compose",
+      icon: <Icon name="docker" />,
+      children:
+        "Instal plugin Compose hanya ketika menggunakan service development atau production dari repositori.",
+    },
+  ]}
 />
 
 </Section>
@@ -171,34 +196,39 @@ didukung sebagai alternatif.
 >
 
 <FeatureGrid
-    title="Pilihan Instalasi Native"
-    items={[
-        {
-            title: "GitLab PyPI Privat",
-            icon: <Icon name="package" />,
-            children: "Direkomendasikan bagi pengguna berizin yang menginginkan package immutable dan telah ditinjau tanpa memelihara source checkout.",
-        },
-        {
-            title: "Source Checkout",
-            icon: <Icon name="directory" />,
-            children: "Direkomendasikan jika Anda ingin memeriksa source secara langsung dan menginstal salinan runtime normal.",
-        },
-        {
-            title: "Artefak Rilis",
-            icon: <Icon name="package" />,
-            children: "Instal wheel atau source distribution yang dilampirkan pada rilis yang sudah ditinjau, jika rilis tersebut menyediakannya.",
-        },
-        {
-            title: "Revisi Git",
-            icon: <Icon name="git" />,
-            children: "Instal langsung dari tag atau commit yang sudah ditinjau tanpa menyimpan checkout terpisah.",
-        },
-        {
-            title: "Penyiapan Editable untuk Kontributor",
-            icon: <Icon name="command" />,
-            children: "Instal source tree dalam mode editable beserta tool testing, linting, formatting, packaging, dan Git hook.",
-        },
-    ]}
+  title="Pilihan Instalasi Native"
+  items={[
+    {
+      title: "GitLab PyPI Privat",
+      icon: <Icon name="package" />,
+      children:
+        "Direkomendasikan bagi pengguna berizin yang menginginkan package immutable dan telah ditinjau tanpa memelihara source checkout.",
+    },
+    {
+      title: "Source Checkout",
+      icon: <Icon name="directory" />,
+      children:
+        "Direkomendasikan jika Anda ingin memeriksa source secara langsung dan menginstal salinan runtime normal.",
+    },
+    {
+      title: "Artefak Rilis",
+      icon: <Icon name="package" />,
+      children:
+        "Instal wheel atau source distribution yang dilampirkan pada rilis yang sudah ditinjau, jika rilis tersebut menyediakannya.",
+    },
+    {
+      title: "Revisi Git",
+      icon: <Icon name="git" />,
+      children:
+        "Instal langsung dari tag atau commit yang sudah ditinjau tanpa menyimpan checkout terpisah.",
+    },
+    {
+      title: "Penyiapan Editable untuk Kontributor",
+      icon: <Icon name="command" />,
+      children:
+        "Instal source tree dalam mode editable beserta tool testing, linting, formatting, packaging, dan Git hook.",
+    },
+  ]}
 />
 
 </Section>
@@ -218,9 +248,10 @@ package yang tepat di environment terisolasi.
 {`python -m venv venv
 
 # Aktifkan environment, lalu instal satu versi yang sudah ditinjau.
+
 python -m pip install \
-  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
-  "custy==2.1.1"
+ --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+ "custy==2.1.1"
 
 custy --version`}
 
@@ -404,25 +435,39 @@ make install-dev`}
 >
 
 <CommandChecklist
-    title="Pemeriksaan Instalasi"
-    items={[
-        {
-            title: "Environment yang dimaksud sudah aktif",
-            description: "Shell Anda menemukan Python dan Custy dari virtual environment atau instalasi yang dipilih.",
-        },
-        {
-            title: "Versi Python kompatibel",
-            description: <><code>python --version</code> menampilkan Python 3.14 atau lebih baru untuk penggunaan native.</>,
-        },
-        {
-            title: "Versi yang terinstal dapat dilihat",
-            description: <><code>custy --version</code> menampilkan informasi versi package.</>,
-        },
-        {
-            title: "Bantuan perintah dapat ditampilkan",
-            description: <><code>custy --help</code> menampilkan perintah publik dan opsi global.</>,
-        },
-    ]}
+  title="Pemeriksaan Instalasi"
+  items={[
+    {
+      title: "Environment yang dimaksud sudah aktif",
+      description:
+        "Shell Anda menemukan Python dan Custy dari virtual environment atau instalasi yang dipilih.",
+    },
+    {
+      title: "Versi Python kompatibel",
+      description: (
+        <>
+          <code>python --version</code> menampilkan Python 3.14 atau lebih baru untuk
+          penggunaan native.
+        </>
+      ),
+    },
+    {
+      title: "Versi yang terinstal dapat dilihat",
+      description: (
+        <>
+          <code>custy --version</code> menampilkan informasi versi package.
+        </>
+      ),
+    },
+    {
+      title: "Bantuan perintah dapat ditampilkan",
+      description: (
+        <>
+          <code>custy --help</code> menampilkan perintah publik dan opsi global.
+        </>
+      ),
+    },
+  ]}
 />
 
 <Terminal title="Verifikasi CLI" language="bash">
@@ -488,13 +533,34 @@ oleh alur kerja utama Custy.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Penyiapan Docker", href: "./docker", description: "Build image Custy mandiri yang sudah menyertakan Python, Git, pip, dan Make."},
-        {title: "Mulai Cepat", href: "./quick-start", description: "Inisialisasi dan validasi repositori yang sudah ada."},
-        {title: "Penyiapan Developer", href: "../developer-guide/development-setup", description: "Siapkan dan verifikasi environment kontributor editable."},
-        {title: "custy init", href: "../commands/init/overview", description: "Buat resource Custy khusus proyek."},
-        {title: "custy validate", href: "../commands/validate/overview", description: "Periksa kesiapan proyek sebelum menjalankan pipeline."},
-    ]}
+  commands={[
+    {
+      title: "Penyiapan Docker",
+      href: "./docker",
+      description:
+        "Build image Custy mandiri yang sudah menyertakan Python, Git, pip, dan Make.",
+    },
+    {
+      title: "Mulai Cepat",
+      href: "./quick-start",
+      description: "Inisialisasi dan validasi repositori yang sudah ada.",
+    },
+    {
+      title: "Penyiapan Developer",
+      href: "../developer-guide/development-setup",
+      description: "Siapkan dan verifikasi environment kontributor editable.",
+    },
+    {
+      title: "custy init",
+      href: "../commands/init/overview",
+      description: "Buat resource Custy khusus proyek.",
+    },
+    {
+      title: "custy validate",
+      href: "../commands/validate/overview",
+      description: "Periksa kesiapan proyek sebelum menjalankan pipeline.",
+    },
+  ]}
 />
 
 </Section>

@@ -4,21 +4,76 @@ description: "Resolved pipeline stages yang dijalankan custy tag."
 sidebar_position: 7
 sidebar_key: custy-tag-workflow
 ---
-import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy tag" title="Tag Workflow" description="Ikuti profile dari validation hingga local annotated tag." category="Git Operations" status="Stable" syntax="custy tag [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Versioning and Tags",href:"./versioning-and-tags"},{label:"Output",href:"./output"}]} />
+import {
+  CommandHero,
+  WorkflowTimeline,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy tag"
+  title="Tag Workflow"
+  description="Ikuti profile dari validation hingga local annotated tag."
+  category="Git Operations"
+  status="Stable"
+  syntax="custy tag [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Versioning and Tags", href: "./versioning-and-tags" },
+    { label: "Output", href: "./output" },
+  ]}
+/>
 
 ## Ringkasan
 
-<WorkflowTimeline title="Tag Profile" items={[
- {title:"Validate repository",description:"Jalankan pre-tag validation.",status:"completed"},
- {title:"Resolve version",description:"Gunakan explicit tag atau versioning strategy.",status:"completed"},
- {title:"Generate artifact",description:"Buat dan buka tag-message artifact.",status:"completed"},
- {title:"Validate edits",description:"Periksa final tag message.",status:"completed"},
- {title:"Apply version",description:"Tulis resolved version ke configured file.",status:"completed"},
- {title:"Back up message",description:"Simpan tag-message backup dan prune retention.",status:"completed"},
- {title:"Create tag",description:"Buat local annotated Git tag.",status:"completed"},
-]} />
+<WorkflowTimeline
+  title="Tag Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Jalankan pre-tag validation.",
+      status: "completed",
+    },
+    {
+      title: "Resolve version",
+      description: "Gunakan explicit tag atau versioning strategy.",
+      status: "completed",
+    },
+    {
+      title: "Generate artifact",
+      description: "Buat dan buka tag-message artifact.",
+      status: "completed",
+    },
+    {
+      title: "Validate edits",
+      description: "Periksa final tag message.",
+      status: "completed",
+    },
+    {
+      title: "Apply version",
+      description: "Tulis resolved version ke configured file.",
+      status: "completed",
+    },
+    {
+      title: "Back up message",
+      description: "Simpan tag-message backup dan prune retention.",
+      status: "completed",
+    },
+    {
+      title: "Create tag",
+      description: "Buat local annotated Git tag.",
+      status: "completed",
+    },
+  ]}
+/>
 
-<InfoBox variant="note" title="Publishing Is Separate">Profile tidak melakukan push. Publikasikan melalui command Push setelah local result diverifikasi.</InfoBox>
-<Section title="Failure Behavior">Periksa version file, edited artifact, backup, current commit, dan existing tags sebelum retry.</Section>
+<InfoBox variant="note" title="Publishing Is Separate">
+  Profile tidak melakukan push. Publikasikan melalui command Push setelah local result
+  diverifikasi.
+</InfoBox>
+<Section title="Failure Behavior">
+  Periksa version file, edited artifact, backup, current commit, dan existing tags
+  sebelum retry.
+</Section>

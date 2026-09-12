@@ -6,18 +6,31 @@ sidebar_key: path-header-scanner-getting-started
 tags: [path-header-scanner, docker, containers]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.0" title="Run Path Header Scanner with Docker" description="Use a published image to preview or apply path headers in an explicitly mounted project." category="Getting Started" status="Stable Image Policy" syntax="docker pull ghcr.io/devalltect00/path-header-scanner:<tag>" />
+<CommandHero
+  command="docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.0"
+  title="Run Path Header Scanner with Docker"
+  description="Use a published image to preview or apply path headers in an explicitly mounted project."
+  category="Getting Started"
+  status="Stable Image Policy"
+  syntax="docker pull ghcr.io/devalltect00/path-header-scanner:<tag>"
+/>
 
 <Section title="Published Image Tags">
 
-| Tag | Example | Behavior |
-| --- | --- | --- |
-| Exact | `v1.0.0` | Immutable and recommended for CI or reproducible automation. |
-| Minor | `v1.0` | Moves to the newest stable patch in the 1.0 line. |
-| Major | `v1` | Moves to the newest stable release in the 1.x line. |
-| Latest | `latest` | Moves to the newest stable Path Header Scanner release. |
+| Tag    | Example  | Behavior                                                     |
+| ------ | -------- | ------------------------------------------------------------ |
+| Exact  | `v1.0.0` | Immutable and recommended for CI or reproducible automation. |
+| Minor  | `v1.0`   | Moves to the newest stable patch in the 1.0 line.            |
+| Major  | `v1`     | Moves to the newest stable release in the 1.x line.          |
+| Latest | `latest` | Moves to the newest stable Path Header Scanner release.      |
 
 <Terminal title="Pull and verify Path Header Scanner" language="bash">
 
@@ -44,7 +57,17 @@ project directory.
 
 </Section>
 
-<RelatedCommands commands={[
-    {title: "Installation and First Workflow", href: "./first-workflow", description: "Install the scanner and preview a project."},
-    {title: "Scan", href: "../commands/scan/overview", description: "Review preview, apply, and dry-run behavior."},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Installation and First Workflow",
+      href: "./first-workflow",
+      description: "Install the scanner and preview a project.",
+    },
+    {
+      title: "Scan",
+      href: "../commands/scan/overview",
+      description: "Review preview, apply, and dry-run behavior.",
+    },
+  ]}
+/>

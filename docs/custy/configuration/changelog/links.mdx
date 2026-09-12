@@ -7,15 +7,60 @@ tags: [custy, changelog, links]
 keywords: [repository, enable_compare, compare link]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.links]" title="Repository and Compare Links" description="Build version comparison URLs beneath release headings." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.links]" tags={["repository URL", "compare", "releases"]} links={[{label: "Releases", href: "./releases"}, {label: "Rendering", href: "./rendering"}, {label: "Git Remotes", href: "../git/remotes"}]} />
+<CommandHero
+  command="[tool.custy.changelog.links]"
+  title="Repository and Compare Links"
+  description="Build version comparison URLs beneath release headings."
+  category="Changelog Configuration"
+  status="Active"
+  syntax="[tool.custy.changelog.links]"
+  tags={["repository URL", "compare", "releases"]}
+  links={[
+    { label: "Releases", href: "./releases" },
+    { label: "Rendering", href: "./rendering" },
+    { label: "Git Remotes", href: "../git/remotes" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Generated Default", value: "Disabled", icon: "security"}, {label: "Host", value: "Configurable", icon: "network"}, {label: "Failure Mode", value: "Warn and omit", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Generated Default", value: "Disabled", icon: "security" },
+    { label: "Host", value: "Configurable", icon: "network" },
+    { label: "Failure Mode", value: "Warn and omit", icon: "warning" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "repository", type: "HTTP(S) URL string", defaultValue: "Empty", description: "Project repository browser URL used only to construct changelog comparison links. This is not a Git remote name or push destination."}, {property: "enable_compare", type: "Boolean", defaultValue: "false", description: "Generate comparison URLs when repository contains a valid, non-placeholder browser URL."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "repository",
+      type: "HTTP(S) URL string",
+      defaultValue: "Empty",
+      description:
+        "Project repository browser URL used only to construct changelog comparison links. This is not a Git remote name or push destination.",
+    },
+    {
+      property: "enable_compare",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Generate comparison URLs when repository contains a valid, non-placeholder browser URL.",
+    },
+  ]}
+/>
 
 <Terminal title="Safe generated default" language="toml">
 
@@ -53,13 +98,34 @@ whether the Jinja template displays available URLs.
 
 ## Repository URL vs Git remotes
 
-| Setting | Value | Purpose |
-| --- | --- | --- |
-| `changelog.links.repository` | Browser URL, such as `https://github.com/org/project` | Build links in `CHANGELOG.md` |
-| `git.default_remote` | One remote name, such as `origin` | Provide a fallback for operations that use one remote |
-| `git.main_remotes` / `git.backup_remotes` | Lists of remote names | Group authoritative and mirror destinations |
+| Setting                                   | Value                                                 | Purpose                                               |
+| ----------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `changelog.links.repository`              | Browser URL, such as `https://github.com/org/project` | Build links in `CHANGELOG.md`                         |
+| `git.default_remote`                      | One remote name, such as `origin`                     | Provide a fallback for operations that use one remote |
+| `git.main_remotes` / `git.backup_remotes` | Lists of remote names                                 | Group authoritative and mirror destinations           |
 
 Use `git remote -v` to discover remote names and URLs. Do not copy a remote
 name such as `origin` into `changelog.links.repository`.
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Rendering", href: "./rendering", description: "Configure show_compare_link."}, {title: "Releases", href: "./releases", description: "Control visible versions."}, {title: "Git Remotes", href: "../git/remotes", description: "Configure operational remotes separately from documentation links."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Configure show_compare_link.",
+      },
+      {
+        title: "Releases",
+        href: "./releases",
+        description: "Control visible versions.",
+      },
+      {
+        title: "Git Remotes",
+        href: "../git/remotes",
+        description:
+          "Configure operational remotes separately from documentation links.",
+      },
+    ]}
+  />
+</Section>

@@ -6,13 +6,23 @@ sidebar_key: reflow-tags-convert
 tags: [reflow, tags]
 ---
 
-import {CommandHero, InfoBox} from "@site/src/components/docs";
+import { CommandHero, InfoBox } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert" title="Tag Conversion" description="SemVer is the default destination; select local or remote scope." category="Git Tags" status="Stable" syntax="reflow tags convert local|remote [OPTIONS]" />
+<CommandHero
+  command="reflow tags convert"
+  title="Tag Conversion"
+  description="SemVer is the default destination; select local or remote scope."
+  category="Git Tags"
+  status="Stable"
+  syntax="reflow tags convert local|remote [OPTIONS]"
+/>
 
-| Scope | Guide | Effect |
-| --- | --- | --- |
-| Local | [local](./local/overview) | Persistent checkout only. |
+| Scope  | Guide                       | Effect                      |
+| ------ | --------------------------- | --------------------------- |
+| Local  | [local](./local/overview)   | Persistent checkout only.   |
 | Remote | [remote](./remote/overview) | Guarded atomic remote push. |
 
-<InfoBox variant="warning" title="Replacement">A successful conversion creates the destination ref and removes the source ref within the selected scope.</InfoBox>
+<InfoBox variant="warning" title="Replacement">
+  A successful conversion creates the destination ref and removes the source ref within
+  the selected scope.
+</InfoBox>

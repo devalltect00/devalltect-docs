@@ -6,38 +6,34 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandOption,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Options"
-    description="Learn about the command-line options supported by the backup command."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup commit"
-    tags={[
-        "options",
-        "backup",
-        "cli",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Backup Files",
-            href: "./backup-files",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy backup"
+  title="Options"
+  description="Learn about the command-line options supported by the backup command."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup commit"
+  tags={["options", "backup", "cli"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Backup Files",
+      href: "./backup-files",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -68,38 +64,35 @@ built-in default.
 >
 
 <CommandOption
-    options={[
-        {
-            name: "--backup-dir",
-            shorthand: "",
-            required: false,
-            description:
-                "Override the destination directory used for generated backup files.",
-            defaultValue: "Configured backup directory",
-            example:
-                "custy backup commit --backup-dir .config/custy/backups/custom",
-        },
-        {
-            name: "--keep",
-            shorthand: "",
-            required: false,
-            description:
-                "Specify how many backup files should be retained before older backups are pruned.",
-            defaultValue: "Project configuration",
-            example:
-                "custy backup all --keep 20",
-        },
-        {
-            name: "--force",
-            shorthand: "-f",
-            required: false,
-            description:
-                "Create backup directories when necessary and continue without interactive confirmation.",
-            defaultValue: "false",
-            example:
-                "custy backup tag --force",
-        },
-    ]}
+  options={[
+    {
+      name: "--backup-dir",
+      shorthand: "",
+      required: false,
+      description:
+        "Override the destination directory used for generated backup files.",
+      defaultValue: "Configured backup directory",
+      example: "custy backup commit --backup-dir .config/custy/backups/custom",
+    },
+    {
+      name: "--keep",
+      shorthand: "",
+      required: false,
+      description:
+        "Specify how many backup files should be retained before older backups are pruned.",
+      defaultValue: "Project configuration",
+      example: "custy backup all --keep 20",
+    },
+    {
+      name: "--force",
+      shorthand: "-f",
+      required: false,
+      description:
+        "Create backup directories when necessary and continue without interactive confirmation.",
+      defaultValue: "false",
+      example: "custy backup tag --force",
+    },
+  ]}
 />
 
 </Section>

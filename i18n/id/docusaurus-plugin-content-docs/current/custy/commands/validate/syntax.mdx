@@ -6,25 +6,25 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandSyntax,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Syntax"
-    description="Pelajari cara menjalankan command validate melalui CLI Custy."
-    category="Validate"
-    status="Direkomendasikan"
-    syntax="custy validate"
-    tags={["syntax", "validation", "cli"]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Options", href: "./options"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy validate"
+  title="Syntax"
+  description="Pelajari cara menjalankan command validate melalui CLI Custy."
+  category="Validate"
+  status="Direkomendasikan"
+  syntax="custy validate"
+  tags={["syntax", "validation", "cli"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Ringkasan
@@ -44,13 +44,13 @@ otomatis menyertakan validation stages yang diperlukan.
 <Section title="Command Syntax">
 
 <CommandSyntax
-    examples={[
-        {
-            title: "Direct Validation",
-            description: "Jalankan proses validation secara langsung.",
-            command: "custy validate",
-        },
-    ]}
+  examples={[
+    {
+      title: "Direct Validation",
+      description: "Jalankan proses validation secara langsung.",
+      command: "custy validate",
+    },
+  ]}
 />
 
 </Section>
@@ -73,8 +73,8 @@ operasi commit, tagging, pushing, atau release.
 
 Command validate memiliki satu bentuk publik.
 
-| Command | Tujuan |
-|---------|--------|
+| Command          | Tujuan                               |
+| ---------------- | ------------------------------------ |
 | `custy validate` | Jalankan validation secara langsung. |
 
 Internal validation profiles digunakan kembali oleh command lain, tetapi

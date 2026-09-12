@@ -4,19 +4,48 @@ description: "Cara Custy menyiapkan dan menyinkronkan versi proyek."
 sidebar_position: 7
 sidebar_key: custy-version
 ---
-import {CommandHero, WorkflowStep, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Workflow" description="Ikuti proses dari configuration resolution hingga sinkronisasi file." category="Versioning" status="Process Guide" syntax="custy version update" links={[
-    {label: "Versioning Strategies", href: "./versioning-strategies"}, {label: "Examples", href: "./examples"}, {label: "Output", href: "./output"},
-]} />
+import { CommandHero, WorkflowStep, Section, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Workflow"
+  description="Ikuti proses dari configuration resolution hingga sinkronisasi file."
+  category="Versioning"
+  status="Process Guide"
+  syntax="custy version update"
+  links={[
+    { label: "Versioning Strategies", href: "./versioning-strategies" },
+    { label: "Examples", href: "./examples" },
+    { label: "Output", href: "./output" },
+  ]}
+/>
 
 ## Ringkasan
 
-<WorkflowStep title="1. Resolve Configuration">Gabungkan CLI options, project configuration, detection, dan defaults. Path eksplisit harus tersedia, sedangkan nilai `auto` boleh tidak menemukan metadata.</WorkflowStep>
-<WorkflowStep title="2. Detect Project Layout">Deteksi marker Python, Node.js, dan PHP. Jika tidak ada marker, gunakan generic layout dan project root.</WorkflowStep>
-<WorkflowStep title="3. Generate or Accept Version">Gunakan strategy dan bump, atau terima explicit `--tag`.</WorkflowStep>
-<WorkflowStep title="4. Normalize Version">Hapus tag prefix seperti `v` sebelum menulis nilai ke project metadata.</WorkflowStep>
-<WorkflowStep title="5. Synchronize Files">Perbarui Python metadata, Node.js metadata, atau keduanya. Generic project tanpa metadata menggunakan Git-tag-only versioning.</WorkflowStep>
-<WorkflowStep title="6. Report Result">Tampilkan versi target, file yang diperbarui, dan status akhir.</WorkflowStep>
+<WorkflowStep title="1. Resolve Configuration">
+  Gabungkan CLI options, project configuration, detection, dan defaults. Path eksplisit
+  harus tersedia, sedangkan nilai `auto` boleh tidak menemukan metadata.
+</WorkflowStep>
+<WorkflowStep title="2. Detect Project Layout">
+  Deteksi marker Python, Node.js, dan PHP. Jika tidak ada marker, gunakan generic layout
+  dan project root.
+</WorkflowStep>
+<WorkflowStep title="3. Generate or Accept Version">
+  Gunakan strategy dan bump, atau terima explicit `--tag`.
+</WorkflowStep>
+<WorkflowStep title="4. Normalize Version">
+  Hapus tag prefix seperti `v` sebelum menulis nilai ke project metadata.
+</WorkflowStep>
+<WorkflowStep title="5. Synchronize Files">
+  Perbarui Python metadata, Node.js metadata, atau keduanya. Generic project tanpa
+  metadata menggunakan Git-tag-only versioning.
+</WorkflowStep>
+<WorkflowStep title="6. Report Result">
+  Tampilkan versi target, file yang diperbarui, dan status akhir.
+</WorkflowStep>
 
-<InfoBox variant="warning" title="Dry Run Tidak Menulis File">Dengan `--dry-run`, workflow menampilkan metadata target dan perubahan yang direncanakan tanpa menyimpan pembaruan.</InfoBox>
+<InfoBox variant="warning" title="Dry Run Tidak Menulis File">
+  Dengan `--dry-run`, workflow menampilkan metadata target dan perubahan yang
+  direncanakan tanpa menyimpan pembaruan.
+</InfoBox>

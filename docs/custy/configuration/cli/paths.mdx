@@ -7,15 +7,53 @@ tags: [custy, configuration, paths]
 keywords: [tool.custy.cli.paths, version_file]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.paths]" title="CLI Paths" description="Detect supported version metadata or select an explicit version target." category="CLI Configuration" status="Active" syntax={'version_file = "auto"'} tags={["version metadata", "automatic detection", "project root"]} links={[{label: "Versioning", href: "./versioning"}, {label: "Project", href: "../project"}, {label: "Validate", href: "../../commands/validate/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.paths]"
+  title="CLI Paths"
+  description="Detect supported version metadata or select an explicit version target."
+  category="CLI Configuration"
+  status="Active"
+  syntax={'version_file = "auto"'}
+  tags={["version metadata", "automatic detection", "project root"]}
+  links={[
+    { label: "Versioning", href: "./versioning" },
+    { label: "Project", href: "../project" },
+    { label: "Validate", href: "../../commands/validate/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "1", icon: "table"}, {label: "Generated Default", value: "auto", icon: "file"}, {label: "Status", value: "Active", icon: "success"}, {label: "CLI Override", value: "Supported", icon: "terminal"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "1", icon: "table" },
+    { label: "Generated Default", value: "auto", icon: "file" },
+    { label: "Status", value: "Active", icon: "success" },
+    { label: "CLI Override", value: "Supported", icon: "terminal" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "version_file", type: "Path string or auto", defaultValue: "auto", description: "Use auto to detect an existing Python __version__.py, a static project.version in pyproject.toml, or a string version in package.json. An explicit path must exist and be a file."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "version_file",
+      type: "Path string or auto",
+      defaultValue: "auto",
+      description:
+        "Use auto to detect an existing Python __version__.py, a static project.version in pyproject.toml, or a string version in package.json. An explicit path must exist and be a file.",
+    },
+  ]}
+/>
 
 <Terminal title="Automatic detection (recommended)" language="toml">
 
@@ -48,4 +86,24 @@ identifies one metadata file inside the project. Either value can remain
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Versioning", href: "./versioning", description: "Choose how values in the version file are interpreted."}, {title: "Project", href: "../project", description: "Configure the main source directory."}, {title: "Version Configuration", href: "../../commands/version/configuration", description: "Review command-specific version resolution."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Versioning",
+        href: "./versioning",
+        description: "Choose how values in the version file are interpreted.",
+      },
+      {
+        title: "Project",
+        href: "../project",
+        description: "Configure the main source directory.",
+      },
+      {
+        title: "Version Configuration",
+        href: "../../commands/version/configuration",
+        description: "Review command-specific version resolution.",
+      },
+    ]}
+  />
+</Section>

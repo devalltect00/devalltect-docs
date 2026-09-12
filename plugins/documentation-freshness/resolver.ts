@@ -23,30 +23,28 @@ const MAX_TIMEOUT_MS = 60_000;
 /** Fetch function accepted for deterministic resolver tests. */
 export type RemoteTagFetcher = (
   repositoryUrl: string,
-  timeoutMs: number,
+  timeoutMs: number
 ) => Promise<string[]>;
 
 /** Validate automatic project configuration before network access. */
 function validateAutoConfiguration(
   project: Project,
-  freshness: AutoDocumentationFreshness,
+  freshness: AutoDocumentationFreshness
 ): void {
   if (!freshness.repositoryUrl.trim()) {
-    throw new Error(
-      `Project "${project.id}" must configure freshness.repositoryUrl.`,
-    );
+    throw new Error(`Project "${project.id}" must configure freshness.repositoryUrl.`);
   }
 
   if (!(["semver", "pep440"] as const).includes(freshness.tagFormat)) {
     throw new Error(
-      `Project "${project.id}" uses unsupported tag format "${String(freshness.tagFormat)}". Use semver, pep440, or manual mode.`,
+      `Project "${project.id}" uses unsupported tag format "${String(freshness.tagFormat)}". Use semver, pep440, or manual mode.`
     );
   }
 
   const timeoutMs = freshness.timeoutMs ?? DEFAULT_TIMEOUT_MS;
   if (timeoutMs < MIN_TIMEOUT_MS || timeoutMs > MAX_TIMEOUT_MS) {
     throw new Error(
-      `Project "${project.id}" freshness.timeoutMs must be between ${MIN_TIMEOUT_MS} and ${MAX_TIMEOUT_MS}.`,
+      `Project "${project.id}" freshness.timeoutMs must be between ${MIN_TIMEOUT_MS} and ${MAX_TIMEOUT_MS}.`
     );
   }
 
@@ -55,7 +53,7 @@ function validateAutoConfiguration(
     !parseVersionTag(project.documentation.version, freshness.tagFormat)
   ) {
     throw new Error(
-      `Project "${project.id}" documentation version is not valid ${freshness.tagFormat}.`,
+      `Project "${project.id}" documentation version is not valid ${freshness.tagFormat}.`
     );
   }
 }
@@ -63,7 +61,7 @@ function validateAutoConfiguration(
 /** Resolve a project's documentation freshness without mutating project data. */
 export async function resolveProjectFreshness(
   project: Project,
-  remoteTagFetcher: RemoteTagFetcher = fetchRemoteTags,
+  remoteTagFetcher: RemoteTagFetcher = fetchRemoteTags
 ): Promise<DocumentationFreshnessResult | undefined> {
   const documentation = project.documentation;
   if (!documentation) {
@@ -91,7 +89,7 @@ export async function resolveProjectFreshness(
     const { latest, matchedTagCount } = findLatestVersionTag(
       tags,
       freshness.tagFormat,
-      freshness.includePrereleases ?? false,
+      freshness.includePrereleases ?? false
     );
 
     if (!latest) {
@@ -113,7 +111,7 @@ export async function resolveProjectFreshness(
       status: deriveDocumentationStatus(
         documentation.version,
         latest.normalizedVersion,
-        freshness.tagFormat,
+        freshness.tagFormat
       ),
       verification: "remote",
       documentationVersion: documentation.version,
@@ -126,9 +124,7 @@ export async function resolveProjectFreshness(
     };
   } catch (error) {
     const errorCode =
-      error instanceof RemoteTagError
-        ? error.code
-        : "remote-query-failed";
+      error instanceof RemoteTagError ? error.code : "remote-query-failed";
 
     return {
       projectId: project.id,

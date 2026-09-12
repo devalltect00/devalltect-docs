@@ -16,44 +16,40 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Getting Started"
-    description="Install Custy, prepare an existing Git repository, and preview your first development pipeline safely."
-    category="Onboarding"
-    status="Recommended"
-    syntax="custy COMMAND [OPTIONS]"
-    tags={[
-        "installation",
-        "project setup",
-        "first pipeline",
-    ]}
-    links={[
-        {label: "Install Custy", href: "./installation"},
-        {label: "Docker", href: "./docker"},
-        {label: "Quick Start", href: "./quick-start"},
-        {label: "First Workflow", href: "./first-workflow"},
-    ]}
+  command="custy"
+  title="Getting Started"
+  description="Install Custy, prepare an existing Git repository, and preview your first development pipeline safely."
+  category="Onboarding"
+  status="Recommended"
+  syntax="custy COMMAND [OPTIONS]"
+  tags={["installation", "project setup", "first pipeline"]}
+  links={[
+    { label: "Install Custy", href: "./installation" },
+    { label: "Docker", href: "./docker" },
+    { label: "Quick Start", href: "./quick-start" },
+    { label: "First Workflow", href: "./first-workflow" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Audience", value: "New Custy users", icon: "feature"},
-        {label: "Project Type", value: "Existing Git repository", icon: "git"},
-        {label: "Setup Options", value: "Native Python or Docker", icon: "package"},
-        {label: "Safety Approach", value: "Preview before execution", icon: "success"},
-    ]}
+  items={[
+    { label: "Audience", value: "New Custy users", icon: "feature" },
+    { label: "Project Type", value: "Existing Git repository", icon: "git" },
+    { label: "Setup Options", value: "Native Python or Docker", icon: "package" },
+    { label: "Safety Approach", value: "Preview before execution", icon: "success" },
+  ]}
 />
 
 ## Overview
@@ -82,29 +78,49 @@ repository that you want Custy to manage.
 >
 
 <FeatureGrid
-    title="Setup Options"
-    items={[
-        {
-            title: "Native User Installation",
-            icon: <Icon name="command" />,
-            children: <>Install a normal runtime copy from a reviewed source checkout, release artifact, or Git revision.</>,
-        },
-        {
-            title: "Contributor Installation",
-            icon: <Icon name="git" />,
-            children: <>Use an editable source installation with the <code>dev</code> dependency group when working on Custy itself.</>,
-        },
-        {
-            title: "Docker Environment",
-            icon: <Icon name="package" />,
-            children: <>Build Custy's production or development image locally and mount the intended project at <code>/workspace</code>.</>,
-        },
-        {
-            title: "Quick Start",
-            icon: <Icon name="play" />,
-            children: <>Initialize and validate an existing repository, then preview the Dev profile without applying changes.</>,
-        },
-    ]}
+  title="Setup Options"
+  items={[
+    {
+      title: "Native User Installation",
+      icon: <Icon name="command" />,
+      children: (
+        <>
+          Install a normal runtime copy from a reviewed source checkout, release
+          artifact, or Git revision.
+        </>
+      ),
+    },
+    {
+      title: "Contributor Installation",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Use an editable source installation with the <code>dev</code> dependency group
+          when working on Custy itself.
+        </>
+      ),
+    },
+    {
+      title: "Docker Environment",
+      icon: <Icon name="package" />,
+      children: (
+        <>
+          Build Custy's production or development image locally and mount the intended
+          project at <code>/workspace</code>.
+        </>
+      ),
+    },
+    {
+      title: "Quick Start",
+      icon: <Icon name="play" />,
+      children: (
+        <>
+          Initialize and validate an existing repository, then preview the Dev profile
+          without applying changes.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -116,34 +132,53 @@ repository that you want Custy to manage.
 >
 
 <WorkflowTimeline
-    title="From Installation to First Preview"
-    items={[
-        {
-            title: "Install Custy",
-            description: <>Use a reviewed native Python installation or a locally built Docker image.</>,
-            status: "current",
-        },
-        {
-            title: "Prepare the Repository",
-            description: <>Open the project root and confirm that Git tracks the intended repository.</>,
-            status: "pending",
-        },
-        {
-            title: "Initialize Custy Resources",
-            description: <>Run <code>custy init</code>, then review the generated configuration, templates, and version file.</>,
-            status: "pending",
-        },
-        {
-            title: "Validate Readiness",
-            description: <>Run <code>custy validate</code> and resolve missing files, remotes, or repository prerequisites.</>,
-            status: "pending",
-        },
-        {
-            title: "Preview a Pipeline",
-            description: <>Use <code>custy --dry-run run dev</code> before allowing commit or push side effects.</>,
-            status: "pending",
-        },
-    ]}
+  title="From Installation to First Preview"
+  items={[
+    {
+      title: "Install Custy",
+      description: (
+        <>Use a reviewed native Python installation or a locally built Docker image.</>
+      ),
+      status: "current",
+    },
+    {
+      title: "Prepare the Repository",
+      description: (
+        <>Open the project root and confirm that Git tracks the intended repository.</>
+      ),
+      status: "pending",
+    },
+    {
+      title: "Initialize Custy Resources",
+      description: (
+        <>
+          Run <code>custy init</code>, then review the generated configuration,
+          templates, and version file.
+        </>
+      ),
+      status: "pending",
+    },
+    {
+      title: "Validate Readiness",
+      description: (
+        <>
+          Run <code>custy validate</code> and resolve missing files, remotes, or
+          repository prerequisites.
+        </>
+      ),
+      status: "pending",
+    },
+    {
+      title: "Preview a Pipeline",
+      description: (
+        <>
+          Use <code>custy --dry-run run dev</code> before allowing commit or push side
+          effects.
+        </>
+      ),
+      status: "pending",
+    },
+  ]}
 />
 
 </Section>
@@ -191,12 +226,28 @@ confirm repository state before running without `--dry-run`.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Installation", href: "./installation", description: "Install Custy in a Python environment."},
-        {title: "Docker", href: "./docker", description: "Build and run Custy from the repository's Docker configuration."},
-        {title: "Quick Start", href: "./quick-start", description: "Prepare and validate an existing repository."},
-        {title: "First Workflow", href: "./first-workflow", description: "Preview and understand the Dev profile."},
-    ]}
+  commands={[
+    {
+      title: "Installation",
+      href: "./installation",
+      description: "Install Custy in a Python environment.",
+    },
+    {
+      title: "Docker",
+      href: "./docker",
+      description: "Build and run Custy from the repository's Docker configuration.",
+    },
+    {
+      title: "Quick Start",
+      href: "./quick-start",
+      description: "Prepare and validate an existing repository.",
+    },
+    {
+      title: "First Workflow",
+      href: "./first-workflow",
+      description: "Preview and understand the Dev profile.",
+    },
+  ]}
 />
 
 </Section>

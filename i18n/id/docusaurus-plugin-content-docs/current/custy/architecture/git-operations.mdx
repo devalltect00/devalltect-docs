@@ -6,9 +6,26 @@ sidebar_key: custy-architecture-git-operations
 tags: [custy, git, architecture]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="app/core/git_ops/" title="Git Operations" description="Pahami pemisahan repository policy dari eksekusi Git low-level." category="Arsitektur" status="Shared Service" syntax="consumer -> GitService -> IGitCommandExecutor -> git" links={[{label: "Core Layer", href: "./core-layer"}, {label: "Workflow Engine", href: "./workflow-engine"}, {label: "Strategy Pattern", href: "./strategy-pattern"}]} />
+<CommandHero
+  command="app/core/git_ops/"
+  title="Git Operations"
+  description="Pahami pemisahan repository policy dari eksekusi Git low-level."
+  category="Arsitektur"
+  status="Shared Service"
+  syntax="consumer -> GitService -> IGitCommandExecutor -> git"
+  links={[
+    { label: "Core Layer", href: "./core-layer" },
+    { label: "Workflow Engine", href: "./workflow-engine" },
+    { label: "Strategy Pattern", href: "./strategy-pattern" },
+  ]}
+/>
 
 ## Batas layanan
 
@@ -29,6 +46,33 @@ transaction atau rollback mechanism.
 
 </Section>
 
-<Section title="Aturan kontribusi">Tambahkan kebijakan repository pada `GitService`, detail command pada executor, dan pertahankan typed result serta error context. Hindari subprocess Git langsung dari CLI atau pipeline step.</Section>
+<Section title="Aturan kontribusi">
+  Tambahkan kebijakan repository pada `GitService`, detail command pada executor, dan
+  pertahankan typed result serta error context. Hindari subprocess Git langsung dari CLI
+  atau pipeline step.
+</Section>
 
-<RelatedCommands commands={[{title: "Workflow Engine", href: "./workflow-engine", description: "Lihat release policy yang menggunakan Git service."}, {title: "Strategy Pattern", href: "./strategy-pattern", description: "Pisahkan tag generation, sorting, dan conversion."}, {title: "Push Command", href: "../commands/push/overview", description: "Pelajari sinkronisasi remote publik."}, {title: "Git Configuration", href: "../configuration/git/overview", description: "Atur default, primary, dan backup remote."}]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "Lihat release policy yang menggunakan Git service.",
+    },
+    {
+      title: "Strategy Pattern",
+      href: "./strategy-pattern",
+      description: "Pisahkan tag generation, sorting, dan conversion.",
+    },
+    {
+      title: "Push Command",
+      href: "../commands/push/overview",
+      description: "Pelajari sinkronisasi remote publik.",
+    },
+    {
+      title: "Git Configuration",
+      href: "../configuration/git/overview",
+      description: "Atur default, primary, dan backup remote.",
+    },
+  ]}
+/>

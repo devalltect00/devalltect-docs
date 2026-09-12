@@ -7,44 +7,53 @@ tags: [custy, configuration, project]
 keywords: [tool.custy.project, project_source]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.project]"
-    title="Project"
-    description="Let Custy detect the project source, or select an explicit source directory."
-    category="Configuration"
-    status="Active"
-    syntax={'project_source = "auto"'}
-    tags={["source discovery", "path validation", "project root"]}
-    links={[
-        {label: "CLI Paths", href: "./cli/paths"},
-        {label: "Configuration File", href: "./config-file"},
-        {label: "Validate", href: "../commands/validate/overview"},
-    ]}
+  command="[tool.custy.project]"
+  title="Project"
+  description="Let Custy detect the project source, or select an explicit source directory."
+  category="Configuration"
+  status="Active"
+  syntax={'project_source = "auto"'}
+  tags={["source discovery", "path validation", "project root"]}
+  links={[
+    { label: "CLI Paths", href: "./cli/paths" },
+    { label: "Configuration File", href: "./config-file" },
+    { label: "Validate", href: "../commands/validate/overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Table", value: "tool.custy.project", icon: "configuration"},
-        {label: "Properties", value: "1", icon: "table"},
-        {label: "Generated Default", value: "auto", icon: "directory"},
-        {label: "Status", value: "Active", icon: "success"},
-    ]}
+  items={[
+    { label: "Table", value: "tool.custy.project", icon: "configuration" },
+    { label: "Properties", value: "1", icon: "table" },
+    { label: "Generated Default", value: "auto", icon: "directory" },
+    { label: "Status", value: "Active", icon: "success" },
+  ]}
 />
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {
-            property: "project_source",
-            type: "Path string or auto",
-            defaultValue: "auto",
-            required: false,
-            description: "Use auto for runtime discovery, or set an explicit directory relative to the project root. Explicit paths must exist and must be directories.",
-        },
-    ]}
+  items={[
+    {
+      property: "project_source",
+      type: "Path string or auto",
+      defaultValue: "auto",
+      required: false,
+      description:
+        "Use auto for runtime discovery, or set an explicit directory relative to the project root. Explicit paths must exist and must be directories.",
+    },
+  ]}
 />
 
 <Section title="Examples">
@@ -62,7 +71,9 @@ project_source = "auto"`}
 project_source = "src"
 
 # Other valid paths can include:
+
 # project_source = "backend"
+
 # project_source = "services/api"`}
 
 </Terminal>
@@ -90,10 +101,18 @@ correct the path instead of creating a placeholder `app/` directory.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "CLI Paths", href: "./cli/paths", description: "Configure the version-file path separately from the source root."},
-        {title: "Validate", href: "../commands/validate/overview", description: "Check project resources before consequential commands."},
-    ]}
+  commands={[
+    {
+      title: "CLI Paths",
+      href: "./cli/paths",
+      description: "Configure the version-file path separately from the source root.",
+    },
+    {
+      title: "Validate",
+      href: "../commands/validate/overview",
+      description: "Check project resources before consequential commands.",
+    },
+  ]}
 />
 
 </Section>

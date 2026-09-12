@@ -6,26 +6,26 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    RequirementGrid,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  RequirementGrid,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Requirements"
-    description="Pahami requirements untuk membuat backup template Custy."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup commit"
-    tags={["requirements", "backup", "templates"]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Syntax", href: "./syntax"},
-        {label: "Backup Files", href: "./backup-files"},
-    ]}
+  command="custy backup"
+  title="Requirements"
+  description="Pahami requirements untuk membuat backup template Custy."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup commit"
+  tags={["requirements", "backup", "templates"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Backup Files", href: "./backup-files" },
+  ]}
 />
 
 ## Ringkasan
@@ -46,29 +46,43 @@ Init membuat configuration dan template files yang digunakan command backup.
 <Section title="Prerequisites">
 
 <RequirementGrid
-    title="Environment yang Diperlukan"
-    items={[
-        {
-            title: "Proyek Sudah Di-init",
-            icon: <Icon name="directory" />,
-            children: <>Proyek sebaiknya sudah berisi generated configuration dan template files Custy.</>,
-        },
-        {
-            title: "Template Files",
-            icon: <Icon name="file" />,
-            children: <>Commit dan tag message templates harus tersedia sebelum dapat di-backup.</>,
-        },
-        {
-            title: "Backup Directory Dapat Ditulis",
-            icon: <Icon name="copy" />,
-            children: <>Custy harus dapat membuat backup files di configured backup directory.</>,
-        },
-        {
-            title: "Project Configuration",
-            icon: <Icon name="configuration" />,
-            children: <>Lokasi backup dan pengaturan terkait ditentukan dari project configuration selama tersedia.</>,
-        },
-    ]}
+  title="Environment yang Diperlukan"
+  items={[
+    {
+      title: "Proyek Sudah Di-init",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Proyek sebaiknya sudah berisi generated configuration dan template files
+          Custy.
+        </>
+      ),
+    },
+    {
+      title: "Template Files",
+      icon: <Icon name="file" />,
+      children: (
+        <>Commit dan tag message templates harus tersedia sebelum dapat di-backup.</>
+      ),
+    },
+    {
+      title: "Backup Directory Dapat Ditulis",
+      icon: <Icon name="copy" />,
+      children: (
+        <>Custy harus dapat membuat backup files di configured backup directory.</>
+      ),
+    },
+    {
+      title: "Project Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Lokasi backup dan pengaturan terkait ditentukan dari project configuration
+          selama tersedia.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>

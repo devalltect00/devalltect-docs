@@ -6,14 +6,23 @@ sidebar_key: path-header-scanner-user-guide
 tags: [path-header-scanner, user-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Path Header Scanner" title="User Guide" description="Choose a workflow by its target and side effects." category="User Guide" status="Practical" syntax="path-header-scanner init" />
+<CommandHero
+  command="Path Header Scanner"
+  title="User Guide"
+  description="Choose a workflow by its target and side effects."
+  category="User Guide"
+  status="Practical"
+  syntax="path-header-scanner init"
+/>
 
 - `path-header-scanner init`
 - `path-header-scanner scan TARGET`
 - `path-header-scanner scan TARGET --apply`
 - `path-header-scanner scan TARGET --dry-run`
 
-<InfoBox variant="warning" title="Safety">Scan previews by default. Only effective --apply writes target files, and --dry-run overrides CLI and configured apply mode.</InfoBox>
-
+<InfoBox variant="warning" title="Safety">
+  Scan previews by default. Only effective --apply writes target files, and --dry-run
+  overrides CLI and configured apply mode.
+</InfoBox>

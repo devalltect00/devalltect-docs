@@ -23,7 +23,7 @@ export default function documentationFreshnessPlugin(): Plugin {
         PROJECTS.map(async (project) => {
           const result = await resolveProjectFreshness(project);
           return result ? ([project.id, result] as const) : undefined;
-        }),
+        })
       );
 
       const projects: Record<string, DocumentationFreshnessResult> = {};
@@ -37,7 +37,7 @@ export default function documentationFreshnessPlugin(): Plugin {
 
         if (result.verification === "fallback") {
           console.warn(
-            `[documentation-freshness] ${projectId}: ${result.errorCode ?? "remote verification failed"}; using ${result.status} fallback status.`,
+            `[documentation-freshness] ${projectId}: ${result.errorCode ?? "remote verification failed"}; using ${result.status} fallback status.`
           );
         }
       }

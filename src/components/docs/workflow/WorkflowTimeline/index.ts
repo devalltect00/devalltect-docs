@@ -1,13 +1,9 @@
 export { default } from "./WorkflowTimeline";
 
-export type {
-    WorkflowTimelineItem,
-    WorkflowTimelineProps,
-} from "./types";
-
+export type { WorkflowTimelineItem, WorkflowTimelineProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.WorkflowTimeline
     title="Release Workflow"
     description="Typical release workflow in Custy."

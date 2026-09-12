@@ -7,19 +7,59 @@ tags: [custy, configuration, templates, backups]
 keywords: [backups_commit, backups_tag]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.templates.directory]" title="Template Backup Directories" description="Pilih tempat Custy menyimpan retained commit dan tag message copies." category="Template Configuration" status="Active" syntax="[tool.custy.cli.templates.directory]" tags={["backups", "retention", "directories"]} links={[{label: "Template Files", href: "./files"}, {label: "Cleanup Backup", href: "../cleanup/backup"}, {label: "Backup Command", href: "../../../commands/backup/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.templates.directory]"
+  title="Template Backup Directories"
+  description="Pilih tempat Custy menyimpan retained commit dan tag message copies."
+  category="Template Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.templates.directory]"
+  tags={["backups", "retention", "directories"]}
+  links={[
+    { label: "Template Files", href: "./files" },
+    { label: "Cleanup Backup", href: "../cleanup/backup" },
+    { label: "Backup Command", href: "../../../commands/backup/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Commit Destination", value: "backups/commit", icon: "directory"}, {label: "Tag Destination", value: "backups/tag", icon: "directory"}, {label: "Retention Policy", value: "cli.cleanup.backup", icon: "package"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Commit Destination", value: "backups/commit", icon: "directory" },
+    { label: "Tag Destination", value: "backups/tag", icon: "directory" },
+    { label: "Retention Policy", value: "cli.cleanup.backup", icon: "package" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "backups_commit", type: "Directory path", defaultValue: ".config/custy/templates/backups/commit", description: "Destination yang di-resolve oleh commit, backup, cleanup, dan run flows."},
-        {property: "backups_tag", type: "Directory path", defaultValue: ".config/custy/templates/backups/tag", description: "Destination yang di-resolve oleh tag, backup, cleanup, dan run flows."},
-    ]}
+  items={[
+    {
+      property: "backups_commit",
+      type: "Directory path",
+      defaultValue: ".config/custy/templates/backups/commit",
+      description:
+        "Destination yang di-resolve oleh commit, backup, cleanup, dan run flows.",
+    },
+    {
+      property: "backups_tag",
+      type: "Directory path",
+      defaultValue: ".config/custy/templates/backups/tag",
+      description:
+        "Destination yang di-resolve oleh tag, backup, cleanup, dan run flows.",
+    },
+  ]}
 />
 
 <Terminal title="Generated directories" language="toml">
@@ -37,4 +77,24 @@ category dan jumlah recent files yang dipertahankan selama cleanup.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Backup Retention", href: "../cleanup/backup", description: "Konfigurasikan type dan keep."}, {title: "Backup Command", href: "../../../commands/backup/overview", description: "Buat message backups."}, {title: "Cleanup Backup", href: "../../../commands/cleanup/backup/overview", description: "Hapus old backups berdasarkan retention."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Backup Retention",
+        href: "../cleanup/backup",
+        description: "Konfigurasikan type dan keep.",
+      },
+      {
+        title: "Backup Command",
+        href: "../../../commands/backup/overview",
+        description: "Buat message backups.",
+      },
+      {
+        title: "Cleanup Backup",
+        href: "../../../commands/cleanup/backup/overview",
+        description: "Hapus old backups berdasarkan retention.",
+      },
+    ]}
+  />
+</Section>

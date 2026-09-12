@@ -8,30 +8,26 @@ keywords: [custy push requirements]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy push"
-    title="Requirements"
-    description="Verify the current branch, commit, tag, remotes, authentication, and protection rules before synchronization."
-    category="Git Operations"
-    status="Required Review"
-    syntax="custy push [OPTIONS]"
-    tags={[
-        "requirements",
-        "remotes",
-        "authentication",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Remotes", href: "./remotes"},
-        {label: "Workflow", href: "./workflow"},
-    ]}
+  command="custy push"
+  title="Requirements"
+  description="Verify the current branch, commit, tag, remotes, authentication, and protection rules before synchronization."
+  category="Git Operations"
+  status="Required Review"
+  syntax="custy push [OPTIONS]"
+  tags={["requirements", "remotes", "authentication"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
 />
 
 ## Overview
@@ -46,14 +42,42 @@ destinations before normal execution.
 >
 
 <RequirementGrid
-    items={[
-        {title: "Reviewed HEAD", level: "required", children: "Confirm the current branch and the exact HEAD commit that will be synchronized."},
-        {title: "Reachable Main Remote", level: "required", children: "At least one intended main remote must exist and be reachable."},
-        {title: "Git Authentication", level: "required", children: "Configure native SSH/Git authentication or Custy's optional protected external HTTPS fallback; never store a token value in config.toml."},
-        {title: "Remote Permission", level: "required", children: "The branch and account must satisfy remote protection and authorization rules."},
-        {title: "Local Tag", level: "optional", children: "A requested tag must exist locally and point to the intended commit."},
-        {title: "Backup Remote", level: "optional", children: "Configure an eligible backup destination only when backup synchronization is required."},
-    ]}
+  items={[
+    {
+      title: "Reviewed HEAD",
+      level: "required",
+      children:
+        "Confirm the current branch and the exact HEAD commit that will be synchronized.",
+    },
+    {
+      title: "Reachable Main Remote",
+      level: "required",
+      children: "At least one intended main remote must exist and be reachable.",
+    },
+    {
+      title: "Git Authentication",
+      level: "required",
+      children:
+        "Configure native SSH/Git authentication or Custy's optional protected external HTTPS fallback; never store a token value in config.toml.",
+    },
+    {
+      title: "Remote Permission",
+      level: "required",
+      children:
+        "The branch and account must satisfy remote protection and authorization rules.",
+    },
+    {
+      title: "Local Tag",
+      level: "optional",
+      children: "A requested tag must exist locally and point to the intended commit.",
+    },
+    {
+      title: "Backup Remote",
+      level: "optional",
+      children:
+        "Configure an eligible backup destination only when backup synchronization is required.",
+    },
+  ]}
 />
 
 </Section>

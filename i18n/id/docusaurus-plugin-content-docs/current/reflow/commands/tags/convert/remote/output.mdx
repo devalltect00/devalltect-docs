@@ -6,9 +6,22 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, output]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Output" description="Output" category="Konversi Tag" status="Mutasi Remote Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Output"
+  description="Output"
+  category="Konversi Tag"
+  status="Mutasi Remote Terjaga"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 - URL/path dan remote.
 - Rencana lengkap.
@@ -20,4 +33,3 @@ Operation  : reflow tags convert remote
 Dry run    : true/false
 Successful : <count>
 Failed     : <count>`}</Terminal>
-

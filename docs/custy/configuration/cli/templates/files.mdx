@@ -7,20 +7,64 @@ tags: [custy, configuration, templates, files]
 keywords: [templates file changelog, commit_message, tag_message]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.templates.file]" title="Template Files" description="Select project-owned inputs for changelog rendering, commits, and annotated tags." category="Template Configuration" status="Active" syntax="[tool.custy.cli.templates.file]" tags={["Jinja2", "commit message", "tag message"]} links={[{label: "Directories", href: "./directories"}, {label: "Changelog Template", href: "../../changelog/overview"}, {label: "Init Files", href: "../../../commands/init/generated-files"}]} />
+<CommandHero
+  command="[tool.custy.cli.templates.file]"
+  title="Template Files"
+  description="Select project-owned inputs for changelog rendering, commits, and annotated tags."
+  category="Template Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.templates.file]"
+  tags={["Jinja2", "commit message", "tag message"]}
+  links={[
+    { label: "Directories", href: "./directories" },
+    { label: "Changelog Template", href: "../../changelog/overview" },
+    { label: "Init Files", href: "../../../commands/init/generated-files" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Changelog Format", value: "Jinja2", icon: "configuration"}, {label: "Message Format", value: "Text", icon: "file"}, {label: "Status", value: "Active", icon: "success"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Changelog Format", value: "Jinja2", icon: "configuration" },
+    { label: "Message Format", value: "Text", icon: "file" },
+    { label: "Status", value: "Active", icon: "success" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "changelog", type: "Path string", defaultValue: ".config/custy/templates/changelog/changelog.j2", description: "Jinja2 layout loaded by changelog rendering."},
-        {property: "commit_message", type: "Path string", defaultValue: ".config/custy/templates/commit-message.txt", description: "Message input used by commit, backup, validate, run, and pending-changelog flows."},
-        {property: "tag_message", type: "Path string", defaultValue: ".config/custy/templates/tag-message.txt", description: "Annotation message used by tag, backup, validate, and run flows."},
-    ]}
+  items={[
+    {
+      property: "changelog",
+      type: "Path string",
+      defaultValue: ".config/custy/templates/changelog/changelog.j2",
+      description: "Jinja2 layout loaded by changelog rendering.",
+    },
+    {
+      property: "commit_message",
+      type: "Path string",
+      defaultValue: ".config/custy/templates/commit-message.txt",
+      description:
+        "Message input used by commit, backup, validate, run, and pending-changelog flows.",
+    },
+    {
+      property: "tag_message",
+      type: "Path string",
+      defaultValue: ".config/custy/templates/tag-message.txt",
+      description: "Annotation message used by tag, backup, validate, and run flows.",
+    },
+  ]}
 />
 
 <Terminal title="Generated paths" language="toml">
@@ -49,4 +93,24 @@ the project-directory name as a generic fallback.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Changelog Template Contract", href: "../../changelog/overview", description: "Understand data passed to changelog.j2."}, {title: "Commit Configuration", href: "../../../commands/commit/configuration", description: "See commit-specific message behavior."}, {title: "Tag Configuration", href: "../../../commands/tag/configuration", description: "See tag-specific message behavior."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Changelog Template Contract",
+        href: "../../changelog/overview",
+        description: "Understand data passed to changelog.j2.",
+      },
+      {
+        title: "Commit Configuration",
+        href: "../../../commands/commit/configuration",
+        description: "See commit-specific message behavior.",
+      },
+      {
+        title: "Tag Configuration",
+        href: "../../../commands/tag/configuration",
+        description: "See tag-specific message behavior.",
+      },
+    ]}
+  />
+</Section>

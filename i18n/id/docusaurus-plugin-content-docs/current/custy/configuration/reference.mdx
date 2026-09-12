@@ -7,11 +7,37 @@ tags: [custy, configuration, reference]
 keywords: [all custy configuration, config.toml reference, property index]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.*]" title="Semua Configuration Properties" description="Gunakan full TOML paths untuk menemukan defaults, implementation status, dan detailed guidance." category="Configuration" status="Exhaustive Index" syntax="tool.custy.NAMESPACE.PROPERTY" tags={["property index", "defaults", "status"]} links={[{label: "Overview", href: "./overview"}, {label: "Resolution", href: "./resolution"}, {label: "Config File", href: "./config-file"}]} />
+<CommandHero
+  command="[tool.custy.*]"
+  title="Semua Configuration Properties"
+  description="Gunakan full TOML paths untuk menemukan defaults, implementation status, dan detailed guidance."
+  category="Configuration"
+  status="Exhaustive Index"
+  syntax="tool.custy.NAMESPACE.PROPERTY"
+  tags={["property index", "defaults", "status"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Resolution", href: "./resolution" },
+    { label: "Config File", href: "./config-file" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Tables", value: "32", icon: "table"}, {label: "Optional Active Keys", value: "4", icon: "note"}, {label: "Root", value: "tool.custy", icon: "configuration"}, {label: "Details", value: "Linked per group", icon: "directory"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Tables", value: "32", icon: "table" },
+    { label: "Optional Active Keys", value: "4", icon: "note" },
+    { label: "Root", value: "tool.custy", icon: "configuration" },
+    { label: "Details", value: "Linked per group", icon: "directory" },
+  ]}
+/>
 
 ## Status legend
 
@@ -34,13 +60,13 @@ dan changelog breaking defaults.
 
 <Section title="Project, Release, dan Initialization">
 
-| Full path | Generated default | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.project.project_source` | `"auto"` | Active | [Project](./project) |
-| `tool.custy.release.author` | `"devalltect00"` | Mismatch | [Release](./release) |
-| `tool.custy.release.include_date` | `true` | Mismatch | [Release](./release) |
-| `tool.custy.initialization.force` | `false` | Active | [Initialization](./initialization) |
-| `tool.custy.initialization.ask` | `false` | Active | [Initialization](./initialization) |
+| Full path                           | Generated default | Status   | Details                            |
+| ----------------------------------- | ----------------- | -------- | ---------------------------------- |
+| `tool.custy.project.project_source` | `"auto"`          | Active   | [Project](./project)               |
+| `tool.custy.release.author`         | `"devalltect00"`  | Mismatch | [Release](./release)               |
+| `tool.custy.release.include_date`   | `true`            | Mismatch | [Release](./release)               |
+| `tool.custy.initialization.force`   | `false`           | Active   | [Initialization](./initialization) |
+| `tool.custy.initialization.ask`     | `false`           | Active   | [Initialization](./initialization) |
 
 </Section>
 
@@ -48,10 +74,10 @@ dan changelog breaking defaults.
 
 <Section title="Commit Validation">
 
-| Full path | Generated default | Status | Detail |
-| --- | --- | --- | --- |
-| `tool.custy.commit.validation.provider` | `"auto"` | Active | [Commit Validation](./commit-validation) |
-| `tool.custy.commit.validation.require_tool` | `false` | Active | [Commit Validation](./commit-validation) |
+| Full path                                   | Generated default | Status | Detail                                   |
+| ------------------------------------------- | ----------------- | ------ | ---------------------------------------- |
+| `tool.custy.commit.validation.provider`     | `"auto"`          | Active | [Commit Validation](./commit-validation) |
+| `tool.custy.commit.validation.require_tool` | `false`           | Active | [Commit Validation](./commit-validation) |
 
 </Section>
 
@@ -59,14 +85,14 @@ dan changelog breaking defaults.
 
 <Section title="Editor">
 
-| Full path | Generated default | Status | Detail |
-| --- | --- | --- | --- |
-| `tool.custy.editor.prefer_environment` | `true` | Active | [Editor](./editor) |
-| `tool.custy.editor.allow_fallback` | `true` | Active | [Editor](./editor) |
-| `tool.custy.editor.candidates.windows` | `["vscode", "notepad"]` | Active | [Editor](./editor) |
-| `tool.custy.editor.candidates.linux` | `["micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
-| `tool.custy.editor.candidates.macos` | `["vscode", "micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
-| `tool.custy.editor.candidates.container` | `["micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
+| Full path                                | Generated default                          | Status | Detail             |
+| ---------------------------------------- | ------------------------------------------ | ------ | ------------------ |
+| `tool.custy.editor.prefer_environment`   | `true`                                     | Active | [Editor](./editor) |
+| `tool.custy.editor.allow_fallback`       | `true`                                     | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.windows`   | `["vscode", "notepad"]`                    | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.linux`     | `["micro", "nano", "vim", "vi"]`           | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.macos`     | `["vscode", "micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.container` | `["micro", "nano", "vim", "vi"]`           | Active | [Editor](./editor) |
 
 </Section>
 
@@ -74,17 +100,17 @@ dan changelog breaking defaults.
 
 <Section title="CLI: Versioning, Paths, dan Templates">
 
-| Full path | Generated/default value | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.cli.versioning.strategy` | `"semver"` | Active | [Versioning](./cli/versioning) |
-| `tool.custy.cli.versioning.bump` | `"auto"` | Active | [Versioning](./cli/versioning) |
-| `tool.custy.cli.versioning.date_format` | `%Y.%m.%d` built-in | Optional | [Versioning](./cli/versioning) |
-| `tool.custy.cli.paths.version_file` | `"auto"` | Active | [Paths](./cli/paths) |
-| `tool.custy.cli.templates.file.changelog` | `.config/custy/templates/changelog/changelog.j2` | Active | [Template Files](./cli/templates/files) |
-| `tool.custy.cli.templates.file.commit_message` | `.config/custy/templates/commit-message.txt` | Active | [Template Files](./cli/templates/files) |
-| `tool.custy.cli.templates.file.tag_message` | `.config/custy/templates/tag-message.txt` | Active | [Template Files](./cli/templates/files) |
-| `tool.custy.cli.templates.directory.backups_commit` | `.config/custy/templates/backups/commit` | Active | [Template Directories](./cli/templates/directories) |
-| `tool.custy.cli.templates.directory.backups_tag` | `.config/custy/templates/backups/tag` | Active | [Template Directories](./cli/templates/directories) |
+| Full path                                           | Generated/default value                          | Status   | Details                                             |
+| --------------------------------------------------- | ------------------------------------------------ | -------- | --------------------------------------------------- |
+| `tool.custy.cli.versioning.strategy`                | `"semver"`                                       | Active   | [Versioning](./cli/versioning)                      |
+| `tool.custy.cli.versioning.bump`                    | `"auto"`                                         | Active   | [Versioning](./cli/versioning)                      |
+| `tool.custy.cli.versioning.date_format`             | `%Y.%m.%d` built-in                              | Optional | [Versioning](./cli/versioning)                      |
+| `tool.custy.cli.paths.version_file`                 | `"auto"`                                         | Active   | [Paths](./cli/paths)                                |
+| `tool.custy.cli.templates.file.changelog`           | `.config/custy/templates/changelog/changelog.j2` | Active   | [Template Files](./cli/templates/files)             |
+| `tool.custy.cli.templates.file.commit_message`      | `.config/custy/templates/commit-message.txt`     | Active   | [Template Files](./cli/templates/files)             |
+| `tool.custy.cli.templates.file.tag_message`         | `.config/custy/templates/tag-message.txt`        | Active   | [Template Files](./cli/templates/files)             |
+| `tool.custy.cli.templates.directory.backups_commit` | `.config/custy/templates/backups/commit`         | Active   | [Template Directories](./cli/templates/directories) |
+| `tool.custy.cli.templates.directory.backups_tag`    | `.config/custy/templates/backups/tag`            | Active   | [Template Directories](./cli/templates/directories) |
 
 </Section>
 
@@ -92,19 +118,19 @@ dan changelog breaking defaults.
 
 <Section title="CLI: Execution dan Push">
 
-| Full path | Generated default | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.cli.execution.dry_run` | `false` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.force_commit` | `false` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.force_tag` | `false` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.skip_checks` | `false` | Mismatch | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.no_debug` | `true` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.auto_stage` | `false` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.stage_mode` | `"all"` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.execution.check_cz` | `false` | Active | [Execution](./cli/execution) |
-| `tool.custy.cli.push.all_remote` | `true` | Active | [Push](./cli/push) |
-| `tool.custy.cli.push.skip_tag` | `false` | Active | [Push](./cli/push) |
-| `tool.custy.cli.push.sync_backup` | `false` | Active | [Push](./cli/push) |
+| Full path                               | Generated default | Status   | Details                      |
+| --------------------------------------- | ----------------- | -------- | ---------------------------- |
+| `tool.custy.cli.execution.dry_run`      | `false`           | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.force_commit` | `false`           | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.force_tag`    | `false`           | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.skip_checks`  | `false`           | Mismatch | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.no_debug`     | `true`            | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.auto_stage`   | `false`           | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.stage_mode`   | `"all"`           | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.execution.check_cz`     | `false`           | Active   | [Execution](./cli/execution) |
+| `tool.custy.cli.push.all_remote`        | `true`            | Active   | [Push](./cli/push)           |
+| `tool.custy.cli.push.skip_tag`          | `false`           | Active   | [Push](./cli/push)           |
+| `tool.custy.cli.push.sync_backup`       | `false`           | Active   | [Push](./cli/push)           |
 
 </Section>
 
@@ -112,18 +138,18 @@ dan changelog breaking defaults.
 
 <Section title="CLI: Changelog, Cleanup, dan Workflow">
 
-| Full path | Generated/default value | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.cli.changelog.force_generation` | `false` | Active | [Changelog Command](./cli/changelog) |
-| `tool.custy.cli.cleanup.backup.type` | `"all"` | Active | [Backup Cleanup](./cli/cleanup/backup) |
-| `tool.custy.cli.cleanup.backup.keep` | `10` | Active | [Backup Cleanup](./cli/cleanup/backup) |
-| `tool.custy.cli.cleanup.branch.include_prefixes` | `[]` | Active | [Branch Cleanup](./cli/cleanup/branch) |
-| `tool.custy.cli.cleanup.branch.merge_status` | `"merged"` | Active | [Branch Cleanup](./cli/cleanup/branch) |
-| `tool.custy.cli.cleanup.branch.max_age` | unset | Optional | [Branch Cleanup](./cli/cleanup/branch) |
-| `tool.custy.cli.cleanup.branch.before` | unset | Optional | [Branch Cleanup](./cli/cleanup/branch) |
-| `tool.custy.cli.workflow.enforce` | `false` | Experimental | [Workflow](./cli/workflow) |
-| `tool.custy.cli.workflow.check_transition` | `false` | Experimental | [Workflow](./cli/workflow) |
-| `tool.custy.cli.workflow.sync_backup` | `false` | Experimental | [Workflow](./cli/workflow) |
+| Full path                                        | Generated/default value | Status       | Details                                |
+| ------------------------------------------------ | ----------------------- | ------------ | -------------------------------------- |
+| `tool.custy.cli.changelog.force_generation`      | `false`                 | Active       | [Changelog Command](./cli/changelog)   |
+| `tool.custy.cli.cleanup.backup.type`             | `"all"`                 | Active       | [Backup Cleanup](./cli/cleanup/backup) |
+| `tool.custy.cli.cleanup.backup.keep`             | `10`                    | Active       | [Backup Cleanup](./cli/cleanup/backup) |
+| `tool.custy.cli.cleanup.branch.include_prefixes` | `[]`                    | Active       | [Branch Cleanup](./cli/cleanup/branch) |
+| `tool.custy.cli.cleanup.branch.merge_status`     | `"merged"`              | Active       | [Branch Cleanup](./cli/cleanup/branch) |
+| `tool.custy.cli.cleanup.branch.max_age`          | unset                   | Optional     | [Branch Cleanup](./cli/cleanup/branch) |
+| `tool.custy.cli.cleanup.branch.before`           | unset                   | Optional     | [Branch Cleanup](./cli/cleanup/branch) |
+| `tool.custy.cli.workflow.enforce`                | `false`                 | Experimental | [Workflow](./cli/workflow)             |
+| `tool.custy.cli.workflow.check_transition`       | `false`                 | Experimental | [Workflow](./cli/workflow)             |
+| `tool.custy.cli.workflow.sync_backup`            | `false`                 | Experimental | [Workflow](./cli/workflow)             |
 
 </Section>
 
@@ -131,20 +157,20 @@ dan changelog breaking defaults.
 
 <Section title="Logging">
 
-| Full path | Generated default | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.logging.level` | `"INFO"` | Active | [Console](./logging/console) |
-| `tool.custy.logging.markup` | `true` | Active | [Console](./logging/console) |
-| `tool.custy.logging.rich_tracebacks` | `true` | Active | [Console](./logging/console) |
-| `tool.custy.logging.show_time` | `false` | Active | [Console](./logging/console) |
-| `tool.custy.logging.show_level` | `false` | Active | [Console](./logging/console) |
-| `tool.custy.logging.console_format` | `"%(message)s"` | Active | [Console](./logging/console) |
-| `tool.custy.logging.file.level` | `"DEBUG"` | Active | [File](./logging/file) |
-| `tool.custy.logging.file.log_dir` | `"logs"` | Active | [File](./logging/file) |
-| `tool.custy.logging.file.log_file` | `"custy.log"` | Active | [File](./logging/file) |
-| `tool.custy.logging.file.max_bytes` | `"10MB"` | Active | [File](./logging/file) |
-| `tool.custy.logging.file.backup_count` | `5` | Active | [File](./logging/file) |
-| `tool.custy.logging.file.file_format` | timestamp, level, name, message | Active | [File](./logging/file) |
+| Full path                              | Generated default               | Status | Details                      |
+| -------------------------------------- | ------------------------------- | ------ | ---------------------------- |
+| `tool.custy.logging.level`             | `"INFO"`                        | Active | [Console](./logging/console) |
+| `tool.custy.logging.markup`            | `true`                          | Active | [Console](./logging/console) |
+| `tool.custy.logging.rich_tracebacks`   | `true`                          | Active | [Console](./logging/console) |
+| `tool.custy.logging.show_time`         | `false`                         | Active | [Console](./logging/console) |
+| `tool.custy.logging.show_level`        | `false`                         | Active | [Console](./logging/console) |
+| `tool.custy.logging.console_format`    | `"%(message)s"`                 | Active | [Console](./logging/console) |
+| `tool.custy.logging.file.level`        | `"DEBUG"`                       | Active | [File](./logging/file)       |
+| `tool.custy.logging.file.log_dir`      | `"logs"`                        | Active | [File](./logging/file)       |
+| `tool.custy.logging.file.log_file`     | `"custy.log"`                   | Active | [File](./logging/file)       |
+| `tool.custy.logging.file.max_bytes`    | `"10MB"`                        | Active | [File](./logging/file)       |
+| `tool.custy.logging.file.backup_count` | `5`                             | Active | [File](./logging/file)       |
+| `tool.custy.logging.file.file_format`  | timestamp, level, name, message | Active | [File](./logging/file)       |
 
 </Section>
 
@@ -152,26 +178,26 @@ dan changelog breaking defaults.
 
 <Section title="Changelog: Collection, Pending, Cleaning, dan Releases">
 
-| Full path | Generated default | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.changelog.core.ignore_merge_commits` | `true` | Active | [Core](./changelog/core) |
-| `tool.custy.changelog.core.ignore_types` | `["chore"]` | Active | [Core](./changelog/core) |
-| `tool.custy.changelog.pending_commit.enabled` | `true` | Active | [Pending Commit](./changelog/pending-commit) |
-| `tool.custy.changelog.pending_commit.generation` | `"regenerate"` | Loaded only | [Pending Commit](./changelog/pending-commit) |
-| `tool.custy.changelog.pending_commit.placement` | `"before"` | Loaded only | [Pending Commit](./changelog/pending-commit) |
-| `tool.custy.changelog.cleaning.remove_separators` | `["---"]` | Active | [Cleaning](./changelog/cleaning) |
-| `tool.custy.changelog.cleaning.remove_headers` | `false` | Active | [Cleaning](./changelog/cleaning) |
-| `tool.custy.changelog.cleaning.remove_hash_lines` | `false` | Active | [Cleaning](./changelog/cleaning) |
-| `tool.custy.changelog.cleaning.remove_release_summary` | `false` | Active | [Cleaning](./changelog/cleaning) |
-| `tool.custy.changelog.cleaning.remove_metadata` | `false` | Active | [Cleaning](./changelog/cleaning) |
-| `tool.custy.changelog.cleaning.remove_keywords` | 3 phrases | Active | [Cleaning](./changelog/cleaning) |
-| `tool.custy.changelog.release.extract_bullets_only` | `true` | Active | [Releases](./changelog/releases) |
-| `tool.custy.changelog.release.fallback_to_subject` | `true` | Active | [Releases](./changelog/releases) |
-| `tool.custy.changelog.release_behavior."VERSION".hidden` | `false` | Active dynamic key | [Releases](./changelog/releases) |
-| `tool.custy.changelog.release_behavior."VERSION".title_only` | `false` | Active dynamic key | [Releases](./changelog/releases) |
-| `tool.custy.changelog.release_behavior."VERSION".custom_message` | unset | Active dynamic key | [Releases](./changelog/releases) |
-| `tool.custy.changelog.links.repository` | `""` | Active | [Links](./changelog/links) |
-| `tool.custy.changelog.links.enable_compare` | `false` | Active | [Links](./changelog/links) |
+| Full path                                                        | Generated default | Status             | Details                                      |
+| ---------------------------------------------------------------- | ----------------- | ------------------ | -------------------------------------------- |
+| `tool.custy.changelog.core.ignore_merge_commits`                 | `true`            | Active             | [Core](./changelog/core)                     |
+| `tool.custy.changelog.core.ignore_types`                         | `["chore"]`       | Active             | [Core](./changelog/core)                     |
+| `tool.custy.changelog.pending_commit.enabled`                    | `true`            | Active             | [Pending Commit](./changelog/pending-commit) |
+| `tool.custy.changelog.pending_commit.generation`                 | `"regenerate"`    | Loaded only        | [Pending Commit](./changelog/pending-commit) |
+| `tool.custy.changelog.pending_commit.placement`                  | `"before"`        | Loaded only        | [Pending Commit](./changelog/pending-commit) |
+| `tool.custy.changelog.cleaning.remove_separators`                | `["---"]`         | Active             | [Cleaning](./changelog/cleaning)             |
+| `tool.custy.changelog.cleaning.remove_headers`                   | `false`           | Active             | [Cleaning](./changelog/cleaning)             |
+| `tool.custy.changelog.cleaning.remove_hash_lines`                | `false`           | Active             | [Cleaning](./changelog/cleaning)             |
+| `tool.custy.changelog.cleaning.remove_release_summary`           | `false`           | Active             | [Cleaning](./changelog/cleaning)             |
+| `tool.custy.changelog.cleaning.remove_metadata`                  | `false`           | Active             | [Cleaning](./changelog/cleaning)             |
+| `tool.custy.changelog.cleaning.remove_keywords`                  | 3 phrases         | Active             | [Cleaning](./changelog/cleaning)             |
+| `tool.custy.changelog.release.extract_bullets_only`              | `true`            | Active             | [Releases](./changelog/releases)             |
+| `tool.custy.changelog.release.fallback_to_subject`               | `true`            | Active             | [Releases](./changelog/releases)             |
+| `tool.custy.changelog.release_behavior."VERSION".hidden`         | `false`           | Active dynamic key | [Releases](./changelog/releases)             |
+| `tool.custy.changelog.release_behavior."VERSION".title_only`     | `false`           | Active dynamic key | [Releases](./changelog/releases)             |
+| `tool.custy.changelog.release_behavior."VERSION".custom_message` | unset             | Active dynamic key | [Releases](./changelog/releases)             |
+| `tool.custy.changelog.links.repository`                          | `""`              | Active             | [Links](./changelog/links)                   |
+| `tool.custy.changelog.links.enable_compare`                      | `false`           | Active             | [Links](./changelog/links)                   |
 
 </Section>
 
@@ -179,36 +205,36 @@ dan changelog breaking defaults.
 
 <Section title="Changelog: Rendering">
 
-| Full path | Default | Status |
-| --- | --- | --- |
-| `tool.custy.changelog.render.show_title` | `true` | Active |
-| `tool.custy.changelog.render.show_description` | `true` | Active |
-| `tool.custy.changelog.render.show_release_status` | `true` | Active |
-| `tool.custy.changelog.render.show_summary` | `true` | Active |
-| `tool.custy.changelog.render.show_promoted_from` | `true` | Active |
-| `tool.custy.changelog.render.show_compare_link` | `true` | Active |
-| `tool.custy.changelog.render.group_by_scope` | `true` | Active |
-| `tool.custy.changelog.render.collapse_generic_scopes` | `true` | Active |
-| `tool.custy.changelog.render.generic_scopes` | 8 values | Active |
-| `tool.custy.changelog.render.deduplicate` | `true` | Active |
-| `tool.custy.changelog.render.show_empty_sections` | `false` | Loaded only |
-| `tool.custy.changelog.render.show_empty_groups` | `false` | Active |
-| `tool.custy.changelog.render.show_empty_scopes` | `false` | Active |
-| `tool.custy.changelog.render.show_empty_metadata` | `false` | Loaded only |
-| `tool.custy.changelog.render.show_empty_tags` | `false` | Active |
-| `tool.custy.changelog.render.show_metadata` | `true` | Loaded only |
-| `tool.custy.changelog.render.show_tags` | `true` | Active |
-| `tool.custy.changelog.render.show_contributors` | `false` | Loaded only / future |
-| `tool.custy.changelog.render.show_statistics` | `false` | Loaded only / future |
-| `tool.custy.changelog.render.bullet` | `"-"` | Active |
-| `tool.custy.changelog.render.indent` | `0` | Active |
-| `tool.custy.changelog.render.blank_lines_between_releases` | `2` | Loaded only |
-| `tool.custy.changelog.render.blank_lines_between_commit_groups` | `1` | Loaded only |
-| `tool.custy.changelog.render.sort_groups` | `false` | Active |
-| `tool.custy.changelog.render.sort_scopes` | `true` | Active |
-| `tool.custy.changelog.render.sort_items` | `false` | Active |
-| `tool.custy.changelog.render.show_section_icons` | `true` | Active |
-| `tool.custy.changelog.render.show_footer` | `false` | Active |
+| Full path                                                       | Default  | Status               |
+| --------------------------------------------------------------- | -------- | -------------------- |
+| `tool.custy.changelog.render.show_title`                        | `true`   | Active               |
+| `tool.custy.changelog.render.show_description`                  | `true`   | Active               |
+| `tool.custy.changelog.render.show_release_status`               | `true`   | Active               |
+| `tool.custy.changelog.render.show_summary`                      | `true`   | Active               |
+| `tool.custy.changelog.render.show_promoted_from`                | `true`   | Active               |
+| `tool.custy.changelog.render.show_compare_link`                 | `true`   | Active               |
+| `tool.custy.changelog.render.group_by_scope`                    | `true`   | Active               |
+| `tool.custy.changelog.render.collapse_generic_scopes`           | `true`   | Active               |
+| `tool.custy.changelog.render.generic_scopes`                    | 8 values | Active               |
+| `tool.custy.changelog.render.deduplicate`                       | `true`   | Active               |
+| `tool.custy.changelog.render.show_empty_sections`               | `false`  | Loaded only          |
+| `tool.custy.changelog.render.show_empty_groups`                 | `false`  | Active               |
+| `tool.custy.changelog.render.show_empty_scopes`                 | `false`  | Active               |
+| `tool.custy.changelog.render.show_empty_metadata`               | `false`  | Loaded only          |
+| `tool.custy.changelog.render.show_empty_tags`                   | `false`  | Active               |
+| `tool.custy.changelog.render.show_metadata`                     | `true`   | Loaded only          |
+| `tool.custy.changelog.render.show_tags`                         | `true`   | Active               |
+| `tool.custy.changelog.render.show_contributors`                 | `false`  | Loaded only / future |
+| `tool.custy.changelog.render.show_statistics`                   | `false`  | Loaded only / future |
+| `tool.custy.changelog.render.bullet`                            | `"-"`    | Active               |
+| `tool.custy.changelog.render.indent`                            | `0`      | Active               |
+| `tool.custy.changelog.render.blank_lines_between_releases`      | `2`      | Loaded only          |
+| `tool.custy.changelog.render.blank_lines_between_commit_groups` | `1`      | Loaded only          |
+| `tool.custy.changelog.render.sort_groups`                       | `false`  | Active               |
+| `tool.custy.changelog.render.sort_scopes`                       | `true`   | Active               |
+| `tool.custy.changelog.render.sort_items`                        | `false`  | Active               |
+| `tool.custy.changelog.render.show_section_icons`                | `true`   | Active               |
+| `tool.custy.changelog.render.show_footer`                       | `false`  | Active               |
 
 Lihat [Rendering](./changelog/rendering) untuk individual behavior dan examples.
 
@@ -218,16 +244,16 @@ Lihat [Rendering](./changelog/rendering) untuk individual behavior dan examples.
 
 <Section title="Changelog: Breaking, Mappings, dan Advanced">
 
-| Full path | Generated default | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.changelog.breaking.enabled` | `true` | Active | [Breaking](./changelog/breaking-changes) |
-| `tool.custy.changelog.breaking.keywords` | 3 values | Active | [Breaking](./changelog/breaking-changes) |
-| `tool.custy.changelog.breaking.label` | `⚠️ Breaking Changes` | Active config | [Breaking](./changelog/breaking-changes) |
-| `tool.custy.changelog.scope_map.<scope>` | 9 generated entries | Active dynamic mapping | [Mappings](./changelog/mappings) |
-| `tool.custy.changelog.type_map.<type>` | 16 generated entries | Active dynamic mapping | [Mappings](./changelog/mappings) |
-| `tool.custy.changelog.advanced.auto_detect_type` | `false` | Experimental / loaded only | [Advanced](./changelog/advanced) |
-| `tool.custy.changelog.advanced.detect_breaking_changes` | `false` | Experimental / loaded only | [Advanced](./changelog/advanced) |
-| `tool.custy.changelog.advanced.smart_formatting` | `false` | Experimental / loaded only | [Advanced](./changelog/advanced) |
+| Full path                                               | Generated default     | Status                     | Details                                  |
+| ------------------------------------------------------- | --------------------- | -------------------------- | ---------------------------------------- |
+| `tool.custy.changelog.breaking.enabled`                 | `true`                | Active                     | [Breaking](./changelog/breaking-changes) |
+| `tool.custy.changelog.breaking.keywords`                | 3 values              | Active                     | [Breaking](./changelog/breaking-changes) |
+| `tool.custy.changelog.breaking.label`                   | `⚠️ Breaking Changes` | Active config              | [Breaking](./changelog/breaking-changes) |
+| `tool.custy.changelog.scope_map.<scope>`                | 9 generated entries   | Active dynamic mapping     | [Mappings](./changelog/mappings)         |
+| `tool.custy.changelog.type_map.<type>`                  | 16 generated entries  | Active dynamic mapping     | [Mappings](./changelog/mappings)         |
+| `tool.custy.changelog.advanced.auto_detect_type`        | `false`               | Experimental / loaded only | [Advanced](./changelog/advanced)         |
+| `tool.custy.changelog.advanced.detect_breaking_changes` | `false`               | Experimental / loaded only | [Advanced](./changelog/advanced)         |
+| `tool.custy.changelog.advanced.smart_formatting`        | `false`               | Experimental / loaded only | [Advanced](./changelog/advanced)         |
 
 Setiap generated scope dan type entry tercantum secara individual pada
 [halaman Mappings](./changelog/mappings).
@@ -238,30 +264,55 @@ Setiap generated scope dan type entry tercantum secara individual pada
 
 <Section title="Git">
 
-| Full path | Generated/default value | Status | Details |
-| --- | --- | --- | --- |
-| `tool.custy.git.default_remote` | `"origin"` | Active | [Remotes](./git/remotes) |
-| `tool.custy.git.auto_push` | `true` | Reserved | [Push Strategy](./git/push-strategy) |
-| `tool.custy.git.main_remotes` | `["origin"]` | Active | [Remotes](./git/remotes) |
-| `tool.custy.git.backup_remotes` | `[]` built-in | Optional | [Remotes](./git/remotes) |
-| `tool.custy.git.push_to` | `"main"` | Active | [Push Strategy](./git/push-strategy) |
-| `tool.custy.git.credentials.mode` | `"native"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.container_only` | `true` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.source_order` | `["file", "environment"]` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.interactive_fallback` | `true` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.fail_non_interactive` | `true` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.github.enabled` | `false` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.github.username` | `"x-access-token"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.github.token_file` | `"github.token"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.github.token_env` | `"CUSTY_GITHUB_TOKEN"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.gitlab.enabled` | `false` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.gitlab.username` | `"oauth2"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.gitlab.token_file` | `"gitlab.token"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.credentials.gitlab.token_env` | `"CUSTY_GITLAB_TOKEN"` | Active | [Git Credentials](./git/credentials) |
-| `tool.custy.git.hooks.mode` | `"auto"` | Active | [Git Commit Hooks](./git/hooks) |
+| Full path                                         | Generated/default value   | Status   | Details                              |
+| ------------------------------------------------- | ------------------------- | -------- | ------------------------------------ |
+| `tool.custy.git.default_remote`                   | `"origin"`                | Active   | [Remotes](./git/remotes)             |
+| `tool.custy.git.auto_push`                        | `true`                    | Reserved | [Push Strategy](./git/push-strategy) |
+| `tool.custy.git.main_remotes`                     | `["origin"]`              | Active   | [Remotes](./git/remotes)             |
+| `tool.custy.git.backup_remotes`                   | `[]` built-in             | Optional | [Remotes](./git/remotes)             |
+| `tool.custy.git.push_to`                          | `"main"`                  | Active   | [Push Strategy](./git/push-strategy) |
+| `tool.custy.git.credentials.mode`                 | `"native"`                | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.container_only`       | `true`                    | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.source_order`         | `["file", "environment"]` | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.interactive_fallback` | `true`                    | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.fail_non_interactive` | `true`                    | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.enabled`       | `false`                   | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.username`      | `"x-access-token"`        | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.token_file`    | `"github.token"`          | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.token_env`     | `"CUSTY_GITHUB_TOKEN"`    | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.enabled`       | `false`                   | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.username`      | `"oauth2"`                | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.token_file`    | `"gitlab.token"`          | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.token_env`     | `"CUSTY_GITLAB_TOKEN"`    | Active   | [Git Credentials](./git/credentials) |
+| `tool.custy.git.hooks.mode`                       | `"auto"`                  | Active   | [Git Commit Hooks](./git/hooks)      |
 
 </Section>
 
 ---
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Overview", href: "./overview", description: "Navigasikan configuration berdasarkan domain."}, {title: "Resolution", href: "./resolution", description: "Pahami source priority dan statuses."}, {title: "CLI Defaults", href: "./cli/overview", description: "Jelajahi command-level configuration."}, {title: "Changelog", href: "./changelog/overview", description: "Jelajahi nested subsystem terbesar."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Overview",
+        href: "./overview",
+        description: "Navigasikan configuration berdasarkan domain.",
+      },
+      {
+        title: "Resolution",
+        href: "./resolution",
+        description: "Pahami source priority dan statuses.",
+      },
+      {
+        title: "CLI Defaults",
+        href: "./cli/overview",
+        description: "Jelajahi command-level configuration.",
+      },
+      {
+        title: "Changelog",
+        href: "./changelog/overview",
+        description: "Jelajahi nested subsystem terbesar.",
+      },
+    ]}
+  />
+</Section>

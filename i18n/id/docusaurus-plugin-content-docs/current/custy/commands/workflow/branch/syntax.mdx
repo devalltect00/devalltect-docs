@@ -4,15 +4,47 @@ description: "Accepted syntax untuk experimental workflow branch interface."
 sidebar_position: 3
 sidebar_key: custy-workflow-branch-syntax
 ---
-import {CommandHero, CommandSyntax, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Command Syntax" description="Tinjau accepted forms tanpa menganggap operational readiness." category="Workflow" status="Interface Only" syntax="custy workflow branch [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Options",href:"./options"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, CommandSyntax, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Command Syntax"
+  description="Tinjau accepted forms tanpa menganggap operational readiness."
+  category="Workflow"
+  status="Interface Only"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Options", href: "./options" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandSyntax examples={[
- {title:"Base Interface",command:"custy workflow branch"},{title:"Check Transition",command:"custy workflow branch --check_transition"},{title:"Branch Transition",command:"custy workflow branch --from-branch develop --to-branch main"},{title:"Tag Transition",command:"custy workflow branch --from-tag v1.2.0 --to-tag v1.3.0"},{title:"Dry Run Enforcement",command:"custy --dry-run workflow branch --enforce"},
-]} />
+<CommandSyntax
+  examples={[
+    { title: "Base Interface", command: "custy workflow branch" },
+    { title: "Check Transition", command: "custy workflow branch --check_transition" },
+    {
+      title: "Branch Transition",
+      command: "custy workflow branch --from-branch develop --to-branch main",
+    },
+    {
+      title: "Tag Transition",
+      command: "custy workflow branch --from-tag v1.2.0 --to-tag v1.3.0",
+    },
+    {
+      title: "Dry Run Enforcement",
+      command: "custy --dry-run workflow branch --enforce",
+    },
+  ]}
+/>
 
-<InfoBox variant="warning" title="Option Uses an Underscore">Current CLI spelling adalah `--check_transition`, bukan `--check-transition`.</InfoBox>
-<InfoBox variant="danger" title="Accepted Syntax Is Not Operational Readiness">Parsing sukses tidak menghilangkan pipeline-construction blocker.</InfoBox>
+<InfoBox variant="warning" title="Option Uses an Underscore">
+  Current CLI spelling adalah `--check_transition`, bukan `--check-transition`.
+</InfoBox>
+<InfoBox variant="danger" title="Accepted Syntax Is Not Operational Readiness">
+  Parsing sukses tidak menghilangkan pipeline-construction blocker.
+</InfoBox>

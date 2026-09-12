@@ -8,40 +8,47 @@ keywords: [Custy configuration architecture, ConfigLoader, tool.custy]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowDiagram,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/custy/config.toml"
-    title="Configuration System"
-    description="Separate packaged defaults, project ownership, effective-value resolution, and subsystem-specific models."
-    category="Architecture"
-    status="Project-Scoped"
-    syntax="packaged template -> project file -> loader -> resolver -> consumer"
-    tags={["TOML", "ConfigLoader", "initialization", "precedence"]}
-    links={[
-        {label: "Configuration Guide", href: "../configuration/overview"},
-        {label: "Resolution", href: "../configuration/resolution"},
-        {label: "Extending Configuration", href: "../developer-guide/extending-configuration"},
-    ]}
+  command=".config/custy/config.toml"
+  title="Configuration System"
+  description="Separate packaged defaults, project ownership, effective-value resolution, and subsystem-specific models."
+  category="Architecture"
+  status="Project-Scoped"
+  syntax="packaged template -> project file -> loader -> resolver -> consumer"
+  tags={["TOML", "ConfigLoader", "initialization", "precedence"]}
+  links={[
+    { label: "Configuration Guide", href: "../configuration/overview" },
+    { label: "Resolution", href: "../configuration/resolution" },
+    {
+      label: "Extending Configuration",
+      href: "../developer-guide/extending-configuration",
+    },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Packaged Source", value: "app/templates/config.toml", icon: "package"},
-        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Runtime Root", value: "tool.custy", icon: "project"},
-        {label: "Shared Lifetime", value: "One load per process", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Packaged Source", value: "app/templates/config.toml", icon: "package" },
+    {
+      label: "Project File",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Runtime Root", value: "tool.custy", icon: "project" },
+    { label: "Shared Lifetime", value: "One load per process", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -54,15 +61,45 @@ settings, then a built-in fallback.
 ---
 
 <WorkflowDiagram
-    title="Configuration Lifecycle"
-    timeline={[
-        {title: "Package resources", description: "app/templates/config.toml and changelog/changelog.j2 ship with the Python package.", status: "completed"},
-        {title: "Build initialization plan", description: "InitBuilder selects FileRegistry and DirRegistry entries for the requested mode.", status: "completed"},
-        {title: "Create project resources", description: "ScaffoldGenerator writes missing or approved replacement files beneath .config/custy.", status: "completed"},
-        {title: "Load project TOML", description: "ConfigLoader parses the file and exposes the mapping beneath tool.custy.", status: "current"},
-        {title: "Resolve effective values", description: "Command or subsystem resolvers select CLI, configuration, and fallback values.", status: "pending"},
-        {title: "Apply behavior", description: "Workflow, Git, logging, changelog, initialization, backup, cleanup, and path consumers use the resolved values.", status: "pending"},
-    ]}
+  title="Configuration Lifecycle"
+  timeline={[
+    {
+      title: "Package resources",
+      description:
+        "app/templates/config.toml and changelog/changelog.j2 ship with the Python package.",
+      status: "completed",
+    },
+    {
+      title: "Build initialization plan",
+      description:
+        "InitBuilder selects FileRegistry and DirRegistry entries for the requested mode.",
+      status: "completed",
+    },
+    {
+      title: "Create project resources",
+      description:
+        "ScaffoldGenerator writes missing or approved replacement files beneath .config/custy.",
+      status: "completed",
+    },
+    {
+      title: "Load project TOML",
+      description:
+        "ConfigLoader parses the file and exposes the mapping beneath tool.custy.",
+      status: "current",
+    },
+    {
+      title: "Resolve effective values",
+      description:
+        "Command or subsystem resolvers select CLI, configuration, and fallback values.",
+      status: "pending",
+    },
+    {
+      title: "Apply behavior",
+      description:
+        "Workflow, Git, logging, changelog, initialization, backup, cleanup, and path consumers use the resolved values.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -70,13 +107,35 @@ settings, then a built-in fallback.
 <Section title="Runtime Loader Contract">
 
 <PropertyTable
-    items={[
-        {property: "get(*keys, default=...)", type: "Optional nested access", description: "Returns the nested value or fallback when the path is absent or stops being a mapping."},
-        {property: "require(*keys)", type: "Required access", description: "Raises ConfigurationError when the complete path has no value."},
-        {property: "get_section(*keys)", type: "Mapping access", description: "Returns a dictionary for a subsystem table or an empty mapping."},
-        {property: "resolve(cli_value, config_keys, default)", type: "Precedence", description: "Uses explicit CLI, then the project file, then the built-in default; optional flags alter false and required handling."},
-        {property: "get_config()", type: "Shared instance", description: "Creates ConfigLoader lazily and reuses it for the current process."},
-    ]}
+  items={[
+    {
+      property: "get(*keys, default=...)",
+      type: "Optional nested access",
+      description:
+        "Returns the nested value or fallback when the path is absent or stops being a mapping.",
+    },
+    {
+      property: "require(*keys)",
+      type: "Required access",
+      description: "Raises ConfigurationError when the complete path has no value.",
+    },
+    {
+      property: "get_section(*keys)",
+      type: "Mapping access",
+      description: "Returns a dictionary for a subsystem table or an empty mapping.",
+    },
+    {
+      property: "resolve(cli_value, config_keys, default)",
+      type: "Precedence",
+      description:
+        "Uses explicit CLI, then the project file, then the built-in default; optional flags alter false and required handling.",
+    },
+    {
+      property: "get_config()",
+      type: "Shared instance",
+      description: "Creates ConfigLoader lazily and reuses it for the current process.",
+    },
+  ]}
 />
 
 <Terminal title="Runtime namespace" language="toml">
@@ -100,23 +159,57 @@ default_remote = "origin"`}
 <Grid columns={2}>
 
 <DependencyCard
-    title="Command Resolution"
-    dependencies={[
-        {source: "Typer option", target: "CliArgs", description: "Represent explicit or omitted user input."},
-        {source: "CliArgs and ConfigLoader", target: "command resolver", description: "Choose an effective value for each supported property."},
-        {source: "resolved dataclass", target: "WorkflowEngineBuilder", description: "Transport the command's supported values into WorkflowConfig."},
-        {source: "WorkflowConfig", target: "WorkflowEngine", description: "Construct services and runtime behavior from immutable input intent."},
-    ]}
+  title="Command Resolution"
+  dependencies={[
+    {
+      source: "Typer option",
+      target: "CliArgs",
+      description: "Represent explicit or omitted user input.",
+    },
+    {
+      source: "CliArgs and ConfigLoader",
+      target: "command resolver",
+      description: "Choose an effective value for each supported property.",
+    },
+    {
+      source: "resolved dataclass",
+      target: "WorkflowEngineBuilder",
+      description: "Transport the command's supported values into WorkflowConfig.",
+    },
+    {
+      source: "WorkflowConfig",
+      target: "WorkflowEngine",
+      description:
+        "Construct services and runtime behavior from immutable input intent.",
+    },
+  ]}
 />
 
 <DependencyCard
-    title="Subsystem Resolution"
-    dependencies={[
-        {source: "ConfigLoader", target: "ChangelogConfigResolver", description: "Convert changelog tables into nested typed dataclasses and enums."},
-        {source: "ConfigLoader", target: "GitService", description: "Resolve remote and tag-sorting policy when needed."},
-        {source: "ConfigLoader", target: "logging setup", description: "Configure Rich console output and rotating file handlers."},
-        {source: "ConfigLoader", target: "path resolver", description: "Resolve and validate project-source paths relative to the working directory."},
-    ]}
+  title="Subsystem Resolution"
+  dependencies={[
+    {
+      source: "ConfigLoader",
+      target: "ChangelogConfigResolver",
+      description: "Convert changelog tables into nested typed dataclasses and enums.",
+    },
+    {
+      source: "ConfigLoader",
+      target: "GitService",
+      description: "Resolve remote and tag-sorting policy when needed.",
+    },
+    {
+      source: "ConfigLoader",
+      target: "logging setup",
+      description: "Configure Rich console output and rotating file handlers.",
+    },
+    {
+      source: "ConfigLoader",
+      target: "path resolver",
+      description:
+        "Resolve and validate project-source paths relative to the working directory.",
+    },
+  ]}
 />
 
 </Grid>
@@ -172,12 +265,28 @@ The main ConfigLoader and command resolvers do not share that shape mismatch.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Configuration Overview", href: "../configuration/overview", description: "Navigate every project-owned namespace and property."},
-        {title: "Configuration File", href: "../configuration/config-file", description: "Review ownership and initialization replacement rules."},
-        {title: "Resolution and Status", href: "../configuration/resolution", description: "Understand precedence and implementation status."},
-        {title: "Extending Configuration", href: "../developer-guide/extending-configuration", description: "Carry a new setting through every active layer."},
-    ]}
+  commands={[
+    {
+      title: "Configuration Overview",
+      href: "../configuration/overview",
+      description: "Navigate every project-owned namespace and property.",
+    },
+    {
+      title: "Configuration File",
+      href: "../configuration/config-file",
+      description: "Review ownership and initialization replacement rules.",
+    },
+    {
+      title: "Resolution and Status",
+      href: "../configuration/resolution",
+      description: "Understand precedence and implementation status.",
+    },
+    {
+      title: "Extending Configuration",
+      href: "../developer-guide/extending-configuration",
+      description: "Carry a new setting through every active layer.",
+    },
+  ]}
 />
 
 </Section>

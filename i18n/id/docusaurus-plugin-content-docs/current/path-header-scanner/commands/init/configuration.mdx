@@ -6,14 +6,27 @@ sidebar_key: phs-init
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner init" title="Konfigurasi" description="Nilai CLI mengungguli konfigurasi proyek, kemudian default internal." category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner init"
+  title="Konfigurasi"
+  description="Nilai CLI mengungguli konfigurasi proyek, kemudian default internal."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="path-header-scanner init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Key | Default | Efek |
-| --- | --- | --- |
-| `tool.path-header-scanner.initialization.force` | false | Timpa resource yang ada secara default. |
-| `tool.path-header-scanner.initialization.ask` | false | Minta konfirmasi sebelum keputusan penggantian. |
+| Key                                             | Default | Efek                                            |
+| ----------------------------------------------- | ------- | ----------------------------------------------- |
+| `tool.path-header-scanner.initialization.force` | false   | Timpa resource yang ada secara default.         |
+| `tool.path-header-scanner.initialization.ask`   | false   | Minta konfirmasi sebelum keputusan penggantian. |
 
 ```toml
 [tool.path-header-scanner.initialization]

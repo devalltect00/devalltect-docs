@@ -16,38 +16,34 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Output"
-    description="Learn what information Custy reports after creating template backups."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup all"
-    tags={[
-        "output",
-        "backup",
-        "results",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy backup"
+  title="Output"
+  description="Learn what information Custy reports after creating template backups."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup all"
+  tags={["output", "backup", "results"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -65,31 +61,26 @@ up during a single execution.
 >
 
 <CommandOutput
-    outputs={[
-        {
-            title: "Commit Template Backup",
-            description:
-                "The commit message template was backed up successfully.",
-            output:
-`✓ Commit message template found
+  outputs={[
+    {
+      title: "Commit Template Backup",
+      description: "The commit message template was backed up successfully.",
+      output: `✓ Commit message template found
 ✓ Backup directory ready
 ✓ Timestamped backup created
 ✓ Backup completed successfully`,
-            notes:
-                "The exact messages may vary depending on your project configuration.",
-        },
-        {
-            title: "Combined Backup",
-            description:
-                "Both template files were backed up successfully.",
-            output:
-`✓ Commit message template backed up
+      notes: "The exact messages may vary depending on your project configuration.",
+    },
+    {
+      title: "Combined Backup",
+      description: "Both template files were backed up successfully.",
+      output: `✓ Commit message template backed up
 ✓ Tag message template backed up
 ✓ Backup operation completed`,
-            notes:
-                "Running the all subcommand performs both backup operations during a single execution.",
-        },
-    ]}
+      notes:
+        "Running the all subcommand performs both backup operations during a single execution.",
+    },
+  ]}
 />
 
 </Section>

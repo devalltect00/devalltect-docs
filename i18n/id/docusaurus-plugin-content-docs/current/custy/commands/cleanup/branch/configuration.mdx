@@ -4,27 +4,79 @@ description: "Konfigurasikan cara Custy memilih Git branch untuk cleanup."
 sidebar_position: 5
 sidebar_key: custy-cleanup-branch
 ---
-import {CommandHero, PropertyTable, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup branches" title="Configuration" description="Atur prefix, merge status, usia, tanggal, dan protected branches." category="Maintenance" status="Recommended" syntax="custy cleanup branches" links={[
-    {label: "Options", href: "./options"}, {label: "Workflow", href: "./workflow"}, {label: "Examples", href: "./examples"},
-]} />
+import {
+  CommandHero,
+  PropertyTable,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup branches"
+  title="Configuration"
+  description="Atur prefix, merge status, usia, tanggal, dan protected branches."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup branches"
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Ringkasan
 
 Branch Cleanup membaca pengaturan cleanup dari `.config/custy/config.toml`. Konfigurasi proyek membuat kebijakan konsisten untuk developer dan pipeline.
 
-<InfoBox variant="danger" title="Periksa Konfigurasi Sebelum Eksekusi">Kesalahan prefix atau filter dapat memperluas kandidat penghapusan. Gunakan dry run setelah setiap perubahan konfigurasi.</InfoBox>
+<InfoBox variant="danger" title="Periksa Konfigurasi Sebelum Eksekusi">
+  Kesalahan prefix atau filter dapat memperluas kandidat penghapusan. Gunakan dry run
+  setelah setiap perubahan konfigurasi.
+</InfoBox>
 
-<PropertyTable title="Properti Branch Cleanup" items={[
-    {property: "include_prefixes", type: "string[]", required: true, description: "Prefix branch yang boleh menjadi kandidat."},
-    {property: "merge_status", type: "merged | unmerged | all", required: false, defaultValue: "merged", description: "Merge status yang diizinkan."},
-    {property: "max_age", type: "duration", required: false, description: "Batas usia relatif seperti 30d."},
-    {property: "before", type: "date", required: false, description: "Tanggal batas absolut."},
-]} />
+<PropertyTable
+  title="Properti Branch Cleanup"
+  items={[
+    {
+      property: "include_prefixes",
+      type: "string[]",
+      required: true,
+      description: "Prefix branch yang boleh menjadi kandidat.",
+    },
+    {
+      property: "merge_status",
+      type: "merged | unmerged | all",
+      required: false,
+      defaultValue: "merged",
+      description: "Merge status yang diizinkan.",
+    },
+    {
+      property: "max_age",
+      type: "duration",
+      required: false,
+      description: "Batas usia relatif seperti 30d.",
+    },
+    {
+      property: "before",
+      type: "date",
+      required: false,
+      description: "Tanggal batas absolut.",
+    },
+  ]}
+/>
 
-<Section title="Protected Branches">Daftar protected branch dikelola oleh konfigurasi Git/Custy terkait. Branch yang dilindungi selalu dikecualikan dari kandidat.</Section>
+<Section title="Protected Branches">
+  Daftar protected branch dikelola oleh konfigurasi Git/Custy terkait. Branch yang
+  dilindungi selalu dikecualikan dari kandidat.
+</Section>
 
-<Section title="Layered Filtering">Branch harus cocok dengan prefix, merge status, batas usia atau tanggal yang aktif, dan bukan protected branch. Setiap filter mempersempit kandidat.</Section>
+<Section title="Layered Filtering">
+  Branch harus cocok dengan prefix, merge status, batas usia atau tanggal yang aktif,
+  dan bukan protected branch. Setiap filter mempersempit kandidat.
+</Section>
 
-<Section title="Strategi yang Disarankan">Mulai dengan prefix sempit, gunakan `merged`, lindungi branch utama, lalu tambahkan filter usia. Verifikasi dengan `custy --dry-run cleanup branches`.</Section>
+<Section title="Strategi yang Disarankan">
+  Mulai dengan prefix sempit, gunakan `merged`, lindungi branch utama, lalu tambahkan
+  filter usia. Verifikasi dengan `custy --dry-run cleanup branches`.
+</Section>

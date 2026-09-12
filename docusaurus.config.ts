@@ -45,11 +45,11 @@ const config: Config = {
     localeConfigs: {
       en: {
         label: "English",
-        htmlLang: 'en-US',
+        htmlLang: "en-US",
       },
       id: {
         label: "Bahasa Indonesia",
-        htmlLang: 'id-ID',
+        htmlLang: "id-ID",
       },
     },
   },
@@ -76,7 +76,7 @@ const config: Config = {
   plugins: [documentationFreshnessPlugin],
 
   themeConfig: {
-    image: "img/logo-devalltect00.png",
+    image: "img/logo-devalltect00-on-light.png",
     colorMode: {
       respectPrefersColorScheme: true,
     },
@@ -85,7 +85,8 @@ const config: Config = {
       title: "Devalltect",
       logo: {
         alt: "DevAlltect00 Logo",
-        src: "img/logo-devalltect00.png",
+        src: "img/logo-devalltect00-on-light.png",
+        srcDark: "img/logo-devalltect00-on-dark.png",
       },
       items: [
         {

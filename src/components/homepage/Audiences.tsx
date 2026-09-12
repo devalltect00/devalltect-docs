@@ -8,18 +8,13 @@ import styles from "./Audiences.module.css";
  * Audiences
  * ============================================================
  *
- * Provides audience-based navigation paths.
+ * Provides goal-based navigation paths.
  *
- * Users and developers often need different
- * documentation entry points.
+ * Tool users and contributors need different documentation entry points.
  *
  * This section helps visitors quickly identify
  * where they should start.
  *
- * Future:
- * - Contributors
- * - Maintainers
- * - Architects
  * ============================================================
  */
 export default function Audiences(): React.JSX.Element {
@@ -29,65 +24,53 @@ export default function Audiences(): React.JSX.Element {
         <div className={styles.header}>
           <h2>Start Here</h2>
 
-          <p>
-            Choose the documentation path that best
-            matches your role and goals.
-          </p>
+          <p>Choose the documentation path that best matches your role and goals.</p>
         </div>
 
         <div className={styles.grid}>
           <article className={styles.card}>
             <div className={styles.icon}>👤</div>
 
-            <h3>Users</h3>
+            <h3>Use a Tool</h3>
 
             <p>
-              Learn how to install, configure,
-              and use projects through practical
-              guides, quick starts, and command
-              references.
+              Compare the available projects, choose the tool that matches your task,
+              and follow its installation and first-workflow guide.
             </p>
 
             <ul className={styles.list}>
-              <li>Installation Guides</li>
-              <li>Quick Start Guides</li>
-              <li>Command References</li>
-              <li>Usage Workflows</li>
-              <li>Frequently Asked Questions</li>
+              <li>Project directory</li>
+              <li>Installation and Docker options</li>
+              <li>First workflows</li>
+              <li>Commands and configuration</li>
+              <li>Safety and troubleshooting</li>
             </ul>
 
-            <Link
-              className="button button--primary"
-              to="/docs/projects-overview"
-            >
-              Explore User Documentation
+            <Link className="button button--primary" to="/docs/projects-overview">
+              Browse Projects
             </Link>
           </article>
 
           <article className={styles.card}>
             <div className={styles.icon}>⚙️</div>
 
-            <h3>Developers</h3>
+            <h3>Develop or Contribute</h3>
 
             <p>
-              Explore architecture documentation,
-              development workflows, testing,
-              tooling, and implementation details.
+              Open the developer hub for source setup, architecture, testing,
+              contribution guidance, and documentation maintenance.
             </p>
 
             <ul className={styles.list}>
-              <li>Architecture References</li>
-              <li>Developer Guides</li>
-              <li>Design Workflows</li>
-              <li>Testing Documentation</li>
-              <li>Tooling References</li>
+              <li>Project developer guides</li>
+              <li>Architecture references</li>
+              <li>Testing and quality workflows</li>
+              <li>Contribution guidance</li>
+              <li>Portal maintainer workflow</li>
             </ul>
 
-            <Link
-              className="button button--primary"
-              to="/docs/intro"
-            >
-              Explore Developer Documentation
+            <Link className="button button--primary" to="/docs/developers">
+              Open Developer Hub
             </Link>
           </article>
         </div>

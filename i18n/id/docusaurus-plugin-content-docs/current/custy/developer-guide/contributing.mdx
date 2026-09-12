@@ -4,13 +4,53 @@ description: "Siapkan focused, tested, documented, dan reviewable contribution u
 sidebar_position: 8
 sidebar_key: custy-developer-guide-contributing
 ---
-import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Terminal} from "@site/src/components/docs";
 
-<CommandHero command="make check" title="Contributing" description="Bawa satu scoped change dari issue understanding menuju clean review." category="Developer Guide" status="Review Workflow" syntax="scope -> implement -> test -> document -> review" tags={["quality","tests","documentation","pre-commit"]} links={[{label:"Development Setup",href:"./development-setup"},{label:"Testing",href:"./testing"},{label:"Final Checklist",href:"#final-review-checklist"}]} />
+import {
+  CommandHero,
+  CommandChecklist,
+  InfoBox,
+  RelatedCommands,
+  Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="make check"
+  title="Contributing"
+  description="Bawa satu scoped change dari issue understanding menuju clean review."
+  category="Developer Guide"
+  status="Review Workflow"
+  syntax="scope -> implement -> test -> document -> review"
+  tags={["quality", "tests", "documentation", "pre-commit"]}
+  links={[
+    { label: "Development Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Final Checklist", href: "#final-review-checklist" },
+  ]}
+/>
 
 ## Contribution Flow
 
-<CommandChecklist items={[{title:"Define scope",description:"Jelaskan behavior, affected boundaries, dan non-goals."},{title:"Preserve architecture",description:"Ikuti existing ownership dan dependency direction."},{title:"Implement completely",description:"Tambahkan code, errors, logging, tests, dan docs yang diperlukan."},{title:"Validate",description:"Jalankan focused checks lalu complete suite."},{title:"Review diff",description:"Hapus debugging, unrelated edits, generated output, dan secrets."}]} />
+<CommandChecklist
+  items={[
+    {
+      title: "Define scope",
+      description: "Jelaskan behavior, affected boundaries, dan non-goals.",
+    },
+    {
+      title: "Preserve architecture",
+      description: "Ikuti existing ownership dan dependency direction.",
+    },
+    {
+      title: "Implement completely",
+      description: "Tambahkan code, errors, logging, tests, dan docs yang diperlukan.",
+    },
+    { title: "Validate", description: "Jalankan focused checks lalu complete suite." },
+    {
+      title: "Review diff",
+      description: "Hapus debugging, unrelated edits, generated output, dan secrets.",
+    },
+  ]}
+/>
 
 <Terminal title="Validasi contributor" language="bash">
 
@@ -24,13 +64,41 @@ make pre-commit-run`}
 
 </Terminal>
 
-<InfoBox variant="warning" title="Refresh Adalah Maintainer Operation">Jalankan `make pre-commit-refresh` hanya ketika sengaja meng-upgrade hook revisions. Command ini memperbarui `.pre-commit-config.yaml`, membangun ulang hook environments, meng-install Git hook, dan menjalankan semua hooks terhadap semua files. Command dapat membutuhkan network access dan mengubah active source files, jadi review seluruh diff sebelum commit.</InfoBox>
+<InfoBox variant="warning" title="Refresh Adalah Maintainer Operation">
+  Jalankan `make pre-commit-refresh` hanya ketika sengaja meng-upgrade hook revisions.
+  Command ini memperbarui `.pre-commit-config.yaml`, membangun ulang hook environments,
+  meng-install Git hook, dan menjalankan semua hooks terhadap semua files. Command dapat
+  membutuhkan network access dan mengubah active source files, jadi review seluruh diff
+  sebelum commit.
+</InfoBox>
 
 ## Final Review Checklist
 
 Pastikan public CLI behavior didiskusikan, tests tidak dihapus, configuration
 dan documentation sinkron, serta recovery dan side effects dijelaskan.
 
-<InfoBox variant="note" title="Keep Changes Reviewable">Pisahkan refactor yang tidak diperlukan dari behavior change. Focused diff memudahkan reviewers memverifikasi intent dan safety.</InfoBox>
+<InfoBox variant="note" title="Keep Changes Reviewable">
+  Pisahkan refactor yang tidak diperlukan dari behavior change. Focused diff memudahkan
+  reviewers memverifikasi intent dan safety.
+</InfoBox>
 
-<RelatedCommands commands={[{title:"Development Setup",href:"./development-setup",description:"Prepare environment."},{title:"Testing",href:"./testing",description:"Run validation."},{title:"Adding Commands",href:"./adding-commands",description:"CLI contributions."},{title:"Adding Pipeline Steps",href:"./adding-pipeline-steps",description:"Pipeline contributions."}]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Prepare environment.",
+    },
+    { title: "Testing", href: "./testing", description: "Run validation." },
+    {
+      title: "Adding Commands",
+      href: "./adding-commands",
+      description: "CLI contributions.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "./adding-pipeline-steps",
+      description: "Pipeline contributions.",
+    },
+  ]}
+/>

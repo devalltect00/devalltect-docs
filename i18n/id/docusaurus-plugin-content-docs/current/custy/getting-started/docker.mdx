@@ -16,45 +16,49 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="docker build --target production -t custy-prod:latest ."
-    title="Jalankan Custy dengan Docker"
-    description="Build Custy secara lokal dan jalankan CLI mandirinya terhadap workspace proyek yang di-mount secara terencana."
-    category="Memulai"
-    status="Image Rilis atau Build dari Source"
-    syntax="docker [build|run|compose] [OPTIONS]"
-    tags={[
-        "image lokal",
-        "Docker Compose",
-        "mount workspace",
-    ]}
-    links={[
-        {label: "Persyaratan", href: "#requirements"},
-        {label: "Build Image", href: "#build-the-production-image"},
-        {label: "Image Terpublikasi", href: "#pull-a-published-production-image"},
-        {label: "Jalankan pada Proyek", href: "#run-custy-on-a-project"},
-        {label: "Helper Make", href: "#optional-makefile-helpers"},
-    ]}
+  command="docker build --target production -t custy-prod:latest ."
+  title="Jalankan Custy dengan Docker"
+  description="Build Custy secara lokal dan jalankan CLI mandirinya terhadap workspace proyek yang di-mount secara terencana."
+  category="Memulai"
+  status="Image Rilis atau Build dari Source"
+  syntax="docker [build|run|compose] [OPTIONS]"
+  tags={["image lokal", "Docker Compose", "mount workspace"]}
+  links={[
+    { label: "Persyaratan", href: "#requirements" },
+    { label: "Build Image", href: "#build-the-production-image" },
+    { label: "Image Terpublikasi", href: "#pull-a-published-production-image" },
+    { label: "Jalankan pada Proyek", href: "#run-custy-on-a-project" },
+    { label: "Helper Make", href: "#optional-makefile-helpers" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Base Image", value: "Python 3.14 slim", icon: "package"},
-        {label: "Tool yang Disertakan", value: "pip, Git, Make, Micro, Nano, dan Vim", icon: "requirement"},
-        {label: "Workspace Container", value: "/workspace", icon: "directory"},
-        {label: "Sumber yang Disarankan", value: "Tag rilis GHCR eksak atau build lokal", icon: "docker"},
-    ]}
+  items={[
+    { label: "Base Image", value: "Python 3.14 slim", icon: "package" },
+    {
+      label: "Tool yang Disertakan",
+      value: "pip, Git, Make, Micro, Nano, dan Vim",
+      icon: "requirement",
+    },
+    { label: "Workspace Container", value: "/workspace", icon: "directory" },
+    {
+      label: "Sumber yang Disarankan",
+      value: "Tag rilis GHCR eksak atau build lokal",
+      icon: "docker",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -84,38 +88,44 @@ lokal sesuai untuk memvalidasi perubahan yang belum dirilis.
 >
 
 <RequirementGrid
-    items={[
-        {
-            title: "Docker Engine",
-            level: "required",
-            children: "Instal dan jalankan lingkungan Docker yang dapat membangun serta menjalankan container Linux.",
-        },
-        {
-            title: "Source Checkout Custy",
-            level: "required",
-            children: "Build image dari repositori yang berisi Dockerfile dan metadata package Custy.",
-        },
-        {
-            title: "Workspace Proyek",
-            level: "required",
-            children: "Mount root proyek yang tepat, termasuk direktori .git jika operasi Git diperlukan, ke /workspace.",
-        },
-        {
-            title: "Plugin Docker Compose",
-            level: "optional",
-            children: "Instal Compose hanya ketika menggunakan service development atau production dari repositori.",
-        },
-        {
-            title: "Make",
-            level: "optional",
-            children: "Gunakan Make sebagai wrapper praktis untuk perintah Docker dan Compose dari repositori.",
-        },
-        {
-            title: "Backup Proyek",
-            level: "recommended",
-            children: "Commit atau backup pekerjaan penting sebelum memberi perintah yang dapat mengubah data akses ke proyek nyata.",
-        },
-    ]}
+  items={[
+    {
+      title: "Docker Engine",
+      level: "required",
+      children:
+        "Instal dan jalankan lingkungan Docker yang dapat membangun serta menjalankan container Linux.",
+    },
+    {
+      title: "Source Checkout Custy",
+      level: "required",
+      children:
+        "Build image dari repositori yang berisi Dockerfile dan metadata package Custy.",
+    },
+    {
+      title: "Workspace Proyek",
+      level: "required",
+      children:
+        "Mount root proyek yang tepat, termasuk direktori .git jika operasi Git diperlukan, ke /workspace.",
+    },
+    {
+      title: "Plugin Docker Compose",
+      level: "optional",
+      children:
+        "Instal Compose hanya ketika menggunakan service development atau production dari repositori.",
+    },
+    {
+      title: "Make",
+      level: "optional",
+      children:
+        "Gunakan Make sebagai wrapper praktis untuk perintah Docker dan Compose dari repositori.",
+    },
+    {
+      title: "Backup Proyek",
+      level: "recommended",
+      children:
+        "Commit atau backup pekerjaan penting sebelum memberi perintah yang dapat mengubah data akses ke proyek nyata.",
+    },
+  ]}
 />
 
 <InfoBox
@@ -138,29 +148,33 @@ dalam container menggunakan executable Git dari image.
 >
 
 <FeatureGrid
-    title="Target Build Docker"
-    items={[
-        {
-            title: "Base Bersama",
-            icon: <Icon name="package" />,
-            children: "Python 3.14 slim, pip, Git, Make, Micro, Nano, Vim, Vi, direktori kerja /workspace, dan source tree Custy.",
-        },
-        {
-            title: "Production",
-            icon: <Icon name="release" />,
-            children: "Instalasi package runtime normal dengan custy sebagai entrypoint container.",
-        },
-        {
-            title: "Development",
-            icon: <Icon name="command" />,
-            children: "Instalasi editable dengan grup dependensi development opsional dan terminal editor interaktif yang sama.",
-        },
-        {
-            title: "Mount Proyek",
-            icon: <Icon name="directory" />,
-            children: "Proyek host yang di-mount ke /workspace menjadi working tree nyata yang dibaca dan mungkin diubah oleh Custy.",
-        },
-    ]}
+  title="Target Build Docker"
+  items={[
+    {
+      title: "Base Bersama",
+      icon: <Icon name="package" />,
+      children:
+        "Python 3.14 slim, pip, Git, Make, Micro, Nano, Vim, Vi, direktori kerja /workspace, dan source tree Custy.",
+    },
+    {
+      title: "Production",
+      icon: <Icon name="release" />,
+      children:
+        "Instalasi package runtime normal dengan custy sebagai entrypoint container.",
+    },
+    {
+      title: "Development",
+      icon: <Icon name="command" />,
+      children:
+        "Instalasi editable dengan grup dependensi development opsional dan terminal editor interaktif yang sama.",
+    },
+    {
+      title: "Mount Proyek",
+      icon: <Icon name="directory" />,
+      children:
+        "Proyek host yang di-mount ke /workspace menjadi working tree nyata yang dibaca dan mungkin diubah oleh Custy.",
+    },
+  ]}
 />
 
 </Section>
@@ -208,12 +222,12 @@ mengembangkan Custy itu sendiri.
 Rilis stabil memublikasikan empat tag GHCR yang terkoordinasi. Semua alias versi
 mempertahankan prefiks `v` yang digunakan Custy.
 
-| Bentuk tag | Contoh | Perilaku |
-| --- | --- | --- |
-| Rilis eksak | `v2.1.1` | Memilih rilis immutable dan disarankan untuk CI atau penggunaan yang dapat direproduksi. |
-| Alias minor | `v2.1` | Bergerak ke patch stabil terbaru dalam lini `2.1`. |
-| Alias major | `v2` | Bergerak ke rilis stabil terbaru dalam lini `2`. |
-| Alias latest | `latest` | Bergerak ke rilis stabil Custy terbaru. |
+| Bentuk tag   | Contoh   | Perilaku                                                                                 |
+| ------------ | -------- | ---------------------------------------------------------------------------------------- |
+| Rilis eksak  | `v2.1.1` | Memilih rilis immutable dan disarankan untuk CI atau penggunaan yang dapat direproduksi. |
+| Alias minor  | `v2.1`   | Bergerak ke patch stabil terbaru dalam lini `2.1`.                                       |
+| Alias major  | `v2`     | Bergerak ke rilis stabil terbaru dalam lini `2`.                                         |
+| Alias latest | `latest` | Bergerak ke rilis stabil Custy terbaru.                                                  |
 
 <Terminal title="Pull image Custy yang dipublikasikan" language="bash">
 
@@ -428,14 +442,17 @@ make d-build-prod
 make d-init
 
 # Gunakan service Docker Compose
+
 make c-build-prod
 
 # Buat dan periksa external credentials
+
 make d-credentials-set-github
 make d-credentials-status
 make d-credentials-test CUSTY_CREDENTIALS_REMOTE=origin
 
 # Aktifkan read-only credential mount untuk push
+
 make d-run-push CUSTY_CREDENTIALS_MOUNT=true`}
 
 </Terminal>
@@ -473,12 +490,28 @@ secara eksplisit mendokumentasikan image remote dan tag yang valid.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Instalasi Python", href: "./installation", description: "Instal Custy secara native dari source, artefak rilis, atau Git."},
-        {title: "Mulai Cepat", href: "./quick-start", description: "Inisialisasi dan validasi proyek yang di-mount."},
-        {title: "custy init", href: "../commands/init/overview", description: "Pahami file yang dibuat dan perilaku overwrite."},
-        {title: "custy run", href: "../commands/run/overview", description: "Tinjau profil publik sebelum menjalankannya dalam container."},
-    ]}
+  commands={[
+    {
+      title: "Instalasi Python",
+      href: "./installation",
+      description: "Instal Custy secara native dari source, artefak rilis, atau Git.",
+    },
+    {
+      title: "Mulai Cepat",
+      href: "./quick-start",
+      description: "Inisialisasi dan validasi proyek yang di-mount.",
+    },
+    {
+      title: "custy init",
+      href: "../commands/init/overview",
+      description: "Pahami file yang dibuat dan perilaku overwrite.",
+    },
+    {
+      title: "custy run",
+      href: "../commands/run/overview",
+      description: "Tinjau profil publik sebelum menjalankannya dalam container.",
+    },
+  ]}
 />
 
 </Section>

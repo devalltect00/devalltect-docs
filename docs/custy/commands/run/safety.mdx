@@ -8,31 +8,27 @@ keywords: [Custy pipeline safety]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
+  CommandChecklist,
+  CommandHero,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run"
-    title="Safety and Side Effects"
-    description="Understand file changes, Git history, remote operations, prompts, and retry risks before running a profile."
-    category="Pipeline"
-    status="Required Review"
-    syntax="custy --dry-run run PROFILE"
-    tags={[
-        "safety",
-        "side effects",
-        "recovery",
-    ]}
-    links={[
-        {label: "Requirements", href: "./requirements"},
-        {label: "Profiles", href: "./profiles"},
-        {label: "Troubleshooting", href: "./troubleshooting"},
-    ]}
+  command="custy run"
+  title="Safety and Side Effects"
+  description="Understand file changes, Git history, remote operations, prompts, and retry risks before running a profile."
+  category="Pipeline"
+  status="Required Review"
+  syntax="custy --dry-run run PROFILE"
+  tags={["safety", "side effects", "recovery"]}
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
 />
 
 ## Overview
@@ -47,15 +43,42 @@ affected. Combined profiles take the union of those effects.
 >
 
 <FeatureGrid
-    title="Pipeline Effect Categories"
-    items={[
-        {title: "Project Files", icon: <Icon name="file" />, children: "Generate artifacts, update the version file, and create or replace changelog content."},
-        {title: "Backups and Index", icon: <Icon name="package" />, children: "Create and prune message backups and stage tracked or untracked files."},
-        {title: "Git History", icon: <Icon name="git" />, children: "Create a local commit and tag when included by the selected profiles."},
-        {title: "Remote State", icon: <Icon name="network" />, children: "Push HEAD and an optional tag to main or backup remotes."},
-        {title: "Interactive Review", icon: <Icon name="terminal" />, children: "Open editable artifacts or request confirmation for discovered destinations."},
-        {title: "Workflow Finalization", icon: <Icon name="workflow" />, children: "Invoke experimental finalization in the Full profile."},
-    ]}
+  title="Pipeline Effect Categories"
+  items={[
+    {
+      title: "Project Files",
+      icon: <Icon name="file" />,
+      children:
+        "Generate artifacts, update the version file, and create or replace changelog content.",
+    },
+    {
+      title: "Backups and Index",
+      icon: <Icon name="package" />,
+      children:
+        "Create and prune message backups and stage tracked or untracked files.",
+    },
+    {
+      title: "Git History",
+      icon: <Icon name="git" />,
+      children: "Create a local commit and tag when included by the selected profiles.",
+    },
+    {
+      title: "Remote State",
+      icon: <Icon name="network" />,
+      children: "Push HEAD and an optional tag to main or backup remotes.",
+    },
+    {
+      title: "Interactive Review",
+      icon: <Icon name="terminal" />,
+      children:
+        "Open editable artifacts or request confirmation for discovered destinations.",
+    },
+    {
+      title: "Workflow Finalization",
+      icon: <Icon name="workflow" />,
+      children: "Invoke experimental finalization in the Full profile.",
+    },
+  ]}
 />
 
 </Section>
@@ -80,13 +103,29 @@ and remote resolution can still occur.
 >
 
 <CommandChecklist
-    items={[
-        {title: "Inspect repository state", description: "Check Git status, the current branch, local tags, and configured remotes."},
-        {title: "Review resolved stages", description: "Read the selected profile's exact registered stage list."},
-        {title: "Confirm project paths", description: "Verify commit-message, tag-message, and version-file paths."},
-        {title: "Read destinations and prompts", description: "Confirm every resolved remote and interactive decision."},
-        {title: "Verify the final result", description: "Review the diff, commit, tag, and remote state before continuing."},
-    ]}
+  items={[
+    {
+      title: "Inspect repository state",
+      description:
+        "Check Git status, the current branch, local tags, and configured remotes.",
+    },
+    {
+      title: "Review resolved stages",
+      description: "Read the selected profile's exact registered stage list.",
+    },
+    {
+      title: "Confirm project paths",
+      description: "Verify commit-message, tag-message, and version-file paths.",
+    },
+    {
+      title: "Read destinations and prompts",
+      description: "Confirm every resolved remote and interactive decision.",
+    },
+    {
+      title: "Verify the final result",
+      description: "Review the diff, commit, tag, and remote state before continuing.",
+    },
+  ]}
 />
 
 </Section>

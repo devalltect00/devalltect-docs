@@ -8,37 +8,37 @@ keywords: [commit validation provider, check-cz, commitizen optional]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.commit.validation]"
-    title="Commit Validation"
-    description="Sediakan validasi commit untuk setiap proyek dan aktifkan Commitizen hanya ketika proyek memang menggunakannya."
-    category="Configuration"
-    status="Active"
-    syntax="provider = auto | custy | commitizen | git"
-    tags={["provider selection", "optional Commitizen", "Git hooks"]}
-    links={[
-        {label: "Commit Configuration", href: "../commands/commit/configuration"},
-        {label: "Commit Troubleshooting", href: "../commands/commit/troubleshooting"},
-        {label: "Execution Defaults", href: "./cli/execution"},
-    ]}
+  command="[tool.custy.commit.validation]"
+  title="Commit Validation"
+  description="Sediakan validasi commit untuk setiap proyek dan aktifkan Commitizen hanya ketika proyek memang menggunakannya."
+  category="Configuration"
+  status="Active"
+  syntax="provider = auto | custy | commitizen | git"
+  tags={["provider selection", "optional Commitizen", "Git hooks"]}
+  links={[
+    { label: "Commit Configuration", href: "../commands/commit/configuration" },
+    { label: "Commit Troubleshooting", href: "../commands/commit/troubleshooting" },
+    { label: "Execution Defaults", href: "./cli/execution" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Default Provider", value: "auto", icon: "configuration"},
-        {label: "Strict by Default", value: "Tidak", icon: "security"},
-        {label: "Built-in Validator", value: "Selalu tersedia", icon: "success"},
-        {label: "External Tool", value: "cz (optional)", icon: "terminal"},
-    ]}
+  items={[
+    { label: "Default Provider", value: "auto", icon: "configuration" },
+    { label: "Strict by Default", value: "Tidak", icon: "security" },
+    { label: "Built-in Validator", value: "Selalu tersedia", icon: "success" },
+    { label: "External Tool", value: "cz (optional)", icon: "terminal" },
+  ]}
 />
 
 ## Konfigurasi yang Direkomendasikan
@@ -58,17 +58,17 @@ menemukan konfigurasi Commitizen pada proyek dan executable yang tersedia.
 
 <Section title="Matriks Perilaku">
 
-| Provider | Commitizen config | `cz` terinstal | Hasil |
-| --- | --- | --- | --- |
-| `auto` | Tidak | Tidak | Gunakan validasi Custy. |
-| `auto` | Tidak | Ya | Gunakan validasi Custy; instalasi saja tidak mengaktifkan Commitizen. |
-| `auto` | Ya | Ya | Jalankan validasi Custy, lalu validasi Commitizen. |
-| `auto` | Ya | Tidak | Tampilkan peringatan, lalu gunakan validasi Custy. |
-| `auto` dengan `require_tool = true` | Ya | Tidak | Berhenti sebelum perubahan dengan `COMMITIZEN_NOT_AVAILABLE`. |
-| `custy` | Apa pun | Apa pun | Gunakan aturan Conventional Commit bawaan Custy. |
-| `commitizen` | Ya | Ya | Wajibkan validasi Custy dan Commitizen. |
-| `commitizen` | Tidak ada atau tidak valid | Apa pun | Berhenti sebelum perubahan dengan error konfigurasi yang spesifik. |
-| `git` | Apa pun | Apa pun | Wajibkan message file UTF-8 yang dapat dibaca dan tidak kosong; izinkan format khusus proyek. |
+| Provider                            | Commitizen config          | `cz` terinstal | Hasil                                                                                         |
+| ----------------------------------- | -------------------------- | -------------- | --------------------------------------------------------------------------------------------- |
+| `auto`                              | Tidak                      | Tidak          | Gunakan validasi Custy.                                                                       |
+| `auto`                              | Tidak                      | Ya             | Gunakan validasi Custy; instalasi saja tidak mengaktifkan Commitizen.                         |
+| `auto`                              | Ya                         | Ya             | Jalankan validasi Custy, lalu validasi Commitizen.                                            |
+| `auto`                              | Ya                         | Tidak          | Tampilkan peringatan, lalu gunakan validasi Custy.                                            |
+| `auto` dengan `require_tool = true` | Ya                         | Tidak          | Berhenti sebelum perubahan dengan `COMMITIZEN_NOT_AVAILABLE`.                                 |
+| `custy`                             | Apa pun                    | Apa pun        | Gunakan aturan Conventional Commit bawaan Custy.                                              |
+| `commitizen`                        | Ya                         | Ya             | Wajibkan validasi Custy dan Commitizen.                                                       |
+| `commitizen`                        | Tidak ada atau tidak valid | Apa pun        | Berhenti sebelum perubahan dengan error konfigurasi yang spesifik.                            |
+| `git`                               | Apa pun                    | Apa pun        | Wajibkan message file UTF-8 yang dapat dibaca dan tidak kosong; izinkan format khusus proyek. |
 
 </Section>
 
@@ -85,10 +85,22 @@ mewajibkan kebijakan yang sama pada pengembangan lokal, container, dan CI.
 <Section title="Properti">
 
 <PropertyTable
-    items={[
-        {property: "provider", type: "auto | custy | commitizen | git", defaultValue: "auto", description: "Pilih deteksi otomatis, aturan internal Custy, integrasi Commitizen yang ketat, atau pemeriksaan keamanan dasar message file Git."},
-        {property: "require_tool", type: "Boolean", defaultValue: "false", description: "Dalam mode auto, ubah integrasi Commitizen yang terdeteksi tetapi tidak valid atau tidak tersedia dari peringatan dan fallback menjadi error awal."},
-    ]}
+  items={[
+    {
+      property: "provider",
+      type: "auto | custy | commitizen | git",
+      defaultValue: "auto",
+      description:
+        "Pilih deteksi otomatis, aturan internal Custy, integrasi Commitizen yang ketat, atau pemeriksaan keamanan dasar message file Git.",
+    },
+    {
+      property: "require_tool",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Dalam mode auto, ubah integrasi Commitizen yang terdeteksi tetapi tidak valid atau tidak tersedia dari peringatan dan fallback menjadi error awal.",
+    },
+  ]}
 />
 
 </Section>
@@ -169,11 +181,23 @@ di environment tempat Git akan menjalankannya.
 <Section title="Lanjutkan">
 
 <RelatedCommands
-    commands={[
-        {title: "Commit Configuration", href: "../commands/commit/configuration", description: "Gabungkan kebijakan provider dengan template, staging, dan backup."},
-        {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Atasi kegagalan Commitizen dan Git hook."},
-        {title: "Docker", href: "../getting-started/docker", description: "Pahami tooling container dan hook repository yang di-mount."},
-    ]}
+  commands={[
+    {
+      title: "Commit Configuration",
+      href: "../commands/commit/configuration",
+      description: "Gabungkan kebijakan provider dengan template, staging, dan backup.",
+    },
+    {
+      title: "Commit Troubleshooting",
+      href: "../commands/commit/troubleshooting",
+      description: "Atasi kegagalan Commitizen dan Git hook.",
+    },
+    {
+      title: "Docker",
+      href: "../getting-started/docker",
+      description: "Pahami tooling container dan hook repository yang di-mount.",
+    },
+  ]}
 />
 
 </Section>

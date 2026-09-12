@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -13,57 +10,52 @@ import {
  * Grid item.
  */
 export interface FeatureGridItem {
+  /**
+   * Feature title.
+   */
+  title: string;
 
-    /**
-     * Feature title.
-     */
-    title: string;
+  /**
+   * Optional icon.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon.
-     */
-    icon?: ReactNode;
+  /**
+   * Optional summary.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Optional summary.
-     */
-    subtitle?: ReactNode;
-
-    /**
-     * Feature content.
-     */
-    children: ReactNode;
-
+  /**
+   * Feature content.
+   */
+  children: ReactNode;
 }
 
 /**
  * FeatureGrid component properties.
  */
-export interface FeatureGridProps
-    extends HTMLAttributes<HTMLElement> {
+export interface FeatureGridProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Section title.
+   *
+   * @default "Features"
+   */
+  title?: string;
 
-    /**
-     * Section title.
-     *
-     * @default "Features"
-     */
-    title?: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
+  /**
+   * Grid items.
+   */
+  items: FeatureGridItem[];
 
-    /**
-     * Grid items.
-     */
-    items: FeatureGridItem[];
-
-    /**
-     * Number of columns.
-     *
-     * @default 2
-     */
-    columns?: 1 | 2 | 3 | 4;
-
+  /**
+   * Number of columns.
+   *
+   * @default 2
+   */
+  columns?: 1 | 2 | 3 | 4;
 }

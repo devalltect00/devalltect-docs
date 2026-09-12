@@ -7,66 +7,90 @@ tags: [reflow, command]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow init"
-    title="Inisialisasi Reflow"
-    description="Buat konfigurasi Reflow milik proyek pada target lokal persisten tanpa mengubah riwayat Git atau state remote."
-    category="Inisialisasi"
-    status="Direkomendasikan"
-    syntax="reflow init [OPTIONS]"
-    tags={["konfigurasi", "target lokal", "penyiapan proyek"]}
-    links={[
-        {label: "Persyaratan", href: "./requirements"},
-        {label: "Sintaks", href: "./syntax"},
-        {label: "Opsi", href: "./options"},
-        {label: "Alur Kerja", href: "./workflow"},
-        {label: "Contoh", href: "./examples"},
-    ]}
+  command="reflow init"
+  title="Inisialisasi Reflow"
+  description="Buat konfigurasi Reflow milik proyek pada target lokal persisten tanpa mengubah riwayat Git atau state remote."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="reflow init [OPTIONS]"
+  tags={["konfigurasi", "target lokal", "penyiapan proyek"]}
+  links={[
+    { label: "Persyaratan", href: "./requirements" },
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Target", value: "Direktori lokal persisten", icon: "directory"},
-        {label: "Path yang Dibuat", value: ".config/reflow/config.toml", icon: "configuration"},
-        {label: "Riwayat Git", value: "Tidak diubah", icon: "git"},
-        {label: "Dry-run", value: "Tanpa perubahan filesystem", icon: "success"},
-    ]}
+  items={[
+    { label: "Target", value: "Direktori lokal persisten", icon: "directory" },
+    {
+      label: "Path yang Dibuat",
+      value: ".config/reflow/config.toml",
+      icon: "configuration",
+    },
+    { label: "Riwayat Git", value: "Tidak diubah", icon: "git" },
+    { label: "Dry-run", value: "Tanpa perubahan filesystem", icon: "success" },
+  ]}
 />
 
 <Section title="Yang Dilakukan Perintah Ini">
 
 <FeatureGrid
-    items={[
-        {
-            title: "Menentukan Target Lokal",
-            icon: <Icon name="directory" />,
-            children: <>Gunakan direktori saat ini atau path <code>-C/--repository</code> eksplisit. URL repositori ditolak.</>,
-        },
-        {
-            title: "Merencanakan Resource Konfigurasi",
-            icon: <Icon name="configuration" />,
-            children: <>Tentukan mode <code>all</code> atau <code>config</code> yang didukung dan tampilkan resource proyek yang dipilih.</>,
-        },
-        {
-            title: "Melindungi Konten yang Ada",
-            icon: <Icon name="security" />,
-            children: <>Pertahankan file milik proyek yang sudah ada kecuali overwrite disetujui secara eksplisit.</>,
-        },
-        {
-            title: "Melaporkan Hasil",
-            icon: <Icon name="success" />,
-            children: <>Tampilkan resource yang dibuat, dilewati, gagal, atau disimulasikan beserta mode yang dipilih.</>,
-        },
-    ]}
+  items={[
+    {
+      title: "Menentukan Target Lokal",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Gunakan direktori saat ini atau path <code>-C/--repository</code> eksplisit.
+          URL repositori ditolak.
+        </>
+      ),
+    },
+    {
+      title: "Merencanakan Resource Konfigurasi",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Tentukan mode <code>all</code> atau <code>config</code> yang didukung dan
+          tampilkan resource proyek yang dipilih.
+        </>
+      ),
+    },
+    {
+      title: "Melindungi Konten yang Ada",
+      icon: <Icon name="security" />,
+      children: (
+        <>
+          Pertahankan file milik proyek yang sudah ada kecuali overwrite disetujui
+          secara eksplisit.
+        </>
+      ),
+    },
+    {
+      title: "Melaporkan Hasil",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Tampilkan resource yang dibuat, dilewati, gagal, atau disimulasikan beserta
+          mode yang dipilih.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -89,9 +113,21 @@ diterima oleh enum `InitMode` yang aktif.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Opsi", href: "./options", description: "Pilih mode yang didukung dan kebijakan overwrite."},
-        {title: "Alur Kerja", href: "./workflow", description: "Ikuti tahap perencanaan, dry-run, dan penulisan file."},
-        {title: "Konfigurasi", href: "./configuration", description: "Pahami default inisialisasi dan kepemilikan file."},
-    ]}
+  commands={[
+    {
+      title: "Opsi",
+      href: "./options",
+      description: "Pilih mode yang didukung dan kebijakan overwrite.",
+    },
+    {
+      title: "Alur Kerja",
+      href: "./workflow",
+      description: "Ikuti tahap perencanaan, dry-run, dan penulisan file.",
+    },
+    {
+      title: "Konfigurasi",
+      href: "./configuration",
+      description: "Pahami default inisialisasi dan kepemilikan file.",
+    },
+  ]}
 />

@@ -4,23 +4,61 @@ description: "Pertanyaan umum tentang Branch Cleanup."
 sidebar_position: 10
 sidebar_key: custy-cleanup-branch
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy cleanup branches" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang keamanan dan perilaku Branch Cleanup." category="Maintenance" status="Reference" syntax="custy cleanup branches" links={[
-    {label: "Ringkasan", href: "./overview"}, {label: "Pemecahan Masalah", href: "./troubleshooting"}, {label: "Workflow", href: "./workflow"},
-]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy cleanup branches"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang keamanan dan perilaku Branch Cleanup."
+  category="Maintenance"
+  status="Reference"
+  syntax="custy cleanup branches"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Pemecahan Masalah", href: "./troubleshooting" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="warning" title="Safety Before Convenience">Gunakan konfigurasi sempit dan dry run. Branch Cleanup dirancang untuk mengutamakan keselamatan.</InfoBox>
+<InfoBox variant="warning" title="Safety Before Convenience">
+  Gunakan konfigurasi sempit dan dry run. Branch Cleanup dirancang untuk mengutamakan
+  keselamatan.
+</InfoBox>
 
-<Section title="Apakah Branch Cleanup menghapus semua branch?">Tidak. Hanya local branch yang memenuhi seluruh filter dan bukan protected branch yang dapat dihapus.</Section>
-<Section title="Mengapa tidak ada branch yang dihapus?">Tidak ada kandidat yang memenuhi seluruh filter, atau cleanup dilewati karena prefix belum ditentukan.</Section>
-<Section title="Mengapa include_prefixes diperlukan?">Prefix menetapkan ruang lingkup eksplisit dan mencegah Custy mengevaluasi semua branch tanpa batas aman.</Section>
-<Section title="Dapatkah protected branch dihapus?">Tidak melalui Branch Cleanup selama branch tercantum dalam konfigurasi perlindungan aktif.</Section>
-<Section title="Dapatkah cleanup dipratinjau?">Ya. Gunakan `custy --dry-run cleanup branches`.</Section>
-<Section title="Dapatkah Branch Cleanup berjalan dalam workflow?">Ya, beberapa profile dapat menjalankan step internal ini. Gunakan command mandiri untuk operasi terfokus.</Section>
-<Section title="Haruskah konfigurasi disimpan dalam config.toml?">Disarankan agar kebijakan tim konsisten dan mudah ditinjau. CLI options cocok untuk override sementara.</Section>
-<Section title="Dapatkah beberapa filter digabungkan?">Ya. Filter digabungkan berlapis; kandidat harus memenuhi semuanya.</Section>
+<Section title="Apakah Branch Cleanup menghapus semua branch?">
+  Tidak. Hanya local branch yang memenuhi seluruh filter dan bukan protected branch yang
+  dapat dihapus.
+</Section>
+<Section title="Mengapa tidak ada branch yang dihapus?">
+  Tidak ada kandidat yang memenuhi seluruh filter, atau cleanup dilewati karena prefix
+  belum ditentukan.
+</Section>
+<Section title="Mengapa include_prefixes diperlukan?">
+  Prefix menetapkan ruang lingkup eksplisit dan mencegah Custy mengevaluasi semua branch
+  tanpa batas aman.
+</Section>
+<Section title="Dapatkah protected branch dihapus?">
+  Tidak melalui Branch Cleanup selama branch tercantum dalam konfigurasi perlindungan
+  aktif.
+</Section>
+<Section title="Dapatkah cleanup dipratinjau?">
+  Ya. Gunakan `custy --dry-run cleanup branches`.
+</Section>
+<Section title="Dapatkah Branch Cleanup berjalan dalam workflow?">
+  Ya, beberapa profile dapat menjalankan step internal ini. Gunakan command mandiri
+  untuk operasi terfokus.
+</Section>
+<Section title="Haruskah konfigurasi disimpan dalam config.toml?">
+  Disarankan agar kebijakan tim konsisten dan mudah ditinjau. CLI options cocok untuk
+  override sementara.
+</Section>
+<Section title="Dapatkah beberapa filter digabungkan?">
+  Ya. Filter digabungkan berlapis; kandidat harus memenuhi semuanya.
+</Section>
 
-<InfoBox variant="note" title="Dokumentasi Branch Cleanup Selesai">Kembali ke ringkasan Cleanup atau lanjutkan ke command Custy berikutnya.</InfoBox>
+<InfoBox variant="note" title="Dokumentasi Branch Cleanup Selesai">
+  Kembali ke ringkasan Cleanup atau lanjutkan ke command Custy berikutnya.
+</InfoBox>

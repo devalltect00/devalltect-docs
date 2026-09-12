@@ -17,39 +17,35 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    FeatureGrid,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Generated Files"
-    description="Pahami resource proyek yang dibuat selama init."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "configuration",
-        "templates",
-        "generated files",
-    ]}
-    links={[
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy init"
+  title="Generated Files"
+  description="Pahami resource proyek yang dibuat selama init."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["configuration", "templates", "generated files"]}
+  links={[
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -76,45 +72,42 @@ kontributor menggunakan configuration dan templates Custy yang sama.
 >
 
 <FeatureGrid
-    title="Resource yang Dibuat"
-    items={[
-        {
-            title: "Configuration",
-            children: (
-                <>
-                    Membuat file configuration utama
-                    <code>.config/custy/config.toml</code>.
-                </>
-            ),
-        },
-        {
-            title: "Templates",
-            children: (
-                <>
-                    Membuat default templates untuk commit, tag, dan changelog
-                    yang digunakan oleh workflow Custy berikutnya.
-                </>
-            ),
-        },
-        {
-            title: "Examples",
-            children: (
-                <>
-                    Secara opsional membuat example message templates untuk
-                    eksperimen dan customization.
-                </>
-            ),
-        },
-        {
-            title: "Struktur Direktori",
-            children: (
-                <>
-                    Membuat susunan direktori yang diharapkan oleh command
-                    Custy berikutnya.
-                </>
-            ),
-        },
-    ]}
+  title="Resource yang Dibuat"
+  items={[
+    {
+      title: "Configuration",
+      children: (
+        <>
+          Membuat file configuration utama
+          <code>.config/custy/config.toml</code>.
+        </>
+      ),
+    },
+    {
+      title: "Templates",
+      children: (
+        <>
+          Membuat default templates untuk commit, tag, dan changelog yang digunakan oleh
+          workflow Custy berikutnya.
+        </>
+      ),
+    },
+    {
+      title: "Examples",
+      children: (
+        <>
+          Secara opsional membuat example message templates untuk eksperimen dan
+          customization.
+        </>
+      ),
+    },
+    {
+      title: "Struktur Direktori",
+      children: (
+        <>Membuat susunan direktori yang diharapkan oleh command Custy berikutnya.</>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -129,8 +122,7 @@ Setelah init berhasil, proyek memiliki struktur yang mirip dengan berikut.
 
 <Terminal>
 
-{`
-.config/
+{`.config/
 └── custy/
     ├── config.toml
     └── templates/
@@ -147,8 +139,7 @@ Setelah init berhasil, proyek memiliki struktur yang mirip dengan berikut.
         │       ├── since_custy_v1/
         │       └── since_custy_v2/
         ├── commit-message.txt
-        └── tag-message.txt
-`}
+        └── tag-message.txt`}
 
 </Terminal>
 

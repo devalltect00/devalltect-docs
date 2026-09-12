@@ -8,40 +8,40 @@ keywords: [custy run dev, daily development workflow]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run dev"
-    title="Everyday Development"
-    description="Take reviewed working-tree changes through commit-message validation, commit creation, and branch push."
-    category="User Guide"
-    status="Preview First"
-    syntax="custy --dry-run run dev [OPTIONS]"
-    tags={["daily workflow", "commit", "push"]}
-    links={[
-        {label: "Dev Pipeline", href: "../pipelines/development-pipeline"},
-        {label: "Run Dev Reference", href: "../commands/run/dev/overview"},
-        {label: "Recovery", href: "./troubleshooting-workflows"},
-    ]}
+  command="custy run dev"
+  title="Everyday Development"
+  description="Take reviewed working-tree changes through commit-message validation, commit creation, and branch push."
+  category="User Guide"
+  status="Preview First"
+  syntax="custy --dry-run run dev [OPTIONS]"
+  tags={["daily workflow", "commit", "push"]}
+  links={[
+    { label: "Dev Pipeline", href: "../pipelines/development-pipeline" },
+    { label: "Run Dev Reference", href: "../commands/run/dev/overview" },
+    { label: "Recovery", href: "./troubleshooting-workflows" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Creates Commit", value: "Yes", icon: "git"},
-        {label: "Pushes", value: "Yes", icon: "network"},
-        {label: "Applies Version", value: "No", icon: "note"},
-        {label: "Creates Tag", value: "No", icon: "note"},
-    ]}
+  items={[
+    { label: "Creates Commit", value: "Yes", icon: "git" },
+    { label: "Pushes", value: "Yes", icon: "network" },
+    { label: "Applies Version", value: "No", icon: "note" },
+    { label: "Creates Tag", value: "No", icon: "note" },
+  ]}
 />
 
 ## Goal
@@ -63,13 +63,32 @@ on a repository whose remotes you have not verified.
 <Section title="Before You Begin">
 
 <CommandChecklist
-    items={[
-        {title: "Custy resources exist", description: "The project configuration and commit-message file resolve as intended."},
-        {title: "The active branch is correct", description: "The branch shown by Git is the branch you intend to commit and push."},
-        {title: "Changes are understood", description: "Review unstaged and staged differences so unrelated work is not included."},
-        {title: "The commit message is ready", description: "The configured commit-message file contains a reviewed message."},
-        {title: "Remotes are intentional", description: "Every configured or selected destination points to the expected repository."},
-    ]}
+  items={[
+    {
+      title: "Custy resources exist",
+      description:
+        "The project configuration and commit-message file resolve as intended.",
+    },
+    {
+      title: "The active branch is correct",
+      description:
+        "The branch shown by Git is the branch you intend to commit and push.",
+    },
+    {
+      title: "Changes are understood",
+      description:
+        "Review unstaged and staged differences so unrelated work is not included.",
+    },
+    {
+      title: "The commit message is ready",
+      description: "The configured commit-message file contains a reviewed message.",
+    },
+    {
+      title: "Remotes are intentional",
+      description:
+        "Every configured or selected destination points to the expected repository.",
+    },
+  ]}
 />
 
 <Terminal title="Development preflight" language="bash">
@@ -89,14 +108,39 @@ custy validate`}
 <Section title="Recommended Journey">
 
 <WorkflowTimeline
-    title="Daily Development"
-    items={[
-        {title: "Review the working tree", description: "Confirm branch, changes, staged state, commit message, and remotes.", status: "completed"},
-        {title: "Preview Dev", description: "Run the complete profile in global dry-run mode and read the resolved files and destinations.", status: "completed"},
-        {title: "Review the intent", description: "Check commit-message editing, backup, staging, commit, and branch-push messages.", status: "completed"},
-        {title: "Execute normally", description: "Run Dev without dry-run only after every reported action is acceptable.", status: "current"},
-        {title: "Verify local and remote state", description: "Inspect the final status and commit, then confirm the destination branch received it.", status: "pending"},
-    ]}
+  title="Daily Development"
+  items={[
+    {
+      title: "Review the working tree",
+      description:
+        "Confirm branch, changes, staged state, commit message, and remotes.",
+      status: "completed",
+    },
+    {
+      title: "Preview Dev",
+      description:
+        "Run the complete profile in global dry-run mode and read the resolved files and destinations.",
+      status: "completed",
+    },
+    {
+      title: "Review the intent",
+      description:
+        "Check commit-message editing, backup, staging, commit, and branch-push messages.",
+      status: "completed",
+    },
+    {
+      title: "Execute normally",
+      description:
+        "Run Dev without dry-run only after every reported action is acceptable.",
+      status: "current",
+    },
+    {
+      title: "Verify local and remote state",
+      description:
+        "Inspect the final status and commit, then confirm the destination branch received it.",
+      status: "pending",
+    },
+  ]}
 />
 
 <Terminal title="Preview, then execute" language="bash">
@@ -113,13 +157,30 @@ custy run dev`}
 <Section title="What Dev Actually Includes">
 
 <FeatureGrid
-    title="Profile Effects"
-    items={[
-        {title: "Validation", icon: <Icon name="configuration" />, children: "Validate repository, commit-message, hook, and remote readiness."},
-        {title: "Commit Message", icon: <Icon name="file" />, children: "Open and validate only the configured commit-message file."},
-        {title: "Backup and Commit", icon: <Icon name="package" />, children: "Back up the commit message, prune retained backups, stage, and commit."},
-        {title: "Git Publication", icon: <Icon name="network" />, children: "Push branch HEAD to resolved destinations without pushing a tag."},
-    ]}
+  title="Profile Effects"
+  items={[
+    {
+      title: "Validation",
+      icon: <Icon name="configuration" />,
+      children: "Validate repository, commit-message, hook, and remote readiness.",
+    },
+    {
+      title: "Commit Message",
+      icon: <Icon name="file" />,
+      children: "Open and validate only the configured commit-message file.",
+    },
+    {
+      title: "Backup and Commit",
+      icon: <Icon name="package" />,
+      children:
+        "Back up the commit message, prune retained backups, stage, and commit.",
+    },
+    {
+      title: "Git Publication",
+      icon: <Icon name="network" />,
+      children: "Push branch HEAD to resolved destinations without pushing a tag.",
+    },
+  ]}
 />
 
 Dev does not prepare or apply versions, initialize a release workflow, generate
@@ -164,12 +225,28 @@ the last completed boundary first.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Development Pipeline", href: "../pipelines/development-pipeline", description: "Inspect the exact 13-step sequence and its omissions."},
-        {title: "Run Dev Examples", href: "../commands/run/dev/examples", description: "Use practical Dev invocations."},
-        {title: "Commit Command", href: "../commands/commit/overview", description: "Choose a focused local commit operation."},
-        {title: "Preparing Releases", href: "./preparing-releases", description: "Move from daily work to a versioned tagged publication."},
-    ]}
+  commands={[
+    {
+      title: "Development Pipeline",
+      href: "../pipelines/development-pipeline",
+      description: "Inspect the exact 13-step sequence and its omissions.",
+    },
+    {
+      title: "Run Dev Examples",
+      href: "../commands/run/dev/examples",
+      description: "Use practical Dev invocations.",
+    },
+    {
+      title: "Commit Command",
+      href: "../commands/commit/overview",
+      description: "Choose a focused local commit operation.",
+    },
+    {
+      title: "Preparing Releases",
+      href: "./preparing-releases",
+      description: "Move from daily work to a versioned tagged publication.",
+    },
+  ]}
 />
 
 </Section>

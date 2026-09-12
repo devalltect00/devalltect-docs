@@ -12,9 +12,7 @@
  * ============================================================================
  */
 
-import {
-    ReactNode,
-} from "react";
+import { ReactNode } from "react";
 
 /* -------------------------------------------------------------------------- */
 /* Content                                                                     */
@@ -23,14 +21,12 @@ import {
 /**
  * Represents any renderable content.
  */
-export type Content =
-    ReactNode;
+export type Content = ReactNode;
 
 /**
  * Represents optional renderable content.
  */
-export type OptionalContent =
-    ReactNode | undefined;
+export type OptionalContent = ReactNode | undefined;
 
 /* -------------------------------------------------------------------------- */
 /* Generic Object                                                              */
@@ -39,5 +35,4 @@ export type OptionalContent =
 /**
  * Represents a generic key-value object.
  */
-export type Dictionary<T = unknown> =
-    Record<string, T>;
+export type Dictionary<T = unknown> = Record<string, T>;

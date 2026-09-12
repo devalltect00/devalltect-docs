@@ -8,38 +8,34 @@ keywords: [changelog pipeline, generation workflow]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Generation Workflow"
-    description="Follow the changelog pipeline from resolved inputs and Git history to rendered Markdown."
-    category="Changelog"
-    status="Stable"
-    syntax="custy changelog generate [OPTIONS]"
-    tags={[
-        "workflow",
-        "pipeline",
-        "rendering",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-    ]}
+  command="custy changelog generate"
+  title="Generation Workflow"
+  description="Follow the changelog pipeline from resolved inputs and Git history to rendered Markdown."
+  category="Changelog"
+  status="Stable"
+  syntax="custy changelog generate [OPTIONS]"
+  tags={["workflow", "pipeline", "rendering"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+  ]}
 />
 
 ## Overview
@@ -55,18 +51,54 @@ content is ready to render.
 >
 
 <WorkflowTimeline
-    title="Changelog Generation"
-    description="The high-level responsibilities executed by the changelog pipeline."
-    items={[
-        {title: "Resolve inputs", description: "Combine CLI overrides, project configuration, and defaults.", status: "completed"},
-        {title: "Collect history", description: "Read eligible Git commits and determine release boundaries.", status: "completed"},
-        {title: "Report collection progress", description: "Advance once for Unreleased content and once for every discovered Git tag.", status: "completed"},
-        {title: "Parse and clean", description: "Parse structured messages and remove configured presentation-only content.", status: "completed"},
-        {title: "Group and sort", description: "Organize entries by release, type, scope, and configured ordering.", status: "completed"},
-        {title: "Integrate pending content", description: "Include the pending commit template when enabled.", status: "optional"},
-        {title: "Render Markdown", description: "Apply release behavior, links, metadata, statistics, and template settings.", status: "completed"},
-        {title: "Write or preview CHANGELOG.md", description: "Create or update the artifact during normal execution, or display rendered content without writing during dry-run.", status: "completed"},
-    ]}
+  title="Changelog Generation"
+  description="The high-level responsibilities executed by the changelog pipeline."
+  items={[
+    {
+      title: "Resolve inputs",
+      description: "Combine CLI overrides, project configuration, and defaults.",
+      status: "completed",
+    },
+    {
+      title: "Collect history",
+      description: "Read eligible Git commits and determine release boundaries.",
+      status: "completed",
+    },
+    {
+      title: "Report collection progress",
+      description:
+        "Advance once for Unreleased content and once for every discovered Git tag.",
+      status: "completed",
+    },
+    {
+      title: "Parse and clean",
+      description:
+        "Parse structured messages and remove configured presentation-only content.",
+      status: "completed",
+    },
+    {
+      title: "Group and sort",
+      description: "Organize entries by release, type, scope, and configured ordering.",
+      status: "completed",
+    },
+    {
+      title: "Integrate pending content",
+      description: "Include the pending commit template when enabled.",
+      status: "optional",
+    },
+    {
+      title: "Render Markdown",
+      description:
+        "Apply release behavior, links, metadata, statistics, and template settings.",
+      status: "completed",
+    },
+    {
+      title: "Write or preview CHANGELOG.md",
+      description:
+        "Create or update the artifact during normal execution, or display rendered content without writing during dry-run.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

@@ -6,13 +6,32 @@ sidebar_key: doc-gen-structure-generate
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure generate" title="Buat Dokumentasi Struktur" description="Pindai repositori, render pohonnya sebagai Markdown, lalu tulis hanya dokumen output yang sudah ditentukan." category="Struktur Proyek" status="Menulis Output Terpilih" syntax="doc-gen structure generate [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure generate"
+  title="Buat Dokumentasi Struktur"
+  description="Pindai repositori, render pohonnya sebagai Markdown, lalu tulis hanya dokumen output yang sudah ditentukan."
+  category="Struktur Proyek"
+  status="Menulis Output Terpilih"
+  syntax="doc-gen structure generate [TARGET_DIRECTORY] [OPTIONS]"
+  links={[
+    { label: "Sintaks", href: "./syntax" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-<Section title="Purpose">Memindai repository, merender tree sebagai Markdown, dan menulis hanya output document hasil resolution.</Section>
+<Section title="Purpose">
+  Memindai repository, merender tree sebagai Markdown, dan menulis hanya output document
+  hasil resolution.
+</Section>
 
-<InfoBox variant="warning" title="Batas keamanan">Hanya generate yang menulis output. Dry-run merender in-memory tanpa membuat direktori atau file.</InfoBox>
+<InfoBox variant="warning" title="Batas keamanan">
+  Hanya generate yang menulis output. Dry-run merender in-memory tanpa membuat direktori
+  atau file.
+</InfoBox>
 
 - Resolve target/profile/output.
 - Scan dengan ignore/collapse.

@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -13,53 +10,48 @@ import {
  * Represents one side of the comparison.
  */
 export interface ImageCompareSide {
+  /**
+   * Image source.
+   */
+  src: string;
 
-    /**
-     * Image source.
-     */
-    src: string;
+  /**
+   * Alternative text.
+   */
+  alt: string;
 
-    /**
-     * Alternative text.
-     */
-    alt: string;
+  /**
+   * Panel title.
+   */
+  title: ReactNode;
 
-    /**
-     * Panel title.
-     */
-    title: ReactNode;
-
-    /**
-     * Optional caption.
-     */
-    caption?: ReactNode;
-
+  /**
+   * Optional caption.
+   */
+  caption?: ReactNode;
 }
 
 /**
  * ImageCompare component properties.
  */
-export interface ImageCompareProps
-    extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+export interface ImageCompareProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+  /**
+   * Optional section title.
+   */
+  title?: ReactNode;
 
-    /**
-     * Optional section title.
-     */
-    title?: ReactNode;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
+  /**
+   * Left comparison panel.
+   */
+  left: ImageCompareSide;
 
-    /**
-     * Left comparison panel.
-     */
-    left: ImageCompareSide;
-
-    /**
-     * Right comparison panel.
-     */
-    right: ImageCompareSide;
-
+  /**
+   * Right comparison panel.
+   */
+  right: ImageCompareSide;
 }

@@ -15,28 +15,16 @@
  *
  * @returns True when successful.
  */
-export async function copyToClipboard(
-    value: string,
-): Promise<boolean> {
+export async function copyToClipboard(value: string): Promise<boolean> {
+  if (!navigator.clipboard) {
+    return false;
+  }
 
-    if (!navigator.clipboard) {
+  try {
+    await navigator.clipboard.writeText(value);
 
-        return false;
-
-    }
-
-    try {
-
-        await navigator.clipboard.writeText(value);
-
-        return true;
-
-    }
-
-    catch {
-
-        return false;
-
-    }
-
+    return true;
+  } catch {
+    return false;
+  }
 }

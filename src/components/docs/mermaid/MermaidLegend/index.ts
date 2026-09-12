@@ -6,14 +6,10 @@
 
 export { default } from "./MermaidLegend";
 
-export type {
-    MermaidLegendItem,
-    MermaidLegendProps,
-} from "./types";
-
+export type { MermaidLegendItem, MermaidLegendProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.MermaidLegend
     items={[
         {

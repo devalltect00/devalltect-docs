@@ -6,14 +6,29 @@ sidebar_key: reflow-tags-convert-local-troubleshooting
 tags: [reflow, troubleshooting]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert local" title="Pemecahan Masalah" description="Diagnosis target URL, konflik tag, dan tag bertanda tangan pada konversi lokal." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert local"
+  title="Pemecahan Masalah"
+  description="Diagnosis target URL, konflik tag, dan tag bertanda tangan pada konversi lokal."
+  category="Konversi Tag"
+  status="Stabil"
+  syntax="reflow tags convert local [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Gejala | Kemungkinan penyebab | Solusi |
-| --- | --- | --- |
-| URL ditolak. | Cakupan lokal memerlukan checkout persisten. | Clone repositori atau gunakan konversi remote. |
-| Tag tujuan sudah ada. | Ref yang berbeda berisiko tertimpa. | Selesaikan konflik secara manual. |
-| Tag bertanda tangan dipilih. | Penggantian nama membuat tanda tangan tidak valid. | Buat ulang tanda tangan di luar Reflow. |
+| Gejala                       | Kemungkinan penyebab                               | Solusi                                         |
+| ---------------------------- | -------------------------------------------------- | ---------------------------------------------- |
+| URL ditolak.                 | Cakupan lokal memerlukan checkout persisten.       | Clone repositori atau gunakan konversi remote. |
+| Tag tujuan sudah ada.        | Ref yang berbeda berisiko tertimpa.                | Selesaikan konflik secara manual.              |
+| Tag bertanda tangan dipilih. | Penggantian nama membuat tanda tangan tidak valid. | Buat ulang tanda tangan di luar Reflow.        |
 
-<InfoBox variant="tip" title="Diagnostik">Gunakan `--debug` sebelum mengulangi perubahan mode langsung.</InfoBox>
+<InfoBox variant="tip" title="Diagnostik">
+  Gunakan `--debug` sebelum mengulangi perubahan mode langsung.
+</InfoBox>

@@ -6,14 +6,26 @@ sidebar_key: phs-scan-troubleshooting
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="Pemecahan Masalah" description="Pemecahan Masalah" category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="Pemecahan Masalah"
+  description="Pemecahan Masalah"
+  category="Pemindaian Header"
+  status="Preview First"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Gejala | Kemungkinan penyebab | Solusi |
-| --- | --- | --- |
-| Target tidak ditemukan. | Resolution workdir/target salah. | Periksa hasil path dan ulangi preview. |
-| Tidak ada file didukung. | Target kosong, excluded, atau extension tidak didukung. | Tinjau target/language. |
-| Help Windows memunculkan UnicodeEncodeError. | Output CP1252 tidak dapat mengenkode emoji. | Gunakan chcp 65001 atau PYTHONUTF8=1. |
-| Takut ada perubahan tidak terduga. | Apply aktif dari CLI/configuration. | Gunakan --dry-run; apply akan diabaikan. |
-
+| Gejala                                       | Kemungkinan penyebab                                    | Solusi                                   |
+| -------------------------------------------- | ------------------------------------------------------- | ---------------------------------------- |
+| Target tidak ditemukan.                      | Resolution workdir/target salah.                        | Periksa hasil path dan ulangi preview.   |
+| Tidak ada file didukung.                     | Target kosong, excluded, atau extension tidak didukung. | Tinjau target/language.                  |
+| Help Windows memunculkan UnicodeEncodeError. | Output CP1252 tidak dapat mengenkode emoji.             | Gunakan chcp 65001 atau PYTHONUTF8=1.    |
+| Takut ada perubahan tidak terduga.           | Apply aktif dari CLI/configuration.                     | Gunakan --dry-run; apply akan diabaikan. |

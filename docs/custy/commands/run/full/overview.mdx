@@ -8,38 +8,38 @@ keywords: [custy run full]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Screenshot,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Screenshot,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run full"
-    title="Full Profile"
-    description="Execute the complete release stages and then invoke Custy's workflow finalization step."
-    category="Pipeline Profile"
-    status="Experimental finalization"
-    syntax="custy run full [OPTIONS]"
-    tags={["release", "publication", "finalization"]}
-    links={[
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run full"
+  title="Full Profile"
+  description="Execute the complete release stages and then invoke Custy's workflow finalization step."
+  category="Pipeline Profile"
+  status="Experimental finalization"
+  syntax="custy run full [OPTIONS]"
+  tags={["release", "publication", "finalization"]}
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Category", value: "Pipeline Profile", icon: "pipeline"},
-        {label: "Use Case", value: "Release and Finalize", icon: "workflow"},
-        {label: "External Side Effects", value: "Broad", icon: "danger"},
-        {label: "Finalization", value: "Experimental", icon: "warning"},
-    ]}
+  items={[
+    { label: "Category", value: "Pipeline Profile", icon: "pipeline" },
+    { label: "Use Case", value: "Release and Finalize", icon: "workflow" },
+    { label: "External Side Effects", value: "Broad", icon: "danger" },
+    { label: "Finalization", value: "Experimental", icon: "warning" },
+  ]}
 />
 
 ## Overview
@@ -65,13 +65,30 @@ Prefer Release unless the finalization stage is explicitly required.
 >
 
 <FeatureGrid
-    title="What Full Includes"
-    items={[
-        {title: "Complete Release", icon: <Icon name="release" />, children: "Run every registered Release stage from validation through remote publication."},
-        {title: "Commit and Tag", icon: <Icon name="git" />, children: "Create and publish the release commit and local tag."},
-        {title: "Remote Publication", icon: <Icon name="network" />, children: "Push HEAD and the release tag through resolved remote behavior."},
-        {title: "Workflow Finalization", icon: <Icon name="workflow" />, children: "Invoke the registered experimental finalize_step after push."},
-    ]}
+  title="What Full Includes"
+  items={[
+    {
+      title: "Complete Release",
+      icon: <Icon name="release" />,
+      children:
+        "Run every registered Release stage from validation through remote publication.",
+    },
+    {
+      title: "Commit and Tag",
+      icon: <Icon name="git" />,
+      children: "Create and publish the release commit and local tag.",
+    },
+    {
+      title: "Remote Publication",
+      icon: <Icon name="network" />,
+      children: "Push HEAD and the release tag through resolved remote behavior.",
+    },
+    {
+      title: "Workflow Finalization",
+      icon: <Icon name="workflow" />,
+      children: "Invoke the registered experimental finalize_step after push.",
+    },
+  ]}
 />
 
 </Section>
@@ -83,11 +100,11 @@ Prefer Release unless the finalization stage is explicitly required.
 >
 
 <Screenshot
-    src="/img/custy/commands/run/full-profile.png"
-    alt="Custy full profile including workflow finalization"
-    title="Full release lifecycle"
-    caption="The Full profile extends Release with the registered finalization step."
-    fallback="Screenshot of the Custy Full profile will be added later."
+  src="/img/custy/commands/run/full-profile.png"
+  alt="Custy full profile including workflow finalization"
+  title="Full release lifecycle"
+  caption="The Full profile extends Release with the registered finalization step."
+  fallback="Screenshot of the Custy Full profile will be added later."
 />
 
 </Section>
@@ -99,11 +116,24 @@ Prefer Release unless the finalization stage is explicitly required.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "custy run release", href: "../release/overview", description: "Use the recommended release profile without experimental finalization."},
-        {title: "custy run dev", href: "../dev/overview", description: "Use the smaller daily commit-and-push profile."},
-        {title: "custy workflow branch", href: "../../workflow/branch/overview", description: "Review the separate experimental workflow-transition interface."},
-    ]}
+  commands={[
+    {
+      title: "custy run release",
+      href: "../release/overview",
+      description:
+        "Use the recommended release profile without experimental finalization.",
+    },
+    {
+      title: "custy run dev",
+      href: "../dev/overview",
+      description: "Use the smaller daily commit-and-push profile.",
+    },
+    {
+      title: "custy workflow branch",
+      href: "../../workflow/branch/overview",
+      description: "Review the separate experimental workflow-transition interface.",
+    },
+  ]}
 />
 
 </Section>

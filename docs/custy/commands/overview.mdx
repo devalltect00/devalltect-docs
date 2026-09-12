@@ -16,42 +16,38 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Command Reference"
-    description="Find the supported Custy commands for project setup, validation, versioning, changelogs, Git operations, and pipelines."
-    category="CLI Reference"
-    status="English Reference"
-    syntax="custy COMMAND [OPTIONS]"
-    tags={[
-        "commands",
-        "CLI reference",
-        "public interface",
-    ]}
-    links={[
-        {label: "Custy Overview", href: "../index"},
-        {label: "CLI Index", href: "../reference/cli"},
-        {label: "Troubleshooting", href: "../troubleshooting/overview"},
-        {label: "Run Profiles", href: "./run/overview"},
-        {label: "Experimental Workflow", href: "./workflow/overview"},
-    ]}
+  command="custy"
+  title="Command Reference"
+  description="Find the supported Custy commands for project setup, validation, versioning, changelogs, Git operations, and pipelines."
+  category="CLI Reference"
+  status="English Reference"
+  syntax="custy COMMAND [OPTIONS]"
+  tags={["commands", "CLI reference", "public interface"]}
+  links={[
+    { label: "Custy Overview", href: "../index" },
+    { label: "CLI Index", href: "../reference/cli" },
+    { label: "Troubleshooting", href: "../troubleshooting/overview" },
+    { label: "Run Profiles", href: "./run/overview" },
+    { label: "Experimental Workflow", href: "./workflow/overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Scope", value: "Public CLI", icon: "command"},
-        {label: "Focused Groups", value: "11", icon: "terminal"},
-        {label: "Run Profiles", value: "6 public names", icon: "pipeline"},
-        {label: "Experimental Group", value: "Workflow", icon: "warning"},
-    ]}
+  items={[
+    { label: "Scope", value: "Public CLI", icon: "command" },
+    { label: "Focused Groups", value: "11", icon: "terminal" },
+    { label: "Run Profiles", value: "6 public names", icon: "pipeline" },
+    { label: "Experimental Group", value: "Workflow", icon: "warning" },
+  ]}
 />
 
 ## Overview
@@ -76,16 +72,81 @@ valid `custy run` arguments.
 >
 
 <FeatureGrid
-    title="Public Command Reference"
-    items={[
-        {title: "Initialize and Validate", icon: <Icon name="success" />, children: <>Use <a href="./init/overview">Init</a> to prepare project resources and <a href="./validate/overview">Validate</a> to check readiness.</>},
-        {title: "Backup and Cleanup", icon: <Icon name="package" />, children: <>Use <a href="./backup/overview">Backup</a> to retain message files and <a href="./cleanup/overview">Cleanup</a> for reviewed pruning.</>},
-        {title: "Version and Changelog", icon: <Icon name="release" />, children: <>Use <a href="./version/overview">Version</a> for project versions and <a href="./changelog/generate/overview">Changelog Generate</a> for release notes.</>},
-        {title: "Commit and Tag", icon: <Icon name="git" />, children: <>Use <a href="./commit/overview">Commit</a> to prepare local history and <a href="./tag/overview">Tag</a> for reviewed version tags.</>},
-        {title: "Push and Run", icon: <Icon name="pipeline" />, children: <>Use <a href="./push/overview">Push</a> for remote synchronization and <a href="./run/overview">Run</a> for public profiles.</>},
-        {title: "Configure Credentials", icon: <Icon name="security" />, children: <>Use <a href="./configure/credentials/overview">Configure Credentials</a> to prepare optional, external HTTPS token fallback without storing tokens in the project configuration.</>},
-        {title: "Experimental Workflow", icon: <Icon name="warning" />, children: <>The <a href="./workflow/overview">Workflow</a> group is experimental and currently blocked by a documented source mismatch.</>},
-    ]}
+  title="Public Command Reference"
+  items={[
+    {
+      title: "Initialize and Validate",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Use <a href="./init/overview">Init</a> to prepare project resources and{" "}
+          <a href="./validate/overview">Validate</a> to check readiness.
+        </>
+      ),
+    },
+    {
+      title: "Backup and Cleanup",
+      icon: <Icon name="package" />,
+      children: (
+        <>
+          Use <a href="./backup/overview">Backup</a> to retain message files and{" "}
+          <a href="./cleanup/overview">Cleanup</a> for reviewed pruning.
+        </>
+      ),
+    },
+    {
+      title: "Version and Changelog",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Use <a href="./version/overview">Version</a> for project versions and{" "}
+          <a href="./changelog/generate/overview">Changelog Generate</a> for release
+          notes.
+        </>
+      ),
+    },
+    {
+      title: "Commit and Tag",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Use <a href="./commit/overview">Commit</a> to prepare local history and{" "}
+          <a href="./tag/overview">Tag</a> for reviewed version tags.
+        </>
+      ),
+    },
+    {
+      title: "Push and Run",
+      icon: <Icon name="pipeline" />,
+      children: (
+        <>
+          Use <a href="./push/overview">Push</a> for remote synchronization and{" "}
+          <a href="./run/overview">Run</a> for public profiles.
+        </>
+      ),
+    },
+    {
+      title: "Configure Credentials",
+      icon: <Icon name="security" />,
+      children: (
+        <>
+          Use <a href="./configure/credentials/overview">Configure Credentials</a> to
+          prepare optional, external HTTPS token fallback without storing tokens in the
+          project configuration.
+        </>
+      ),
+    },
+    {
+      title: "Experimental Workflow",
+      icon: <Icon name="warning" />,
+      children: (
+        <>
+          The <a href="./workflow/overview">Workflow</a> group is experimental and
+          currently blocked by a documented source mismatch.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>

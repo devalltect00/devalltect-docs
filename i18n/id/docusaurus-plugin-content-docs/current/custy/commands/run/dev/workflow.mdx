@@ -4,13 +4,71 @@ description: "Exact registered stages dalam Custy Dev profile."
 sidebar_position: 2
 sidebar_key: custy-run-dev-workflow
 ---
-import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run dev" title="Development Workflow" description="Ikuti tahap Dev yang tepat dari validation hingga commit dan push branch." category="Pipeline Profile" status="Stable" syntax="custy run dev [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Examples",href:"./examples"},{label:"Pipeline Internals",href:"../../../pipelines/development-pipeline"},{label:"Safety",href:"../safety"}]} />
+import {
+  CommandHero,
+  WorkflowTimeline,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run dev"
+  title="Development Workflow"
+  description="Ikuti tahap Dev yang tepat dari validation hingga commit dan push branch."
+  category="Pipeline Profile"
+  status="Stable"
+  syntax="custy run dev [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Examples", href: "./examples" },
+    { label: "Pipeline Internals", href: "../../../pipelines/development-pipeline" },
+    { label: "Safety", href: "../safety" },
+  ]}
+/>
 
 ## Ringkasan
-<WorkflowTimeline title="Dev Profile" items={[
- {title:"Validate repository",description:"Pastikan execution berada dalam Git repository.",status:"completed"},{title:"Validate commit inputs",description:"Resolve commit validator, hook policy, message file, dan remote.",status:"completed"},{title:"Review commit message",description:"Buka hanya commit-message file dan validasi hasil yang disimpan.",status:"completed"},{title:"Back up and clean",description:"Backup commit message dan prune retained backups.",status:"completed"},{title:"Stage and commit",description:"Stage resolved files dan buat Git commit.",status:"completed"},{title:"Push",description:"Push branch HEAD ke resolved remotes tanpa mendorong tag.",status:"completed"},
-]} />
-<InfoBox variant="info" title="Tanpa Persiapan Rilis atau Publikasi Tag">Dev tidak menyiapkan atau menerapkan version, menginisialisasi release workflow, membuat artifact atau changelog rilis, membuka tag message, membuat tag, atau mendorong tag.</InfoBox>
-<Section title="Remote Completion">Karena push adalah final stage, verifikasi destination dan remote result.</Section>
+
+<WorkflowTimeline
+  title="Dev Profile"
+  items={[
+    {
+      title: "Validate repository",
+      description: "Pastikan execution berada dalam Git repository.",
+      status: "completed",
+    },
+    {
+      title: "Validate commit inputs",
+      description: "Resolve commit validator, hook policy, message file, dan remote.",
+      status: "completed",
+    },
+    {
+      title: "Review commit message",
+      description: "Buka hanya commit-message file dan validasi hasil yang disimpan.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Backup commit message dan prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Stage and commit",
+      description: "Stage resolved files dan buat Git commit.",
+      status: "completed",
+    },
+    {
+      title: "Push",
+      description: "Push branch HEAD ke resolved remotes tanpa mendorong tag.",
+      status: "completed",
+    },
+  ]}
+/>
+<InfoBox variant="info" title="Tanpa Persiapan Rilis atau Publikasi Tag">
+  Dev tidak menyiapkan atau menerapkan version, menginisialisasi release workflow,
+  membuat artifact atau changelog rilis, membuka tag message, membuat tag, atau
+  mendorong tag.
+</InfoBox>
+<Section title="Remote Completion">
+  Karena push adalah final stage, verifikasi destination dan remote result.
+</Section>

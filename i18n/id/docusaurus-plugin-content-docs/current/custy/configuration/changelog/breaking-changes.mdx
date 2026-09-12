@@ -7,16 +7,94 @@ tags: [custy, changelog, breaking changes]
 keywords: [breaking enabled, breaking keywords, breaking label]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.breaking]" title="Breaking Changes" description="Pindahkan backward-incompatible changes ke dedicated group dengan label yang jelas." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.breaking]" tags={["keywords", "classification", "label"]} links={[{label: "Mappings", href: "./mappings"}, {label: "Rendering", href: "./rendering"}, {label: "Advanced", href: "./advanced"}]} />
-<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enabled", value: "true", icon: "warning"}, {label: "Keywords", value: "3", icon: "configuration"}, {label: "Matching", value: "Case-insensitive", icon: "feature"}]} />
+<CommandHero
+  command="[tool.custy.changelog.breaking]"
+  title="Breaking Changes"
+  description="Pindahkan backward-incompatible changes ke dedicated group dengan label yang jelas."
+  category="Changelog Configuration"
+  status="Active"
+  syntax="[tool.custy.changelog.breaking]"
+  tags={["keywords", "classification", "label"]}
+  links={[
+    { label: "Mappings", href: "./mappings" },
+    { label: "Rendering", href: "./rendering" },
+    { label: "Advanced", href: "./advanced" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "3", icon: "table" },
+    { label: "Enabled", value: "true", icon: "warning" },
+    { label: "Keywords", value: "3", icon: "configuration" },
+    { label: "Matching", value: "Case-insensitive", icon: "feature" },
+  ]}
+/>
 
 ## Properties
-<PropertyTable items={[{property: "enabled", type: "Boolean", defaultValue: "true", description: "Aktifkan breaking-change classification dan grouping."}, {property: "keywords", type: "String array", defaultValue: "BREAKING CHANGE, BREAKING, INCOMPATIBLE", description: "Case-insensitive phrases yang dicari dalam commit subjects dan bodies."}, {property: "label", type: "String", defaultValue: "⚠️ Breaking Changes", description: "Configured section title dalam breaking settings. Type mapping juga menentukan displayed breaking group title."}]} />
-<Terminal title="Generated breaking configuration" language="toml">{`[tool.custy.changelog.breaking]
+
+<PropertyTable
+  items={[
+    {
+      property: "enabled",
+      type: "Boolean",
+      defaultValue: "true",
+      description: "Aktifkan breaking-change classification dan grouping.",
+    },
+    {
+      property: "keywords",
+      type: "String array",
+      defaultValue: "BREAKING CHANGE, BREAKING, INCOMPATIBLE",
+      description:
+        "Case-insensitive phrases yang dicari dalam commit subjects dan bodies.",
+    },
+    {
+      property: "label",
+      type: "String",
+      defaultValue: "⚠️ Breaking Changes",
+      description:
+        "Configured section title dalam breaking settings. Type mapping juga menentukan displayed breaking group title.",
+    },
+  ]}
+/>
+<Terminal
+  title="Generated breaking configuration"
+  language="toml"
+>{`[tool.custy.changelog.breaking]
 enabled = true
 keywords = ["BREAKING CHANGE", "BREAKING", "INCOMPATIBLE"]
 label = "⚠️ Breaking Changes"`}</Terminal>
-<InfoBox variant="note" title="Explicit Parsing dan Keyword Detection Bekerja Bersama">Commit yang sudah ditandai breaking atau memuat configured keyword dipindahkan ke `breaking` type group saat detection aktif.</InfoBox>
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Mappings", href: "./mappings", description: "Konfigurasikan displayed breaking type title."}, {title: "Advanced", href: "./advanced", description: "Tinjau separate experimental heuristic switch."}, {title: "Rendering", href: "./rendering", description: "Atur section title icons dan ordering."}]} /></Section>
+<InfoBox variant="note" title="Explicit Parsing dan Keyword Detection Bekerja Bersama">
+  Commit yang sudah ditandai breaking atau memuat configured keyword dipindahkan ke
+  `breaking` type group saat detection aktif.
+</InfoBox>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Mappings",
+        href: "./mappings",
+        description: "Konfigurasikan displayed breaking type title.",
+      },
+      {
+        title: "Advanced",
+        href: "./advanced",
+        description: "Tinjau separate experimental heuristic switch.",
+      },
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Atur section title icons dan ordering.",
+      },
+    ]}
+  />
+</Section>

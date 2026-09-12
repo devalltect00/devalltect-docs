@@ -6,38 +6,34 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Examples"
-    description="Learn how to use the validation command in common development scenarios."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "examples",
-        "validation",
-        "workflow",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy validate"
+  title="Examples"
+  description="Learn how to use the validation command in common development scenarios."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["examples", "validation", "workflow"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -52,26 +48,25 @@ executing Git or Custy workflows.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Validate the Current Project",
-            description:
-                "Run all validation checks for the current project.",
-            command: "custy validate",
-            result:
-                "Verifies the project repository, configuration, templates, version file, and repository state.",
-        },
-        {
-            title: "Validate Before a Release Workflow",
-            description:
-                "Confirm that the project is ready before performing release-related operations.",
-            command: "custy validate",
-            result:
-                "Reports any missing prerequisites before commit, tag, push, or release workflows begin.",
-            notes:
-                "This step is optional because workflow-oriented commands perform validation automatically.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Validate the Current Project",
+      description: "Run all validation checks for the current project.",
+      command: "custy validate",
+      result:
+        "Verifies the project repository, configuration, templates, version file, and repository state.",
+    },
+    {
+      title: "Validate Before a Release Workflow",
+      description:
+        "Confirm that the project is ready before performing release-related operations.",
+      command: "custy validate",
+      result:
+        "Reports any missing prerequisites before commit, tag, push, or release workflows begin.",
+      notes:
+        "This step is optional because workflow-oriented commands perform validation automatically.",
+    },
+  ]}
 />
 
 </Section>
@@ -83,33 +78,29 @@ executing Git or Custy workflows.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Manual Git Workflow",
-            description:
-                "Validate the project before executing Git operations manually.",
-            command:
-`git add .
+  examples={[
+    {
+      title: "Manual Git Workflow",
+      description: "Validate the project before executing Git operations manually.",
+      command: `git add .
 custy validate
 custy commit
 custy tag
 custy push`,
-            result:
-                "Validation confirms that the repository is ready before each Custy command executes.",
-        },
-        {
-            title: "Workflow-Oriented Development",
-            description:
-                "Execute a complete workflow using Custy's pipeline system.",
-            command:
-`git add .
+      result:
+        "Validation confirms that the repository is ready before each Custy command executes.",
+    },
+    {
+      title: "Workflow-Oriented Development",
+      description: "Execute a complete workflow using Custy's pipeline system.",
+      command: `git add .
 custy run release`,
-            result:
-                "The workflow automatically performs validation before continuing with the remaining stages.",
-            notes:
-                "Running custy validate separately is usually unnecessary when using workflow commands.",
-        },
-    ]}
+      result:
+        "The workflow automatically performs validation before continuing with the remaining stages.",
+      notes:
+        "Running custy validate separately is usually unnecessary when using workflow commands.",
+    },
+  ]}
 />
 
 </Section>

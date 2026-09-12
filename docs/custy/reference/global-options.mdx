@@ -8,50 +8,90 @@ keywords: [Custy dry run, Custy debug, Custy log level]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    CommandOption,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  CommandOption,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy [GLOBAL_OPTIONS] COMMAND"
-    title="Global Options"
-    description="Apply banner, help, version, dry-run, debug, and log-level behavior before any selected command."
-    category="Reference"
-    status="Root Callback"
-    syntax="custy --dry-run run release"
-    tags={["placement", "resolution", "logging", "safety"]}
-    links={[
-        {label: "CLI Reference", href: "./cli"},
-        {label: "Dry Run Concept", href: "../concepts/dry-run"},
-        {label: "Execution Config", href: "../configuration/cli/execution"},
-    ]}
+  command="custy [GLOBAL_OPTIONS] COMMAND"
+  title="Global Options"
+  description="Apply banner, help, version, dry-run, debug, and log-level behavior before any selected command."
+  category="Reference"
+  status="Root Callback"
+  syntax="custy --dry-run run release"
+  tags={["placement", "resolution", "logging", "safety"]}
+  links={[
+    { label: "CLI Reference", href: "./cli" },
+    { label: "Dry Run Concept", href: "../concepts/dry-run" },
+    { label: "Execution Config", href: "../configuration/cli/execution" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Root Options", value: "6", icon: "configuration"},
-        {label: "Placement", value: "Before command", icon: "timeline"},
-        {label: "Log Levels", value: "5", icon: "file"},
-        {label: "Shared State", value: "AppContext", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Root Options", value: "6", icon: "configuration" },
+    { label: "Placement", value: "Before command", icon: "timeline" },
+    { label: "Log Levels", value: "5", icon: "file" },
+    { label: "Shared State", value: "AppContext", icon: "dependency" },
+  ]}
 />
 
 ## Options
 
 <CommandOption
-    options={[
-        {name: "--no-banner", description: "Hide the startup banner. Useful for automation and compact terminal output.", defaultValue: "false", example: "custy --no-banner validate"},
-        {name: "--help", shorthand: "-h", description: "Render root help. The current root callback explicitly exits with status 1 after displaying it.", defaultValue: "false", example: "custy --help"},
-        {name: "--version", shorthand: "-v", description: "Display the installed Custy package version. The current callback exits with status 1 after displaying it.", example: "custy --version"},
-        {name: "--dry-run / --no-dry-run", shorthand: "-dr / -Dr", description: "Enable or disable simulation for supported effects. Resolution falls back to tool.custy.cli.execution.dry_run.", defaultValue: "configuration, then false", example: "custy --dry-run run release"},
-        {name: "--debug / --no-debug", shorthand: "-dbg / -Dbg", description: "Enable or disable diagnostic output. Internally this is resolved through the inverse no_debug configuration property.", defaultValue: "configuration", example: "custy --debug commit"},
-        {name: "--log-level", shorthand: "-ll", description: "Set critical, error, warning, info, or debug output. Values are case-insensitive.", defaultValue: "tool.custy.logging.level, then INFO", example: "custy --log-level debug tag"},
-    ]}
+  options={[
+    {
+      name: "--no-banner",
+      description:
+        "Hide the startup banner. Useful for automation and compact terminal output.",
+      defaultValue: "false",
+      example: "custy --no-banner validate",
+    },
+    {
+      name: "--help",
+      shorthand: "-h",
+      description:
+        "Render root help. The current root callback explicitly exits with status 1 after displaying it.",
+      defaultValue: "false",
+      example: "custy --help",
+    },
+    {
+      name: "--version",
+      shorthand: "-v",
+      description:
+        "Display the installed Custy package version. The current callback exits with status 1 after displaying it.",
+      example: "custy --version",
+    },
+    {
+      name: "--dry-run / --no-dry-run",
+      shorthand: "-dr / -Dr",
+      description:
+        "Enable or disable simulation for supported effects. Resolution falls back to tool.custy.cli.execution.dry_run.",
+      defaultValue: "configuration, then false",
+      example: "custy --dry-run run release",
+    },
+    {
+      name: "--debug / --no-debug",
+      shorthand: "-dbg / -Dbg",
+      description:
+        "Enable or disable diagnostic output. Internally this is resolved through the inverse no_debug configuration property.",
+      defaultValue: "configuration",
+      example: "custy --debug commit",
+    },
+    {
+      name: "--log-level",
+      shorthand: "-ll",
+      description:
+        "Set critical, error, warning, info, or debug output. Values are case-insensitive.",
+      defaultValue: "tool.custy.logging.level, then INFO",
+      example: "custy --log-level debug tag",
+    },
+  ]}
 />
 
 ---
@@ -65,6 +105,7 @@ custy --dry-run changelog generate
 custy --log-level DEBUG cleanup brancheses
 
 # Incorrect: root option after a command that does not own it
+
 custy --dry-run changelog generate`}
 
 </Terminal>
@@ -107,12 +148,29 @@ using it in automation.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "CLI Reference", href: "./cli", description: "Choose the command that receives these root options."},
-        {title: "Dry Run", href: "../concepts/dry-run", description: "Understand simulated and non-simulated behavior."},
-        {title: "Execution Configuration", href: "../configuration/cli/execution", description: "Review persistent dry-run and debug defaults."},
-        {title: "Errors and Exit Status", href: "./exit-errors", description: "Interpret the current help, version, parser, and workflow status behavior."},
-    ]}
+  commands={[
+    {
+      title: "CLI Reference",
+      href: "./cli",
+      description: "Choose the command that receives these root options.",
+    },
+    {
+      title: "Dry Run",
+      href: "../concepts/dry-run",
+      description: "Understand simulated and non-simulated behavior.",
+    },
+    {
+      title: "Execution Configuration",
+      href: "../configuration/cli/execution",
+      description: "Review persistent dry-run and debug defaults.",
+    },
+    {
+      title: "Errors and Exit Status",
+      href: "./exit-errors",
+      description:
+        "Interpret the current help, version, parser, and workflow status behavior.",
+    },
+  ]}
 />
 
 </Section>

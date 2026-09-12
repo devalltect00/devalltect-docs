@@ -8,30 +8,26 @@ keywords: [full profile stages]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run full"
-    title="Full Workflow"
-    description="Follow the complete registered release lifecycle and the experimental finalization stage that runs after push."
-    category="Pipeline Profile"
-    status="Experimental Finalization"
-    syntax="custy run full [OPTIONS]"
-    tags={[
-        "workflow",
-        "release",
-        "finalization",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Examples", href: "./examples"},
-        {label: "Pipeline Internals", href: "../../../pipelines/full-pipeline"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run full"
+  title="Full Workflow"
+  description="Follow the complete registered release lifecycle and the experimental finalization stage that runs after push."
+  category="Pipeline Profile"
+  status="Experimental Finalization"
+  syntax="custy run full [OPTIONS]"
+  tags={["workflow", "release", "finalization"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Examples", href: "./examples" },
+    { label: "Pipeline Internals", href: "../../../pipelines/full-pipeline" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 ## Overview
@@ -46,16 +42,45 @@ remote publication.
 >
 
 <WorkflowTimeline
-    title="Full Profile"
-    items={[
-        {title: "Validate", description: "Run repository, pre-commit, pre-tag, and pre-push checks.", status: "completed"},
-        {title: "Prepare and edit", description: "Resolve version and tag state, generate artifacts, and validate edits.", status: "completed"},
-        {title: "Apply and document", description: "Apply the version and generate the changelog.", status: "completed"},
-        {title: "Back up and clean", description: "Back up commit and tag messages and prune retained backups.", status: "completed"},
-        {title: "Commit and tag", description: "Stage release files, create the commit, and create the tag.", status: "completed"},
-        {title: "Push", description: "Publish HEAD and the tag to resolved remotes.", status: "completed"},
-        {title: "Finalize workflow", description: "Invoke the registered experimental finalization step.", status: "current"},
-    ]}
+  title="Full Profile"
+  items={[
+    {
+      title: "Validate",
+      description: "Run repository, pre-commit, pre-tag, and pre-push checks.",
+      status: "completed",
+    },
+    {
+      title: "Prepare and edit",
+      description:
+        "Resolve version and tag state, generate artifacts, and validate edits.",
+      status: "completed",
+    },
+    {
+      title: "Apply and document",
+      description: "Apply the version and generate the changelog.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Back up commit and tag messages and prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Commit and tag",
+      description: "Stage release files, create the commit, and create the tag.",
+      status: "completed",
+    },
+    {
+      title: "Push",
+      description: "Publish HEAD and the tag to resolved remotes.",
+      status: "completed",
+    },
+    {
+      title: "Finalize workflow",
+      description: "Invoke the registered experimental finalization step.",
+      status: "current",
+    },
+  ]}
 />
 
 </Section>

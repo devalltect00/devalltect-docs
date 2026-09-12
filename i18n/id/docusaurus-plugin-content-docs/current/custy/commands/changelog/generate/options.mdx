@@ -4,18 +4,51 @@ description: "Options yang diterima custy changelog generate."
 sidebar_position: 4
 sidebar_key: custy-changelog-generate-options
 ---
-import {CommandHero, CommandOption, InfoBox, Section, Terminal} from "@site/src/components/docs";
 
-<CommandHero command="custy changelog generate" title="Command Options" description="Override pending commit-message source atau force-generation untuk satu invocation." category="Changelog" status="Stable" syntax="custy changelog generate [OPTIONS]" links={[
-    {label: "Syntax", href: "./syntax"}, {label: "Configuration", href: "./configuration"}, {label: "Examples", href: "./examples"},
-]} />
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy changelog generate"
+  title="Command Options"
+  description="Override pending commit-message source atau force-generation untuk satu invocation."
+  category="Changelog"
+  status="Stable"
+  syntax="custy changelog generate [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Configuration", href: "./configuration" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOption options={[
-    {name: "--commit-msg-file", shorthand: "-cmsg", description: "Override template commit message untuk pending-commit parsing dan classification. File harus tersedia.", defaultValue: ".config/custy/templates/commit-message.txt", example: "--commit-msg-file templates/release-message.txt"},
-    {name: "--force / --no-force", shorthand: "-f / -F", description: "Aktifkan atau nonaktifkan forced regeneration untuk invocation ini.", defaultValue: "false unless configured otherwise", example: "--force"},
-]} />
+<CommandOption
+  options={[
+    {
+      name: "--commit-msg-file",
+      shorthand: "-cmsg",
+      description:
+        "Override template commit message untuk pending-commit parsing dan classification. File harus tersedia.",
+      defaultValue: ".config/custy/templates/commit-message.txt",
+      example: "--commit-msg-file templates/release-message.txt",
+    },
+    {
+      name: "--force / --no-force",
+      shorthand: "-f / -F",
+      description:
+        "Aktifkan atau nonaktifkan forced regeneration untuk invocation ini.",
+      defaultValue: "false unless configured otherwise",
+      example: "--force",
+    },
+  ]}
+/>
 
 <Section title="Global Execution Options">
 
@@ -27,4 +60,7 @@ custy --log-level debug changelog generate
 
 </Section>
 
-<InfoBox variant="info" title="Resolution Order">CLI value mengalahkan project configuration; project configuration mengalahkan built-in default.</InfoBox>
+<InfoBox variant="info" title="Resolution Order">
+  CLI value mengalahkan project configuration; project configuration mengalahkan
+  built-in default.
+</InfoBox>

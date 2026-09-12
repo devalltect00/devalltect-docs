@@ -1,11 +1,11 @@
 {
-    "label": "Version",
-    "position": 5,
-    "collapsed": false,
-    "collapsible": true,
-    "className": "category-version",
-    "link": {
-        "type": "doc",
-        "id": "custy/commands/version/overview"
-    }
+  "label": "Version",
+  "position": 5,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-version",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/version/overview"
+  }
 }

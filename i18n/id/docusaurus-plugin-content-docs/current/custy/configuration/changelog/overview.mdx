@@ -7,22 +7,203 @@ tags: [custy, configuration, changelog]
 keywords: [tool.custy.changelog, changelog configuration]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog]" title="Ringkasan Changelog" description="Atur seluruh transformation dari Git history dan pending content menjadi rendered CHANGELOG.md." category="Configuration" status="Active Subsystem" syntax="[tool.custy.changelog.SUBTABLE]" tags={["collection", "processing", "rendering"]} links={[{label: "Core", href: "./core"}, {label: "Rendering", href: "./rendering"}, {label: "Generate Command", href: "../../commands/changelog/generate/overview"}]} />
+<CommandHero
+  command="[tool.custy.changelog]"
+  title="Ringkasan Changelog"
+  description="Atur seluruh transformation dari Git history dan pending content menjadi rendered CHANGELOG.md."
+  category="Configuration"
+  status="Active Subsystem"
+  syntax="[tool.custy.changelog.SUBTABLE]"
+  tags={["collection", "processing", "rendering"]}
+  links={[
+    { label: "Core", href: "./core" },
+    { label: "Rendering", href: "./rendering" },
+    { label: "Generate Command", href: "../../commands/changelog/generate/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Child Tables", value: "12", icon: "directory"}, {label: "Output", value: "CHANGELOG.md", icon: "file"}, {label: "Template", value: "Jinja2", icon: "configuration"}, {label: "Advanced Status", value: "Experimental", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Child Tables", value: "12", icon: "directory" },
+    { label: "Output", value: "CHANGELOG.md", icon: "file" },
+    { label: "Template", value: "Jinja2", icon: "configuration" },
+    { label: "Advanced Status", value: "Experimental", icon: "warning" },
+  ]}
+/>
 
 ## Pipeline
 
-<WorkflowTimeline items={[{title: "Collect", description: "Terapkan core Git-commit eligibility rules.", status: "completed"}, {title: "Collect pending content", description: "Tambahkan configured message secara opsional melalui PendingCommitProvider, lalu bersihkan template-oriented text.", status: "completed"}, {title: "Build releases", description: "Extract release content dan terapkan per-version overrides.", status: "current"}, {title: "Classify", description: "Terapkan breaking detection, type mapping, scope mapping, dan grouping.", status: "pending"}, {title: "Render", description: "Buat links dan teruskan resolved model ke project Jinja template.", status: "pending"}]} />
+<WorkflowTimeline
+  items={[
+    {
+      title: "Collect",
+      description: "Terapkan core Git-commit eligibility rules.",
+      status: "completed",
+    },
+    {
+      title: "Collect pending content",
+      description:
+        "Tambahkan configured message secara opsional melalui PendingCommitProvider, lalu bersihkan template-oriented text.",
+      status: "completed",
+    },
+    {
+      title: "Build releases",
+      description: "Extract release content dan terapkan per-version overrides.",
+      status: "current",
+    },
+    {
+      title: "Classify",
+      description:
+        "Terapkan breaking detection, type mapping, scope mapping, dan grouping.",
+      status: "pending",
+    },
+    {
+      title: "Render",
+      description: "Buat links dan teruskan resolved model ke project Jinja template.",
+      status: "pending",
+    },
+  ]}
+/>
 
 <Section title="Area Konfigurasi">
-<FeatureGrid items={[{title: "Core", icon: <Icon name="git" />, children: <>Pilih eligible commits melalui <a href="./core">changelog.core</a>.</>}, {title: "Pending Commit", icon: <Icon name="file" />, children: <>Sertakan pending message content dan tinjau loaded-only settings melalui <a href="./pending-commit">changelog.pending_commit</a>.</>}, {title: "Cleaning", icon: <Icon name="copy" />, children: <>Hapus presentation-only boilerplate melalui <a href="./cleaning">changelog.cleaning</a>.</>}, {title: "Releases", icon: <Icon name="release" />, children: <>Extract summaries dan sesuaikan versions melalui <a href="./releases">release dan release_behavior</a>.</>}, {title: "Links", icon: <Icon name="network" />, children: <>Buat repository comparison URLs melalui <a href="./links">changelog.links</a>.</>}, {title: "Rendering", icon: <Icon name="configuration" />, children: <>Atur layout, visibility, formatting, sorting, dan visuals melalui <a href="./rendering">changelog.render</a>.</>}, {title: "Breaking Changes", icon: <Icon name="warning" />, children: <>Konfigurasikan keyword detection dan labels melalui <a href="./breaking-changes">changelog.breaking</a>.</>}, {title: "Mappings", icon: <Icon name="table" />, children: <>Map scopes dan commit types melalui <a href="./mappings">scope_map dan type_map</a>.</>}, {title: "Advanced", icon: <Icon name="danger" />, children: <>Tinjau experimental switches yang belum diterapkan melalui <a href="./advanced">changelog.advanced</a>.</>}]} />
+  <FeatureGrid
+    items={[
+      {
+        title: "Core",
+        icon: <Icon name="git" />,
+        children: (
+          <>
+            Pilih eligible commits melalui <a href="./core">changelog.core</a>.
+          </>
+        ),
+      },
+      {
+        title: "Pending Commit",
+        icon: <Icon name="file" />,
+        children: (
+          <>
+            Sertakan pending message content dan tinjau loaded-only settings melalui{" "}
+            <a href="./pending-commit">changelog.pending_commit</a>.
+          </>
+        ),
+      },
+      {
+        title: "Cleaning",
+        icon: <Icon name="copy" />,
+        children: (
+          <>
+            Hapus presentation-only boilerplate melalui{" "}
+            <a href="./cleaning">changelog.cleaning</a>.
+          </>
+        ),
+      },
+      {
+        title: "Releases",
+        icon: <Icon name="release" />,
+        children: (
+          <>
+            Extract summaries dan sesuaikan versions melalui{" "}
+            <a href="./releases">release dan release_behavior</a>.
+          </>
+        ),
+      },
+      {
+        title: "Links",
+        icon: <Icon name="network" />,
+        children: (
+          <>
+            Buat repository comparison URLs melalui{" "}
+            <a href="./links">changelog.links</a>.
+          </>
+        ),
+      },
+      {
+        title: "Rendering",
+        icon: <Icon name="configuration" />,
+        children: (
+          <>
+            Atur layout, visibility, formatting, sorting, dan visuals melalui{" "}
+            <a href="./rendering">changelog.render</a>.
+          </>
+        ),
+      },
+      {
+        title: "Breaking Changes",
+        icon: <Icon name="warning" />,
+        children: (
+          <>
+            Konfigurasikan keyword detection dan labels melalui{" "}
+            <a href="./breaking-changes">changelog.breaking</a>.
+          </>
+        ),
+      },
+      {
+        title: "Mappings",
+        icon: <Icon name="table" />,
+        children: (
+          <>
+            Map scopes dan commit types melalui{" "}
+            <a href="./mappings">scope_map dan type_map</a>.
+          </>
+        ),
+      },
+      {
+        title: "Advanced",
+        icon: <Icon name="danger" />,
+        children: (
+          <>
+            Tinjau experimental switches yang belum diterapkan melalui{" "}
+            <a href="./advanced">changelog.advanced</a>.
+          </>
+        ),
+      },
+    ]}
+  />
 </Section>
 
-<InfoBox variant="warning" title="Command Behavior Berada di Table Terpisah">`tool.custy.cli.changelog.force_generation` menentukan apakah command dilanjutkan. Table di bagian ini mengatur content dan presentation.</InfoBox>
+<InfoBox variant="warning" title="Command Behavior Berada di Table Terpisah">
+  `tool.custy.cli.changelog.force_generation` menentukan apakah command dilanjutkan.
+  Table di bagian ini mengatur content dan presentation.
+</InfoBox>
 
-<Section title="Template Contract">Generated Jinja template menggunakan `context.config.rendering`, `context.visible_releases()`, `context.release_label(release)`, `context.summary_for(release)`, `context.groups_for(release)`, dan `context.tags_for(release)`. Release objects menyediakan version, date, comparison URL, title-only state, status, dan promoted-from versions.</Section>
+<Section title="Template Contract">
+  Generated Jinja template menggunakan `context.config.rendering`,
+  `context.visible_releases()`, `context.release_label(release)`,
+  `context.summary_for(release)`, `context.groups_for(release)`, dan
+  `context.tags_for(release)`. Release objects menyediakan version, date, comparison
+  URL, title-only state, status, dan promoted-from versions.
+</Section>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Core", href: "./core", description: "Mulai dari commit eligibility."}, {title: "Rendering", href: "./rendering", description: "Tinjau setiap presentation property."}, {title: "CLI Changelog", href: "../cli/changelog", description: "Konfigurasikan force generation."}, {title: "Generate Configuration", href: "../../commands/changelog/generate/configuration", description: "Tinjau command-focused configuration guidance."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      { title: "Core", href: "./core", description: "Mulai dari commit eligibility." },
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Tinjau setiap presentation property.",
+      },
+      {
+        title: "CLI Changelog",
+        href: "../cli/changelog",
+        description: "Konfigurasikan force generation.",
+      },
+      {
+        title: "Generate Configuration",
+        href: "../../commands/changelog/generate/configuration",
+        description: "Tinjau command-focused configuration guidance.",
+      },
+    ]}
+  />
+</Section>

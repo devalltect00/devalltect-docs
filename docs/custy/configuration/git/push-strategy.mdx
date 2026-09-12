@@ -7,15 +7,60 @@ tags: [custy, configuration, git, push]
 keywords: [push_to, auto_push]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.git]" title="Git Push Strategy" description="Select main, backup, or all configured groups while keeping auto_push behavior explicit." category="Git Configuration" status="Active + Reserved Key" syntax={'push_to = "main"'} tags={["main", "backup", "all"]} links={[{label: "Remotes", href: "./remotes"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Command", href: "../../commands/push/overview"}]} />
+<CommandHero
+  command="[tool.custy.git]"
+  title="Git Push Strategy"
+  description="Select main, backup, or all configured groups while keeping auto_push behavior explicit."
+  category="Git Configuration"
+  status="Active + Reserved Key"
+  syntax={'push_to = "main"'}
+  tags={["main", "backup", "all"]}
+  links={[
+    { label: "Remotes", href: "./remotes" },
+    { label: "CLI Push", href: "../cli/push" },
+    { label: "Push Command", href: "../../commands/push/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Strategy Property", value: "push_to", icon: "workflow"}, {label: "Generated Strategy", value: "main", icon: "git"}, {label: "auto_push", value: "Reserved", icon: "warning"}, {label: "Explicit Remotes", value: "Highest service priority", icon: "terminal"}]} />
+<CommandMetadata
+  items={[
+    { label: "Strategy Property", value: "push_to", icon: "workflow" },
+    { label: "Generated Strategy", value: "main", icon: "git" },
+    { label: "auto_push", value: "Reserved", icon: "warning" },
+    { label: "Explicit Remotes", value: "Highest service priority", icon: "terminal" },
+  ]}
+/>
 
 ## Properties
 
-<PropertyTable items={[{property: "push_to", type: "main | backup | all", defaultValue: "main", description: "Select main_remotes, backup_remotes, or their de-duplicated union when all_remote is false and no explicit --remote is supplied."}, {property: "auto_push", type: "Boolean", defaultValue: "true", description: "Generated intention to push after commit and tag work, but not consumed by the current active command resolvers or Git service flow. Treat as reserved."}]} />
+<PropertyTable
+  items={[
+    {
+      property: "push_to",
+      type: "main | backup | all",
+      defaultValue: "main",
+      description:
+        "Select main_remotes, backup_remotes, or their de-duplicated union when all_remote is false and no explicit --remote is supplied.",
+    },
+    {
+      property: "auto_push",
+      type: "Boolean",
+      defaultValue: "true",
+      description:
+        "Generated intention to push after commit and tag work, but not consumed by the current active command resolvers or Git service flow. Treat as reserved.",
+    },
+  ]}
+/>
 
 <Terminal title="Service-level strategy" language="toml">
 
@@ -25,6 +70,7 @@ backup_remotes = ["mirror"]
 push_to = "all"
 
 # Present in the generated file but currently reserved.
+
 auto_push = true`}
 
 </Terminal>
@@ -44,4 +90,24 @@ remote. Use the documented push command or run profile and review its plan.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Configure the groups selected by push_to."}, {title: "CLI Push", href: "../cli/push", description: "Configure command-level defaults."}, {title: "Push Workflow", href: "../../commands/push/workflow", description: "Review actual remote operations."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Remotes",
+        href: "./remotes",
+        description: "Configure the groups selected by push_to.",
+      },
+      {
+        title: "CLI Push",
+        href: "../cli/push",
+        description: "Configure command-level defaults.",
+      },
+      {
+        title: "Push Workflow",
+        href: "../../commands/push/workflow",
+        description: "Review actual remote operations.",
+      },
+    ]}
+  />
+</Section>

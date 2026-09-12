@@ -4,20 +4,52 @@ description: "Pahami pipeline progress, artifacts, Git references, dan remote re
 sidebar_position: 8
 sidebar_key: custy-run-output
 ---
-import {CommandHero, CommandOutput, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Command Output" description="Gunakan output untuk menemukan stage terakhir dan observable effects." category="Pipeline" status="Review Required" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Profiles",href:"./profiles"},{label:"Safety",href:"./safety"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import {
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Command Output"
+  description="Gunakan output untuk menemukan stage terakhir dan observable effects."
+  category="Pipeline"
+  status="Review Required"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOutput outputs={[
- {title:"Successful Pipeline",output:`Repository validation completed
+<CommandOutput
+  outputs={[
+    {
+      title: "Successful Pipeline",
+      output: `Repository validation completed
 Version and artifacts prepared
 Changelog generated
 Commit and tag created
-Remote synchronization completed`},{title:"Dry Run",output:`Dry-run: create commit
+Remote synchronization completed`,
+    },
+    {
+      title: "Dry Run",
+      output: `Dry-run: create commit
 Dry-run: create tag
-Dry-run: push HEAD and tag`},
-]} />
-<Section title="Verify Repository State">Periksa files, Git index/history, local tags, dan setiap remote sesuai profile.</Section>
-<InfoBox variant="tip" title="Use Profile-Specific Guides">Output aktual bergantung pada profile; gunakan Dev, Release, atau Full guide untuk boundaries yang tepat.</InfoBox>
+Dry-run: push HEAD and tag`,
+    },
+  ]}
+/>
+<Section title="Verify Repository State">
+  Periksa files, Git index/history, local tags, dan setiap remote sesuai profile.
+</Section>
+<InfoBox variant="tip" title="Use Profile-Specific Guides">
+  Output aktual bergantung pada profile; gunakan Dev, Release, atau Full guide untuk
+  boundaries yang tepat.
+</InfoBox>

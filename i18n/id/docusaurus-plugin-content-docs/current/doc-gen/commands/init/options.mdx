@@ -6,13 +6,26 @@ sidebar_key: doc-gen-init
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen init" title="Opsi" description="Nilai CLI mengungguli project configuration, lalu internal default." category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen init"
+  title="Opsi"
+  description="Nilai CLI mengungguli project configuration, lalu internal default."
+  category="Inisialisasi"
+  status="Direkomendasikan"
+  syntax="doc-gen init [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Flag / nilai | Default | Efek |
-| --- | --- | --- |
-| `--mode, -m` | `all` | Pilih `all` atau `config`. Saat ini keduanya membuat konfigurasi proyek; `all` adalah mode gabungan bawaan. |
-| `--force/--no-force, -f/-F` | false | Timpa file konfigurasi yang sudah ada. |
-| `--ask, -a` | false | Minta konfirmasi sebelum mengganti file konfigurasi yang sudah ada. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Pratinjau tanpa menulis perubahan. |
+| Flag / nilai                      | Default | Efek                                                                                                        |
+| --------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------- |
+| `--mode, -m`                      | `all`   | Pilih `all` atau `config`. Saat ini keduanya membuat konfigurasi proyek; `all` adalah mode gabungan bawaan. |
+| `--force/--no-force, -f/-F`       | false   | Timpa file konfigurasi yang sudah ada.                                                                      |
+| `--ask, -a`                       | false   | Minta konfirmasi sebelum mengganti file konfigurasi yang sudah ada.                                         |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false   | Pratinjau tanpa menulis perubahan.                                                                          |

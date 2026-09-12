@@ -6,13 +6,25 @@ sidebar_key: doc-gen-structure-print-troubleshooting
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure print" title="Troubleshooting" description="Troubleshooting" category="Project Structure" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure print"
+  title="Troubleshooting"
+  description="Troubleshooting"
+  category="Project Structure"
+  status="Read Only"
+  syntax="doc-gen structure print [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Symptom | Likely cause | Solution |
-| --- | --- | --- |
-| Output is too large. | Depth/files/profile are broad. | Use --max-depth, --hide-files, or minimal profile. |
-| Target missing. | Target path is wrong. | Verify it and retry. |
-| Expected files omitted. | Ignore/collapse rules filtered them. | Review effective configuration. |
-
+| Symptom                 | Likely cause                         | Solution                                           |
+| ----------------------- | ------------------------------------ | -------------------------------------------------- |
+| Output is too large.    | Depth/files/profile are broad.       | Use --max-depth, --hide-files, or minimal profile. |
+| Target missing.         | Target path is wrong.                | Verify it and retry.                               |
+| Expected files omitted. | Ignore/collapse rules filtered them. | Review effective configuration.                    |

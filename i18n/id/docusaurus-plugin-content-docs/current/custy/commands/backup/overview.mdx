@@ -6,38 +6,41 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Backup Template Files"
-    description="Buat backup copy dari commit dan tag message templates Custy sebelum mengubahnya."
-    category="Backup"
-    status="Direkomendasikan"
-    syntax="custy backup"
-    tags={["backup", "templates", "workflow"]}
-    links={[
-        {label: "Requirements", href: "./requirements"},
-        {label: "Syntax", href: "./syntax"},
-        {label: "Backup Files", href: "./backup-files"},
-        {label: "User Journey", href: "../../user-guide/managing-backups"},
-    ]}
+  command="custy backup"
+  title="Backup Template Files"
+  description="Buat backup copy dari commit dan tag message templates Custy sebelum mengubahnya."
+  category="Backup"
+  status="Direkomendasikan"
+  syntax="custy backup"
+  tags={["backup", "templates", "workflow"]}
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Backup Files", href: "./backup-files" },
+    { label: "User Journey", href: "../../user-guide/managing-backups" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Kategori", value: "Backup"},
-        {label: "Subcommands", value: "commit, tag, all"},
-        {label: "Mengubah Repository", value: "Tidak mengubah riwayat Git"},
-        {label: "Direkomendasikan", value: "Sebelum mengedit templates atau menyiapkan release."},
-    ]}
+  items={[
+    { label: "Kategori", value: "Backup" },
+    { label: "Subcommands", value: "commit, tag, all" },
+    { label: "Mengubah Repository", value: "Tidak mengubah riwayat Git" },
+    {
+      label: "Direkomendasikan",
+      value: "Sebelum mengedit templates atau menyiapkan release.",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -60,24 +63,24 @@ memberikan recovery point jika perubahan perlu dibatalkan.
 <Section title="Subcommands yang Tersedia">
 
 <FeatureGrid
-    title="Operasi Backup"
-    items={[
-        {
-            title: "Commit",
-            icon: <Icon name="copy" />,
-            children: <>Backup commit message template yang dikonfigurasi.</>,
-        },
-        {
-            title: "Tag",
-            icon: <Icon name="release" />,
-            children: <>Backup tag message template yang dikonfigurasi.</>,
-        },
-        {
-            title: "All",
-            icon: <Icon name="directory" />,
-            children: <>Backup commit dan tag message templates dalam satu operasi.</>,
-        },
-    ]}
+  title="Operasi Backup"
+  items={[
+    {
+      title: "Commit",
+      icon: <Icon name="copy" />,
+      children: <>Backup commit message template yang dikonfigurasi.</>,
+    },
+    {
+      title: "Tag",
+      icon: <Icon name="release" />,
+      children: <>Backup tag message template yang dikonfigurasi.</>,
+    },
+    {
+      title: "All",
+      icon: <Icon name="directory" />,
+      children: <>Backup commit dan tag message templates dalam satu operasi.</>,
+    },
+  ]}
 />
 
 </Section>
@@ -126,9 +129,22 @@ perubahan template.
 ---
 
 <RelatedCommands
-    commands={[
-        {name: "init", description: "Buat template files yang nantinya dapat di-backup.", href: "../init/overview"},
-        {name: "cleanup", description: "Hapus backup files lama saat tidak lagi diperlukan.", href: "../cleanup/overview"},
-        {name: "run", description: "Workflow commands dapat menggunakan template yang sudah di-backup selama release operations.", href: "../run/overview"},
-    ]}
+  commands={[
+    {
+      name: "init",
+      description: "Buat template files yang nantinya dapat di-backup.",
+      href: "../init/overview",
+    },
+    {
+      name: "cleanup",
+      description: "Hapus backup files lama saat tidak lagi diperlukan.",
+      href: "../cleanup/overview",
+    },
+    {
+      name: "run",
+      description:
+        "Workflow commands dapat menggunakan template yang sudah di-backup selama release operations.",
+      href: "../run/overview",
+    },
+  ]}
 />

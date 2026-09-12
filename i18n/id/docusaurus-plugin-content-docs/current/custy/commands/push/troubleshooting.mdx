@@ -4,34 +4,89 @@ description: "Atasi missing remotes, authentication failures, rejected pushes, d
 sidebar_position: 9
 sidebar_key: custy-push-troubleshooting
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Push Troubleshooting" description="Diagnosa destination resolution, credentials, rejection, backup, dan tag push." category="Git Operations" status="Panduan Dukungan" syntax="custy push [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Requirements",href:"./requirements"},{label:"Remotes",href:"./remotes"},{label:"FAQ",href:"./faq"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy push"
+  title="Push Troubleshooting"
+  description="Diagnosa destination resolution, credentials, rejection, backup, dan tag push."
+  category="Git Operations"
+  status="Panduan Dukungan"
+  syntax="custy push [OPTIONS]"
+  links={[
+    { label: "Pusat Pemecahan Masalah", href: "../../troubleshooting/overview" },
+    { label: "Requirements", href: "./requirements" },
+    { label: "Remotes", href: "./remotes" },
+    { label: "FAQ", href: "./faq" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="danger" title="Do Not Force-Push by Default">Cari penyebab rejection terlebih dahulu. Force push dapat menimpa remote history.</InfoBox>
+<InfoBox variant="danger" title="Do Not Force-Push by Default">
+  Cari penyebab rejection terlebih dahulu. Force push dapat menimpa remote history.
+</InfoBox>
 
 ## Main Remote yang Valid Tidak Ditemukan
-<Section compact>Periksa `git remote -v`, project configuration, remote URL, dan interactive resolution.</Section>
+
+<Section compact>
+  Periksa `git remote -v`, project configuration, remote URL, dan interactive
+  resolution.
+</Section>
 
 ## Authentication Gagal
-<Section compact>Jalankan `custy configure credentials status`, lalu uji remote melalui Git atau `custy configure credentials test --remote origin`. Periksa SSH key, credential-manager state, mounted external file, token environment variable, PAT scope, account, dan permission tanpa menaruh token value di project configuration.</Section>
+
+<Section compact>
+  Jalankan `custy configure credentials status`, lalu uji remote melalui Git atau `custy
+  configure credentials test --remote origin`. Periksa SSH key, credential-manager
+  state, mounted external file, token environment variable, PAT scope, account, dan
+  permission tanpa menaruh token value di project configuration.
+</Section>
 
 ## Git Terlihat Freeze Setelah Push Dimulai
-<Section compact>Saat tidak ada managed atau native credential yang berhasil dan `interactive_fallback = true`, Git menunggu terminal input. Versi Custy saat ini menonaktifkan Rich rendering pada hidden direct-command pipeline, menghentikan sementara visible Run progress, melepaskan captured streams, dan menjelaskan bahwa HTTPS `Password` prompt memerlukan PAT. Jika `custy run push` bekerja tetapi `custy push` masih kehilangan prompt, rebuild atau pull image yang memiliki hidden-progress fix. Menekan Enter dua kali mengirim empty credentials.</Section>
+
+<Section compact>
+  Saat tidak ada managed atau native credential yang berhasil dan `interactive_fallback
+  = true`, Git menunggu terminal input. Versi Custy saat ini menonaktifkan Rich
+  rendering pada hidden direct-command pipeline, menghentikan sementara visible Run
+  progress, melepaskan captured streams, dan menjelaskan bahwa HTTPS `Password` prompt
+  memerlukan PAT. Jika `custy run push` bekerja tetapi `custy push` masih kehilangan
+  prompt, rebuild atau pull image yang memiliki hidden-progress fix. Menekan Enter dua
+  kali mengirim empty credentials.
+</Section>
 
 ## Non-Interactive Push Berhenti dan Tidak Menampilkan Prompt
-<Section compact>Ini mencegah unattended job hang. Pertahankan `fail_non_interactive = true` dan berikan configured file atau environment source. Dry-run tidak membaca token atau menghubungi remote.</Section>
+
+<Section compact>
+  Ini mencegah unattended job hang. Pertahankan `fail_non_interactive = true` dan
+  berikan configured file atau environment source. Dry-run tidak membaca token atau
+  menghubungi remote.
+</Section>
 
 ## Push Ditolak
-<Section compact>Remote mungkin memiliki commit baru atau branch protection. Fetch, tinjau divergence, dan integrasikan perubahan secara aman.</Section>
+
+<Section compact>
+  Remote mungkin memiliki commit baru atau branch protection. Fetch, tinjau divergence,
+  dan integrasikan perubahan secara aman.
+</Section>
 
 ## Backup Synchronization Dilewati
-<Section compact>Pastikan `--sync-backup` aktif dan eligible backup remote dapat di-resolve.</Section>
+
+<Section compact>
+  Pastikan `--sync-backup` aktif dan eligible backup remote dapat di-resolve.
+</Section>
 
 ## Tag Tidak Ikut Dipush
-<Section compact>Periksa exact tag, `--skip-tag`, local tag existence, dan resolved destination.</Section>
+
+<Section compact>
+  Periksa exact tag, `--skip-tag`, local tag existence, dan resolved destination.
+</Section>
 
 ## --remote Tidak Memilih Destination
-<Section compact>Periksa precedence. Explicit `--remote` memilih satu destination, `all_remote = true` memilih semua configured groups, dan selain itu `tool.custy.git.push_to` memilih main, backup, atau all. Backup targets masih dapat dilewati pada non-critical branches.</Section>
+
+<Section compact>
+  Periksa precedence. Explicit `--remote` memilih satu destination, `all_remote = true`
+  memilih semua configured groups, dan selain itu `tool.custy.git.push_to` memilih main,
+  backup, atau all. Backup targets masih dapat dilewati pada non-critical branches.
+</Section>

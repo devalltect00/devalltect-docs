@@ -4,24 +4,90 @@ description: "Contoh umum sinkronisasi versi proyek."
 sidebar_position: 8
 sidebar_key: custy-version
 ---
-import {CommandHero, CommandExample, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Examples" description="Jalankan Version Update dengan strategy dan override yang berbeda." category="Versioning" status="Practical Guide" syntax="custy version update" links={[
-    {label: "Workflow", href: "./workflow"}, {label: "Output", href: "./output"}, {label: "Troubleshooting", href: "./troubleshooting"},
-]} />
+import {
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Examples"
+  description="Jalankan Version Update dengan strategy dan override yang berbeda."
+  category="Versioning"
+  status="Practical Guide"
+  syntax="custy version update"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Output", href: "./output" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandExample examples={[
-    {title: "Gunakan Project Defaults", description: "Gunakan strategy dan bump dari configuration.", command: `custy version update`, result: "Membentuk dan menyinkronkan versi berikutnya."},
-    {title: "SemVer", description: "Pilih SemVer.", command: `custy version update --strategy semver`, result: "Membentuk versi menggunakan SemVer."},
-    {title: "PEP 440", description: "Pilih PEP 440.", command: `custy version update --strategy pep440`, result: "Membentuk versi Python-compatible."},
-    {title: "Minor Bump", description: "Override bump level.", command: `custy version update --bump minor`, result: "Menaikkan komponen minor."},
-    {title: "Explicit Version", description: "Gunakan versi tertentu.", command: `custy version update --tag v2.5.0`, result: "Menyinkronkan versi v2.5.0."},
-    {title: "Beta Pre-release", description: "Buat pre-release beta.", command: `custy version update --pre-release beta`, result: "Membentuk versi beta."},
-    {title: "Development Release", description: "Buat development release.", command: `custy version update --dev-release`, result: "Membentuk development version."},
-    {title: "Dry Run", description: "Pratinjau pembaruan.", command: `custy --dry-run version update`, result: "Tidak menulis file."},
-    {title: "Debug", description: "Aktifkan diagnostik.", command: `custy --debug version update`, result: "Menampilkan detail proses tambahan."},
-]} />
+<CommandExample
+  examples={[
+    {
+      title: "Gunakan Project Defaults",
+      description: "Gunakan strategy dan bump dari configuration.",
+      command: `custy version update`,
+      result: "Membentuk dan menyinkronkan versi berikutnya.",
+    },
+    {
+      title: "SemVer",
+      description: "Pilih SemVer.",
+      command: `custy version update --strategy semver`,
+      result: "Membentuk versi menggunakan SemVer.",
+    },
+    {
+      title: "PEP 440",
+      description: "Pilih PEP 440.",
+      command: `custy version update --strategy pep440`,
+      result: "Membentuk versi Python-compatible.",
+    },
+    {
+      title: "Minor Bump",
+      description: "Override bump level.",
+      command: `custy version update --bump minor`,
+      result: "Menaikkan komponen minor.",
+    },
+    {
+      title: "Explicit Version",
+      description: "Gunakan versi tertentu.",
+      command: `custy version update --tag v2.5.0`,
+      result: "Menyinkronkan versi v2.5.0.",
+    },
+    {
+      title: "Beta Pre-release",
+      description: "Buat pre-release beta.",
+      command: `custy version update --pre-release beta`,
+      result: "Membentuk versi beta.",
+    },
+    {
+      title: "Development Release",
+      description: "Buat development release.",
+      command: `custy version update --dev-release`,
+      result: "Membentuk development version.",
+    },
+    {
+      title: "Dry Run",
+      description: "Pratinjau pembaruan.",
+      command: `custy --dry-run version update`,
+      result: "Tidak menulis file.",
+    },
+    {
+      title: "Debug",
+      description: "Aktifkan diagnostik.",
+      command: `custy --debug version update`,
+      result: "Menampilkan detail proses tambahan.",
+    },
+  ]}
+/>
 
-<InfoBox variant="tip" title="Gunakan Explicit Tag dengan Sengaja">`--tag` melewati pembentukan versi berbasis strategy. Pastikan formatnya cocok dengan release workflow proyek.</InfoBox>
+<InfoBox variant="tip" title="Gunakan Explicit Tag dengan Sengaja">
+  `--tag` melewati pembentukan versi berbasis strategy. Pastikan formatnya cocok dengan
+  release workflow proyek.
+</InfoBox>

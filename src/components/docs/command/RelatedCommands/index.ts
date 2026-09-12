@@ -1,13 +1,9 @@
 export { default } from "./RelatedCommands";
 
-export type {
-    RelatedCommandItem,
-    RelatedCommandsProps,
-} from "./types";
-
+export type { RelatedCommandItem, RelatedCommandsProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.RelatedCommands
     commands={[
         {

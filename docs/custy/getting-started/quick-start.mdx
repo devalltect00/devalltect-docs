@@ -16,44 +16,40 @@ keywords:
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Quick Start"
-    description="Prepare an existing repository with Custy, review generated resources, validate readiness, and preview a pipeline."
-    category="Getting Started"
-    status="Recommended"
-    syntax="custy init && custy validate"
-    tags={[
-        "initialize",
-        "validate",
-        "dry run",
-    ]}
-    links={[
-        {label: "Before You Begin", href: "#before-you-begin"},
-        {label: "Initialize", href: "#initialize-custy"},
-        {label: "Preview", href: "#preview-a-pipeline"},
-    ]}
+  command="custy init"
+  title="Quick Start"
+  description="Prepare an existing repository with Custy, review generated resources, validate readiness, and preview a pipeline."
+  category="Getting Started"
+  status="Recommended"
+  syntax="custy init && custy validate"
+  tags={["initialize", "validate", "dry run"]}
+  links={[
+    { label: "Before You Begin", href: "#before-you-begin" },
+    { label: "Initialize", href: "#initialize-custy" },
+    { label: "Preview", href: "#preview-a-pipeline" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Starting Point", value: "Existing repository", icon: "git"},
-        {label: "First Write", value: "Project resources", icon: "file"},
-        {label: "Readiness Check", value: "custy validate", icon: "success"},
-        {label: "First Pipeline Action", value: "Dry-run preview", icon: "play"},
-    ]}
+  items={[
+    { label: "Starting Point", value: "Existing repository", icon: "git" },
+    { label: "First Write", value: "Project resources", icon: "file" },
+    { label: "Readiness Check", value: "custy validate", icon: "success" },
+    { label: "First Pipeline Action", value: "Dry-run preview", icon: "play" },
+  ]}
 />
 
 ## Overview
@@ -80,24 +76,36 @@ you begin.
 >
 
 <CommandChecklist
-    items={[
-        {
-            title: "Custy is installed",
-            description: <><code>custy --version</code> resolves from the intended Python environment or container.</>,
-        },
-        {
-            title: "The project is under Git",
-            description: <><code>git status</code> reports the repository and branch you intend to manage.</>,
-        },
-        {
-            title: "Important work is recoverable",
-            description: "Commit, stash, or back up work that should not be mixed with onboarding changes.",
-        },
-        {
-            title: "You understand the configured remote",
-            description: "A later pipeline can push, so verify remote names and destinations before normal execution.",
-        },
-    ]}
+  items={[
+    {
+      title: "Custy is installed",
+      description: (
+        <>
+          <code>custy --version</code> resolves from the intended Python environment or
+          container.
+        </>
+      ),
+    },
+    {
+      title: "The project is under Git",
+      description: (
+        <>
+          <code>git status</code> reports the repository and branch you intend to
+          manage.
+        </>
+      ),
+    },
+    {
+      title: "Important work is recoverable",
+      description:
+        "Commit, stash, or back up work that should not be mixed with onboarding changes.",
+    },
+    {
+      title: "You understand the configured remote",
+      description:
+        "A later pipeline can push, so verify remote names and destinations before normal execution.",
+    },
+  ]}
 />
 
 <Terminal title="Confirm the project" language="bash">
@@ -133,35 +141,49 @@ selected. If an examples directory already exists, Custy still adds missing
 nested packaged examples without replacing existing example files.
 
 <FeatureGrid
-    title="Review These Resources"
-    items={[
-        {
-            title: "Configuration",
-            icon: <Icon name="configuration" />,
-            children: <>Review <code>.config/custy/config.toml</code>. Set the changelog repository browser URL only if comparison links are needed, and verify every configured Git remote name.</>,
-        },
-        {
-            title: "Message Templates",
-            icon: <Icon name="file" />,
-            children: "Check the generated commit and tag message templates before a Git operation uses them.",
-        },
-        {
-            title: "Changelog Template",
-            icon: <Icon name="release" />,
-            children: "Review the changelog template before generating release notes.",
-        },
-        {
-            title: "Version File",
-            icon: <Icon name="project" />,
-            children: <>Confirm that the generated or configured version-file path matches your project layout.</>,
-        },
-    ]}
+  title="Review These Resources"
+  items={[
+    {
+      title: "Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Review <code>.config/custy/config.toml</code>. Set the changelog repository
+          browser URL only if comparison links are needed, and verify every configured
+          Git remote name.
+        </>
+      ),
+    },
+    {
+      title: "Message Templates",
+      icon: <Icon name="file" />,
+      children:
+        "Check the generated commit and tag message templates before a Git operation uses them.",
+    },
+    {
+      title: "Changelog Template",
+      icon: <Icon name="release" />,
+      children: "Review the changelog template before generating release notes.",
+    },
+    {
+      title: "Version File",
+      icon: <Icon name="project" />,
+      children: (
+        <>
+          Confirm that the generated or configured version-file path matches your
+          project layout.
+        </>
+      ),
+    },
+  ]}
 />
 
 <Terminal title="Review repository links and remotes" language="bash">
 
 {`git remote -v
+
 # Edit .config/custy/config.toml, then validate it.
+
 custy validate`}
 
 </Terminal>
@@ -242,13 +264,35 @@ destination described in the Dev profile documentation.
 >
 
 <WorkflowTimeline
-    items={[
-        {title: "Confirm repository", description: "Verify the current directory, branch, working tree, and remotes.", status: "completed"},
-        {title: "Initialize resources", description: "Generate configuration, templates, examples, and version resources.", status: "completed"},
-        {title: "Review generated files", description: "Keep, customize, or deliberately remove resources before continuing.", status: "completed"},
-        {title: "Validate readiness", description: "Resolve failed checks before pipeline execution.", status: "completed"},
-        {title: "Preview Dev", description: "Inspect the dry-run output and documented side effects.", status: "current"},
-    ]}
+  items={[
+    {
+      title: "Confirm repository",
+      description: "Verify the current directory, branch, working tree, and remotes.",
+      status: "completed",
+    },
+    {
+      title: "Initialize resources",
+      description:
+        "Generate configuration, templates, examples, and version resources.",
+      status: "completed",
+    },
+    {
+      title: "Review generated files",
+      description:
+        "Keep, customize, or deliberately remove resources before continuing.",
+      status: "completed",
+    },
+    {
+      title: "Validate readiness",
+      description: "Resolve failed checks before pipeline execution.",
+      status: "completed",
+    },
+    {
+      title: "Preview Dev",
+      description: "Inspect the dry-run output and documented side effects.",
+      status: "current",
+    },
+  ]}
 />
 
 </Section>
@@ -260,13 +304,34 @@ destination described in the Dev profile documentation.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Installation", href: "./installation", description: "Choose private GitLab, source, artifact, Git, or Docker installation."},
-        {title: "First Workflow", href: "./first-workflow", description: "Understand the Dev profile before normal execution."},
-        {title: "custy init", href: "../commands/init/overview", description: "Review initialization modes and generated files."},
-        {title: "custy validate", href: "../commands/validate/overview", description: "Understand individual readiness checks."},
-        {title: "custy run dev", href: "../commands/run/dev/overview", description: "Review the exact registered development profile."},
-    ]}
+  commands={[
+    {
+      title: "Installation",
+      href: "./installation",
+      description:
+        "Choose private GitLab, source, artifact, Git, or Docker installation.",
+    },
+    {
+      title: "First Workflow",
+      href: "./first-workflow",
+      description: "Understand the Dev profile before normal execution.",
+    },
+    {
+      title: "custy init",
+      href: "../commands/init/overview",
+      description: "Review initialization modes and generated files.",
+    },
+    {
+      title: "custy validate",
+      href: "../commands/validate/overview",
+      description: "Understand individual readiness checks.",
+    },
+    {
+      title: "custy run dev",
+      href: "../commands/run/dev/overview",
+      description: "Review the exact registered development profile.",
+    },
+  ]}
 />
 
 </Section>

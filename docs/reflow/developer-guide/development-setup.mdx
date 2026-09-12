@@ -8,39 +8,43 @@ keywords: [Reflow editable install, Reflow pre-commit, Reflow contributor setup]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    RelatedCommands,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pip install -e &quot;.[dev]&quot;"
-    title="Development Setup"
-    description="Create an isolated editable Reflow environment with tests, formatting, linting, packaging, and Git-hook tools."
-    category="Developer Guide"
-    status="Python 3.14+"
-    syntax="create venv -> install dev tools -> enable hooks"
-    tags={["editable install", "pytest", "Ruff", "Black", "pre-commit"]}
-    links={[
-        {label: "Requirements", href: "#requirements"},
-        {label: "Install", href: "#manual-setup"},
-        {label: "Pre-Commit", href: "#pre-commit-workflow"},
-        {label: "Verify", href: "#verify-the-environment"},
-    ]}
+  command='python -m pip install -e ".[dev]"'
+  title="Development Setup"
+  description="Create an isolated editable Reflow environment with tests, formatting, linting, packaging, and Git-hook tools."
+  category="Developer Guide"
+  status="Python 3.14+"
+  syntax="create venv -> install dev tools -> enable hooks"
+  tags={["editable install", "pytest", "Ruff", "Black", "pre-commit"]}
+  links={[
+    { label: "Requirements", href: "#requirements" },
+    { label: "Install", href: "#manual-setup" },
+    { label: "Pre-Commit", href: "#pre-commit-workflow" },
+    { label: "Verify", href: "#verify-the-environment" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Required Python", value: "3.14 or newer", icon: "python"},
-        {label: "Install Mode", value: "Editable", icon: "package"},
-        {label: "Environment", value: "venv recommended", icon: "directory"},
-        {label: "Optional Runtime Tools", value: "Docker and GitHub CLI", icon: "command"},
-    ]}
+  items={[
+    { label: "Required Python", value: "3.14 or newer", icon: "python" },
+    { label: "Install Mode", value: "Editable", icon: "package" },
+    { label: "Environment", value: "venv recommended", icon: "directory" },
+    {
+      label: "Optional Runtime Tools",
+      value: "Docker and GitHub CLI",
+      icon: "command",
+    },
+  ]}
 />
 
 ## Goal
@@ -54,14 +58,42 @@ Black, pre-commit, packaging, and other contributor commands.
 <Section title="Requirements">
 
 <RequirementGrid
-    items={[
-        {title: "Python 3.14+", level: "required", children: "Reflow's package metadata and quality-tool targets require Python 3.14 or newer."},
-        {title: "Git", level: "required", children: "Repository and tag workflows require Git, while tests use isolated or mocked boundaries."},
-        {title: "pip and venv", level: "required", children: "Install into an isolated environment instead of the system interpreter."},
-        {title: "GNU Make", level: "optional", children: "Use the modular Make targets for repeatable setup and validation."},
-        {title: "Docker", level: "optional", children: "Required only for container and Compose validation."},
-        {title: "GitHub CLI", level: "optional", children: "Required only for live GitHub release discovery; ordinary tests mock this boundary."},
-    ]}
+  items={[
+    {
+      title: "Python 3.14+",
+      level: "required",
+      children:
+        "Reflow's package metadata and quality-tool targets require Python 3.14 or newer.",
+    },
+    {
+      title: "Git",
+      level: "required",
+      children:
+        "Repository and tag workflows require Git, while tests use isolated or mocked boundaries.",
+    },
+    {
+      title: "pip and venv",
+      level: "required",
+      children:
+        "Install into an isolated environment instead of the system interpreter.",
+    },
+    {
+      title: "GNU Make",
+      level: "optional",
+      children: "Use the modular Make targets for repeatable setup and validation.",
+    },
+    {
+      title: "Docker",
+      level: "optional",
+      children: "Required only for container and Compose validation.",
+    },
+    {
+      title: "GitHub CLI",
+      level: "optional",
+      children:
+        "Required only for live GitHub release discovery; ordinary tests mock this boundary.",
+    },
+  ]}
 />
 
 </Section>
@@ -75,9 +107,11 @@ Black, pre-commit, packaging, and other contributor commands.
 {`python -m venv venv
 
 # Windows PowerShell
+
 venv\\Scripts\\Activate.ps1
 
 # Linux or macOS
+
 # source venv/bin/activate
 
 python -m pip install --upgrade pip
@@ -104,6 +138,7 @@ make upgrade-pip
 make install-dev
 
 # Combined environment setup and Git-hook installation
+
 make setup`}
 
 </Terminal>
@@ -126,12 +161,15 @@ the policies in `pyproject.toml`.
 make pre-commit-install-hooks
 
 # Validate .pre-commit-config.yaml
+
 make pre-commit-validate
 
 # Check files currently staged for commit
+
 make pre-commit-run-staged
 
 # Check every tracked repository file
+
 make pre-commit-run`}
 
 </Terminal>
@@ -152,12 +190,25 @@ source files. Review the complete diff before keeping its output.
 <Section title="Verify the Environment">
 
 <CommandChecklist
-    items={[
-        {title: "Python is supported", description: "python --version reports Python 3.14 or newer."},
-        {title: "Editable Reflow resolves", description: "reflow --help and python -m app --help load from the selected environment."},
-        {title: "Quality tools resolve", description: "pytest, Ruff, Black, and pre-commit run through python -m."},
-        {title: "No live credentials are required", description: "Ordinary development tests use mocks and temporary repositories."},
-    ]}
+  items={[
+    {
+      title: "Python is supported",
+      description: "python --version reports Python 3.14 or newer.",
+    },
+    {
+      title: "Editable Reflow resolves",
+      description:
+        "reflow --help and python -m app --help load from the selected environment.",
+    },
+    {
+      title: "Quality tools resolve",
+      description: "pytest, Ruff, Black, and pre-commit run through python -m.",
+    },
+    {
+      title: "No live credentials are required",
+      description: "Ordinary development tests use mocks and temporary repositories.",
+    },
+  ]}
 />
 
 <Terminal title="Environment check" language="bash">
@@ -178,10 +229,26 @@ python -m pre_commit --version`}
 ---
 
 <RelatedCommands
-    commands={[
-        {title: "Testing", href: "./testing", description: "Run focused and complete Reflow validation."},
-        {title: "Contributing", href: "./contributing", description: "Follow Reflow's safety and review workflow."},
-        {title: "Getting Started", href: "../getting-started/overview", description: "Compare contributor setup with the end-user workflow."},
-        {title: "Dockerize", href: "../commands/dockerize/overview", description: "Review the supported container workflow."},
-    ]}
+  commands={[
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Run focused and complete Reflow validation.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Follow Reflow's safety and review workflow.",
+    },
+    {
+      title: "Getting Started",
+      href: "../getting-started/overview",
+      description: "Compare contributor setup with the end-user workflow.",
+    },
+    {
+      title: "Dockerize",
+      href: "../commands/dockerize/overview",
+      description: "Review the supported container workflow.",
+    },
+  ]}
 />

@@ -7,20 +7,65 @@ tags: [custy, configuration, git, remotes]
 keywords: [default_remote, main_remotes, backup_remotes]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.git]" title="Git Remotes" description="Tentukan satu fallback remote dan pisahkan authoritative destinations dari mirrors atau archives." category="Git Configuration" status="Active + Optional Key" syntax="[tool.custy.git]" tags={["origin", "primary", "backup"]} links={[{label: "Push Strategy", href: "./push-strategy"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Remotes", href: "../../commands/push/remotes"}]} />
+<CommandHero
+  command="[tool.custy.git]"
+  title="Git Remotes"
+  description="Tentukan satu fallback remote dan pisahkan authoritative destinations dari mirrors atau archives."
+  category="Git Configuration"
+  status="Active + Optional Key"
+  syntax="[tool.custy.git]"
+  tags={["origin", "primary", "backup"]}
+  links={[
+    { label: "Push Strategy", href: "./push-strategy" },
+    { label: "CLI Push", href: "../cli/push" },
+    { label: "Push Remotes", href: "../../commands/push/remotes" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Generated Remote Keys", value: "2", icon: "table"}, {label: "Optional Remote Key", value: "1", icon: "note"}, {label: "Primary Default", value: "origin", icon: "git"}, {label: "Backup Default", value: "Empty", icon: "security"}]} />
+<CommandMetadata
+  items={[
+    { label: "Generated Remote Keys", value: "2", icon: "table" },
+    { label: "Optional Remote Key", value: "1", icon: "note" },
+    { label: "Primary Default", value: "origin", icon: "git" },
+    { label: "Backup Default", value: "Empty", icon: "security" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "default_remote", type: "Remote name string", defaultValue: "origin", description: "Fallback ketika main-group push tidak memiliki main_remotes dan tidak ada explicit --remote. Gunakan nama dari git remote, bukan URL."},
-        {property: "main_remotes", type: "Remote name array", defaultValue: "[\"origin\"]", description: "Tujuan utama untuk group-aware push flows."},
-        {property: "backup_remotes", type: "Remote name array", defaultValue: "[]", description: "Tujuan mirror atau archive opsional untuk group-aware push flows. Didukung, tetapi dikomentari dalam generated file."},
-    ]}
+  items={[
+    {
+      property: "default_remote",
+      type: "Remote name string",
+      defaultValue: "origin",
+      description:
+        "Fallback ketika main-group push tidak memiliki main_remotes dan tidak ada explicit --remote. Gunakan nama dari git remote, bukan URL.",
+    },
+    {
+      property: "main_remotes",
+      type: "Remote name array",
+      defaultValue: '["origin"]',
+      description: "Tujuan utama untuk group-aware push flows.",
+    },
+    {
+      property: "backup_remotes",
+      type: "Remote name array",
+      defaultValue: "[]",
+      description:
+        "Tujuan mirror atau archive opsional untuk group-aware push flows. Didukung, tetapi dikomentari dalam generated file.",
+    },
+  ]}
 />
 
 <Terminal title="Multi-host setup" language="toml">
@@ -48,4 +93,24 @@ serta pastikan setiap configured name benar-benar tersedia di repository.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Push Strategy", href: "./push-strategy", description: "Pilih main, backup, atau all."}, {title: "CLI Push", href: "../cli/push", description: "Konfigurasikan all_remote dan tag behavior."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Tinjau command-level remote selection."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Push Strategy",
+        href: "./push-strategy",
+        description: "Pilih main, backup, atau all.",
+      },
+      {
+        title: "CLI Push",
+        href: "../cli/push",
+        description: "Konfigurasikan all_remote dan tag behavior.",
+      },
+      {
+        title: "Push Remotes",
+        href: "../../commands/push/remotes",
+        description: "Tinjau command-level remote selection.",
+      },
+    ]}
+  />
+</Section>

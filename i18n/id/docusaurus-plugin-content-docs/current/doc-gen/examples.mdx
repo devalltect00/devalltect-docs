@@ -5,21 +5,27 @@ sidebar_position: 5
 sidebar_key: doc-gen-examples
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="doc-gen"
-    title="Contoh Alur Kerja"
-    description="Periksa repositori, pratinjau dokumen hasil render, lalu tulis hanya output yang dipilih setelah ditinjau."
-    category="Contoh"
-    status="Periksa Sebelum Generate"
-    syntax="doc-gen structure COMMAND [TARGET] [OPTIONS]"
-    links={[
-        {label: "Perintah", href: "./commands/overview"},
-        {label: "Profil", href: "./concepts/profiles-and-smart-mode"},
-        {label: "Keamanan Dry-run", href: "./concepts/safety-and-dry-run"},
-        {label: "Konfigurasi", href: "./configuration/reference"},
-    ]}
+  command="doc-gen"
+  title="Contoh Alur Kerja"
+  description="Periksa repositori, pratinjau dokumen hasil render, lalu tulis hanya output yang dipilih setelah ditinjau."
+  category="Contoh"
+  status="Periksa Sebelum Generate"
+  syntax="doc-gen structure COMMAND [TARGET] [OPTIONS]"
+  links={[
+    { label: "Perintah", href: "./commands/overview" },
+    { label: "Profil", href: "./concepts/profiles-and-smart-mode" },
+    { label: "Keamanan Dry-run", href: "./concepts/safety-and-dry-run" },
+    { label: "Konfigurasi", href: "./configuration/reference" },
+  ]}
 />
 
 <Section title="Pemeriksaan read-only">
@@ -28,6 +34,7 @@ import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/sr
 doc-gen structure analyze . --smart
 
 # Tampilkan direktori saja
+
 doc-gen structure print . --hide-files`}</Terminal>
 
 </Section>
@@ -38,6 +45,7 @@ doc-gen structure print . --hide-files`}</Terminal>
 doc-gen structure generate . --profile detailed --output docs/project_structure.md --dry-run
 
 # Tulis output yang dipilih hanya setelah ditinjau
+
 doc-gen structure generate . --profile detailed --output docs/project_structure.md`}</Terminal>
 
 </Section>
@@ -51,9 +59,21 @@ kedua mode.
 </InfoBox>
 
 <RelatedCommands
-    commands={[
-        {title: "Contoh Generate", href: "./commands/structure/generate/examples", description: "Jelajahi profil, target, dan path output."},
-        {title: "Contoh Print", href: "./commands/structure/print/examples", description: "Atur visibilitas pohon terminal."},
-        {title: "Contoh Analyze", href: "./commands/structure/analyze/examples", description: "Periksa ringkasan repositori tanpa penulisan."},
-    ]}
+  commands={[
+    {
+      title: "Contoh Generate",
+      href: "./commands/structure/generate/examples",
+      description: "Jelajahi profil, target, dan path output.",
+    },
+    {
+      title: "Contoh Print",
+      href: "./commands/structure/print/examples",
+      description: "Atur visibilitas pohon terminal.",
+    },
+    {
+      title: "Contoh Analyze",
+      href: "./commands/structure/analyze/examples",
+      description: "Periksa ringkasan repositori tanpa penulisan.",
+    },
+  ]}
 />

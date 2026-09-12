@@ -5,50 +5,46 @@ sidebar_position: 5
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - configuration
+  - cleanup
+  - branch
+  - configuration
 
 keywords:
-    - custy cleanup branches configuration
-    - include_prefixes
-    - merge_status
+  - custy cleanup branches configuration
+  - include_prefixes
+  - merge_status
 ---
 
 import {
-    CommandHero,
-    Section,
-    InfoBox,
-    PropertyTable,
-    Terminal,
+  CommandHero,
+  Section,
+  InfoBox,
+  PropertyTable,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Configuration"
-    description="Customize how Custy selects Git branches for cleanup."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "configuration",
-        "cleanup",
-        "branch",
-    ]}
-    links={[
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Configuration"
+  description="Customize how Custy selects Git branches for cleanup."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["configuration", "cleanup", "branch"]}
+  links={[
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+  ]}
 />
 
 ## Overview
@@ -82,39 +78,36 @@ cleanup.
 >
 
 <PropertyTable
-    title="config.toml Cleanup Configuration Properties"
-    description="Configuration fields available under the Branch Cleanup section of your project's config.toml. The following configuration fields control how Custy selects branches eligible for cleanup."
-    items={[
-        {
-            property: "include_prefixes",
-            type: "string[]",
-            required: true,
-            description:
-                "List of branch name prefixes eligible for cleanup.",
-        },
-        {
-            property: "merge_status",
-            type: "merged | unmerged | all",
-            defaultValue: "merged",
-            required: false,
-            description:
-                "Restrict cleanup based on merge status.",
-        },
-        {
-            property: "max_age",
-            type: "duration",
-            required: false,
-            description:
-                "Only consider branches older than the specified relative age.",
-        },
-        {
-            property: "before",
-            type: "date",
-            required: false,
-            description:
-                "Only consider branches whose latest commit occurred before a specific date.",
-        },
-    ]}
+  title="config.toml Cleanup Configuration Properties"
+  description="Configuration fields available under the Branch Cleanup section of your project's config.toml. The following configuration fields control how Custy selects branches eligible for cleanup."
+  items={[
+    {
+      property: "include_prefixes",
+      type: "string[]",
+      required: true,
+      description: "List of branch name prefixes eligible for cleanup.",
+    },
+    {
+      property: "merge_status",
+      type: "merged | unmerged | all",
+      defaultValue: "merged",
+      required: false,
+      description: "Restrict cleanup based on merge status.",
+    },
+    {
+      property: "max_age",
+      type: "duration",
+      required: false,
+      description: "Only consider branches older than the specified relative age.",
+    },
+    {
+      property: "before",
+      type: "date",
+      required: false,
+      description:
+        "Only consider branches whose latest commit occurred before a specific date.",
+    },
+  ]}
 />
 
 </Section>
@@ -179,11 +172,11 @@ explicitly defines which branch prefixes may be cleaned.
 
 Merge status determines whether Custy considers:
 
-| Value | Description |
-|--------|-------------|
-| `merged` | Only merged branches. |
-| `unmerged` | Only unmerged branches. |
-| `all` | Ignore merge status completely. |
+| Value      | Description                     |
+| ---------- | ------------------------------- |
+| `merged`   | Only merged branches.           |
+| `unmerged` | Only unmerged branches.         |
+| `all`      | Ignore merge status completely. |
 
 Most projects use the default:
 

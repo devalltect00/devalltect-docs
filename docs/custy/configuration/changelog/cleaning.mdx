@@ -7,23 +7,84 @@ tags: [custy, changelog, cleaning]
 keywords: [remove_separators, remove_headers, remove_keywords]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog.cleaning]" title="Cleaning Rules" description="Remove project-specific template boilerplate before grouping and rendering without changing Git history." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.cleaning]" tags={["preprocessing", "metadata", "keywords"]} links={[{label: "Pending Commit", href: "./pending-commit"}, {label: "Releases", href: "./releases"}, {label: "Rendering", href: "./rendering"}]} />
+<CommandHero
+  command="[tool.custy.changelog.cleaning]"
+  title="Cleaning Rules"
+  description="Remove project-specific template boilerplate before grouping and rendering without changing Git history."
+  category="Changelog Configuration"
+  status="Active"
+  syntax="[tool.custy.changelog.cleaning]"
+  tags={["preprocessing", "metadata", "keywords"]}
+  links={[
+    { label: "Pending Commit", href: "./pending-commit" },
+    { label: "Releases", href: "./releases" },
+    { label: "Rendering", href: "./rendering" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Properties", value: "6", icon: "table"}, {label: "Stage", value: "Preprocessing", icon: "pipeline"}, {label: "Changes Git History", value: "No", icon: "security"}, {label: "Generated Separator", value: "---", icon: "file"}]} />
+<CommandMetadata
+  items={[
+    { label: "Properties", value: "6", icon: "table" },
+    { label: "Stage", value: "Preprocessing", icon: "pipeline" },
+    { label: "Changes Git History", value: "No", icon: "security" },
+    { label: "Generated Separator", value: "---", icon: "file" },
+  ]}
+/>
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "remove_separators", type: "String array", defaultValue: "[\"---\"]", description: "Remove matching Markdown separator lines."},
-        {property: "remove_headers", type: "Boolean", defaultValue: "false", description: "Remove Markdown heading lines to avoid duplicated structure."},
-        {property: "remove_hash_lines", type: "Boolean", defaultValue: "false", description: "Remove comment-style lines beginning with #."},
-        {property: "remove_release_summary", type: "Boolean", defaultValue: "false", description: "Remove generated release narrative while retaining actual change items."},
-        {property: "remove_metadata", type: "Boolean", defaultValue: "false", description: "Remove source metadata such as type, stability, workflow, or maintenance lines."},
-        {property: "remove_keywords", type: "String array", defaultValue: "3 generated phrases", description: "Remove lines containing configured case-sensitive project boilerplate."},
-    ]}
+  items={[
+    {
+      property: "remove_separators",
+      type: "String array",
+      defaultValue: '["---"]',
+      description: "Remove matching Markdown separator lines.",
+    },
+    {
+      property: "remove_headers",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Remove Markdown heading lines to avoid duplicated structure.",
+    },
+    {
+      property: "remove_hash_lines",
+      type: "Boolean",
+      defaultValue: "false",
+      description: "Remove comment-style lines beginning with #.",
+    },
+    {
+      property: "remove_release_summary",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Remove generated release narrative while retaining actual change items.",
+    },
+    {
+      property: "remove_metadata",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Remove source metadata such as type, stability, workflow, or maintenance lines.",
+    },
+    {
+      property: "remove_keywords",
+      type: "String array",
+      defaultValue: "3 generated phrases",
+      description:
+        "Remove lines containing configured case-sensitive project boilerplate.",
+    },
+  ]}
 />
 
 <Terminal title="Generated cleaning rules" language="toml">
@@ -49,4 +110,24 @@ produce valid Markdown that silently loses useful release context.
 
 </InfoBox>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Releases", href: "./releases", description: "Configure release extraction after cleaning."}, {title: "Rendering", href: "./rendering", description: "Control final visibility and layout."}, {title: "Troubleshooting", href: "../../commands/changelog/generate/troubleshooting", description: "Diagnose missing content."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Releases",
+        href: "./releases",
+        description: "Configure release extraction after cleaning.",
+      },
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Control final visibility and layout.",
+      },
+      {
+        title: "Troubleshooting",
+        href: "../../commands/changelog/generate/troubleshooting",
+        description: "Diagnose missing content.",
+      },
+    ]}
+  />
+</Section>

@@ -1,1 +1,8 @@
-{"label":"Pemecahan Masalah","position":10,"collapsed":false,"collapsible":true,"className":"category-custy-troubleshooting","link":{"type":"doc","id":"custy/troubleshooting/overview"}}
+{
+  "label": "Pemecahan Masalah",
+  "position": 10,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-troubleshooting",
+  "link": { "type": "doc", "id": "custy/troubleshooting/overview" }
+}

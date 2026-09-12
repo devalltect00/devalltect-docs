@@ -4,14 +4,46 @@ description: "Expected diagnostics dan current failure behavior untuk workflow b
 sidebar_position: 6
 sidebar_key: custy-workflow-branch-output
 ---
-import {CommandHero, CommandOutput, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Command Output" description="Kenali pipeline-construction failure saat ini." category="Workflow" status="Known Failure" syntax="custy workflow branch [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import {
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Command Output"
+  description="Kenali pipeline-construction failure saat ini."
+  category="Workflow"
+  status="Known Failure"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOutput outputs={[{title:"Representative Current Failure",description:"Likely result sebelum transition execution.",output:`Unable to build workflow pipeline
-Unknown or unregistered step: finalize`}]} />
+<CommandOutput
+  outputs={[
+    {
+      title: "Representative Current Failure",
+      description: "Likely result sebelum transition execution.",
+      output: `Unable to build workflow pipeline
+Unknown or unregistered step: finalize`,
+    },
+  ]}
+/>
 
-<Section title="Diagnostic Boundary">Failure terjadi saat pipeline construction; output belum membuktikan transition policy, enforcement, atau backup behavior.</Section>
-<InfoBox variant="warning" title="Current Likely Result">Exact wording dapat berubah, tetapi blocker tetap source registration mismatch sampai implementasi diperbaiki.</InfoBox>
+<Section title="Diagnostic Boundary">
+  Failure terjadi saat pipeline construction; output belum membuktikan transition
+  policy, enforcement, atau backup behavior.
+</Section>
+<InfoBox variant="warning" title="Current Likely Result">
+  Exact wording dapat berubah, tetapi blocker tetap source registration mismatch sampai
+  implementasi diperbaiki.
+</InfoBox>

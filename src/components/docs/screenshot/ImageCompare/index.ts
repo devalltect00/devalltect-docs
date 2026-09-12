@@ -6,16 +6,12 @@
 
 export { default } from "./ImageCompare";
 
-export type {
-    ImageCompareProps,
-    ImageCompareSide,
-} from "./types";
-
+export type { ImageCompareProps, ImageCompareSide } from "./types";
 
 /** Example Usage
- * 
+ *
  * # Before / After
- * 
+ *
 <Docs.ImageCompare
     title="Initialization Result"
     description="Project state before and after running custy init."
@@ -32,9 +28,9 @@ export type {
         caption: "Custy templates generated",
     }}
 />
- * 
+ *
  * # Windows vs Docker
- * 
+ *
 <Docs.ImageCompare
     title="Execution Environment"
     left={{

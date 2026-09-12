@@ -7,39 +7,59 @@ tags: [custy, configuration, init]
 keywords: [tool.custy.initialization, init force, init ask]
 ---
 
-import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="[tool.custy.initialization]"
-    title="Initialization"
-    description="Choose safe project defaults for preserving, prompting, or replacing generated resources."
-    category="Configuration"
-    status="Active"
-    syntax="custy init [--mode MODE] [--force | --ask]"
-    tags={["scaffolding", "overwrite", "prompts"]}
-    links={[
-        {label: "Init Overview", href: "../commands/init/overview"},
-        {label: "Configuration File", href: "./config-file"},
-        {label: "Generated Files", href: "../commands/init/generated-files"},
-    ]}
+  command="[tool.custy.initialization]"
+  title="Initialization"
+  description="Choose safe project defaults for preserving, prompting, or replacing generated resources."
+  category="Configuration"
+  status="Active"
+  syntax="custy init [--mode MODE] [--force | --ask]"
+  tags={["scaffolding", "overwrite", "prompts"]}
+  links={[
+    { label: "Init Overview", href: "../commands/init/overview" },
+    { label: "Configuration File", href: "./config-file" },
+    { label: "Generated Files", href: "../commands/init/generated-files" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Table", value: "tool.custy.initialization", icon: "configuration"},
-        {label: "Properties", value: "2", icon: "table"},
-        {label: "Default Mode", value: "Preserve", icon: "security"},
-        {label: "CLI Priority", value: "Higher", icon: "terminal"},
-    ]}
+  items={[
+    { label: "Table", value: "tool.custy.initialization", icon: "configuration" },
+    { label: "Properties", value: "2", icon: "table" },
+    { label: "Default Mode", value: "Preserve", icon: "security" },
+    { label: "CLI Priority", value: "Higher", icon: "terminal" },
+  ]}
 />
 
 ## Properties
 
 <PropertyTable
-    items={[
-        {property: "force", type: "Boolean", defaultValue: "false", description: "Overwrite existing selected files without confirmation, including files inside nested example directories. Directories are merged rather than replaced. An explicit CLI force choice wins."},
-        {property: "ask", type: "Boolean", defaultValue: "false", description: "Prompt before replacing supported individual generated files. Packaged example files use merge behavior without per-file prompts. Declining preserves the prompted file."},
-    ]}
+  items={[
+    {
+      property: "force",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Overwrite existing selected files without confirmation, including files inside nested example directories. Directories are merged rather than replaced. An explicit CLI force choice wins.",
+    },
+    {
+      property: "ask",
+      type: "Boolean",
+      defaultValue: "false",
+      description:
+        "Prompt before replacing supported individual generated files. Packaged example files use merge behavior without per-file prompts. Declining preserves the prompted file.",
+    },
+  ]}
 />
 
 <Terminal title="Safe defaults" language="toml">
@@ -78,11 +98,23 @@ the resolver uses `all`.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Init Syntax", href: "../commands/init/syntax", description: "Review modes, force, and ask invocation forms."},
-        {title: "Generated Files", href: "../commands/init/generated-files", description: "See which resources each mode can create."},
-        {title: "Configuration File", href: "./config-file", description: "Understand packaged and project-owned copies."},
-    ]}
+  commands={[
+    {
+      title: "Init Syntax",
+      href: "../commands/init/syntax",
+      description: "Review modes, force, and ask invocation forms.",
+    },
+    {
+      title: "Generated Files",
+      href: "../commands/init/generated-files",
+      description: "See which resources each mode can create.",
+    },
+    {
+      title: "Configuration File",
+      href: "./config-file",
+      description: "Understand packaged and project-owned copies.",
+    },
+  ]}
 />
 
 </Section>

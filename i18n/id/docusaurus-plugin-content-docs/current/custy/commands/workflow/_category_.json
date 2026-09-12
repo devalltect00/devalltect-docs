@@ -1,1 +1,6 @@
-{"label":"Workflow","position":11,"link":{"type":"doc","id":"custy/commands/workflow/overview"},"collapsed":true}
+{
+  "label": "Workflow",
+  "position": 11,
+  "link": { "type": "doc", "id": "custy/commands/workflow/overview" },
+  "collapsed": true
+}

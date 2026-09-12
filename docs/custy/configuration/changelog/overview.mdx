@@ -7,38 +7,170 @@ tags: [custy, configuration, changelog]
 keywords: [tool.custy.changelog, changelog configuration]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.changelog]" title="Changelog Overview" description="Control the complete transformation from Git history and pending content to rendered CHANGELOG.md." category="Configuration" status="Active Subsystem" syntax="[tool.custy.changelog.SUBTABLE]" tags={["collection", "processing", "rendering"]} links={[{label: "Core", href: "./core"}, {label: "Rendering", href: "./rendering"}, {label: "Generate Command", href: "../../commands/changelog/generate/overview"}]} />
+<CommandHero
+  command="[tool.custy.changelog]"
+  title="Changelog Overview"
+  description="Control the complete transformation from Git history and pending content to rendered CHANGELOG.md."
+  category="Configuration"
+  status="Active Subsystem"
+  syntax="[tool.custy.changelog.SUBTABLE]"
+  tags={["collection", "processing", "rendering"]}
+  links={[
+    { label: "Core", href: "./core" },
+    { label: "Rendering", href: "./rendering" },
+    { label: "Generate Command", href: "../../commands/changelog/generate/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Child Tables", value: "12", icon: "directory"}, {label: "Output", value: "CHANGELOG.md", icon: "file"}, {label: "Template", value: "Jinja2", icon: "configuration"}, {label: "Advanced Status", value: "Experimental", icon: "warning"}]} />
+<CommandMetadata
+  items={[
+    { label: "Child Tables", value: "12", icon: "directory" },
+    { label: "Output", value: "CHANGELOG.md", icon: "file" },
+    { label: "Template", value: "Jinja2", icon: "configuration" },
+    { label: "Advanced Status", value: "Experimental", icon: "warning" },
+  ]}
+/>
 
 ## Pipeline
 
 <WorkflowTimeline
-    items={[
-        {title: "Collect", description: "Apply core Git-commit eligibility rules.", status: "completed"},
-        {title: "Collect pending content", description: "Optionally add the configured message through PendingCommitProvider, then clean template-oriented text.", status: "completed"},
-        {title: "Build releases", description: "Extract release content and apply per-version overrides.", status: "current"},
-        {title: "Classify", description: "Apply breaking detection, type mapping, scope mapping, and grouping.", status: "pending"},
-        {title: "Render", description: "Build links and pass the resolved model to the project Jinja template.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Collect",
+      description: "Apply core Git-commit eligibility rules.",
+      status: "completed",
+    },
+    {
+      title: "Collect pending content",
+      description:
+        "Optionally add the configured message through PendingCommitProvider, then clean template-oriented text.",
+      status: "completed",
+    },
+    {
+      title: "Build releases",
+      description: "Extract release content and apply per-version overrides.",
+      status: "current",
+    },
+    {
+      title: "Classify",
+      description:
+        "Apply breaking detection, type mapping, scope mapping, and grouping.",
+      status: "pending",
+    },
+    {
+      title: "Render",
+      description:
+        "Build links and pass the resolved model to the project Jinja template.",
+      status: "pending",
+    },
+  ]}
 />
 
 <Section title="Configuration Areas">
 
 <FeatureGrid
-    items={[
-        {title: "Core", icon: <Icon name="git" />, children: <>Choose eligible commits in <a href="./core">changelog.core</a>.</>},
-        {title: "Pending Commit", icon: <Icon name="file" />, children: <>Include pending message content and review loaded-only generation and placement settings in <a href="./pending-commit">changelog.pending_commit</a>.</>},
-        {title: "Cleaning", icon: <Icon name="copy" />, children: <>Remove presentation-only boilerplate through <a href="./cleaning">changelog.cleaning</a>.</>},
-        {title: "Releases", icon: <Icon name="release" />, children: <>Extract summaries and customize individual versions through <a href="./releases">release and release_behavior</a>.</>},
-        {title: "Links", icon: <Icon name="network" />, children: <>Build repository comparison URLs through <a href="./links">changelog.links</a>.</>},
-        {title: "Rendering", icon: <Icon name="configuration" />, children: <>Control layout, visibility, formatting, sorting, and visual details through <a href="./rendering">changelog.render</a>.</>},
-        {title: "Breaking Changes", icon: <Icon name="warning" />, children: <>Configure keyword detection and labels in <a href="./breaking-changes">changelog.breaking</a>.</>},
-        {title: "Mappings", icon: <Icon name="table" />, children: <>Map scopes and commit types to reader-facing labels in <a href="./mappings">scope_map and type_map</a>.</>},
-        {title: "Advanced", icon: <Icon name="danger" />, children: <>Review loaded but not yet applied experimental switches in <a href="./advanced">changelog.advanced</a>.</>},
-    ]}
+  items={[
+    {
+      title: "Core",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Choose eligible commits in <a href="./core">changelog.core</a>.
+        </>
+      ),
+    },
+    {
+      title: "Pending Commit",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Include pending message content and review loaded-only generation and
+          placement settings in <a href="./pending-commit">changelog.pending_commit</a>.
+        </>
+      ),
+    },
+    {
+      title: "Cleaning",
+      icon: <Icon name="copy" />,
+      children: (
+        <>
+          Remove presentation-only boilerplate through{" "}
+          <a href="./cleaning">changelog.cleaning</a>.
+        </>
+      ),
+    },
+    {
+      title: "Releases",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Extract summaries and customize individual versions through{" "}
+          <a href="./releases">release and release_behavior</a>.
+        </>
+      ),
+    },
+    {
+      title: "Links",
+      icon: <Icon name="network" />,
+      children: (
+        <>
+          Build repository comparison URLs through <a href="./links">changelog.links</a>
+          .
+        </>
+      ),
+    },
+    {
+      title: "Rendering",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Control layout, visibility, formatting, sorting, and visual details through{" "}
+          <a href="./rendering">changelog.render</a>.
+        </>
+      ),
+    },
+    {
+      title: "Breaking Changes",
+      icon: <Icon name="warning" />,
+      children: (
+        <>
+          Configure keyword detection and labels in{" "}
+          <a href="./breaking-changes">changelog.breaking</a>.
+        </>
+      ),
+    },
+    {
+      title: "Mappings",
+      icon: <Icon name="table" />,
+      children: (
+        <>
+          Map scopes and commit types to reader-facing labels in{" "}
+          <a href="./mappings">scope_map and type_map</a>.
+        </>
+      ),
+    },
+    {
+      title: "Advanced",
+      icon: <Icon name="danger" />,
+      children: (
+        <>
+          Review loaded but not yet applied experimental switches in{" "}
+          <a href="./advanced">changelog.advanced</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -60,4 +192,25 @@ URL, title-only state, status, and promoted-from versions.
 
 </Section>
 
-<Section title="Continue"><RelatedCommands commands={[{title: "Core", href: "./core", description: "Start with commit eligibility."}, {title: "Rendering", href: "./rendering", description: "Review every presentation property."}, {title: "CLI Changelog", href: "../cli/changelog", description: "Configure force generation."}, {title: "Generate Configuration", href: "../../commands/changelog/generate/configuration", description: "Review command-focused configuration guidance."}]} /></Section>
+<Section title="Continue">
+  <RelatedCommands
+    commands={[
+      { title: "Core", href: "./core", description: "Start with commit eligibility." },
+      {
+        title: "Rendering",
+        href: "./rendering",
+        description: "Review every presentation property.",
+      },
+      {
+        title: "CLI Changelog",
+        href: "../cli/changelog",
+        description: "Configure force generation.",
+      },
+      {
+        title: "Generate Configuration",
+        href: "../../commands/changelog/generate/configuration",
+        description: "Review command-focused configuration guidance.",
+      },
+    ]}
+  />
+</Section>

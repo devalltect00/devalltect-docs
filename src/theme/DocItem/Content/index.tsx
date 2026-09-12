@@ -17,20 +17,16 @@ import type { Props } from "@theme/DocItem/Content";
 export default function DocItemContent({ children }: Props) {
   const { metadata } = useDoc();
   const freshnessData = usePluginData(
-    DOCUMENTATION_FRESHNESS_PLUGIN_NAME,
+    DOCUMENTATION_FRESHNESS_PLUGIN_NAME
   ) as DocumentationFreshnessPluginData;
   const project = PROJECTS.find(
-    ({ id }) => metadata.id === id || metadata.id.startsWith(`${id}/`),
+    ({ id }) => metadata.id === id || metadata.id.startsWith(`${id}/`)
   );
-  const freshness = project
-    ? freshnessData.projects[project.id]
-    : undefined;
+  const freshness = project ? freshnessData.projects[project.id] : undefined;
 
   return (
     <>
-      {project?.documentation &&
-      freshness &&
-      freshness.status !== "current" ? (
+      {project?.documentation && freshness && freshness.status !== "current" ? (
         <DocumentationVersionNotice
           projectName={project.name}
           documentation={project.documentation}

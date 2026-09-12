@@ -6,9 +6,22 @@ sidebar_key: doc-gen-structure-analyze
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure analyze" title="FAQ" description="FAQ" category="Project Structure" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure analyze"
+  title="FAQ"
+  description="FAQ"
+  category="Project Structure"
+  status="Read Only"
+  syntax="doc-gen structure analyze [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Does analyze generate a file?
 
@@ -21,4 +34,3 @@ No.
 ## Can project type be overridden?
 
 Yes, with --project-type.
-

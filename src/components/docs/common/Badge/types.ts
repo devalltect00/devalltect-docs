@@ -8,63 +8,58 @@ import { HTMLAttributes, ReactNode } from "react";
  * changing component usage.
  */
 export type BadgeVariant =
-    | "primary"
-    | "secondary"
-    | "success"
-    | "warning"
-    | "danger"
-    | "info"
-    | "neutral";
+  | "primary"
+  | "secondary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "info"
+  | "neutral";
 
 /**
  * Badge size.
  */
-export type BadgeSize =
-    | "sm"
-    | "md"
-    | "lg";
+export type BadgeSize = "sm" | "md" | "lg";
 
 /**
  * Documentation badge.
  */
-export interface BadgeProps
-    extends HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
+  /**
+   * Badge content.
+   */
+  children: ReactNode;
 
-    /**
-     * Badge content.
-     */
-    children: ReactNode;
+  /**
+   * Optional icon.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon.
-     */
-    icon?: ReactNode;
+  /**
+   * Badge style.
+   *
+   * @default "primary"
+   */
+  variant?: BadgeVariant;
 
-    /**
-     * Badge style.
-     *
-     * @default "primary"
-     */
-    variant?: BadgeVariant;
+  /**
+   * Badge size.
+   *
+   * @default "md"
+   */
+  size?: BadgeSize;
 
-    /**
-     * Badge size.
-     *
-     * @default "md"
-     */
-    size?: BadgeSize;
+  /**
+   * Render with outlined appearance.
+   *
+   * @default false
+   */
+  outlined?: boolean;
 
-    /**
-     * Render with outlined appearance.
-     *
-     * @default false
-     */
-    outlined?: boolean;
-
-    /**
-     * Rounded pill style.
-     *
-     * @default true
-     */
-    pill?: boolean;
+  /**
+   * Rounded pill style.
+   *
+   * @default true
+   */
+  pill?: boolean;
 }

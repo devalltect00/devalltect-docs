@@ -1,11 +1,11 @@
 {
-    "label": "Branch Cleanup",
-    "position": 3,
-    "collapsed": false,
-    "collapsible": true,
-    "className": "category-cleanup-branch",
-    "link": {
-        "type": "doc",
-        "id": "custy/commands/cleanup/branch/overview"
-    }
+  "label": "Branch Cleanup",
+  "position": 3,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-cleanup-branch",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/cleanup/branch/overview"
+  }
 }

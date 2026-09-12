@@ -4,28 +4,55 @@ description: "Cara Custy membentuk nomor versi melalui strategy yang berbeda."
 sidebar_position: 6
 sidebar_key: custy-version
 ---
-import {CommandHero, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Versioning Strategies" description="Pilih strategy yang sesuai dengan release workflow proyek." category="Versioning" status="Stable" syntax="custy version update" links={[
-    {label: "Configuration", href: "./configuration"}, {label: "Workflow", href: "./workflow"}, {label: "Examples", href: "./examples"},
-]} />
+import { CommandHero, Section, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Versioning Strategies"
+  description="Pilih strategy yang sesuai dengan release workflow proyek."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  links={[
+    { label: "Configuration", href: "./configuration" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 ## Ringkasan
 
 Strategy menentukan versi berikutnya. Setelah terbentuk, workflow sinkronisasi tetap sama untuk seluruh strategy.
 
-<Section title="Semantic Versioning (SemVer)">Cocok untuk aplikasi dan library umum. Contoh: `v1.4.2`, `v2.0.0-beta.1`, dan `v3.1.0+build.42`.</Section>
-<Section title="PEP 440">Format resmi Python packaging. Contoh: `1.4.2`, `2.0.0rc1`, `2.0.0.post1`, dan `2.0.0.dev1`.</Section>
-<Section title="Commitizen">Membentuk versi dari conventional commit history dan cocok untuk proyek yang sudah menggunakan Commitizen.</Section>
-<Section title="Date Strategy">Menggunakan tanggal release, misalnya `2026.07.09`.</Section>
-<Section title="Git Count Strategy">Menggunakan repository history untuk identifier yang terus meningkat, misalnya `v125`.</Section>
+<Section title="Semantic Versioning (SemVer)">
+  Cocok untuk aplikasi dan library umum. Contoh: `v1.4.2`, `v2.0.0-beta.1`, dan
+  `v3.1.0+build.42`.
+</Section>
+<Section title="PEP 440">
+  Format resmi Python packaging. Contoh: `1.4.2`, `2.0.0rc1`, `2.0.0.post1`, dan
+  `2.0.0.dev1`.
+</Section>
+<Section title="Commitizen">
+  Membentuk versi dari conventional commit history dan cocok untuk proyek yang sudah
+  menggunakan Commitizen.
+</Section>
+<Section title="Date Strategy">
+  Menggunakan tanggal release, misalnya `2026.07.09`.
+</Section>
+<Section title="Git Count Strategy">
+  Menggunakan repository history untuk identifier yang terus meningkat, misalnya `v125`.
+</Section>
 
-| Jenis proyek | Strategy yang disarankan |
-| --- | --- |
-| Aplikasi umum | SemVer |
-| Python package | PEP 440 |
-| Conventional Commits | Commitizen |
-| Calendar-based release | Date |
-| Continuous internal build | Git Count |
+| Jenis proyek              | Strategy yang disarankan |
+| ------------------------- | ------------------------ |
+| Aplikasi umum             | SemVer                   |
+| Python package            | PEP 440                  |
+| Conventional Commits      | Commitizen               |
+| Calendar-based release    | Date                     |
+| Continuous internal build | Git Count                |
 
-<InfoBox variant="note" title="Project Detection">Versi SemVer dapat dikonversi ke bentuk PEP 440 yang kompatibel saat Custy memperbarui file proyek Python.</InfoBox>
+<InfoBox variant="note" title="Project Detection">
+  Versi SemVer dapat dikonversi ke bentuk PEP 440 yang kompatibel saat Custy memperbarui
+  file proyek Python.
+</InfoBox>

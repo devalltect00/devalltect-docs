@@ -16,45 +16,49 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="docker build --target production -t custy-prod:latest ."
-    title="Run Custy with Docker"
-    description="Build Custy locally and run its self-contained CLI against a deliberately mounted project workspace."
-    category="Getting Started"
-    status="Release Image or Source Build"
-    syntax="docker [build|run|compose] [OPTIONS]"
-    tags={[
-        "local image",
-        "Docker Compose",
-        "workspace mount",
-    ]}
-    links={[
-        {label: "Requirements", href: "#requirements"},
-        {label: "Build Image", href: "#build-the-production-image"},
-        {label: "Published Images", href: "#pull-a-published-production-image"},
-        {label: "Run on a Project", href: "#run-custy-on-a-project"},
-        {label: "Make Helpers", href: "#optional-makefile-helpers"},
-    ]}
+  command="docker build --target production -t custy-prod:latest ."
+  title="Run Custy with Docker"
+  description="Build Custy locally and run its self-contained CLI against a deliberately mounted project workspace."
+  category="Getting Started"
+  status="Release Image or Source Build"
+  syntax="docker [build|run|compose] [OPTIONS]"
+  tags={["local image", "Docker Compose", "workspace mount"]}
+  links={[
+    { label: "Requirements", href: "#requirements" },
+    { label: "Build Image", href: "#build-the-production-image" },
+    { label: "Published Images", href: "#pull-a-published-production-image" },
+    { label: "Run on a Project", href: "#run-custy-on-a-project" },
+    { label: "Make Helpers", href: "#optional-makefile-helpers" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Base Image", value: "Python 3.14 slim", icon: "package"},
-        {label: "Included Tools", value: "pip, Git, Make, Micro, Nano, and Vim", icon: "requirement"},
-        {label: "Container Workspace", value: "/workspace", icon: "directory"},
-        {label: "Recommended Source", value: "Exact GHCR release tag or local build", icon: "docker"},
-    ]}
+  items={[
+    { label: "Base Image", value: "Python 3.14 slim", icon: "package" },
+    {
+      label: "Included Tools",
+      value: "pip, Git, Make, Micro, Nano, and Vim",
+      icon: "requirement",
+    },
+    { label: "Container Workspace", value: "/workspace", icon: "directory" },
+    {
+      label: "Recommended Source",
+      value: "Exact GHCR release tag or local build",
+      icon: "docker",
+    },
+  ]}
 />
 
 ## Overview
@@ -85,38 +89,44 @@ appropriate when validating unpublished changes.
 >
 
 <RequirementGrid
-    items={[
-        {
-            title: "Docker Engine",
-            level: "required",
-            children: "Install and start a Docker environment that can build and run Linux containers.",
-        },
-        {
-            title: "Custy Source Checkout",
-            level: "required",
-            children: "Build the image from the repository containing Custy's Dockerfile and package metadata.",
-        },
-        {
-            title: "Project Workspace",
-            level: "required",
-            children: "Mount the exact project root, including its .git directory when Git operations are required, at /workspace.",
-        },
-        {
-            title: "Docker Compose Plugin",
-            level: "optional",
-            children: "Install Compose only when using the repository's development or production services.",
-        },
-        {
-            title: "Make",
-            level: "optional",
-            children: "Use Make as a convenience wrapper around the repository's Docker and Compose commands.",
-        },
-        {
-            title: "Project Backup",
-            level: "recommended",
-            children: "Commit or back up important work before exposing a real project to mutating commands.",
-        },
-    ]}
+  items={[
+    {
+      title: "Docker Engine",
+      level: "required",
+      children:
+        "Install and start a Docker environment that can build and run Linux containers.",
+    },
+    {
+      title: "Custy Source Checkout",
+      level: "required",
+      children:
+        "Build the image from the repository containing Custy's Dockerfile and package metadata.",
+    },
+    {
+      title: "Project Workspace",
+      level: "required",
+      children:
+        "Mount the exact project root, including its .git directory when Git operations are required, at /workspace.",
+    },
+    {
+      title: "Docker Compose Plugin",
+      level: "optional",
+      children:
+        "Install Compose only when using the repository's development or production services.",
+    },
+    {
+      title: "Make",
+      level: "optional",
+      children:
+        "Use Make as a convenience wrapper around the repository's Docker and Compose commands.",
+    },
+    {
+      title: "Project Backup",
+      level: "recommended",
+      children:
+        "Commit or back up important work before exposing a real project to mutating commands.",
+    },
+  ]}
 />
 
 <InfoBox
@@ -140,29 +150,33 @@ Custy process uses the Git executable inside the image.
 >
 
 <FeatureGrid
-    title="Docker Build Targets"
-    items={[
-        {
-            title: "Shared Base",
-            icon: <Icon name="package" />,
-            children: "Python 3.14 slim, pip, Git, Make, Micro, Nano, Vim, Vi, the /workspace working directory, and the Custy source tree.",
-        },
-        {
-            title: "Production",
-            icon: <Icon name="release" />,
-            children: "A normal runtime package installation with custy as the container entrypoint.",
-        },
-        {
-            title: "Development",
-            icon: <Icon name="command" />,
-            children: "An editable installation with the optional development dependency group and the same interactive terminal editors.",
-        },
-        {
-            title: "Project Mount",
-            icon: <Icon name="directory" />,
-            children: "The host project mounted at /workspace becomes the real working tree that Custy reads and may modify.",
-        },
-    ]}
+  title="Docker Build Targets"
+  items={[
+    {
+      title: "Shared Base",
+      icon: <Icon name="package" />,
+      children:
+        "Python 3.14 slim, pip, Git, Make, Micro, Nano, Vim, Vi, the /workspace working directory, and the Custy source tree.",
+    },
+    {
+      title: "Production",
+      icon: <Icon name="release" />,
+      children:
+        "A normal runtime package installation with custy as the container entrypoint.",
+    },
+    {
+      title: "Development",
+      icon: <Icon name="command" />,
+      children:
+        "An editable installation with the optional development dependency group and the same interactive terminal editors.",
+    },
+    {
+      title: "Project Mount",
+      icon: <Icon name="directory" />,
+      children:
+        "The host project mounted at /workspace becomes the real working tree that Custy reads and may modify.",
+    },
+  ]}
 />
 
 </Section>
@@ -210,12 +224,12 @@ itself.
 Stable releases publish four coordinated GHCR tags. All version aliases retain
 Custy's conventional `v` prefix.
 
-| Tag form | Example | Behavior |
-| --- | --- | --- |
+| Tag form      | Example  | Behavior                                                                           |
+| ------------- | -------- | ---------------------------------------------------------------------------------- |
 | Exact release | `v2.1.1` | Immutable release selection and the recommended choice for CI or reproducible use. |
-| Minor alias | `v2.1` | Moves to the newest stable patch in the `2.1` line. |
-| Major alias | `v2` | Moves to the newest stable release in the `2` line. |
-| Latest alias | `latest` | Moves to the newest stable Custy release. |
+| Minor alias   | `v2.1`   | Moves to the newest stable patch in the `2.1` line.                                |
+| Major alias   | `v2`     | Moves to the newest stable release in the `2` line.                                |
+| Latest alias  | `latest` | Moves to the newest stable Custy release.                                          |
 
 <Terminal title="Pull a published Custy image" language="bash">
 
@@ -428,14 +442,17 @@ make d-build-prod
 make d-init
 
 # Use the Docker Compose services
+
 make c-build-prod
 
 # Create and inspect external credentials
+
 make d-credentials-set-github
 make d-credentials-status
 make d-credentials-test CUSTY_CREDENTIALS_REMOTE=origin
 
 # Opt in to a read-only credential mount for push
+
 make d-run-push CUSTY_CREDENTIALS_MOUNT=true`}
 
 </Terminal>
@@ -473,12 +490,28 @@ remote image and tag.
 >
 
 <RelatedCommands
-    commands={[
-        {title: "Python Installation", href: "./installation", description: "Install Custy natively from source, release assets, or Git."},
-        {title: "Quick Start", href: "./quick-start", description: "Initialize and validate the mounted project."},
-        {title: "custy init", href: "../commands/init/overview", description: "Understand generated files and overwrite behavior."},
-        {title: "custy run", href: "../commands/run/overview", description: "Review public profiles before containerized execution."},
-    ]}
+  commands={[
+    {
+      title: "Python Installation",
+      href: "./installation",
+      description: "Install Custy natively from source, release assets, or Git.",
+    },
+    {
+      title: "Quick Start",
+      href: "./quick-start",
+      description: "Initialize and validate the mounted project.",
+    },
+    {
+      title: "custy init",
+      href: "../commands/init/overview",
+      description: "Understand generated files and overwrite behavior.",
+    },
+    {
+      title: "custy run",
+      href: "../commands/run/overview",
+      description: "Review public profiles before containerized execution.",
+    },
+  ]}
 />
 
 </Section>

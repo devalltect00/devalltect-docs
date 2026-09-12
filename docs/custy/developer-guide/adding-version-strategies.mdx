@@ -8,38 +8,38 @@ keywords: [add Custy version strategy, TagStrategy, version tag generation]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/git_ops/tag_strategy/"
-    title="Adding Version Strategies"
-    description="Extend tag generation while preserving explicit-tag priority, typed CLI choices, and workflow integration."
-    category="Developer Guide"
-    status="Internal Extension"
-    syntax="strategy.get_next_tag() -> str"
-    tags={["TagStrategy", "StrategyChoices", "WorkflowEngine"]}
-    links={[
-        {label: "Built-in Strategies", href: "../commands/version/versioning-strategies"},
-        {label: "Version Configuration", href: "../configuration/cli/versioning"},
-        {label: "Testing", href: "./testing"},
-    ]}
+  command="app/core/git_ops/tag_strategy/"
+  title="Adding Version Strategies"
+  description="Extend tag generation while preserving explicit-tag priority, typed CLI choices, and workflow integration."
+  category="Developer Guide"
+  status="Internal Extension"
+  syntax="strategy.get_next_tag() -> str"
+  tags={["TagStrategy", "StrategyChoices", "WorkflowEngine"]}
+  links={[
+    { label: "Built-in Strategies", href: "../commands/version/versioning-strategies" },
+    { label: "Version Configuration", href: "../configuration/cli/versioning" },
+    { label: "Testing", href: "./testing" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Protocol", value: "TagStrategy", icon: "dependency"},
-        {label: "Required Method", value: "get_next_tag", icon: "command"},
-        {label: "Return Value", value: "Version-tag string", icon: "release"},
-        {label: "Current Strategies", value: "5", icon: "table"},
-    ]}
+  items={[
+    { label: "Protocol", value: "TagStrategy", icon: "dependency" },
+    { label: "Required Method", value: "get_next_tag", icon: "command" },
+    { label: "Return Value", value: "Version-tag string", icon: "release" },
+    { label: "Current Strategies", value: "5", icon: "table" },
+  ]}
 />
 
 ## Overview
@@ -61,13 +61,36 @@ examining the selected strategy. A new strategy must preserve this priority.
 <Section title="Current Strategy Responsibilities">
 
 <PropertyTable
-    items={[
-        {property: "SemverStrategy", type: "Git-aware", description: "Reads the latest tag and applies semantic bump, prerelease, and build metadata behavior."},
-        {property: "PEP440Strategy", type: "Git-aware", description: "Reads the latest tag and applies PEP 440 bump, pre, post, dev, local, and epoch behavior."},
-        {property: "CommitizenStrategy", type: "External tool", description: "Uses cz bump --dry-run to infer a bump and delegates final construction to SemverStrategy."},
-        {property: "DateStrategy", type: "Clock-based", description: "Returns the current date in vYYYY.MM.DD form by default."},
-        {property: "GitCountStrategy", type: "Repository count", description: "Returns v followed by the repository commit count."},
-    ]}
+  items={[
+    {
+      property: "SemverStrategy",
+      type: "Git-aware",
+      description:
+        "Reads the latest tag and applies semantic bump, prerelease, and build metadata behavior.",
+    },
+    {
+      property: "PEP440Strategy",
+      type: "Git-aware",
+      description:
+        "Reads the latest tag and applies PEP 440 bump, pre, post, dev, local, and epoch behavior.",
+    },
+    {
+      property: "CommitizenStrategy",
+      type: "External tool",
+      description:
+        "Uses cz bump --dry-run to infer a bump and delegates final construction to SemverStrategy.",
+    },
+    {
+      property: "DateStrategy",
+      type: "Clock-based",
+      description: "Returns the current date in vYYYY.MM.DD form by default.",
+    },
+    {
+      property: "GitCountStrategy",
+      type: "Repository count",
+      description: "Returns v followed by the repository commit count.",
+    },
+  ]}
 />
 
 </Section>
@@ -80,9 +103,8 @@ examining the selected strategy. A new strategy must preserve this priority.
 
 {`from app.core.git_ops.tag_strategy.base import TagStrategy
 
-
 class BuildNumberStrategy:
-    """Generate a tag from a validated build number."""
+"""Generate a tag from a validated build number."""
 
     def __init__(self, build_number: int) -> None:
         """Store the positive build number used for generation."""
@@ -108,15 +130,43 @@ dependencies clearly.
 <Section title="Integration Checklist">
 
 <CommandChecklist
-    items={[
-        {title: "Add the strategy module", description: "Create a documented class under app/core/git_ops/tag_strategy and export it when package-level imports require that."},
-        {title: "Extend StrategyChoices", description: "Add the public string value in app/cli/constants/enums.py so Typer can validate version and Run inputs."},
-        {title: "Update CLI help", description: "Describe the value and its required companion options in both version and Run option declarations where supported."},
-        {title: "Carry required inputs", description: "Extend option declarations, argument models, configuration resolution, WorkflowConfig, and WorkflowEngineBuilder only for data the strategy truly needs."},
-        {title: "Add workflow dispatch", description: "Instantiate the strategy from prepare_version_tag() after explicit-tag handling and before the invalid-configuration branch."},
-        {title: "Update detection if applicable", description: "Change project auto-detection only when there is a reliable, tested signal for selecting the strategy."},
-        {title: "Document configuration", description: "Update allowed values, requirements, examples, generated configuration comments, and public strategy guidance."},
-    ]}
+  items={[
+    {
+      title: "Add the strategy module",
+      description:
+        "Create a documented class under app/core/git_ops/tag_strategy and export it when package-level imports require that.",
+    },
+    {
+      title: "Extend StrategyChoices",
+      description:
+        "Add the public string value in app/cli/constants/enums.py so Typer can validate version and Run inputs.",
+    },
+    {
+      title: "Update CLI help",
+      description:
+        "Describe the value and its required companion options in both version and Run option declarations where supported.",
+    },
+    {
+      title: "Carry required inputs",
+      description:
+        "Extend option declarations, argument models, configuration resolution, WorkflowConfig, and WorkflowEngineBuilder only for data the strategy truly needs.",
+    },
+    {
+      title: "Add workflow dispatch",
+      description:
+        "Instantiate the strategy from prepare_version_tag() after explicit-tag handling and before the invalid-configuration branch.",
+    },
+    {
+      title: "Update detection if applicable",
+      description:
+        "Change project auto-detection only when there is a reliable, tested signal for selecting the strategy.",
+    },
+    {
+      title: "Document configuration",
+      description:
+        "Update allowed values, requirements, examples, generated configuration comments, and public strategy guidance.",
+    },
+  ]}
 />
 
 </Section>
@@ -156,12 +206,28 @@ ecosystem.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Versioning Strategies", href: "../commands/version/versioning-strategies", description: "Review the current user-facing strategy behavior."},
-        {title: "Version Configuration", href: "../configuration/cli/versioning", description: "Review strategy, bump, tag, prerelease, and metadata settings."},
-        {title: "Version Workflow", href: "../commands/version/workflow", description: "See how generation feeds synchronization."},
-        {title: "Testing", href: "./testing", description: "Design unit and integration coverage for the extension."},
-    ]}
+  commands={[
+    {
+      title: "Versioning Strategies",
+      href: "../commands/version/versioning-strategies",
+      description: "Review the current user-facing strategy behavior.",
+    },
+    {
+      title: "Version Configuration",
+      href: "../configuration/cli/versioning",
+      description: "Review strategy, bump, tag, prerelease, and metadata settings.",
+    },
+    {
+      title: "Version Workflow",
+      href: "../commands/version/workflow",
+      description: "See how generation feeds synchronization.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Design unit and integration coverage for the extension.",
+    },
+  ]}
 />
 
 </Section>

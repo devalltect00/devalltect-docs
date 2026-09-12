@@ -90,6 +90,5 @@
       "request": "launch",
       "command": "yarn typecheck"
     }
-
   ]
 }

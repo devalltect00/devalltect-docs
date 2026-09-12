@@ -1,1 +1,6 @@
-{"label":"Full","position":3,"link":{"type":"doc","id":"custy/commands/run/full/overview"},"collapsed":true}
+{
+  "label": "Full",
+  "position": 3,
+  "link": { "type": "doc", "id": "custy/commands/run/full/overview" },
+  "collapsed": true
+}

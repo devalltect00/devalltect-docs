@@ -7,9 +7,31 @@ tags: [custy, full pipeline, experimental]
 keywords: [custy run full, Custy workflow finalization]
 ---
 
-import {CommandChecklist, CommandHero, InfoBox, KeyValueTable, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandChecklist,
+  CommandHero,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy run full" title="Full Pipeline" description="Jalankan complete Release sequence, lalu invoke experimental workflow finalization setelah publication." category="Pipeline Profile" status="Experimental Finalization" syntax="custy run full [OPTIONS]" tags={["release", "push", "branch finalization"]} links={[{label: "Run Full Guide", href: "../commands/run/full/overview"}, {label: "Release Pipeline", href: "./release-pipeline"}, {label: "Safety", href: "../commands/run/safety"}]} />
+<CommandHero
+  command="custy run full"
+  title="Full Pipeline"
+  description="Jalankan complete Release sequence, lalu invoke experimental workflow finalization setelah publication."
+  category="Pipeline Profile"
+  status="Experimental Finalization"
+  syntax="custy run full [OPTIONS]"
+  tags={["release", "push", "branch finalization"]}
+  links={[
+    { label: "Run Full Guide", href: "../commands/run/full/overview" },
+    { label: "Release Pipeline", href: "./release-pipeline" },
+    { label: "Safety", href: "../commands/run/safety" },
+  ]}
+/>
 
 ## Ringkasan
 
@@ -23,30 +45,91 @@ custy run full`}</Terminal>
 ---
 
 <Section title="Exact Phase Flow">
-<WorkflowTimeline title="Full Profile" items={[{title: "Validate release prerequisites", description: "Jalankan repository, pre-commit, pre-tag, dan pre-push checks.", status: "completed"}, {title: "Prepare and review", description: "Resolve version dan workflow state, siapkan messages, generate artifacts, dan validasi edits.", status: "completed"}, {title: "Apply and document", description: "Terapkan version dan jalankan conditional changelog generation.", status: "completed"}, {title: "Back up and clean", description: "Backup commit dan tag messages lalu terapkan retention cleanup.", status: "completed"}, {title: "Commit, tag, and push", description: "Buat dan publish release melalui stages yang sama dengan Release.", status: "completed"}, {title: "Finalize workflow", description: "Invoke experimental post-release branch workflow untuk resolved case.", status: "current"}]} />
+  <WorkflowTimeline
+    title="Full Profile"
+    items={[
+      {
+        title: "Validate release prerequisites",
+        description: "Jalankan repository, pre-commit, pre-tag, dan pre-push checks.",
+        status: "completed",
+      },
+      {
+        title: "Prepare and review",
+        description:
+          "Resolve version dan workflow state, siapkan messages, generate artifacts, dan validasi edits.",
+        status: "completed",
+      },
+      {
+        title: "Apply and document",
+        description: "Terapkan version dan jalankan conditional changelog generation.",
+        status: "completed",
+      },
+      {
+        title: "Back up and clean",
+        description: "Backup commit dan tag messages lalu terapkan retention cleanup.",
+        status: "completed",
+      },
+      {
+        title: "Commit, tag, and push",
+        description:
+          "Buat dan publish release melalui stages yang sama dengan Release.",
+        status: "completed",
+      },
+      {
+        title: "Finalize workflow",
+        description:
+          "Invoke experimental post-release branch workflow untuk resolved case.",
+        status: "current",
+      },
+    ]}
+  />
 </Section>
 
 ---
 
-<KeyValueTable title="Exact Full Step Order" description="Steps 1–24 identik dengan Release; finalization adalah step 25." items={[
- {key: "01–09", value: <>Jalankan sembilan release validations dalam <a href="./release-pipeline">Release Pipeline</a>.</>},
- {key: "10 — prepare_version_step", value: "Resolve release version dan tag context."},
- {key: "11 — workflow_init_step", value: "Initialize branch workflow state."},
- {key: "12 — prepare_tag_message_step", value: "Siapkan tag message."},
- {key: "13 — generate_artifacts_step", value: "Generate configured release artifacts."},
- {key: "14 — edit_files_step", value: "Buka artifacts untuk review dan editing."},
- {key: "15 — validate_edited_step", value: "Validasi edited artifacts."},
- {key: "16 — apply_version_step", value: "Terapkan resolved version."},
- {key: "17 — generate_changelog_step", value: "Jalankan conditional changelog generation."},
- {key: "18 — backup_commit_message_files_step", value: "Backup commit message."},
- {key: "19 — backup_tag_message_files_step", value: "Backup tag message."},
- {key: "20 — cleanup_backup_step", value: "Terapkan backup retention cleanup."},
- {key: "21 — stage_step", value: "Stage release files."},
- {key: "22 — commit_step", value: "Buat release commit."},
- {key: "23 — tag_step", value: "Buat local release tag."},
- {key: "24 — push_step", value: "Publish HEAD dan eligible release tag."},
- {key: "25 — finalize_step", value: "Invoke experimental post-release branch workflow behavior."},
-]} />
+<KeyValueTable
+  title="Exact Full Step Order"
+  description="Steps 1–24 identik dengan Release; finalization adalah step 25."
+  items={[
+    {
+      key: "01–09",
+      value: (
+        <>
+          Jalankan sembilan release validations dalam{" "}
+          <a href="./release-pipeline">Release Pipeline</a>.
+        </>
+      ),
+    },
+    {
+      key: "10 — prepare_version_step",
+      value: "Resolve release version dan tag context.",
+    },
+    { key: "11 — workflow_init_step", value: "Initialize branch workflow state." },
+    { key: "12 — prepare_tag_message_step", value: "Siapkan tag message." },
+    {
+      key: "13 — generate_artifacts_step",
+      value: "Generate configured release artifacts.",
+    },
+    { key: "14 — edit_files_step", value: "Buka artifacts untuk review dan editing." },
+    { key: "15 — validate_edited_step", value: "Validasi edited artifacts." },
+    { key: "16 — apply_version_step", value: "Terapkan resolved version." },
+    {
+      key: "17 — generate_changelog_step",
+      value: "Jalankan conditional changelog generation.",
+    },
+    { key: "18 — backup_commit_message_files_step", value: "Backup commit message." },
+    { key: "19 — backup_tag_message_files_step", value: "Backup tag message." },
+    { key: "20 — cleanup_backup_step", value: "Terapkan backup retention cleanup." },
+    { key: "21 — stage_step", value: "Stage release files." },
+    { key: "22 — commit_step", value: "Buat release commit." },
+    { key: "23 — tag_step", value: "Buat local release tag." },
+    { key: "24 — push_step", value: "Publish HEAD dan eligible release tag." },
+    {
+      key: "25 — finalize_step",
+      value: "Invoke experimental post-release branch workflow behavior.",
+    },
+  ]}
+/>
 
 [Complete Profile Reference](./profile-reference) mencantumkan seluruh 25
 internal names secara individual. Grouping di atas menjaga halaman tetap mudah
@@ -54,20 +137,85 @@ dibaca sekaligus memperlihatkan one-step difference Full dari Release.
 
 ---
 
-<InfoBox variant="danger" title="Finalization Berjalan Setelah Remote Publication">Release commit, tag, dan push dapat berhasil sebelum finalization gagal. Jangan retry Full secara otomatis. Periksa local branches, commit, tag, setiap remote, dan workflow transition yang dicoba terlebih dahulu.</InfoBox>
+<InfoBox variant="danger" title="Finalization Berjalan Setelah Remote Publication">
+  Release commit, tag, dan push dapat berhasil sebelum finalization gagal. Jangan retry
+  Full secara otomatis. Periksa local branches, commit, tag, setiap remote, dan workflow
+  transition yang dicoba terlebih dahulu.
+</InfoBox>
 
-<InfoBox variant="warning" title="Finalization Bersifat Conditional dan Experimental">Engine melewati post-workflow behavior ketika checks dilewati atau workflow context tidak tersedia. Sebagian workflow cases hanya melaporkan informasi; lainnya dapat checkout, rebase atau merge branches, push, atau membersihkan release branch. Setelah actions berhasil, Custy dapat pause untuk confirmation sebelum kembali.</InfoBox>
+<InfoBox variant="warning" title="Finalization Bersifat Conditional dan Experimental">
+  Engine melewati post-workflow behavior ketika checks dilewati atau workflow context
+  tidak tersedia. Sebagian workflow cases hanya melaporkan informasi; lainnya dapat
+  checkout, rebase atau merge branches, push, atau membersihkan release branch. Setelah
+  actions berhasil, Custy dapat pause untuk confirmation sebelum kembali.
+</InfoBox>
 
 ---
 
 <Section title="Gunakan Full Hanya Ketika">
-<CommandChecklist items={[{title: "Release is already appropriate", description: "Seluruh version, changelog, commit, tag, dan push requirements terpenuhi."}, {title: "The branch workflow is understood", description: "Anda mengetahui detected workflow case dan final branch operations-nya."}, {title: "Every destination is reviewed", description: "Origin, backup synchronization, dan branch cleanup targets sudah benar."}, {title: "A dry-run has been reviewed", description: "Anda sudah memeriksa planned release dan branch operations."}, {title: "Recovery is manual and deliberate", description: "Anda dapat reconcile release yang berhasil sebelum finalization gagal."}]} />
+  <CommandChecklist
+    items={[
+      {
+        title: "Release is already appropriate",
+        description:
+          "Seluruh version, changelog, commit, tag, dan push requirements terpenuhi.",
+      },
+      {
+        title: "The branch workflow is understood",
+        description:
+          "Anda mengetahui detected workflow case dan final branch operations-nya.",
+      },
+      {
+        title: "Every destination is reviewed",
+        description:
+          "Origin, backup synchronization, dan branch cleanup targets sudah benar.",
+      },
+      {
+        title: "A dry-run has been reviewed",
+        description: "Anda sudah memeriksa planned release dan branch operations.",
+      },
+      {
+        title: "Recovery is manual and deliberate",
+        description:
+          "Anda dapat reconcile release yang berhasil sebelum finalization gagal.",
+      },
+    ]}
+  />
 </Section>
 
 ---
 
-<Section title="Pilih Release Secara Default">Pilih `custy run release` saat membutuhkan complete tagged publication tetapi tidak memerlukan branch lifecycle finalization. Release memiliki stages yang sama dengan completion boundary lebih jelas: push.</Section>
+<Section title="Pilih Release Secara Default">
+  Pilih `custy run release` saat membutuhkan complete tagged publication tetapi tidak
+  memerlukan branch lifecycle finalization. Release memiliki stages yang sama dengan
+  completion boundary lebih jelas: push.
+</Section>
 
 ---
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Run Full", href: "../commands/run/full/overview", description: "Gunakan Full options, examples, dan command troubleshooting."}, {title: "Complete Profile Reference", href: "./profile-reference", description: "Periksa complete 25-step expansion Full."}, {title: "Release Pipeline", href: "./release-pipeline", description: "Pilih safer default completion boundary."}, {title: "Run Safety", href: "../commands/run/safety", description: "Tinjau partial-state dan retry risks."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Run Full",
+        href: "../commands/run/full/overview",
+        description: "Gunakan Full options, examples, dan command troubleshooting.",
+      },
+      {
+        title: "Complete Profile Reference",
+        href: "./profile-reference",
+        description: "Periksa complete 25-step expansion Full.",
+      },
+      {
+        title: "Release Pipeline",
+        href: "./release-pipeline",
+        description: "Pilih safer default completion boundary.",
+      },
+      {
+        title: "Run Safety",
+        href: "../commands/run/safety",
+        description: "Tinjau partial-state dan retry risks.",
+      },
+    ]}
+  />
+</Section>

@@ -6,15 +6,29 @@ sidebar_key: reflow-tags-convert-local-troubleshooting
 tags: [reflow, troubleshooting]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert local" title="Troubleshooting" description="Troubleshooting" category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert local"
+  title="Troubleshooting"
+  description="Troubleshooting"
+  category="Tag Conversion"
+  status="Stable"
+  syntax="reflow tags convert local [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Symptom | Likely cause | Solution |
-| --- | --- | --- |
-| URL rejected. | Local scope requires a checkout. | Clone it or use remote conversion. |
-| Destination exists. | A distinct ref may be overwritten. | Resolve the collision manually. |
+| Symptom              | Likely cause                        | Solution                               |
+| -------------------- | ----------------------------------- | -------------------------------------- |
+| URL rejected.        | Local scope requires a checkout.    | Clone it or use remote conversion.     |
+| Destination exists.  | A distinct ref may be overwritten.  | Resolve the collision manually.        |
 | Signed tag selected. | Renaming invalidates its signature. | Recreate the signature outside Reflow. |
 
-<InfoBox variant="tip" title="Diagnostics">Use `--debug` before retrying live mutation.</InfoBox>
-
+<InfoBox variant="tip" title="Diagnostics">
+  Use `--debug` before retrying live mutation.
+</InfoBox>

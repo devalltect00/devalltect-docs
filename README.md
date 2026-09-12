@@ -14,12 +14,12 @@ A unified Docusaurus portal for Devalltect developer and DevOps tools. It provid
 
 ## Documented Projects
 
-| Project | Scope | Documentation |
-| --- | --- | --- |
-| **Path Header Scanner** | Path and source-header inspection | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/path-header-scanner) |
-| **Doc Gen** | Project structure and documentation generation | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/doc-gen) |
-| **Reflow** | Tag conversion, release recovery, and container publishing | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow) |
-| **Custy** | Git workflow, changelog, versioning, maintenance, and release pipelines | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/custy) |
+| Project                 | Scope                                                                   | Documentation                                                                        |
+| ----------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **Path Header Scanner** | Path and source-header inspection                                       | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/path-header-scanner) |
+| **Doc Gen**             | Project structure and documentation generation                          | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/doc-gen)             |
+| **Reflow**              | Tag conversion, release recovery, and container publishing              | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow)              |
+| **Custy**               | Git workflow, changelog, versioning, maintenance, and release pipelines | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/custy)               |
 
 ## Requirements
 

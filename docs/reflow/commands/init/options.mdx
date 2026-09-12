@@ -6,17 +6,60 @@ sidebar_key: reflow-init
 tags: [reflow, options]
 ---
 
-import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="reflow init" title="Options" description="Control the supported initialization mode and how an existing configuration file is handled." category="Initialization" status="Recommended" syntax="reflow init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Syntax",href:"./syntax"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow init"
+  title="Options"
+  description="Control the supported initialization mode and how an existing configuration file is handled."
+  category="Initialization"
+  status="Recommended"
+  syntax="reflow init [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <CommandOption
-    options={[
-        {name: "--mode", shorthand: "-m", defaultValue: "all", description: "Choose the supported all or config mode.", example: "reflow init --mode config"},
-        {name: "--force/--no-force", shorthand: "-f/-F", defaultValue: "false", description: "Overwrite the selected existing configuration resource.", example: "reflow init --force"},
-        {name: "--ask", shorthand: "-a", defaultValue: "false", description: "Prompt before creating or replacing the selected resource.", example: "reflow init --ask"},
-        {name: "--dry-run/--no-dry-run", shorthand: "-dr/-Dr", defaultValue: "false", description: "Global option placed before init; preview without filesystem writes.", example: "reflow --dry-run init"},
-    ]}
+  options={[
+    {
+      name: "--mode",
+      shorthand: "-m",
+      defaultValue: "all",
+      description: "Choose the supported all or config mode.",
+      example: "reflow init --mode config",
+    },
+    {
+      name: "--force/--no-force",
+      shorthand: "-f/-F",
+      defaultValue: "false",
+      description: "Overwrite the selected existing configuration resource.",
+      example: "reflow init --force",
+    },
+    {
+      name: "--ask",
+      shorthand: "-a",
+      defaultValue: "false",
+      description: "Prompt before creating or replacing the selected resource.",
+      example: "reflow init --ask",
+    },
+    {
+      name: "--dry-run/--no-dry-run",
+      shorthand: "-dr/-Dr",
+      defaultValue: "false",
+      description:
+        "Global option placed before init; preview without filesystem writes.",
+      example: "reflow --dry-run init",
+    },
+  ]}
 />
 
 <InfoBox variant="note" title="Only two modes are active">

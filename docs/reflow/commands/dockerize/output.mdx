@@ -6,9 +6,22 @@ sidebar_key: reflow-dockerize
 tags: [reflow, output]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow dockerize" title="Output" description="Output" category="Container Publishing" status="External Mutation" syntax="reflow dockerize [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow dockerize"
+  title="Output"
+  description="Output"
+  category="Container Publishing"
+  status="External Mutation"
+  syntax="reflow dockerize [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 - Target/provider/images.
 - Per-tag progress.
@@ -20,4 +33,3 @@ Operation  : reflow dockerize
 Dry run    : true/false
 Successful : <count>
 Failed     : <count>`}</Terminal>
-

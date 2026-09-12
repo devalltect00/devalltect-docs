@@ -4,20 +4,52 @@ description: "Konfigurasikan perilaku versioning default Custy."
 sidebar_position: 5
 sidebar_key: custy-version
 ---
-import {CommandHero, PropertyTable, Section, InfoBox, Terminal} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Configuration" description="Atur versioning default melalui config.toml." category="Versioning" status="Stable" syntax="custy version update" links={[
-    {label: "Options", href: "./options"}, {label: "Versioning Strategies", href: "./versioning-strategies"}, {label: "Workflow", href: "./workflow"},
-]} />
+import {
+  CommandHero,
+  PropertyTable,
+  Section,
+  InfoBox,
+  Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Configuration"
+  description="Atur versioning default melalui config.toml."
+  category="Versioning"
+  status="Stable"
+  syntax="custy version update"
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Versioning Strategies", href: "./versioning-strategies" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
 Nilai dalam `config.toml` digunakan ketika option yang sesuai tidak diberikan melalui CLI.
 
-<PropertyTable title="config.toml Properties" items={[
-    {property: "strategy", type: "semver | pep440 | commitizen | date | gitcount", defaultValue: "semver", required: false, description: "Strategy default untuk membentuk versi berikutnya."},
-    {property: "bump", type: "auto | patch | minor | major", defaultValue: "auto", required: false, description: "Bump level default."},
-]} />
+<PropertyTable
+  title="config.toml Properties"
+  items={[
+    {
+      property: "strategy",
+      type: "semver | pep440 | commitizen | date | gitcount",
+      defaultValue: "semver",
+      required: false,
+      description: "Strategy default untuk membentuk versi berikutnya.",
+    },
+    {
+      property: "bump",
+      type: "auto | patch | minor | major",
+      defaultValue: "auto",
+      required: false,
+      description: "Bump level default.",
+    },
+  ]}
+/>
 
 <Section title="Version File">
 
@@ -42,4 +74,7 @@ bump = "auto"
 
 </Section>
 
-<InfoBox variant="tip" title="Configuration Resolution">Urutan prioritas: command-line arguments, project configuration, automatic project detection jika berlaku, lalu built-in defaults.</InfoBox>
+<InfoBox variant="tip" title="Configuration Resolution">
+  Urutan prioritas: command-line arguments, project configuration, automatic project
+  detection jika berlaku, lalu built-in defaults.
+</InfoBox>

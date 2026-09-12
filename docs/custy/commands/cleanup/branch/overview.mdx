@@ -5,76 +5,71 @@ sidebar_position: 1
 sidebar_key: custy-cleanup-branch
 
 tags:
-    - cleanup
-    - branch
-    - git
-    - maintenance
+  - cleanup
+  - branch
+  - git
+  - maintenance
 
 keywords:
-    - custy cleanup branches
-    - git branch cleanup
-    - cleanup merged branches
+  - custy cleanup branches
+  - git branch cleanup
+  - cleanup merged branches
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    RelatedCommands,
-    Section,
-    InfoBox,
-    Screenshot,
-    Icon,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  RelatedCommands,
+  Section,
+  InfoBox,
+  Screenshot,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup branches"
-    title="Branch Cleanup"
-    description="Safely remove obsolete Git branches using configurable filters while protecting important branches."
-    category="Maintenance"
-    status="Advanced"
-    syntax="custy cleanup branches"
-    tags={[
-        "git",
-        "branches",
-        "cleanup",
-        "maintenance",
-    ]}
-    links={[
-        {
-            label: "Requirements",
-            href: "./requirements",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-    ]}
+  command="custy cleanup branches"
+  title="Branch Cleanup"
+  description="Safely remove obsolete Git branches using configurable filters while protecting important branches."
+  category="Maintenance"
+  status="Advanced"
+  syntax="custy cleanup branches"
+  tags={["git", "branches", "cleanup", "maintenance"]}
+  links={[
+    {
+      label: "Requirements",
+      href: "./requirements",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+  ]}
 />
 
 <CommandMetadata
-    metadata={[
-        {
-            label: "Category",
-            value: "Git Maintenance",
-        },
-        {
-            label: "Git Repository",
-            value: "Required",
-        },
-        {
-            label: "Configuration",
-            value: "config.toml",
-        },
-        {
-            label: "Workflow",
-            value: "Manual",
-        },
-    ]}
+  metadata={[
+    {
+      label: "Category",
+      value: "Git Maintenance",
+    },
+    {
+      label: "Git Repository",
+      value: "Required",
+    },
+    {
+      label: "Configuration",
+      value: "config.toml",
+    },
+    {
+      label: "Workflow",
+      value: "Manual",
+    },
+  ]}
 />
 
 ## Overview
@@ -118,49 +113,41 @@ These protected branches are never removed by Custy.
 >
 
 <FeatureGrid
-    title="Responsibilities"
-    items={[
-        {
-            title: "Scan Local Branches",
-            icon: <Icon name="compare" />,
-            children: (
-                <>
-                    Inspect local Git branches before determining which
-                    branches are eligible for cleanup.
-                </>
-            ),
-        },
-        {
-            title: "Apply Cleanup Filters",
-            icon: <Icon name="table" />,
-            children: (
-                <>
-                    Evaluate branch prefixes, merge status, branch age,
-                    and other configured filters.
-                </>
-            ),
-        },
-        {
-            title: "Protect Important Branches",
-            icon: <Icon name="security" />,
-            children: (
-                <>
-                    Prevent removal of protected branches regardless of
-                    configured filters.
-                </>
-            ),
-        },
-        {
-            title: "Remove Eligible Branches",
-            icon: <Icon name="danger" />,
-            children: (
-                <>
-                    Delete only branches that satisfy every configured
-                    cleanup rule.
-                </>
-            ),
-        },
-    ]}
+  title="Responsibilities"
+  items={[
+    {
+      title: "Scan Local Branches",
+      icon: <Icon name="compare" />,
+      children: (
+        <>
+          Inspect local Git branches before determining which branches are eligible for
+          cleanup.
+        </>
+      ),
+    },
+    {
+      title: "Apply Cleanup Filters",
+      icon: <Icon name="table" />,
+      children: (
+        <>
+          Evaluate branch prefixes, merge status, branch age, and other configured
+          filters.
+        </>
+      ),
+    },
+    {
+      title: "Protect Important Branches",
+      icon: <Icon name="security" />,
+      children: (
+        <>Prevent removal of protected branches regardless of configured filters.</>
+      ),
+    },
+    {
+      title: "Remove Eligible Branches",
+      icon: <Icon name="danger" />,
+      children: <>Delete only branches that satisfy every configured cleanup rule.</>,
+    },
+  ]}
 />
 
 </Section>
@@ -168,10 +155,10 @@ These protected branches are never removed by Custy.
 ---
 
 <Screenshot
-    src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
-    alt="Branch cleanup process"
-    title="Branch Cleanup"
-    caption="Example output after Custy removes merged release branches according to the configured cleanup rules."
+  src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
+  alt="Branch cleanup process"
+  title="Branch Cleanup"
+  caption="Example output after Custy removes merged release branches according to the configured cleanup rules."
 />
 
 ---
@@ -236,21 +223,21 @@ This ensures that branch removal always remains an explicit user decision.
 ---
 
 <RelatedCommands
-    commands={[
-        {
-            name: "cleanup",
-            description: "Return to the Cleanup command overview.",
-            href: "../overview",
-        },
-        {
-            name: "backup",
-            description: "Clean obsolete backup files instead of Git branches.",
-            href: "../../backup/overview",
-        },
-        {
-            name: "run",
-            description: "Learn how Branch Cleanup can be executed as a workflow stage.",
-            href: "../../run/overview",
-        },
-    ]}
+  commands={[
+    {
+      name: "cleanup",
+      description: "Return to the Cleanup command overview.",
+      href: "../overview",
+    },
+    {
+      name: "backup",
+      description: "Clean obsolete backup files instead of Git branches.",
+      href: "../../backup/overview",
+    },
+    {
+      name: "run",
+      description: "Learn how Branch Cleanup can be executed as a workflow stage.",
+      href: "../../run/overview",
+    },
+  ]}
 />

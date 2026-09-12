@@ -6,40 +6,35 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    Section,
-    FeatureGrid,
-    InfoBox,
-    Icon,
+  CommandHero,
+  Section,
+  FeatureGrid,
+  InfoBox,
+  Icon,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Validation Checks"
-    description="Understand every validation step performed before Custy workflows begin."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "validation",
-        "workflow",
-        "git",
-        "configuration",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy validate"
+  title="Validation Checks"
+  description="Understand every validation step performed before Custy workflows begin."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["validation", "workflow", "git", "configuration"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -59,6 +54,7 @@ the reason for the failure and a suggested action for resolving it.
 >
 
 Most validation targets are determined from your project's
+
 <code>.config/custy/config.toml</code> configuration.
 
 For example, the configured version file, template locations, and Git remote
@@ -73,49 +69,47 @@ name are resolved from the project configuration whenever possible.
 >
 
 <FeatureGrid
-    title="What Custy Checks"
-    items={[
-        {
-            title: "Git Repository",
-            icon: <Icon name="git" />,
-            children: (
-                <>
-                    Verify that the current directory is a valid Git
-                    repository before continuing.
-                </>
-            ),
-        },
-        {
-            title: "Repository Configuration",
-            icon: <Icon name="configuration" />,
-            children: (
-                <>
-                    Verify that required repository configuration such as
-                    configured remotes and version files exists.
-                </>
-            ),
-        },
-        {
-            title: "Project Resources",
-            icon: <Icon name="directory" />,
-            children: (
-                <>
-                    Confirm that required template files and supporting
-                    resources are available.
-                </>
-            ),
-        },
-        {
-            title: "Repository State",
-            icon: <Icon name="success" />,
-            children: (
-                <>
-                    Verify that the repository is in a suitable state for
-                    commit-related workflows.
-                </>
-            ),
-        },
-    ]}
+  title="What Custy Checks"
+  items={[
+    {
+      title: "Git Repository",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Verify that the current directory is a valid Git repository before continuing.
+        </>
+      ),
+    },
+    {
+      title: "Repository Configuration",
+      icon: <Icon name="configuration" />,
+      children: (
+        <>
+          Verify that required repository configuration such as configured remotes and
+          version files exists.
+        </>
+      ),
+    },
+    {
+      title: "Project Resources",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Confirm that required template files and supporting resources are available.
+        </>
+      ),
+    },
+    {
+      title: "Repository State",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Verify that the repository is in a suitable state for commit-related
+          workflows.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -128,17 +122,17 @@ name are resolved from the project configuration whenever possible.
 
 Custy performs validation in the following order.
 
-| Step | Validation |
-|------|------------|
-| 1 | Git repository |
-| 2 | Git remote |
-| 3 | Version file |
-| 4 | Commit message template |
-| 5 | Tag message template |
-| 6 | Staged changes |
-| 7 | Commit validation provider preflight |
-| 8 | Commit message template availability |
-| 9 | Tag message template availability |
+| Step | Validation                           |
+| ---- | ------------------------------------ |
+| 1    | Git repository                       |
+| 2    | Git remote                           |
+| 3    | Version file                         |
+| 4    | Commit message template              |
+| 5    | Tag message template                 |
+| 6    | Staged changes                       |
+| 7    | Commit validation provider preflight |
+| 8    | Commit message template availability |
+| 9    | Tag message template availability    |
 
 This sequence ensures that inexpensive environment checks are completed before
 workflow-specific validation begins.

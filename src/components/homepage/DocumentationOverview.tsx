@@ -7,15 +7,14 @@ import styles from "./DocumentationOverview.module.css";
  * Documentation Overview
  * ============================================================
  *
- * Provides a high-level overview of the documentation
- * available throughout the Devalltect portal.
+ * Helps readers choose the documentation area that matches their goal.
  *
  * Goals:
  *
  * - Improve discoverability
- * - Highlight documentation categories
- * - Help visitors quickly understand
- *   available resources
+ * - Highlight common reader goals
+ * - Explain the shared wayfinding model without implying that every project
+ *   has an identical document tree
  *
  * This section is intentionally project-agnostic.
  * ============================================================
@@ -25,17 +24,12 @@ export default function DocumentationOverview(): React.JSX.Element {
     <section className={styles.section}>
       <div className="container">
         <div className={styles.header}>
-          {/* <h2>Documentation at a Glance</h2> */}
-          <h2>Explore Documentation</h2>
+          <h2>Find What You Need</h2>
 
-          {/* <p>
-            Explore documentation resources designed
-            for users, developers, contributors,
-            maintainers, and future project growth.
-          </p> */}
           <p>
-            Discover the documentation categories
-            available across Devalltect projects.
+            Choose a project above, then use these common documentation areas to move
+            from first use to deeper implementation details. Available sections vary
+            according to each project's needs.
           </p>
         </div>
 
@@ -43,73 +37,44 @@ export default function DocumentationOverview(): React.JSX.Element {
           <article className={styles.card}>
             <div className={styles.icon}>📚</div>
 
-            <h3>User Guides</h3>
+            <h3>Get Started</h3>
 
             <p>
-              Installation, quick start guides,
-              commands, workflows, and usage
-              documentation.
+              Install a tool, review its requirements, configure a safe first run, and
+              follow a practical introductory workflow.
             </p>
           </article>
 
           <article className={styles.card}>
             <div className={styles.icon}>⚙️</div>
 
-            <h3>Developer Guides</h3>
+            <h3>Commands and Configuration</h3>
 
             <p>
-              Development workflows, tooling,
-              Docker usage, implementation details,
-              and contributor resources.
+              Find command syntax, options, configuration keys, examples, output
+              behavior, and safety controls such as dry-run modes.
             </p>
           </article>
 
           <article className={styles.card}>
             <div className={styles.icon}>🏗️</div>
 
-            <h3>Architecture</h3>
+            <h3>Concepts and Architecture</h3>
 
             <p>
-              Requirements, system design,
-              architecture references,
-              and technical decisions.
+              Understand workflows, responsibilities, data flow, design decisions,
+              extension points, and troubleshooting boundaries.
             </p>
           </article>
 
           <article className={styles.card}>
             <div className={styles.icon}>🧪</div>
 
-            <h3>Testing</h3>
+            <h3>Development and Testing</h3>
 
             <p>
-              Testing strategies, validation
-              procedures, quality assurance,
-              and verification workflows.
-            </p>
-          </article>
-
-          <article className={styles.card}>
-            <div className={styles.icon}>📊</div>
-
-            <h3>Diagrams</h3>
-
-            <p>
-              Architecture diagrams,
-              workflows, flowcharts,
-              and visual documentation.
-            </p>
-          </article>
-
-          <article className={styles.card}>
-            <div className={styles.icon}>📦</div>
-
-            <h3>Project Documentation</h3>
-
-            <p>
-              Project information,
-              configuration references,
-              infrastructure, and lifecycle
-              documentation.
+              Set up a source checkout, run quality checks, understand contribution
+              expectations, and validate changes before release.
             </p>
           </article>
         </div>

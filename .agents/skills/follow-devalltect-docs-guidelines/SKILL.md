@@ -41,22 +41,22 @@ Use repository-relative paths. Apply directory rules recursively.
 
 ### Path Policy
 
-| Path | Permission | Purpose and guidance |
-| --- | --- | --- |
-| `docs/**` | Read by default | Primary Markdown and MDX documentation content. Ask before content or frontmatter changes. |
-| `src/**` | Read by default | React, TypeScript, CSS, data, components, and pages. Ask before implementation or design changes. |
-| `static/**` | Read by default | Static images and public assets. Ask before adding, replacing, or removing assets. |
-| `i18n/**` | Read by default | Localized content and translation data. Ask before translation changes. |
-| `blog/**` | Read by default | Blog content. The current Docusaurus preset disables the blog; do not assume these files are published. |
-| `scripts/**` | Read by default | Project automation. Ask before changing or running scripts. |
-| `.config/**` | Read by default | Tool configuration. Ask before changes. |
-| `.agents/skills/**` | Read by default | Project-specific Codex skills. Ask before adding, updating, moving, or removing skill content. |
-| `package.json`, `package-lock.json`, `docusaurus.config.ts`, `sidebars.ts`, `tsconfig.json` | Read by default | Core package, site, sidebar, and TypeScript configuration. Ask before changes. |
-| `tests/**` | Task-approved write; explicit removal | Add or update tests when a test setup exists or an approved task introduces one. |
-| `TODO_FRONTMATTER.md` | Standing full access | Maintain the root frontmatter task list when relevant to the user's task. |
-| `node_modules/**`, `.docusaurus/**`, `build/**`, `logs/**`, `__pycache__/**` | Generated or dependency path | Never treat generated output or dependencies as source code. |
-| Obvious backup or temporary files | Protected | Preserve personal reference copies and exclude them from active implementation. |
-| All other repository paths | Default rules | Ask before changes unless the approved task explicitly includes the path. |
+| Path                                                                                        | Permission                            | Purpose and guidance                                                                                    |
+| ------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `docs/**`                                                                                   | Read by default                       | Primary Markdown and MDX documentation content. Ask before content or frontmatter changes.              |
+| `src/**`                                                                                    | Read by default                       | React, TypeScript, CSS, data, components, and pages. Ask before implementation or design changes.       |
+| `static/**`                                                                                 | Read by default                       | Static images and public assets. Ask before adding, replacing, or removing assets.                      |
+| `i18n/**`                                                                                   | Read by default                       | Localized content and translation data. Ask before translation changes.                                 |
+| `blog/**`                                                                                   | Read by default                       | Blog content. The current Docusaurus preset disables the blog; do not assume these files are published. |
+| `scripts/**`                                                                                | Read by default                       | Project automation. Ask before changing or running scripts.                                             |
+| `.config/**`                                                                                | Read by default                       | Tool configuration. Ask before changes.                                                                 |
+| `.agents/skills/**`                                                                         | Read by default                       | Project-specific Codex skills. Ask before adding, updating, moving, or removing skill content.          |
+| `package.json`, `package-lock.json`, `docusaurus.config.ts`, `sidebars.ts`, `tsconfig.json` | Read by default                       | Core package, site, sidebar, and TypeScript configuration. Ask before changes.                          |
+| `tests/**`                                                                                  | Task-approved write; explicit removal | Add or update tests when a test setup exists or an approved task introduces one.                        |
+| `TODO_FRONTMATTER.md`                                                                       | Standing full access                  | Maintain the root frontmatter task list when relevant to the user's task.                               |
+| `node_modules/**`, `.docusaurus/**`, `build/**`, `logs/**`, `__pycache__/**`                | Generated or dependency path          | Never treat generated output or dependencies as source code.                                            |
+| Obvious backup or temporary files                                                           | Protected                             | Preserve personal reference copies and exclude them from active implementation.                         |
+| All other repository paths                                                                  | Default rules                         | Ask before changes unless the approved task explicitly includes the path.                               |
 
 Treat obvious copied or temporary variants such as `* copy.*`, `*_copy.*`, `*_temp.*`, `*_temp_before.*`, `*.bak`, and similarly named previous-version files as protected. If a name is ambiguous, ask before acting.
 
@@ -146,7 +146,7 @@ interface CalloutProps {
 }
 
 /** Render an accessible highlighted note in documentation pages. */
-export function Callout({title, children}: CalloutProps): JSX.Element {
+export function Callout({ title, children }: CalloutProps): JSX.Element {
   return <aside aria-label={title}>{children}</aside>;
 }
 ```

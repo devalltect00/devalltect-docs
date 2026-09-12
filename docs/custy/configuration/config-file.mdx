@@ -8,38 +8,42 @@ keywords: [custy init --mode config, packaged config, project config]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    PropertyTable,
-    RelatedCommands,
-    Section,
-    Terminal,
-    WorkflowTimeline,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  PropertyTable,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Configuration File"
-    description="Separate Custy's packaged initialization source from the editable configuration owned by your project."
-    category="Configuration"
-    status="Essential"
-    syntax="custy init [--mode config] [--ask | --force]"
-    tags={["ownership", "initialization", "safe replacement"]}
-    links={[
-        {label: "Initialization", href: "./initialization"},
-        {label: "Resolution", href: "./resolution"},
-        {label: "All Properties", href: "./reference"},
-    ]}
+  command="custy init"
+  title="Configuration File"
+  description="Separate Custy's packaged initialization source from the editable configuration owned by your project."
+  category="Configuration"
+  status="Essential"
+  syntax="custy init [--mode config] [--ask | --force]"
+  tags={["ownership", "initialization", "safe replacement"]}
+  links={[
+    { label: "Initialization", href: "./initialization" },
+    { label: "Resolution", href: "./resolution" },
+    { label: "All Properties", href: "./reference" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Packaged Source", value: "app/templates/config.toml", icon: "package"},
-        {label: "Project Copy", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Format", value: "TOML", icon: "file"},
-        {label: "Loaded", value: "Once per process", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Packaged Source", value: "app/templates/config.toml", icon: "package" },
+    {
+      label: "Project Copy",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Format", value: "TOML", icon: "file" },
+    { label: "Loaded", value: "Once per process", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -53,12 +57,30 @@ edit the project copy; they do not need access to the installed source file.
 <Section title="Ownership">
 
 <PropertyTable
-    items={[
-        {property: "app/templates/config.toml", type: "Application source", description: "Packaged with Custy and used to create a fresh project configuration. Application upgrades may replace it."},
-        {property: ".config/custy/config.toml", type: "Project-owned copy", description: "Loaded by commands and intended for team-specific edits, review, and version control."},
-        {property: "app/templates/changelog/changelog.j2", type: "Application source", description: "Packaged source for the default changelog layout."},
-        {property: ".config/custy/templates/changelog/changelog.j2", type: "Project-owned copy", description: "Editable Jinja template loaded through the configured path."},
-    ]}
+  items={[
+    {
+      property: "app/templates/config.toml",
+      type: "Application source",
+      description:
+        "Packaged with Custy and used to create a fresh project configuration. Application upgrades may replace it.",
+    },
+    {
+      property: ".config/custy/config.toml",
+      type: "Project-owned copy",
+      description:
+        "Loaded by commands and intended for team-specific edits, review, and version control.",
+    },
+    {
+      property: "app/templates/changelog/changelog.j2",
+      type: "Application source",
+      description: "Packaged source for the default changelog layout.",
+    },
+    {
+      property: ".config/custy/templates/changelog/changelog.j2",
+      type: "Project-owned copy",
+      description: "Editable Jinja template loaded through the configured path.",
+    },
+  ]}
 />
 
 The current packaged and generated configuration files have the same logical
@@ -71,12 +93,28 @@ TOML content. Their byte hashes can differ because of line-ending conversion.
 <Section title="Write Behavior">
 
 <WorkflowTimeline
-    items={[
-        {title: "Missing resource", description: "Custy creates it from the packaged source.", status: "completed"},
-        {title: "Existing resource, normal mode", description: "Custy preserves the project copy and skips replacement.", status: "current"},
-        {title: "Existing resource with --ask", description: "Custy asks before replacing an individual file.", status: "pending"},
-        {title: "Existing resource with --force", description: "Custy replaces selected resources without prompting.", status: "pending"},
-    ]}
+  items={[
+    {
+      title: "Missing resource",
+      description: "Custy creates it from the packaged source.",
+      status: "completed",
+    },
+    {
+      title: "Existing resource, normal mode",
+      description: "Custy preserves the project copy and skips replacement.",
+      status: "current",
+    },
+    {
+      title: "Existing resource with --ask",
+      description: "Custy asks before replacing an individual file.",
+      status: "pending",
+    },
+    {
+      title: "Existing resource with --force",
+      description: "Custy replaces selected resources without prompting.",
+      status: "pending",
+    },
+  ]}
 />
 
 <InfoBox variant="danger" title="Force can erase project customization">
@@ -121,12 +159,28 @@ dry_run = false`}
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Initialization", href: "./initialization", description: "Configure default force and prompt behavior."},
-        {title: "Resolution", href: "./resolution", description: "Understand CLI, file, and built-in priority."},
-        {title: "Init Generated Files", href: "../commands/init/generated-files", description: "Review every resource created by initialization."},
-        {title: "Validate", href: "../commands/validate/overview", description: "Check project readiness after editing configuration."},
-    ]}
+  commands={[
+    {
+      title: "Initialization",
+      href: "./initialization",
+      description: "Configure default force and prompt behavior.",
+    },
+    {
+      title: "Resolution",
+      href: "./resolution",
+      description: "Understand CLI, file, and built-in priority.",
+    },
+    {
+      title: "Init Generated Files",
+      href: "../commands/init/generated-files",
+      description: "Review every resource created by initialization.",
+    },
+    {
+      title: "Validate",
+      href: "../commands/validate/overview",
+      description: "Check project readiness after editing configuration.",
+    },
+  ]}
 />
 
 </Section>

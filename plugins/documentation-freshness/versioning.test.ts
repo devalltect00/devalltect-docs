@@ -20,7 +20,7 @@ test("selects the latest stable SemVer tag by version precedence", () => {
   const result = findLatestVersionTag(
     ["v2.0.0", "v2.1.0-rc.1", "v1.10.14", "not-a-version"],
     "semver",
-    false,
+    false
   );
 
   assert.equal(result.latest?.originalTag, "v2.0.0");
@@ -28,11 +28,7 @@ test("selects the latest stable SemVer tag by version precedence", () => {
 });
 
 test("can include SemVer prereleases when explicitly enabled", () => {
-  const result = findLatestVersionTag(
-    ["v2.0.0", "v2.1.0-rc.1"],
-    "semver",
-    true,
-  );
+  const result = findLatestVersionTag(["v2.0.0", "v2.1.0-rc.1"], "semver", true);
 
   assert.equal(result.latest?.originalTag, "v2.1.0-rc.1");
 });
@@ -41,7 +37,7 @@ test("sorts PEP 440 versions numerically and excludes prereleases", () => {
   const result = findLatestVersionTag(
     ["1.10.9", "1.10.14", "1.11.0b1", "1.10.14.post1"],
     "pep440",
-    false,
+    false
   );
 
   assert.equal(result.latest?.originalTag, "1.10.14.post1");
@@ -57,6 +53,6 @@ test("derives current, outdated, and preview states", () => {
 test("rejects a documented version that does not match the configured format", () => {
   assert.throws(
     () => deriveDocumentationStatus("release-two", "2.0.0", "semver"),
-    /not valid semver/u,
+    /not valid semver/u
   );
 });

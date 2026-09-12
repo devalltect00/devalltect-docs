@@ -6,38 +6,34 @@ sidebar_key: custy-commands-validate
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandOutput,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy validate"
-    title="Output"
-    description="Learn how Custy reports validation results and what they mean."
-    category="Validation"
-    status="Recommended"
-    syntax="custy validate"
-    tags={[
-        "output",
-        "validation",
-        "results",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy validate"
+  title="Output"
+  description="Learn how Custy reports validation results and what they mean."
+  category="Validation"
+  status="Recommended"
+  syntax="custy validate"
+  tags={["output", "validation", "results"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Overview
@@ -82,10 +78,10 @@ reports the reason together with guidance for resolving the issue.
 
 Hint:
 Run git init`,
-            notes:
-                "Validation stops immediately after the first failure and reports the corresponding guidance.",
-        },
-    ]}
+notes:
+"Validation stops immediately after the first failure and reports the corresponding guidance.",
+},
+]}
 />
 
 </Section>
@@ -149,6 +145,7 @@ staging project changes.
 >
 
 When validation is executed as part of a workflow using the global
+
 <code>--dry-run</code> option, Custy reports what would normally happen without
 performing workflow actions that modify the repository.
 

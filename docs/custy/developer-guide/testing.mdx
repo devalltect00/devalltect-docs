@@ -8,40 +8,40 @@ keywords: [Custy tests, pytest Custy, Custy integration tests]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pytest"
-    title="Testing Custy"
-    description="Build confidence from one affected contract to the complete test suite."
-    category="Developer Guide"
-    status="Required for Changes"
-    syntax="python -m pytest [PATH] [OPTIONS]"
-    tags={["unit", "CLI", "integration", "regression", "pre-commit"]}
-    links={[
-        {label: "Test Layers", href: "#test-layers"},
-        {label: "Focused Tests", href: "#focused-validation"},
-        {label: "Pre-Commit", href: "#pre-commit-quality-gates"},
-        {label: "Full Validation", href: "#complete-validation"},
-    ]}
+  command="python -m pytest"
+  title="Testing Custy"
+  description="Build confidence from one affected contract to the complete test suite."
+  category="Developer Guide"
+  status="Required for Changes"
+  syntax="python -m pytest [PATH] [OPTIONS]"
+  tags={["unit", "CLI", "integration", "regression", "pre-commit"]}
+  links={[
+    { label: "Test Layers", href: "#test-layers" },
+    { label: "Focused Tests", href: "#focused-validation" },
+    { label: "Pre-Commit", href: "#pre-commit-quality-gates" },
+    { label: "Full Validation", href: "#complete-validation" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Framework", value: "pytest", icon: "testing"},
-        {label: "Coverage Target", value: "app", icon: "project"},
-        {label: "Test Root", value: "tests", icon: "directory"},
-        {label: "Import Mode", value: "importlib", icon: "dependency"},
-    ]}
+  items={[
+    { label: "Framework", value: "pytest", icon: "testing" },
+    { label: "Coverage Target", value: "app", icon: "project" },
+    { label: "Test Root", value: "tests", icon: "directory" },
+    { label: "Import Mode", value: "importlib", icon: "dependency" },
+  ]}
 />
 
 ## Overview
@@ -64,15 +64,45 @@ suite. This keeps feedback fast without replacing broad validation.
 <Section title="Test Layers">
 
 <FeatureGrid
-    title="Where a Change Is Exercised"
-    items={[
-        {title: "CLI Contracts", icon: <Icon name="terminal" />, children: "Tests under tests/cli cover command wiring, option metadata, dataclass models, resolvers, and application entry points."},
-        {title: "Core Behavior", icon: <Icon name="architecture" />, children: "Tests under tests/core cover pipelines, workflows, Git services, changelog processing, version strategies, initialization, backup, and cleanup."},
-        {title: "Configuration", icon: <Icon name="configuration" />, children: "Tests under tests/config exercise loading, missing files, invalid TOML, nested access, required values, and CLI-to-config fallback."},
-        {title: "Integration", icon: <Icon name="pipeline" />, children: "Tests under tests/integration connect resolvers, builders, profiles, and feature flows across module boundaries."},
-        {title: "Regression", icon: <Icon name="security" />, children: "Tests under tests/regression preserve behavior for previously discovered builder, resolver, configuration, workflow, and pipeline failures."},
-        {title: "Shared Infrastructure", icon: <Icon name="dependency" />, children: "tests/fixtures and tests/helpers provide reusable project, Git, filesystem, configuration, CLI, version, changelog, and pipeline support."},
-    ]}
+  title="Where a Change Is Exercised"
+  items={[
+    {
+      title: "CLI Contracts",
+      icon: <Icon name="terminal" />,
+      children:
+        "Tests under tests/cli cover command wiring, option metadata, dataclass models, resolvers, and application entry points.",
+    },
+    {
+      title: "Core Behavior",
+      icon: <Icon name="architecture" />,
+      children:
+        "Tests under tests/core cover pipelines, workflows, Git services, changelog processing, version strategies, initialization, backup, and cleanup.",
+    },
+    {
+      title: "Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "Tests under tests/config exercise loading, missing files, invalid TOML, nested access, required values, and CLI-to-config fallback.",
+    },
+    {
+      title: "Integration",
+      icon: <Icon name="pipeline" />,
+      children:
+        "Tests under tests/integration connect resolvers, builders, profiles, and feature flows across module boundaries.",
+    },
+    {
+      title: "Regression",
+      icon: <Icon name="security" />,
+      children:
+        "Tests under tests/regression preserve behavior for previously discovered builder, resolver, configuration, workflow, and pipeline failures.",
+    },
+    {
+      title: "Shared Infrastructure",
+      icon: <Icon name="dependency" />,
+      children:
+        "tests/fixtures and tests/helpers provide reusable project, Git, filesystem, configuration, CLI, version, changelog, and pipeline support.",
+    },
+  ]}
 />
 
 </Section>
@@ -89,12 +119,15 @@ Use a path or node ID that matches the changed contract.
 python -m pytest tests/cli/commands/changelog/test_resolver_changelog.py
 
 # One test class or method
+
 python -m pytest tests/core/pipeline/test_command_resolver.py::TestCommandResolver
 
 # One feature group
+
 python -m pytest tests/core/git_ops/tag_strategy
 
 # One integration flow
+
 python -m pytest tests/integration/test_run_profiles.py`}
 
 </Terminal>
@@ -110,13 +143,33 @@ names because `StepRegistry` rejects duplicates.
 <Section title="What to Test for Each Extension">
 
 <CommandChecklist
-    items={[
-        {title: "Command", description: "Cover Typer registration or callback behavior, option metadata, the resolved argument model, configuration precedence, and the delegated core action."},
-        {title: "Pipeline step", description: "Cover the engine call, registration, profile membership, priority, deduplication, ordering, and failure propagation."},
-        {title: "Version strategy", description: "Cover defaults, explicit inputs, latest-tag or external-tool behavior, returned tag format, and actionable errors."},
-        {title: "Configuration", description: "Cover a present value, a missing value, the built-in default, explicit CLI precedence, invalid shape, and the consuming runtime path."},
-        {title: "Side effect", description: "Use temporary paths and mocked Git or subprocess boundaries; never depend on a contributor's real repository or credentials."},
-    ]}
+  items={[
+    {
+      title: "Command",
+      description:
+        "Cover Typer registration or callback behavior, option metadata, the resolved argument model, configuration precedence, and the delegated core action.",
+    },
+    {
+      title: "Pipeline step",
+      description:
+        "Cover the engine call, registration, profile membership, priority, deduplication, ordering, and failure propagation.",
+    },
+    {
+      title: "Version strategy",
+      description:
+        "Cover defaults, explicit inputs, latest-tag or external-tool behavior, returned tag format, and actionable errors.",
+    },
+    {
+      title: "Configuration",
+      description:
+        "Cover a present value, a missing value, the built-in default, explicit CLI precedence, invalid shape, and the consuming runtime path.",
+    },
+    {
+      title: "Side effect",
+      description:
+        "Use temporary paths and mocked Git or subprocess boundaries; never depend on a contributor's real repository or credentials.",
+    },
+  ]}
 />
 
 </Section>
@@ -135,9 +188,11 @@ and final newlines. Ruff and Black read their policy from `pyproject.toml`.
 make pre-commit-validate
 
 # Fast contributor check for staged files
+
 make pre-commit-run-staged
 
 # Broad check for all tracked files
+
 make pre-commit-run`}
 
 </Terminal>
@@ -163,6 +218,7 @@ applies when a hook, editor, or command supplies a matching path explicitly.
 python -m pytest
 
 # Repository helper: formatting check, lint, then tests
+
 make check`}
 
 </Terminal>
@@ -190,12 +246,28 @@ clearly reported.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Adding Commands", href: "./adding-commands", description: "Map command responsibilities to their matching tests."},
-        {title: "Adding Pipeline Steps", href: "./adding-pipeline-steps", description: "Test registration, ordering, composition, and execution."},
-        {title: "Adding Version Strategies", href: "./adding-version-strategies", description: "Test strategy output and workflow dispatch."},
-        {title: "Contributing", href: "./contributing", description: "Use the final review checklist before handoff."},
-    ]}
+  commands={[
+    {
+      title: "Adding Commands",
+      href: "./adding-commands",
+      description: "Map command responsibilities to their matching tests.",
+    },
+    {
+      title: "Adding Pipeline Steps",
+      href: "./adding-pipeline-steps",
+      description: "Test registration, ordering, composition, and execution.",
+    },
+    {
+      title: "Adding Version Strategies",
+      href: "./adding-version-strategies",
+      description: "Test strategy output and workflow dispatch.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Use the final review checklist before handoff.",
+    },
+  ]}
 />
 
 </Section>

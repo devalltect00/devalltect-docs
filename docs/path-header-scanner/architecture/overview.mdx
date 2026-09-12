@@ -6,14 +6,23 @@ sidebar_key: path-header-scanner-architecture
 tags: [path-header-scanner, architecture]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Path Header Scanner" title="Architecture" description="Understand responsibilities and execution flow." category="Architecture" status="v1.0.0" syntax="path-header-scanner init" />
+<CommandHero
+  command="Path Header Scanner"
+  title="Architecture"
+  description="Understand responsibilities and execution flow."
+  category="Architecture"
+  status="v1.0.0"
+  syntax="path-header-scanner init"
+/>
 
 1. Typer/Rich CLI and error boundary
 2. Configuration and path resolution
 3. File discovery and processing pipeline
 4. Language-specific header strategies
 
-<InfoBox variant="note" title="Separation of responsibilities">Scan previews by default. Only effective --apply writes target files, and --dry-run overrides CLI and configured apply mode.</InfoBox>
-
+<InfoBox variant="note" title="Separation of responsibilities">
+  Scan previews by default. Only effective --apply writes target files, and --dry-run
+  overrides CLI and configured apply mode.
+</InfoBox>

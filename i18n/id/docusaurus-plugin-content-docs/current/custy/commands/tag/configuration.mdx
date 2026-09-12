@@ -4,19 +4,60 @@ description: "Konfigurasikan tag templates, version files, strategies, validatio
 sidebar_position: 5
 sidebar_key: custy-tag-configuration
 ---
-import {CommandHero, PropertyTable, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy tag" title="Configuration" description="Atur shared release inputs untuk Tag profile." category="Git Operations" status="Advanced" syntax="custy tag [OPTIONS]" links={[{label:"Options",href:"./options"},{label:"Versioning and Tags",href:"./versioning-and-tags"},{label:"Workflow",href:"./workflow"}]} />
+import {
+  CommandHero,
+  PropertyTable,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy tag"
+  title="Configuration"
+  description="Atur shared release inputs untuk Tag profile."
+  category="Git Operations"
+  status="Advanced"
+  syntax="custy tag [OPTIONS]"
+  links={[
+    { label: "Options", href: "./options" },
+    { label: "Versioning and Tags", href: "./versioning-and-tags" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<PropertyTable title="Tag Profile Configuration" items={[
- {property:"[tool.custy.cli.templates.file]",type:"tag_message",description:"Pilih tag-message template."},
- {property:"[tool.custy.cli.templates.directory]",type:"backups_tag",description:"Pilih retained tag-message backup directory."},
- {property:"[tool.custy.cli.paths]",type:"version_file",description:"Pilih file yang menerima resolved version."},
- {property:"[tool.custy.cli.versioning]",type:"strategy and modifiers",description:"Atur strategy, bump, dan release modifiers."},
- {property:"[tool.custy.cli.execution]",type:"validation",description:"Atur pre-tag checks dan force behavior."},
-]} />
+<PropertyTable
+  title="Tag Profile Configuration"
+  items={[
+    {
+      property: "[tool.custy.cli.templates.file]",
+      type: "tag_message",
+      description: "Pilih tag-message template.",
+    },
+    {
+      property: "[tool.custy.cli.templates.directory]",
+      type: "backups_tag",
+      description: "Pilih retained tag-message backup directory.",
+    },
+    {
+      property: "[tool.custy.cli.paths]",
+      type: "version_file",
+      description: "Pilih file yang menerima resolved version.",
+    },
+    {
+      property: "[tool.custy.cli.versioning]",
+      type: "strategy and modifiers",
+      description: "Atur strategy, bump, dan release modifiers.",
+    },
+    {
+      property: "[tool.custy.cli.execution]",
+      type: "validation",
+      description: "Atur pre-tag checks dan force behavior.",
+    },
+  ]}
+/>
 
 <Section title="Example Configuration">
 ```toml
@@ -28,7 +69,9 @@ backups_tag = ".config/custy/templates/backups/tag"
 
 [tool.custy.cli.paths]
 version_file = "auto"
+
 ```
 </Section>
 
 <InfoBox variant="tip" title="Use Shared Release Inputs">Simpan team defaults dalam `.config/custy/config.toml`; gunakan CLI overrides untuk release khusus.</InfoBox>
+```

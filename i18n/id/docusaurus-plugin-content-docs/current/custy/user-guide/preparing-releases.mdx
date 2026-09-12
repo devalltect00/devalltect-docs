@@ -7,10 +7,41 @@ tags: [custy, release, publication]
 keywords: [custy run release, prepare Custy release]
 ---
 
-import {CommandChecklist, CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+import {
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
 
-<CommandHero command="custy run release" title="Preparing Releases" description="Bergerak dari approved release state melalui version, changelog, commit, tag, dan remote publication." category="User Guide" status="Consequential Workflow" syntax="custy --dry-run run release [OPTIONS]" tags={["preflight", "version", "changelog", "tag", "push"]} links={[{label: "Release Pipeline", href: "../pipelines/release-pipeline"}, {label: "Release Reference", href: "../commands/run/release/overview"}, {label: "Release Lifecycle", href: "../concepts/release-lifecycle"}]} />
-<CommandMetadata items={[{label: "Profile", value: "release", icon: "pipeline"}, {label: "Creates Commit", value: "Yes", icon: "git"}, {label: "Creates Tag", value: "Yes", icon: "release"}, {label: "Publishes Remotely", value: "Yes", icon: "network"}]} />
+<CommandHero
+  command="custy run release"
+  title="Preparing Releases"
+  description="Bergerak dari approved release state melalui version, changelog, commit, tag, dan remote publication."
+  category="User Guide"
+  status="Consequential Workflow"
+  syntax="custy --dry-run run release [OPTIONS]"
+  tags={["preflight", "version", "changelog", "tag", "push"]}
+  links={[
+    { label: "Release Pipeline", href: "../pipelines/release-pipeline" },
+    { label: "Release Reference", href: "../commands/run/release/overview" },
+    { label: "Release Lifecycle", href: "../concepts/release-lifecycle" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Profile", value: "release", icon: "pipeline" },
+    { label: "Creates Commit", value: "Yes", icon: "git" },
+    { label: "Creates Tag", value: "Yes", icon: "release" },
+    { label: "Publishes Remotely", value: "Yes", icon: "network" },
+  ]}
+/>
 
 ## Tujuan
 
@@ -19,23 +50,97 @@ di-commit, diberi tag, dan di-push. Profile memvalidasi release prerequisites
 dan berakhir setelah push; profile tidak menjalankan experimental finalization
 stage milik Full.
 
-<InfoBox variant="danger" title="Release Bersifat Durable dan Non-Transactional">File updates, commit, local tag, dan satu atau lebih remote pushes dapat selesai sebelum later failure. Custy tidak me-roll back effects tersebut sebagai satu unit.</InfoBox>
+<InfoBox variant="danger" title="Release Bersifat Durable dan Non-Transactional">
+  File updates, commit, local tag, dan satu atau lebih remote pushes dapat selesai
+  sebelum later failure. Custy tidak me-roll back effects tersebut sebagai satu unit.
+</InfoBox>
 
 ---
 
-<Section title="Release Readiness Checklist"><CommandChecklist items={[{title: "The release scope is approved", description: "Included changes, version intent, dan publication timing telah disepakati."}, {title: "Messages are reviewed", description: "Commit dan tag message files tersedia dan memenuhi configured convention."}, {title: "Version configuration is correct", description: "Tinjau version file, strategy, bump behavior, dan explicit tag input."}, {title: "Changelog policy is understood", description: "Konfirmasi templates, mappings, final-version behavior, dan output path."}, {title: "Every remote is verified", description: "Periksa origin, primary, backup, dan synchronization policy sebelum publication."}, {title: "Recovery is planned", description: "Ketahui cara memeriksa partial file update, commit, tag, atau multi-remote push."}]} />
-<Terminal title="Release preflight" language="bash">{`git status --short --branch
+<Section title="Release Readiness Checklist">
+  <CommandChecklist
+    items={[
+      {
+        title: "The release scope is approved",
+        description:
+          "Included changes, version intent, dan publication timing telah disepakati.",
+      },
+      {
+        title: "Messages are reviewed",
+        description:
+          "Commit dan tag message files tersedia dan memenuhi configured convention.",
+      },
+      {
+        title: "Version configuration is correct",
+        description:
+          "Tinjau version file, strategy, bump behavior, dan explicit tag input.",
+      },
+      {
+        title: "Changelog policy is understood",
+        description:
+          "Konfirmasi templates, mappings, final-version behavior, dan output path.",
+      },
+      {
+        title: "Every remote is verified",
+        description:
+          "Periksa origin, primary, backup, dan synchronization policy sebelum publication.",
+      },
+      {
+        title: "Recovery is planned",
+        description:
+          "Ketahui cara memeriksa partial file update, commit, tag, atau multi-remote push.",
+      },
+    ]}
+  />
+  <Terminal title="Release preflight" language="bash">{`git status --short --branch
 git diff
 git diff --staged
 git tag --list
 git remote -v
-custy validate`}</Terminal></Section>
+custy validate`}</Terminal>
+</Section>
 
 ---
 
-<Section title="Recommended Release Journey"><WorkflowTimeline title="Reviewed Publication" items={[{title: "Validate readiness", description: "Resolve repository, message, version, tag, dan remote prerequisites.", status: "completed"}, {title: "Preview the complete profile", description: "Dry-run Release dan baca setiap resolved path, version, tag, dan destination.", status: "completed"}, {title: "Review editable artifacts", description: "Konfirmasi intended commit message, tag message, version output, dan changelog result.", status: "completed"}, {title: "Execute Release", description: "Jalankan normally setelah preview dan team release checks selesai.", status: "current"}, {title: "Verify publication", description: "Konfirmasi local files, commit, tag, dan setiap intended remote secara independen.", status: "pending"}]} />
-<Terminal title="Preview and publish" language="bash">{`custy --dry-run run release
-custy run release`}</Terminal></Section>
+<Section title="Recommended Release Journey">
+  <WorkflowTimeline
+    title="Reviewed Publication"
+    items={[
+      {
+        title: "Validate readiness",
+        description:
+          "Resolve repository, message, version, tag, dan remote prerequisites.",
+        status: "completed",
+      },
+      {
+        title: "Preview the complete profile",
+        description:
+          "Dry-run Release dan baca setiap resolved path, version, tag, dan destination.",
+        status: "completed",
+      },
+      {
+        title: "Review editable artifacts",
+        description:
+          "Konfirmasi intended commit message, tag message, version output, dan changelog result.",
+        status: "completed",
+      },
+      {
+        title: "Execute Release",
+        description:
+          "Jalankan normally setelah preview dan team release checks selesai.",
+        status: "current",
+      },
+      {
+        title: "Verify publication",
+        description:
+          "Konfirmasi local files, commit, tag, dan setiap intended remote secara independen.",
+        status: "pending",
+      },
+    ]}
+  />
+  <Terminal title="Preview and publish" language="bash">{`custy --dry-run run release
+custy run release`}</Terminal>
+</Section>
 
 ---
 
@@ -58,6 +163,35 @@ seluruh configured destinations selesai.
 
 </Section>
 
-<InfoBox variant="warning" title="Release adalah Recommended Default daripada Full">Full menambahkan experimental post-push branch transitions dan cleanup. Gunakan Release kecuali Anda sengaja membutuhkan dan memahami additional boundary tersebut.</InfoBox>
+<InfoBox variant="warning" title="Release adalah Recommended Default daripada Full">
+  Full menambahkan experimental post-push branch transitions dan cleanup. Gunakan
+  Release kecuali Anda sengaja membutuhkan dan memahami additional boundary tersebut.
+</InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Release Pipeline", href: "../pipelines/release-pipeline", description: "Tinjau seluruh 24 expanded steps dan failure boundaries."}, {title: "Release Examples", href: "../commands/run/release/examples", description: "Gunakan practical Release invocations."}, {title: "Configuration Guide", href: "../configuration/overview", description: "Tinjau project-owned version, template, changelog, dan remote policy."}, {title: "Troubleshooting Workflows", href: "./troubleshooting-workflows", description: "Recover dari partial release state secara aman."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Release Pipeline",
+        href: "../pipelines/release-pipeline",
+        description: "Tinjau seluruh 24 expanded steps dan failure boundaries.",
+      },
+      {
+        title: "Release Examples",
+        href: "../commands/run/release/examples",
+        description: "Gunakan practical Release invocations.",
+      },
+      {
+        title: "Configuration Guide",
+        href: "../configuration/overview",
+        description:
+          "Tinjau project-owned version, template, changelog, dan remote policy.",
+      },
+      {
+        title: "Troubleshooting Workflows",
+        href: "./troubleshooting-workflows",
+        description: "Recover dari partial release state secara aman.",
+      },
+    ]}
+  />
+</Section>

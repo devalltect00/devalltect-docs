@@ -6,14 +6,23 @@ sidebar_key: doc-gen-user-guide
 tags: [doc-gen, user-guide]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="Doc Gen" title="User Guide" description="Choose a workflow by its target and side effects." category="User Guide" status="Practical" syntax="doc-gen init" />
+<CommandHero
+  command="Doc Gen"
+  title="User Guide"
+  description="Choose a workflow by its target and side effects."
+  category="User Guide"
+  status="Practical"
+  syntax="doc-gen init"
+/>
 
 - `doc-gen init`
 - `doc-gen structure generate [TARGET]`
 - `doc-gen structure print [TARGET]`
 - `doc-gen structure analyze [TARGET]`
 
-<InfoBox variant="warning" title="Safety">Generate writes only its resolved Markdown output; print and analyze are read-only. Generate dry-run never creates its output directory or file.</InfoBox>
-
+<InfoBox variant="warning" title="Safety">
+  Generate writes only its resolved Markdown output; print and analyze are read-only.
+  Generate dry-run never creates its output directory or file.
+</InfoBox>

@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -12,42 +9,36 @@ import {
 /**
  * Requirement importance.
  */
-export type RequirementLevel =
-    | "required"
-    | "recommended"
-    | "optional";
+export type RequirementLevel = "required" | "recommended" | "optional";
 
 /**
  * RequirementCard component properties.
  */
-export interface RequirementCardProps
-    extends HTMLAttributes<HTMLElement> {
+export interface RequirementCardProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Requirement title.
+   */
+  title: string;
 
-    /**
-     * Requirement title.
-     */
-    title: string;
+  /**
+   * Optional icon.
+   */
+  icon?: ReactNode;
 
-    /**
-     * Optional icon.
-     */
-    icon?: ReactNode;
+  /**
+   * Requirement level.
+   *
+   * @default "required"
+   */
+  level?: RequirementLevel;
 
-    /**
-     * Requirement level.
-     *
-     * @default "required"
-     */
-    level?: RequirementLevel;
+  /**
+   * Optional subtitle.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Optional subtitle.
-     */
-    subtitle?: ReactNode;
-
-    /**
-     * Requirement description.
-     */
-    children: ReactNode;
-
+  /**
+   * Requirement description.
+   */
+  children: ReactNode;
 }

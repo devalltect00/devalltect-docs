@@ -8,39 +8,35 @@ keywords: [changelog requirements, git tags, commit messages]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    RequirementGrid,
-    Section,
-    Terminal,
+  CommandHero,
+  InfoBox,
+  RequirementGrid,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy changelog generate"
-    title="Requirements"
-    description="Prepare repository history, templates, configuration, and file access before generating release notes."
-    category="Changelog"
-    status="Required Review"
-    syntax="custy changelog generate"
-    tags={[
-        "requirements",
-        "Git history",
-        "configuration",
-    ]}
-    links={[
-        {
-            label: "Overview",
-            href: "./overview",
-        },
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-    ]}
+  command="custy changelog generate"
+  title="Requirements"
+  description="Prepare repository history, templates, configuration, and file access before generating release notes."
+  category="Changelog"
+  status="Required Review"
+  syntax="custy changelog generate"
+  tags={["requirements", "Git history", "configuration"]}
+  links={[
+    {
+      label: "Overview",
+      href: "./overview",
+    },
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+  ]}
 />
 
 ## Overview
@@ -66,38 +62,44 @@ understood working tree makes the resulting diff easier to verify.
 >
 
 <RequirementGrid
-    items={[
-        {
-            title: "Custy Installation",
-            level: "required",
-            children: "Custy must be available in the environment used for the intended repository.",
-        },
-        {
-            title: "Git Repository",
-            level: "required",
-            children: "Run the command inside the repository whose history should become release notes.",
-        },
-        {
-            title: "Local History and Tags",
-            level: "required",
-            children: "Make the relevant commits and release tags available locally so boundaries can be resolved.",
-        },
-        {
-            title: "Structured Commit Messages",
-            level: "recommended",
-            children: "Use messages that provide enough type, scope, and breaking-change information for the configured parser.",
-        },
-        {
-            title: "Pending Message Template",
-            level: "optional",
-            children: "The configured commit-message template must exist when pending-commit integration is enabled.",
-        },
-        {
-            title: "Writable Output Path",
-            level: "required",
-            children: "The process must be able to create or update the configured CHANGELOG.md path.",
-        },
-    ]}
+  items={[
+    {
+      title: "Custy Installation",
+      level: "required",
+      children:
+        "Custy must be available in the environment used for the intended repository.",
+    },
+    {
+      title: "Git Repository",
+      level: "required",
+      children:
+        "Run the command inside the repository whose history should become release notes.",
+    },
+    {
+      title: "Local History and Tags",
+      level: "required",
+      children:
+        "Make the relevant commits and release tags available locally so boundaries can be resolved.",
+    },
+    {
+      title: "Structured Commit Messages",
+      level: "recommended",
+      children:
+        "Use messages that provide enough type, scope, and breaking-change information for the configured parser.",
+    },
+    {
+      title: "Pending Message Template",
+      level: "optional",
+      children:
+        "The configured commit-message template must exist when pending-commit integration is enabled.",
+    },
+    {
+      title: "Writable Output Path",
+      level: "required",
+      children:
+        "The process must be able to create or update the configured CHANGELOG.md path.",
+    },
+  ]}
 />
 
 </Section>

@@ -8,30 +8,26 @@ keywords: [release profile stages]
 ---
 
 import {
-    CommandHero,
-    InfoBox,
-    Section,
-    WorkflowTimeline,
+  CommandHero,
+  InfoBox,
+  Section,
+  WorkflowTimeline,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy run release"
-    title="Release Workflow"
-    description="Follow the exact registered Release stages from validation and version preparation through commit, tag, and push."
-    category="Pipeline Profile"
-    status="Stable with Limitations"
-    syntax="custy run release [OPTIONS]"
-    tags={[
-        "workflow",
-        "release",
-        "publication",
-    ]}
-    links={[
-        {label: "Overview", href: "./overview"},
-        {label: "Examples", href: "./examples"},
-        {label: "Pipeline Internals", href: "../../../pipelines/release-pipeline"},
-        {label: "Safety", href: "../safety"},
-    ]}
+  command="custy run release"
+  title="Release Workflow"
+  description="Follow the exact registered Release stages from validation and version preparation through commit, tag, and push."
+  category="Pipeline Profile"
+  status="Stable with Limitations"
+  syntax="custy run release [OPTIONS]"
+  tags={["workflow", "release", "publication"]}
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Examples", href: "./examples" },
+    { label: "Pipeline Internals", href: "../../../pipelines/release-pipeline" },
+    { label: "Safety", href: "../safety" },
+  ]}
 />
 
 ## Overview
@@ -46,18 +42,51 @@ additional experimental finalization step.
 >
 
 <WorkflowTimeline
-    title="Release Profile"
-    items={[
-        {title: "Validate", description: "Run repository, pre-commit, pre-tag, and pre-push validation.", status: "completed"},
-        {title: "Prepare release", description: "Resolve the version, initialize workflow state, and prepare the tag message.", status: "completed"},
-        {title: "Generate and edit artifacts", description: "Generate release artifacts, open them, and validate edits.", status: "completed"},
-        {title: "Apply version", description: "Write the resolved version to the configured version file.", status: "completed"},
-        {title: "Generate changelog", description: "Update CHANGELOG.md from release history and configuration.", status: "completed"},
-        {title: "Back up and clean", description: "Back up both commit and tag messages and prune retained backups.", status: "completed"},
-        {title: "Commit", description: "Stage release changes and create the release commit.", status: "completed"},
-        {title: "Tag", description: "Create the local release tag.", status: "completed"},
-        {title: "Push", description: "Push HEAD and the release tag to resolved remotes.", status: "completed"},
-    ]}
+  title="Release Profile"
+  items={[
+    {
+      title: "Validate",
+      description: "Run repository, pre-commit, pre-tag, and pre-push validation.",
+      status: "completed",
+    },
+    {
+      title: "Prepare release",
+      description:
+        "Resolve the version, initialize workflow state, and prepare the tag message.",
+      status: "completed",
+    },
+    {
+      title: "Generate and edit artifacts",
+      description: "Generate release artifacts, open them, and validate edits.",
+      status: "completed",
+    },
+    {
+      title: "Apply version",
+      description: "Write the resolved version to the configured version file.",
+      status: "completed",
+    },
+    {
+      title: "Generate changelog",
+      description: "Update CHANGELOG.md from release history and configuration.",
+      status: "completed",
+    },
+    {
+      title: "Back up and clean",
+      description: "Back up both commit and tag messages and prune retained backups.",
+      status: "completed",
+    },
+    {
+      title: "Commit",
+      description: "Stage release changes and create the release commit.",
+      status: "completed",
+    },
+    { title: "Tag", description: "Create the local release tag.", status: "completed" },
+    {
+      title: "Push",
+      description: "Push HEAD and the release tag to resolved remotes.",
+      status: "completed",
+    },
+  ]}
 />
 
 </Section>

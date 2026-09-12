@@ -1,13 +1,9 @@
 export { default } from "./CommandSyntax";
 
-export type {
-    CommandSyntaxExample,
-    CommandSyntaxProps,
-} from "./types";
-
+export type { CommandSyntaxExample, CommandSyntaxProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.CommandSyntax
     examples={[
         {

@@ -6,14 +6,27 @@ sidebar_key: reflow-releases-recover
 tags: [reflow, options]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow releases recover" title="Opsi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Pemulihan Rilis" status="Pemulihan Alur Kerja GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="reflow releases recover"
+  title="Opsi"
+  description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal."
+  category="Pemulihan Rilis"
+  status="Pemulihan Alur Kerja GitHub"
+  syntax="reflow releases recover [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
-| Flag / nilai | Bawaan | Efek |
-| --- | --- | --- |
-| `--delay, -d` | 2 | Atur jeda dalam detik di antara push ulang tag. |
-| `--only-stable` | false | Pilih hanya tag versi stabil. |
-| `--limit, -l` | tanpa batas | Batasi jumlah maksimum tag terpilih. |
-| `--yes, -y` | false | Konfirmasi tanpa prompt interaktif. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Tampilkan pilihan tanpa melakukan perubahan. |
+| Flag / nilai                      | Bawaan      | Efek                                            |
+| --------------------------------- | ----------- | ----------------------------------------------- |
+| `--delay, -d`                     | 2           | Atur jeda dalam detik di antara push ulang tag. |
+| `--only-stable`                   | false       | Pilih hanya tag versi stabil.                   |
+| `--limit, -l`                     | tanpa batas | Batasi jumlah maksimum tag terpilih.            |
+| `--yes, -y`                       | false       | Konfirmasi tanpa prompt interaktif.             |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false       | Tampilkan pilihan tanpa melakukan perubahan.    |

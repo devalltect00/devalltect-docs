@@ -6,13 +6,28 @@ sidebar_key: phs-scan
 tags: [path-header-scanner, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner scan" title="Persyaratan" description="Sebelum menjalankannya" category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+<CommandHero
+  command="path-header-scanner scan"
+  title="Persyaratan"
+  description="Sebelum menjalankannya"
+  category="Pemindaian Header"
+  status="Preview First"
+  syntax="path-header-scanner scan [OPTIONS]"
+  links={[
+    { label: "Ringkasan", href: "./overview" },
+    { label: "Opsi", href: "./options" },
+    { label: "Alur Kerja", href: "./workflow" },
+    { label: "Contoh", href: "./examples" },
+  ]}
+/>
 
 - Target dapat dibaca.
 - Izin write hanya untuk --apply.
 - File Python, JavaScript, shell, HTML, PHP, atau Markdown.
 
-<InfoBox variant="tip" title="Dry run">Preview adalah default. --apply mengaktifkan write; --dry-run mengungguli apply dari CLI/configuration dan menjamin target tidak berubah.</InfoBox>
-
+<InfoBox variant="tip" title="Dry run">
+  Preview adalah default. --apply mengaktifkan write; --dry-run mengungguli apply dari
+  CLI/configuration dan menjamin target tidak berubah.
+</InfoBox>

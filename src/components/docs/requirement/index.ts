@@ -16,12 +16,6 @@ export { default as RequirementGrid } from "./RequirementGrid";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    RequirementCardProps,
-    RequirementLevel,
-} from "./RequirementCard";
+export type { RequirementCardProps, RequirementLevel } from "./RequirementCard";
 
-export type {
-    RequirementGridItem,
-    RequirementGridProps,
-} from "./RequirementGrid";
+export type { RequirementGridItem, RequirementGridProps } from "./RequirementGrid";

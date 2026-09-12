@@ -4,15 +4,99 @@ description: "Options untuk experimental workflow branch command."
 sidebar_position: 4
 sidebar_key: custy-workflow-branch-options
 ---
-import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Command Options" description="Pahami interface inputs dan current operational status." category="Workflow" status="Experimental" syntax="custy workflow branch [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Workflow",href:"./workflow"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import {
+  CommandHero,
+  CommandOption,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Command Options"
+  description="Pahami interface inputs dan current operational status."
+  category="Workflow"
+  status="Experimental"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandOption options={[
- {name:"--check_transition",shorthand:"-ct",description:"Request transition validation.",example:"--check_transition"},{name:"--from-branch",shorthand:"-fb",description:"Source branch.",example:"--from-branch develop"},{name:"--to-branch",shorthand:"-tb",description:"Target branch.",example:"--to-branch main"},{name:"--from-tag",shorthand:"-ft",description:"Source tag.",example:"--from-tag v1.2.0"},{name:"--to-tag",shorthand:"-tt",description:"Target tag.",example:"--to-tag v1.3.0"},{name:"--enforce",shorthand:"-enf",description:"Request enforcement behavior.",example:"--enforce"},{name:"--sync-backup",shorthand:"-sb",description:"Request backup synchronization.",example:"--sync-backup"},{name:"--dry-run / --no-dry-run",shorthand:"-dr / -Dr",description:"Toggle dry-run mode.",example:"--dry-run"},{name:"--debug / --no-debug",shorthand:"-dbg / -Dbg",description:"Toggle debug diagnostics.",example:"--debug"},{name:"--log-level",shorthand:"-ll",description:"Set logging level.",example:"--log-level debug"},
-]} />
+<CommandOption
+  options={[
+    {
+      name: "--check_transition",
+      shorthand: "-ct",
+      description: "Request transition validation.",
+      example: "--check_transition",
+    },
+    {
+      name: "--from-branch",
+      shorthand: "-fb",
+      description: "Source branch.",
+      example: "--from-branch develop",
+    },
+    {
+      name: "--to-branch",
+      shorthand: "-tb",
+      description: "Target branch.",
+      example: "--to-branch main",
+    },
+    {
+      name: "--from-tag",
+      shorthand: "-ft",
+      description: "Source tag.",
+      example: "--from-tag v1.2.0",
+    },
+    {
+      name: "--to-tag",
+      shorthand: "-tt",
+      description: "Target tag.",
+      example: "--to-tag v1.3.0",
+    },
+    {
+      name: "--enforce",
+      shorthand: "-enf",
+      description: "Request enforcement behavior.",
+      example: "--enforce",
+    },
+    {
+      name: "--sync-backup",
+      shorthand: "-sb",
+      description: "Request backup synchronization.",
+      example: "--sync-backup",
+    },
+    {
+      name: "--dry-run / --no-dry-run",
+      shorthand: "-dr / -Dr",
+      description: "Toggle dry-run mode.",
+      example: "--dry-run",
+    },
+    {
+      name: "--debug / --no-debug",
+      shorthand: "-dbg / -Dbg",
+      description: "Toggle debug diagnostics.",
+      example: "--debug",
+    },
+    {
+      name: "--log-level",
+      shorthand: "-ll",
+      description: "Set logging level.",
+      example: "--log-level debug",
+    },
+  ]}
+/>
 
-<Section title="Configuration Resolution">CLI inputs, project configuration, dan defaults dimaksudkan untuk membentuk effective transition request.</Section>
-<InfoBox variant="danger" title="Options Do Not Remove the Blocker">Tidak ada combination option yang memperbaiki unregistered `finalize` step.</InfoBox>
+<Section title="Configuration Resolution">
+  CLI inputs, project configuration, dan defaults dimaksudkan untuk membentuk effective
+  transition request.
+</Section>
+<InfoBox variant="danger" title="Options Do Not Remove the Blocker">
+  Tidak ada combination option yang memperbaiki unregistered `finalize` step.
+</InfoBox>

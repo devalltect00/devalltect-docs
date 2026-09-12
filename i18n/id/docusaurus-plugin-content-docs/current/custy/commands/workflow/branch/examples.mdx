@@ -4,13 +4,45 @@ description: "Non-production interface examples untuk experimental workflow bran
 sidebar_position: 7
 sidebar_key: custy-workflow-branch-examples
 ---
-import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy workflow branch" title="Examples" description="Contoh interface untuk review dan development, bukan production use." category="Workflow" status="Documentation Only" syntax="custy workflow branch [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Options",href:"./options"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, CommandExample, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy workflow branch"
+  title="Examples"
+  description="Contoh interface untuk review dan development, bukan production use."
+  category="Workflow"
+  status="Documentation Only"
+  syntax="custy workflow branch [OPTIONS]"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Options", href: "./options" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
 
-<InfoBox variant="danger" title="Documentation Examples Only">Examples dapat mencapai known pipeline blocker dan tidak boleh digunakan dalam CI/CD.</InfoBox>
-<CommandExample examples={[
- {title:"Branch Check",command:"custy --dry-run workflow branch --check_transition --from-branch develop --to-branch main",result:"Menyusun transition request sebelum known blocker."},{title:"Tag Check",command:"custy --dry-run workflow branch -ct --from-tag v1.2.0 --to-tag v1.3.0",result:"Menyusun tag transition request."},{title:"Diagnostics",command:"custy --debug --log-level debug workflow branch --check_transition",result:"Menampilkan diagnostics untuk development investigation."},
-]} />
+<InfoBox variant="danger" title="Documentation Examples Only">
+  Examples dapat mencapai known pipeline blocker dan tidak boleh digunakan dalam CI/CD.
+</InfoBox>
+<CommandExample
+  examples={[
+    {
+      title: "Branch Check",
+      command:
+        "custy --dry-run workflow branch --check_transition --from-branch develop --to-branch main",
+      result: "Menyusun transition request sebelum known blocker.",
+    },
+    {
+      title: "Tag Check",
+      command: "custy --dry-run workflow branch -ct --from-tag v1.2.0 --to-tag v1.3.0",
+      result: "Menyusun tag transition request.",
+    },
+    {
+      title: "Diagnostics",
+      command: "custy --debug --log-level debug workflow branch --check_transition",
+      result: "Menampilkan diagnostics untuk development investigation.",
+    },
+  ]}
+/>

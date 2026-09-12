@@ -6,18 +6,31 @@ sidebar_key: doc-gen-getting-started
 tags: [doc-gen, docker, containers]
 ---
 
-import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.1" title="Run Doc Gen with Docker" description="Use a published image to inspect or document an explicitly mounted project." category="Getting Started" status="Stable Image Policy" syntax="docker pull ghcr.io/devalltect00/doc-gen:<tag>" />
+<CommandHero
+  command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.1"
+  title="Run Doc Gen with Docker"
+  description="Use a published image to inspect or document an explicitly mounted project."
+  category="Getting Started"
+  status="Stable Image Policy"
+  syntax="docker pull ghcr.io/devalltect00/doc-gen:<tag>"
+/>
 
 <Section title="Published Image Tags">
 
-| Tag | Example | Behavior |
-| --- | --- | --- |
-| Exact | `v1.0.1` | Immutable and recommended for CI or reproducible automation. |
-| Minor | `v1.0` | Moves to the newest stable patch in the 1.0 line. |
-| Major | `v1` | Moves to the newest stable release in the 1.x line. |
-| Latest | `latest` | Moves to the newest stable Doc Gen release. |
+| Tag    | Example  | Behavior                                                     |
+| ------ | -------- | ------------------------------------------------------------ |
+| Exact  | `v1.0.1` | Immutable and recommended for CI or reproducible automation. |
+| Minor  | `v1.0`   | Moves to the newest stable patch in the 1.0 line.            |
+| Major  | `v1`     | Moves to the newest stable release in the 1.x line.          |
+| Latest | `latest` | Moves to the newest stable Doc Gen release.                  |
 
 <Terminal title="Pull and verify Doc Gen" language="bash">
 
@@ -71,7 +84,17 @@ generated document to be written.
 
 </Section>
 
-<RelatedCommands commands={[
-    {title: "Installation and First Workflow", href: "./first-workflow", description: "Install Doc Gen and preview generation."},
-    {title: "Generate", href: "../commands/structure/generate/overview", description: "Generate project-structure documentation safely."},
-]} />
+<RelatedCommands
+  commands={[
+    {
+      title: "Installation and First Workflow",
+      href: "./first-workflow",
+      description: "Install Doc Gen and preview generation.",
+    },
+    {
+      title: "Generate",
+      href: "../commands/structure/generate/overview",
+      description: "Generate project-structure documentation safely.",
+    },
+  ]}
+/>

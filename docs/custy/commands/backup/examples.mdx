@@ -6,38 +6,34 @@ sidebar_key: custy-commands-backup
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy backup"
-    title="Examples"
-    description="Learn how to create backups for Custy's template files in common development scenarios."
-    category="Backup"
-    status="Recommended"
-    syntax="custy backup commit"
-    tags={[
-        "examples",
-        "backup",
-        "templates",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy backup"
+  title="Examples"
+  description="Learn how to create backups for Custy's template files in common development scenarios."
+  category="Backup"
+  status="Recommended"
+  syntax="custy backup commit"
+  tags={["examples", "backup", "templates"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -52,32 +48,26 @@ of Custy's template files.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Backup Commit Message Template",
-            description:
-                "Create a backup of the configured commit message template.",
-            command: "custy backup commit",
-            result:
-                "Creates a timestamped backup of the configured commit message template.",
-        },
-        {
-            title: "Backup Tag Message Template",
-            description:
-                "Create a backup of the configured tag message template.",
-            command: "custy backup tag",
-            result:
-                "Creates a timestamped backup of the configured tag message template.",
-        },
-        {
-            title: "Backup All Templates",
-            description:
-                "Create backups for both commit and tag message templates.",
-            command: "custy backup all",
-            result:
-                "Creates timestamped backups for every supported template resource.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Backup Commit Message Template",
+      description: "Create a backup of the configured commit message template.",
+      command: "custy backup commit",
+      result: "Creates a timestamped backup of the configured commit message template.",
+    },
+    {
+      title: "Backup Tag Message Template",
+      description: "Create a backup of the configured tag message template.",
+      command: "custy backup tag",
+      result: "Creates a timestamped backup of the configured tag message template.",
+    },
+    {
+      title: "Backup All Templates",
+      description: "Create backups for both commit and tag message templates.",
+      command: "custy backup all",
+      result: "Creates timestamped backups for every supported template resource.",
+    },
+  ]}
 />
 
 </Section>
@@ -98,6 +88,7 @@ of Custy's template files.
 `custy backup commit
 
 # Edit commit-message.txt`,
+
             result:
                 "The original template remains safely preserved in the backup directory.",
         },
@@ -106,11 +97,12 @@ of Custy's template files.
             description:
                 "Create backups before modifying release-related templates.",
             command:
+
 `custy backup all`,
-            result:
-                "Both commit and tag message templates are backed up before any manual changes are made.",
-        },
-    ]}
+result:
+"Both commit and tag message templates are backed up before any manual changes are made.",
+},
+]}
 />
 
 </Section>

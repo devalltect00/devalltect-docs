@@ -8,41 +8,45 @@ keywords: [custy config, tool.custy, config.toml]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command=".config/custy/config.toml"
-    title="Ringkasan Konfigurasi"
-    description="Pahami konfigurasi lengkap milik project, mulai dari initialization dan CLI defaults hingga changelog rendering dan Git remotes."
-    category="Configuration"
-    status="Complete Reference"
-    syntax="[tool.custy]"
-    tags={["TOML hierarchy", "project defaults", "implementation status"]}
-    links={[
-        {label: "Configuration File", href: "./config-file"},
-        {label: "All Properties", href: "./reference"},
-        {label: "Compact Reference", href: "../reference/configuration"},
-        {label: "Resolution", href: "./resolution"},
-        {label: "Troubleshooting", href: "../troubleshooting/configuration"},
-        {label: "System Architecture", href: "../architecture/configuration-system"},
-    ]}
+  command=".config/custy/config.toml"
+  title="Ringkasan Konfigurasi"
+  description="Pahami konfigurasi lengkap milik project, mulai dari initialization dan CLI defaults hingga changelog rendering dan Git remotes."
+  category="Configuration"
+  status="Complete Reference"
+  syntax="[tool.custy]"
+  tags={["TOML hierarchy", "project defaults", "implementation status"]}
+  links={[
+    { label: "Configuration File", href: "./config-file" },
+    { label: "All Properties", href: "./reference" },
+    { label: "Compact Reference", href: "../reference/configuration" },
+    { label: "Resolution", href: "./resolution" },
+    { label: "Troubleshooting", href: "../troubleshooting/configuration" },
+    { label: "System Architecture", href: "../architecture/configuration-system" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Root Namespace", value: "tool.custy", icon: "project"},
-        {label: "Generated Tables", value: "32", icon: "table"},
-        {label: "Ownership", value: "Your project", icon: "file"},
-    ]}
+  items={[
+    {
+      label: "Project File",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Root Namespace", value: "tool.custy", icon: "project" },
+    { label: "Generated Tables", value: "32", icon: "table" },
+    { label: "Ownership", value: "Your project", icon: "file" },
+  ]}
 />
 
 ## Ringkasan
@@ -64,17 +68,98 @@ mengetahui full TOML path.
 <Section title="Top-Level Namespaces">
 
 <FeatureGrid
-    items={[
-        {title: "Project", icon: <Icon name="project" />, children: <>Tentukan source directory melalui <a href="./project">tool.custy.project</a>.</>},
-        {title: "Release", icon: <Icon name="release" />, children: <>Tinjau generated release metadata dan <a href="./release">compatibility gap saat ini</a>.</>},
-        {title: "Initialization", icon: <Icon name="copy" />, children: <>Atur default overwrite dan prompt untuk <a href="./initialization">custy init</a>.</>},
-        {title: "Editor", icon: <Icon name="terminal" />, children: <>Pilih prioritas editor lokal dan container melalui <a href="./editor">tool.custy.editor</a>.</>},
-        {title: "Commit Validation", icon: <Icon name="success" />, children: <>Pilih built-in, automatic, Commitizen, atau Git-only message checks melalui <a href="./commit-validation">tool.custy.commit.validation</a>.</>},
-        {title: "CLI", icon: <Icon name="terminal" />, children: <>Konfigurasikan paths, versioning, templates, execution, push, cleanup, changelog command behavior, dan workflow defaults melalui <a href="./cli/overview">tool.custy.cli</a>.</>},
-        {title: "Logging", icon: <Icon name="file" />, children: <>Konfigurasikan Rich console output dan rotating files melalui <a href="./logging/overview">tool.custy.logging</a>.</>},
-        {title: "Changelog", icon: <Icon name="release" />, children: <>Atur collection, cleaning, releases, mapping, dan rendering melalui <a href="./changelog/overview">tool.custy.changelog</a>.</>},
-        {title: "Git", icon: <Icon name="git" />, children: <>Tentukan perilaku default, primary, dan backup remote melalui <a href="./git/overview">tool.custy.git</a>.</>},
-    ]}
+  items={[
+    {
+      title: "Project",
+      icon: <Icon name="project" />,
+      children: (
+        <>
+          Tentukan source directory melalui <a href="./project">tool.custy.project</a>.
+        </>
+      ),
+    },
+    {
+      title: "Release",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Tinjau generated release metadata dan{" "}
+          <a href="./release">compatibility gap saat ini</a>.
+        </>
+      ),
+    },
+    {
+      title: "Initialization",
+      icon: <Icon name="copy" />,
+      children: (
+        <>
+          Atur default overwrite dan prompt untuk{" "}
+          <a href="./initialization">custy init</a>.
+        </>
+      ),
+    },
+    {
+      title: "Editor",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Pilih prioritas editor lokal dan container melalui{" "}
+          <a href="./editor">tool.custy.editor</a>.
+        </>
+      ),
+    },
+    {
+      title: "Commit Validation",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Pilih built-in, automatic, Commitizen, atau Git-only message checks melalui{" "}
+          <a href="./commit-validation">tool.custy.commit.validation</a>.
+        </>
+      ),
+    },
+    {
+      title: "CLI",
+      icon: <Icon name="terminal" />,
+      children: (
+        <>
+          Konfigurasikan paths, versioning, templates, execution, push, cleanup,
+          changelog command behavior, dan workflow defaults melalui{" "}
+          <a href="./cli/overview">tool.custy.cli</a>.
+        </>
+      ),
+    },
+    {
+      title: "Logging",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Konfigurasikan Rich console output dan rotating files melalui{" "}
+          <a href="./logging/overview">tool.custy.logging</a>.
+        </>
+      ),
+    },
+    {
+      title: "Changelog",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Atur collection, cleaning, releases, mapping, dan rendering melalui{" "}
+          <a href="./changelog/overview">tool.custy.changelog</a>.
+        </>
+      ),
+    },
+    {
+      title: "Git",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Tentukan perilaku default, primary, dan backup remote melalui{" "}
+          <a href="./git/overview">tool.custy.git</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -121,16 +206,52 @@ default_remote = "origin"`}
 <Section title="Lanjutkan">
 
 <RelatedCommands
-    commands={[
-        {title: "Configuration File", href: "./config-file", description: "Pelajari ownership, initialization, TOML shape, dan overwrite safety."},
-        {title: "Configuration Architecture", href: "../architecture/configuration-system", description: "Telusuri initialization, loading, caching, typed resolution, dan runtime consumers."},
-        {title: "All Properties", href: "./reference", description: "Temukan setiap generated dan supported configuration path."},
-        {title: "CLI Configuration", href: "./cli/overview", description: "Tinjau command-level defaults dan nested CLI tables."},
-        {title: "Changelog Configuration", href: "./changelog/overview", description: "Navigasikan seluruh changelog subsystem."},
-        {title: "Editor Configuration", href: "./editor", description: "Konfigurasikan supported editors, platform precedence, Docker behavior, dan keybindings."},
-        {title: "Commit Validation", href: "./commit-validation", description: "Pilih provider dan pahami optional Commitizen discovery."},
-        {title: "Git Credentials", href: "./git/credentials", description: "Pertahankan native Git lebih dulu dan konfigurasikan optional external token fallback untuk container."},
-    ]}
+  commands={[
+    {
+      title: "Configuration File",
+      href: "./config-file",
+      description:
+        "Pelajari ownership, initialization, TOML shape, dan overwrite safety.",
+    },
+    {
+      title: "Configuration Architecture",
+      href: "../architecture/configuration-system",
+      description:
+        "Telusuri initialization, loading, caching, typed resolution, dan runtime consumers.",
+    },
+    {
+      title: "All Properties",
+      href: "./reference",
+      description: "Temukan setiap generated dan supported configuration path.",
+    },
+    {
+      title: "CLI Configuration",
+      href: "./cli/overview",
+      description: "Tinjau command-level defaults dan nested CLI tables.",
+    },
+    {
+      title: "Changelog Configuration",
+      href: "./changelog/overview",
+      description: "Navigasikan seluruh changelog subsystem.",
+    },
+    {
+      title: "Editor Configuration",
+      href: "./editor",
+      description:
+        "Konfigurasikan supported editors, platform precedence, Docker behavior, dan keybindings.",
+    },
+    {
+      title: "Commit Validation",
+      href: "./commit-validation",
+      description: "Pilih provider dan pahami optional Commitizen discovery.",
+    },
+    {
+      title: "Git Credentials",
+      href: "./git/credentials",
+      description:
+        "Pertahankan native Git lebih dulu dan konfigurasikan optional external token fallback untuk container.",
+    },
+  ]}
 />
 
 </Section>

@@ -8,40 +8,40 @@ keywords: [Custy ChangelogGenerator, changelog pipeline, JinjaRenderer]
 ---
 
 import {
-    ArchitectureCard,
-    CommandHero,
-    CommandMetadata,
-    DependencyCard,
-    Grid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    WorkflowDiagram,
+  ArchitectureCard,
+  CommandHero,
+  CommandMetadata,
+  DependencyCard,
+  Grid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  WorkflowDiagram,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="app/core/changelog/"
-    title="Changelog System"
-    description="Transform repository history and optional pending content into a structured, rendered CHANGELOG.md document."
-    category="Architecture"
-    status="Active Generation Flow"
-    syntax="Git ranges -> providers -> processing -> releases -> Jinja -> Markdown"
-    tags={["providers", "domain models", "processing pipeline", "rendering"]}
-    links={[
-        {label: "Generate Command", href: "../commands/changelog/generate/overview"},
-        {label: "Configuration", href: "../configuration/changelog/overview"},
-        {label: "Git Operations", href: "./git-operations"},
-    ]}
+  command="app/core/changelog/"
+  title="Changelog System"
+  description="Transform repository history and optional pending content into a structured, rendered CHANGELOG.md document."
+  category="Architecture"
+  status="Active Generation Flow"
+  syntax="Git ranges -> providers -> processing -> releases -> Jinja -> Markdown"
+  tags={["providers", "domain models", "processing pipeline", "rendering"]}
+  links={[
+    { label: "Generate Command", href: "../commands/changelog/generate/overview" },
+    { label: "Configuration", href: "../configuration/changelog/overview" },
+    { label: "Git Operations", href: "./git-operations" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Coordinator", value: "ChangelogGenerator", icon: "release"},
-        {label: "History Boundary", value: "GitService", icon: "git"},
-        {label: "Domain Output", value: "Changelog", icon: "architecture"},
-        {label: "Renderer", value: "JinjaRenderer", icon: "template"},
-    ]}
+  items={[
+    { label: "Coordinator", value: "ChangelogGenerator", icon: "release" },
+    { label: "History Boundary", value: "GitService", icon: "git" },
+    { label: "Domain Output", value: "Changelog", icon: "architecture" },
+    { label: "Renderer", value: "JinjaRenderer", icon: "template" },
+  ]}
 />
 
 ## Overview
@@ -110,17 +110,57 @@ into one Markdown string using the initialized project template.
 ---
 
 <WorkflowDiagram
-    title="Active Generation Flow"
-    timeline={[
-        {title: "Enter through command or pipeline", description: "The changelog command or GenerateChangelogStep delegates eligibility and execution to WorkflowEngine.", status: "completed"},
-        {title: "Check whether generation applies", description: "WorkflowEngine evaluates skip, enablement, release state, and dry-run conditions before calling the generator.", status: "completed"},
-        {title: "Load services and configuration", description: "ChangelogGenerator creates its typed configuration, GitService, processing pipeline, release processor, sorter, and Jinja renderer.", status: "completed"},
-        {title: "Plan release ranges", description: "Existing tags determine unreleased, prerelease, stable, and promoted-prerelease boundaries.", status: "current"},
-        {title: "Collect raw messages", description: "GitProvider reads repository history; PendingCommitProvider may add the latest pending template content.", status: "pending"},
-        {title: "Build the domain model", description: "The processing pipeline creates semantic commit groups, and the generator assembles release metadata and comparisons.", status: "pending"},
-        {title: "Apply release behavior and order", description: "ReleaseBehaviorProcessor handles release-family policy and DefaultReleaseSorter orders the final releases.", status: "pending"},
-        {title: "Render and write", description: "JinjaRenderer produces Markdown; the generator writes only after successful collection, processing, and rendering.", status: "pending"},
-    ]}
+  title="Active Generation Flow"
+  timeline={[
+    {
+      title: "Enter through command or pipeline",
+      description:
+        "The changelog command or GenerateChangelogStep delegates eligibility and execution to WorkflowEngine.",
+      status: "completed",
+    },
+    {
+      title: "Check whether generation applies",
+      description:
+        "WorkflowEngine evaluates skip, enablement, release state, and dry-run conditions before calling the generator.",
+      status: "completed",
+    },
+    {
+      title: "Load services and configuration",
+      description:
+        "ChangelogGenerator creates its typed configuration, GitService, processing pipeline, release processor, sorter, and Jinja renderer.",
+      status: "completed",
+    },
+    {
+      title: "Plan release ranges",
+      description:
+        "Existing tags determine unreleased, prerelease, stable, and promoted-prerelease boundaries.",
+      status: "current",
+    },
+    {
+      title: "Collect raw messages",
+      description:
+        "GitProvider reads repository history; PendingCommitProvider may add the latest pending template content.",
+      status: "pending",
+    },
+    {
+      title: "Build the domain model",
+      description:
+        "The processing pipeline creates semantic commit groups, and the generator assembles release metadata and comparisons.",
+      status: "pending",
+    },
+    {
+      title: "Apply release behavior and order",
+      description:
+        "ReleaseBehaviorProcessor handles release-family policy and DefaultReleaseSorter orders the final releases.",
+      status: "pending",
+    },
+    {
+      title: "Render and write",
+      description:
+        "JinjaRenderer produces Markdown; the generator writes only after successful collection, processing, and rendering.",
+      status: "pending",
+    },
+  ]}
 />
 
 ---
@@ -128,13 +168,32 @@ into one Markdown string using the initialized project template.
 <Section title="Provider Boundary">
 
 <DependencyCard
-    title="Message Sources"
-    dependencies={[
-        {source: "MessageProviderFactory", target: "GitProvider", description: "Always supplies committed messages for each planned Git range."},
-        {source: "MessageProviderFactory", target: "PendingCommitProvider", description: "Optionally supplies the pending commit template for the latest unreleased range."},
-        {source: "Providers", target: "list[str]", description: "Return raw messages in provider order without deciding presentation."},
-        {source: "ChangelogProcessingPipeline", target: "Commit models", description: "Owns normalization, semantic parsing, filtering, deduplication, and grouping."},
-    ]}
+  title="Message Sources"
+  dependencies={[
+    {
+      source: "MessageProviderFactory",
+      target: "GitProvider",
+      description: "Always supplies committed messages for each planned Git range.",
+    },
+    {
+      source: "MessageProviderFactory",
+      target: "PendingCommitProvider",
+      description:
+        "Optionally supplies the pending commit template for the latest unreleased range.",
+    },
+    {
+      source: "Providers",
+      target: "list[str]",
+      description:
+        "Return raw messages in provider order without deciding presentation.",
+    },
+    {
+      source: "ChangelogProcessingPipeline",
+      target: "Commit models",
+      description:
+        "Owns normalization, semantic parsing, filtering, deduplication, and grouping.",
+    },
+  ]}
 />
 
 The provider protocol keeps collection separate from interpretation. This
@@ -202,12 +261,30 @@ not part of this documented path. The architecture describes the active
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Generate Changelog", href: "../commands/changelog/generate/overview", description: "Use the public command and review its options, output, examples, and safety."},
-        {title: "Changelog Configuration", href: "../configuration/changelog/overview", description: "Navigate every changelog table, property, and implementation status."},
-        {title: "Workflow Engine", href: "./workflow-engine", description: "See the eligibility check and surrounding release phases."},
-        {title: "Changelog Troubleshooting", href: "../commands/changelog/generate/troubleshooting", description: "Diagnose history, template, parsing, and output problems."},
-    ]}
+  commands={[
+    {
+      title: "Generate Changelog",
+      href: "../commands/changelog/generate/overview",
+      description:
+        "Use the public command and review its options, output, examples, and safety.",
+    },
+    {
+      title: "Changelog Configuration",
+      href: "../configuration/changelog/overview",
+      description:
+        "Navigate every changelog table, property, and implementation status.",
+    },
+    {
+      title: "Workflow Engine",
+      href: "./workflow-engine",
+      description: "See the eligibility check and surrounding release phases.",
+    },
+    {
+      title: "Changelog Troubleshooting",
+      href: "../commands/changelog/generate/troubleshooting",
+      description: "Diagnose history, template, parsing, and output problems.",
+    },
+  ]}
 />
 
 </Section>

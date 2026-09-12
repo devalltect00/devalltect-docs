@@ -15,38 +15,34 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandExample,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Examples"
-    description="Pelajari cara umum menjalankan init pada proyek menggunakan Custy."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "examples",
-        "best practices",
-        "initialization",
-    ]}
-    links={[
-        {
-            label: "Syntax",
-            href: "./syntax",
-        },
-        {
-            label: "Options",
-            href: "./options",
-        },
-        {
-            label: "Configuration",
-            href: "./configuration",
-        },
-    ]}
+  command="custy init"
+  title="Examples"
+  description="Pelajari cara umum menjalankan init pada proyek menggunakan Custy."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["examples", "best practices", "initialization"]}
+  links={[
+    {
+      label: "Syntax",
+      href: "./syntax",
+    },
+    {
+      label: "Options",
+      href: "./options",
+    },
+    {
+      label: "Configuration",
+      href: "./configuration",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -73,68 +69,61 @@ Jika ini pertama kalinya Anda menggunakan Custy, mulailah dengan init default.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Init Proyek",
-            description:
-                "Buat workspace proyek Custy lengkap menggunakan init mode default.",
-            command: "custy init",
-            result:
-                "Membuat configuration default, templates, struktur direktori, dan example resources yang digabungkan secara recursive.",
-            notes:
-                "Existing files dipertahankan secara default, sementara nested examples yang belum ada tetap dapat ditambahkan.",
-        },
-        {
-            title: "Hanya Buat Configuration",
-            description:
-                "Hanya buat file configuration Custy.",
-            command: "custy init --mode config",
-            result:
-                "Membuat .config/custy/config.toml tanpa templates atau example resources.",
-            notes:
-                "Berguna ketika Anda hanya memerlukan project configuration dan berencana membuat template nanti.",
-        },
-        {
-            title: "Hanya Buat Templates",
-            description:
-                "Hanya buat default template resources.",
-            command: "custy init --mode templates",
-            result:
-                "Membuat default templates untuk commit, tag, dan changelog.",
-            notes:
-                "Ideal untuk membuat ulang templates tanpa mengubah resource proyek lainnya.",
-        },
-        {
-            title: "Buat Example Resources",
-            description:
-                "Hanya buat example message templates.",
-            command: "custy init --mode examples",
-            result:
-                "Membuat atau menggabungkan commit-message dan tag-message example trees secara recursive.",
-            notes:
-                "Existing example files dipertahankan; file dan nested directories yang belum ada ditambahkan.",
-        },
-        {
-            title: "Timpa Resource yang Sudah Ada",
-            description:
-                "Ganti generated resources yang sudah ada tanpa meminta konfirmasi.",
-            command: "custy init --force",
-            result:
-                "Selected files yang sudah ada, termasuk nested example files, langsung ditimpa.",
-            notes:
-                "Direktori digabungkan, bukan diganti. Gunakan dengan hati-hati jika configuration, templates, atau examples sudah disesuaikan.",
-        },
-        {
-            title: "Minta Konfirmasi Sebelum Overwrite",
-            description:
-                "Minta konfirmasi sebelum mengganti resource yang sudah ada.",
-            command: "custy init --ask",
-            result:
-                "Custy meminta konfirmasi sebelum menimpa individual generated files yang mendukung prompt.",
-            notes:
-                "Packaged examples tidak meminta prompt per file; existing files dipertahankan dan file yang belum ada disalin.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Init Proyek",
+      description: "Buat workspace proyek Custy lengkap menggunakan init mode default.",
+      command: "custy init",
+      result:
+        "Membuat configuration default, templates, struktur direktori, dan example resources yang digabungkan secara recursive.",
+      notes:
+        "Existing files dipertahankan secara default, sementara nested examples yang belum ada tetap dapat ditambahkan.",
+    },
+    {
+      title: "Hanya Buat Configuration",
+      description: "Hanya buat file configuration Custy.",
+      command: "custy init --mode config",
+      result:
+        "Membuat .config/custy/config.toml tanpa templates atau example resources.",
+      notes:
+        "Berguna ketika Anda hanya memerlukan project configuration dan berencana membuat template nanti.",
+    },
+    {
+      title: "Hanya Buat Templates",
+      description: "Hanya buat default template resources.",
+      command: "custy init --mode templates",
+      result: "Membuat default templates untuk commit, tag, dan changelog.",
+      notes:
+        "Ideal untuk membuat ulang templates tanpa mengubah resource proyek lainnya.",
+    },
+    {
+      title: "Buat Example Resources",
+      description: "Hanya buat example message templates.",
+      command: "custy init --mode examples",
+      result:
+        "Membuat atau menggabungkan commit-message dan tag-message example trees secara recursive.",
+      notes:
+        "Existing example files dipertahankan; file dan nested directories yang belum ada ditambahkan.",
+    },
+    {
+      title: "Timpa Resource yang Sudah Ada",
+      description: "Ganti generated resources yang sudah ada tanpa meminta konfirmasi.",
+      command: "custy init --force",
+      result:
+        "Selected files yang sudah ada, termasuk nested example files, langsung ditimpa.",
+      notes:
+        "Direktori digabungkan, bukan diganti. Gunakan dengan hati-hati jika configuration, templates, atau examples sudah disesuaikan.",
+    },
+    {
+      title: "Minta Konfirmasi Sebelum Overwrite",
+      description: "Minta konfirmasi sebelum mengganti resource yang sudah ada.",
+      command: "custy init --ask",
+      result:
+        "Custy meminta konfirmasi sebelum menimpa individual generated files yang mendukung prompt.",
+      notes:
+        "Packaged examples tidak meminta prompt per file; existing files dipertahankan dan file yang belum ada disalin.",
+    },
+  ]}
 />
 
 </Section>

@@ -22,26 +22,12 @@ export { default as WorkflowDiagram } from "./WorkflowDiagram";
 /* Types                                                                       */
 /* -------------------------------------------------------------------------- */
 
-export type {
-    WorkflowStepProps,
-    WorkflowStepStatus,
-} from "./WorkflowStep";
+export type { WorkflowStepProps, WorkflowStepStatus } from "./WorkflowStep";
 
-export type {
-    WorkflowStageItem,
-    WorkflowStageProps,
-} from "./WorkflowStage";
+export type { WorkflowStageItem, WorkflowStageProps } from "./WorkflowStage";
 
-export type {
-    WorkflowLegendItem,
-    WorkflowLegendProps,
-} from "./WorkflowLegend";
+export type { WorkflowLegendItem, WorkflowLegendProps } from "./WorkflowLegend";
 
-export type {
-    WorkflowTimelineItem,
-    WorkflowTimelineProps,
-} from "./WorkflowTimeline";
+export type { WorkflowTimelineItem, WorkflowTimelineProps } from "./WorkflowTimeline";
 
-export type {
-    WorkflowDiagramProps,
-} from "./WorkflowDiagram";
+export type { WorkflowDiagramProps } from "./WorkflowDiagram";

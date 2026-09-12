@@ -19,139 +19,86 @@
 import clsx from "clsx";
 import { translate } from "@docusaurus/Translate";
 
-import {
-    Badge,
-    Heading,
-    Icon,
-} from "../../";
+import { Badge, Heading, Icon } from "../../";
 
 import styles from "./PropertyTable.module.css";
 
-import type {
-    PropertyTableProps,
-} from "./types";
+import type { PropertyTableProps } from "./types";
 
 /**
  * Displays a property table.
  */
 export default function PropertyTable({
-    title,
-    description,
-    items,
-    className,
-    ...props
+  title,
+  description,
+  items,
+  className,
+  ...props
 }: PropertyTableProps) {
-
-    const resolvedTitle = title ?? translate({
-        id: "docs.propertyTable.title",
-        message: "Properties",
+  const resolvedTitle =
+    title ??
+    translate({
+      id: "docs.propertyTable.title",
+      message: "Properties",
     });
 
-    return (
+  return (
+    <section className={clsx(styles.section, className)} {...props}>
+      <Heading
+        level={2}
+        title={resolvedTitle}
+        subtitle={description}
+        icon={<Icon name="table" />}
+      />
 
-        <section
-            className={clsx(
-                styles.section,
-                className,
-            )}
-            {...props}
-        >
+      <div className={styles.wrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>
+                {translate({ id: "docs.propertyTable.property", message: "Property" })}
+              </th>
 
-            <Heading
-                level={2}
-                title={resolvedTitle}
-                subtitle={description}
-                icon={<Icon name="table" />}
-            />
+              <th>{translate({ id: "docs.propertyTable.type", message: "Type" })}</th>
 
-            <div className={styles.wrapper}>
+              <th>
+                {translate({
+                  id: "docs.propertyTable.description",
+                  message: "Description",
+                })}
+              </th>
 
-                <table className={styles.table}>
+              <th>{translate({ id: "docs.common.default", message: "Default" })}</th>
 
-                    <thead>
+              <th>{translate({ id: "docs.common.required", message: "Required" })}</th>
+            </tr>
+          </thead>
 
-                        <tr>
+          <tbody>
+            {items.map((item) => (
+              <tr key={String(item.property)}>
+                <td>
+                  <code>{item.property}</code>
+                </td>
 
-                            <th>{translate({ id: "docs.propertyTable.property", message: "Property" })}</th>
+                <td>{item.type}</td>
 
-                            <th>{translate({ id: "docs.propertyTable.type", message: "Type" })}</th>
+                <td>{item.description}</td>
 
-                            <th>{translate({ id: "docs.propertyTable.description", message: "Description" })}</th>
+                <td>{item.defaultValue ?? "-"}</td>
 
-                            <th>{translate({ id: "docs.common.default", message: "Default" })}</th>
-
-                            <th>{translate({ id: "docs.common.required", message: "Required" })}</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        {items.map((item) => (
-
-                            <tr
-                                key={String(item.property)}
-                            >
-
-                                <td>
-
-                                    <code>
-
-                                        {item.property}
-
-                                    </code>
-
-                                </td>
-
-                                <td>
-
-                                    {item.type}
-
-                                </td>
-
-                                <td>
-
-                                    {item.description}
-
-                                </td>
-
-                                <td>
-
-                                    {item.defaultValue ?? "-"}
-
-                                </td>
-
-                                <td>
-
-                                    <Badge
-                                        variant={
-                                            item.required
-                                                ? "danger"
-                                                : "secondary"
-                                        }
-                                    >
-
-                                        {item.required
-                                            ? translate({ id: "docs.common.yes", message: "Yes" })
-                                            : translate({ id: "docs.common.no", message: "No" })}
-
-                                    </Badge>
-
-                                </td>
-
-                            </tr>
-
-                        ))}
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-    );
-
+                <td>
+                  <Badge variant={item.required ? "danger" : "secondary"}>
+                    {item.required
+                      ? translate({ id: "docs.common.yes", message: "Yes" })
+                      : translate({ id: "docs.common.no", message: "No" })}
+                  </Badge>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
 }

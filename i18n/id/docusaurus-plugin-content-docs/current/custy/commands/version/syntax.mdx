@@ -4,17 +4,39 @@ description: "Syntax command untuk memperbarui informasi versi proyek."
 sidebar_position: 3
 sidebar_key: custy-version
 ---
-import {CommandHero, CommandSyntax, Section, InfoBox} from "@site/src/components/docs";
 
-<CommandHero command="custy version" title="Syntax" description="Gunakan Version Update dengan configuration default atau override CLI." category="Versioning" status="Reference" syntax="custy version update" links={[
-    {label: "Requirements", href: "./requirements"}, {label: "Options", href: "./options"}, {label: "Workflow", href: "./workflow"},
-]} />
+import {
+  CommandHero,
+  CommandSyntax,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy version"
+  title="Syntax"
+  description="Gunakan Version Update dengan configuration default atau override CLI."
+  category="Versioning"
+  status="Reference"
+  syntax="custy version update"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandSyntax examples={[
-    {title: "Direct Command", description: "Jalankan Version Update langsung dari command line.", command: `custy version update`},
-]} />
+<CommandSyntax
+  examples={[
+    {
+      title: "Direct Command",
+      description: "Jalankan Version Update langsung dari command line.",
+      command: `custy version update`,
+    },
+  ]}
+/>
 
 <Section title="Global Options">
 
@@ -28,4 +50,7 @@ custy --log-level DEBUG version update
 
 </Section>
 
-<InfoBox variant="tip" title="Mulai dari Dry Run">Gunakan dry run untuk melihat file yang akan diperbarui sebelum Custy menulis perubahan.</InfoBox>
+<InfoBox variant="tip" title="Mulai dari Dry Run">
+  Gunakan dry run untuk melihat file yang akan diperbarui sebelum Custy menulis
+  perubahan.
+</InfoBox>

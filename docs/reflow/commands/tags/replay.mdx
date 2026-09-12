@@ -6,11 +6,19 @@ sidebar_key: reflow-tags-replay
 tags: [reflow, deprecated]
 ---
 
-import {CommandHero, InfoBox, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags replay" title="Deprecated Compatibility Alias" description="Use reflow releases recover for all new usage." category="Compatibility" status="Deprecated" syntax="reflow tags replay [OPTIONS]" />
+<CommandHero
+  command="reflow tags replay"
+  title="Deprecated Compatibility Alias"
+  description="Use reflow releases recover for all new usage."
+  category="Compatibility"
+  status="Deprecated"
+  syntax="reflow tags replay [OPTIONS]"
+/>
 
-<InfoBox variant="warning" title="Deprecated">The CLI warns and redirects to the canonical recovery workflow.</InfoBox>
+<InfoBox variant="warning" title="Deprecated">
+  The CLI warns and redirects to the canonical recovery workflow.
+</InfoBox>
 
 <Terminal language="bash">{`reflow releases recover --help`}</Terminal>
-

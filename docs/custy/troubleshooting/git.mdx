@@ -8,38 +8,42 @@ keywords: [Custy Git error, Custy push failed, Custy tag conflict]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="git status"
-    title="Git Troubleshooting"
-    description="Verify local and remote repository state before retrying commit, tag, push, cleanup, or release behavior."
-    category="Troubleshooting"
-    status="Repository Recovery"
-    syntax="inspect local state -> inspect destinations -> correct -> verify"
-    tags={["staging", "tags", "remotes", "branches"]}
-    links={[
-        {label: "Troubleshooting Hub", href: "./overview"},
-        {label: "Commit", href: "../commands/commit/troubleshooting"},
-        {label: "Tag", href: "../commands/tag/troubleshooting"},
-        {label: "Push", href: "../commands/push/troubleshooting"},
-    ]}
+  command="git status"
+  title="Git Troubleshooting"
+  description="Verify local and remote repository state before retrying commit, tag, push, cleanup, or release behavior."
+  category="Troubleshooting"
+  status="Repository Recovery"
+  syntax="inspect local state -> inspect destinations -> correct -> verify"
+  tags={["staging", "tags", "remotes", "branches"]}
+  links={[
+    { label: "Troubleshooting Hub", href: "./overview" },
+    { label: "Commit", href: "../commands/commit/troubleshooting" },
+    { label: "Tag", href: "../commands/tag/troubleshooting" },
+    { label: "Push", href: "../commands/push/troubleshooting" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Repository Service", value: "GitService", icon: "git"},
-        {label: "Primary Evidence", value: "Git state and remote response", icon: "terminal"},
-        {label: "Remote Verification", value: "Per destination", icon: "network"},
-        {label: "Force Recovery", value: "Policy approval required", icon: "security"},
-    ]}
+  items={[
+    { label: "Repository Service", value: "GitService", icon: "git" },
+    {
+      label: "Primary Evidence",
+      value: "Git state and remote response",
+      icon: "terminal",
+    },
+    { label: "Remote Verification", value: "Per destination", icon: "network" },
+    { label: "Force Recovery", value: "Policy approval required", icon: "security" },
+  ]}
 />
 
 ## Scope of This Page
@@ -68,13 +72,33 @@ git branch --all`}
 <Section title="Repository and Staging">
 
 <KeyValueTable
-    items={[
-        {key: "NOT_GIT_REPO", value: "Run Custy from the intended repository root and confirm git status works there."},
-        {key: "NO_STAGED_FILES or NO_STAGED_CHANGES", value: "Inspect the index. Stage only reviewed files or adjust auto_stage and stage_mode deliberately."},
-        {key: "INVALID_STAGE_MODE", value: "Use the supported all, update, manual, or none behavior for the selected command."},
-        {key: "AUTO_STAGE_FAILED or STAGING_FAILED", value: "Read the underlying Git response, file permissions, ignore rules, and repository state before repeating."},
-        {key: "Unexpected staged content", value: "Stop before commit or push; compare git diff and git diff --staged, then reconcile according to project policy."},
-    ]}
+  items={[
+    {
+      key: "NOT_GIT_REPO",
+      value:
+        "Run Custy from the intended repository root and confirm git status works there.",
+    },
+    {
+      key: "NO_STAGED_FILES or NO_STAGED_CHANGES",
+      value:
+        "Inspect the index. Stage only reviewed files or adjust auto_stage and stage_mode deliberately.",
+    },
+    {
+      key: "INVALID_STAGE_MODE",
+      value:
+        "Use the supported all, update, manual, or none behavior for the selected command.",
+    },
+    {
+      key: "AUTO_STAGE_FAILED or STAGING_FAILED",
+      value:
+        "Read the underlying Git response, file permissions, ignore rules, and repository state before repeating.",
+    },
+    {
+      key: "Unexpected staged content",
+      value:
+        "Stop before commit or push; compare git diff and git diff --staged, then reconcile according to project policy.",
+    },
+  ]}
 />
 
 </Section>
@@ -155,12 +179,29 @@ force-pushing, moving shared references, or rewriting published commits.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Resolve staging, editor, message, changelog, and commit failures."},
-        {title: "Tag Troubleshooting", href: "../commands/tag/troubleshooting", description: "Resolve version inputs, validation, and tag conflicts."},
-        {title: "Push Troubleshooting", href: "../commands/push/troubleshooting", description: "Resolve destination, authentication, rejection, and tag-push behavior."},
-        {title: "Branch Cleanup Troubleshooting", href: "../commands/cleanup/branch/troubleshooting", description: "Explain skipped or retained branches and safe filter changes."},
-    ]}
+  commands={[
+    {
+      title: "Commit Troubleshooting",
+      href: "../commands/commit/troubleshooting",
+      description: "Resolve staging, editor, message, changelog, and commit failures.",
+    },
+    {
+      title: "Tag Troubleshooting",
+      href: "../commands/tag/troubleshooting",
+      description: "Resolve version inputs, validation, and tag conflicts.",
+    },
+    {
+      title: "Push Troubleshooting",
+      href: "../commands/push/troubleshooting",
+      description:
+        "Resolve destination, authentication, rejection, and tag-push behavior.",
+    },
+    {
+      title: "Branch Cleanup Troubleshooting",
+      href: "../commands/cleanup/branch/troubleshooting",
+      description: "Explain skipped or retained branches and safe filter changes.",
+    },
+  ]}
 />
 
 </Section>

@@ -8,37 +8,37 @@ keywords: [PIPELINE_PROFILES, Custy internal profiles, Custy profile steps]
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    InfoBox,
-    KeyValueTable,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  KeyValueTable,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="PIPELINE_PROFILES"
-    title="Complete Profile Reference"
-    description="See every resolver profile defined by Custy, where it is used, and the concrete steps it expands into."
-    category="Pipeline Reference"
-    status="20 Resolver Profiles"
-    syntax="profile name -> expanded registered steps"
-    tags={["public profiles", "direct-command profiles", "internal profiles"]}
-    links={[
-        {label: "Public Profiles", href: "./profiles"},
-        {label: "Step Priority", href: "./step-order"},
-        {label: "Execution Model", href: "./execution-model"},
-    ]}
+  command="PIPELINE_PROFILES"
+  title="Complete Profile Reference"
+  description="See every resolver profile defined by Custy, where it is used, and the concrete steps it expands into."
+  category="Pipeline Reference"
+  status="20 Resolver Profiles"
+  syntax="profile name -> expanded registered steps"
+  tags={["public profiles", "direct-command profiles", "internal profiles"]}
+  links={[
+    { label: "Public Profiles", href: "./profiles" },
+    { label: "Step Priority", href: "./step-order" },
+    { label: "Execution Model", href: "./execution-model" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Resolver Profiles", value: "20", icon: "pipeline"},
-        {label: "Public Run Names", value: "6", icon: "terminal"},
-        {label: "Nested Validation Profiles", value: "4", icon: "security"},
-        {label: "Source", value: "app/core/pipeline/profiles.py", icon: "file"},
-    ]}
+  items={[
+    { label: "Resolver Profiles", value: "20", icon: "pipeline" },
+    { label: "Public Run Names", value: "6", icon: "terminal" },
+    { label: "Nested Validation Profiles", value: "4", icon: "security" },
+    { label: "Source", value: "app/core/pipeline/profiles.py", icon: "file" },
+  ]}
 />
 
 ## Overview
@@ -62,30 +62,183 @@ supported public invocation.
 <Section title="Profile Catalog">
 
 <KeyValueTable
-    title="All Resolver Profiles"
-    description="Step counts use the fully expanded profile, including nested validation profiles."
-    items={[
-        {key: "commit · 17 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run commit</code> and <code>custy commit</code>.</>},
-        {key: "tag · 13 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run tag</code> and <code>custy tag</code>.</>},
-        {key: "push · 3 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run push</code> and <code>custy push</code>.</>},
-        {key: "dev · 13 steps", value: <><strong>Public Run.</strong> <code>custy run dev</code> daily commit-and-branch-push composition without release side effects.</>},
-        {key: "release · 25 steps", value: <><strong>Public Run.</strong> <code>custy run release</code> complete publication flow.</>},
-        {key: "full · 26 steps", value: <><strong>Public Run.</strong> <code>custy run full</code> Release plus workflow finalization.</>},
-        {key: "validate · 10 steps", value: <><strong>Direct command.</strong> <code>custy validate</code> readiness checks.</>},
-        {key: "changelog · 1 step", value: <><strong>Direct command.</strong> <code>custy changelog generate</code>.</>},
-        {key: "apply_version · 5 steps", value: <><strong>Direct command.</strong> <code>custy version update</code>.</>},
-        {key: "backup_commit_message · 1 step", value: <><strong>Direct command.</strong> <code>custy backup commit</code>.</>},
-        {key: "backup_tag_message · 1 step", value: <><strong>Direct command.</strong> <code>custy backup tag</code>.</>},
-        {key: "backup_all · 2 steps", value: <><strong>Direct command.</strong> <code>custy backup all</code>.</>},
-        {key: "cleanup_backups · 1 step", value: <><strong>Direct command.</strong> <code>custy cleanup backups</code> and the backup part of <code>custy cleanup all</code>.</>},
-        {key: "cleanup_branches · 1 step", value: <><strong>Direct command.</strong> <code>custy cleanup branches</code> and the branch part of <code>custy cleanup all</code>.</>},
-        {key: "init · 1 step", value: <><strong>Direct command.</strong> <code>custy init</code>.</>},
-        {key: "validate-sub-repo · 1 step", value: <><strong>Nested internal.</strong> Reusable repository validation prefix.</>},
-        {key: "validate-sub-pre-commit · 5 steps", value: <><strong>Nested internal.</strong> Reusable message-provider and commit-hook readiness group.</>},
-        {key: "validate-sub-pre-tag · 3 steps", value: <><strong>Nested internal.</strong> Reusable version and tag-message validation group.</>},
-        {key: "validate-sub-pre-push · 1 step", value: <><strong>Nested internal.</strong> Reusable remote validation prefix.</>},
-        {key: "cleanup_all · 2 steps", value: <><strong>Defined aggregate.</strong> <code>cleanup_backup_step</code> plus <code>cleanup_branches_step</code>. The current <code>custy cleanup all</code> command invokes the two focused profiles separately instead of resolving this aggregate.</>},
-    ]}
+  title="All Resolver Profiles"
+  description="Step counts use the fully expanded profile, including nested validation profiles."
+  items={[
+    {
+      key: "commit · 17 steps",
+      value: (
+        <>
+          <strong>Public Run + direct command.</strong> <code>custy run commit</code>{" "}
+          and <code>custy commit</code>.
+        </>
+      ),
+    },
+    {
+      key: "tag · 13 steps",
+      value: (
+        <>
+          <strong>Public Run + direct command.</strong> <code>custy run tag</code> and{" "}
+          <code>custy tag</code>.
+        </>
+      ),
+    },
+    {
+      key: "push · 3 steps",
+      value: (
+        <>
+          <strong>Public Run + direct command.</strong> <code>custy run push</code> and{" "}
+          <code>custy push</code>.
+        </>
+      ),
+    },
+    {
+      key: "dev · 13 steps",
+      value: (
+        <>
+          <strong>Public Run.</strong> <code>custy run dev</code> daily
+          commit-and-branch-push composition without release side effects.
+        </>
+      ),
+    },
+    {
+      key: "release · 25 steps",
+      value: (
+        <>
+          <strong>Public Run.</strong> <code>custy run release</code> complete
+          publication flow.
+        </>
+      ),
+    },
+    {
+      key: "full · 26 steps",
+      value: (
+        <>
+          <strong>Public Run.</strong> <code>custy run full</code> Release plus workflow
+          finalization.
+        </>
+      ),
+    },
+    {
+      key: "validate · 10 steps",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy validate</code> readiness checks.
+        </>
+      ),
+    },
+    {
+      key: "changelog · 1 step",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy changelog generate</code>.
+        </>
+      ),
+    },
+    {
+      key: "apply_version · 5 steps",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy version update</code>.
+        </>
+      ),
+    },
+    {
+      key: "backup_commit_message · 1 step",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy backup commit</code>.
+        </>
+      ),
+    },
+    {
+      key: "backup_tag_message · 1 step",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy backup tag</code>.
+        </>
+      ),
+    },
+    {
+      key: "backup_all · 2 steps",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy backup all</code>.
+        </>
+      ),
+    },
+    {
+      key: "cleanup_backups · 1 step",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy cleanup backups</code> and the
+          backup part of <code>custy cleanup all</code>.
+        </>
+      ),
+    },
+    {
+      key: "cleanup_branches · 1 step",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy cleanup branches</code> and the
+          branch part of <code>custy cleanup all</code>.
+        </>
+      ),
+    },
+    {
+      key: "init · 1 step",
+      value: (
+        <>
+          <strong>Direct command.</strong> <code>custy init</code>.
+        </>
+      ),
+    },
+    {
+      key: "validate-sub-repo · 1 step",
+      value: (
+        <>
+          <strong>Nested internal.</strong> Reusable repository validation prefix.
+        </>
+      ),
+    },
+    {
+      key: "validate-sub-pre-commit · 5 steps",
+      value: (
+        <>
+          <strong>Nested internal.</strong> Reusable message-provider and commit-hook
+          readiness group.
+        </>
+      ),
+    },
+    {
+      key: "validate-sub-pre-tag · 3 steps",
+      value: (
+        <>
+          <strong>Nested internal.</strong> Reusable version and tag-message validation
+          group.
+        </>
+      ),
+    },
+    {
+      key: "validate-sub-pre-push · 1 step",
+      value: (
+        <>
+          <strong>Nested internal.</strong> Reusable remote validation prefix.
+        </>
+      ),
+    },
+    {
+      key: "cleanup_all · 2 steps",
+      value: (
+        <>
+          <strong>Defined aggregate.</strong> <code>cleanup_backup_step</code> plus{" "}
+          <code>cleanup_branches_step</code>. The current <code>custy cleanup all</code>{" "}
+          command invokes the two focused profiles separately instead of resolving this
+          aggregate.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -237,75 +390,75 @@ For friendly explanations of every Dev, Release, and Full step, continue to the
 <Terminal title="Validation and release support" language="text">
 
 {`validate — 10 steps
-01  ensure_git_repo_step
-02  ensure_remote_exists_step
-03  ensure_version_file_step
-04  ensure_staged_changes_step
-05  ensure_commit_validation_provider_step
-06  ensure_commit_hook_policy_step
-07  ensure_commit_message_file_step
-08  ensure_commit_message_file_exists_step
-09  ensure_tag_message_file_step
-10  ensure_tag_message_file_exists_step
+01 ensure_git_repo_step
+02 ensure_remote_exists_step
+03 ensure_version_file_step
+04 ensure_staged_changes_step
+05 ensure_commit_validation_provider_step
+06 ensure_commit_hook_policy_step
+07 ensure_commit_message_file_step
+08 ensure_commit_message_file_exists_step
+09 ensure_tag_message_file_step
+10 ensure_tag_message_file_exists_step
 
 changelog — 1 step
-01  generate_changelog_step
+01 generate_changelog_step
 
 apply_version — 5 steps
-01  ensure_git_repo_step
-02  ensure_version_file_step
-03  prepare_version_step
-04  prepare_tag_message_step
-05  apply_version_step`}
+01 ensure_git_repo_step
+02 ensure_version_file_step
+03 prepare_version_step
+04 prepare_tag_message_step
+05 apply_version_step`}
 
 </Terminal>
 
 <Terminal title="Backup, cleanup, and initialization" language="text">
 
 {`backup_commit_message — 1 step
-01  backup_commit_message_files_step
+01 backup_commit_message_files_step
 
 backup_tag_message — 1 step
-01  backup_tag_message_files_step
+01 backup_tag_message_files_step
 
 backup_all — 2 steps
-01  backup_commit_message_files_step
-02  backup_tag_message_files_step
+01 backup_commit_message_files_step
+02 backup_tag_message_files_step
 
 cleanup_backups — 1 step
-01  cleanup_backup_step
+01 cleanup_backup_step
 
 cleanup_branches — 1 step
-01  cleanup_branches_step
+01 cleanup_branches_step
 
 cleanup_all — 2 steps
-01  cleanup_backup_step
-02  cleanup_branches_step
+01 cleanup_backup_step
+02 cleanup_branches_step
 
 init — 1 step
-01  Initialization_custy_step`}
+01 Initialization_custy_step`}
 
 </Terminal>
 
 <Terminal title="Nested validation profiles" language="text">
 
 {`validate-sub-repo
-01  ensure_git_repo_step
+01 ensure_git_repo_step
 
 validate-sub-pre-commit
-01  ensure_staged_changes_step
-02  ensure_commit_validation_provider_step
-03  ensure_commit_hook_policy_step
-04  ensure_commit_message_file_step
-05  ensure_commit_message_file_exists_step
+01 ensure_staged_changes_step
+02 ensure_commit_validation_provider_step
+03 ensure_commit_hook_policy_step
+04 ensure_commit_message_file_step
+05 ensure_commit_message_file_exists_step
 
 validate-sub-pre-tag
-01  ensure_version_file_step
-02  ensure_tag_message_file_step
-03  ensure_tag_message_file_exists_step
+01 ensure_version_file_step
+02 ensure_tag_message_file_step
+03 ensure_tag_message_file_exists_step
 
 validate-sub-pre-push
-01  ensure_remote_exists_step`}
+01 ensure_remote_exists_step`}
 
 </Terminal>
 
@@ -327,12 +480,28 @@ the complete algorithm and priority table.
 <Section title="Continue">
 
 <RelatedCommands
-    commands={[
-        {title: "Step Priority and Ordering", href: "./step-order", description: "Understand all 28 priority entries and merged-profile sorting."},
-        {title: "Public Profiles", href: "./profiles", description: "Choose among the six supported Run names."},
-        {title: "Custom Composition", href: "./custom-composition", description: "See how public profiles merge and deduplicate."},
-        {title: "Step System", href: "./step-system", description: "Review registration, construction, context, and contributor rules."},
-    ]}
+  commands={[
+    {
+      title: "Step Priority and Ordering",
+      href: "./step-order",
+      description: "Understand all 28 priority entries and merged-profile sorting.",
+    },
+    {
+      title: "Public Profiles",
+      href: "./profiles",
+      description: "Choose among the six supported Run names.",
+    },
+    {
+      title: "Custom Composition",
+      href: "./custom-composition",
+      description: "See how public profiles merge and deduplicate.",
+    },
+    {
+      title: "Step System",
+      href: "./step-system",
+      description: "Review registration, construction, context, and contributor rules.",
+    },
+  ]}
 />
 
 </Section>

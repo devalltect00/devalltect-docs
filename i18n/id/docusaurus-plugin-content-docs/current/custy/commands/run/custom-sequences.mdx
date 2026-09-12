@@ -4,15 +4,57 @@ description: "Gabungkan supported public profiles menjadi satu normalized pipeli
 sidebar_position: 6
 sidebar_key: custy-run-custom-sequences
 ---
-import {CommandHero, CommandExample, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Custom Profile Sequences" description="Gabungkan public profile names dan biarkan resolver menormalisasi urutannya." category="Pipeline" status="Advanced" syntax="custy run PROFILE PROFILE [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Profiles",href:"./profiles"},{label:"Safety",href:"./safety"}]} />
+import {
+  CommandHero,
+  CommandExample,
+  InfoBox,
+  Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Custom Profile Sequences"
+  description="Gabungkan public profile names dan biarkan resolver menormalisasi urutannya."
+  category="Pipeline"
+  status="Advanced"
+  syntax="custy run PROFILE PROFILE [OPTIONS]"
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+  ]}
+/>
 
 ## Ringkasan
 
-<CommandExample examples={[
- {title:"Commit and Push",command:"custy run commit push",result:"Menggabungkan stages dalam normalized order."},{title:"Release-like Composition",command:"custy run commit tag push",result:"Menjalankan gabungan public profiles."},{title:"Preview Tag and Push",command:"custy --dry-run run tag push",result:"Mempratinjau normalized pipeline."},
-]} />
-<Section title="Normalization Behavior">Resolver deduplicates dan mengurutkan stages berdasarkan global step order, bukan selalu urutan token input.</Section>
-<InfoBox variant="warning" title="Composition Can Be Broader Than Expected">Profile names berkembang menjadi banyak stages. Tinjau resolved pipeline dengan dry run.</InfoBox>
-<InfoBox variant="note" title="Only Public Names Are Accepted">Gunakan hanya `commit`, `tag`, `push`, `dev`, `release`, dan `full`.</InfoBox>
+<CommandExample
+  examples={[
+    {
+      title: "Commit and Push",
+      command: "custy run commit push",
+      result: "Menggabungkan stages dalam normalized order.",
+    },
+    {
+      title: "Release-like Composition",
+      command: "custy run commit tag push",
+      result: "Menjalankan gabungan public profiles.",
+    },
+    {
+      title: "Preview Tag and Push",
+      command: "custy --dry-run run tag push",
+      result: "Mempratinjau normalized pipeline.",
+    },
+  ]}
+/>
+<Section title="Normalization Behavior">
+  Resolver deduplicates dan mengurutkan stages berdasarkan global step order, bukan
+  selalu urutan token input.
+</Section>
+<InfoBox variant="warning" title="Composition Can Be Broader Than Expected">
+  Profile names berkembang menjadi banyak stages. Tinjau resolved pipeline dengan dry
+  run.
+</InfoBox>
+<InfoBox variant="note" title="Only Public Names Are Accepted">
+  Gunakan hanya `commit`, `tag`, `push`, `dev`, `release`, dan `full`.
+</InfoBox>

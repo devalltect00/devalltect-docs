@@ -4,15 +4,46 @@ description: "Pertanyaan umum tentang custy run profiles."
 sidebar_position: 10
 sidebar_key: custy-run-faq
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 
-<CommandHero command="custy run" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang profile selection, composition, push, dan safety." category="Pipeline" status="Reference" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Profiles",href:"./profiles"},{label:"Safety",href:"./safety"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+import { CommandHero, InfoBox, Section } from "@site/src/components/docs";
+
+<CommandHero
+  command="custy run"
+  title="Pertanyaan yang Sering Diajukan"
+  description="Jawaban tentang profile selection, composition, push, dan safety."
+  category="Pipeline"
+  status="Reference"
+  syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+  links={[
+    { label: "Profiles", href: "./profiles" },
+    { label: "Safety", href: "./safety" },
+    { label: "Troubleshooting", href: "./troubleshooting" },
+  ]}
+/>
 
 ## Ringkasan
-<InfoBox variant="tip" title="Choose the Smallest Profile">Profile kecil lebih mudah ditinjau, retry, dan pulihkan.</InfoBox>
-<Section title="Profile Mana yang Harus Digunakan?">Focused operation: commit/tag/push; daily work: dev; publication: release; experimental finalization: full.</Section>
-<Section title="Dapatkah Hanya Menjalankan Changelog Generation?">Gunakan direct `custy changelog generate`; internal changelog name bukan public Run profile.</Section>
-<Section title="Dapatkah Profile Digabungkan?">Ya, gunakan beberapa public names dan tinjau normalized pipeline.</Section>
-<Section title="Apakah commit tag push Identik dengan release?">Tidak selalu; Release adalah registered intentional flow dan dapat memiliki preparation/validation yang lebih luas.</Section>
-<Section title="Apakah Run Selalu Melakukan Push?">Tidak. Hanya profile yang mencakup Push stage.</Section>
-<Section title="Apakah full Lebih Aman Karena Validation Lebih Banyak?">Tidak. Full memiliki scope terluas dan experimental finalization setelah push.</Section>
+
+<InfoBox variant="tip" title="Choose the Smallest Profile">
+  Profile kecil lebih mudah ditinjau, retry, dan pulihkan.
+</InfoBox>
+<Section title="Profile Mana yang Harus Digunakan?">
+  Focused operation: commit/tag/push; daily work: dev; publication: release;
+  experimental finalization: full.
+</Section>
+<Section title="Dapatkah Hanya Menjalankan Changelog Generation?">
+  Gunakan direct `custy changelog generate`; internal changelog name bukan public Run
+  profile.
+</Section>
+<Section title="Dapatkah Profile Digabungkan?">
+  Ya, gunakan beberapa public names dan tinjau normalized pipeline.
+</Section>
+<Section title="Apakah commit tag push Identik dengan release?">
+  Tidak selalu; Release adalah registered intentional flow dan dapat memiliki
+  preparation/validation yang lebih luas.
+</Section>
+<Section title="Apakah Run Selalu Melakukan Push?">
+  Tidak. Hanya profile yang mencakup Push stage.
+</Section>
+<Section title="Apakah full Lebih Aman Karena Validation Lebih Banyak?">
+  Tidak. Full memiliki scope terluas dan experimental finalization setelah push.
+</Section>

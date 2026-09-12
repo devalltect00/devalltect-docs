@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -12,22 +9,19 @@ import {
 /**
  * MermaidTitle component properties.
  */
-export interface MermaidTitleProps
-    extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+export interface MermaidTitleProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+  /**
+   * Diagram title.
+   */
+  title: ReactNode;
 
-    /**
-     * Diagram title.
-     */
-    title: ReactNode;
+  /**
+   * Optional subtitle.
+   */
+  subtitle?: ReactNode;
 
-    /**
-     * Optional subtitle.
-     */
-    subtitle?: ReactNode;
-
-    /**
-     * Optional icon displayed before the title.
-     */
-    icon?: ReactNode;
-
+  /**
+   * Optional icon displayed before the title.
+   */
+  icon?: ReactNode;
 }

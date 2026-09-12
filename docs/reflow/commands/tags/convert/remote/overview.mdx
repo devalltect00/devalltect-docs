@@ -6,9 +6,23 @@ sidebar_key: reflow-tags-convert-remote
 tags: [reflow, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="reflow tags convert remote" title="Convert Remote Tags" description="Replace tag names on a selected Git remote through one guarded atomic push." category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="reflow tags convert remote"
+  title="Convert Remote Tags"
+  description="Replace tag names on a selected Git remote through one guarded atomic push."
+  category="Tag Conversion"
+  status="Guarded Remote Mutation"
+  syntax="reflow tags convert remote [OPTIONS]"
+  links={[
+    { label: "Requirements", href: "./requirements" },
+    { label: "Syntax", href: "./syntax" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
 <Section title="Purpose">
 
@@ -16,7 +30,10 @@ Replace tag names on a selected Git remote through one guarded atomic push.
 
 </Section>
 
-<InfoBox variant="warning" title="Safety boundary">Mutates remote refs only after full validation and confirmation unless --yes is supplied.</InfoBox>
+<InfoBox variant="warning" title="Safety boundary">
+  Mutates remote refs only after full validation and confirmation unless --yes is
+  supplied.
+</InfoBox>
 
 - Resolve URL/checkout and materialize a workspace.
 - Build the full remote plan.

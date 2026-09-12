@@ -6,20 +6,32 @@ sidebar_key: doc-gen-structure-generate
 tags: [doc-gen, command]
 ---
 
-import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+import { CommandHero, InfoBox, Section, Terminal } from "@site/src/components/docs";
 
-<CommandHero command="doc-gen structure generate" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+<CommandHero
+  command="doc-gen structure generate"
+  title="Options"
+  description="CLI values override project configuration, which overrides internal defaults."
+  category="Project Structure"
+  status="Writes Selected Output"
+  syntax="doc-gen structure generate [OPTIONS]"
+  links={[
+    { label: "Overview", href: "./overview" },
+    { label: "Options", href: "./options" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
+/>
 
-| Flag / value | Default | Effect |
-| --- | --- | --- |
-| `TARGET_DIRECTORY` | . | Repository root to scan. |
-| `--profile` | custom | Choose minimal, default, detailed, or custom. |
-| `--smart/--no-smart` | false | Enable profile-aware automatic optimization. |
-| `--max-depth` | 5 | Maximum displayed directory depth. |
-| `--show-files/--hide-files` | true | Show or hide files. |
-| `--collapse` | configured list | Comma-separated directories to collapse. |
-| `--project-type` | auto-detected | Override project detection. |
-| `--verbose, -v` | false | Print additional generated structure information. |
-| `--dry-run/--no-dry-run, -dr/-Dr` | false | Simulate mutating output; discovery still runs. |
-| `--output, -o` | docs/project_structure.md | Select the Markdown output file. |
-
+| Flag / value                      | Default                   | Effect                                            |
+| --------------------------------- | ------------------------- | ------------------------------------------------- |
+| `TARGET_DIRECTORY`                | .                         | Repository root to scan.                          |
+| `--profile`                       | custom                    | Choose minimal, default, detailed, or custom.     |
+| `--smart/--no-smart`              | false                     | Enable profile-aware automatic optimization.      |
+| `--max-depth`                     | 5                         | Maximum displayed directory depth.                |
+| `--show-files/--hide-files`       | true                      | Show or hide files.                               |
+| `--collapse`                      | configured list           | Comma-separated directories to collapse.          |
+| `--project-type`                  | auto-detected             | Override project detection.                       |
+| `--verbose, -v`                   | false                     | Print additional generated structure information. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false                     | Simulate mutating output; discovery still runs.   |
+| `--output, -o`                    | docs/project_structure.md | Select the Markdown output file.                  |

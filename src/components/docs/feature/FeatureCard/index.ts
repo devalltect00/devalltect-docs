@@ -6,13 +6,10 @@
 
 export { default } from "./FeatureCard";
 
-export type {
-    FeatureCardProps,
-} from "./types";
-
+export type { FeatureCardProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.FeatureCard
     title="Automatic Version Management"
     subtitle="Version synchronization"

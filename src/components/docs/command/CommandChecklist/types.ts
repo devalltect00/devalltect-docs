@@ -4,47 +4,42 @@ import { HTMLAttributes, ReactNode } from "react";
  * Represents a single checklist item.
  */
 export interface CommandChecklistItem {
+  /**
+   * Checklist title.
+   */
+  title: string;
 
-    /**
-     * Checklist title.
-     */
-    title: string;
+  /**
+   * Optional description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Indicates whether the item is required.
-     *
-     * @default true
-     */
-    required?: boolean;
-
+  /**
+   * Indicates whether the item is required.
+   *
+   * @default true
+   */
+  required?: boolean;
 }
 
 /**
  * CommandChecklist component props.
  */
-export interface CommandChecklistProps
-    extends HTMLAttributes<HTMLElement> {
+export interface CommandChecklistProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Checklist heading.
+   *
+   * @default "Before You Begin"
+   */
+  title?: string;
 
-    /**
-     * Checklist heading.
-     *
-     * @default "Before You Begin"
-     */
-    title?: string;
+  /**
+   * Optional section description.
+   */
+  description?: ReactNode;
 
-    /**
-     * Optional section description.
-     */
-    description?: ReactNode;
-
-    /**
-     * Checklist items.
-     */
-    items: CommandChecklistItem[];
-
+  /**
+   * Checklist items.
+   */
+  items: CommandChecklistItem[];
 }

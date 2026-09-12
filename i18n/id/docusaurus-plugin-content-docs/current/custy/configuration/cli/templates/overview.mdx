@@ -7,19 +7,65 @@ tags: [custy, configuration, templates]
 keywords: [cli templates, changelog template, message backups]
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+} from "@site/src/components/docs";
 
-<CommandHero command="[tool.custy.cli.templates]" title="Ringkasan Templates" description="Hubungkan project-owned message dan Jinja files dengan backup locations-nya." category="CLI Configuration" status="Active" syntax="[tool.custy.cli.templates.SUBTABLE]" tags={["files", "directories", "project-owned copies"]} links={[{label: "Template Files", href: "./files"}, {label: "Backup Directories", href: "./directories"}, {label: "Changelog Configuration", href: "../../changelog/overview"}]} />
+<CommandHero
+  command="[tool.custy.cli.templates]"
+  title="Ringkasan Templates"
+  description="Hubungkan project-owned message dan Jinja files dengan backup locations-nya."
+  category="CLI Configuration"
+  status="Active"
+  syntax="[tool.custy.cli.templates.SUBTABLE]"
+  tags={["files", "directories", "project-owned copies"]}
+  links={[
+    { label: "Template Files", href: "./files" },
+    { label: "Backup Directories", href: "./directories" },
+    { label: "Changelog Configuration", href: "../../changelog/overview" },
+  ]}
+/>
 
-<CommandMetadata items={[{label: "Child Tables", value: "2", icon: "directory"}, {label: "File Properties", value: "3", icon: "file"}, {label: "Directory Properties", value: "2", icon: "package"}, {label: "Created By", value: "custy init", icon: "copy"}]} />
+<CommandMetadata
+  items={[
+    { label: "Child Tables", value: "2", icon: "directory" },
+    { label: "File Properties", value: "3", icon: "file" },
+    { label: "Directory Properties", value: "2", icon: "package" },
+    { label: "Created By", value: "custy init", icon: "copy" },
+  ]}
+/>
 
 ## Area Template
 
 <FeatureGrid
-    items={[
-        {title: "Template Files", icon: <Icon name="file" />, children: <>Konfigurasikan changelog, commit-message, dan tag-message paths melalui <a href="./files">cli.templates.file</a>.</>},
-        {title: "Backup Directories", icon: <Icon name="directory" />, children: <>Konfigurasikan retained message destinations melalui <a href="./directories">cli.templates.directory</a>.</>},
-    ]}
+  items={[
+    {
+      title: "Template Files",
+      icon: <Icon name="file" />,
+      children: (
+        <>
+          Konfigurasikan changelog, commit-message, dan tag-message paths melalui{" "}
+          <a href="./files">cli.templates.file</a>.
+        </>
+      ),
+    },
+    {
+      title: "Backup Directories",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Konfigurasikan retained message destinations melalui{" "}
+          <a href="./directories">cli.templates.directory</a>.
+        </>
+      ),
+    },
+  ]}
 />
 
 <InfoBox variant="tip" title="Edit Project Copies, Bukan Packaged Sources">
@@ -30,4 +76,24 @@ tidak mengganti pekerjaan Anda.
 
 </InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Template Files", href: "./files", description: "Konfigurasikan tiga project template paths."}, {title: "Backup Directories", href: "./directories", description: "Konfigurasikan commit dan tag backup destinations."}, {title: "Initialization", href: "../../initialization", description: "Pahami preservation, prompts, dan force replacement."}]} /></Section>
+<Section title="Lanjutkan">
+  <RelatedCommands
+    commands={[
+      {
+        title: "Template Files",
+        href: "./files",
+        description: "Konfigurasikan tiga project template paths.",
+      },
+      {
+        title: "Backup Directories",
+        href: "./directories",
+        description: "Konfigurasikan commit dan tag backup destinations.",
+      },
+      {
+        title: "Initialization",
+        href: "../../initialization",
+        description: "Pahami preservation, prompts, dan force replacement.",
+      },
+    ]}
+  />
+</Section>

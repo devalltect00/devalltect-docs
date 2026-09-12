@@ -6,14 +6,10 @@
 
 export { default } from "./FeatureGrid";
 
-export type {
-    FeatureGridItem,
-    FeatureGridProps,
-} from "./types";
-
+export type { FeatureGridItem, FeatureGridProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.FeatureGrid
     title="Core Features"
     description="Major capabilities provided by Custy."

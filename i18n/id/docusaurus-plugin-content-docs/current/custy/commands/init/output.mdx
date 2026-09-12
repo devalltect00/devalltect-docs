@@ -16,38 +16,34 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandOutput,
-    InfoBox,
-    Section,
+  CommandHero,
+  CommandOutput,
+  InfoBox,
+  Section,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy init"
-    title="Command Output"
-    description="Pelajari output yang dapat diharapkan ketika Custy menjalankan init pada proyek."
-    category="Init"
-    status="Direkomendasikan"
-    syntax="custy init"
-    tags={[
-        "output",
-        "terminal",
-        "messages",
-    ]}
-    links={[
-        {
-            label: "Examples",
-            href: "./examples",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-        {
-            label: "FAQ",
-            href: "./faq",
-        },
-    ]}
+  command="custy init"
+  title="Command Output"
+  description="Pelajari output yang dapat diharapkan ketika Custy menjalankan init pada proyek."
+  category="Init"
+  status="Direkomendasikan"
+  syntax="custy init"
+  tags={["output", "terminal", "messages"]}
+  links={[
+    {
+      label: "Examples",
+      href: "./examples",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+    {
+      label: "FAQ",
+      href: "./faq",
+    },
+  ]}
 />
 
 ## Ringkasan
@@ -89,11 +85,12 @@ Initializing Custy project...
 Initialization completed successfully.
 
 💡 Next Steps
+
 1. Review .config/custy/config.toml.
 2. Set tool.custy.changelog.links.repository if changelog compare links are needed.
 3. Verify default_remote, main_remotes, and backup_remotes with git remote -v.
 4. Run custy validate.
-`,
+   `,
             notes:
                 "Susunan kata yang tepat dapat sedikit berbeda antarversi Custy, tetapi keseluruhan alurnya tetap sama.",
         },
@@ -102,9 +99,9 @@ Initialization completed successfully.
             description:
                 "Ditampilkan ketika Custy mempertahankan existing files sambil menambahkan packaged example yang belum ada.",
             output: `
-Skipped .config/custy/config.toml (already exists)
-Skipped .config/custy/templates/commit-message.txt (already exists)
-Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt
+   Skipped .config/custy/config.toml (already exists)
+   Skipped .config/custy/templates/commit-message.txt (already exists)
+   Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt
 
 Initialization completed successfully.
 `,
@@ -120,10 +117,10 @@ Configuration already exists.
 
 Overwrite existing file? (y/N)
 `,
-            notes:
-                "Interactive prompts berlaku untuk individual generated files yang mendukung prompt. Packaged examples menggunakan preserve-or-force merge behavior tanpa prompt per file.",
-        },
-    ]}
+notes:
+"Interactive prompts berlaku untuk individual generated files yang mendukung prompt. Packaged examples menggunakan preserve-or-force merge behavior tanpa prompt per file.",
+},
+]}
 />
 
 </Section>

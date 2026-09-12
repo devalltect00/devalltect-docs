@@ -5,47 +5,43 @@ sidebar_position: 6
 sidebar_key: custy-cleanup-backup
 
 tags:
-    - cleanup
-    - backup
-    - examples
+  - cleanup
+  - backup
+  - examples
 
 keywords:
-    - custy cleanup backups examples
+  - custy cleanup backups examples
 ---
 
 import {
-    CommandHero,
-    CommandExample,
-    Section,
-    InfoBox,
+  CommandHero,
+  CommandExample,
+  Section,
+  InfoBox,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Examples"
-    description="Learn how to remove obsolete backup files using common Backup Cleanup scenarios."
-    category="Maintenance"
-    status="Recommended"
-    syntax="custy cleanup backups"
-    tags={[
-        "examples",
-        "cleanup",
-        "backup",
-    ]}
-    links={[
-        {
-            label: "Workflow",
-            href: "./workflow",
-        },
-        {
-            label: "Output",
-            href: "./output",
-        },
-        {
-            label: "Troubleshooting",
-            href: "./troubleshooting",
-        },
-    ]}
+  command="custy cleanup backups"
+  title="Examples"
+  description="Learn how to remove obsolete backup files using common Backup Cleanup scenarios."
+  category="Maintenance"
+  status="Recommended"
+  syntax="custy cleanup backups"
+  tags={["examples", "cleanup", "backup"]}
+  links={[
+    {
+      label: "Workflow",
+      href: "./workflow",
+    },
+    {
+      label: "Output",
+      href: "./output",
+    },
+    {
+      label: "Troubleshooting",
+      href: "./troubleshooting",
+    },
+  ]}
 />
 
 ## Overview
@@ -63,35 +59,28 @@ backups.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Clean All Backup Files",
-            description:
-                "Remove obsolete backup files using the configured cleanup settings.",
-            command:
-`custy cleanup backups`,
-            result:
-                "Old backup files are removed while the configured number of newest backups is preserved.",
-        },
-        {
-            title: "Clean Commit Backups Only",
-            description:
-                "Remove obsolete commit message backups only.",
-            command:
-`custy cleanup backups --type commit`,
-            result:
-                "Only commit message backup files are considered during cleanup.",
-        },
-        {
-            title: "Clean Tag Backups Only",
-            description:
-                "Remove obsolete tag message backups only.",
-            command:
-`custy cleanup backups --type tag`,
-            result:
-                "Only tag message backup files are cleaned.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Clean All Backup Files",
+      description:
+        "Remove obsolete backup files using the configured cleanup settings.",
+      command: `custy cleanup backups`,
+      result:
+        "Old backup files are removed while the configured number of newest backups is preserved.",
+    },
+    {
+      title: "Clean Commit Backups Only",
+      description: "Remove obsolete commit message backups only.",
+      command: `custy cleanup backups --type commit`,
+      result: "Only commit message backup files are considered during cleanup.",
+    },
+    {
+      title: "Clean Tag Backups Only",
+      description: "Remove obsolete tag message backups only.",
+      command: `custy cleanup backups --type tag`,
+      result: "Only tag message backup files are cleaned.",
+    },
+  ]}
 />
 
 </Section>
@@ -103,26 +92,20 @@ backups.
 >
 
 <CommandExample
-    examples={[
-        {
-            title: "Keep Five Backups",
-            description:
-                "Preserve only the five newest backup files.",
-            command:
-`custy cleanup backups --keep 5`,
-            result:
-                "Custy removes backup files older than the five newest backups.",
-        },
-        {
-            title: "Keep Twenty Backups",
-            description:
-                "Retain a larger backup history.",
-            command:
-`custy cleanup backups --keep 20`,
-            result:
-                "Custy preserves the newest twenty backups before removing older files.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Keep Five Backups",
+      description: "Preserve only the five newest backup files.",
+      command: `custy cleanup backups --keep 5`,
+      result: "Custy removes backup files older than the five newest backups.",
+    },
+    {
+      title: "Keep Twenty Backups",
+      description: "Retain a larger backup history.",
+      command: `custy cleanup backups --keep 20`,
+      result: "Custy preserves the newest twenty backups before removing older files.",
+    },
+  ]}
 />
 
 </Section>
@@ -147,26 +130,20 @@ Global options are specified before the command.
 Examples include:
 
 <CommandExample
-    examples={[
-        {
-            title: "Preview Cleanup",
-            description:
-                "See what would happen without deleting backup files.",
-            command:
-`custy --dry-run cleanup backups`,
-            result:
-                "Displays the cleanup operation without removing any files.",
-        },
-        {
-            title: "Debug Cleanup",
-            description:
-                "Run Backup Cleanup with additional diagnostic information.",
-            command:
-`custy --debug cleanup backups`,
-            result:
-                "Executes Backup Cleanup while producing additional debug output.",
-        },
-    ]}
+  examples={[
+    {
+      title: "Preview Cleanup",
+      description: "See what would happen without deleting backup files.",
+      command: `custy --dry-run cleanup backups`,
+      result: "Displays the cleanup operation without removing any files.",
+    },
+    {
+      title: "Debug Cleanup",
+      description: "Run Backup Cleanup with additional diagnostic information.",
+      command: `custy --debug cleanup backups`,
+      result: "Executes Backup Cleanup while producing additional debug output.",
+    },
+  ]}
 />
 
 </Section>

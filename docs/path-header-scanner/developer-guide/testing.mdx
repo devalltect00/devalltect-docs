@@ -8,40 +8,40 @@ keywords: [Path Header Scanner tests, scanner pytest, path header dry-run tests]
 ---
 
 import {
-    CommandChecklist,
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    RelatedCommands,
-    Section,
-    Terminal,
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pytest"
-    title="Testing Path Header Scanner"
-    description="Validate one scanning contract first, then the complete language-aware suite."
-    category="Developer Guide"
-    status="Required for Changes"
-    syntax="python -m pytest [PATH] [OPTIONS]"
-    tags={["preview", "apply", "languages", "dry-run", "pre-commit"]}
-    links={[
-        {label: "Test Layers", href: "#test-layers"},
-        {label: "Focused Tests", href: "#focused-validation"},
-        {label: "Pre-Commit", href: "#pre-commit-quality-gates"},
-        {label: "Full Validation", href: "#complete-validation"},
-    ]}
+  command="python -m pytest"
+  title="Testing Path Header Scanner"
+  description="Validate one scanning contract first, then the complete language-aware suite."
+  category="Developer Guide"
+  status="Required for Changes"
+  syntax="python -m pytest [PATH] [OPTIONS]"
+  tags={["preview", "apply", "languages", "dry-run", "pre-commit"]}
+  links={[
+    { label: "Test Layers", href: "#test-layers" },
+    { label: "Focused Tests", href: "#focused-validation" },
+    { label: "Pre-Commit", href: "#pre-commit-quality-gates" },
+    { label: "Full Validation", href: "#complete-validation" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Framework", value: "pytest", icon: "testing"},
-        {label: "Coverage Target", value: "app", icon: "project"},
-        {label: "Test Root", value: "tests", icon: "directory"},
-        {label: "Default Safety", value: "Preview only", icon: "security"},
-    ]}
+  items={[
+    { label: "Framework", value: "pytest", icon: "testing" },
+    { label: "Coverage Target", value: "app", icon: "project" },
+    { label: "Test Root", value: "tests", icon: "directory" },
+    { label: "Default Safety", value: "Preview only", icon: "security" },
+  ]}
 />
 
 ## Overview
@@ -62,13 +62,33 @@ files or directories that must remain untouched.
 <Section title="Test Layers">
 
 <FeatureGrid
-    title="Where Scanner Behavior Is Exercised"
-    items={[
-        {title: "CLI", icon: <Icon name="terminal" />, children: "tests/cli covers init and scan wiring, path resolution, output, errors, and versions."},
-        {title: "Scan Core", icon: <Icon name="architecture" />, children: "tests/core/scan covers discovery, processing, validation, and file updates."},
-        {title: "Languages", icon: <Icon name="file" />, children: "tests/languages covers Python, JavaScript, HTML, PHP, and shell header strategies."},
-        {title: "Integration and Safety", icon: <Icon name="security" />, children: "Integration, initialization, configuration, dry-run, service, utility, and developer-workflow tests connect the boundaries."},
-    ]}
+  title="Where Scanner Behavior Is Exercised"
+  items={[
+    {
+      title: "CLI",
+      icon: <Icon name="terminal" />,
+      children:
+        "tests/cli covers init and scan wiring, path resolution, output, errors, and versions.",
+    },
+    {
+      title: "Scan Core",
+      icon: <Icon name="architecture" />,
+      children:
+        "tests/core/scan covers discovery, processing, validation, and file updates.",
+    },
+    {
+      title: "Languages",
+      icon: <Icon name="file" />,
+      children:
+        "tests/languages covers Python, JavaScript, HTML, PHP, and shell header strategies.",
+    },
+    {
+      title: "Integration and Safety",
+      icon: <Icon name="security" />,
+      children:
+        "Integration, initialization, configuration, dry-run, service, utility, and developer-workflow tests connect the boundaries.",
+    },
+  ]}
 />
 
 </Section>
@@ -83,12 +103,15 @@ files or directories that must remain untouched.
 python -m pytest tests/core/scan
 
 # One language strategy
+
 python -m pytest tests/languages/test_python_strategy.py
 
 # Full scan integration
+
 python -m pytest tests/integration/test_full_scan.py
 
 # Dry-run regression boundaries
+
 python -m pytest tests/test_dry_run.py`}
 
 </Terminal>
@@ -103,13 +126,31 @@ directory cannot be accessed.
 <Section title="What to Test">
 
 <CommandChecklist
-    items={[
-        {title: "Preview", description: "Assert discovery and planned changes without target-file writes."},
-        {title: "Apply", description: "Assert only selected supported files receive the expected header insertion or update."},
-        {title: "Dry-run override", description: "Prove --dry-run overrides --apply and configured apply=true."},
-        {title: "Language strategy", description: "Cover syntax, existing valid headers, stale headers, unsupported content, and path rendering."},
-        {title: "Exclusions and paths", description: "Cover workdir, relative targets, ignored directories, virtual environments, caches, and build output."},
-    ]}
+  items={[
+    {
+      title: "Preview",
+      description: "Assert discovery and planned changes without target-file writes.",
+    },
+    {
+      title: "Apply",
+      description:
+        "Assert only selected supported files receive the expected header insertion or update.",
+    },
+    {
+      title: "Dry-run override",
+      description: "Prove --dry-run overrides --apply and configured apply=true.",
+    },
+    {
+      title: "Language strategy",
+      description:
+        "Cover syntax, existing valid headers, stale headers, unsupported content, and path rendering.",
+    },
+    {
+      title: "Exclusions and paths",
+      description:
+        "Cover workdir, relative targets, ignored directories, virtual environments, caches, and build output.",
+    },
+  ]}
 />
 
 </Section>
@@ -154,10 +195,26 @@ dry-runs, Docker and Compose configuration, and development and production CLI
 ---
 
 <RelatedCommands
-    commands={[
-        {title: "Development Setup", href: "./development-setup", description: "Install the contributor toolchain."},
-        {title: "Contributing", href: "./contributing", description: "Prepare a focused scanner contribution."},
-        {title: "Safety and Dry Run", href: "../concepts/safety-and-dry-run", description: "Review non-mutation guarantees."},
-        {title: "Architecture", href: "../architecture/overview", description: "Map tests to scanner responsibilities."},
-    ]}
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Install the contributor toolchain.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Prepare a focused scanner contribution.",
+    },
+    {
+      title: "Safety and Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Review non-mutation guarantees.",
+    },
+    {
+      title: "Architecture",
+      href: "../architecture/overview",
+      description: "Map tests to scanner responsibilities.",
+    },
+  ]}
 />

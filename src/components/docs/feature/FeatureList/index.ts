@@ -6,14 +6,10 @@
 
 export { default } from "./FeatureList";
 
-export type {
-    FeatureListItem,
-    FeatureListProps,
-} from "./types";
-
+export type { FeatureListItem, FeatureListProps } from "./types";
 
 /** Example Usage
- * 
+ *
 <Docs.FeatureList
     title="Key Features"
     description="Highlights of the Custy platform."

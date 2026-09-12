@@ -10,9 +10,9 @@ Security updates are provided for:
 
 | Version               | Supported |
 | --------------------- | --------- |
-| Latest                | ✅         |
-| Active Major Versions | ✅         |
-| Deprecated Versions   | ❌         |
+| Latest                | ✅        |
+| Active Major Versions | ✅        |
+| Deprecated Versions   | ❌        |
 
 Older versions may contain known vulnerabilities and are not guaranteed to receive security fixes.
 
@@ -28,11 +28,11 @@ If you discover a security issue:
 
 Recommended information:
 
-* Description of the issue
-* Steps to reproduce
-* Potential impact
-* Proof of concept (if applicable)
-* Suggested mitigation or fix
+- Description of the issue
+- Steps to reproduce
+- Potential impact
+- Proof of concept (if applicable)
+- Suggested mitigation or fix
 
 ---
 
@@ -44,30 +44,30 @@ Relevant security concerns include:
 
 ### 📚 Documentation Content
 
-* Malicious MDX content
-* Embedded scripts
-* Unsafe external links
-* Untrusted third-party assets
+- Malicious MDX content
+- Embedded scripts
+- Unsafe external links
+- Untrusted third-party assets
 
 ### 🔗 Dependency Security
 
-* Vulnerable npm packages
-* Vulnerable transitive dependencies
-* Supply-chain attacks
+- Vulnerable npm packages
+- Vulnerable transitive dependencies
+- Supply-chain attacks
 
 ### ⚙️ CI/CD Security
 
-* GitHub Actions workflow abuse
-* GitLab CI/CD pipeline abuse
-* Excessive permissions
-* Secret leakage
+- GitHub Actions workflow abuse
+- GitLab CI/CD pipeline abuse
+- Excessive permissions
+- Secret leakage
 
 ### 🌐 Website Security
 
-* Cross-site scripting (XSS)
-* Content injection
-* Unsafe redirects
-* Insecure third-party integrations
+- Cross-site scripting (XSS)
+- Content injection
+- Unsafe redirects
+- Insecure third-party integrations
 
 ---
 
@@ -75,27 +75,27 @@ Relevant security concerns include:
 
 ### Dependencies
 
-* Keep dependencies up to date
-* Review dependency updates before merging
-* Remove unused packages
+- Keep dependencies up to date
+- Review dependency updates before merging
+- Remove unused packages
 
 ### Documentation
 
-* Avoid embedding untrusted scripts
-* Avoid embedding untrusted iframes
-* Verify external links before publishing
+- Avoid embedding untrusted scripts
+- Avoid embedding untrusted iframes
+- Verify external links before publishing
 
 ### CI/CD
 
-* Use least-privilege permissions
-* Avoid storing secrets in source control
-* Review workflow changes carefully
+- Use least-privilege permissions
+- Avoid storing secrets in source control
+- Review workflow changes carefully
 
 ### Repository Management
 
-* Protect main branch
-* Require pull requests for changes
-* Review external contributions
+- Protect main branch
+- Require pull requests for changes
+- Review external contributions
 
 ---
 
@@ -103,11 +103,11 @@ Relevant security concerns include:
 
 Never commit:
 
-* API keys
-* Access tokens
-* Passwords
-* Private certificates
-* Environment files containing secrets
+- API keys
+- Access tokens
+- Passwords
+- Private certificates
+- Environment files containing secrets
 
 Examples:
 
@@ -119,9 +119,9 @@ Examples:
 
 Sensitive values should be stored using:
 
-* GitHub Secrets
-* GitLab CI/CD Variables
-* External secret management solutions
+- GitHub Secrets
+- GitLab CI/CD Variables
+- External secret management solutions
 
 ---
 
@@ -143,8 +143,8 @@ Security issues should be reported privately.
 
 Public disclosure should occur only after:
 
-* A fix is available, or
-* The maintainer has been notified and given reasonable time to respond.
+- A fix is available, or
+- The maintainer has been notified and given reasonable time to respond.
 
 ---
 

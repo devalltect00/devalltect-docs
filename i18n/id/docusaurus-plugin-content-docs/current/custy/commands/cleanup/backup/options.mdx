@@ -6,59 +6,77 @@ sidebar_key: custy-cleanup-backup
 tags: [cleanup, backup, options]
 keywords: [custy cleanup backups options]
 ---
-import {CommandHero, CommandOption, Section, InfoBox} from "@site/src/components/docs";
+
+import {
+  CommandHero,
+  CommandOption,
+  Section,
+  InfoBox,
+} from "@site/src/components/docs";
 
 <CommandHero
-    command="custy cleanup backups"
-    title="Options"
-    description="Sesuaikan cara Backup Cleanup menghapus file lama."
-    category="Maintenance"
-    status="Direkomendasikan"
-    syntax="custy cleanup backups"
-    tags={["cleanup", "backup", "options"]}
-    links={[
-        {label: "Syntax", href: "./syntax"},
-        {label: "Workflow", href: "./workflow"},
-        {label: "Examples", href: "./examples"},
-    ]}
+  command="custy cleanup backups"
+  title="Options"
+  description="Sesuaikan cara Backup Cleanup menghapus file lama."
+  category="Maintenance"
+  status="Direkomendasikan"
+  syntax="custy cleanup backups"
+  tags={["cleanup", "backup", "options"]}
+  links={[
+    { label: "Syntax", href: "./syntax" },
+    { label: "Workflow", href: "./workflow" },
+    { label: "Examples", href: "./examples" },
+  ]}
 />
 
 ## Ringkasan
+
 Options meng-override `config.toml` untuk satu eksekusi.
 
 <Section title="Options yang Tersedia">
-<CommandOption options={[
-    {name: "--type", shorthand: "-t", required: false, defaultValue: "all", description: "Pilih kategori backup yang dibersihkan.", example: "--type commit"},
-    {name: "--keep", shorthand: "-k", required: false, defaultValue: "10", description: "Tentukan jumlah backup terbaru yang dipertahankan.", example: "--keep 20"},
-]} />
+  <CommandOption
+    options={[
+      {
+        name: "--type",
+        shorthand: "-t",
+        required: false,
+        defaultValue: "all",
+        description: "Pilih kategori backup yang dibersihkan.",
+        example: "--type commit",
+      },
+      {
+        name: "--keep",
+        shorthand: "-k",
+        required: false,
+        defaultValue: "10",
+        description: "Tentukan jumlah backup terbaru yang dipertahankan.",
+        example: "--keep 20",
+      },
+    ]}
+  />
 </Section>
 
 <Section title="Cleanup Types">
-| Value | Deskripsi |
-|---|---|
-| `commit` | Hanya commit message backups. |
-| `tag` | Hanya tag message backups. |
-| `all` | Keduanya. |
+  | Value | Deskripsi | |---|---| | `commit` | Hanya commit message backups. | | `tag` |
+  Hanya tag message backups. | | `all` | Keduanya. |
 </Section>
 
 <Section title="Retention Count">
-`--keep` menentukan jumlah terbaru yang dipertahankan, misalnya `--keep 5`,
-`--keep 10`, atau `--keep 20`.
+  `--keep` menentukan jumlah terbaru yang dipertahankan, misalnya `--keep 5`, `--keep
+  10`, atau `--keep 20`.
 </Section>
 
 <InfoBox variant="tip" title="Project Defaults">
-Tim dapat menetapkan defaults dalam `config.toml`.
+  Tim dapat menetapkan defaults dalam `config.toml`.
 </InfoBox>
 
 <Section title="Global Options">
-`--dry-run`, `--debug`, dan `--log-level` berada sebelum command:
-```bash
-custy --dry-run cleanup backups
-```
+  `--dry-run`, `--debug`, dan `--log-level` berada sebelum command: ```bash custy
+  --dry-run cleanup backups ```
 </Section>
 
 <Section title="Configuration Resolution">
-Prioritas: command-line option, project configuration, lalu built-in default.
+  Prioritas: command-line option, project configuration, lalu built-in default.
 </Section>
 
 <Section title="Langkah Berikutnya">Lanjutkan ke **Workflow**.</Section>

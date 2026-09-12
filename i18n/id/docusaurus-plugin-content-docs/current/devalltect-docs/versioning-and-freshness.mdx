@@ -1,0 +1,48 @@
+---
+title: Versioning dan Freshness
+description: Pelihara baseline proyek dan siapkan rilis portal yang andal.
+sidebar_position: 2
+---
+
+# Versioning dan Freshness
+
+Metadata proyek dalam `src/data/projects.ts` adalah sumber utama untuk
+penemuan proyek di homepage dan status dokumentasi berbasis release.
+
+## Baseline Proyek
+
+Setiap proyek yang didokumentasikan dapat mencatat:
+
+- versi normal yang diwakili halaman dokumentasi;
+- tag repositori dan URL release yang sesuai;
+- tanggal terakhir maintainer meninjau sumber;
+- route halaman status;
+- perilaku freshness otomatis atau manual;
+- metadata teknologi dan screenshot khusus proyek.
+
+Freshness otomatis mendukung tag SemVer dan PEP 440. Sistem menemukan tag
+remote, memfilter prerelease sesuai kebijakan proyek, dan membandingkan rilis
+kompatibel terbaru dengan baseline dokumentasi. Gunakan mode manual untuk
+repositori privat atau tidak dapat diakses dan format tag yang tidak didukung.
+
+## Status untuk Pembaca
+
+- **Current:** dokumentasi cocok dengan rilis yang ditemukan; notice tidak diperlukan.
+- **Outdated:** tersedia rilis lebih baru; pembaca menerima peringatan pembaruan.
+- **Preview:** dokumentasi menjelaskan versi yang lebih baru daripada rilis terbaru.
+- **Unknown:** rilis remote tidak dapat diverifikasi; portal tidak menyatakan dokumentasi current.
+
+## Persiapan Rilis
+
+Sebelum memublikasikan Devalltect Docs:
+
+1. Konfirmasi baseline dan link release untuk keempat proyek.
+2. Konfirmasi konten Bahasa Inggris dan Bahasa Indonesia tetap selaras.
+3. Tambahkan dan tinjau secara visual keempat file PNG pratinjau proyek.
+4. Jalankan pengujian freshness, type checking, pemeriksaan pre-commit, dan build multilingual.
+5. Tinjau homepage, landing page proyek, sidebar, dan alur utama pada desktop dan mobile.
+6. Perbarui commit message checkpoint tanpa tag dan template rilis kumulatif yang sesuai.
+7. Buat tag rilis hanya setelah kandidat yang tepat berhasil melewati validasi.
+
+Kegagalan sementara pemeriksaan remote harus menghasilkan status unknown yang
+jujur, bukan merusak pengalaman pembaca atau menyatakan dokumentasi current.

@@ -1,0 +1,37 @@
+---
+sidebar_position: 2
+title: Ringkasan Proyek
+description: Jelajahi proyek yang didokumentasikan dalam portal Devalltect
+---
+
+# Ringkasan Proyek
+
+Portal saat ini menyatukan empat proyek peralatan developer. Setiap proyek
+mempertahankan domain dan struktur dokumentasinya sendiri sambil berbagi
+navigasi, komponen desain, validasi build, dan deployment.
+
+## Direktori Proyek
+
+| Proyek                  | Tujuan utama                                                                                                     | Dokumentasi                                           |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| **Path Header Scanner** | Pratinjau, validasi, dan terapkan path header yang konsisten pada bahasa yang didukung.                          | [Jelajahi Path Header Scanner](./path-header-scanner) |
+| **Doc Gen**             | Generate, print, dan analyze dokumentasi struktur proyek.                                                        | [Jelajahi Doc Gen](./doc-gen)                         |
+| **Reflow**              | Konversi tag, pulihkan release berbasis tag, dan publikasikan tagged container image.                            | [Jelajahi Reflow](./reflow)                           |
+| **Custy**               | Koordinasikan alur Git, validasi, versioning, changelog, commit, tag, push, backup, cleanup, dan pipeline rilis. | [Jelajahi Custy](./custy)                             |
+
+## Cakupan Dokumentasi
+
+Keempat proyek menyediakan panduan Bahasa Inggris dan Bahasa Indonesia yang
+selaras untuk baseline rilis yang dicatat. Kedalaman dokumentasi dapat berbeda
+karena setiap proyek berkembang secara mandiri. Periksa label status, peringatan,
+dan referensi yang selaras dengan sumber sebelum memperlakukan fitur sebagai
+kontrak stabil.
+
+## Menambahkan Proyek Lain
+
+1. Buat direktori tingkat atas `docs/<project-name>/`.
+2. Tambahkan ringkasan yang jelas dan metadata navigasi `_category_.json`.
+3. Atur materi pengguna, perintah, referensi, developer, serta arsitektur sesuai kebutuhan nyata proyek.
+4. Tambahkan metadata proyek dan navigasi lintas proyek.
+5. Tambahkan dokumentasi Bahasa Indonesia yang setara.
+6. Jalankan type checking, pengujian freshness, dan build kedua locale.

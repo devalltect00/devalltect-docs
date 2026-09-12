@@ -1,0 +1,266 @@
+---
+title: "Contributing"
+description: "Siapkan contribution untuk Reflow yang focused, tested, documented, dan aman."
+sidebar_position: 4
+sidebar_key: reflow-developer-guide-contributing
+tags: [reflow, contributing, code review, pre-commit]
+keywords: [contribute to Reflow, Reflow code quality, Reflow pull request]
+---
+
+import {
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="make check"
+  title="Contributing to Reflow"
+  description="Ubah satu release-workflow problem yang sudah dipahami menjadi focused change dengan safety evidence yang dapat diverifikasi."
+  category="Developer Guide"
+  status="Review Checklist"
+  syntax="scope -> implement -> validate -> document -> hand off"
+  tags={["quality", "tests", "dry-run", "documentation", "pre-commit"]}
+  links={[
+    { label: "Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Final Checklist", href: "#final-review-checklist" },
+  ]}
+/>
+
+<CommandMetadata
+  items={[
+    { label: "Primary Branches", value: "main dan develop", icon: "git" },
+    { label: "Quality Helper", value: "make check", icon: "testing" },
+    { label: "Runtime", value: "Python 3.14+", icon: "python" },
+    { label: "Mutation Policy", value: "Explicit approval", icon: "security" },
+  ]}
+/>
+
+## Overview
+
+Contribution untuk Reflow harus mempertahankan repository identity, explicit
+mutation scope, dry-run behavior, confirmation, dan actionable failure
+reporting. Jangan gabungkan unrelated cleanup, release metadata, version
+changes, atau publication dengan focused source change.
+
+---
+
+<Section title="Contribution Workflow">
+
+<WorkflowTimeline
+  items={[
+    {
+      title: "Telusuri affected flow",
+      description:
+        "Ikuti CLI resolution melalui configuration, repository materialization, core behavior, presentation, dan external boundaries.",
+      status: "completed",
+    },
+    {
+      title: "Tentukan safety contract",
+      description:
+        "Nyatakan target, effects, dry-run behavior, confirmation, compatibility, dan failure outcomes sebelum mengedit.",
+      status: "completed",
+    },
+    {
+      title: "Implementasikan bersama tests",
+      description:
+        "Pisahkan responsibilities dan tambahkan focused coverage untuk success, failure, dan non-mutating behavior.",
+      status: "current",
+    },
+    {
+      title: "Jalankan widening validation",
+      description:
+        "Jalankan focused tests, pre-commit checks, make check, dan workflow validation yang berlaku.",
+      status: "pending",
+    },
+    {
+      title: "Sinkronkan documentation",
+      description:
+        "Update commands, configuration, safety, troubleshooting, architecture, dan examples ketika contract berubah.",
+      status: "pending",
+    },
+    {
+      title: "Siapkan handoff",
+      description:
+        "Laporkan files, decisions, commands, outcomes, limitations, dan hal yang sengaja tidak diubah.",
+      status: "pending",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Branch and Scope Conventions">
+
+<FeatureGrid
+  title="Suggested Branch Types"
+  items={[
+    {
+      title: "Feature",
+      icon: <Icon name="feature" />,
+      children: "Gunakan feature/<name> untuk focused capability.",
+    },
+    {
+      title: "Bug Fix",
+      icon: <Icon name="warning" />,
+      children: "Gunakan bugfix/<name> untuk focused correction.",
+    },
+    {
+      title: "Release",
+      icon: <Icon name="release" />,
+      children:
+        "Gunakan release/<version> hanya untuk intentional release preparation.",
+    },
+    {
+      title: "Primary Development",
+      icon: <Icon name="git" />,
+      children: "Perlakukan main dan develop sebagai long-lived project branches.",
+    },
+  ]}
+/>
+
+Jangan commit, tag, push, rewrite history, publish packages atau images, replay
+tags, maupun mengubah release metadata hanya karena source validation berhasil.
+
+</Section>
+
+---
+
+<Section title="Implementation Standards">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Pertahankan focused layers",
+      description:
+        "CLI interaction tetap berada di app/cli; reusable behavior berada di app/core atau service yang sesuai.",
+    },
+    {
+      title: "Pertahankan repository identity",
+      description:
+        "Jangan mengganti selected target repository dengan Reflow source checkout atau registry image.",
+    },
+    {
+      title: "Lindungi dry-run",
+      description:
+        "Setiap mutating path memerlukan bukti bahwa dry-run tidak menghasilkan persistent local atau external change.",
+    },
+    {
+      title: "Tangani errors satu kali",
+      description:
+        "Tampilkan remediation ringkas pada CLI boundary dan sembunyikan sensitive atau deep diagnostics dari normal output.",
+    },
+    {
+      title: "Dokumentasikan public contracts",
+      description:
+        "Sinkronkan command, option, configuration, safety, migration, dan architecture guidance.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Quality Gates">
+
+<Terminal title="Contributor validation" language="bash">
+
+{`# Focused example
+python -m pytest tests/cli/test_repository_targeting.py
+
+# Complete tests and quality checks
+
+python -m pytest
+make check
+
+# Hook configuration and tracked-file checks
+
+make pre-commit-validate
+make pre-commit-run-staged
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Refresh dapat mengubah repository">
+
+Gunakan `make pre-commit-refresh` hanya untuk intentional hook upgrade. Command
+ini memperbarui hook revisions, membangun ulang environments, meng-install hook,
+dan menjalankan seluruh hooks terhadap semua files. Review setiap perubahan.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Final Review Checklist">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Scope tetap coherent",
+      description:
+        "Setiap changed file mendukung behavior, tests, atau documentation yang dinyatakan.",
+    },
+    {
+      title: "Target dan effects bersifat explicit",
+      description:
+        "Local paths, remote URLs, registries, confirmation, dan dry-run behavior tetap predictable.",
+    },
+    {
+      title: "Tests tetap isolated",
+      description:
+        "Tests menggunakan temporary repositories, mocks, dan deterministic configuration, bukan personal state atau credentials.",
+    },
+    {
+      title: "Quality checks dilaporkan",
+      description:
+        "Formatting, lint, tests, dan relevant builds memiliki explicit outcomes.",
+    },
+    {
+      title: "Tidak ada unapproved release action",
+      description:
+        "Versions, changelogs, tags, pushes, releases, dan publication tidak berubah kecuali sudah disetujui dalam scope.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<RelatedCommands
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Buat editable environment yang didukung.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Pilih focused dan complete validation.",
+    },
+    {
+      title: "Configuration",
+      href: "../configuration/overview",
+      description: "Pertahankan precedence dan templates yang didukung.",
+    },
+    {
+      title: "Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Lindungi non-mutating workflow guarantees.",
+    },
+  ]}
+/>

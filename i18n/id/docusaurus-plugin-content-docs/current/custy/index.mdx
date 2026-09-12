@@ -18,49 +18,55 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Screenshot,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Custy"
-    description="Otomatiskan alur kerja Git, versioning, changelog, backup, cleanup, dan rilis yang berulang dari satu CLI yang dapat dikonfigurasi."
-    category="Produktivitas Developer"
-    status="Pengembangan Aktif"
-    syntax="custy COMMAND [OPTIONS]"
-    tags={[
-        "otomatisasi Git",
-        "alur kerja rilis",
-        "konfigurasi proyek",
-    ]}
-    links={[
-        {label: "Memulai", href: "./custy/getting-started/overview"},
-        {label: "Referensi Perintah", href: "./custy/commands/overview"},
-        {label: "Konfigurasi", href: "./custy/configuration/overview"},
-        {label: "Panduan Pipeline", href: "./custy/pipelines/overview"},
-        {label: "Panduan Pengguna", href: "./custy/user-guide/overview"},
-        {label: "Panduan Developer", href: "./custy/developer-guide/overview"},
-        {label: "Arsitektur", href: "./custy/architecture/overview"},
-        {label: "Referensi", href: "./custy/reference/overview"},
-        {label: "Pemecahan Masalah", href: "./custy/troubleshooting/overview"},
-        {label: "Konsep Inti", href: "./custy/concepts/commands-pipelines-and-workflows"},
-        {label: "Status Dokumentasi", href: "./custy/reference/documentation-status"},
-    ]}
+  command="custy"
+  title="Custy"
+  description="Otomatiskan alur kerja Git, versioning, changelog, backup, cleanup, dan rilis yang berulang dari satu CLI yang dapat dikonfigurasi."
+  category="Produktivitas Developer"
+  status="Pengembangan Aktif"
+  syntax="custy COMMAND [OPTIONS]"
+  tags={["otomatisasi Git", "alur kerja rilis", "konfigurasi proyek"]}
+  links={[
+    { label: "Memulai", href: "./custy/getting-started/overview" },
+    { label: "Referensi Perintah", href: "./custy/commands/overview" },
+    { label: "Konfigurasi", href: "./custy/configuration/overview" },
+    { label: "Panduan Pipeline", href: "./custy/pipelines/overview" },
+    { label: "Panduan Pengguna", href: "./custy/user-guide/overview" },
+    { label: "Panduan Developer", href: "./custy/developer-guide/overview" },
+    { label: "Arsitektur", href: "./custy/architecture/overview" },
+    { label: "Referensi", href: "./custy/reference/overview" },
+    { label: "Pemecahan Masalah", href: "./custy/troubleshooting/overview" },
+    { label: "Konsep Inti", href: "./custy/concepts/commands-pipelines-and-workflows" },
+    { label: "Status Dokumentasi", href: "./custy/reference/documentation-status" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Antarmuka", value: "Aplikasi Command Line", icon: "terminal"},
-        {label: "Fokus Utama", value: "Git dan Rilis", icon: "git"},
-        {label: "Konfigurasi", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Bahasa Dokumentasi", value: "Bahasa Indonesia", icon: "feature"},
-    ]}
+  items={[
+    { label: "Antarmuka", value: "Aplikasi Command Line", icon: "terminal" },
+    { label: "Fokus Utama", value: "Git dan Rilis", icon: "git" },
+    { label: "Konfigurasi", value: ".config/custy/config.toml", icon: "configuration" },
+    { label: "Bahasa Dokumentasi", value: "Bahasa Indonesia", icon: "feature" },
+  ]}
+/>
+
+<Screenshot
+  src="/img/project-previews/custy.png"
+  alt="Banner terminal Custy dan output alur kerja Git"
+  title="Sekilas Custy"
+  caption="Contoh representatif alur kerja terminal Custy. Screenshot rilis final dapat ditambahkan tanpa mengubah halaman ini."
+  fallback="Tambahkan static/img/project-previews/custy.png sebelum memublikasikan v1.0.0."
+  variant="overview"
 />
 
 ## Ringkasan
@@ -91,39 +97,45 @@ berbeda.
 >
 
 <FeatureGrid
-    title="Kemampuan Utama"
-    items={[
-        {
-            title: "Kesiapan Proyek",
-            icon: <Icon name="success" />,
-            children: "Inisialisasi resource proyek dan validasi repositori sebelum operasi yang berdampak dijalankan.",
-        },
-        {
-            title: "Versi dan Changelog",
-            icon: <Icon name="release" />,
-            children: "Siapkan versi dan buat changelog terstruktur dari riwayat repositori serta konfigurasi proyek.",
-        },
-        {
-            title: "Operasi Git",
-            icon: <Icon name="git" />,
-            children: "Buat commit dan tag, lalu sinkronkan branch serta tag dengan remote yang dikonfigurasi.",
-        },
-        {
-            title: "Pipeline yang Dapat Digunakan Kembali",
-            icon: <Icon name="workflow" />,
-            children: "Jalankan profil development, release, dan full yang didukung dengan urutan alur kerja yang dapat diprediksi.",
-        },
-        {
-            title: "Keamanan dan Pemulihan",
-            icon: <Icon name="package" />,
-            children: "Buat backup pesan, pratinjau operasi yang didukung, serta bersihkan file atau branch yang disimpan secara terencana.",
-        },
-        {
-            title: "Konfigurasi Proyek",
-            icon: <Icon name="configuration" />,
-            children: "Sesuaikan path, template, perilaku Git, versioning, output changelog, cleanup, dan logging.",
-        },
-    ]}
+  title="Kemampuan Utama"
+  items={[
+    {
+      title: "Kesiapan Proyek",
+      icon: <Icon name="success" />,
+      children:
+        "Inisialisasi resource proyek dan validasi repositori sebelum operasi yang berdampak dijalankan.",
+    },
+    {
+      title: "Versi dan Changelog",
+      icon: <Icon name="release" />,
+      children:
+        "Siapkan versi dan buat changelog terstruktur dari riwayat repositori serta konfigurasi proyek.",
+    },
+    {
+      title: "Operasi Git",
+      icon: <Icon name="git" />,
+      children:
+        "Buat commit dan tag, lalu sinkronkan branch serta tag dengan remote yang dikonfigurasi.",
+    },
+    {
+      title: "Pipeline yang Dapat Digunakan Kembali",
+      icon: <Icon name="workflow" />,
+      children:
+        "Jalankan profil development, release, dan full yang didukung dengan urutan alur kerja yang dapat diprediksi.",
+    },
+    {
+      title: "Keamanan dan Pemulihan",
+      icon: <Icon name="package" />,
+      children:
+        "Buat backup pesan, pratinjau operasi yang didukung, serta bersihkan file atau branch yang disimpan secara terencana.",
+    },
+    {
+      title: "Konfigurasi Proyek",
+      icon: <Icon name="configuration" />,
+      children:
+        "Sesuaikan path, template, perilaku Git, versioning, output changelog, cleanup, dan logging.",
+    },
+  ]}
 />
 
 </Section>
@@ -162,9 +174,11 @@ dan memulihkan kondisi parsial dengan aman.
 custy init
 
 # Periksa apakah repositori siap
+
 custy validate
 
 # Lihat profil pipeline publik
+
 custy run --help`}
 
 </Terminal>

@@ -1,0 +1,229 @@
+---
+title: "Contributing"
+description: "Siapkan contribution untuk Path Header Scanner yang focused, tested, documented, dan aman."
+sidebar_position: 4
+sidebar_key: path-header-scanner-developer-guide-contributing
+tags: [path-header-scanner, contributing, code review, pre-commit]
+keywords:
+  [contribute to Path Header Scanner, scanner code quality, scanner pull request]
+---
+
+import {
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="make check"
+  title="Contributing to Path Header Scanner"
+  description="Kembangkan language-aware scanning changes dengan bukti bahwa preview, apply, dan dry-run tetap aman."
+  category="Developer Guide"
+  status="Review Checklist"
+  syntax="scope -> implement -> validate -> document -> hand off"
+  tags={["quality", "tests", "preview", "dry-run", "pre-commit"]}
+  links={[
+    { label: "Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Final Checklist", href: "#final-review-checklist" },
+  ]}
+/>
+
+<CommandMetadata
+  items={[
+    { label: "Quality Helper", value: "make check", icon: "testing" },
+    { label: "Package Runtime", value: "Python 3.11+", icon: "python" },
+    { label: "Default Scan", value: "Read-only preview", icon: "security" },
+    { label: "Write Opt-In", value: "--apply", icon: "file" },
+  ]}
+/>
+
+## Overview
+
+Pertahankan CLI interaction di `app/cli`, reusable scanning di `app/core/scan`,
+dan language syntax di `app/languages`. Contribution tidak boleh secara diam-diam
+mengubah preview menjadi apply behavior atau mengizinkan configuration melewati
+dry-run.
+
+---
+
+<Section title="Contribution Workflow">
+
+<WorkflowTimeline
+  items={[
+    {
+      title: "Telusuri scan path",
+      description:
+        "Ikuti target dan workdir resolution melalui discovery, language selection, validation, processing, update, dan presentation.",
+      status: "completed",
+    },
+    {
+      title: "Tentukan file contract",
+      description:
+        "Daftar discovered files, exclusions, expected headers, allowed writes, failures, dan dry-run behavior.",
+      status: "completed",
+    },
+    {
+      title: "Implementasikan bersama tests",
+      description:
+        "Pertahankan focused scanner dan language responsibilities serta uji preview dan approved mutation paths.",
+      status: "current",
+    },
+    {
+      title: "Jalankan widening validation",
+      description:
+        "Jalankan focused scanner tests, pre-commit checks, make check, dan complete suite.",
+      status: "pending",
+    },
+    {
+      title: "Sinkronkan documentation",
+      description:
+        "Update commands, supported languages, configuration, output, safety, troubleshooting, dan architecture sesuai kebutuhan.",
+      status: "pending",
+    },
+    {
+      title: "Siapkan handoff",
+      description:
+        "Laporkan affected files, test targets, quality outcomes, safety evidence, dan known limitations.",
+      status: "pending",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Implementation Standards">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Resolve paths satu kali",
+      description:
+        "Tentukan workdir dan target sebelum discovery dan pertahankan output terikat pada resolved identity tersebut.",
+    },
+    {
+      title: "Pertahankan preview",
+      description: "Default scan behavior tidak boleh menulis target files.",
+    },
+    {
+      title: "Batasi apply",
+      description:
+        "Hanya selected files dengan supported language strategies yang boleh di-update.",
+    },
+    {
+      title: "Lindungi dry-run",
+      description:
+        "Dry-run harus mengesampingkan CLI dan configured apply values tanpa prompt atau file writes.",
+    },
+    {
+      title: "Dokumentasikan language behavior",
+      description:
+        "Sinkronkan syntax, examples, supported extensions, errors, dan recovery guidance.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Quality Gates">
+
+<Terminal title="Contributor validation" language="bash">
+
+{`# Focused examples
+python -m pytest tests/core/scan
+python -m pytest tests/languages
+
+# Complete validation
+
+python -m pytest
+make check
+
+# Hook validation
+
+make pre-commit-validate
+make pre-commit-run-staged
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Refresh adalah maintainer operation">
+
+Jalankan `make pre-commit-refresh` hanya untuk intentional hook upgrades.
+Command ini dapat mengubah hook configuration dan active files serta mungkin
+memerlukan network access. Review seluruh diff sebelum menyimpan hasilnya.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Final Review Checklist">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Scope tetap focused",
+      description:
+        "Setiap change mendukung scanner contract, tests, atau documentation.",
+    },
+    {
+      title: "Preview bersifat read-only",
+      description:
+        "Tests membuktikan ordinary scan dan dry-run tidak mengubah target files.",
+    },
+    {
+      title: "Apply bersifat precise",
+      description:
+        "Hanya intended files dan headers yang berubah, disertai useful success dan failure summaries.",
+    },
+    {
+      title: "Quality results dicatat",
+      description:
+        "Focused tests, full tests, formatting, lint, dan relevant builds memiliki explicit outcomes.",
+    },
+    {
+      title: "Release actions tetap terpisah",
+      description:
+        "Versions, changelogs, tags, pushes, dan publication tidak berubah kecuali diminta secara explicit.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<RelatedCommands
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Buat editable contributor environment.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Validasi scanner dan language contracts.",
+    },
+    {
+      title: "Configuration",
+      href: "../configuration/overview",
+      description: "Pertahankan scan defaults dan exclusions.",
+    },
+    {
+      title: "Safety and Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Lindungi preview dan apply boundaries.",
+    },
+  ]}
+/>

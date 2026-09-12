@@ -20,7 +20,7 @@ import {
     title="Configuration Reference"
     description="Map the shipped Reflow configuration to the commands and boundaries that consume it."
     category="Configuration"
-    status="Reflow 1.0.0"
+    status="Reflow 1.0.1"
     syntax="[tool.reflow.*]"
     tags={["TOML", "command defaults", "repository targeting"]}
     links={[
@@ -178,7 +178,7 @@ and `reflow releases recover`.
 />
 
 `reflow dockerize` has no command-specific provider or image flags in Reflow
-1.0.0; configure these values in TOML. Live mode builds and pushes one image
+1.0.1; configure these values in TOML. Live mode builds and pushes one image
 per repository tag, tags the latest ordered tag as `latest`, and may remove
 non-latest local images.
 
@@ -245,7 +245,7 @@ Do not combine the `path` and `url` examples in one active configuration.
 <InfoBox variant="note" title="Use exact supported keys">
 
 Unknown or misspelled keys do not replace supported CLI options or defaults.
-Compare the generated file with the packaged Reflow 1.0.0 template when
+Compare the generated file with the packaged Reflow 1.0.1 template when
 upgrading an existing project-owned configuration.
 
 </InfoBox>

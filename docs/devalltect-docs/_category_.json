@@ -1,0 +1,11 @@
+{
+  "label": "Devalltect Docs",
+  "position": 1,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-devalltect-docs",
+  "link": {
+    "type": "doc",
+    "id": "devalltect-docs/index"
+  }
+}

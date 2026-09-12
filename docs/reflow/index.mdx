@@ -17,44 +17,54 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Screenshot,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow"
-    title="Reflow"
-    description="Maintain version tags, tag-driven GitHub releases, and registry images against an explicitly resolved repository."
-    category="Release Maintenance"
-    status="v1.0.0"
-    syntax="reflow [GLOBAL OPTIONS] COMMAND"
-    tags={["Git tags", "release recovery", "container publishing"]}
-    links={[
-        {label: "Getting Started", href: "./reflow/getting-started/overview"},
-        {label: "Commands", href: "./reflow/commands/overview"},
-        {label: "Core Concepts", href: "./reflow/concepts/overview"},
-        {label: "Configuration", href: "./reflow/configuration/overview"},
-        {label: "Examples", href: "./reflow/examples"},
-        {label: "User Guide", href: "./reflow/user-guide/overview"},
-        {label: "Developer Guide", href: "./reflow/developer-guide/overview"},
-        {label: "Architecture", href: "./reflow/architecture/overview"},
-        {label: "Reference", href: "./reflow/reference/overview"},
-        {label: "Troubleshooting", href: "./reflow/troubleshooting/overview"},
-    ]}
+  command="reflow"
+  title="Reflow"
+  description="Maintain version tags, tag-driven GitHub releases, and registry images against an explicitly resolved repository."
+  category="Release Maintenance"
+  status="v1.0.1"
+  syntax="reflow [GLOBAL OPTIONS] COMMAND"
+  tags={["Git tags", "release recovery", "container publishing"]}
+  links={[
+    { label: "Getting Started", href: "./reflow/getting-started/overview" },
+    { label: "Commands", href: "./reflow/commands/overview" },
+    { label: "Core Concepts", href: "./reflow/concepts/overview" },
+    { label: "Configuration", href: "./reflow/configuration/overview" },
+    { label: "Examples", href: "./reflow/examples" },
+    { label: "User Guide", href: "./reflow/user-guide/overview" },
+    { label: "Developer Guide", href: "./reflow/developer-guide/overview" },
+    { label: "Architecture", href: "./reflow/architecture/overview" },
+    { label: "Reference", href: "./reflow/reference/overview" },
+    { label: "Troubleshooting", href: "./reflow/troubleshooting/overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Runtime", value: "Python 3.14+", icon: "dependency"},
-        {label: "Targets", value: "Local checkout or Git URL", icon: "git"},
-        {label: "Safety", value: "Preview, confirmation, and dry-run", icon: "success"},
-        {label: "Documentation", value: "Reflow 1.0.0", icon: "release"},
-    ]}
+  items={[
+    { label: "Runtime", value: "Python 3.14+", icon: "dependency" },
+    { label: "Targets", value: "Local checkout or Git URL", icon: "git" },
+    { label: "Safety", value: "Preview, confirmation, and dry-run", icon: "success" },
+    { label: "Documentation", value: "Reflow 1.0.1", icon: "release" },
+  ]}
+/>
+
+<Screenshot
+  src="/img/project-previews/reflow.png"
+  alt="Reflow terminal banner and repository workflow output"
+  title="Reflow at a Glance"
+  caption="A representative Reflow repository workflow. The final release screenshot can be added without changing this page."
+  fallback="Add static/img/project-previews/reflow.png before publishing v1.0.1."
+  variant="overview"
 />
 
 ## Overview
@@ -69,39 +79,61 @@ confirmation boundaries before consequential operations.
 >
 
 <FeatureGrid
-    title="Core Capabilities"
-    items={[
-        {
-            title: "Convert Local Tags",
-            icon: <Icon name="git" />,
-            children: <>Replace supported PEP 440 or SemVer tag names in one persistent checkout without pushing.</>,
-        },
-        {
-            title: "Convert Remote Tags",
-            icon: <Icon name="workflow" />,
-            children: <>Replace validated remote tag refs through one guarded atomic push.</>,
-        },
-        {
-            title: "Recover Release Automation",
-            icon: <Icon name="release" />,
-            children: <>Re-push tags missing GitHub releases so tag-triggered CI/CD can run again.</>,
-        },
-        {
-            title: "Publish Tagged Images",
-            icon: <Icon name="package" />,
-            children: <>Build and push images for repository tags to GHCR, GitLab Container Registry, or both.</>,
-        },
-        {
-            title: "Resolve Repository Targets",
-            icon: <Icon name="directory" />,
-            children: <>Use the current checkout, an explicit local checkout, or a supported Git URL materialized temporarily.</>,
-        },
-        {
-            title: "Preview Safely",
-            icon: <Icon name="success" />,
-            children: <>Run discovery and validation while persistent local, remote, and registry mutations remain simulated.</>,
-        },
-    ]}
+  title="Core Capabilities"
+  items={[
+    {
+      title: "Convert Local Tags",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Replace supported PEP 440 or SemVer tag names in one persistent checkout
+          without pushing.
+        </>
+      ),
+    },
+    {
+      title: "Convert Remote Tags",
+      icon: <Icon name="workflow" />,
+      children: <>Replace validated remote tag refs through one guarded atomic push.</>,
+    },
+    {
+      title: "Recover Release Automation",
+      icon: <Icon name="release" />,
+      children: (
+        <>Re-push tags missing GitHub releases so tag-triggered CI/CD can run again.</>
+      ),
+    },
+    {
+      title: "Publish Tagged Images",
+      icon: <Icon name="package" />,
+      children: (
+        <>
+          Build and push images for repository tags to GHCR, GitLab Container Registry,
+          or both.
+        </>
+      ),
+    },
+    {
+      title: "Resolve Repository Targets",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Use the current checkout, an explicit local checkout, or a supported Git URL
+          materialized temporarily.
+        </>
+      ),
+    },
+    {
+      title: "Preview Safely",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Run discovery and validation while persistent local, remote, and registry
+          mutations remain simulated.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -122,9 +154,11 @@ repository Reflow operates on.
 reflow --help
 
 # Preview a local-only tag replacement
+
 reflow --dry-run -C ../project tags convert local --to semver
 
 # Preview a remote replacement from a Git URL
+
 reflow --dry-run --repository-url https://github.com/acme/project.git tags convert remote --to semver`}
 
 </Terminal>

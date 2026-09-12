@@ -38,7 +38,7 @@ export default function Home(): React.JSX.Element {
       <main>
         <Hero />
 
-        <ProjectGrid />
+        <ProjectGrid showPreviews />
 
         <DocumentationOverview />
 

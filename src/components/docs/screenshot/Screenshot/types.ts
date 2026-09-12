@@ -1,7 +1,4 @@
-import {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
+import { HTMLAttributes, ReactNode } from "react";
 
 /**
  * ============================================================================
@@ -12,55 +9,62 @@ import {
 /**
  * Screenshot component properties.
  */
-export interface ScreenshotProps
-    extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+export interface ScreenshotProps extends Omit<HTMLAttributes<HTMLElement>, "title"> {
+  /**
+   * Presentation style for the screenshot.
+   *
+   * `overview` is intended for a primary project image, while `card` keeps
+   * the same accessible behavior in a compact homepage card.
+   *
+   * @default "default"
+   */
+  variant?: "default" | "overview" | "card";
 
-    /**
-     * Image source.
-     */
-    src: string;
+  /**
+   * Image source.
+   */
+  src: string;
 
-    /**
-     * Alternative text.
-     */
-    alt: string;
+  /**
+   * Alternative text.
+   */
+  alt: string;
 
-    /**
-     * Optional title.
-     */
-    title?: ReactNode;
+  /**
+   * Optional title.
+   */
+  title?: ReactNode;
 
-    /**
-     * Optional caption.
-     */
-    caption?: ReactNode;
+  /**
+   * Optional caption.
+   */
+  caption?: ReactNode;
 
-    /**
-     * Content displayed when the image cannot be loaded.
-     *
-     * The alternative text is used when no custom content is provided.
-     */
-    fallback?: ReactNode;
+  /**
+   * Content displayed when the image cannot be loaded.
+   *
+   * The alternative text is used when no custom content is provided.
+   */
+  fallback?: ReactNode;
 
-    /**
-     * Display an accessible placeholder when loading fails.
-     *
-     * @default true
-     */
-    showFallback?: boolean;
+  /**
+   * Display an accessible placeholder when loading fails.
+   *
+   * @default true
+   */
+  showFallback?: boolean;
 
-    /**
-     * Display shadow.
-     *
-     * @default true
-     */
-    shadow?: boolean;
+  /**
+   * Display shadow.
+   *
+   * @default true
+   */
+  shadow?: boolean;
 
-    /**
-     * Display border.
-     *
-     * @default true
-     */
-    border?: boolean;
-
+  /**
+   * Display border.
+   *
+   * @default true
+   */
+  border?: boolean;
 }

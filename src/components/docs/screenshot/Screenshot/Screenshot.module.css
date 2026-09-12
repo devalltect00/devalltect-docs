@@ -18,6 +18,59 @@
 
 }
 
+.overview {
+
+    max-width: 64rem;
+
+    margin-right: auto;
+
+    margin-left: auto;
+
+}
+
+.overview .image,
+.overview .fallback,
+.card .image,
+.card .fallback {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    background: var(--ifm-background-surface-color);
+
+}
+
+.overview .image,
+.card .image {
+
+    object-fit: contain;
+
+}
+
+.card {
+
+    gap: .5rem;
+
+    margin: 0 0 1.25rem;
+
+}
+
+.card .fallback {
+
+    min-height: 0;
+
+    padding: 1rem;
+
+}
+
+.card .fallbackTitle,
+.card .fallbackDescription {
+
+    font-size: .8rem;
+
+}
+
 .border .image {
 
     border: 1px solid var(--ifm-toc-border-color);

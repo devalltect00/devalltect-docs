@@ -17,44 +17,54 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Screenshot,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="reflow"
-    title="Reflow"
-    description="Kelola tag versi, GitHub release berbasis tag, dan image registry terhadap repositori yang dipilih secara eksplisit."
-    category="Pemeliharaan Release"
-    status="v1.0.0"
-    syntax="reflow [GLOBAL OPTIONS] COMMAND"
-    tags={["tag Git", "pemulihan release", "publikasi container"]}
-    links={[
-        {label: "Memulai", href: "./reflow/getting-started/overview"},
-        {label: "Perintah", href: "./reflow/commands/overview"},
-        {label: "Konsep Inti", href: "./reflow/concepts/overview"},
-        {label: "Konfigurasi", href: "./reflow/configuration/overview"},
-        {label: "Contoh", href: "./reflow/examples"},
-        {label: "Panduan Pengguna", href: "./reflow/user-guide/overview"},
-        {label: "Panduan Developer", href: "./reflow/developer-guide/overview"},
-        {label: "Arsitektur", href: "./reflow/architecture/overview"},
-        {label: "Referensi", href: "./reflow/reference/overview"},
-        {label: "Pemecahan Masalah", href: "./reflow/troubleshooting/overview"},
-    ]}
+  command="reflow"
+  title="Reflow"
+  description="Kelola tag versi, GitHub release berbasis tag, dan image registry terhadap repositori yang dipilih secara eksplisit."
+  category="Pemeliharaan Release"
+  status="v1.0.0"
+  syntax="reflow [GLOBAL OPTIONS] COMMAND"
+  tags={["tag Git", "pemulihan release", "publikasi container"]}
+  links={[
+    { label: "Memulai", href: "./reflow/getting-started/overview" },
+    { label: "Perintah", href: "./reflow/commands/overview" },
+    { label: "Konsep Inti", href: "./reflow/concepts/overview" },
+    { label: "Konfigurasi", href: "./reflow/configuration/overview" },
+    { label: "Contoh", href: "./reflow/examples" },
+    { label: "Panduan Pengguna", href: "./reflow/user-guide/overview" },
+    { label: "Panduan Developer", href: "./reflow/developer-guide/overview" },
+    { label: "Arsitektur", href: "./reflow/architecture/overview" },
+    { label: "Referensi", href: "./reflow/reference/overview" },
+    { label: "Pemecahan Masalah", href: "./reflow/troubleshooting/overview" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Runtime", value: "Python 3.14+", icon: "dependency"},
-        {label: "Target", value: "Checkout lokal atau URL Git", icon: "git"},
-        {label: "Keamanan", value: "Pratinjau, konfirmasi, dan dry-run", icon: "success"},
-        {label: "Dokumentasi", value: "Reflow 1.0.0", icon: "release"},
-    ]}
+  items={[
+    { label: "Runtime", value: "Python 3.14+", icon: "dependency" },
+    { label: "Target", value: "Checkout lokal atau URL Git", icon: "git" },
+    { label: "Keamanan", value: "Pratinjau, konfirmasi, dan dry-run", icon: "success" },
+    { label: "Dokumentasi", value: "Reflow 1.0.0", icon: "release" },
+  ]}
+/>
+
+<Screenshot
+  src="/img/project-previews/reflow.png"
+  alt="Banner terminal Reflow dan output alur kerja repositori"
+  title="Sekilas Reflow"
+  caption="Contoh representatif alur kerja repositori Reflow. Screenshot rilis final dapat ditambahkan tanpa mengubah halaman ini."
+  fallback="Tambahkan static/img/project-previews/reflow.png sebelum memublikasikan v1.0.0."
+  variant="overview"
 />
 
 ## Ringkasan
@@ -69,39 +79,69 @@ menerapkan batas dry-run dan konfirmasi sebelum operasi yang berdampak besar.
 >
 
 <FeatureGrid
-    title="Kemampuan Utama"
-    items={[
-        {
-            title: "Konversi Tag Lokal",
-            icon: <Icon name="git" />,
-            children: <>Ganti nama tag PEP 440 atau SemVer yang didukung pada satu checkout persisten tanpa melakukan push.</>,
-        },
-        {
-            title: "Konversi Tag Remote",
-            icon: <Icon name="workflow" />,
-            children: <>Ganti remote tag ref yang telah divalidasi melalui satu atomic push yang dijaga.</>,
-        },
-        {
-            title: "Pulihkan Automasi Release",
-            icon: <Icon name="release" />,
-            children: <>Push ulang tag yang belum memiliki GitHub release agar CI/CD berbasis tag dapat berjalan kembali.</>,
-        },
-        {
-            title: "Publikasikan Tagged Image",
-            icon: <Icon name="package" />,
-            children: <>Build dan push image untuk tag repositori ke GHCR, GitLab Container Registry, atau keduanya.</>,
-        },
-        {
-            title: "Tentukan Target Repositori",
-            icon: <Icon name="directory" />,
-            children: <>Gunakan checkout saat ini, checkout lokal eksplisit, atau URL Git yang dimaterialisasi sementara.</>,
-        },
-        {
-            title: "Pratinjau dengan Aman",
-            icon: <Icon name="success" />,
-            children: <>Jalankan discovery dan validasi sementara perubahan lokal, remote, dan registry tetap disimulasikan.</>,
-        },
-    ]}
+  title="Kemampuan Utama"
+  items={[
+    {
+      title: "Konversi Tag Lokal",
+      icon: <Icon name="git" />,
+      children: (
+        <>
+          Ganti nama tag PEP 440 atau SemVer yang didukung pada satu checkout persisten
+          tanpa melakukan push.
+        </>
+      ),
+    },
+    {
+      title: "Konversi Tag Remote",
+      icon: <Icon name="workflow" />,
+      children: (
+        <>
+          Ganti remote tag ref yang telah divalidasi melalui satu atomic push yang
+          dijaga.
+        </>
+      ),
+    },
+    {
+      title: "Pulihkan Automasi Release",
+      icon: <Icon name="release" />,
+      children: (
+        <>
+          Push ulang tag yang belum memiliki GitHub release agar CI/CD berbasis tag
+          dapat berjalan kembali.
+        </>
+      ),
+    },
+    {
+      title: "Publikasikan Tagged Image",
+      icon: <Icon name="package" />,
+      children: (
+        <>
+          Build dan push image untuk tag repositori ke GHCR, GitLab Container Registry,
+          atau keduanya.
+        </>
+      ),
+    },
+    {
+      title: "Tentukan Target Repositori",
+      icon: <Icon name="directory" />,
+      children: (
+        <>
+          Gunakan checkout saat ini, checkout lokal eksplisit, atau URL Git yang
+          dimaterialisasi sementara.
+        </>
+      ),
+    },
+    {
+      title: "Pratinjau dengan Aman",
+      icon: <Icon name="success" />,
+      children: (
+        <>
+          Jalankan discovery dan validasi sementara perubahan lokal, remote, dan
+          registry tetap disimulasikan.
+        </>
+      ),
+    },
+  ]}
 />
 
 </Section>
@@ -122,9 +162,11 @@ repositori yang dioperasikan Reflow.
 reflow --help
 
 # Pratinjau penggantian tag lokal
+
 reflow --dry-run -C ../project tags convert local --to semver
 
 # Pratinjau penggantian remote dari URL Git
+
 reflow --dry-run --repository-url https://github.com/acme/project.git tags convert remote --to semver`}
 
 </Terminal>

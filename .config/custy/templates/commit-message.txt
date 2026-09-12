@@ -1,68 +1,64 @@
-feat(portal): checkpoint complete multilingual documentation foundation
+feat(portal): checkpoint project previews and maintainer documentation
 
-Record the first untagged v1.0.0 development checkpoint after completing the
-main documentation modernization and release-delivery foundation. This
-checkpoint consolidates the work already represented by the stable release
-templates before the visual-preview and portal-maintainer follow-up.
+Record the second untagged v1.0.0 development checkpoint by adding a polished
+visual introduction for every documented project and documenting how the
+Devalltect portal itself is maintained.
 
-### 📚 Multi-Project Documentation
+### 🖼️ Project Visual Previews
 
-- Complete source-aligned documentation hubs for Custy, Path Header Scanner,
-  Doc Gen, and Reflow.
-- Provide aligned English and Indonesian content for all four projects.
-- Organize project material around appropriate getting-started, command,
-  configuration, concepts, workflows, architecture, user, developer,
-  reference, and troubleshooting sections.
-- Document source, editable, private GitLab package-registry, and container
-  installation paths with credential-safe examples.
-- Explain preview, dry-run, confirmation, and mutation boundaries where they
-  affect user safety.
+- Reuse the shared screenshot component for Custy, Path Header Scanner,
+  Doc Gen, and Reflow landing pages in both supported locales.
+- Add overview and compact card presentation variants with consistent 16:9
+  sizing, responsive containment, theme-aware surfaces, and accessible fallback
+  behavior.
+- Reserve stable asset paths under `static/img/project-previews/` so final PNG
+  screenshots can be added without rewriting pages or project metadata.
+- Keep missing preview assets non-breaking during preparation while requiring
+  the real four images before the stable release is published.
+- Detect image failures that occur before client hydration so cached missing
+  assets still render the styled accessible fallback instead of broken-image UI.
 
-### 🧩 Shared Components and Reader Experience
+### 🎨 Homepage and Project Metadata
 
-- Apply the reusable React documentation component system across project pages.
-- Keep command, terminal, workflow, screenshot, table, architecture, status,
-  navigation, and information components responsive and accessible.
-- Align page hierarchy, colors, typography, dark mode, spacing, terminology,
-  links, and troubleshooting patterns without forcing identical structures on
-  different projects.
-- Preserve literal command names, flags, paths, configuration keys, output, and
-  code identifiers across translations.
+- Display project previews directly in the existing homepage cards instead of
+  creating a duplicate showcase section.
+- Add typed preview metadata with asset paths, alternative text, and fallback
+  descriptions to the centralized project catalog.
+- Replace identical technology badges with concise project-specific runtime and
+  tooling summaries.
+- Preserve responsive card behavior, readable terminal images, lazy loading,
+  and accessible navigation.
+- Resolve the homepage hero logo through the configured Docusaurus base path so
+  it renders correctly in GitHub Pages and other subpath deployments.
 
-### 🔎 Release-Aware Documentation
+### 📘 Devalltect Docs Guide
 
-- Centralize project versions, release URLs, source-review dates, status routes,
-  and repository freshness policies.
-- Support automatic SemVer and PEP 440 tag discovery with prerelease filtering,
-  timeout handling, diagnostics, and safe fallback states.
-- Keep notices hidden for current documentation and show actionable states for
-  outdated, preview, or unverifiable content.
-- Cover the freshness resolver with focused automated tests.
+- Add a dedicated Devalltect Docs documentation hub in English and Indonesian.
+- Explain supported projects, portal organization, localization, source review,
+  metadata ownership, screenshot capture, validation, freshness, and release
+  preparation.
+- Add the portal guide to the sidebar and homepage maintainer navigation.
+- Correct outdated root-page language coverage and add the missing Indonesian
+  introduction and project-overview pages.
 
-### 📦 Development and Delivery
+### ✅ Release Preparation
 
-- Maintain the portal with Docusaurus, React, TypeScript, Yarn, and Node.js 20+.
-- Validate multilingual routes, links, anchors, MDX rendering, static output,
-  and TypeScript integration.
-- Support GitHub Pages delivery and mirrored GitLab CI/Pages validation.
-- Align contributor setup, pre-commit, testing, and release guidance across
-  both locales.
-
-### 🗂️ Documentation Baselines
-
-- Custy: v2.1.0.
-- Path Header Scanner: v1.0.0.
-- Doc Gen: v1.0.0.
-- Reflow: v1.0.0.
+- Document consistent PNG names and recommend crisp, credential-safe 1600 × 900
+  terminal captures.
+- Keep command names, paths, and configuration identifiers literal across
+  translations.
+- Validate documentation freshness, TypeScript, pre-commit, multilingual builds,
+  routes, links, and responsive rendering before v1.0.0 publication.
 
 Tag: none
-Release phase: v1.0.0 development checkpoint 1
+Previous checkpoint: v1.0.0 development checkpoint 1
+Release phase: v1.0.0 development checkpoint 2
 Target release: v1.0.0
 
 🔖 **Tags**:
 - Type: `#feature`, `#documentation`, `#components`, `#i18n`
 - Platform: `#docusaurus`, `#react`, `#typescript`, `#yarn`
 - Projects: `#custy`, `#path-header-scanner`, `#doc-gen`, `#reflow`
-- Delivery: `#github-pages`, `#gitlab-pages`, `#ci`
-- Quality: `#typecheck`, `#build`, `#freshness`, `#responsive-ui`
+- Experience: `#screenshots`, `#homepage`, `#accessibility`, `#responsive-ui`
+- Quality: `#typecheck`, `#build`, `#freshness`, `#pre-commit`
 - Stability: `#checkpoint`, `#untagged`, `#pre-release`

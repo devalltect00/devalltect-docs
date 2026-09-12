@@ -1,79 +1,12 @@
 {
-  // =====================================================
-  // 📏 LINE LENGTH
-  // =====================================================
-  //
-  // Maximum line width before wrapping.
-  //
-  // 88 follows the Black formatter convention and
-  // provides a good balance between readability and
-  // horizontal scrolling.
-  //
   "printWidth": 88,
-
-  // =====================================================
-  // ↹ INDENTATION
-  // =====================================================
-  //
-  // Use 2 spaces instead of tabs.
-  //
   "tabWidth": 2,
   "useTabs": false,
-
-  // =====================================================
-  // 📝 JAVASCRIPT / TYPESCRIPT STYLE
-  // =====================================================
-  //
-  // Always terminate statements.
-  //
   "semi": true,
-
-  // Use double quotes for consistency with:
-  // - JSON
-  // - Docusaurus config examples
-  // - Existing repository conventions
-  //
   "singleQuote": false,
-
-  // =====================================================
-  // 📦 OBJECTS / ARRAYS
-  // =====================================================
-  //
-  // Include trailing commas where valid in ES5.
-  //
   "trailingComma": "es5",
-
-  // Add spaces inside object braces.
-  //
   "bracketSpacing": true,
-
-  // Always include parentheses around arrow
-  // function parameters.
-  //
   "arrowParens": "always",
-
-  // =====================================================
-  // 📄 MARKDOWN / MDX
-  // =====================================================
-  //
-  // Preserve author-controlled wrapping.
-  //
-  // Particularly useful for:
-  // - Documentation pages
-  // - README files
-  // - MDX content
-  //
   "proseWrap": "preserve",
-
-  // =====================================================
-  // 🖥️ CROSS-PLATFORM COMPATIBILITY
-  // =====================================================
-  //
-  // Normalize line endings to LF.
-  //
-  // Prevents:
-  // - Windows vs Linux differences
-  // - Git diffs caused by CRLF
-  //
   "endOfLine": "lf"
 }

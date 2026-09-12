@@ -151,6 +151,20 @@ export interface ProjectDocumentation {
 }
 
 /**
+ * Describes the representative image displayed for a documented project.
+ */
+export interface ProjectPreview {
+  /** Public asset path resolved against the Docusaurus base URL. */
+  src: string;
+
+  /** Accessible description of the image. */
+  alt: string;
+
+  /** Helpful text displayed until the planned image is available. */
+  fallback: string;
+}
+
+/**
  * Represents a documentation project.
  */
 export interface Project {
@@ -178,6 +192,11 @@ export interface Project {
    * Primary technologies.
    */
   technologies: string[];
+
+  /**
+   * Optional representative application image used by project discovery UI.
+   */
+  preview?: ProjectPreview;
 
   /**
    * Documentation root route.
@@ -208,14 +227,21 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Preview, validate, and apply consistent path headers across source code and documentation.",
-    technologies: ["Python", "Typer", "Rich"],
+    technologies: ["Python 3.11+", "Typer", "Rich", "TOML"],
+    preview: {
+      src: "/img/project-previews/path-header-scanner.png",
+      alt: "Path Header Scanner terminal banner and command output",
+      fallback:
+        "Path Header Scanner preview will appear here when the release screenshot is added.",
+    },
     docsPath: "/docs/path-header-scanner",
     available: true,
     documentation: {
       version: "1.0.0",
       versionTag: "v1.0.0",
       lastReviewed: "2026-09-02",
-      releaseUrl: "https://github.com/devalltect00/Path-Header-Scanner/releases/tag/v1.0.0",
+      releaseUrl:
+        "https://github.com/devalltect00/Path-Header-Scanner/releases/tag/v1.0.0",
       statusPath: "/docs/path-header-scanner/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -235,14 +261,20 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Generate, print, and analyze repository structure documentation in Markdown.",
-    technologies: ["Python", "Typer", "Rich"],
+    technologies: ["Python 3.9+", "Typer", "Markdown", "TOML"],
+    preview: {
+      src: "/img/project-previews/doc-gen.png",
+      alt: "Doc Gen terminal banner and project structure output",
+      fallback:
+        "Doc Gen preview will appear here when the release screenshot is added.",
+    },
     docsPath: "/docs/doc-gen",
     available: true,
     documentation: {
-      version: "1.0.0",
-      versionTag: "v1.0.0",
-      lastReviewed: "2026-09-02",
-      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.0.0",
+      version: "1.0.1",
+      versionTag: "v1.0.1",
+      lastReviewed: "2026-09-09",
+      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.0.1",
       statusPath: "/docs/doc-gen/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -262,14 +294,19 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Repository-aware tag conversion, release recovery, and container image publishing.",
-    technologies: ["Python", "Typer", "Rich"],
+    technologies: ["Python 3.14+", "Typer", "Git", "Docker"],
+    preview: {
+      src: "/img/project-previews/reflow.png",
+      alt: "Reflow terminal banner and repository workflow output",
+      fallback: "Reflow preview will appear here when the release screenshot is added.",
+    },
     docsPath: "/docs/reflow",
     available: true,
     documentation: {
-      version: "1.0.0",
-      versionTag: "v1.0.0",
-      lastReviewed: "2026-09-02",
-      releaseUrl: "https://github.com/devalltect00/Git-Reflow/releases/tag/v1.0.0",
+      version: "1.0.1",
+      versionTag: "v1.0.1",
+      lastReviewed: "2026-09-09",
+      releaseUrl: "https://github.com/devalltect00/Git-Reflow/releases/tag/v1.0.1",
       statusPath: "/docs/reflow/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -289,14 +326,19 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Configurable Git workflow, versioning, changelog, backup, cleanup, and release automation.",
-    technologies: ["Python", "Typer", "Rich"],
+    technologies: ["Python 3.14+", "Typer", "Git", "Jinja2"],
+    preview: {
+      src: "/img/project-previews/custy.png",
+      alt: "Custy terminal banner and Git workflow output",
+      fallback: "Custy preview will appear here when the release screenshot is added.",
+    },
     docsPath: "/docs/custy",
     available: true,
     documentation: {
-      version: "2.1.0",
-      versionTag: "v2.1.0",
-      lastReviewed: "2026-09-02",
-      releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.0",
+      version: "2.1.1",
+      versionTag: "v2.1.1",
+      lastReviewed: "2026-09-09",
+      releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1",
       statusPath: "/docs/custy/reference/documentation-status",
       freshness: {
         mode: "auto",

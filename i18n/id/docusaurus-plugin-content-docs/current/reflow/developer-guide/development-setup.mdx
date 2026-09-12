@@ -1,0 +1,257 @@
+---
+title: "Development Setup"
+description: "Siapkan Python 3.14+, install Reflow dalam editable mode, dan konfigurasi quality tools untuk contributor."
+sidebar_position: 2
+sidebar_key: reflow-developer-guide-development-setup
+tags: [reflow, development setup, pre-commit]
+keywords: [Reflow editable install, Reflow pre-commit, Reflow contributor setup]
+---
+
+import {
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  RequirementGrid,
+  Section,
+  Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command='python -m pip install -e ".[dev]"'
+  title="Development Setup"
+  description="Buat isolated editable Reflow environment yang menyediakan tests, formatting, linting, packaging, dan Git-hook tools."
+  category="Developer Guide"
+  status="Python 3.14+"
+  syntax="create venv -> install dev tools -> enable hooks"
+  tags={["editable install", "pytest", "Ruff", "Black", "pre-commit"]}
+  links={[
+    { label: "Requirements", href: "#requirements" },
+    { label: "Install", href: "#manual-setup" },
+    { label: "Pre-Commit", href: "#pre-commit-workflow" },
+    { label: "Verify", href: "#verify-the-environment" },
+  ]}
+/>
+
+<CommandMetadata
+  items={[
+    { label: "Required Python", value: "3.14 atau lebih baru", icon: "python" },
+    { label: "Install Mode", value: "Editable", icon: "package" },
+    { label: "Environment", value: "venv direkomendasikan", icon: "directory" },
+    {
+      label: "Optional Runtime Tools",
+      value: "Docker dan GitHub CLI",
+      icon: "command",
+    },
+  ]}
+/>
+
+## Tujuan
+
+Gunakan environment dengan executable `reflow` yang mengarah ke active source
+checkout. Dependency group `dev` diperlukan untuk pytest, coverage, Ruff,
+Black, pre-commit, packaging, dan contributor commands lainnya.
+
+---
+
+<Section title="Requirements">
+
+<RequirementGrid
+  items={[
+    {
+      title: "Python 3.14+",
+      level: "required",
+      children:
+        "Package metadata dan quality-tool targets Reflow memerlukan Python 3.14 atau lebih baru.",
+    },
+    {
+      title: "Git",
+      level: "required",
+      children:
+        "Repository dan tag workflows memerlukan Git, sedangkan tests menggunakan isolated atau mocked boundaries.",
+    },
+    {
+      title: "pip dan venv",
+      level: "required",
+      children: "Install ke isolated environment, bukan ke system interpreter.",
+    },
+    {
+      title: "GNU Make",
+      level: "optional",
+      children:
+        "Gunakan modular Make targets untuk setup dan validation yang konsisten.",
+    },
+    {
+      title: "Docker",
+      level: "optional",
+      children: "Hanya diperlukan untuk container dan Compose validation.",
+    },
+    {
+      title: "GitHub CLI",
+      level: "optional",
+      children:
+        "Hanya diperlukan untuk live GitHub release discovery; ordinary tests menggunakan mock untuk boundary ini.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Manual Setup">
+
+<Terminal title="Create and install" language="bash">
+
+{`python -m venv venv
+
+# Windows PowerShell
+
+venv\\Scripts\\Activate.ps1
+
+# Linux or macOS
+
+# source venv/bin/activate
+
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"`}
+
+</Terminal>
+
+Gunakan `python -m pip install -e ".[dev,docs]"` hanya ketika Anda juga
+memerlukan MkDocs toolchain milik repository.
+
+</Section>
+
+---
+
+<Section title="Makefile Setup">
+
+Make workflow mengharapkan directory konvensional `venv/` dan memanggil Python
+interpreter di dalamnya secara langsung.
+
+<Terminal title="Setup helpers" language="bash">
+
+{`make venv
+make upgrade-pip
+make install-dev
+
+# Combined environment setup and Git-hook installation
+
+make setup`}
+
+</Terminal>
+
+Jalankan `make help-local` untuk melihat seluruh local command groups.
+
+</Section>
+
+---
+
+<Section title="Pre-Commit Workflow">
+
+Hook configuration Reflow menjalankan Ruff safe fixes, Black formatting,
+trailing-whitespace cleanup, dan final-newline correction. Ruff dan Black
+menggunakan policy dalam `pyproject.toml`.
+
+<Terminal title="Install and run hooks" language="bash">
+
+{`# Install Git hook and isolated hook environments
+make pre-commit-install-hooks
+
+# Validate .pre-commit-config.yaml
+
+make pre-commit-validate
+
+# Check files currently staged for commit
+
+make pre-commit-run-staged
+
+# Check every tracked repository file
+
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Refresh adalah tindakan maintainer yang disengaja">
+
+`make pre-commit-refresh` memperbarui hook revisions, membersihkan cached hook
+environments, meng-install ulang environments tersebut, dan menjalankan setiap
+hook terhadap semua files. Command ini dapat memerlukan network access serta
+mengubah `.pre-commit-config.yaml` dan active source files. Review seluruh diff
+sebelum menyimpan hasilnya.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Verify the Environment">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Python didukung",
+      description: "python --version melaporkan Python 3.14 atau lebih baru.",
+    },
+    {
+      title: "Editable Reflow dapat dijalankan",
+      description:
+        "reflow --help dan python -m app --help dimuat dari environment yang dipilih.",
+    },
+    {
+      title: "Quality tools tersedia",
+      description:
+        "pytest, Ruff, Black, dan pre-commit dapat dijalankan melalui python -m.",
+    },
+    {
+      title: "Live credentials tidak diperlukan",
+      description:
+        "Ordinary development tests menggunakan mocks dan temporary repositories.",
+    },
+  ]}
+/>
+
+<Terminal title="Environment check" language="bash">
+
+{`python --version
+python -m pip show git-reflow
+reflow --help
+python -m app --help
+python -m pytest --version
+python -m ruff --version
+python -m black --version
+python -m pre_commit --version`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<RelatedCommands
+  commands={[
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Jalankan focused dan complete Reflow validation.",
+    },
+    {
+      title: "Contributing",
+      href: "./contributing",
+      description: "Ikuti Reflow safety dan review workflow.",
+    },
+    {
+      title: "Getting Started",
+      href: "../getting-started/overview",
+      description: "Bandingkan contributor setup dengan end-user workflow.",
+    },
+    {
+      title: "Dockerize",
+      href: "../commands/dockerize/overview",
+      description: "Pelajari container workflow yang didukung.",
+    },
+  ]}
+/>

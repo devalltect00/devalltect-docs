@@ -71,7 +71,7 @@ dan kredensial yang diperlukan oleh operasi Custy yang dipilih.
 <InfoBox variant="info" title="Gunakan rilis eksak untuk otomasi">
 
 Rilis yang dipublikasikan tersedia melalui GHCR. Gunakan tag eksak seperti
-`v2.1.0` untuk otomasi yang dapat direproduksi. Alias bergerak seperti `v2.1`,
+`v2.1.1` untuk otomasi yang dapat direproduksi. Alias bergerak seperti `v2.1`,
 `v2`, dan `latest` praktis untuk upgrade terkontrol, sedangkan build source
 lokal sesuai untuk memvalidasi perubahan yang belum dirilis.
 
@@ -190,7 +190,7 @@ tersebut tidak mengubah versi proyek target yang di-mount.
 
 <Terminal title="Build production langsung" language="bash">
 
-{`docker build --build-arg CUSTY_BUILD_VERSION=2.1.0 --target production -t custy-prod:latest .`}
+{`docker build --build-arg CUSTY_BUILD_VERSION=2.1.1 --target production -t custy-prod:latest .`}
 
 </Terminal>
 
@@ -210,14 +210,14 @@ mempertahankan prefiks `v` yang digunakan Custy.
 
 | Bentuk tag | Contoh | Perilaku |
 | --- | --- | --- |
-| Rilis eksak | `v2.1.0` | Memilih rilis immutable dan disarankan untuk CI atau penggunaan yang dapat direproduksi. |
+| Rilis eksak | `v2.1.1` | Memilih rilis immutable dan disarankan untuk CI atau penggunaan yang dapat direproduksi. |
 | Alias minor | `v2.1` | Bergerak ke patch stabil terbaru dalam lini `2.1`. |
 | Alias major | `v2` | Bergerak ke rilis stabil terbaru dalam lini `2`. |
 | Alias latest | `latest` | Bergerak ke rilis stabil Custy terbaru. |
 
 <Terminal title="Pull image Custy yang dipublikasikan" language="bash">
 
-{`docker pull ghcr.io/devalltect00/custy:v2.1.0
+{`docker pull ghcr.io/devalltect00/custy:v2.1.1
 docker pull ghcr.io/devalltect00/custy:v2.1
 docker pull ghcr.io/devalltect00/custy:v2
 docker pull ghcr.io/devalltect00/custy:latest`}

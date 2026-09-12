@@ -21,9 +21,9 @@ import {
 <CommandHero
     command="custy run dev"
     title="Development Pipeline"
-    description="Coordinate artifact review, changelog generation, a local commit, and remote push for daily development work."
+    description="Coordinate commit-message review, a local commit, and a branch push without release preparation."
     category="Pipeline Profile"
-    status="Stable with Limitations"
+    status="Stable"
     syntax="custy run dev [OPTIONS]"
     tags={["daily development", "commit", "push"]}
     links={[
@@ -35,9 +35,10 @@ import {
 
 ## Overview
 
-Dev is a deliberate daily-development profile. It prepares and reviews release
-artifacts, generates the changelog, creates a commit, and pushes it. It does not
-apply the prepared version and does not create a tag.
+Dev is a deliberate daily-development profile. It validates and reviews the
+commit message, stages selected changes, creates a commit, and pushes branch
+`HEAD`. It does not prepare release state, generate release artifacts or a
+changelog, create a tag, or push a tag.
 
 <Terminal title="Preview before normal execution" language="bash">
 
@@ -54,12 +55,11 @@ custy run dev`}
     title="Dev Profile"
     items={[
         {title: "Validate repository", description: "Confirm that execution is inside a Git repository.", status: "completed"},
-        {title: "Prepare runtime state", description: "Resolve version context and initialize branch workflow state.", status: "completed"},
-        {title: "Generate and review artifacts", description: "Generate configured artifacts, open them for editing, and validate the edited files.", status: "completed"},
-        {title: "Generate changelog", description: "Run the conditional changelog generation stage.", status: "completed"},
+        {title: "Validate commit and remote inputs", description: "Resolve the commit-validation provider, hook policy, commit-message file, and remote.", status: "completed"},
+        {title: "Review the commit message", description: "Open only the commit-message file and validate its saved content.", status: "completed"},
         {title: "Back up and clean", description: "Back up the commit-message file and apply backup retention cleanup.", status: "completed"},
         {title: "Stage and commit", description: "Stage the resolved project changes and create a local commit.", status: "completed"},
-        {title: "Push", description: "Push HEAD and any eligible workflow tag to the resolved remotes.", status: "current"},
+        {title: "Push", description: "Push branch HEAD to the resolved remotes without publishing a tag.", status: "current"},
     ]}
 />
 
@@ -72,36 +72,37 @@ custy run dev`}
     description="The internal name is shown so users and contributors can match documentation to logs and source."
     items={[
         {key: "01 — ensure_git_repo_step", value: "Confirm execution inside a Git repository."},
-        {key: "02 — prepare_version_step", value: "Resolve version and tag context for later services without applying it to files."},
-        {key: "03 — workflow_init_step", value: "Initialize branch workflow state."},
-        {key: "04 — generate_artifacts_step", value: "Generate configured release artifacts."},
-        {key: "05 — edit_files_step", value: "Open generated artifacts for review and editing."},
-        {key: "06 — validate_edited_step", value: "Validate the edited artifact files."},
-        {key: "07 — generate_changelog_step", value: "Run conditional changelog generation."},
-        {key: "08 — backup_commit_message_files_step", value: "Back up the commit-message file."},
-        {key: "09 — cleanup_backup_step", value: "Apply configured backup retention cleanup."},
-        {key: "10 — stage_step", value: "Stage the files selected by the workflow."},
-        {key: "11 — commit_step", value: "Create the local development commit."},
-        {key: "12 — push_step", value: "Push HEAD and an eligible workflow tag to resolved remotes."},
+        {key: "02 — ensure_commit_validation_provider_step", value: "Resolve the configured commit-message validator."},
+        {key: "03 — ensure_commit_hook_policy_step", value: "Resolve the configured commit-hook policy."},
+        {key: "04 — ensure_commit_message_file_step", value: "Resolve the commit-message file."},
+        {key: "05 — ensure_commit_message_file_exists_step", value: "Require the commit-message file before editing."},
+        {key: "06 — ensure_remote_exists_step", value: "Validate the resolved push destination."},
+        {key: "07 — edit_files_step", value: "Open only the commit-message file for review and editing."},
+        {key: "08 — validate_edited_step", value: "Validate the reviewed commit message."},
+        {key: "09 — backup_commit_message_files_step", value: "Back up the commit-message file."},
+        {key: "10 — cleanup_backup_step", value: "Apply configured backup retention cleanup."},
+        {key: "11 — stage_step", value: "Stage the files selected by the workflow."},
+        {key: "12 — commit_step", value: "Create the local development commit."},
+        {key: "13 — push_step", value: "Push branch HEAD without pushing a tag."},
     ]}
 />
 
 ---
 
-<InfoBox variant="info" title="Prepared version is not applied">
+<InfoBox variant="info" title="Release responsibilities are excluded">
 
-Dev includes version preparation because later services need version context,
-but it does not include `apply_version_step`. It also omits `tag_step`. Use
-Release when you need to write the new version and create a release tag.
+Dev omits version preparation and application, workflow initialization,
+release-artifact and changelog generation, tag-message editing, tag creation,
+and tag push. Use Release when you need a versioned, tagged publication.
 
 </InfoBox>
 
-<InfoBox variant="warning" title="Dev has a narrower validation prefix">
+<InfoBox variant="warning" title="Dev validates only what it uses">
 
-The profile explicitly begins with repository validation, not the full
-pre-commit and pre-push validation subprofiles used by Release. Downstream
-services can still reject invalid state. Confirm message files, staged changes,
-and remotes before normal execution.
+The profile validates repository, commit-message, hook, and remote readiness.
+It intentionally skips version and tag-message validation because those values
+are outside the Dev workflow. Confirm staged changes and remotes before normal
+execution.
 
 </InfoBox>
 
@@ -112,7 +113,7 @@ and remotes before normal execution.
 <CommandChecklist
     items={[
         {title: "Review repository state", description: "Confirm the current branch and ensure unrelated work will not be staged."},
-        {title: "Check project paths", description: "Verify the configured version, commit-message, template, and changelog paths."},
+        {title: "Check the commit path", description: "Verify the configured commit-message file and its reviewed content."},
         {title: "Confirm the destination", description: "Review the default or selected remotes because push is part of Dev."},
         {title: "Use dry-run first", description: "Inspect planned mutations and remote operations before the normal run."},
         {title: "Review the result", description: "Check the diff, commit, and remote branch after completion."},
@@ -125,7 +126,7 @@ and remotes before normal execution.
 
 <Section title="Failure and Retry">
 
-If Dev fails before commit, inspect generated files, edits, backups, and the Git
+If Dev fails before commit, inspect the edited message, backups, and the Git
 index. If it fails during or after push, verify whether the local commit and any
 remote updates already completed. Do not rerun the whole profile until that
 state is understood.

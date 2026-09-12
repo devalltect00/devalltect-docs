@@ -29,7 +29,7 @@ dan sebagian hanya digunakan untuk menyusun larger profiles.
  {key: "commit · 17 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run commit</code> dan <code>custy commit</code>.</>},
  {key: "tag · 13 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run tag</code> dan <code>custy tag</code>.</>},
  {key: "push · 3 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run push</code> dan <code>custy push</code>.</>},
- {key: "dev · 12 steps", value: <><strong>Public Run.</strong> <code>custy run dev</code> daily commit-and-push composition.</>},
+ {key: "dev · 13 steps", value: <><strong>Public Run.</strong> <code>custy run dev</code> daily commit-and-branch-push composition tanpa release side effects.</>},
  {key: "release · 25 steps", value: <><strong>Public Run.</strong> <code>custy run release</code> complete publication flow.</>},
  {key: "full · 26 steps", value: <><strong>Public Run.</strong> <code>custy run full</code> Release plus workflow finalization.</>},
  {key: "validate · 10 steps", value: <><strong>Direct command.</strong> <code>custy validate</code> readiness checks.</>},
@@ -92,18 +92,19 @@ di-resolve sendiri. Single-profile resolution mempertahankan declared order.
 02  ensure_remote_exists_step
 03  push_step`}</Terminal>
 
-<Terminal title="dev — 12 steps" language="text">{`01  ensure_git_repo_step
-02  prepare_version_step
-03  workflow_init_step
-04  generate_artifacts_step
-05  edit_files_step
-06  validate_edited_step
-07  generate_changelog_step
-08  backup_commit_message_files_step
-09  cleanup_backup_step
-10  stage_step
-11  commit_step
-12  push_step`}</Terminal>
+<Terminal title="dev — 13 steps" language="text">{`01  ensure_git_repo_step
+02  ensure_commit_validation_provider_step
+03  ensure_commit_hook_policy_step
+04  ensure_commit_message_file_step
+05  ensure_commit_message_file_exists_step
+06  ensure_remote_exists_step
+07  edit_files_step (include_tag=false)
+08  validate_edited_step
+09  backup_commit_message_files_step
+10  cleanup_backup_step
+11  stage_step
+12  commit_step
+13  push_step (include_tag=false)`}</Terminal>
 
 <Terminal title="release — 25 steps" language="text">{`01  ensure_git_repo_step
 02  ensure_staged_changes_step

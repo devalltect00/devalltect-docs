@@ -20,112 +20,78 @@
 import Translate from "@docusaurus/Translate";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import {
-    Heading,
-} from "../../";
+import { Heading } from "../../";
 
 import styles from "./Screenshot.module.css";
 
-import type {
-    ScreenshotProps,
-} from "./types";
+import type { ScreenshotProps } from "./types";
 
 /**
  * Displays a documentation screenshot.
  */
 export default function Screenshot({
-    src,
-    alt,
-    title,
-    caption,
-    fallback,
-    showFallback = true,
-    shadow = true,
-    border = true,
-    className,
-    ...props
+  src,
+  alt,
+  variant = "default",
+  title,
+  caption,
+  fallback,
+  showFallback = true,
+  shadow = true,
+  border = true,
+  className,
+  ...props
 }: ScreenshotProps) {
+  const resolvedSrc = useBaseUrl(src);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [hasLoadError, setHasLoadError] = useState(false);
 
-    const resolvedSrc = useBaseUrl(src);
-    const [hasLoadError, setHasLoadError] = useState(false);
+  useEffect(() => {
+    const image = imageRef.current;
 
-    useEffect(() => {
-        setHasLoadError(false);
-    }, [resolvedSrc]);
+    setHasLoadError(Boolean(image?.complete && image.naturalWidth === 0));
+  }, [resolvedSrc]);
 
-    return (
+  return (
+    <figure
+      className={clsx(
+        styles.figure,
+        variant === "overview" && styles.overview,
+        variant === "card" && styles.card,
+        shadow && styles.shadow,
+        border && styles.border,
+        className
+      )}
+      {...props}
+    >
+      {title && <Heading level={3} title={title} />}
 
-        <figure
-            className={clsx(
-                styles.figure,
-                shadow && styles.shadow,
-                border && styles.border,
-                className,
-            )}
-            {...props}
-        >
+      {hasLoadError ? (
+        showFallback && (
+          <div className={styles.fallback} role="img" aria-label={alt}>
+            <strong className={styles.fallbackTitle}>
+              <Translate id="docs.screenshot.unavailable.title">
+                Image unavailable
+              </Translate>
+            </strong>
 
-            {title && (
+            <span className={styles.fallbackDescription}>{fallback ?? alt}</span>
+          </div>
+        )
+      ) : (
+        <img
+          ref={imageRef}
+          src={resolvedSrc}
+          alt={alt}
+          className={styles.image}
+          loading="lazy"
+          onError={() => setHasLoadError(true)}
+        />
+      )}
 
-                <Heading
-                    level={3}
-                    title={title}
-                />
-
-            )}
-
-            {hasLoadError ? (
-
-                showFallback && (
-
-                    <div
-                        className={styles.fallback}
-                        role="img"
-                        aria-label={alt}
-                    >
-
-                        <strong className={styles.fallbackTitle}>
-                            <Translate id="docs.screenshot.unavailable.title">
-                                Image unavailable
-                            </Translate>
-                        </strong>
-
-                        <span className={styles.fallbackDescription}>
-                            {fallback ?? alt}
-                        </span>
-
-                    </div>
-
-                )
-
-            ) : (
-
-                <img
-                    src={resolvedSrc}
-                    alt={alt}
-                    className={styles.image}
-                    loading="lazy"
-                    onError={() => setHasLoadError(true)}
-                />
-
-            )}
-
-            {caption && (
-
-                <figcaption
-                    className={styles.caption}
-                >
-
-                    {caption}
-
-                </figcaption>
-
-            )}
-
-        </figure>
-
-    );
-
+      {caption && <figcaption className={styles.caption}>{caption}</figcaption>}
+    </figure>
+  );
 }

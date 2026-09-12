@@ -1,0 +1,65 @@
+---
+title: Alur Kerja Maintainer
+description: Jaga konten, lokalisasi, screenshot, metadata, dan validasi tetap selaras.
+sidebar_position: 1
+---
+
+# Alur Kerja Maintainer
+
+Pemeliharaan portal dimulai dari proyek sumber, bukan dari asumsi tentang
+perilakunya. Tinjau versi aplikasi terkait sebelum mengubah perintah,
+konfigurasi, persyaratan, panduan keamanan, atau contoh.
+
+## Alur Konten
+
+1. Konfirmasi versi proyek sumber dan perilaku yang terlihat oleh pengguna.
+2. Perbarui halaman kanonis berbahasa Inggris yang terdampak.
+3. Perbarui halaman Bahasa Indonesia yang setara tanpa menerjemahkan kontrak teknis literal.
+4. Perbarui metadata proyek terpusat ketika versi, URL release, tanggal peninjauan, teknologi, atau pratinjau berubah.
+5. Tinjau navigasi, cross-link, dan halaman status dokumentasi.
+6. Jalankan formatting, pengujian freshness, type checking, dan build kedua locale.
+7. Tinjau halaman terdampak pada lebar desktop dan mobile sebelum rilis.
+
+## Gambar Pratinjau Proyek
+
+Homepage dan setiap landing page proyek menggunakan satu screenshot
+representatif yang sama:
+
+```text
+static/img/project-previews/custy.png
+static/img/project-previews/path-header-scanner.png
+static/img/project-previews/doc-gen.png
+static/img/project-previews/reflow.png
+```
+
+Gunakan PNG untuk output terminal agar teks kecil tetap jelas. Ambil semua
+gambar dengan rasio 16:9 yang sama; `1600 × 900` direkomendasikan. Tampilkan
+banner yang mudah dikenali bersama output bantuan atau ringkasan yang berguna.
+Hapus kredensial, token, path pribadi, URL repositori privat, dan riwayat
+terminal yang tidak terkait.
+
+Komponen screenshot menyediakan ukuran responsif, teks alternatif, lazy
+loading, dan fallback yang aksesibel. Fallback mencegah aset yang belum selesai
+merusak halaman, tetapi bukan pengganti gambar rilis final.
+
+## Batas Peninjauan
+
+- Jaga komponen bersama tetap umum dan biarkan setiap proyek mempertahankan arsitektur informasinya.
+- Utamakan komponen serta variabel tema yang tersedia daripada kode presentasi sekali pakai.
+- Jaga makna Bahasa Inggris dan Bahasa Indonesia tetap selaras.
+- Jangan publikasikan rilis stabil dengan gambar pratinjau proyek yang belum tersedia atau teks fallback yang rusak.
+- Jangan edit output `.docusaurus/` atau `build/` yang dihasilkan otomatis.
+
+## Validasi
+
+Jalankan pemeriksaan Yarn yang didokumentasikan setelah perubahan konten atau UI:
+
+```bash
+yarn test:documentation-freshness
+yarn typecheck
+yarn build
+```
+
+Jalankan juga pemeriksaan pre-commit yang dikonfigurasi dan konfirmasi output
+kedua locale berhasil dibangun tanpa error route, link, anchor, atau rendering
+MDX.

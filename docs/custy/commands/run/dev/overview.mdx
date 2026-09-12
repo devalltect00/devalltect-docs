@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-description: "Use custy run dev for daily artifact, changelog, commit, and push work."
+description: "Use custy run dev for reviewed commit-and-push work without release side effects."
 sidebar_position: 1
 sidebar_key: custy-run-dev
 tags: [run, dev, development pipeline]
@@ -21,7 +21,7 @@ import {
 <CommandHero
     command="custy run dev"
     title="Development Profile"
-    description="Prepare daily artifacts, generate the changelog, back up the commit message, stage, commit, and push."
+    description="Review the commit message, stage selected changes, create a commit, and push branch HEAD without preparing a release."
     category="Pipeline Profile"
     status="Stable"
     syntax="custy run dev [OPTIONS]"
@@ -46,8 +46,8 @@ import {
 ## Overview
 
 Use the Dev profile for reviewed day-to-day work that should end with a local
-commit and remote push. It prepares a version for artifact generation but, in
-the current registered profile, does **not** include the `apply_version_step`.
+commit and remote branch push. It does not prepare a version, generate release
+artifacts or a changelog, create a tag, or push a tag.
 
 <InfoBox
     variant="warning"
@@ -69,20 +69,21 @@ execution.
 <FeatureGrid
     title="What Dev Includes"
     items={[
-        {title: "Prepare Artifacts", icon: <Icon name="file" />, children: "Resolve version context and prepare reviewed development artifacts."},
-        {title: "Generate Changelog", icon: <Icon name="release" />, children: "Update CHANGELOG.md through the internal changelog stage."},
+        {title: "Validate Inputs", icon: <Icon name="success" />, children: "Validate the repository, commit-message policy and file, and remote availability."},
+        {title: "Review Commit Message", icon: <Icon name="file" />, children: "Open only the configured commit-message file and validate the saved message."},
         {title: "Commit Changes", icon: <Icon name="git" />, children: "Back up the message, stage resolved changes, and create a local commit."},
-        {title: "Push HEAD", icon: <Icon name="network" />, children: "Synchronize through currently resolved remote behavior."},
+        {title: "Push HEAD", icon: <Icon name="network" />, children: "Push the branch through resolved remote behavior without publishing a tag."},
     ]}
 />
 
 <InfoBox
     variant="note"
-    title="No version application or tag creation"
+    title="No release preparation or tag publication"
 >
 
-The current registered Dev profile does not include `apply_version_step` or
-`tag_step`.
+The current Dev profile excludes version preparation, workflow initialization,
+release-artifact and changelog generation, version application, tag creation,
+and tag push. Use Release for those responsibilities.
 
 </InfoBox>
 
@@ -98,7 +99,7 @@ The current registered Dev profile does not include `apply_version_step` or
     src="/img/custy/commands/run/dev-profile.png"
     alt="Custy development profile stages shown in the terminal"
     title="Development pipeline"
-    caption="The Dev profile prepares, reviews, commits, and pushes daily work."
+    caption="The Dev profile reviews, commits, and pushes daily work without release side effects."
     fallback="Screenshot of the Custy Dev profile will be added later."
 />
 

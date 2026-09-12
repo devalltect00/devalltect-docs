@@ -19,7 +19,7 @@ import {
     title="Development Workflow"
     description="Follow the exact registered Dev stages from repository validation through local commit and remote push."
     category="Pipeline Profile"
-    status="Stable with Limitations"
+    status="Stable"
     syntax="custy run dev [OPTIONS]"
     tags={[
         "workflow",
@@ -36,8 +36,8 @@ import {
 
 ## Overview
 
-Dev coordinates day-to-day artifact, changelog, commit, and push work without
-applying the version or creating a tag.
+Dev coordinates commit-message review, staging, commit creation, and branch
+push. Release preparation and tag operations are intentionally absent.
 
 ---
 
@@ -49,12 +49,11 @@ applying the version or creating a tag.
     title="Dev Profile"
     items={[
         {title: "Validate repository", description: "Confirm execution inside a Git repository.", status: "completed"},
-        {title: "Prepare version and workflow", description: "Resolve version context and initialize the workflow engine.", status: "completed"},
-        {title: "Generate and edit artifacts", description: "Create configured artifacts, open them, and validate edits.", status: "completed"},
-        {title: "Generate changelog", description: "Update CHANGELOG.md.", status: "completed"},
+        {title: "Validate commit inputs", description: "Resolve the commit-validation provider, hook policy, message file, and remote.", status: "completed"},
+        {title: "Review the commit message", description: "Open only the commit-message file and validate the saved content.", status: "completed"},
         {title: "Back up and clean", description: "Back up the commit message and prune retained backups.", status: "completed"},
         {title: "Stage and commit", description: "Stage resolved files and create the Git commit.", status: "completed"},
-        {title: "Push", description: "Push HEAD and an optional workflow tag to resolved remotes.", status: "completed"},
+        {title: "Push", description: "Push branch HEAD to resolved remotes without pushing a tag.", status: "completed"},
     ]}
 />
 
@@ -64,11 +63,12 @@ applying the version or creating a tag.
 
 <InfoBox
     variant="info"
-    title="No tag creation or version application"
+    title="No release preparation or tag publication"
 >
 
-The current Dev profile does not contain `apply_version_step` or `tag_step`.
-Choose Release when the workflow must apply the version and create a tag.
+The Dev profile does not prepare or apply versions, initialize a release
+workflow, generate release artifacts or changelogs, create a tag, open a tag
+message, or push a tag. Choose Release when those steps are required.
 
 </InfoBox>
 

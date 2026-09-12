@@ -54,8 +54,11 @@
 # rather than Python-specific tooling.
 #
 # =========================================================
-repos:
 
+# Skip dependency, generated, cache, backup, and log paths for every hook.
+exclude: ^(\.docusaurus/|build/|node_modules/|\.yarn/|\.pnpm-store/|backups/|logs/)
+
+repos:
   # =======================================================
   # 🔍 BASIC FILE VALIDATION
   # =======================================================
@@ -63,25 +66,26 @@ repos:
     rev: v5.0.0
 
     hooks:
+      # Remove trailing whitespace
+      - id: trailing-whitespace
 
-    # Remove trailing whitespace
-    - id: trailing-whitespace
+      # Ensure file ends with newline
+      - id: end-of-file-fixer
 
-    # Ensure file ends with newline
-    - id: end-of-file-fixer
+      # Validate JSON
+      - id: check-json
+        # These files intentionally use JSON with Comments (JSONC).
+        exclude: ^(\.vscode/|tsconfig\.json$)
 
-    # Validate JSON
-    - id: check-json
+      # Validate YAML
+      - id: check-yaml
 
-    # Validate YAML
-    - id: check-yaml
+      # Detect unresolved merge conflicts
+      - id: check-merge-conflict
 
-    # Detect unresolved merge conflicts
-    - id: check-merge-conflict
-
-    # Prevent accidentally committing
-    # very large files
-    - id: check-added-large-files
+      # Prevent accidentally committing
+      # very large files
+      - id: check-added-large-files
 
   # =======================================================
   # 🎨 PRETTIER
@@ -90,23 +94,21 @@ repos:
     rev: v4.0.0-alpha.8
 
     hooks:
+      - id: prettier
+        additional_dependencies:
+          - prettier@3.6.2
 
-    - id: prettier
-      additional_dependencies:
-
-      - prettier@3.6.2
-
-      files: >
-      (?x)^(
-      .*.md|
-      .*.mdx|
-      .*.json|
-      .*.ya?ml|
-      .*.js|
-      .*.jsx|
-      .*.ts|
-      .*.tsx
-      )$
+        files: >
+          (?x)^(
+          .*.md|
+          .*.mdx|
+          .*.json|
+          .*.ya?ml|
+          .*.js|
+          .*.jsx|
+          .*.ts|
+          .*.tsx
+          )$
 
   # =========================================================
   # END

@@ -60,8 +60,8 @@ import {
 ## Overview
 
 The public Dev profile coordinates routine development work. Its current
-registered sequence prepares artifacts, updates the changelog, backs up the
-commit message, stages changes, creates a commit, and pushes.
+registered sequence validates and opens only the commit message, backs it up,
+stages selected changes, creates a commit, and pushes branch `HEAD`.
 
 For a first run, use global dry-run mode. Move to normal execution only when
 the repository, generated resources, commit message, and remote destination
@@ -136,23 +136,23 @@ custy validate`}
             status: "completed",
         },
         {
-            title: "Prepare workflow context",
-            description: "Resolve the version context and initialize workflow state.",
+            title: "Validate commit and remote inputs",
+            description: "Resolve the commit validator, hook policy, message file, and remote.",
             status: "completed",
         },
         {
-            title: "Generate and review artifacts",
-            description: "Generate artifacts, edit configured files, and validate the edited result.",
+            title: "Review the commit message",
+            description: "Open only the configured commit-message file and validate the saved result.",
             status: "completed",
         },
         {
-            title: "Generate and retain supporting files",
-            description: "Update the changelog, back up the commit message, and clean retained backups.",
+            title: "Back up and retain the message",
+            description: "Back up the commit message and clean retained backups.",
             status: "completed",
         },
         {
             title: "Publish development work",
-            description: "Stage resolved changes, create the commit, and push through the currently resolved remote behavior.",
+            description: "Stage resolved changes, create the commit, and push branch HEAD without pushing a tag.",
             status: "current",
         },
     ]}
@@ -163,9 +163,9 @@ custy validate`}
     title="Current profile boundary"
 >
 
-The registered Dev profile does not include `apply_version_step` or `tag_step`.
-It prepares version context for artifact work but does not apply the version or
-create a release tag.
+The registered Dev profile does not prepare or apply a version, initialize a
+release workflow, generate release artifacts or a changelog, open a tag
+message, create a tag, or push a tag.
 
 </InfoBox>
 
@@ -185,7 +185,7 @@ Global options belong before `run`.
 
 </Terminal>
 
-Review the output for the resolved files, version context, backup locations,
+Review the output for the resolved commit-message file, backup locations,
 staging behavior, commit preparation, and remote destination. If any part is
 unexpected, stop and adjust the project configuration or command options.
 

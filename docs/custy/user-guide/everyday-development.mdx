@@ -1,6 +1,6 @@
 ---
 title: "Everyday Development"
-description: "Use Custy's Dev profile safely for reviewed artifact, changelog, commit, and push work."
+description: "Use Custy's Dev profile safely for reviewed commit-and-branch-push work."
 sidebar_position: 2
 sidebar_key: custy-user-guide-everyday-development
 tags: [custy, development, dev profile]
@@ -23,7 +23,7 @@ import {
 <CommandHero
     command="custy run dev"
     title="Everyday Development"
-    description="Take reviewed working-tree changes through artifact generation, changelog, commit, and push."
+    description="Take reviewed working-tree changes through commit-message validation, commit creation, and branch push."
     category="User Guide"
     status="Preview First"
     syntax="custy --dry-run run dev [OPTIONS]"
@@ -46,9 +46,9 @@ import {
 
 ## Goal
 
-Use the Dev profile when reviewed daily work should generate supporting
-artifacts and changelog content, create one local commit, and finish with a
-remote push. Choose a direct command instead when you need only one outcome.
+Use the Dev profile when reviewed daily work should create one local commit and
+finish with a remote branch push. Release artifacts, changelog generation,
+version changes, and tags remain outside this profile.
 
 <InfoBox variant="warning" title="Dev is not local-only">
 
@@ -64,7 +64,7 @@ on a repository whose remotes you have not verified.
 
 <CommandChecklist
     items={[
-        {title: "Custy resources exist", description: "The project configuration, message files, templates, version file, and changelog paths resolve as intended."},
+        {title: "Custy resources exist", description: "The project configuration and commit-message file resolve as intended."},
         {title: "The active branch is correct", description: "The branch shown by Git is the branch you intend to commit and push."},
         {title: "Changes are understood", description: "Review unstaged and staged differences so unrelated work is not included."},
         {title: "The commit message is ready", description: "The configured commit-message file contains a reviewed message."},
@@ -93,7 +93,7 @@ custy validate`}
     items={[
         {title: "Review the working tree", description: "Confirm branch, changes, staged state, commit message, and remotes.", status: "completed"},
         {title: "Preview Dev", description: "Run the complete profile in global dry-run mode and read the resolved files and destinations.", status: "completed"},
-        {title: "Review generated intent", description: "Check artifact, editor, changelog, backup, staging, commit, and push messages.", status: "completed"},
+        {title: "Review the intent", description: "Check commit-message editing, backup, staging, commit, and branch-push messages.", status: "completed"},
         {title: "Execute normally", description: "Run Dev without dry-run only after every reported action is acceptable.", status: "current"},
         {title: "Verify local and remote state", description: "Inspect the final status and commit, then confirm the destination branch received it.", status: "pending"},
     ]}
@@ -115,16 +115,17 @@ custy run dev`}
 <FeatureGrid
     title="Profile Effects"
     items={[
-        {title: "Preparation", icon: <Icon name="configuration" />, children: "Resolve version context and initialize workflow state."},
-        {title: "Artifacts", icon: <Icon name="file" />, children: "Generate, open, and validate configured editable artifacts."},
-        {title: "Changelog and Backup", icon: <Icon name="package" />, children: "Run conditional changelog generation, back up the commit message, and prune retained backups."},
-        {title: "Git Publication", icon: <Icon name="network" />, children: "Stage selected files, create the commit, and push to resolved destinations."},
+        {title: "Validation", icon: <Icon name="configuration" />, children: "Validate repository, commit-message, hook, and remote readiness."},
+        {title: "Commit Message", icon: <Icon name="file" />, children: "Open and validate only the configured commit-message file."},
+        {title: "Backup and Commit", icon: <Icon name="package" />, children: "Back up the commit message, prune retained backups, stage, and commit."},
+        {title: "Git Publication", icon: <Icon name="network" />, children: "Push branch HEAD to resolved destinations without pushing a tag."},
     ]}
 />
 
-Dev prepares version context but does not execute `apply_version_step`, and it
-does not create a tag. The [exact 12-step order](../pipelines/development-pipeline)
-explains every internal step.
+Dev does not prepare or apply versions, initialize a release workflow, generate
+release artifacts or a changelog, edit a tag message, create a tag, or push a
+tag. The [exact 13-step order](../pipelines/development-pipeline) explains every
+internal step.
 
 </Section>
 
@@ -152,7 +153,7 @@ comparison workflow.
 
 <InfoBox variant="danger" title="Do not blindly rerun a failed Dev profile">
 
-Generated files, backups, the Git index, a commit, or a remote push may already
+An edited message, backups, the Git index, a commit, or a remote push may already
 exist. Use [Troubleshooting Workflows](./troubleshooting-workflows) to identify
 the last completed boundary first.
 
@@ -164,7 +165,7 @@ the last completed boundary first.
 
 <RelatedCommands
     commands={[
-        {title: "Development Pipeline", href: "../pipelines/development-pipeline", description: "Inspect the exact 12-step sequence and its omissions."},
+        {title: "Development Pipeline", href: "../pipelines/development-pipeline", description: "Inspect the exact 13-step sequence and its omissions."},
         {title: "Run Dev Examples", href: "../commands/run/dev/examples", description: "Use practical Dev invocations."},
         {title: "Commit Command", href: "../commands/commit/overview", description: "Choose a focused local commit operation."},
         {title: "Preparing Releases", href: "./preparing-releases", description: "Move from daily work to a versioned tagged publication."},

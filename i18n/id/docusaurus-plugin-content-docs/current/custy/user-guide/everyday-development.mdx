@@ -1,6 +1,6 @@
 ---
 title: "Everyday Development"
-description: "Gunakan Dev profile Custy dengan aman untuk reviewed artifact, changelog, commit, dan push work."
+description: "Gunakan Dev profile Custy dengan aman untuk commit dan push branch yang sudah ditinjau."
 sidebar_position: 2
 sidebar_key: custy-user-guide-everyday-development
 tags: [custy, development, dev profile]
@@ -9,20 +9,20 @@ keywords: [custy run dev, daily development workflow]
 
 import {CommandChecklist, CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
 
-<CommandHero command="custy run dev" title="Everyday Development" description="Bawa reviewed working-tree changes melalui artifact generation, changelog, commit, dan push." category="User Guide" status="Preview First" syntax="custy --dry-run run dev [OPTIONS]" tags={["daily workflow", "commit", "push"]} links={[{label: "Dev Pipeline", href: "../pipelines/development-pipeline"}, {label: "Run Dev Reference", href: "../commands/run/dev/overview"}, {label: "Recovery", href: "./troubleshooting-workflows"}]} />
+<CommandHero command="custy run dev" title="Everyday Development" description="Bawa reviewed working-tree changes melalui commit-message validation, commit creation, dan branch push." category="User Guide" status="Preview First" syntax="custy --dry-run run dev [OPTIONS]" tags={["daily workflow", "commit", "push"]} links={[{label: "Dev Pipeline", href: "../pipelines/development-pipeline"}, {label: "Run Dev Reference", href: "../commands/run/dev/overview"}, {label: "Recovery", href: "./troubleshooting-workflows"}]} />
 <CommandMetadata items={[{label: "Creates Commit", value: "Yes", icon: "git"}, {label: "Pushes", value: "Yes", icon: "network"}, {label: "Applies Version", value: "No", icon: "note"}, {label: "Creates Tag", value: "No", icon: "note"}]} />
 
 ## Tujuan
 
-Gunakan Dev ketika reviewed daily work harus menghasilkan supporting artifacts
-dan changelog content, membuat satu local commit, lalu berakhir dengan remote
-push. Pilih direct command jika hanya membutuhkan satu outcome.
+Gunakan Dev ketika reviewed daily work harus membuat satu local commit lalu
+berakhir dengan remote branch push. Release artifacts, changelog generation,
+version changes, dan tags berada di luar profile ini.
 
 <InfoBox variant="warning" title="Dev Bukan Local-Only">Normal execution berakhir dengan `push_step`. Konfirmasi destination saat dry-run dan tinjau [Push documentation](../commands/push/overview) sebelum menggunakan Dev pada repository dengan remotes yang belum diverifikasi.</InfoBox>
 
 ---
 
-<Section title="Before You Begin"><CommandChecklist items={[{title: "Custy resources exist", description: "Project configuration, message files, templates, version file, dan changelog paths di-resolve sesuai tujuan."}, {title: "The active branch is correct", description: "Branch yang ditampilkan Git adalah branch yang akan di-commit dan di-push."}, {title: "Changes are understood", description: "Review unstaged dan staged differences agar unrelated work tidak ikut."}, {title: "The commit message is ready", description: "Configured commit-message file berisi reviewed message."}, {title: "Remotes are intentional", description: "Setiap configured atau selected destination menunjuk ke expected repository."}]} />
+<Section title="Before You Begin"><CommandChecklist items={[{title: "Custy resources exist", description: "Project configuration dan commit-message file di-resolve sesuai tujuan."}, {title: "The active branch is correct", description: "Branch yang ditampilkan Git adalah branch yang akan di-commit dan di-push."}, {title: "Changes are understood", description: "Review unstaged dan staged differences agar unrelated work tidak ikut."}, {title: "The commit message is ready", description: "Configured commit-message file berisi reviewed message."}, {title: "Remotes are intentional", description: "Setiap configured atau selected destination menunjuk ke expected repository."}]} />
 <Terminal title="Development preflight" language="bash">{`git status --short --branch
 git diff
 git diff --staged
@@ -31,15 +31,16 @@ custy validate`}</Terminal></Section>
 
 ---
 
-<Section title="Recommended Journey"><WorkflowTimeline title="Daily Development" items={[{title: "Review the working tree", description: "Konfirmasi branch, changes, staged state, commit message, dan remotes.", status: "completed"}, {title: "Preview Dev", description: "Jalankan complete profile dalam global dry-run mode dan baca resolved files serta destinations.", status: "completed"}, {title: "Review generated intent", description: "Periksa artifact, editor, changelog, backup, staging, commit, dan push messages.", status: "completed"}, {title: "Execute normally", description: "Jalankan Dev tanpa dry-run setelah seluruh reported actions dapat diterima.", status: "current"}, {title: "Verify local and remote state", description: "Periksa final status dan commit, lalu pastikan destination branch menerimanya.", status: "pending"}]} />
+<Section title="Recommended Journey"><WorkflowTimeline title="Daily Development" items={[{title: "Review the working tree", description: "Konfirmasi branch, changes, staged state, commit message, dan remotes.", status: "completed"}, {title: "Preview Dev", description: "Jalankan complete profile dalam global dry-run mode dan baca resolved files serta destinations.", status: "completed"}, {title: "Review intent", description: "Periksa commit-message editing, backup, staging, commit, dan branch-push messages.", status: "completed"}, {title: "Execute normally", description: "Jalankan Dev tanpa dry-run setelah seluruh reported actions dapat diterima.", status: "current"}, {title: "Verify local and remote state", description: "Periksa final status dan commit, lalu pastikan destination branch menerimanya.", status: "pending"}]} />
 <Terminal title="Preview, then execute" language="bash">{`custy --dry-run run dev
 custy run dev`}</Terminal></Section>
 
 ---
 
-<Section title="Apa yang Sebenarnya Disertakan Dev"><FeatureGrid title="Profile Effects" items={[{title: "Preparation", icon: <Icon name="configuration" />, children: "Resolve version context dan initialize workflow state."}, {title: "Artifacts", icon: <Icon name="file" />, children: "Generate, buka, dan validasi configured editable artifacts."}, {title: "Changelog and Backup", icon: <Icon name="package" />, children: "Jalankan conditional changelog generation, backup commit message, dan prune retained backups."}, {title: "Git Publication", icon: <Icon name="network" />, children: "Stage selected files, buat commit, dan push ke resolved destinations."}]} />
-Dev menyiapkan version context tetapi tidak menjalankan `apply_version_step`,
-dan tidak membuat tag. [Exact 12-step order](../pipelines/development-pipeline)
+<Section title="Apa yang Sebenarnya Disertakan Dev"><FeatureGrid title="Profile Effects" items={[{title: "Validation", icon: <Icon name="configuration" />, children: "Validasi repository, commit-message, hook, dan remote readiness."}, {title: "Commit Message", icon: <Icon name="file" />, children: "Buka dan validasi hanya configured commit-message file."}, {title: "Backup and Commit", icon: <Icon name="package" />, children: "Backup commit message, prune retained backups, stage, dan commit."}, {title: "Git Publication", icon: <Icon name="network" />, children: "Push branch HEAD ke resolved destinations tanpa mendorong tag."}]} />
+Dev tidak menyiapkan atau menerapkan version, menginisialisasi release workflow,
+membuat release artifacts atau changelog, membuka tag message, membuat tag,
+atau mendorong tag. [Exact 13-step order](../pipelines/development-pipeline)
 menjelaskan setiap internal step.
 
 </Section>
@@ -56,6 +57,6 @@ result melalui repository host atau appropriate Git fetch dan comparison workflo
 
 </Section>
 
-<InfoBox variant="danger" title="Jangan Blindly Rerun Failed Dev Profile">Generated files, backups, Git index, commit, atau remote push mungkin sudah tersedia. Gunakan [Troubleshooting Workflows](./troubleshooting-workflows) untuk menemukan last completed boundary terlebih dahulu.</InfoBox>
+<InfoBox variant="danger" title="Jangan Blindly Rerun Failed Dev Profile">Edited message, backups, Git index, commit, atau remote push mungkin sudah tersedia. Gunakan [Troubleshooting Workflows](./troubleshooting-workflows) untuk menemukan last completed boundary terlebih dahulu.</InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Development Pipeline", href: "../pipelines/development-pipeline", description: "Periksa exact 12-step sequence dan omissions."}, {title: "Run Dev Examples", href: "../commands/run/dev/examples", description: "Gunakan practical Dev invocations."}, {title: "Commit Command", href: "../commands/commit/overview", description: "Pilih focused local commit operation."}, {title: "Preparing Releases", href: "./preparing-releases", description: "Bergerak dari daily work menuju versioned tagged publication."}]} /></Section>
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Development Pipeline", href: "../pipelines/development-pipeline", description: "Periksa exact 13-step sequence dan omissions."}, {title: "Run Dev Examples", href: "../commands/run/dev/examples", description: "Gunakan practical Dev invocations."}, {title: "Commit Command", href: "../commands/commit/overview", description: "Pilih focused local commit operation."}, {title: "Preparing Releases", href: "./preparing-releases", description: "Bergerak dari daily work menuju versioned tagged publication."}]} /></Section>

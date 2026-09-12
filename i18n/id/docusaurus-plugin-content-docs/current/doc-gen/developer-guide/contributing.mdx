@@ -1,0 +1,231 @@
+---
+title: "Contributing"
+description: "Siapkan contribution untuk Doc Gen yang focused, tested, documented, dan aman."
+sidebar_position: 4
+sidebar_key: doc-gen-developer-guide-contributing
+tags: [doc-gen, contributing, code review, pre-commit]
+keywords: [contribute to Doc Gen, Doc Gen code quality, Doc Gen pull request]
+---
+
+import {
+  CommandChecklist,
+  CommandHero,
+  CommandMetadata,
+  InfoBox,
+  RelatedCommands,
+  Section,
+  Terminal,
+  WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+  command="make check"
+  title="Contributing to Doc Gen"
+  description="Kembangkan project-structure features dengan bukti bahwa scanning, rendering, dan persistence tetap terpisah dengan benar."
+  category="Developer Guide"
+  status="Review Checklist"
+  syntax="scope -> implement -> validate -> document -> hand off"
+  tags={["quality", "tests", "generation", "dry-run", "pre-commit"]}
+  links={[
+    { label: "Setup", href: "./development-setup" },
+    { label: "Testing", href: "./testing" },
+    { label: "Final Checklist", href: "#final-review-checklist" },
+  ]}
+/>
+
+<CommandMetadata
+  items={[
+    { label: "Quality Helper", value: "make check", icon: "testing" },
+    { label: "Package Runtime", value: "Python 3.9+", icon: "python" },
+    { label: "Read-Only Commands", value: "print dan analyze", icon: "security" },
+    { label: "Writable Command", value: "generate", icon: "file" },
+  ]}
+/>
+
+## Overview
+
+Pertahankan CLI interaction di `app/doc_gen/cli`, reusable structure behavior
+di `app/doc_gen/core/structure`, Markdown construction dalam renderers, dan file
+persistence dalam writers. Nyatakan selected targets dan outputs dengan jelas.
+
+---
+
+<Section title="Contribution Workflow">
+
+<WorkflowTimeline
+  items={[
+    {
+      title: "Telusuri structure flow",
+      description:
+        "Ikuti CLI dan configuration resolution melalui scanning, profiles, metadata, analysis, rendering, writing, dan presentation.",
+      status: "completed",
+    },
+    {
+      title: "Tentukan output contract",
+      description:
+        "Nyatakan selected target, ignored content, returned output, allowed file write, dry-run behavior, dan failures.",
+      status: "completed",
+    },
+    {
+      title: "Implementasikan bersama tests",
+      description:
+        "Pisahkan read-only computation dari persistence dan uji success, failure, serta dry-run paths.",
+      status: "current",
+    },
+    {
+      title: "Jalankan widening validation",
+      description:
+        "Jalankan focused tests, hook checks, make check, dan complete suite.",
+      status: "pending",
+    },
+    {
+      title: "Sinkronkan documentation",
+      description:
+        "Update commands, profiles, configuration, outputs, dry-run, troubleshooting, dan architecture sesuai kebutuhan.",
+      status: "pending",
+    },
+    {
+      title: "Siapkan handoff",
+      description:
+        "Laporkan affected files, output-safety evidence, validation results, limitations, dan intentional non-changes.",
+      status: "pending",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Implementation Standards">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Resolve target dan output",
+      description:
+        "Tentukan repository input dan output document sebelum generation dimulai.",
+    },
+    {
+      title: "Pertahankan read-only commands",
+      description:
+        "Print dan analyze tidak boleh membuat atau meng-update project documents.",
+    },
+    {
+      title: "Batasi generate",
+      description: "Hanya resolved output document yang boleh ditulis.",
+    },
+    {
+      title: "Lindungi dry-run",
+      description:
+        "Dry-run boleh melakukan scan dan render, tetapi tidak boleh membuat directories, menulis files, atau memanggil writer.",
+    },
+    {
+      title: "Pertahankan ignore behavior",
+      description:
+        "Terapkan built-in dan configured exclusions secara konsisten pada print, analyze, dan generate.",
+    },
+    {
+      title: "Dokumentasikan public contracts",
+      description:
+        "Sinkronkan options, profiles, output paths, examples, failures, dan recovery guidance.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Quality Gates">
+
+<Terminal title="Contributor validation" language="bash">
+
+{`# Focused examples
+python -m pytest tests/cli
+python -m pytest tests/test_dry_run.py
+
+# Complete validation
+
+python -m pytest
+make check
+
+# Hook validation
+
+make pre-commit-validate
+make pre-commit-run-staged
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Refresh adalah maintainer operation">
+
+Gunakan `make pre-commit-refresh` hanya untuk intentional hook upgrades. Command
+ini dapat mengakses network serta mengubah `.pre-commit-config.yaml` dan active
+files. Review seluruh hasil sebelum menyimpan perubahan apa pun.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Final Review Checklist">
+
+<CommandChecklist
+  items={[
+    {
+      title: "Scope tetap focused",
+      description:
+        "Setiap changed file mendukung structure contract, tests, atau documentation.",
+    },
+    {
+      title: "Read-only behavior terbukti",
+      description: "Print, analyze, dan dry-run tidak mengubah project files.",
+    },
+    {
+      title: "Generation bersifat precise",
+      description:
+        "Hanya requested document yang ditulis dan unrelated documentation tetap tidak berubah.",
+    },
+    {
+      title: "Quality results dicatat",
+      description:
+        "Focused tests, full tests, formatting, lint, dan relevant builds memiliki explicit outcomes.",
+    },
+    {
+      title: "Release actions tetap terpisah",
+      description:
+        "Versions, changelogs, tags, pushes, dan publication tidak berubah kecuali diminta secara explicit.",
+    },
+  ]}
+/>
+
+</Section>
+
+---
+
+<RelatedCommands
+  commands={[
+    {
+      title: "Development Setup",
+      href: "./development-setup",
+      description: "Buat editable contributor environment.",
+    },
+    {
+      title: "Testing",
+      href: "./testing",
+      description: "Validasi output dan dry-run contracts.",
+    },
+    {
+      title: "Configuration",
+      href: "../configuration/overview",
+      description: "Pertahankan profiles, targets, outputs, dan ignore rules.",
+    },
+    {
+      title: "Safety and Dry Run",
+      href: "../concepts/safety-and-dry-run",
+      description: "Lindungi read-only dan generated-output boundaries.",
+    },
+  ]}
+/>

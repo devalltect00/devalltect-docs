@@ -5,14 +5,73 @@ sidebar_position: 0
 sidebar_key: phs-home
 ---
 
-import {CommandHero, CommandMetadata, FeatureGrid, InfoBox, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  InfoBox,
+  Screenshot,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner" title="Path Header Scanner" description="Find missing or stale path headers and apply reviewed corrections with language-aware syntax." category="Code Maintenance" status="v1.0.0" syntax="path-header-scanner COMMAND [OPTIONS]" links={[{label:"Get started",href:"./path-header-scanner/getting-started/overview"},{label:"Commands",href:"./path-header-scanner/commands/overview"},{label:"Configuration",href:"./path-header-scanner/configuration/overview"},{label:"Core concepts",href:"./path-header-scanner/concepts/overview"}]} />
-<CommandMetadata items={[{label:"Python",value:"3.11+",icon:"dependency"},{label:"Standard runtime",value:"Python 3.14",icon:"configuration"},{label:"Default",value:"Preview only",icon:"success"},{label:"Version",value:"1.0.0",icon:"release"}]} />
+<CommandHero
+  command="path-header-scanner"
+  title="Path Header Scanner"
+  description="Find missing or stale path headers and apply reviewed corrections with language-aware syntax."
+  category="Code Maintenance"
+  status="v1.0.0"
+  syntax="path-header-scanner COMMAND [OPTIONS]"
+  links={[
+    { label: "Get started", href: "./path-header-scanner/getting-started/overview" },
+    { label: "Commands", href: "./path-header-scanner/commands/overview" },
+    { label: "Configuration", href: "./path-header-scanner/configuration/overview" },
+    { label: "Core concepts", href: "./path-header-scanner/concepts/overview" },
+  ]}
+/>
+<CommandMetadata
+  items={[
+    { label: "Python", value: "3.11+", icon: "dependency" },
+    { label: "Standard runtime", value: "Python 3.14", icon: "configuration" },
+    { label: "Default", value: "Preview only", icon: "success" },
+    { label: "Version", value: "1.0.0", icon: "release" },
+  ]}
+/>
 
-<FeatureGrid items={[{title:"Discover",children:"Find supported source and documentation files while honoring exclusions."},{title:"Validate",children:"Compare each path header with the file's resolved project path."},{title:"Preview",children:"Report proposed insertions and updates without changing files."},{title:"Apply",children:"Write only reviewed changes when --apply is explicit."}]} />
+<Screenshot
+  src="/img/project-previews/path-header-scanner.png"
+  alt="Path Header Scanner terminal banner and command output"
+  title="Path Header Scanner at a Glance"
+  caption="A representative preview-first scan. The final release screenshot can be added without changing this page."
+  fallback="Add static/img/project-previews/path-header-scanner.png before publishing v1.0.0."
+  variant="overview"
+/>
 
-<InfoBox variant="warning" title="Preview is the default">`scan` does not write target files unless `--apply` is supplied. Explicit `--dry-run` also overrides `--apply` and configured apply mode.</InfoBox>
+<FeatureGrid
+  items={[
+    {
+      title: "Discover",
+      children:
+        "Find supported source and documentation files while honoring exclusions.",
+    },
+    {
+      title: "Validate",
+      children: "Compare each path header with the file's resolved project path.",
+    },
+    {
+      title: "Preview",
+      children: "Report proposed insertions and updates without changing files.",
+    },
+    {
+      title: "Apply",
+      children: "Write only reviewed changes when --apply is explicit.",
+    },
+  ]}
+/>
+
+<InfoBox variant="warning" title="Preview is the default">
+  `scan` does not write target files unless `--apply` is supplied. Explicit `--dry-run`
+  also overrides `--apply` and configured apply mode.
+</InfoBox>
 <Terminal title="First scan" language="bash">{`path-header-scanner scan app
 path-header-scanner scan app --dry-run
 path-header-scanner scan app --apply`}</Terminal>

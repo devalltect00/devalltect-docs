@@ -18,49 +18,62 @@ keywords:
 ---
 
 import {
-    CommandHero,
-    CommandMetadata,
-    FeatureGrid,
-    Icon,
-    InfoBox,
-    Section,
-    Terminal,
+  CommandHero,
+  CommandMetadata,
+  FeatureGrid,
+  Icon,
+  InfoBox,
+  Screenshot,
+  Section,
+  Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="custy"
-    title="Custy"
-    description="Automate repeatable Git, versioning, changelog, backup, cleanup, and release workflows from one configurable CLI."
-    category="Developer Productivity"
-    status="Active Development"
-    syntax="custy COMMAND [OPTIONS]"
-    tags={[
-        "Git automation",
-        "release workflows",
-        "project configuration",
-    ]}
-    links={[
-        {label: "Getting Started", href: "./custy/getting-started/overview"},
-        {label: "Command Reference", href: "./custy/commands/overview"},
-        {label: "Configuration", href: "./custy/configuration/overview"},
-        {label: "Pipeline Guide", href: "./custy/pipelines/overview"},
-        {label: "User Guide", href: "./custy/user-guide/overview"},
-        {label: "Developer Guide", href: "./custy/developer-guide/overview"},
-        {label: "Architecture", href: "./custy/architecture/overview"},
-        {label: "Reference", href: "./custy/reference/overview"},
-        {label: "Troubleshooting", href: "./custy/troubleshooting/overview"},
-        {label: "Core Concepts", href: "./custy/concepts/commands-pipelines-and-workflows"},
-        {label: "Documentation Status", href: "./custy/reference/documentation-status"},
-    ]}
+  command="custy"
+  title="Custy"
+  description="Automate repeatable Git, versioning, changelog, backup, cleanup, and release workflows from one configurable CLI."
+  category="Developer Productivity"
+  status="Active Development"
+  syntax="custy COMMAND [OPTIONS]"
+  tags={["Git automation", "release workflows", "project configuration"]}
+  links={[
+    { label: "Getting Started", href: "./custy/getting-started/overview" },
+    { label: "Command Reference", href: "./custy/commands/overview" },
+    { label: "Configuration", href: "./custy/configuration/overview" },
+    { label: "Pipeline Guide", href: "./custy/pipelines/overview" },
+    { label: "User Guide", href: "./custy/user-guide/overview" },
+    { label: "Developer Guide", href: "./custy/developer-guide/overview" },
+    { label: "Architecture", href: "./custy/architecture/overview" },
+    { label: "Reference", href: "./custy/reference/overview" },
+    { label: "Troubleshooting", href: "./custy/troubleshooting/overview" },
+    {
+      label: "Core Concepts",
+      href: "./custy/concepts/commands-pipelines-and-workflows",
+    },
+    { label: "Documentation Status", href: "./custy/reference/documentation-status" },
+  ]}
 />
 
 <CommandMetadata
-    items={[
-        {label: "Interface", value: "Command-Line Application", icon: "terminal"},
-        {label: "Primary Domain", value: "Git and Releases", icon: "git"},
-        {label: "Configuration", value: ".config/custy/config.toml", icon: "configuration"},
-        {label: "Documentation Language", value: "English", icon: "feature"},
-    ]}
+  items={[
+    { label: "Interface", value: "Command-Line Application", icon: "terminal" },
+    { label: "Primary Domain", value: "Git and Releases", icon: "git" },
+    {
+      label: "Configuration",
+      value: ".config/custy/config.toml",
+      icon: "configuration",
+    },
+    { label: "Documentation Language", value: "English", icon: "feature" },
+  ]}
+/>
+
+<Screenshot
+  src="/img/project-previews/custy.png"
+  alt="Custy terminal banner and Git workflow output"
+  title="Custy at a Glance"
+  caption="A representative Custy terminal workflow. The final release screenshot can be added without changing this page."
+  fallback="Add static/img/project-previews/custy.png before publishing v1.0.0."
+  variant="overview"
 />
 
 ## Overview
@@ -89,39 +102,45 @@ the release baseline, review date, and how to compare another installed version.
 >
 
 <FeatureGrid
-    title="Core Capabilities"
-    items={[
-        {
-            title: "Project Readiness",
-            icon: <Icon name="success" />,
-            children: "Initialize project resources and validate repositories before consequential operations begin.",
-        },
-        {
-            title: "Version and Changelog",
-            icon: <Icon name="release" />,
-            children: "Prepare versions and generate structured changelogs from repository history and project configuration.",
-        },
-        {
-            title: "Git Operations",
-            icon: <Icon name="git" />,
-            children: "Create commits and tags, then synchronize branches and tags with configured remotes.",
-        },
-        {
-            title: "Reusable Pipelines",
-            icon: <Icon name="workflow" />,
-            children: "Run supported development, release, and full profiles with a predictable ordered workflow.",
-        },
-        {
-            title: "Safety and Recovery",
-            icon: <Icon name="package" />,
-            children: "Create message backups, preview supported operations, and clean retained files or branches deliberately.",
-        },
-        {
-            title: "Project Configuration",
-            icon: <Icon name="configuration" />,
-            children: "Customize paths, templates, Git behavior, versioning, changelog output, cleanup, and logging.",
-        },
-    ]}
+  title="Core Capabilities"
+  items={[
+    {
+      title: "Project Readiness",
+      icon: <Icon name="success" />,
+      children:
+        "Initialize project resources and validate repositories before consequential operations begin.",
+    },
+    {
+      title: "Version and Changelog",
+      icon: <Icon name="release" />,
+      children:
+        "Prepare versions and generate structured changelogs from repository history and project configuration.",
+    },
+    {
+      title: "Git Operations",
+      icon: <Icon name="git" />,
+      children:
+        "Create commits and tags, then synchronize branches and tags with configured remotes.",
+    },
+    {
+      title: "Reusable Pipelines",
+      icon: <Icon name="workflow" />,
+      children:
+        "Run supported development, release, and full profiles with a predictable ordered workflow.",
+    },
+    {
+      title: "Safety and Recovery",
+      icon: <Icon name="package" />,
+      children:
+        "Create message backups, preview supported operations, and clean retained files or branches deliberately.",
+    },
+    {
+      title: "Project Configuration",
+      icon: <Icon name="configuration" />,
+      children:
+        "Customize paths, templates, Git behavior, versioning, changelog output, cleanup, and logging.",
+    },
+  ]}
 />
 
 </Section>
@@ -160,9 +179,11 @@ from partial state safely.
 custy init
 
 # Check whether the repository is ready
+
 custy validate
 
 # Inspect the public pipeline profiles
+
 custy run --help`}
 
 </Terminal>

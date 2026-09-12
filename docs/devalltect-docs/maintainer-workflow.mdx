@@ -1,0 +1,62 @@
+---
+title: Maintainer Workflow
+description: Keep content, localization, screenshots, metadata, and validation synchronized.
+sidebar_position: 1
+---
+
+# Maintainer Workflow
+
+Portal maintenance starts with the source project, not with assumptions about
+its behavior. Review the relevant application version before changing commands,
+configuration, requirements, safety guidance, or examples.
+
+## Content Flow
+
+1. Confirm the source-project version and user-facing behavior.
+2. Update the English canonical pages affected by the change.
+3. Update the equivalent Indonesian pages without translating literal technical contracts.
+4. Update centralized project metadata when the version, release URL, review date, technologies, or preview changes.
+5. Review navigation, cross-links, and documentation-status pages.
+6. Run formatting, freshness tests, type checking, and both locale builds.
+7. Review affected pages at desktop and mobile widths before release.
+
+## Project Preview Images
+
+The homepage and each project landing page share one representative screenshot:
+
+```text
+static/img/project-previews/custy.png
+static/img/project-previews/path-header-scanner.png
+static/img/project-previews/doc-gen.png
+static/img/project-previews/reflow.png
+```
+
+Use PNG for terminal output so small text remains clear. Capture every image at
+the same 16:9 aspect ratio; `1600 × 900` is recommended. Show a recognizable
+banner with useful help or summary output, and remove credentials, tokens,
+personal paths, private repository URLs, and unrelated terminal history.
+
+The screenshot component provides responsive sizing, alternative text, lazy
+loading, and an accessible fallback. The fallback prevents an unfinished asset
+from breaking a page, but it is not a substitute for the final release image.
+
+## Review Boundaries
+
+- Keep shared components generic and let each project retain its own information architecture.
+- Prefer existing components and theme variables over one-off presentation code.
+- Keep English and Indonesian meaning aligned.
+- Do not publish a stable release with missing project-preview images or broken fallback text.
+- Do not edit generated `.docusaurus/` or `build/` output.
+
+## Validation
+
+Run the repository's documented Yarn checks after content or UI changes:
+
+```bash
+yarn test:documentation-freshness
+yarn typecheck
+yarn build
+```
+
+Also run the configured pre-commit checks and confirm both locale outputs build
+without broken routes, links, anchors, or MDX rendering errors.

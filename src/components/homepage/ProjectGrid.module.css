@@ -50,6 +50,10 @@
     box-shadow 0.2s ease;
 }
 
+.card > figure {
+  flex: 0 0 auto;
+}
+
 .card:hover {
   transform: translateY(-4px);
 

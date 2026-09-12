@@ -1,0 +1,48 @@
+---
+title: Versioning and Freshness
+description: Maintain project baselines and prepare reliable portal releases.
+sidebar_position: 2
+---
+
+# Versioning and Freshness
+
+The project metadata in `src/data/projects.ts` is the source of truth for
+homepage discovery and release-aware documentation status.
+
+## Project Baselines
+
+Each documented project can record:
+
+- the normalized version represented by its pages;
+- the corresponding repository tag and release URL;
+- the date when maintainers last reviewed the source;
+- the status-page route;
+- automatic or manual freshness behavior;
+- project-specific technology and screenshot metadata.
+
+Automatic freshness supports SemVer and PEP 440 tags. It discovers remote tags,
+filters prereleases according to project policy, and compares the latest
+compatible release with the documented baseline. Use manual mode for private or
+unreachable repositories and unsupported tag formats.
+
+## Reader-Facing States
+
+- **Current:** documentation matches the detected release; no notice is needed.
+- **Outdated:** a newer release exists; readers receive an update warning.
+- **Preview:** documentation describes a version newer than the latest release.
+- **Unknown:** the remote release could not be verified; the portal does not claim it is current.
+
+## Release Preparation
+
+Before publishing Devalltect Docs:
+
+1. Confirm all four documented project baselines and release links.
+2. Confirm English and Indonesian content remains aligned.
+3. Add and visually review all four project-preview PNG files.
+4. Run documentation-freshness tests, type checking, pre-commit checks, and the multilingual build.
+5. Review the homepage, project landing pages, sidebar, and key workflows on desktop and mobile.
+6. Update the appropriate untagged checkpoint message and cumulative release templates.
+7. Create a release tag only after the exact candidate has passed validation.
+
+Temporary remote-check failures should produce an honest unknown state rather
+than fail the reader experience or claim that documentation is current.

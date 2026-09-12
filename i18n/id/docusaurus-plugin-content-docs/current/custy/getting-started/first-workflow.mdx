@@ -60,8 +60,8 @@ import {
 ## Ringkasan
 
 Profil Dev publik mengoordinasikan pekerjaan development rutin. Urutan yang
-terdaftar saat ini menyiapkan artefak, memperbarui changelog, membuat backup
-pesan commit, melakukan stage, membuat commit, lalu melakukan push.
+terdaftar saat ini memvalidasi dan membuka hanya pesan commit, membuat backup,
+melakukan stage, membuat commit, lalu mendorong branch `HEAD`.
 
 Untuk eksekusi pertama, gunakan mode dry run global. Lanjutkan ke eksekusi
 normal hanya setelah repositori, resource yang dibuat, pesan commit, dan tujuan
@@ -136,23 +136,23 @@ custy validate`}
             status: "completed",
         },
         {
-            title: "Siapkan konteks alur kerja",
-            description: "Tentukan konteks versi dan inisialisasi status alur kerja.",
+            title: "Validasi input commit dan remote",
+            description: "Tentukan commit validator, hook policy, message file, dan remote.",
             status: "completed",
         },
         {
-            title: "Buat dan tinjau artefak",
-            description: "Buat artefak, edit file yang dikonfigurasi, dan validasi hasil edit.",
+            title: "Tinjau pesan commit",
+            description: "Buka hanya commit-message file dan validasi hasil yang disimpan.",
             status: "completed",
         },
         {
-            title: "Buat dan simpan file pendukung",
-            description: "Perbarui changelog, backup pesan commit, dan bersihkan backup yang disimpan.",
+            title: "Tinjau dan simpan pesan",
+            description: "Validasi dan backup pesan commit, lalu bersihkan backup yang disimpan.",
             status: "completed",
         },
         {
             title: "Publikasikan pekerjaan development",
-            description: "Stage perubahan yang ditentukan, buat commit, lalu lakukan push melalui perilaku remote yang ditentukan saat ini.",
+            description: "Stage perubahan yang ditentukan, buat commit, lalu push branch HEAD tanpa mendorong tag.",
             status: "current",
         },
     ]}
@@ -163,9 +163,9 @@ custy validate`}
     title="Batas profil saat ini"
 >
 
-Profil Dev yang terdaftar tidak menyertakan `apply_version_step` atau
-`tag_step`. Profil ini menyiapkan konteks versi untuk pekerjaan artefak, tetapi
-tidak menerapkan versi atau membuat tag rilis.
+Profil Dev yang terdaftar tidak menyiapkan atau menerapkan version,
+menginisialisasi release workflow, membuat release artifacts atau changelog,
+membuka tag message, membuat tag, atau mendorong tag.
 
 </InfoBox>
 
@@ -185,7 +185,7 @@ Opsi global harus ditempatkan sebelum `run`.
 
 </Terminal>
 
-Tinjau output untuk file yang ditentukan, konteks versi, lokasi backup,
+Tinjau output untuk commit-message file yang ditentukan, lokasi backup,
 perilaku staging, persiapan commit, dan tujuan remote. Jika ada bagian yang
 tidak sesuai harapan, hentikan dan sesuaikan konfigurasi proyek atau opsi
 perintah.

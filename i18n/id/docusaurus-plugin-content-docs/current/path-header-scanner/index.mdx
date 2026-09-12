@@ -5,11 +5,53 @@ sidebar_position: 0
 sidebar_key: phs-home
 ---
 
-import {CommandHero, FeatureGrid, InfoBox, Terminal} from "@site/src/components/docs";
+import {
+  CommandHero,
+  FeatureGrid,
+  InfoBox,
+  Screenshot,
+  Terminal,
+} from "@site/src/components/docs";
 
-<CommandHero command="path-header-scanner" title="Path Header Scanner" description="Temukan path header yang hilang atau usang dan terapkan perbaikan dengan sintaks sesuai bahasa." category="Pemeliharaan Kode" status="v1.0.0" syntax="path-header-scanner COMMAND [OPTIONS]" links={[{label:"Mulai",href:"./path-header-scanner/getting-started/overview"},{label:"Perintah",href:"./path-header-scanner/commands/overview"},{label:"Konfigurasi",href:"./path-header-scanner/configuration/overview"},{label:"Konsep inti",href:"./path-header-scanner/concepts/overview"}]} />
-<FeatureGrid items={[{title:"Discover",children:"Temukan file yang didukung sambil menghormati exclusion."},{title:"Validate",children:"Bandingkan header dengan path proyek yang benar."},{title:"Preview",children:"Laporkan perubahan tanpa menulis file."},{title:"Apply",children:"Tulis hanya setelah --apply dipilih."}]} />
-<InfoBox variant="warning" title="Default adalah preview">`scan` tidak menulis tanpa `--apply`. Explicit `--dry-run` juga mengalahkan `--apply` dan configured apply mode.</InfoBox>
+<CommandHero
+  command="path-header-scanner"
+  title="Path Header Scanner"
+  description="Temukan path header yang hilang atau usang dan terapkan perbaikan dengan sintaks sesuai bahasa."
+  category="Pemeliharaan Kode"
+  status="v1.0.0"
+  syntax="path-header-scanner COMMAND [OPTIONS]"
+  links={[
+    { label: "Mulai", href: "./path-header-scanner/getting-started/overview" },
+    { label: "Perintah", href: "./path-header-scanner/commands/overview" },
+    { label: "Konfigurasi", href: "./path-header-scanner/configuration/overview" },
+    { label: "Konsep inti", href: "./path-header-scanner/concepts/overview" },
+  ]}
+/>
+
+<Screenshot
+  src="/img/project-previews/path-header-scanner.png"
+  alt="Banner terminal Path Header Scanner dan output pemindaian"
+  title="Sekilas Path Header Scanner"
+  caption="Contoh representatif pemindaian yang mengutamakan pratinjau. Screenshot rilis final dapat ditambahkan tanpa mengubah halaman ini."
+  fallback="Tambahkan static/img/project-previews/path-header-scanner.png sebelum memublikasikan v1.0.0."
+  variant="overview"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Discover",
+      children: "Temukan file yang didukung sambil menghormati exclusion.",
+    },
+    { title: "Validate", children: "Bandingkan header dengan path proyek yang benar." },
+    { title: "Preview", children: "Laporkan perubahan tanpa menulis file." },
+    { title: "Apply", children: "Tulis hanya setelah --apply dipilih." },
+  ]}
+/>
+<InfoBox variant="warning" title="Default adalah preview">
+  `scan` tidak menulis tanpa `--apply`. Explicit `--dry-run` juga mengalahkan `--apply`
+  dan configured apply mode.
+</InfoBox>
 <Terminal title="Scan pertama" language="bash">{`path-header-scanner scan app
 path-header-scanner scan app --dry-run
 path-header-scanner scan app --apply`}</Terminal>

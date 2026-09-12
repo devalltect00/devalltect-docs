@@ -55,7 +55,7 @@ Read the actual resolved destination before allowing normal execution.
 
 <CommandExample
     examples={[
-        {title: "Preview daily development", command: "custy --dry-run run dev", description: "Inspect preparation, changelog, commit, and push intent before mutations."},
+        {title: "Preview daily development", command: "custy --dry-run run dev", description: "Inspect commit-message, staging, commit, and branch-push intent before mutations."},
         {title: "Use tracked-change staging", command: "custy run dev --auto-stage --stage-mode update", description: "Select update-style staging for tracked modifications and deletions."},
         {title: "Use a project commit template", command: "custy run dev --commit-msg-file .config/custy/templates/commit-message.txt", description: "Provide the message file used by the commit stage."},
         {title: "Run after review", command: "custy run dev", description: "Execute the configured development pipeline.", notes: "Read the resolved push destination before confirming any prompt."},

@@ -60,7 +60,7 @@ pipeline definitions.
         {title: "Commit", icon: <Icon name="git" />, children: <>Prepare and edit artifacts, apply version state, generate a changelog, back up the commit message, stage files, and create a local commit. See <a href="../commands/commit/overview">Commit</a>.</>},
         {title: "Tag", icon: <Icon name="release" />, children: <>Prepare version and tag state, edit artifacts, apply the version, back up the tag message, and create a local tag. See <a href="../commands/tag/overview">Tag</a>.</>},
         {title: "Push", icon: <Icon name="network" />, children: <>Validate repository and remote readiness, initialize workflow state, and push HEAD plus an eligible tag. See <a href="../commands/push/overview">Push</a>.</>},
-        {title: "Dev", icon: <Icon name="play" />, children: <>Generate and review daily artifacts, update the changelog, commit, and push without applying a version or creating a tag. See <a href="./development-pipeline">Development Pipeline</a>.</>},
+        {title: "Dev", icon: <Icon name="play" />, children: <>Validate and review the commit message, back it up, commit, and push branch HEAD without release side effects. See <a href="./development-pipeline">Development Pipeline</a>.</>},
         {title: "Release", icon: <Icon name="pipeline" />, children: <>Run release validation, apply version state, generate the changelog, commit, tag, and push. See <a href="./release-pipeline">Release Pipeline</a>.</>},
         {title: "Full", icon: <Icon name="workflow" />, children: <>Run the Release sequence and then invoke experimental workflow finalization. See <a href="./full-pipeline">Full Pipeline</a>.</>},
     ]}

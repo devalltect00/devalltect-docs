@@ -1,48 +1,48 @@
 .options {
-    margin: var(--docs-space-2xl) 0;
+  margin: var(--docs-space-2xl) 0;
 }
 
 .header {
-    display: flex;
+  display: flex;
 
-    justify-content: space-between;
+  justify-content: space-between;
 
-    align-items: center;
+  align-items: center;
 
-    gap: 1rem;
+  gap: 1rem;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .option,
 .short {
-    padding: .3rem .6rem;
+  padding: 0.3rem 0.6rem;
 
-    border-radius: var(--docs-radius-sm);
+  border-radius: var(--docs-radius-sm);
 
-    background: var(--ifm-code-background);
+  background: var(--ifm-code-background);
 
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .short {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .description {
-    line-height: var(--docs-line-height);
+  line-height: var(--docs-line-height);
 }
 
 .footer {
-    display: flex;
+  display: flex;
 
-    gap: 2rem;
+  gap: 2rem;
 
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .footer code {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }

@@ -18,7 +18,8 @@ configuration, requirements, safety guidance, or examples.
 4. Update centralized project metadata when the version, release URL, review date, technologies, or preview changes.
 5. Review navigation, cross-links, and documentation-status pages.
 6. Run formatting, freshness tests, type checking, and both locale builds.
-7. Review affected pages at desktop and mobile widths before release.
+7. When container files change, validate Compose and both Docker runtime modes.
+8. Review affected pages at desktop and mobile widths before release.
 
 ## Project Preview Images
 
@@ -57,6 +58,25 @@ yarn test:documentation-freshness
 yarn typecheck
 yarn build
 ```
+
+The equivalent non-mutating aggregate is:
+
+```bash
+yarn validate
+```
+
+When Docker, Compose, or Nginx configuration changes, also run:
+
+```bash
+make c-config
+make c-build-all
+make c-check
+```
+
+Review the live development site at
+`http://localhost:3000/devalltect-docs/` and the immutable production preview
+at `http://localhost:8080/devalltect-docs/`. Container validation must not
+publish images or replace either Pages deployment.
 
 Also run the configured pre-commit checks and confirm both locale outputs build
 without broken routes, links, anchors, or MDX rendering errors.

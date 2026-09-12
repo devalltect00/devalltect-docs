@@ -5,23 +5,17 @@
  */
 
 .docs-lead {
+  font-size: 1.125rem;
 
-    font-size: 1.125rem;
-
-    line-height: var(--docs-line-height);
-
+  line-height: var(--docs-line-height);
 }
 
 .docs-muted {
-
-    color: var(--ifm-color-emphasis-700);
-
+  color: var(--ifm-color-emphasis-700);
 }
 
 .docs-caption {
+  font-size: 0.875rem;
 
-    font-size: .875rem;
-
-    color: var(--ifm-color-emphasis-600);
-
+  color: var(--ifm-color-emphasis-600);
 }

@@ -16,10 +16,10 @@ release workflows.
 
 | Project                 | Documented release | Main focus                                                         |
 | ----------------------- | ------------------ | ------------------------------------------------------------------ |
-| **Custy**               | v2.1.1             | Git, versioning, changelog, backup, cleanup, and release workflows |
-| **Path Header Scanner** | v1.0.0             | Previewing, validating, and applying repository path headers       |
-| **Doc Gen**             | v1.0.1             | Generating, printing, and analyzing project structures             |
-| **Reflow**              | v1.0.1             | Tag conversion, release recovery, and container publishing         |
+| **Custy**               | v2.1.2             | Git, versioning, changelog, backup, cleanup, and release workflows |
+| **Path Header Scanner** | v1.0.1             | Previewing, validating, and applying repository path headers       |
+| **Doc Gen**             | v1.0.2             | Generating, printing, and analyzing project structures             |
+| **Reflow**              | v1.0.2             | Tag conversion, release recovery, and container publishing         |
 
 English is the default locale, and Bahasa Indonesia provides an aligned
 documentation set. Command names, options, paths, configuration keys, and code
@@ -34,6 +34,17 @@ accuracy.
 - Concepts and architecture pages explain behavior and implementation boundaries.
 - Developer and troubleshooting guides support maintenance and diagnosis.
 - Release-aware status pages show which project version the documentation represents.
+
+## Development Environments
+
+Maintainers can work directly with the pinned Yarn runtime or use the optional
+Docker and Compose environment. Both paths run the same formatting, freshness,
+type-checking, and multilingual build contracts. The production container is a
+local or self-hosted preview; GitHub Pages and GitLab Pages still deploy static
+files directly.
+
+See [Docker and Compose](./devalltect-docs/docker) for image stages, commands, ports, volume
+behavior, and the CI boundary.
 
 ## For Maintainers
 

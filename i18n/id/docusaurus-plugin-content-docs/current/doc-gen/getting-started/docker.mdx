@@ -15,7 +15,7 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-  command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.0"
+  command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.2"
   title="Jalankan Doc Gen dengan Docker"
   description="Gunakan image terpublikasi untuk memeriksa atau mendokumentasikan proyek yang di-mount secara eksplisit."
   category="Memulai"
@@ -27,15 +27,15 @@ import {
 
 | Tag    | Contoh   | Perilaku                                                                |
 | ------ | -------- | ----------------------------------------------------------------------- |
-| Eksak  | `v1.0.0` | Immutable dan disarankan untuk CI atau otomasi yang dapat direproduksi. |
+| Eksak  | `v1.0.2` | Immutable dan disarankan untuk CI atau otomasi yang dapat direproduksi. |
 | Minor  | `v1.0`   | Bergerak ke patch stabil terbaru dalam lini 1.0.                        |
 | Major  | `v1`     | Bergerak ke rilis stabil terbaru dalam lini 1.x.                        |
 | Latest | `latest` | Bergerak ke rilis stabil Doc Gen terbaru.                               |
 
 <Terminal title="Pull dan verifikasi Doc Gen" language="bash">
 
-{`docker pull ghcr.io/devalltect00/doc-gen:v1.0.0
-docker run --rm ghcr.io/devalltect00/doc-gen:v1.0.0 --help`}
+{`docker pull ghcr.io/devalltect00/doc-gen:v1.0.2
+docker run --rm ghcr.io/devalltect00/doc-gen:v1.0.2 --help`}
 
 </Terminal>
 

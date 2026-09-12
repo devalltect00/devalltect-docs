@@ -1,0 +1,19 @@
+x-common-service: &common-service
+  extends:
+    file: docker-compose.yml
+    service: base
+
+x-production-build: &production-build
+  context: .
+  dockerfile: Dockerfile
+  target: production
+
+services:
+  app:
+    <<: *common-service
+    image: devalltect00-docs-prod:latest
+    build: *production-build
+    working_dir: /usr/share/nginx/html
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

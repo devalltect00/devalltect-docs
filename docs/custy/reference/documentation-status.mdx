@@ -4,7 +4,7 @@ description: "See which Custy release this documentation represents, when it was
 sidebar_position: 10
 sidebar_key: custy-reference-documentation-status
 tags: [custy, reference, documentation status, version]
-keywords: [Custy documentation version, Custy 2.1.1 docs, documentation baseline]
+keywords: [Custy documentation version, Custy 2.1.2 docs, documentation baseline]
 ---
 
 import {
@@ -23,13 +23,13 @@ import {
   title="Documentation Status"
   description="Identify the Custy release represented by this site and decide when release-specific verification is needed."
   category="Reference"
-  status="Auto-checked for v2.1.1"
+  status="Auto-checked for v2.1.2"
   syntax="custy --version"
   tags={["documentation baseline", "release alignment", "maintenance"]}
   links={[
     {
-      label: "Custy v2.1.1 Release",
-      href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1",
+      label: "Custy v2.1.2 Release",
+      href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.2",
     },
     { label: "All Releases", href: "https://github.com/devalltect00/Custy/releases" },
     { label: "Reference", href: "./overview" },
@@ -38,8 +38,8 @@ import {
 
 <CommandMetadata
   items={[
-    { label: "Documentation Baseline", value: "Custy v2.1.1", icon: "release" },
-    { label: "Last Reviewed", value: "August 25, 2026", icon: "success" },
+    { label: "Documentation Baseline", value: "Custy v2.1.2", icon: "release" },
+    { label: "Last Reviewed", value: "September 11, 2026", icon: "success" },
     { label: "Languages", value: "English and Indonesian", icon: "feature" },
     { label: "Freshness Mode", value: "Automatic · SemVer", icon: "configuration" },
   ]}
@@ -47,8 +47,8 @@ import {
 
 ## Current baseline
 
-These pages describe **Custy v2.1.1** and were last reviewed against the active
-source on **August 25, 2026**. The date records a deliberate documentation
+These pages describe **Custy v2.1.2** and were last reviewed against the active
+source on **September 11, 2026**. The date records a deliberate documentation
 review; it is not an automatic Git edit date or deployment timestamp.
 
 <InfoBox variant="info" title="Remote tags are checked at build time">
@@ -71,16 +71,16 @@ Custy uses automatic SemVer detection for its current repository tag strategy.
 
 </Terminal>
 
-- If the command reports `2.1.1`, this documentation is the matching baseline.
+- If the command reports `2.1.2`, this documentation is the matching baseline.
 - If it reports an older version, use that version's release notes and source
   tag to identify features that were not available yet.
-- If it reports a newer version, review the releases published after `v2.1.1`
+- If it reports a newer version, review the releases published after `v2.1.2`
   for new commands, options, configuration, behavior changes, and fixes.
 - For pre-release or post-release identifiers, compare the complete version,
   including markers such as `alpha`, `beta`, `rc`, `dev`, or `post`.
 
 Use the [Custy releases](https://github.com/devalltect00/Custy/releases) and the
-[`v2.1.1` source snapshot](https://github.com/devalltect00/Custy/tree/v2.1.1)
+[`v2.1.2` source snapshot](https://github.com/devalltect00/Custy/tree/v2.1.2)
 as release-specific references.
 
 </Section>
@@ -143,7 +143,7 @@ do not belong in `.config/custy/config.toml`.
       type: "string",
       required: true,
       description:
-        "Repository tag intended to represent the documented release, such as v2.1.1.",
+        "Repository tag intended to represent the documented release, such as v2.1.2.",
     },
     {
       property: "lastReviewed",
@@ -224,10 +224,10 @@ do not belong in `.config/custy/config.toml`.
 
 ```ts title="src/data/projects.ts"
 documentation: {
-  version: "2.1.1",
-  versionTag: "v2.1.1",
-  lastReviewed: "2026-08-25",
-  releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1",
+  version: "2.1.2",
+  versionTag: "v2.1.2",
+  lastReviewed: "2026-09-11",
+  releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.2",
   statusPath: "/docs/custy/reference/documentation-status",
   freshness: {
     mode: "auto",
@@ -325,19 +325,19 @@ freshness resolver.
       title: "Public CLI",
       icon: <Icon name="terminal" />,
       children:
-        "Documented command names, options, output, side effects, and supported public pipeline profiles are aligned with v2.1.1.",
+        "Documented command names, options, output, side effects, and supported public pipeline profiles are aligned with v2.1.2.",
     },
     {
       title: "Configuration",
       icon: <Icon name="configuration" />,
       children:
-        "Configuration sections and properties are based on the v2.1.1 templates and active resolution behavior.",
+        "Configuration sections and properties are based on the v2.1.2 templates and active resolution behavior.",
     },
     {
       title: "Developer Internals",
       icon: <Icon name="workflow" />,
       children:
-        "Architecture, extension, testing, and pipeline material reflects the source reviewed for the v2.1.1 documentation baseline.",
+        "Architecture, extension, testing, and pipeline material reflects the source reviewed for the v2.1.2 documentation baseline.",
     },
     {
       title: "Known Limitations",

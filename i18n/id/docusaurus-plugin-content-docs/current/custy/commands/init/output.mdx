@@ -91,14 +91,14 @@ Initialization completed successfully.
 3. Verify default_remote, main_remotes, and backup_remotes with git remote -v.
 4. Run custy validate.
    `,
-            notes:
-                "Susunan kata yang tepat dapat sedikit berbeda antarversi Custy, tetapi keseluruhan alurnya tetap sama.",
-        },
-        {
-            title: "Resource Sudah Ada",
-            description:
-                "Ditampilkan ketika Custy mempertahankan existing files sambil menambahkan packaged example yang belum ada.",
-            output: `
+    notes:
+        "Susunan kata yang tepat dapat sedikit berbeda antarversi Custy, tetapi keseluruhan alurnya tetap sama.",
+},
+{
+    title: "Resource Sudah Ada",
+    description:
+        "Ditampilkan ketika Custy mempertahankan existing files sambil menambahkan packaged example yang belum ada.",
+    output: `
    Skipped .config/custy/config.toml (already exists)
    Skipped .config/custy/templates/commit-message.txt (already exists)
    Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt

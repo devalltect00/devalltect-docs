@@ -64,8 +64,8 @@
 #
 # Notes
 # -----
-# - No Docker required
-# - No Docker Compose required
+# - Docker and Compose are optional local and CI validation tools
+# - Pages deployment does not consume the production-preview image
 # - No container registry required
 # - No release workflow required
 #

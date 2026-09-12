@@ -100,6 +100,16 @@ jobs:
         run: yarn install --immutable
 
       # =====================================================
+      # 🎨 FORMATTING AND PORTAL TESTS
+      # =====================================================
+
+      - name: 🎨 Check formatting
+        run: yarn format:check
+
+      - name: 🧪 Test documentation freshness
+        run: yarn test
+
+      # =====================================================
       # 🔍 TYPESCRIPT VALIDATION
       # =====================================================
 

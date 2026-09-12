@@ -1,35 +1,29 @@
 .button {
+  display: inline-flex;
 
-    display: inline-flex;
+  align-items: center;
 
-    align-items: center;
+  gap: 0.5rem;
 
-    gap: .5rem;
+  padding: 0.45rem 0.8rem;
 
-    padding: .45rem .8rem;
+  border: 1px solid var(--ifm-toc-border-color);
 
-    border: 1px solid var(--ifm-toc-border-color);
+  border-radius: var(--docs-radius-sm);
 
-    border-radius: var(--docs-radius-sm);
+  background: transparent;
 
-    background: transparent;
+  cursor: pointer;
 
-    cursor: pointer;
+  font-size: 0.85rem;
 
-    font-size: .85rem;
-
-    transition: all var(--docs-transition);
-
+  transition: all var(--docs-transition);
 }
 
 .button:hover {
-
-    background: var(--ifm-hover-overlay);
-
+  background: var(--ifm-hover-overlay);
 }
 
 .button:active {
-
-    transform: scale(.98);
-
+  transform: scale(0.98);
 }

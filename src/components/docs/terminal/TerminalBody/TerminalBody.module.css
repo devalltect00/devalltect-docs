@@ -1,37 +1,31 @@
 .body {
+  margin: 0;
 
-    margin: 0;
+  padding: 1.25rem 1.5rem;
 
-    padding: 1.25rem 1.5rem;
+  overflow-x: auto;
 
-    overflow-x: auto;
+  background: var(--ifm-code-background);
 
-    background: var(--ifm-code-background);
+  font-family: var(--ifm-font-family-monospace);
 
-    font-family: var(--ifm-font-family-monospace);
+  font-size: 0.92rem;
 
-    font-size: .92rem;
+  line-height: 1.75;
 
-    line-height: 1.75;
-
-    white-space: pre;
-
+  white-space: pre;
 }
 
 .body code {
+  padding: 0;
 
-    padding: 0;
+  background: transparent;
 
-    background: transparent;
+  border: none;
 
-    border: none;
-
-    color: inherit;
-
+  color: inherit;
 }
 
 .lineNumbers {
-
-    counter-reset: line;
-
+  counter-reset: line;
 }

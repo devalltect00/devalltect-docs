@@ -49,8 +49,12 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
+    "test": "yarn test:documentation-freshness",
     "test:documentation-freshness": "tsx --test --test-concurrency=1 plugins/documentation-freshness/*.test.ts",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate": "yarn format:check && yarn test && yarn typecheck && yarn build"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",
@@ -71,6 +75,7 @@
     "@types/node": "20",
     "@types/react": "^19.0.0",
     "@types/semver": "7.8.0",
+    "prettier": "3.6.2",
     "tsx": "4.23.12",
     "typescript": "~6.0.2"
   },

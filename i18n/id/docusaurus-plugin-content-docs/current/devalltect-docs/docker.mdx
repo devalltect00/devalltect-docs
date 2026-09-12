@@ -1,0 +1,95 @@
+---
+title: Docker dan Compose
+description: Kembangkan, validasi, dan pratinjau Devalltect Docs dalam container yang reproducible.
+sidebar_position: 3
+---
+
+# Docker dan Compose
+
+Docker adalah jalur pengembangan dan validasi opsional untuk Devalltect Docs.
+Docker menjaga Node.js 20, Yarn 4.18.0, dependency, dan static server tetap
+konsisten tanpa menggantikan alur native Yarn yang lebih cepat.
+
+## Pilih Alur yang Tepat
+
+| Tujuan                         | Perintah yang direkomendasikan    | Hasil                                                        |
+| ------------------------------ | --------------------------------- | ------------------------------------------------------------ |
+| Mengedit dengan live reload    | `make c-run-dev`                  | Docusaurus di `http://localhost:3000/devalltect-docs/`       |
+| Menjalankan validasi container | `make c-check`                    | Formatting, pengujian, type checking, dan build kedua locale |
+| Meninjau output produksi       | `make c-run-prod`                 | Nginx di `http://localhost:8080/devalltect-docs/`            |
+| Deploy portal publik           | Workflow GitHub atau GitLab Pages | Output statis `build/`; tanpa container                      |
+
+## Build Image
+
+Build service dependency, development, dan production-preview:
+
+```bash
+make c-build-all
+```
+
+Dockerfile juga menyediakan target `validation`. Build target ini menjalankan
+pemeriksaan rilis non-mutating secara lengkap dan gagal jika formatting,
+pengujian freshness, TypeScript, atau build produksi multilingual gagal:
+
+```bash
+make d-build-validation
+```
+
+## Development Server
+
+```bash
+make c-run-dev
+```
+
+Compose melakukan bind mount repositori dan menyimpan `node_modules` dalam
+named volume. Batas ini mencegah dependency container Linux menggantikan
+dependency host. File polling diaktifkan agar perubahan dari Windows, macOS,
+atau Linux memicu live reload dengan andal.
+
+Hentikan service development dengan:
+
+```bash
+make c-down-dev
+```
+
+## Pratinjau Produksi
+
+Build dan jalankan image Nginx yang immutable:
+
+```bash
+make c-build-prod
+make c-run-prod
+```
+
+Container mengarahkan `/` ke `/devalltect-docs/`, menyajikan output Bahasa
+Inggris dan Bahasa Indonesia di bawah project base path yang dikonfigurasi,
+serta menyediakan `/healthz` untuk pemeriksaan container.
+
+Hentikan dengan:
+
+```bash
+make c-down-prod
+```
+
+## Pemeriksaan Container Terfokus
+
+```bash
+make c-test
+make c-typecheck
+make c-format-check
+make c-docs-build
+make c-check
+```
+
+Jalankan `make help-compose` atau `make help-docker` untuk melihat grup perintah
+lengkap.
+
+## Batas CI dan Deployment
+
+GitHub Actions dan GitLab CI membangun serta menjalankan smoke test pada
+definisi container, tetapi tidak login ke registry atau memublikasikan image.
+GitHub Pages dan GitLab Pages tetap melakukan instalasi dengan Yarn, membangun
+site statis, dan memublikasikan file statis secara langsung.
+
+Pemisahan ini menjaga deployment tetap sederhana sekaligus menyediakan
+pratinjau self-hosted yang reproducible bagi maintainer.

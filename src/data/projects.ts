@@ -237,11 +237,11 @@ export const PROJECTS: Project[] = [
     docsPath: "/docs/path-header-scanner",
     available: true,
     documentation: {
-      version: "1.0.0",
-      versionTag: "v1.0.0",
-      lastReviewed: "2026-09-02",
+      version: "1.0.1",
+      versionTag: "v1.0.1",
+      lastReviewed: "2026-09-11",
       releaseUrl:
-        "https://github.com/devalltect00/Path-Header-Scanner/releases/tag/v1.0.0",
+        "https://github.com/devalltect00/Path-Header-Scanner/releases/tag/v1.0.1",
       statusPath: "/docs/path-header-scanner/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -271,10 +271,10 @@ export const PROJECTS: Project[] = [
     docsPath: "/docs/doc-gen",
     available: true,
     documentation: {
-      version: "1.0.1",
-      versionTag: "v1.0.1",
-      lastReviewed: "2026-09-09",
-      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.0.1",
+      version: "1.0.2",
+      versionTag: "v1.0.2",
+      lastReviewed: "2026-09-11",
+      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.0.2",
       statusPath: "/docs/doc-gen/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -303,10 +303,10 @@ export const PROJECTS: Project[] = [
     docsPath: "/docs/reflow",
     available: true,
     documentation: {
-      version: "1.0.1",
-      versionTag: "v1.0.1",
-      lastReviewed: "2026-09-09",
-      releaseUrl: "https://github.com/devalltect00/Git-Reflow/releases/tag/v1.0.1",
+      version: "1.0.2",
+      versionTag: "v1.0.2",
+      lastReviewed: "2026-09-11",
+      releaseUrl: "https://github.com/devalltect00/Git-Reflow/releases/tag/v1.0.2",
       statusPath: "/docs/reflow/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -335,10 +335,10 @@ export const PROJECTS: Project[] = [
     docsPath: "/docs/custy",
     available: true,
     documentation: {
-      version: "2.1.1",
-      versionTag: "v2.1.1",
-      lastReviewed: "2026-09-09",
-      releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.1",
+      version: "2.1.2",
+      versionTag: "v2.1.2",
+      lastReviewed: "2026-09-11",
+      releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.2",
       statusPath: "/docs/custy/reference/documentation-status",
       freshness: {
         mode: "auto",

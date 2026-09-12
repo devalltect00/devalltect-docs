@@ -1,0 +1,94 @@
+---
+title: Docker and Compose
+description: Develop, validate, and preview Devalltect Docs in reproducible containers.
+sidebar_position: 3
+---
+
+# Docker and Compose
+
+Docker is an optional development and validation path for Devalltect Docs. It
+keeps Node.js 20, Yarn 4.18.0, dependencies, and the static server consistent
+without replacing the faster native Yarn workflow.
+
+## Choose the Right Workflow
+
+| Goal                     | Recommended command             | Result                                                  |
+| ------------------------ | ------------------------------- | ------------------------------------------------------- |
+| Edit with live reload    | `make c-run-dev`                | Docusaurus at `http://localhost:3000/devalltect-docs/`  |
+| Run container validation | `make c-check`                  | Formatting, tests, type checking, and both-locale build |
+| Review production output | `make c-run-prod`               | Nginx at `http://localhost:8080/devalltect-docs/`       |
+| Deploy the public portal | GitHub or GitLab Pages workflow | Static `build/` output; no container involved           |
+
+## Build the Images
+
+Build the dependency, development, and production-preview services:
+
+```bash
+make c-build-all
+```
+
+The Dockerfile also exposes a `validation` target. Building it runs the full
+non-mutating release check and fails if formatting, freshness tests, TypeScript,
+or the multilingual production build fails:
+
+```bash
+make d-build-validation
+```
+
+## Development Server
+
+```bash
+make c-run-dev
+```
+
+Compose bind-mounts the repository and keeps `node_modules` in a named volume.
+This prevents Linux container dependencies from replacing host dependencies.
+File polling is enabled so changes made on Windows, macOS, or Linux trigger live
+reload reliably.
+
+Stop the development services with:
+
+```bash
+make c-down-dev
+```
+
+## Production Preview
+
+Build and start the immutable Nginx image:
+
+```bash
+make c-build-prod
+make c-run-prod
+```
+
+The container redirects `/` to `/devalltect-docs/`, serves English and
+Indonesian output under the configured project base path, and exposes
+`/healthz` for container checks.
+
+Stop it with:
+
+```bash
+make c-down-prod
+```
+
+## Focused Container Checks
+
+```bash
+make c-test
+make c-typecheck
+make c-format-check
+make c-docs-build
+make c-check
+```
+
+Run `make help-compose` or `make help-docker` for the complete command groups.
+
+## CI and Deployment Boundary
+
+GitHub Actions and GitLab CI build and smoke-test the container definitions,
+but do not log in to a registry or publish images. GitHub Pages and GitLab Pages
+continue to install with Yarn, build the static site, and publish static files
+directly.
+
+This separation keeps deployment simple while retaining a reproducible
+self-hosted preview for maintainers.

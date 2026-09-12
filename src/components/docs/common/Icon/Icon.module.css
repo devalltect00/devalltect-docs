@@ -1,23 +1,23 @@
 .icon {
-    display: inline-flex;
+  display: inline-flex;
 
-    align-items: center;
+  align-items: center;
 
-    justify-content: center;
+  justify-content: center;
 
-    line-height: 1;
+  line-height: 1;
 
-    user-select: none;
+  user-select: none;
 }
 
 .sm {
-    font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .md {
-    font-size: 1.15rem;
+  font-size: 1.15rem;
 }
 
 .lg {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }

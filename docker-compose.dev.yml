@@ -1,0 +1,62 @@
+x-common-service: &common-service
+  extends:
+    file: docker-compose.yml
+    service: base
+  image: devalltect00-docs-dev:latest
+  working_dir: /workspace
+  volumes:
+    - .:/workspace
+    - devalltect00-docs-node-modules:/workspace/node_modules
+  environment:
+    NODE_ENV: development
+    CHOKIDAR_USEPOLLING: "true"
+    WATCHPACK_POLLING: "true"
+
+x-development-build: &development-build
+  context: .
+  dockerfile: Dockerfile
+  target: development
+
+services:
+  app:
+    <<: *common-service
+    build: *development-build
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+
+  shell:
+    <<: *common-service
+    entrypoint: []
+    command: sh
+    stdin_open: true
+    tty: true
+
+  test:
+    <<: *common-service
+    entrypoint: []
+    command: yarn test
+
+  typecheck:
+    <<: *common-service
+    entrypoint: []
+    command: yarn typecheck
+
+  format-check:
+    <<: *common-service
+    entrypoint: []
+    command: yarn format:check
+
+  build:
+    <<: *common-service
+    entrypoint: []
+    command: yarn build
+
+  check:
+    <<: *common-service
+    entrypoint: []
+    command: yarn validate
+
+volumes:
+  devalltect00-docs-node-modules:

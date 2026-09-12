@@ -53,11 +53,14 @@ Common directories include:
 ├── .docusaurus/ ... (collapsed)
 ├── .gitlab
 │   ├── ci.yml
+│   ├── docker.yml
 │   └── pages.yml
 ├── .pnpm-store/ ... (collapsed)
 ├── .yarn/ ... (collapsed)
 ├── blog/ ... (collapsed)
 ├── build/ ... (collapsed)
+├── docker
+│   └── nginx.conf
 ├── docs
 │   ├── custy
 │   │   ├── architecture
@@ -308,6 +311,7 @@ Common directories include:
 │   │   └── index.mdx
 │   ├── devalltect-docs
 │   │   ├── _category_.json
+│   │   ├── docker.mdx
 │   │   ├── index.mdx
 │   │   ├── maintainer-workflow.mdx
 │   │   └── versioning-and-freshness.mdx
@@ -561,6 +565,52 @@ Common directories include:
 │       │   └── navbar.json
 │       └── code.json
 ├── logs/ ... (collapsed)
+├── make
+│   └── core
+│       ├── ci
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── cleanup
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── compose
+│       │   ├── command
+│       │   │   ├── common.mk
+│       │   │   └── core.mk
+│       │   └── help.mk
+│       ├── docker
+│       │   ├── command
+│       │   │   ├── common.mk
+│       │   │   └── core.mk
+│       │   └── help.mk
+│       ├── documentation
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── help
+│       │   ├── command.mk
+│       │   ├── helper.mk
+│       │   └── variable.mk
+│       ├── helpers
+│       │   ├── common.mk
+│       │   └── registry.mk
+│       ├── lint_format
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── local
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── qa
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── setup_install
+│       │   ├── command.mk
+│       │   └── help.mk
+│       ├── testing
+│       │   ├── command.mk
+│       │   └── help.mk
+│       └── variables
+│           ├── help.mk
+│           └── variable.mk
 ├── node_modules/ ... (collapsed)
 ├── plugins
 │   └── documentation-freshness
@@ -736,6 +786,7 @@ Common directories include:
 │   │   └── undraw_docusaurus_tree.svg
 │   └── .nojekyll
 ├── venv/ ... (collapsed)
+├── .dockerignore
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── .pre-commit-config.yaml
@@ -743,6 +794,10 @@ Common directories include:
 ├── .prettierrc.json
 ├── .yarnrc.yml
 ├── CHANGELOG.md
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
+├── docker-compose.yml
+├── Dockerfile
 ├── docusaurus.config.ts
 ├── LICENSE
 ├── Makefile
@@ -766,7 +821,12 @@ Common directories include:
 | `LICENSE` | Project license information. |
 | `SECURITY.md` | Security policy and vulnerability reporting instructions. |
 | `Makefile` | Defines common development, testing, and build commands. |
+| `Dockerfile` | Container image build instructions. |
+| `docker-compose.yml` | Default multi-container Docker configuration. |
+| `docker-compose.dev.yml` | Development Docker Compose configuration. |
+| `docker-compose.prod.yml` | Production Docker Compose configuration. |
 | `.gitignore` | Specifies files and directories ignored by Git. |
+| `.dockerignore` | Specifies files excluded from Docker build context. |
 | `.prettierrc.json` | Prettier code formatting configuration. |
 | `.prettierignore` | Files ignored by Prettier. |
 | `.pre-commit-config.yaml` | Pre-commit hooks configuration. |

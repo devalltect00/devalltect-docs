@@ -18,7 +18,8 @@ konfigurasi, persyaratan, panduan keamanan, atau contoh.
 4. Perbarui metadata proyek terpusat ketika versi, URL release, tanggal peninjauan, teknologi, atau pratinjau berubah.
 5. Tinjau navigasi, cross-link, dan halaman status dokumentasi.
 6. Jalankan formatting, pengujian freshness, type checking, dan build kedua locale.
-7. Tinjau halaman terdampak pada lebar desktop dan mobile sebelum rilis.
+7. Saat file container berubah, validasi Compose dan kedua mode runtime Docker.
+8. Tinjau halaman terdampak pada lebar desktop dan mobile sebelum rilis.
 
 ## Gambar Pratinjau Proyek
 
@@ -59,6 +60,25 @@ yarn test:documentation-freshness
 yarn typecheck
 yarn build
 ```
+
+Agregat non-mutating yang setara adalah:
+
+```bash
+yarn validate
+```
+
+Saat konfigurasi Docker, Compose, atau Nginx berubah, jalankan juga:
+
+```bash
+make c-config
+make c-build-all
+make c-check
+```
+
+Tinjau site development aktif di
+`http://localhost:3000/devalltect-docs/` dan pratinjau produksi immutable di
+`http://localhost:8080/devalltect-docs/`. Validasi container tidak boleh
+memublikasikan image atau menggantikan deployment Pages.
 
 Jalankan juga pemeriksaan pre-commit yang dikonfigurasi dan konfirmasi output
 kedua locale berhasil dibangun tanpa error route, link, anchor, atau rendering

@@ -15,7 +15,7 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-  command="docker pull ghcr.io/devalltect00/reflow:v1.0.1"
+  command="docker pull ghcr.io/devalltect00/reflow:v1.0.2"
   title="Run Reflow with Docker"
   description="Choose an immutable release tag or a controlled moving alias, then mount only the repository Reflow should manage."
   category="Getting Started"
@@ -29,14 +29,14 @@ Stable releases publish four coordinated references to the same image:
 
 | Tag    | Example  | Behavior                                                                     |
 | ------ | -------- | ---------------------------------------------------------------------------- |
-| Exact  | `v1.0.1` | Immutable release selection; recommended for CI and reproducible automation. |
+| Exact  | `v1.0.2` | Immutable release selection; recommended for CI and reproducible automation. |
 | Minor  | `v1.0`   | Moves to the newest stable patch in the 1.0 line.                            |
 | Major  | `v1`     | Moves to the newest stable release in the 1.x line.                          |
 | Latest | `latest` | Moves to the newest stable Reflow release.                                   |
 
 <Terminal title="Pull Reflow" language="bash">
 
-{`docker pull ghcr.io/devalltect00/reflow:v1.0.1
+{`docker pull ghcr.io/devalltect00/reflow:v1.0.2
 docker pull ghcr.io/devalltect00/reflow:v1.0
 docker pull ghcr.io/devalltect00/reflow:v1
 docker pull ghcr.io/devalltect00/reflow:latest`}
@@ -61,13 +61,13 @@ with Reflow's global `--dry-run` option first.
 
 <Terminal title="Verify the image" language="bash">
 
-{`docker run --rm ghcr.io/devalltect00/reflow:v1.0.1 --help`}
+{`docker run --rm ghcr.io/devalltect00/reflow:v1.0.2 --help`}
 
 </Terminal>
 
 <InfoBox variant="note" title="Help is independent of the mounted project">
 
-Reflow v1.0.1 resolves project-specific source settings only when an operation
+Reflow v1.0.2 resolves project-specific source settings only when an operation
 needs them. Running the container with no command or with `--help` therefore
 works from repositories that do not contain a `/workspace/app` directory.
 

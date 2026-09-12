@@ -18,7 +18,8 @@
 #
 # .gitlab-ci.yml
 # ├── .gitlab/ci.yml
-# └── .gitlab/pages.yml
+# ├── .gitlab/pages.yml
+# └── .gitlab/docker.yml
 #
 #
 # GitHub Equivalent
@@ -26,13 +27,15 @@
 #
 # .github/workflows/
 # ├── ci.yml
-# └── pages.yml
+# ├── pages.yml
+# └── docker.yml
 #
 #
 # Responsibilities
 # ----------------
 # - Documentation Validation
 # - Docusaurus Build Verification
+# - Docker Image Validation
 # - GitLab Pages Deployment
 #
 #
@@ -64,11 +67,11 @@
 #
 # Docusaurus-Specific Notes
 # -------------------------
-# Unlike application repositories, this documentation
-# project does not require:
+# Docker is optional development and validation tooling. The Pages deployments
+# continue to publish static output directly. This documentation project does
+# not require:
 #
-# - Docker image builds
-# - Container registries
+# - A container registry
 # - Kubernetes deployment
 # - Release packaging
 #
@@ -84,6 +87,7 @@
 # .gitlab/
 # ├── ci.yml
 # ├── pages.yml
+# ├── docker.yml
 # ├── link-check.yml
 # ├── spell-check.yml
 # └── versioning.yml
@@ -93,8 +97,10 @@
 
 stages:
   - test
+  - container
   - deploy
 
 include:
   - local: ".gitlab/ci.yml"
+  - local: ".gitlab/docker.yml"
   - local: ".gitlab/pages.yml"

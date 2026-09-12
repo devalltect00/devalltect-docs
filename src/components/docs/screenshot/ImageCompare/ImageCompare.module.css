@@ -1,9 +1,7 @@
 .compare {
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    gap: var(--docs-space-xl);
-
+  gap: var(--docs-space-xl);
 }

@@ -5,16 +5,8 @@
   padding: 6rem 0;
 
   background:
-    radial-gradient(
-      circle at top right,
-      rgba(216, 27, 133, 0.12),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at bottom left,
-      rgba(77, 217, 255, 0.10),
-      transparent 35%
-    );
+    radial-gradient(circle at top right, rgba(216, 27, 133, 0.12), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(77, 217, 255, 0.1), transparent 35%);
 
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }

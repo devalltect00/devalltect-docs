@@ -1,0 +1,10 @@
+name: devalltect00-docs
+
+services:
+  base:
+    image: devalltect00-docs-base:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dependencies
+    working_dir: /workspace

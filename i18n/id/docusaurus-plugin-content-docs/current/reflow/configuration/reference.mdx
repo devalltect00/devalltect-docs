@@ -20,7 +20,7 @@ import {
   title="Referensi Konfigurasi"
   description="Petakan konfigurasi Reflow bawaan ke perintah dan batas operasi yang memakainya."
   category="Konfigurasi"
-  status="Reflow 1.0.0"
+  status="Reflow 1.0.2"
   syntax="[tool.reflow.*]"
   tags={["TOML", "default perintah", "target repositori"]}
   links={[
@@ -293,7 +293,7 @@ automasi baru harus memakai `[tool.reflow.cli.releases.recover]` dan
 />
 
 `reflow dockerize` tidak memiliki flag provider atau image khusus perintah pada
-Reflow 1.0.0; atur nilai ini di TOML. Mode live melakukan build dan push satu
+Reflow 1.0.2; atur nilai ini di TOML. Mode live melakukan build dan push satu
 image per tag repositori, menandai tag terurut terbaru sebagai `latest`, serta
 dapat menghapus image lokal non-latest.
 
@@ -420,7 +420,7 @@ Jangan gabungkan contoh `path` dan `url` dalam satu konfigurasi aktif.
 <InfoBox variant="note" title="Gunakan key yang didukung secara tepat">
 
 Key yang tidak dikenal atau salah eja tidak menggantikan opsi CLI atau default
-yang didukung. Bandingkan file hasil inisialisasi dengan template Reflow 1.0.0
+yang didukung. Bandingkan file hasil inisialisasi dengan template Reflow 1.0.2
 bawaan saat memperbarui konfigurasi proyek yang sudah ada.
 
 </InfoBox>

@@ -1,0 +1,38 @@
+# =========================================================
+# 🐋 Docker Validation
+# =========================================================
+#
+# Builds the validation and production-preview targets, then verifies the
+# Nginx health endpoint and Docusaurus project subpath. Images remain local to
+# the CI runner and are never published by this job.
+
+docker:validate:
+  stage: container
+  image: docker:27
+
+  services:
+    - docker:27-dind
+
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_BUILDKIT: "1"
+
+  before_script:
+    - docker version
+
+  script:
+    - docker build --target validation --tag devalltect00-docs-validation:ci .
+    - docker build --target production --tag devalltect00-docs-prod:ci .
+    - docker run --detach --name devalltect00-docs-preview devalltect00-docs-prod:ci
+    - docker exec devalltect00-docs-preview wget --quiet --tries=10 --spider http://127.0.0.1:8080/healthz
+    - docker exec devalltect00-docs-preview wget --quiet --tries=10 --spider http://127.0.0.1:8080/devalltect-docs/
+
+  after_script:
+    - docker rm --force devalltect00-docs-preview 2>/dev/null || true
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: '$CI_COMMIT_BRANCH == "develop"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'

@@ -1,56 +1,42 @@
 .section {
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    gap: var(--docs-space-xl);
-
+  gap: var(--docs-space-xl);
 }
 
 .wrapper {
-
-    overflow-x: auto;
-
+  overflow-x: auto;
 }
 
 .table {
+  width: 100%;
 
-    width: 100%;
-
-    border-collapse: collapse;
-
+  border-collapse: collapse;
 }
 
 .table th,
 .table td {
+  padding: 0.875rem 1rem;
 
-    padding: .875rem 1rem;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
 
-    border-bottom: 1px solid var(--ifm-toc-border-color);
+  text-align: left;
 
-    text-align: left;
-
-    vertical-align: top;
-
+  vertical-align: top;
 }
 
 .table th {
+  background: var(--ifm-background-surface-color);
 
-    background: var(--ifm-background-surface-color);
-
-    font-weight: 600;
-
+  font-weight: 600;
 }
 
 .table tbody tr:hover {
-
-    background: var(--ifm-hover-overlay);
-
+  background: var(--ifm-hover-overlay);
 }
 
 .table code {
-
-    font-size: .875rem;
-
+  font-size: 0.875rem;
 }

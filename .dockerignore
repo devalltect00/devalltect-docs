@@ -1,0 +1,66 @@
+# =========================================================
+# VERSION CONTROL
+# =========================================================
+.git/
+.gitignore
+.gitattributes
+
+# =========================================================
+# DEPENDENCIES AND PACKAGE-MANAGER STATE
+# =========================================================
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Keep .yarn/releases/ because the repository pins Yarn there.
+
+# =========================================================
+# GENERATED DOCUMENTATION AND TOOL OUTPUT
+# =========================================================
+.docusaurus/
+build/
+public/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# =========================================================
+# CACHES, LOGS, AND TEMPORARY FILES
+# =========================================================
+.cache/
+.cache-loader/
+.parcel-cache/
+logs/
+*.log
+*.tmp
+*.temp
+report.*.json
+
+# =========================================================
+# LOCAL CONFIGURATION AND MAINTENANCE FILES
+# =========================================================
+.env
+.env.*
+.vscode/
+.idea/
+.config/
+.agents/
+backups/
+scratch/
+tmp/
+TODO.md
+
+# =========================================================
+# OPERATING-SYSTEM AND ARCHIVE FILES
+# =========================================================
+.DS_Store
+Thumbs.db
+*.zip
+*.tar
+*.tar.gz
+

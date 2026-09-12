@@ -1,31 +1,23 @@
 .legend {
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    gap: var(--docs-space-xl);
-
+  gap: var(--docs-space-xl);
 }
 
 .card {
-
-    height: 100%;
-
+  height: 100%;
 }
 
 .header {
-
-    margin-bottom: .75rem;
-
+  margin-bottom: 0.75rem;
 }
 
 .description {
+  margin: 0;
 
-    margin: 0;
+  color: var(--ifm-color-emphasis-700);
 
-    color: var(--ifm-color-emphasis-700);
-
-    line-height: var(--docs-line-height);
-
+  line-height: var(--docs-line-height);
 }

@@ -14,12 +14,14 @@ This page records the badges used by the Devalltect documentation portal. The UR
 
 ## 🚀 Build and Deployment
 
-| Badge                                                                                                                                                                                       | Purpose                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| [![GitHub Pages](https://github.com/devalltect00/devalltect-docs/actions/workflows/pages.yml/badge.svg)](https://github.com/devalltect00/devalltect-docs/actions/workflows/pages.yml)       | Production build and Pages deployment |
-| [![Pages deployment](https://img.shields.io/github/deployments/devalltect00/devalltect-docs/github-pages?label=GitHub%20Pages&logo=github)](https://devalltect00.github.io/devalltect-docs) | Current GitHub Pages deployment       |
-| ![TypeScript](https://img.shields.io/badge/typecheck-TypeScript%206-3178C6?logo=typescript&logoColor=white)                                                                                 | Strict TypeScript validation          |
-| ![Broken links](https://img.shields.io/badge/links-build--validated-success.svg)                                                                                                            | Docusaurus production link validation |
+| Badge                                                                                                                                                                                        | Purpose                               |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| [![GitHub Pages](https://github.com/devalltect00/devalltect-docs/actions/workflows/pages.yml/badge.svg)](https://github.com/devalltect00/devalltect-docs/actions/workflows/pages.yml)        | Production build and Pages deployment |
+| [![CI](https://github.com/devalltect00/devalltect-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/devalltect00/devalltect-docs/actions/workflows/ci.yml)                        | Source and documentation validation   |
+| [![Docker Validation](https://github.com/devalltect00/devalltect-docs/actions/workflows/docker.yml/badge.svg)](https://github.com/devalltect00/devalltect-docs/actions/workflows/docker.yml) | Development and preview image checks  |
+| [![Pages deployment](https://img.shields.io/github/deployments/devalltect00/devalltect-docs/github-pages?label=GitHub%20Pages&logo=github)](https://devalltect00.github.io/devalltect-docs)  | Current GitHub Pages deployment       |
+| ![TypeScript](https://img.shields.io/badge/typecheck-TypeScript%206-3178C6?logo=typescript&logoColor=white)                                                                                  | Strict TypeScript validation          |
+| ![Broken links](https://img.shields.io/badge/links-build--validated-success.svg)                                                                                                             | Docusaurus production link validation |
 
 ## 📚 Documentation
 
@@ -41,6 +43,8 @@ This page records the badges used by the Devalltect documentation portal. The UR
 | ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)            | Source language                    |
 | ![Reusable components](https://img.shields.io/badge/components-reusable-success.svg)                       | Shared documentation UI components |
 | ![Internationalization](https://img.shields.io/badge/i18n-en%20%7C%20id-success.svg)                       | English and Indonesian content     |
+| ![Docker](https://img.shields.io/badge/Docker-optional-2496ED?logo=docker&logoColor=white)                 | Reproducible container workflow    |
+| ![Docker Compose](https://img.shields.io/badge/Compose-supported-2496ED?logo=docker&logoColor=white)       | Development and preview services   |
 
 ## ✨ Portal Coverage
 
@@ -53,4 +57,7 @@ This page records the badges used by the Devalltect documentation portal. The UR
 
 ## Recommended README Set
 
-Use the Pages workflow, deployment, Docusaurus, Yarn, Node.js, license, and locale badges in the repository README. Keep this page as the complete badge catalog.
+Use the Pages, CI, Docker-validation, Docusaurus, Yarn, Node.js, Docker,
+license, and locale badges in the repository README. Keep this page as the
+complete badge catalog. The Docker badges describe optional development and
+validation support; they do not imply that an image is published.

@@ -15,7 +15,7 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-  command="docker pull ghcr.io/devalltect00/reflow:v1.0.0"
+  command="docker pull ghcr.io/devalltect00/reflow:v1.0.2"
   title="Jalankan Reflow dengan Docker"
   description="Pilih tag rilis immutable atau alias bergerak yang terkontrol, lalu mount hanya repositori yang ingin dikelola Reflow."
   category="Memulai"
@@ -29,14 +29,14 @@ Rilis stabil memublikasikan empat referensi terkoordinasi ke image yang sama:
 
 | Tag    | Contoh   | Perilaku                                                                          |
 | ------ | -------- | --------------------------------------------------------------------------------- |
-| Eksak  | `v1.0.0` | Pilihan rilis immutable; disarankan untuk CI dan otomasi yang dapat direproduksi. |
+| Eksak  | `v1.0.2` | Pilihan rilis immutable; disarankan untuk CI dan otomasi yang dapat direproduksi. |
 | Minor  | `v1.0`   | Bergerak ke patch stabil terbaru dalam lini 1.0.                                  |
 | Major  | `v1`     | Bergerak ke rilis stabil terbaru dalam lini 1.x.                                  |
 | Latest | `latest` | Bergerak ke rilis stabil Reflow terbaru.                                          |
 
 <Terminal title="Pull Reflow" language="bash">
 
-{`docker pull ghcr.io/devalltect00/reflow:v1.0.0
+{`docker pull ghcr.io/devalltect00/reflow:v1.0.2
 docker pull ghcr.io/devalltect00/reflow:v1.0
 docker pull ghcr.io/devalltect00/reflow:v1
 docker pull ghcr.io/devalltect00/reflow:latest`}
@@ -61,7 +61,7 @@ operasi berdampak dengan opsi global `--dry-run` terlebih dahulu.
 
 <Terminal title="Verifikasi image" language="bash">
 
-{`docker run --rm ghcr.io/devalltect00/reflow:v1.0.0 --help`}
+{`docker run --rm ghcr.io/devalltect00/reflow:v1.0.2 --help`}
 
 </Terminal>
 

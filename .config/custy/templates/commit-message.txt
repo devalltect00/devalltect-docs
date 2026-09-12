@@ -1,81 +1,88 @@
-refactor(portal): checkpoint clearer homepage navigation
+feat(container): checkpoint reproducible portal workflows
 
-Record the third untagged v1.0.0 development checkpoint by simplifying the
-homepage information architecture, making reader entry points accurately match
-their destinations, and refining the technology summaries shown for each
-documented project.
+Record the fourth untagged v1.0.0 development checkpoint by adding optional
+Docker development, complete container validation, an immutable production
+preview, and a modular Make interface without changing the direct static Pages
+deployment model.
 
-### 🧭 Homepage Information Architecture
+### 🐋 Multi-Stage Container Workflow
 
-- Consolidate the overlapping documentation-category and documentation-tree
-  sections into one goal-oriented "Find What You Need" section.
-- Present getting started, commands and configuration, concepts and
-  architecture, and development and testing as clear reader goals.
-- Explain that projects share navigation conventions without claiming that
-  every project must expose an identical documentation tree.
-- Remove hover behavior from informational cards so they no longer imply an
-  unavailable click action.
-- Remove the superseded DocumentationModel component and stylesheet instead of
-  retaining unused homepage code.
+- Add dependency, development, validation, builder, and production Docker
+  stages around Node.js 20 and the repository-pinned Yarn 4.18.0 runtime.
+- Run formatting checks, documentation-freshness tests, TypeScript validation,
+  and both-locale Docusaurus builds inside the validation stage.
+- Serve the immutable production build through Nginx at the configured
+  `/devalltect-docs/` base path.
+- Redirect the container root to the portal base path and provide a dedicated
+  health endpoint for automated smoke checks.
+- Keep generated output, host dependencies, caches, logs, Git metadata, and
+  maintainer-only files out of the Docker build context.
 
-### 👥 Accurate Reader Paths
+### 🧩 Docker Compose Environments
 
-- Replace ambiguous Users and Developers labels with the task-oriented
-  "Use a Tool" and "Develop or Contribute" paths.
-- Keep the tool path connected to the project directory.
-- Add an English and Indonesian developer hub with direct project developer
-  guides, architecture references, and the portal maintainer workflow.
-- Register the developer hub in the curated root sidebar immediately after the
-  project overview so the page retains sidebar and pagination context.
-- Point the developer homepage action to that dedicated hub instead of the
-  generic portal introduction.
+- Add shared, development, and production Compose definitions.
+- Provide live reload on port 3000 with host source mounted separately from a
+  container-owned `node_modules` volume.
+- Provide an immutable Nginx production preview on port 8080 without mounting
+  mutable source content into the runtime image.
+- Expose focused services for freshness tests, formatting checks, type checking,
+  multilingual builds, complete validation, and an interactive shell.
 
-### 🧰 Curated Project Technology Metadata
+### 🛠️ Modular Make Interface
 
-- Expand homepage technology badges with representative runtime technologies
-  and important product integrations.
-- Add Rich and Docker where they describe the delivered CLI experience.
-- Identify Reflow's GitHub CLI integration and Custy's Jinja2 and Commitizen
-  integration without listing every test, formatter, hook, or CI dependency.
-- Keep the project cards readable by treating their badges as curated summaries
-  rather than exhaustive dependency manifests.
+- Replace the npm-oriented monolithic Makefile with focused Node.js and
+  Docusaurus modules modeled after the other Devalltect projects.
+- Use the checked-in Yarn release consistently for dependency installation,
+  development, testing, formatting, type checking, documentation builds, and
+  quality assurance.
+- Add categorized and counted help for local, Docker, Compose, cleanup, and CI
+  commands.
+- Keep the modular help output portable across Windows hosts and Linux
+  development containers, without duplicate Make target definitions.
+- Exclude Python packaging, registry publishing, remote runtime, and Git release
+  commands that do not belong to the documentation portal.
 
-### 🌓 Theme-Aware Branding
+### ✅ CI and Pages Boundaries
 
-- Replace transformation-oriented logo filenames with explicit `on-light` and
-  `on-dark` variants that describe their intended background.
-- Configure the navbar to select the correct logo through Docusaurus `srcDark`
-  support.
-- Render the homepage logo through Docusaurus's native themed-image component
-  so theme changes do not require custom state or duplicate branding logic.
-- Keep the light-background variant as the temporary social preview image until
-  a dedicated theme-independent social card is provided.
+- Add GitHub and GitLab container validation that builds the validation and
+  production targets and smoke-tests the health and portal routes.
+- Keep all container validation non-publishing: no registry authentication,
+  image push, release tag, or deployment side effect is introduced.
+- Expand source CI with formatting and documentation-freshness tests before
+  TypeScript and multilingual build validation.
+- Preserve direct GitHub Pages and GitLab Pages publication of static build
+  output and document that neither deployment consumes a container image.
 
-### 🌍 Documentation Synchronization
+### 📚 Documentation and Release Synchronization
 
-- Add aligned English and Indonesian developer-hub pages.
-- Add documented release versions to both project-overview tables.
-- Synchronize the portal guide with Custy v2.1.1, Path Header Scanner v1.0.0,
-  Doc Gen v1.0.1, and Reflow v1.0.1.
-- Preserve literal project names, commands, paths, and technical terms where
-  translation would reduce accuracy.
+- Add aligned English and Indonesian Docker and Compose guides.
+- Update the README, badge catalog, developer hub, portal overview, and
+  maintainer workflow with container commands, ports, responsibilities, and
+  deployment boundaries.
+- Add CI and Docker-validation badges without implying that public container
+  images exist.
+- Regenerate the concise project-structure reference and establish a clean
+  repository-wide Prettier baseline for the new CI formatting gate.
+- Update the cumulative v1.0.0 commit and tag messages to include this fourth
+  untagged development checkpoint.
 
 ### ✅ Validation
 
-- Validate TypeScript and documentation-freshness behavior.
-- Build English and Indonesian production documentation.
-- Check MDX routes, internal links, homepage rendering, responsive cards, and
-  release-template consistency before publishing v1.0.0.
+- Validate immutable dependency installation and the pinned Yarn runtime.
+- Run formatting, freshness, TypeScript, and bilingual production checks.
+- Validate categorized Make help and representative non-mutating dry-runs.
+- Validate Docker and Compose configuration, development and production image
+  builds, the Nginx health endpoint, and the configured `/devalltect-docs/`
+  English and Indonesian routes.
 
 Tag: none
-Previous checkpoint: v1.0.0 development checkpoint 2
-Release phase: v1.0.0 development checkpoint 3
+Previous checkpoint: v1.0.0 development checkpoint 3
+Release phase: v1.0.0 development checkpoint 4
 Target release: v1.0.0
 
 🔖 **Tags**:
-- Type: `#refactor`, `#documentation`, `#navigation`, `#i18n`
-- Platform: `#docusaurus`, `#react`, `#typescript`, `#yarn`
-- Projects: `#custy`, `#path-header-scanner`, `#doc-gen`, `#reflow`
-- Experience: `#homepage`, `#information-architecture`, `#developer-hub`, `#theme-aware-branding`, `#responsive-ui`
-- Quality: `#typecheck`, `#build`, `#freshness`, `#accessibility`
+- Type: `#feature`, `#container`, `#developer-experience`, `#documentation`
+- Platform: `#docusaurus`, `#nodejs`, `#yarn`, `#docker`, `#compose`, `#nginx`, `#make`
+- Delivery: `#github-actions`, `#gitlab-ci`, `#github-pages`, `#gitlab-pages`
+- Quality: `#formatting`, `#freshness`, `#typecheck`, `#build`, `#smoke-test`
 - Stability: `#checkpoint`, `#untagged`, `#pre-release`

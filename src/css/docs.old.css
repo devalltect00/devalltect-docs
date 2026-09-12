@@ -22,255 +22,177 @@ including:
 ==============================================================================
 */
 
-
 /* =============================================================================
    Light Theme
 ============================================================================= */
 
 :root {
-
-    /* =======================================================================
+  /* =======================================================================
        Colors
     ======================================================================= */
 
-    --docs-color-primary:
-        var(--ifm-color-primary);
+  --docs-color-primary: var(--ifm-color-primary);
 
-    --docs-color-secondary:
-        var(--ifm-color-secondary);
+  --docs-color-secondary: var(--ifm-color-secondary);
 
-    --docs-color-success:
-        #16a34a;
+  --docs-color-success: #16a34a;
 
-    --docs-color-warning:
-        #d97706;
+  --docs-color-warning: #d97706;
 
-    --docs-color-danger:
-        #dc2626;
+  --docs-color-danger: #dc2626;
 
-    --docs-color-info:
-        #0284c7;
+  --docs-color-info: #0284c7;
 
-    --docs-color-neutral:
-        var(--ifm-color-emphasis-300);
+  --docs-color-neutral: var(--ifm-color-emphasis-300);
 
-    --docs-color-surface:
-        var(--ifm-background-surface-color);
+  --docs-color-surface: var(--ifm-background-surface-color);
 
-    --docs-color-background:
-        var(--ifm-background-color);
+  --docs-color-background: var(--ifm-background-color);
 
-    --docs-color-border:
-        var(--ifm-toc-border-color);
+  --docs-color-border: var(--ifm-toc-border-color);
 
-    --docs-color-title:
-        var(--ifm-heading-color);
+  --docs-color-title: var(--ifm-heading-color);
 
-    --docs-color-text:
-        var(--ifm-font-color-base);
+  --docs-color-text: var(--ifm-font-color-base);
 
-    --docs-color-text-secondary:
-        var(--ifm-color-emphasis-700);
+  --docs-color-text-secondary: var(--ifm-color-emphasis-700);
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Spacing
     ======================================================================= */
 
-    --docs-space-2xs: 0.125rem;
-    --docs-space-xs: 0.25rem;
-    --docs-space-sm: 0.5rem;
-    --docs-space-md: 1rem;
-    --docs-space-lg: 1.5rem;
-    --docs-space-xl: 2rem;
-    --docs-space-2xl: 3rem;
-    --docs-space-3xl: 4rem;
+  --docs-space-2xs: 0.125rem;
+  --docs-space-xs: 0.25rem;
+  --docs-space-sm: 0.5rem;
+  --docs-space-md: 1rem;
+  --docs-space-lg: 1.5rem;
+  --docs-space-xl: 2rem;
+  --docs-space-2xl: 3rem;
+  --docs-space-3xl: 4rem;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Border Radius
     ======================================================================= */
 
-    --docs-radius-sm: 8px;
+  --docs-radius-sm: 8px;
 
-    --docs-radius-md: 12px;
+  --docs-radius-md: 12px;
 
-    --docs-radius-lg: 18px;
+  --docs-radius-lg: 18px;
 
-    --docs-radius-xl: 24px;
+  --docs-radius-xl: 24px;
 
-    --docs-radius-pill: 999px;
+  --docs-radius-pill: 999px;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Borders
     ======================================================================= */
 
-    --docs-border-width:
-        1px;
+  --docs-border-width: 1px;
 
-    --docs-border:
-        var(--docs-border-width)
-        solid
-        var(--docs-color-border);
+  --docs-border: var(--docs-border-width) solid var(--docs-color-border);
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Shadows
     ======================================================================= */
 
-    --docs-shadow-sm:
-        0 2px 8px rgb(0 0 0 / 6%);
+  --docs-shadow-sm: 0 2px 8px rgb(0 0 0 / 6%);
 
-    --docs-shadow-md:
-        0 8px 20px rgb(0 0 0 / 8%);
+  --docs-shadow-md: 0 8px 20px rgb(0 0 0 / 8%);
 
-    --docs-shadow-lg:
-        0 12px 32px rgb(0 0 0 / 12%);
+  --docs-shadow-lg: 0 12px 32px rgb(0 0 0 / 12%);
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Transition
     ======================================================================= */
 
-    --docs-transition-fast:
-        150ms ease;
+  --docs-transition-fast: 150ms ease;
 
-    --docs-transition-normal:
-        250ms ease;
+  --docs-transition-normal: 250ms ease;
 
-    --docs-transition-slow:
-        350ms ease;
+  --docs-transition-slow: 350ms ease;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Typography
     ======================================================================= */
 
-    --docs-line-height:
-        1.7;
+  --docs-line-height: 1.7;
 
-    --docs-title-gap:
-        0.75rem;
+  --docs-title-gap: 0.75rem;
 
-    --docs-subtitle-width:
-        900px;
+  --docs-subtitle-width: 900px;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Layout
     ======================================================================= */
 
-    --docs-grid-gap:
-        1.5rem;
+  --docs-grid-gap: 1.5rem;
 
-    --docs-section-gap:
-        3rem;
+  --docs-section-gap: 3rem;
 
-    --docs-container-gap:
-        2rem;
+  --docs-container-gap: 2rem;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Card Tokens
     ======================================================================= */
 
-    --docs-card-padding:
-        1.5rem;
+  --docs-card-padding: 1.5rem;
 
-    --docs-card-gap:
-        1.25rem;
+  --docs-card-gap: 1.25rem;
 
-    --docs-card-radius:
-        var(--docs-radius-lg);
+  --docs-card-radius: var(--docs-radius-lg);
 
-    --docs-card-background:
-        var(--docs-color-surface);
+  --docs-card-background: var(--docs-color-surface);
 
-    --docs-card-border:
-        var(--docs-border);
+  --docs-card-border: var(--docs-border);
 
-    --docs-card-shadow:
-        var(--docs-shadow-md);
+  --docs-card-shadow: var(--docs-shadow-md);
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Badge Tokens
     ======================================================================= */
 
-    --docs-badge-radius:
-        var(--docs-radius-pill);
+  --docs-badge-radius: var(--docs-radius-pill);
 
-    --docs-badge-padding-sm:
-        0.18rem 0.55rem;
+  --docs-badge-padding-sm: 0.18rem 0.55rem;
 
-    --docs-badge-padding-md:
-        0.3rem 0.75rem;
+  --docs-badge-padding-md: 0.3rem 0.75rem;
 
-    --docs-badge-padding-lg:
-        0.45rem 0.95rem;
+  --docs-badge-padding-lg: 0.45rem 0.95rem;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Terminal
     ======================================================================= */
 
-    --docs-terminal-radius:
-        var(--docs-radius-lg);
+  --docs-terminal-radius: var(--docs-radius-lg);
 
-    --docs-terminal-background:
-        #111827;
+  --docs-terminal-background: #111827;
 
-    --docs-terminal-color:
-        #f8fafc;
+  --docs-terminal-color: #f8fafc;
 
-
-
-    /* =======================================================================
+  /* =======================================================================
        Screenshot
     ======================================================================= */
 
-    --docs-screenshot-radius:
-        var(--docs-radius-lg);
-
+  --docs-screenshot-radius: var(--docs-radius-lg);
 }
-
-
 
 /* =============================================================================
    Dark Theme
 ============================================================================= */
 
 [data-theme="dark"] {
+  --docs-color-success: #22c55e;
 
-    --docs-color-success:
-        #22c55e;
+  --docs-color-warning: #f59e0b;
 
-    --docs-color-warning:
-        #f59e0b;
+  --docs-color-danger: #ef4444;
 
-    --docs-color-danger:
-        #ef4444;
+  --docs-color-info: #38bdf8;
 
-    --docs-color-info:
-        #38bdf8;
+  --docs-shadow-sm: 0 2px 8px rgb(0 0 0 / 30%);
 
-    --docs-shadow-sm:
-        0 2px 8px rgb(0 0 0 / 30%);
+  --docs-shadow-md: 0 8px 24px rgb(0 0 0 / 35%);
 
-    --docs-shadow-md:
-        0 8px 24px rgb(0 0 0 / 35%);
-
-    --docs-shadow-lg:
-        0 16px 40px rgb(0 0 0 / 45%);
+  --docs-shadow-lg: 0 16px 40px rgb(0 0 0 / 45%);
 }

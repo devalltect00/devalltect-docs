@@ -1,11 +1,11 @@
 .grid {
-    display: grid;
+  display: grid;
 
-    gap: var(--docs-grid-gap, 1.5rem);
+  gap: var(--docs-grid-gap, 1.5rem);
 }
 
 .equalHeight > * {
-    height: 100%;
+  height: 100%;
 }
 
 /* ---------------------------------- */
@@ -13,27 +13,27 @@
 /* ---------------------------------- */
 
 .columns1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .columns2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .columns3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .columns4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .columns5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .columns6 {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 /* ---------------------------------- */
@@ -41,24 +41,20 @@
 /* ---------------------------------- */
 
 @media (max-width: 1200px) {
-
-    .columns5,
-    .columns6 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
+  .columns5,
+  .columns6 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 996px) {
-
-    .responsive.columns2,
-    .responsive.columns3,
-    .responsive.columns4,
-    .responsive.columns5,
-    .responsive.columns6 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
+  .responsive.columns2,
+  .responsive.columns3,
+  .responsive.columns4,
+  .responsive.columns5,
+  .responsive.columns6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ---------------------------------- */
@@ -66,9 +62,7 @@
 /* ---------------------------------- */
 
 @media (max-width: 640px) {
-
-    .responsive {
-        grid-template-columns: 1fr !important;
-    }
-
+  .responsive {
+    grid-template-columns: 1fr !important;
+  }
 }

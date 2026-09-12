@@ -1,91 +1,71 @@
 .step {
-
-    width: 100%;
-
+  width: 100%;
 }
 
 .header {
+  display: flex;
 
-    display: flex;
+  justify-content: space-between;
 
-    justify-content: space-between;
+  align-items: flex-start;
 
-    align-items: flex-start;
-
-    gap: 1rem;
-
+  gap: 1rem;
 }
 
 .left {
+  display: flex;
 
-    display: flex;
+  gap: 1rem;
 
-    gap: 1rem;
-
-    flex: 1;
-
+  flex: 1;
 }
 
 .number {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
+  justify-content: center;
 
-    justify-content: center;
+  width: 2.5rem;
 
-    width: 2.5rem;
+  height: 2.5rem;
 
-    height: 2.5rem;
+  border-radius: 999px;
 
-    border-radius: 999px;
+  background: var(--ifm-color-primary);
 
-    background: var(--ifm-color-primary);
+  color: white;
 
-    color: white;
+  font-weight: 700;
 
-    font-weight: 700;
-
-    flex-shrink: 0;
-
+  flex-shrink: 0;
 }
 
 .title {
+  font-weight: 600;
 
-    font-weight: 600;
-
-    margin-bottom: .5rem;
-
+  margin-bottom: 0.5rem;
 }
 
 .description {
+  color: var(--ifm-color-emphasis-700);
 
-    color: var(--ifm-color-emphasis-700);
-
-    line-height: var(--docs-line-height);
-
+  line-height: var(--docs-line-height);
 }
 
 .pending {
-
-    opacity: .9;
-
+  opacity: 0.9;
 }
 
 .current {
-
-    border-left: 4px solid var(--ifm-color-primary);
-
+  border-left: 4px solid var(--ifm-color-primary);
 }
 
 .completed {
-
-    border-left: 4px solid var(--ifm-color-success);
-
+  border-left: 4px solid var(--ifm-color-success);
 }
 
 .optional {
-
-    border-left: 4px solid var(--ifm-color-emphasis-400);
-
+  border-left: 4px solid var(--ifm-color-emphasis-400);
 }

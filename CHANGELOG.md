@@ -14,86 +14,10 @@ Unreleased
 
 **Summary**
 
-Record the third untagged v1.0.0 development checkpoint by simplifying the
-homepage information architecture, making reader entry points accurately match
-their destinations, and refining the technology summaries shown for each
-documented project.
-
-### Project Visual Previews
-
-#### Portal
-
-- Reuse the shared screenshot component for Custy, Path Header Scanner,
-- Add overview and compact card presentation variants with consistent 16:9
-- Reserve stable asset paths under `static/img/project-previews/` so final PNG
-- Keep missing preview assets non-breaking during preparation while requiring
-- Detect image failures that occur before client hydration so cached missing
-
-### Homepage And Project Metadata
-
-#### Portal
-
-- Display project previews directly in the existing homepage cards instead of
-- Add typed preview metadata with asset paths, alternative text, and fallback
-- Replace identical technology badges with concise project-specific runtime and
-- Preserve responsive card behavior, readable terminal images, lazy loading,
-- Resolve the homepage hero logo through the configured Docusaurus base path so
-
-### Devalltect Docs Guide
-
-#### Portal
-
-- Add a dedicated Devalltect Docs documentation hub in English and Indonesian.
-- Explain supported projects, portal organization, localization, source review,
-- Add the portal guide to the sidebar and homepage maintainer navigation.
-- Correct outdated root-page language coverage and add the missing Indonesian
-
-### 🚀 Releases
-
-#### Portal
-
-- Document consistent PNG names and recommend crisp, credential-safe 1600 × 900
-- Keep command names, paths, and configuration identifiers literal across
-- Validate documentation freshness, TypeScript, pre-commit, multilingual builds,
-
-### 📚 Documentation
-
-#### Portal
-
-- Complete source-aligned documentation hubs for Custy, Path Header Scanner,
-- Provide aligned English and Indonesian content for all four projects.
-- Organize project material around appropriate getting-started, command,
-- Document source, editable, private GitLab package-registry, and container
-- Explain preview, dry-run, confirmation, and mutation boundaries where they
-- Centralize project versions, release URLs, source-review dates, status routes,
-- Support automatic SemVer and PEP 440 tag discovery with prerelease filtering,
-- Keep notices hidden for current documentation and show actionable states for
-- Cover the freshness resolver with focused automated tests.
-- Custy: v2.1.0.
-- Path Header Scanner: v1.0.0.
-- Doc Gen: v1.0.0.
-- Reflow: v1.0.0.
-- Add aligned English and Indonesian developer-hub pages.
-- Add documented release versions to both project-overview tables.
-- Preserve literal project names, commands, paths, and technical terms where
-
-### Shared Components And Reader Experience
-
-#### Portal
-
-- Apply the reusable React documentation component system across project pages.
-- Keep command, terminal, workflow, screenshot, table, architecture, status,
-- Align page hierarchy, colors, typography, dark mode, spacing, terminology,
-- Preserve literal command names, flags, paths, configuration keys, output, and
-
-### Development And Delivery
-
-#### Portal
-
-- Maintain the portal with Docusaurus, React, TypeScript, Yarn, and Node.js 20+.
-- Validate multilingual routes, links, anchors, MDX rendering, static output,
-- Support GitHub Pages delivery and mirrored GitLab CI/Pages validation.
-- Align contributor setup, pre-commit, testing, and release guidance across
+Record the fourth untagged v1.0.0 development checkpoint by adding optional
+Docker development, complete container validation, an immutable production
+preview, and a modular Make interface without changing the direct static Pages
+deployment model.
 
 ### Homepage Information Architecture
 
@@ -133,7 +57,42 @@ documented project.
 - Render the homepage logo through Docusaurus's native themed-image component
 - Keep the light-background variant as the temporary social preview image until
 
+### 📚 Documentation
+
+#### Container
+
+- Add aligned English and Indonesian Docker and Compose guides.
+- Update the README, badge catalog, developer hub, portal overview, and
+- Add CI and Docker-validation badges without implying that public container
+- Regenerate the concise project-structure reference and establish a clean
+- Update the cumulative v1.0.0 commit and tag messages to include this fourth
+
+#### Portal
+
+- Add aligned English and Indonesian developer-hub pages.
+- Add documented release versions to both project-overview tables.
+- Synchronize the portal guide with Custy v2.1.1, Path Header Scanner v1.0.0,
+- Preserve literal project names, commands, paths, and technical terms where
+- Complete source-aligned documentation hubs for Custy, Path Header Scanner,
+- Provide aligned English and Indonesian content for all four projects.
+- Organize project material around appropriate getting-started, command,
+- Document source, editable, private GitLab package-registry, and container
+- Explain preview, dry-run, confirmation, and mutation boundaries where they
+- Centralize project versions, release URLs, source-review dates, status routes,
+- Support automatic SemVer and PEP 440 tag discovery with prerelease filtering,
+- Keep notices hidden for current documentation and show actionable states for
+- Cover the freshness resolver with focused automated tests.
+- Doc Gen: v1.0.0.
+- Reflow: v1.0.0.
+
 ### Validation
+
+#### Container
+
+- Validate immutable dependency installation and the pinned Yarn runtime.
+- Run formatting, freshness, TypeScript, and bilingual production checks.
+- Validate categorized Make help and representative non-mutating dry-runs.
+- Validate Docker and Compose configuration, development and production image
 
 #### Portal
 
@@ -141,9 +100,102 @@ documented project.
 - Build English and Indonesian production documentation.
 - Check MDX routes, internal links, homepage rendering, responsive cards, and
 
+### Project Visual Previews
+
+#### Portal
+
+- Reuse the shared screenshot component for Custy, Path Header Scanner,
+- Add overview and compact card presentation variants with consistent 16:9
+- Reserve stable asset paths under `static/img/project-previews/` so final PNG
+- Keep missing preview assets non-breaking during preparation while requiring
+- Detect image failures that occur before client hydration so cached missing
+
+### Homepage And Project Metadata
+
+#### Portal
+
+- Display project previews directly in the existing homepage cards instead of
+- Add typed preview metadata with asset paths, alternative text, and fallback
+- Replace identical technology badges with concise project-specific runtime and
+- Preserve responsive card behavior, readable terminal images, lazy loading,
+- Resolve the homepage hero logo through the configured Docusaurus base path so
+
+### Devalltect Docs Guide
+
+#### Portal
+
+- Add a dedicated Devalltect Docs documentation hub in English and Indonesian.
+- Explain supported projects, portal organization, localization, source review,
+- Add the portal guide to the sidebar and homepage maintainer navigation.
+- Correct outdated root-page language coverage and add the missing Indonesian
+
+### 🚀 Releases
+
+#### Portal
+
+- Document consistent PNG names and recommend crisp, credential-safe 1600 × 900
+- Keep command names, paths, and configuration identifiers literal across
+- Validate documentation freshness, TypeScript, pre-commit, multilingual builds,
+
+### Shared Components And Reader Experience
+
+#### Portal
+
+- Apply the reusable React documentation component system across project pages.
+- Keep command, terminal, workflow, screenshot, table, architecture, status,
+- Align page hierarchy, colors, typography, dark mode, spacing, terminology,
+- Preserve literal command names, flags, paths, configuration keys, output, and
+
+### Development And Delivery
+
+#### Portal
+
+- Maintain the portal with Docusaurus, React, TypeScript, Yarn, and Node.js 20+.
+- Validate multilingual routes, links, anchors, MDX rendering, static output,
+- Support GitHub Pages delivery and mirrored GitLab CI/Pages validation.
+- Align contributor setup, pre-commit, testing, and release guidance across
+
+### Multi Stage Container Workflow
+
+#### Container
+
+- Add dependency, development, validation, builder, and production Docker
+- Run formatting checks, documentation-freshness tests, TypeScript validation,
+- Serve the immutable production build through Nginx at the configured
+- Redirect the container root to the portal base path and provide a dedicated
+- Keep generated output, host dependencies, caches, logs, Git metadata, and
+
+### Docker Compose Environments
+
+#### Container
+
+- Add shared, development, and production Compose definitions.
+- Provide live reload on port 3000 with host source mounted separately from a
+- Provide an immutable Nginx production preview on port 8080 without mounting
+- Expose focused services for freshness tests, formatting checks, type checking,
+
+### Modular Make Interface
+
+#### Container
+
+- Replace the npm-oriented monolithic Makefile with focused Node.js and
+- Use the checked-in Yarn release consistently for dependency installation,
+- Add categorized and counted help for local, Docker, Compose, cleanup, and CI
+- Keep the modular help output portable across Windows hosts and Linux
+- Exclude Python packaging, registry publishing, remote runtime, and Git release
+
+### ⚙️ CI/CD
+
+#### Container
+
+- Add GitHub and GitLab container validation that builds the validation and
+- Keep all container validation non-publishing: no registry authentication,
+- Expand source CI with formatting and documentation-freshness tests before
+- Preserve direct GitHub Pages and GitLab Pages publication of static build
+
 **Tags**
 
-release • docs • portal
+release • docs • ci • container
 
 ## v0.1.0-alpha.1 (2026-09-12)
 

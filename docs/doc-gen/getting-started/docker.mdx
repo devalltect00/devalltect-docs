@@ -15,7 +15,7 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-  command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.1"
+  command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.2"
   title="Run Doc Gen with Docker"
   description="Use a published image to inspect or document an explicitly mounted project."
   category="Getting Started"
@@ -27,15 +27,15 @@ import {
 
 | Tag    | Example  | Behavior                                                     |
 | ------ | -------- | ------------------------------------------------------------ |
-| Exact  | `v1.0.1` | Immutable and recommended for CI or reproducible automation. |
+| Exact  | `v1.0.2` | Immutable and recommended for CI or reproducible automation. |
 | Minor  | `v1.0`   | Moves to the newest stable patch in the 1.0 line.            |
 | Major  | `v1`     | Moves to the newest stable release in the 1.x line.          |
 | Latest | `latest` | Moves to the newest stable Doc Gen release.                  |
 
 <Terminal title="Pull and verify Doc Gen" language="bash">
 
-{`docker pull ghcr.io/devalltect00/doc-gen:v1.0.1
-docker run --rm ghcr.io/devalltect00/doc-gen:v1.0.1 --help`}
+{`docker pull ghcr.io/devalltect00/doc-gen:v1.0.2
+docker run --rm ghcr.io/devalltect00/doc-gen:v1.0.2 --help`}
 
 </Terminal>
 
@@ -70,7 +70,7 @@ docker run --rm doc-gen-prod:latest --version`}
 </Terminal>
 
 For an explicitly reviewed build, override the detected value with
-`DOC_GEN_BUILD_VERSION=1.0.1`. Hosted release images continue to receive their
+`DOC_GEN_BUILD_VERSION=1.0.2`. Hosted release images continue to receive their
 version from the validated release tag.
 
 </Section>

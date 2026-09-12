@@ -15,7 +15,7 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-  command="docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.0"
+  command="docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.1"
   title="Run Path Header Scanner with Docker"
   description="Use a published image to preview or apply path headers in an explicitly mounted project."
   category="Getting Started"
@@ -27,15 +27,15 @@ import {
 
 | Tag    | Example  | Behavior                                                     |
 | ------ | -------- | ------------------------------------------------------------ |
-| Exact  | `v1.0.0` | Immutable and recommended for CI or reproducible automation. |
+| Exact  | `v1.0.1` | Immutable and recommended for CI or reproducible automation. |
 | Minor  | `v1.0`   | Moves to the newest stable patch in the 1.0 line.            |
 | Major  | `v1`     | Moves to the newest stable release in the 1.x line.          |
 | Latest | `latest` | Moves to the newest stable Path Header Scanner release.      |
 
 <Terminal title="Pull and verify Path Header Scanner" language="bash">
 
-{`docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.0
-docker run --rm ghcr.io/devalltect00/path-header-scanner:v1.0.0 --help`}
+{`docker pull ghcr.io/devalltect00/path-header-scanner:v1.0.1
+docker run --rm ghcr.io/devalltect00/path-header-scanner:v1.0.1 --help`}
 
 </Terminal>
 

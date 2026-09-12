@@ -62,10 +62,10 @@ run-name: 🚀 Deploy Documentation • ${{ github.ref_name }}
 #
 # docusaurus.config.ts:
 # url      = https://devalltect00.github.io
-# baseUrl  = /devalltect00-docs/
+# baseUrl  = /devalltect-docs/
 #
 # Result:
-# https://devalltect00.github.io/devalltect00-docs/
+# https://devalltect00.github.io/devalltect-docs/
 #
 #
 # Required Repository Settings
@@ -85,8 +85,8 @@ run-name: 🚀 Deploy Documentation • ${{ github.ref_name }}
 #
 # Notes
 # ---------------------------------------------------------
-# - No Docker required
-# - No Docker Compose required
+# - Docker and Compose are optional local and CI validation tools
+# - Pages deployment does not consume the production-preview image
 # - No container registry required
 # - No release workflow required
 #

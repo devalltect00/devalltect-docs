@@ -5,31 +5,25 @@
  */
 
 .docs-stack {
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    gap: var(--docs-space-lg);
-
+  gap: var(--docs-space-lg);
 }
 
 .docs-inline {
+  display: flex;
 
-    display: flex;
+  align-items: center;
 
-    align-items: center;
-
-    gap: var(--docs-space-sm);
-
+  gap: var(--docs-space-sm);
 }
 
 .docs-center {
+  display: flex;
 
-    display: flex;
+  justify-content: center;
 
-    justify-content: center;
-
-    align-items: center;
-
+  align-items: center;
 }

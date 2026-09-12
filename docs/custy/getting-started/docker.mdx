@@ -76,7 +76,7 @@ and credentials required by the selected Custy operation.
 <InfoBox variant="info" title="Pin automated use to an exact release">
 
 Published releases are available from GHCR. Use an exact tag such as
-`v2.1.1` for reproducible automation. Moving aliases such as `v2.1`, `v2`, and
+`v2.1.2` for reproducible automation. Moving aliases such as `v2.1`, `v2`, and
 `latest` are convenient for controlled upgrades, while a local source build is
 appropriate when validating unpublished changes.
 
@@ -206,7 +206,7 @@ not change the version of a mounted target project.
 
 <Terminal title="Direct production build" language="bash">
 
-{`docker build --build-arg CUSTY_BUILD_VERSION=2.1.1 --target production -t custy-prod:latest .`}
+{`docker build --build-arg CUSTY_BUILD_VERSION=2.1.2 --target production -t custy-prod:latest .`}
 
 </Terminal>
 
@@ -226,14 +226,14 @@ Custy's conventional `v` prefix.
 
 | Tag form      | Example  | Behavior                                                                           |
 | ------------- | -------- | ---------------------------------------------------------------------------------- |
-| Exact release | `v2.1.1` | Immutable release selection and the recommended choice for CI or reproducible use. |
+| Exact release | `v2.1.2` | Immutable release selection and the recommended choice for CI or reproducible use. |
 | Minor alias   | `v2.1`   | Moves to the newest stable patch in the `2.1` line.                                |
 | Major alias   | `v2`     | Moves to the newest stable release in the `2` line.                                |
 | Latest alias  | `latest` | Moves to the newest stable Custy release.                                          |
 
 <Terminal title="Pull a published Custy image" language="bash">
 
-{`docker pull ghcr.io/devalltect00/custy:v2.1.1
+{`docker pull ghcr.io/devalltect00/custy:v2.1.2
 docker pull ghcr.io/devalltect00/custy:v2.1
 docker pull ghcr.io/devalltect00/custy:v2
 docker pull ghcr.io/devalltect00/custy:latest`}

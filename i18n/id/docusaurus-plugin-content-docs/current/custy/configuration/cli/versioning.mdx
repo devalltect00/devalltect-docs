@@ -1,0 +1,49 @@
+---
+title: "Versioning"
+description: "Konfigurasikan version strategy, bump behavior, dan optional date-tag formatting."
+sidebar_position: 3
+sidebar_key: custy-configuration-cli-versioning
+tags: [custy, configuration, versioning]
+keywords: [strategy, bump, date_format]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.versioning]" title="Versioning" description="Selaraskan version calculation dan tag ordering Custy dengan version scheme project." category="CLI Configuration" status="Active + Optional Key" syntax={'strategy = "semver"'} tags={["semver", "PEP 440", "bump"]} links={[{label: "Paths", href: "./paths"}, {label: "Version Command", href: "../../commands/version/overview"}, {label: "Tag", href: "../../commands/tag/overview"}]} />
+
+<CommandMetadata items={[{label: "Generated Properties", value: "2", icon: "table"}, {label: "Optional Property", value: "date_format", icon: "note"}, {label: "Strategy Default", value: "semver", icon: "release"}, {label: "Bump Default", value: "auto", icon: "workflow"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "strategy", type: "semver | pep440 | commitizen | date | gitcount", defaultValue: "semver", description: "Version strategy yang di-resolve oleh version, tag, Git operations, dan run flows. Hapus property ini agar built-in project detector dapat ikut menentukan strategy."},
+        {property: "bump", type: "auto | patch | minor | major", defaultValue: "auto", description: "Default requested bump jika command tidak menyediakannya. Version resolver sendiri tidak memiliki non-configuration bump fallback."},
+        {property: "date_format", type: "Format string", defaultValue: "%Y.%m.%d", description: "Optional active key yang digunakan Git tag sorting untuk date strategy. Didukung, tetapi tidak disertakan dalam generated file."},
+    ]}
+/>
+
+<Terminal title="Semantic versions" language="toml">
+
+{`[tool.custy.cli.versioning]
+strategy = "semver"
+bump = "auto"`}
+
+</Terminal>
+
+<Terminal title="Date-based tags" language="toml">
+
+{`[tool.custy.cli.versioning]
+strategy = "date"
+date_format = "%Y.%m.%d"`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Generated Strategy Menonaktifkan Detection Fallback">
+
+Karena `strategy = "semver"` tersedia, value tersebut mengalahkan automatic
+project detection. Hapus atau komentari hanya jika Anda sengaja ingin memakai detection.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Version Configuration", href: "../../commands/version/configuration", description: "Lihat direct-command behavior."}, {title: "Versioning and Tags", href: "../../commands/tag/versioning-and-tags", description: "Hubungkan strategy dengan Git tags."}, {title: "Paths", href: "./paths", description: "Konfigurasikan source version file."}]} /></Section>

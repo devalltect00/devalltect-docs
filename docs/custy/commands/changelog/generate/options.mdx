@@ -1,0 +1,104 @@
+---
+title: "Options"
+description: "Options accepted by custy changelog generate."
+sidebar_position: 4
+sidebar_key: custy-changelog-generate-options
+tags: [changelog, options, cli]
+keywords: [changelog force, commit-msg-file]
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy changelog generate"
+    title="Command Options"
+    description="Override the pending commit-message source or force-generation decision for one invocation."
+    category="Changelog"
+    status="Stable"
+    syntax="custy changelog generate [OPTIONS]"
+    tags={[
+        "options",
+        "configuration",
+        "overrides",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The direct command exposes two changelog-specific overrides. All other
+generation behavior comes from project configuration and Custy's defaults.
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--commit-msg-file",
+            shorthand: "-cmsg",
+            description: "Override the commit-message template used for pending-commit parsing and classification. The path must point to an existing file.",
+            defaultValue: ".config/custy/templates/commit-message.txt",
+            example: "--commit-msg-file templates/release-message.txt",
+        },
+        {
+            name: "--force / --no-force",
+            shorthand: "-f / -F",
+            description: "Enable or disable forced changelog regeneration for this invocation.",
+            defaultValue: "false unless configured otherwise",
+            example: "--force",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Global Execution Options"
+>
+
+<Terminal>
+
+{`custy --dry-run changelog generate
+custy --debug changelog generate
+custy --log-level debug changelog generate`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="info"
+    title="Resolution order"
+>
+
+An explicit CLI value takes precedence over project configuration. Project
+configuration takes precedence over Custy's built-in default.
+
+</InfoBox>

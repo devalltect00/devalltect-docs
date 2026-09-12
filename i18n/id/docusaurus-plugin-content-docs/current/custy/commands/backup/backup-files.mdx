@@ -1,0 +1,136 @@
+---
+title: "Backup Files"
+description: "Pahami file yang di-backup Custy dan cara backup files dikelola."
+sidebar_position: 5
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Backup Files"
+    description="Pelajari file yang di-backup Custy, lokasi penyimpanan, dan cara pengelolaannya."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup all"
+    tags={["backup", "templates", "files"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Ringkasan
+
+Command **backup** membuat timestamped copy dari template files Custy. Backup
+mempertahankan versi sebelumnya sebelum workflow berikutnya memperbarui atau
+menggunakannya kembali.
+
+<InfoBox variant="tip" title="Template Backups">
+
+Command backup bekerja pada template resources yang dibuat Custy. Command ini
+tidak mem-backup seluruh proyek atau Git repository.
+
+</InfoBox>
+
+---
+
+<Section title="Jenis Backup yang Didukung">
+
+<FeatureGrid
+    title="Operasi Backup yang Tersedia"
+    items={[
+        {
+            title: "Commit Message Template",
+            icon: <Icon name="copy" />,
+            children: <>Membuat timestamped backup dari configured commit message template.</>,
+        },
+        {
+            title: "Tag Message Template",
+            icon: <Icon name="release" />,
+            children: <>Membuat timestamped backup dari configured tag message template.</>,
+        },
+        {
+            title: "Combined Backup",
+            icon: <Icon name="directory" />,
+            children: <>Mem-backup kedua template files dalam satu operasi.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Lokasi Backup">
+
+Backup files disimpan di dedicated backup directories yang dikonfigurasi oleh
+proyek, biasanya dalam direktori terpisah untuk commit message backup dan tag
+message backup. Lokasi tepatnya ditentukan dari project configuration.
+
+</Section>
+
+---
+
+<Section title="Timestamped Backups">
+
+Setiap backup file mendapat timestamp-based filename agar beberapa versi
+historis dapat tersedia tanpa menimpa backup sebelumnya.
+
+```text
+commit-message_20260701_093522.bak.txt
+tag-message_20260701_093530.bak.txt
+```
+
+Nama tepatnya bergantung pada nama template asli dan waktu backup dibuat.
+
+</Section>
+
+---
+
+<Section title="Backup Retention">
+
+Setelah membuat backup baru, Custy meninjau backup yang sudah ada untuk
+template yang sama. Backup lama dapat dihapus sesuai configured retention
+policy agar direktori tidak berkembang tanpa batas sambil tetap menyimpan
+riwayat terbaru.
+
+</Section>
+
+---
+
+<Section title="File Tidak Tersedia">
+
+Jika template file tidak tersedia, Custy melewati operasi tersebut dan tidak
+membuat backup kosong. Optional resources yang tidak tersedia tidak membuat
+backup workflow menjadi tidak aman.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Tidak Mengubah Repository">
+
+Membuat backup tidak mengubah riwayat Git. Command hanya membuat file tambahan
+di configured backup directories. File tersebut dapat di-commit kemudian
+melalui Git workflow normal jika diinginkan.
+
+</InfoBox>
+
+---
+
+<Section title="Hubungan dengan Workflow">
+
+Backup dapat dijalankan sendiri melalui command **backup** atau menjadi stage
+dalam workflow pipeline sebelum commit, tag, atau release. Kombinasi tersebut
+didokumentasikan dalam dokumentasi **Run**.
+
+</Section>

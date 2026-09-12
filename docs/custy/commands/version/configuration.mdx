@@ -1,0 +1,212 @@
+---
+title: "Configuration"
+description: "Configure default versioning behavior for Custy."
+sidebar_position: 5
+sidebar_key: custy-version
+
+tags:
+    - version
+    - configuration
+
+keywords:
+    - custy version configuration
+    - versioning strategy
+---
+
+import {
+    CommandHero,
+    PropertyTable,
+    Section,
+    InfoBox,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version"
+    title="Configuration"
+    description="Configure default versioning behavior through config.toml."
+    category="Versioning"
+    status="Stable"
+    syntax="custy version update"
+    tags={[
+        "configuration",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Versioning Strategies",
+            href: "./versioning-strategies",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+Custy allows projects to define their preferred versioning behavior inside
+`config.toml`.
+
+These settings become the default values used whenever the corresponding
+command-line options are omitted.
+
+---
+
+<Section
+    title="Version Configuration"
+>
+
+<PropertyTable
+    title="config.toml Properties"
+    description="Configuration fields controlling default version generation."
+    items={[
+        {
+            property: "strategy",
+            type: "semver | pep440 | commitizen | date | gitcount",
+            defaultValue: "semver",
+            required: false,
+            description:
+                "Default versioning strategy used to generate the next version.",
+        },
+        {
+            property: "bump",
+            type: "auto | patch | minor | major",
+            defaultValue: "auto",
+            required: false,
+            description:
+                "Default bump level when generating the next version.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Version File"
+>
+
+Version metadata detection is configured separately.
+
+The generated and recommended configuration is:
+
+<Terminal>
+
+```toml
+version_file = "auto"
+```
+
+</Terminal>
+
+Custy detects an existing Python version module, static `pyproject.toml`
+version, or Node.js `package.json` version. Projects without supported metadata
+remain valid and use tag-only versioning. Set an explicit path only when the
+project owns a different metadata file; explicit paths must exist.
+
+</Section>
+
+---
+
+<Section
+    title="Default Versioning Strategy"
+>
+
+When no strategy is specified on the command line, Custy uses the configured
+default strategy.
+
+Example:
+
+<Terminal>
+
+```toml
+[tool.custy.cli.versioning]
+
+strategy = "semver"
+```
+
+</Terminal>
+
+If the strategy configuration is omitted, Custy can automatically detect an
+appropriate strategy based on the project type.
+
+</Section>
+
+---
+
+<Section
+    title="Default Bump Level"
+>
+
+The configured bump level determines how the next version should be generated.
+
+Available values include:
+
+- `auto`
+- `patch`
+- `minor`
+- `major`
+
+Example:
+
+<Terminal>
+
+```toml
+bump = "auto"
+```
+
+</Terminal>
+
+The exact behavior depends on the selected versioning strategy.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Project Defaults"
+>
+
+Project configuration provides consistent versioning behavior across every
+developer working on the same repository.
+
+Temporary overrides remain available through command-line options whenever
+needed.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration Resolution"
+>
+
+Custy resolves version settings using the following priority:
+
+1. Command-line arguments.
+2. Project configuration (`config.toml`).
+3. Automatic project detection (when applicable).
+4. Built-in defaults.
+
+This layered approach provides predictable behavior while allowing individual
+commands to override project defaults.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to **Versioning Strategies** to learn how each supported strategy
+generates version numbers and when each approach is most appropriate.
+
+</Section>

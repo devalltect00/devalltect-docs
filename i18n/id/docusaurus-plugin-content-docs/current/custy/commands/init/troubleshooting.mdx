@@ -1,0 +1,203 @@
+---
+title: "Init Troubleshooting"
+description: "Selesaikan masalah umum yang ditemukan saat menjalankan init pada proyek dengan Custy."
+sidebar_position: 10
+sidebar_key: custy-commands-init-troubleshooting
+
+tags:
+  - troubleshooting
+  - initialization
+  - errors
+
+keywords:
+  - custy init troubleshooting
+  - initialization errors
+  - common problems
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Init Troubleshooting"
+    description="Masalah umum, kemungkinan penyebab, dan solusi yang direkomendasikan."
+    category="Init"
+    status="Panduan Bantuan"
+    syntax="custy init"
+    tags={[
+        "troubleshooting",
+        "errors",
+        "support",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../troubleshooting/overview",
+        },
+        {
+            label: "Requirements",
+            href: "./requirements",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Sebagian besar masalah init berhubungan dengan environment proyek, bukan dengan
+Custy itu sendiri.
+
+Halaman ini berisi situasi yang paling umum beserta tindakan yang
+direkomendasikan untuk menyelesaikannya.
+
+<InfoBox
+    variant="tip"
+    title="Mulai dari Sini"
+>
+
+Sebelum menyelidiki error, pastikan command dijalankan dari root directory
+proyek dan Custy memiliki izin untuk membuat file di dalam repositori.
+
+</InfoBox>
+
+---
+
+## Configuration Sudah Ada
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Custy melaporkan bahwa file configuration atau templates sudah ada.
+
+**Penyebab**
+
+Proyek sudah pernah di-init atau sebelumnya sudah memiliki generated resources
+Custy.
+
+**Cara menyelesaikan**
+
+- Tinjau file yang sudah ada sebelum menggantinya.
+- Gunakan `--ask` jika Anda menginginkan konfirmasi sebelum overwrite.
+- Gunakan `--force` hanya jika Anda memang ingin membuat ulang resource.
+
+</Section>
+
+---
+
+## Permission Denied
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Init gagal saat membuat file atau direktori.
+
+**Penyebab**
+
+Pengguna saat ini tidak memiliki izin menulis ke direktori proyek.
+
+**Cara menyelesaikan**
+
+- Pastikan direktori proyek dapat ditulis.
+- Tutup aplikasi yang mungkin mengunci generated files.
+- Jalankan command dari direktori yang memberikan akses tulis.
+
+</Section>
+
+---
+
+## Configuration Tidak Sesuai Harapan
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Custy berperilaku berbeda dari yang diharapkan setelah init.
+
+**Penyebab**
+
+Proyek sudah memiliki configuration `.config/custy/config.toml` yang
+disesuaikan.
+
+**Cara menyelesaikan**
+
+- Tinjau configuration yang dibuat.
+- Verifikasi init options.
+- Bandingkan configuration dengan default yang diharapkan tim Anda.
+
+</Section>
+
+---
+
+## Examples Tidak Dibuat
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Direktori `examples` tidak tersedia, atau nested commit/tag example folders
+tidak memuat examples yang saat ini disertakan dalam package.
+
+**Penyebab**
+
+Init dijalankan menggunakan mode yang tidak membuat examples, atau proyek
+memiliki example tree lama/tidak lengkap yang dibuat sebelum packaged
+resources terbaru tersedia.
+
+**Cara menyelesaikan**
+
+Jalankan:
+
+```text
+custy init --mode examples
+```
+
+atau jalankan init lengkap:
+
+```text
+custy init
+```
+
+Tanpa `--force`, Custy menambahkan missing example directories dan files secara
+recursive sambil mempertahankan existing example files. Gunakan `--force`
+hanya jika Anda juga ingin refresh dan overwrite existing example files.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Langkah Diagnosis Berikutnya"
+>
+
+Jika masalah berlanjut, tinjau configuration yang dibuat dan init mode sebelum
+mencoba command kembali.
+
+Sebagian besar masalah init dapat diselesaikan dengan memperbaiki mode atau
+perilaku overwrite yang dipilih.
+
+</InfoBox>
+
+---
+
+## Lanjutkan
+
+<Section compact>
+
+Jika pertanyaan Anda belum dibahas di sini, lanjutkan ke halaman **FAQ** untuk
+melihat jawaban atas pertanyaan umum tentang project initialization.
+
+</Section>

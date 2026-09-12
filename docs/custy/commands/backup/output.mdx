@@ -1,0 +1,168 @@
+---
+title: "Output"
+description: "Understand the information reported by the custy backup command."
+sidebar_position: 8
+sidebar_key: custy-commands-backup
+
+tags:
+  - output
+  - backup
+  - templates
+
+keywords:
+  - custy backup
+  - backup output
+  - template backup
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Output"
+    description="Learn what information Custy reports after creating template backups."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup all"
+    tags={[
+        "output",
+        "backup",
+        "results",
+    ]}
+    links={[
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+After completing a backup operation, Custy reports the result of the requested
+backup together with information about the generated backup files.
+
+Depending on the selected subcommand, one or more template files may be backed
+up during a single execution.
+
+---
+
+<Section
+    title="Typical Output"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Commit Template Backup",
+            description:
+                "The commit message template was backed up successfully.",
+            output:
+`✓ Commit message template found
+✓ Backup directory ready
+✓ Timestamped backup created
+✓ Backup completed successfully`,
+            notes:
+                "The exact messages may vary depending on your project configuration.",
+        },
+        {
+            title: "Combined Backup",
+            description:
+                "Both template files were backed up successfully.",
+            output:
+`✓ Commit message template backed up
+✓ Tag message template backed up
+✓ Backup operation completed`,
+            notes:
+                "Running the all subcommand performs both backup operations during a single execution.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Successful Backup"
+>
+
+When a backup completes successfully:
+
+- Backup files are written to the configured backup directory.
+- Existing backups remain available unless removed by the retention policy.
+- Original template files remain unchanged.
+- Git history is not modified.
+
+Successful completion indicates that the requested backup operation finished
+without errors.
+
+</Section>
+
+---
+
+<Section
+    title="Backup Retention"
+>
+
+After creating a new backup, Custy may remove older backup files according to
+the configured retention policy.
+
+This housekeeping step helps prevent backup directories from growing
+unnecessarily while preserving recent backup history.
+
+</Section>
+
+---
+
+<Section
+    title="Missing Template Files"
+>
+
+If the requested template file does not exist, Custy safely skips that backup
+operation.
+
+No empty backup file is created.
+
+Depending on the selected subcommand, other backup operations may still
+continue.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Dry Run"
+>
+
+When using the global `--dry-run` option, Custy reports the backup operations
+that would be performed without creating any backup files.
+
+This is useful for verifying backup behavior before executing it.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+If the backup operation does not complete successfully, continue to the
+**Troubleshooting** page for guidance on resolving common backup problems.
+
+</Section>

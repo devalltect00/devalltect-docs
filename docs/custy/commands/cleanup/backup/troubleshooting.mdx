@@ -1,0 +1,215 @@
+---
+title: "Backup Cleanup Troubleshooting"
+description: "Resolve common Backup Cleanup issues."
+sidebar_position: 8
+sidebar_key: custy-cleanup-backup-troubleshooting
+
+tags:
+    - cleanup
+    - backup
+    - troubleshooting
+
+keywords:
+    - custy cleanup backups troubleshooting
+    - backup cleanup problems
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Backup Cleanup Troubleshooting"
+    description="Resolve common issues encountered while cleaning obsolete backup files."
+    category="Maintenance"
+    status="Support Guide"
+    syntax="custy cleanup backups"
+    tags={[
+        "cleanup",
+        "backup",
+        "troubleshooting",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../../troubleshooting/overview",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+    ]}
+/>
+
+## Overview
+
+Backup Cleanup is generally a straightforward operation.
+
+Most issues are related to project configuration, backup locations, or simply
+the absence of backup files that require cleanup.
+
+---
+
+## No Backup Files Were Removed
+
+<Section compact>
+
+**What you see**
+
+The command completed successfully, but no backup files were deleted.
+
+**Why it happens**
+
+- The number of existing backups is already within the configured retention
+  count.
+- No backup files exist.
+- The selected cleanup type does not match any existing backup files.
+
+**How to resolve it**
+
+Verify:
+
+- the configured cleanup target,
+- the backup retention count,
+- and whether backup files currently exist.
+
+This is usually expected behavior rather than an error.
+
+</Section>
+
+---
+
+## Expected Backup Files Still Exist
+
+<Section compact>
+
+**What you see**
+
+Some backup files remain after cleanup.
+
+**Why it happens**
+
+The remaining files are among the newest backups preserved by the configured
+retention policy.
+
+**How to resolve it**
+
+Review the configured `keep` value.
+
+Custy intentionally preserves the newest backup files.
+
+</Section>
+
+---
+
+## Cleanup Removed Fewer Files Than Expected
+
+<Section compact>
+
+**What you see**
+
+Only some older backup files were removed.
+
+**Why it happens**
+
+Possible reasons include:
+
+- only one backup category was selected,
+- newer backups were preserved,
+- fewer files matched the selected cleanup type.
+
+**How to resolve it**
+
+Verify the selected cleanup type and review the backup directory contents.
+
+</Section>
+
+---
+
+## Dry Run Removed Nothing
+
+<Section compact>
+
+**What you see**
+
+No backup files were deleted.
+
+**Why it happens**
+
+The command was executed using the global:
+
+`--dry-run`
+
+option.
+
+**How to resolve it**
+
+Run the command again without the dry-run option when you are ready to perform
+the cleanup.
+
+</Section>
+
+---
+
+## Unexpected Backup Location
+
+<Section compact>
+
+**What you see**
+
+Custy appears to inspect a different backup directory than expected.
+
+**Why it happens**
+
+The backup directory is determined by your project's configuration.
+
+**How to resolve it**
+
+Review the configured backup directories in your project's
+`config.toml`.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Most Issues Are Configuration Related"
+>
+
+Backup Cleanup behavior is almost entirely controlled by your project's
+configuration.
+
+Reviewing the configured cleanup type, retention count, and backup directories
+usually resolves unexpected behavior.
+
+</InfoBox>
+
+---
+
+## Next Diagnostic Step
+
+<Section compact>
+
+If Backup Cleanup continues to behave unexpectedly:
+
+- review your project configuration,
+- verify the backup directories,
+- confirm the cleanup type,
+- inspect the command output.
+
+Most Backup Cleanup issues can be resolved without modifying your project or
+Git repository.
+
+</Section>

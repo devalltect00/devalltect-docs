@@ -1,0 +1,30 @@
+---
+title: "Gambaran Arsitektur"
+description: "Pahami lapisan runtime, alur dependensi, batas subsistem, dan trade-off arsitektur Custy."
+sidebar_position: 1
+sidebar_key: custy-architecture-overview
+tags: [custy, architecture, dependency flow]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, WorkflowDiagram} from "@site/src/components/docs";
+
+<CommandHero command="app/" title="Arsitektur Custy" description="Ikuti permintaan CLI melewati konfigurasi, orkestrasi, layanan domain, infrastruktur, dan presentasi." category="Arsitektur" status="Selaras Implementasi" syntax="entrypoint -> CLI -> pipeline -> workflow -> services -> effects" tags={["Typer", "pipeline", "workflow engine", "Git service"]} links={[{label: "CLI Layer", href: "./cli-layer"}, {label: "Core Layer", href: "./core-layer"}, {label: "Pipeline Engine", href: "./pipeline-engine"}, {label: "Changelog System", href: "./changelog-system"}]} />
+
+## Gambaran umum
+
+Custy memakai arsitektur berlapis yang pragmatis. Command publik berada di CLI layer, sedangkan operasi utama dinyatakan sebagai pipeline step yang mendelegasikan pekerjaan ke workflow engine dan layanan terfokus.
+
+<InfoBox variant="info" title="Lapisan tanggung jawab, bukan batas folder yang kaku">Lapisan ini menjelaskan alur dependensi aktif. Beberapa modul core masih memakai enum CLI atau helper presentasi Rich, sehingga dokumentasi ini menggambarkan implementasi saat ini tanpa mengklaim isolasi yang belum ada.</InfoBox>
+
+<WorkflowDiagram title="Alur Runtime Utama" timeline={[{title: "Entrypoint", description: "Script custy atau python -m app memuat aplikasi Typer.", status: "completed"}, {title: "Global callback", description: "Konfigurasi global, AppContext, logging, banner, dan help disiapkan.", status: "completed"}, {title: "Command module", description: "Option di-resolve menjadi nilai efektif dan service atau profile dipilih.", status: "completed"}, {title: "Composition", description: "WorkflowConfig, WorkflowEngine, GitContext, dan step dibangun.", status: "current"}, {title: "Execution", description: "Step berjalan berurutan dan service melakukan efek pada Git atau file.", status: "pending"}]} />
+
+<Section title="Batas penting">
+
+- Pipeline berjalan berurutan dan tidak transaksional; efek sebelumnya tidak otomatis di-rollback.
+- Internal profile dan registered step tidak otomatis menjadi pilihan publik `custy run`.
+- Konfigurasi menjadi milik project setelah initialization dan loader melakukan cache per process.
+- Version generation, sinkronisasi version file, dan tag sorting adalah tanggung jawab terpisah.
+
+</Section>
+
+<RelatedCommands commands={[{title: "CLI Layer", href: "./cli-layer", description: "Telusuri entrypoint, command module, context, dan registration."}, {title: "Core Layer", href: "./core-layer", description: "Pelajari subsistem core dan coupling saat ini."}, {title: "Pipeline Engine", href: "./pipeline-engine", description: "Ikuti profile resolution hingga step berjalan."}, {title: "Developer Guide", href: "../developer-guide/overview", description: "Gunakan arsitektur ini saat mengembangkan Custy."}]} />

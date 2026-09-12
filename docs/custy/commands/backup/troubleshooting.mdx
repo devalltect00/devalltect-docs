@@ -1,0 +1,257 @@
+---
+title: "Backup Troubleshooting"
+description: "Resolve common problems encountered while creating Custy template backups."
+sidebar_position: 9
+sidebar_key: custy-commands-backup-troubleshooting
+
+tags:
+  - troubleshooting
+  - backup
+  - templates
+
+keywords:
+  - custy backup
+  - backup troubleshooting
+  - template backup errors
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Backup Troubleshooting"
+    description="Resolve common backup problems before continuing your workflow."
+    category="Backup"
+    status="Support Guide"
+    syntax="custy backup all"
+    tags={[
+        "backup",
+        "errors",
+        "troubleshooting",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../troubleshooting/overview",
+        },
+        {
+            label: "Backup Files",
+            href: "./backup-files",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+Most backup problems occur because the required template files cannot be found
+or the configured backup location is unavailable.
+
+Fortunately, these problems are usually straightforward to resolve.
+
+---
+
+## Commit Message Template Not Found
+
+<Section compact>
+
+**What you see**
+
+The backup command skips the commit message backup or reports that the commit
+message template cannot be located.
+
+**Why it happens**
+
+The configured commit message template does not exist.
+
+This commonly occurs when the project has not yet been initialized.
+
+**How to resolve it**
+
+Initialize the project if necessary.
+
+```bash
+custy init
+```
+
+If the project has already been initialized, verify that the configured commit
+message template path is correct.
+
+</Section>
+
+---
+
+## Tag Message Template Not Found
+
+<Section compact>
+
+**What you see**
+
+Custy skips the tag message backup or reports that the configured tag template
+cannot be found.
+
+**Why it happens**
+
+The tag message template has not yet been generated or its configured path is
+incorrect.
+
+**How to resolve it**
+
+Verify the configured template path.
+
+If necessary, regenerate the project templates.
+
+```bash
+custy init
+```
+
+</Section>
+
+---
+
+## Backup Directory Cannot Be Created
+
+<Section compact>
+
+**What you see**
+
+The backup operation cannot create the configured backup directory.
+
+**Why it happens**
+
+The destination directory is read-only or the current user does not have
+permission to create files.
+
+**How to resolve it**
+
+Verify that the configured backup location is writable.
+
+If necessary:
+
+- choose another backup directory,
+- update the project configuration,
+- or adjust file permissions.
+
+</Section>
+
+---
+
+## Expected Backup File Is Missing
+
+<Section compact>
+
+**What you see**
+
+The backup command completes, but the expected backup file cannot be found.
+
+**Why it happens**
+
+Possible reasons include:
+
+- the wrong backup directory was inspected,
+- the template file did not exist,
+- the backup was skipped,
+- an older backup was removed by the configured retention policy.
+
+**How to resolve it**
+
+Review the configured backup directory and confirm that the selected template
+exists before rerunning the backup command.
+
+</Section>
+
+---
+
+## Old Backup Files Disappeared
+
+<Section compact>
+
+**What you see**
+
+Previously created backup files are no longer present.
+
+**Why it happens**
+
+Custy automatically manages backup history.
+
+Older backups may be removed when the configured retention policy is applied.
+
+**How to resolve it**
+
+Review your backup retention configuration if you need to preserve more backup
+history.
+
+</Section>
+
+---
+
+## Dry Run Produced No Backup Files
+
+<Section compact>
+
+**What you see**
+
+The command completed successfully, but no backup files were created.
+
+**Why it happens**
+
+The command was executed using the global
+
+`--dry-run`
+
+option.
+
+**How to resolve it**
+
+Run the command again without the global dry-run option.
+
+For example:
+
+```bash
+custy backup all
+```
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Most Problems Are Configuration Related"
+>
+
+Most backup failures are caused by missing template files or incorrect backup
+locations.
+
+Reviewing your project's configuration usually resolves the problem quickly.
+
+</InfoBox>
+
+---
+
+## Next Diagnostic Step
+
+<Section compact>
+
+If backup operations continue to fail:
+
+- Verify your project's `config.toml` configuration.
+- Confirm that the required template files exist.
+- Verify that the configured backup directories are writable.
+- Review the output produced by the backup command.
+
+Most backup issues can be resolved by correcting the first reported problem
+before rerunning the command.
+
+</Section>

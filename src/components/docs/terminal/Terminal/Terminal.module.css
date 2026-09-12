@@ -1,0 +1,7 @@
+.terminal {
+
+    overflow: hidden;
+
+    border-radius: var(--docs-radius-lg);
+
+}

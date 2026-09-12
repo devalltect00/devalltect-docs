@@ -1,0 +1,172 @@
+---
+title: "Overview"
+description: "Replay Existing Tags"
+sidebar_key: reflow-command-tags-replay
+---
+# Replay Existing Tags
+
+## Overview
+
+The `reflow tags replay` command replays existing Git tags by pushing them to the remote repository again.
+
+This command is primarily used to recover, rebuild, or re-trigger release automation that depends on Git tag events.
+
+Reflow does not create new versions during replay. Existing tags remain unchanged. The command simply replays tag activity so downstream systems can process them again.
+
+---
+
+## Why This Command Exists
+
+Many release pipelines are triggered when a Git tag is pushed.
+
+Examples include:
+
+- GitHub Actions
+- GitLab CI/CD
+- Release automation workflows
+- Container build pipelines
+- Artifact publishing workflows
+
+Sometimes these pipelines fail or become unavailable.
+
+Common situations include:
+
+- Repository migration
+- CI/CD migration
+- Failed release workflows
+- Missing GitHub releases
+- Accidental release deletion
+- Infrastructure outages
+
+In these situations, existing tags may already be present, but the release automation never completed successfully.
+
+The replay command allows those tags to be processed again without creating new versions.
+
+---
+
+## What This Command Does
+
+The command:
+
+1. Reads Git tags from the repository.
+2. Optionally filters tags.
+3. Checks release state.
+4. Re-pushes tags when necessary.
+5. Continues until all selected tags have been processed.
+
+The exact release handling logic is implemented by the Reflow orchestration layer.
+
+---
+
+## What This Command Does NOT Do
+
+The command does not:
+
+- Create new versions
+- Rename tags
+- Convert tag formats
+- Build Docker images
+- Publish Docker images
+- Modify application code
+- Create new commits
+
+If you need to convert version formats, use:
+
+```bash
+reflow tags convert
+```
+
+If you need to build Docker images, use:
+
+```bash
+reflow dockerize
+```
+
+---
+
+## Typical Use Cases
+
+### Re-trigger GitHub Actions
+
+A workflow failed during release creation.
+
+Replay the tags to trigger the workflow again.
+
+### Recover Missing Releases
+
+Tags exist, but releases were never published successfully.
+
+Replay the tags to rebuild release metadata.
+
+### Repository Migration
+
+A repository has been moved to a new location.
+
+Replay existing tags so the new release automation processes them.
+
+### CI/CD Migration
+
+After migrating pipelines, replay tags so artifacts can be rebuilt.
+
+---
+
+## Inputs
+
+The command uses:
+
+- Local Git repository
+- Existing Git tags
+- Remote repository configuration
+
+---
+
+## Outputs
+
+Depending on configuration and release state, the command may:
+
+- Re-push Git tags
+- Re-trigger release automation
+- Re-trigger CI/CD workflows
+- Recreate missing release artifacts
+
+---
+
+## Supported Providers
+
+Current implementation supports:
+
+- Git repositories
+- GitHub release workflows
+
+Additional providers may be added in future releases.
+
+---
+
+## Related Commands
+
+### Convert Tags
+
+Convert PEP 440 tags to Semantic Versioning.
+
+```bash
+reflow tags convert
+```
+
+### Dockerize
+
+Build and publish Docker images from repository tags.
+
+```bash
+reflow dockerize
+```
+
+---
+
+## Next Reading
+
+For implementation details, see:
+
+- `workflow.md`
+- `requirements.md`
+- `examples.md`
+- `faq.md`

@@ -1,0 +1,129 @@
+---
+title: "Command Reference"
+description: "Find the supported Custy commands for project setup, validation, versioning, changelogs, Git operations, and pipelines."
+sidebar_position: 0
+sidebar_key: custy-commands
+
+tags:
+  - custy
+  - commands
+  - cli reference
+
+keywords:
+  - custy commands
+  - custy cli
+  - custy run profiles
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Command Reference"
+    description="Find the supported Custy commands for project setup, validation, versioning, changelogs, Git operations, and pipelines."
+    category="CLI Reference"
+    status="English Reference"
+    syntax="custy COMMAND [OPTIONS]"
+    tags={[
+        "commands",
+        "CLI reference",
+        "public interface",
+    ]}
+    links={[
+        {label: "Custy Overview", href: "../index"},
+        {label: "CLI Index", href: "../reference/cli"},
+        {label: "Troubleshooting", href: "../troubleshooting/overview"},
+        {label: "Run Profiles", href: "./run/overview"},
+        {label: "Experimental Workflow", href: "./workflow/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Scope", value: "Public CLI", icon: "command"},
+        {label: "Focused Groups", value: "10", icon: "terminal"},
+        {label: "Run Profiles", value: "6 public names", icon: "pipeline"},
+        {label: "Experimental Group", value: "Workflow", icon: "warning"},
+    ]}
+/>
+
+## Overview
+
+Custy provides focused commands for individual operations and a `run` command
+for supported multi-step pipeline profiles. Choose a command based on the result
+you need, then review its requirements and side effects before execution.
+
+<InfoBox
+    variant="warning"
+    title="Public commands only"
+>
+
+The documentation describes commands accepted by the current public CLI.
+Internal profile names are implementation details and are not documented as
+valid `custy run` arguments.
+
+</InfoBox>
+
+<Section
+    title="Available Command Groups"
+>
+
+<FeatureGrid
+    title="Public Command Reference"
+    items={[
+        {title: "Initialize and Validate", icon: <Icon name="success" />, children: <>Use <a href="./init/overview">Init</a> to prepare project resources and <a href="./validate/overview">Validate</a> to check readiness.</>},
+        {title: "Backup and Cleanup", icon: <Icon name="package" />, children: <>Use <a href="./backup/overview">Backup</a> to retain message files and <a href="./cleanup/overview">Cleanup</a> for reviewed pruning.</>},
+        {title: "Version and Changelog", icon: <Icon name="release" />, children: <>Use <a href="./version/overview">Version</a> for project versions and <a href="./changelog/generate/overview">Changelog Generate</a> for release notes.</>},
+        {title: "Commit and Tag", icon: <Icon name="git" />, children: <>Use <a href="./commit/overview">Commit</a> to prepare local history and <a href="./tag/overview">Tag</a> for reviewed version tags.</>},
+        {title: "Push and Run", icon: <Icon name="pipeline" />, children: <>Use <a href="./push/overview">Push</a> for remote synchronization and <a href="./run/overview">Run</a> for public profiles.</>},
+        {title: "Experimental Workflow", icon: <Icon name="warning" />, children: <>The <a href="./workflow/overview">Workflow</a> group is experimental and currently blocked by a documented source mismatch.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Direct Commands and Pipeline Profiles"
+>
+
+A direct command performs one focused responsibility. For example,
+`custy changelog generate` generates the changelog and `custy push` synchronizes
+selected Git references.
+
+The `custy run` command coordinates registered public profiles. The currently
+accepted profile names are:
+
+- `commit`
+- `tag`
+- `push`
+- `dev`
+- `release`
+- `full`
+
+Profiles may combine validation, file editing, version changes, changelog
+generation, backups, cleanup, staging, commits, tags, pushes, or workflow
+finalization. Each profile page will show its resolved sequence and side effects.
+
+</Section>
+
+---
+
+<Section
+    title="Global Options"
+>
+
+Global options such as dry-run, debug output, and log-level selection belong to
+the root `custy` command. Their exact effect can vary by operation, so each
+command page explains whether an action is previewed, skipped, or still requires
+care.
+
+</Section>

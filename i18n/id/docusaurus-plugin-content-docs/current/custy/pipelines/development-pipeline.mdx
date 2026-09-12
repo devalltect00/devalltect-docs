@@ -1,0 +1,63 @@
+---
+title: "Development Pipeline"
+description: "Pahami exact Dev profile phases, side effects, omissions, dan recovery boundary."
+sidebar_position: 8
+sidebar_key: custy-pipelines-development
+tags: [custy, dev pipeline, git]
+keywords: [custy run dev, Custy development pipeline]
+---
+
+import {CommandChecklist, CommandHero, InfoBox, KeyValueTable, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+
+<CommandHero command="custy run dev" title="Development Pipeline" description="Koordinasikan artifact review, changelog generation, local commit, dan remote push untuk daily development work." category="Pipeline Profile" status="Stable with Limitations" syntax="custy run dev [OPTIONS]" tags={["daily development", "commit", "push"]} links={[{label: "Run Dev Guide", href: "../commands/run/dev/overview"}, {label: "Profiles", href: "./profiles"}, {label: "Safety", href: "../commands/run/safety"}]} />
+
+## Ringkasan
+
+Dev adalah deliberate daily-development profile. Profile ini menyiapkan dan
+me-review release artifacts, generate changelog, membuat commit, lalu push.
+Dev tidak menerapkan prepared version dan tidak membuat tag.
+
+<Terminal title="Preview before normal execution" language="bash">{`custy --dry-run run dev
+custy run dev`}</Terminal>
+
+---
+
+<Section title="Exact Phase Flow">
+<WorkflowTimeline title="Dev Profile" items={[{title: "Validate repository", description: "Pastikan execution berada dalam Git repository.", status: "completed"}, {title: "Prepare runtime state", description: "Resolve version context dan initialize branch workflow state.", status: "completed"}, {title: "Generate and review artifacts", description: "Generate configured artifacts, buka untuk editing, lalu validasi edited files.", status: "completed"}, {title: "Generate changelog", description: "Jalankan conditional changelog generation stage.", status: "completed"}, {title: "Back up and clean", description: "Backup commit-message file dan terapkan backup retention cleanup.", status: "completed"}, {title: "Stage and commit", description: "Stage resolved project changes dan buat local commit.", status: "completed"}, {title: "Push", description: "Push HEAD dan eligible workflow tag ke resolved remotes.", status: "current"}]} />
+</Section>
+
+---
+
+<KeyValueTable title="Exact Dev Step Order" description="Internal name ditampilkan agar users dan contributors dapat mencocokkan documentation dengan logs dan source." items={[
+ {key: "01 — ensure_git_repo_step", value: "Pastikan execution berada dalam Git repository."},
+ {key: "02 — prepare_version_step", value: "Resolve version dan tag context untuk later services tanpa menerapkannya ke files."},
+ {key: "03 — workflow_init_step", value: "Initialize branch workflow state."},
+ {key: "04 — generate_artifacts_step", value: "Generate configured release artifacts."},
+ {key: "05 — edit_files_step", value: "Buka generated artifacts untuk review dan editing."},
+ {key: "06 — validate_edited_step", value: "Validasi edited artifact files."},
+ {key: "07 — generate_changelog_step", value: "Jalankan conditional changelog generation."},
+ {key: "08 — backup_commit_message_files_step", value: "Backup commit-message file."},
+ {key: "09 — cleanup_backup_step", value: "Terapkan configured backup retention cleanup."},
+ {key: "10 — stage_step", value: "Stage files yang dipilih workflow."},
+ {key: "11 — commit_step", value: "Buat local development commit."},
+ {key: "12 — push_step", value: "Push HEAD dan eligible workflow tag ke resolved remotes."},
+]} />
+
+---
+
+<InfoBox variant="info" title="Prepared Version Tidak Diterapkan">Dev menyertakan version preparation karena later services membutuhkan version context, tetapi tidak menyertakan `apply_version_step`. Dev juga tidak menyertakan `tag_step`. Gunakan Release jika perlu menulis version baru dan membuat release tag.</InfoBox>
+<InfoBox variant="warning" title="Dev Memiliki Validation Prefix Lebih Sempit">Profile secara explicit dimulai dengan repository validation, bukan full pre-commit dan pre-push validation subprofiles milik Release. Downstream services tetap dapat menolak invalid state. Konfirmasi message files, staged changes, dan remotes sebelum normal execution.</InfoBox>
+
+---
+
+<Section title="Before You Run">
+<CommandChecklist items={[{title: "Review repository state", description: "Konfirmasi current branch dan pastikan unrelated work tidak ikut di-stage."}, {title: "Check project paths", description: "Verifikasi configured version, commit-message, template, dan changelog paths."}, {title: "Confirm the destination", description: "Tinjau default atau selected remotes karena push merupakan bagian Dev."}, {title: "Use dry-run first", description: "Periksa planned mutations dan remote operations sebelum normal run."}, {title: "Review the result", description: "Periksa diff, commit, dan remote branch setelah selesai."}]} />
+</Section>
+
+---
+
+<Section title="Failure dan Retry">Jika Dev gagal sebelum commit, periksa generated files, edits, backups, dan Git index. Jika gagal saat atau setelah push, verifikasi apakah local commit dan remote updates sudah selesai. Jangan menjalankan ulang seluruh profile sampai state tersebut dipahami.</Section>
+
+---
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Run Dev", href: "../commands/run/dev/overview", description: "Gunakan command options dan practical examples untuk Dev profile."}, {title: "Complete Profile Reference", href: "./profile-reference", description: "Bandingkan Dev dengan resolver profiles lain."}, {title: "Release Pipeline", href: "./release-pipeline", description: "Bandingkan Dev dengan versioned, tagged release."}, {title: "Commit Command", href: "../commands/commit/overview", description: "Buat focused commit dengan command-specific controls."}]} /></Section>

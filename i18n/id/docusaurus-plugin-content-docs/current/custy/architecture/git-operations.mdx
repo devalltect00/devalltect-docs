@@ -1,0 +1,34 @@
+---
+title: "Git Operations"
+description: "Telusuri factory, executor protocol, high-level service, result model, dry-run boundary, dan tag sorting Custy."
+sidebar_position: 5
+sidebar_key: custy-architecture-git-operations
+tags: [custy, git, architecture]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="app/core/git_ops/" title="Git Operations" description="Pahami pemisahan repository policy dari eksekusi Git low-level." category="Arsitektur" status="Shared Service" syntax="consumer -> GitService -> IGitCommandExecutor -> git" links={[{label: "Core Layer", href: "./core-layer"}, {label: "Workflow Engine", href: "./workflow-engine"}, {label: "Strategy Pattern", href: "./strategy-pattern"}]} />
+
+## Batas layanan
+
+Consumer memakai `GitService` untuk operasi repository tingkat tinggi. Service tersebut bergantung pada `IGitCommandExecutor`, sehingga pemanggilan subprocess dan bentuk hasil berada di satu boundary yang dapat diuji. Factory merakit implementasi aktif dan strategy terpisah menangani generation serta sorting tag.
+
+<Section title="Dry-Run Boundary">
+
+`GitCommandExecutor` memiliki `Runner` yang membedakan discovery dari mutation.
+Dalam dry-run, operasi yang secara eksplisit ditandai read-only tetap dijalankan
+agar caller memperoleh repository history, branches, tags, status, dan remotes
+yang sebenarnya. Mutating operations dilaporkan sebagai simulation dan
+menghasilkan successful `CommandResult` dengan skipped state.
+
+Higher layers masih dapat membaca configuration dan project files, menjalankan
+validation, serta merender preview. Normal diagnostic logging juga dapat
+menulis ke configured log file. Dry-run adalah mutation boundary, bukan
+transaction atau rollback mechanism.
+
+</Section>
+
+<Section title="Aturan kontribusi">Tambahkan kebijakan repository pada `GitService`, detail command pada executor, dan pertahankan typed result serta error context. Hindari subprocess Git langsung dari CLI atau pipeline step.</Section>
+
+<RelatedCommands commands={[{title: "Workflow Engine", href: "./workflow-engine", description: "Lihat release policy yang menggunakan Git service."}, {title: "Strategy Pattern", href: "./strategy-pattern", description: "Pisahkan tag generation, sorting, dan conversion."}, {title: "Push Command", href: "../commands/push/overview", description: "Pelajari sinkronisasi remote publik."}, {title: "Git Configuration", href: "../configuration/git/overview", description: "Atur default, primary, dan backup remote."}]} />

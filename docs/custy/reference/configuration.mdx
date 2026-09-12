@@ -1,0 +1,140 @@
+---
+title: "Configuration Reference"
+description: "Reference Custy's project-owned TOML root, namespaces, precedence, lifecycle, cache boundary, and implementation-status language."
+sidebar_position: 4
+sidebar_key: custy-reference-configuration
+tags: [custy, configuration, TOML]
+keywords: [Custy tool.custy, Custy config reference, configuration precedence]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command=".config/custy/config.toml"
+    title="Configuration Reference"
+    description="Use the project-owned tool.custy namespace and follow links to every generated or actively supported property."
+    category="Reference"
+    status="Namespace Index"
+    syntax="[tool.custy.NAMESPACE]"
+    tags={["TOML", "CLI -> config -> default", "project-owned"]}
+    links={[
+        {label: "All Properties", href: "../configuration/reference"},
+        {label: "Configuration Guide", href: "../configuration/overview"},
+        {label: "Resolution", href: "../configuration/resolution"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Root Table", value: "tool.custy", icon: "configuration"},
+        {label: "Project File", value: ".config/custy/config.toml", icon: "file"},
+        {label: "Generated Tables", value: "29", icon: "table"},
+        {label: "Primary Precedence", value: "CLI -> config -> default", icon: "timeline"},
+    ]}
+/>
+
+## Minimal Shape
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"
+
+[tool.custy.cli.versioning]
+strategy = "semver"
+bump = "auto"
+
+[tool.custy.logging]
+level = "INFO"
+
+[tool.custy.git]
+default_remote = "origin"`}
+
+</Terminal>
+
+---
+
+<Section title="Root Namespaces">
+
+<KeyValueTable
+    title="Configuration Map"
+    items={[
+        {key: "tool.custy.project", value: <>Select the validated project source directory. <a href="../configuration/project">Details</a>.</>},
+        {key: "tool.custy.release", value: <>Store release metadata while accounting for the documented active-loader shape mismatch. <a href="../configuration/release">Details</a>.</>},
+        {key: "tool.custy.initialization", value: <>Set default replacement and prompt behavior for <code>custy init</code>. <a href="../configuration/initialization">Details</a>.</>},
+        {key: "tool.custy.cli", value: <>Configure versioning, paths, templates, execution, push, cleanup, changelog, and experimental workflow defaults. <a href="../configuration/cli/overview">Details</a>.</>},
+        {key: "tool.custy.logging", value: <>Configure Rich console and rotating file logging. <a href="../configuration/logging/overview">Details</a>.</>},
+        {key: "tool.custy.changelog", value: <>Control collection, cleaning, release behavior, links, mappings, rendering, and advanced loaded settings. <a href="../configuration/changelog/overview">Details</a>.</>},
+        {key: "tool.custy.git", value: <>Configure remote groups and service-level push selection. <a href="../configuration/git/overview">Details</a>.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Resolution Contract">
+
+The primary `ConfigLoader.resolve()` contract is:
+
+1. Use a non-`None` CLI value.
+2. Otherwise use the nested configuration value.
+3. Otherwise use the resolver's built-in default.
+4. Raise `ConfigurationError` when the caller marks the value required and no
+   value can be resolved.
+
+Individual resolvers may normalize values, invert a negative flag, or apply
+command-specific validation after this general sequence. Always use the
+detailed property page when exact fallback behavior matters.
+
+</Section>
+
+---
+
+<Section title="Lifecycle and Cache Boundary">
+
+- `custy init` copies the packaged `app/templates/config.toml` resource into
+  the current project's `.config/custy/config.toml` path.
+- After creation, the project copy belongs to the user and may be edited.
+- `ConfigLoader` extracts only the `[tool.custy]` subtree.
+- The shared `get_config()` loader caches one instance per process. Editing
+  the file during a running Custy process does not refresh that instance.
+- Relative paths are interpreted from the process working directory unless a
+  specific resolver documents a different boundary.
+- Changelog configuration is mapped into dedicated typed dataclasses by
+  `ChangelogConfigResolver`.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Read implementation status before relying on a property">
+
+The exhaustive property index marks values as active, optional, mismatch,
+loaded-only, reserved, or experimental. Being present in generated TOML does
+not by itself prove that the active command path consumes the property.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "All Configuration Properties", href: "../configuration/reference", description: "Search every full TOML path, generated default, and status."},
+        {title: "Configuration File", href: "../configuration/config-file", description: "Understand ownership, initialization, and replacement safety."},
+        {title: "Configuration Resolution", href: "../configuration/resolution", description: "Review precedence and known resolver exceptions."},
+        {title: "Configuration Architecture", href: "../architecture/configuration-system", description: "Trace loaders, caches, typed models, and consumers."},
+    ]}
+/>
+
+</Section>

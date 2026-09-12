@@ -1,0 +1,158 @@
+---
+title: "Versioning Troubleshooting"
+description: "Resolve missing version files, invalid strategies, unexpected formats, conversion limits, Commitizen failures, tag conflicts, and unapplied updates."
+sidebar_position: 4
+sidebar_key: custy-troubleshooting-versioning
+tags: [custy, troubleshooting, versioning]
+keywords: [Custy version error, invalid strategy, tag already exists]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version update"
+    title="Versioning Troubleshooting"
+    description="Separate generation, conversion, file synchronization, local tag creation, and publication before correcting a release value."
+    category="Troubleshooting"
+    status="Version Recovery"
+    syntax="strategy -> generated value -> project file -> optional Git tag"
+    tags={["strategies", "formats", "version file", "tags"]}
+    links={[
+        {label: "Troubleshooting Hub", href: "./overview"},
+        {label: "Version Formats", href: "../reference/version-formats"},
+        {label: "Version Command", href: "../commands/version/troubleshooting"},
+        {label: "Tag Command", href: "../commands/tag/troubleshooting"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Strategies", value: "5", icon: "configuration"},
+        {label: "Default Version File", value: "app/__version__.py", icon: "python"},
+        {label: "Explicit Tag Shape", value: "vX.Y.Z", icon: "release"},
+        {label: "Git Tag", value: "Separate effect", icon: "git"},
+    ]}
+/>
+
+## Scope of This Page
+
+Use this page to separate strategy generation, format conversion, file
+synchronization, Git tag creation, and publication across Custy. Use the
+Version or Tag command guide after the failing responsibility is known.
+
+## Identify the Failing Responsibility
+
+<KeyValueTable
+    items={[
+        {key: "Generation", value: "Custy could not calculate a new value from strategy, repository history, bump, or release modifiers."},
+        {key: "Conversion", value: "The release tag and project ecosystem require different compatible representations."},
+        {key: "Synchronization", value: "The selected value exists, but the configured version file is missing, unwritable, or was not updated."},
+        {key: "Tag creation", value: "A local Git tag is missing, invalid, or conflicts with an existing reference."},
+        {key: "Publication", value: "The local version and tag are correct, but a remote push failed or only some destinations succeeded."},
+    ]}
+/>
+
+---
+
+<Section title="Version File Missing or Unchanged">
+
+- Confirm `tool.custy.cli.paths.version_file` points to an existing writable
+  file in the intended project.
+- Check for a command-line `--version-file` override.
+- Run from the project root so relative paths resolve correctly.
+- If dry-run was active, no file write is expected.
+- Inspect the file and `git diff` rather than relying only on summary output.
+
+</Section>
+
+---
+
+<Section title="Invalid Strategy or Unexpected Format">
+
+- Use `semver`, `pep440`, `commitizen`, `date`, or `gitcount`.
+- Compare existing tags with the selected strategy; incompatible history can
+  prevent latest-tag interpretation or produce an unexpected next value.
+- Review prerelease, development, post-release, metadata, and epoch inputs.
+- Basic SemVer and PEP 440 bridging does not cover every advanced form.
+- Generated formats are broader than the shared explicit-tag validator.
+
+<InfoBox variant="warning" title="Explicit tag input is currently narrow">
+
+Options using the shared validator normalize a missing `v` and accept only
+`vX.Y.Z`. A generated prerelease or PEP 440 value can be valid internally but
+still be rejected when supplied through that explicit CLI input.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Commitizen Failure">
+
+Confirm the external `cz` executable is installed, project Commitizen metadata
+is valid, and eligible Conventional Commits exist.
+
+<InfoBox variant="danger" title="Current strategy delegation is not runnable as written">
+
+The active Commitizen strategy infers a bump but passes an unsupported keyword
+when constructing `SemverStrategy`. This requires an application fix; changing
+TOML cannot correct it.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Tag Conflict">
+
+<Terminal title="Inspect before choosing recovery" language="bash">
+
+{`git show --decorate <tag>
+git tag --points-at HEAD
+git ls-remote --tags origin <tag>`}
+
+</Terminal>
+
+If the expected tag already exists, verify its target and publication state.
+Choose another approved version or follow the team's coordinated tag-repair
+procedure. Do not move a published tag casually.
+
+</Section>
+
+---
+
+<Section title="Safe Retry">
+
+1. Preserve the first error and current file/Git state.
+2. Correct the version path, strategy, input, or repository history problem.
+3. Preview the smallest applicable operation.
+4. Inspect the version file and resolved tag.
+5. Confirm whether a commit or tag already exists before running a larger
+   release profile.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Version Troubleshooting", href: "../commands/version/troubleshooting", description: "Resolve focused Version Update failures."},
+        {title: "Tag Troubleshooting", href: "../commands/tag/troubleshooting", description: "Resolve validation, version input, and existing-tag conflicts."},
+        {title: "Version Formats", href: "../reference/version-formats", description: "Compare strategy values, common forms, conversions, and known limits."},
+        {title: "Versioning Concept", href: "../concepts/versioning", description: "Understand selection, preparation, synchronization, and Git tagging."},
+    ]}
+/>
+
+</Section>

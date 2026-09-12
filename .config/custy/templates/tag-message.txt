@@ -1,0 +1,78 @@
+🧪 Devalltect Docs v0.1.0-alpha.1 — Initial Documentation Portal Alpha
+
+This first alpha introduces the shared Devalltect documentation hub for Custy,
+Path Header Scanner, Doc Gen, and Reflow. It turns the original Docusaurus
+starter into a multilingual, component-based portal that can grow alongside
+each project.
+
+### ✨ Alpha Highlights
+
+- A unified documentation portal and custom homepage for four Devalltect
+  developer tools.
+- English as the default language, with a complete Indonesian documentation set
+  currently available for Custy.
+- Comprehensive Custy documentation covering installation, commands,
+  configuration, pipelines, architecture, user workflows, developer guidance,
+  references, and troubleshooting.
+- Reusable components for commands, workflows, terminals, requirements,
+  features, screenshots, tables, Mermaid diagrams, architecture explanations,
+  and common page layouts.
+- Consistent responsive styling, dark-mode support, navigation, project cards,
+  and reader-friendly visual patterns.
+- Safe handling for planned screenshot assets that are not available yet.
+
+### 🔎 Version-Aware Documentation
+
+The portal can record which application release a documentation set represents.
+Maintainers can select manual status or automatically compare repository tags
+using supported SemVer or PEP 440 rules.
+
+Remote checks include timeout handling, prerelease filtering, diagnostics, and
+fallback behavior. Current documentation stays unobtrusive, while outdated,
+preview, or unverifiable documentation receives a visible notice.
+
+### 🚀 Delivery and Tooling
+
+- Yarn-based development, type checking, and multilingual production builds.
+- GitHub Actions deployment to GitHub Pages.
+- GitLab CI and Pages support.
+- Project-root routing and repaired production links.
+- Automated tests for remote tag discovery and documentation freshness logic.
+
+### 📚 Current Documentation Coverage
+
+- **Custy:** the most complete documentation set, with reusable component
+  integration and English/Indonesian coverage.
+- **Path Header Scanner:** available as an initial documentation set; content
+  modernization and component integration are still in progress.
+- **Doc Gen:** available as an initial documentation set; content modernization
+  and component integration are still in progress.
+- **Reflow:** available as an initial documentation set; content modernization
+  and component integration are still in progress.
+
+### 🧪 Requested Alpha Feedback
+
+- Is project discovery and navigation clear across desktop and mobile layouts?
+- Are Custy commands, configuration, pipelines, and safety boundaries easy to
+  understand?
+- Are localization behavior and untranslated technical terms appropriate?
+- Are documentation freshness notices useful without distracting from current
+  pages?
+- Which legacy project section should be modernized and localized next?
+
+### ⚠️ Alpha Status
+
+This is an early prerelease of the documentation portal. Page organization,
+component APIs, navigation, and freshness configuration may change before the
+stable release.
+
+Custy documentation is the current quality reference. The Path Header Scanner,
+Doc Gen, and Reflow sections still need broader review, component adoption,
+consistency work, and localization. Verify critical instructions against their
+source repositories until those migrations are complete.
+
+_Release: v0.1.0-alpha.1_
+_Previous release: none_
+_Target stable release: v1.0.0_
+_Strategy: Semantic Versioning_
+_Author: Devalltect / Rizky Fernandes_

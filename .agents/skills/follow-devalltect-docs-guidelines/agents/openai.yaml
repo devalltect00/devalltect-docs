@@ -1,0 +1,4 @@
+interface:
+  display_name: "Devalltect Docs Guidelines"
+  short_description: "Follow Devalltect docs project rules"
+  default_prompt: "Use $follow-devalltect-docs-guidelines to work safely and consistently in the Devalltect documentation repository."

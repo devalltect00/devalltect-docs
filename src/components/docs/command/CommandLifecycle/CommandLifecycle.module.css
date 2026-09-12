@@ -1,0 +1,103 @@
+.lifecycle {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-xl);
+
+}
+
+.timeline {
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+.step {
+
+    display: flex;
+
+    gap: 1rem;
+
+    padding: 1rem 0;
+
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+
+}
+
+.step:last-child {
+
+    border-bottom: none;
+
+}
+
+.marker {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 2rem;
+
+    height: 2rem;
+
+    border-radius: 999px;
+
+    background: var(--ifm-color-emphasis-200);
+
+    font-weight: 600;
+
+}
+
+.active .marker {
+
+    background: var(--ifm-color-primary);
+
+    color: white;
+
+}
+
+.content {
+
+    flex: 1;
+
+}
+
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+
+}
+
+.title {
+
+    font-weight: 600;
+
+}
+
+.description {
+
+    margin-top: .5rem;
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+
+}

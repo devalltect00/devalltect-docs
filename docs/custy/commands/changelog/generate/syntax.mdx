@@ -1,0 +1,112 @@
+---
+title: "Syntax"
+description: "Command forms for generating and previewing a Custy changelog."
+sidebar_position: 3
+sidebar_key: custy-changelog-generate-syntax
+tags: [changelog, syntax, cli]
+keywords: [custy changelog generate syntax]
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy changelog generate"
+    title="Command Syntax"
+    description="Use the supported generation forms and place global execution options at the Custy root."
+    category="Changelog"
+    status="Stable"
+    syntax="custy changelog generate [OPTIONS]"
+    tags={[
+        "syntax",
+        "CLI",
+        "dry-run",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+Use the direct changelog command for standalone generation. Command-specific
+options follow `generate`; global execution options precede `changelog`.
+
+---
+
+<Section
+    title="Supported Command Forms"
+>
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Generate with resolved configuration",
+            command: "custy changelog generate",
+            description: "Generate or update CHANGELOG.md using CLI overrides, project configuration, and built-in defaults.",
+        },
+        {
+            title: "Force regeneration",
+            command: "custy changelog generate --force",
+            description: "Request regeneration even when changelog content already exists.",
+        },
+        {
+            title: "Use another pending commit template",
+            command: "custy changelog generate --commit-msg-file path/to/commit-message.txt",
+            description: "Override the configured commit-message template for this invocation.",
+        },
+        {
+            title: "Preview through the global option",
+            command: "custy --dry-run changelog generate",
+            description: "Pass dry-run at the root command level before the changelog command group.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Global Option Placement"
+>
+
+<Terminal>
+
+{`custy --dry-run changelog generate
+custy --debug changelog generate
+custy --log-level debug changelog generate`}
+
+</Terminal>
+
+Root options must appear before the `changelog` command group.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Unsupported form"
+>
+
+Do not use `custy run changelog`. The current public `run` argument does not
+accept the internal changelog profile name.
+
+</InfoBox>

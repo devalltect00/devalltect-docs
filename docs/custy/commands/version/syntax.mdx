@@ -1,0 +1,139 @@
+---
+title: "Syntax"
+description: "Command syntax for updating project version information."
+sidebar_position: 3
+sidebar_key: custy-version
+
+tags:
+    - version
+    - syntax
+
+keywords:
+    - custy version syntax
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version"
+    title="Syntax"
+    description="Learn how to execute Version Update directly or as part of a workflow."
+    category="Versioning"
+    status="Stable"
+    syntax="custy version update"
+    tags={[
+        "syntax",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Requirements",
+            href: "./requirements",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+The Version command synchronizes version information across your project.
+
+The public interface is the direct `custy version update` subcommand.
+
+---
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Direct Command",
+            description:
+                "Run Version Update directly from the command line.",
+            command:
+`custy version update`,
+        },
+    ]}
+/>
+
+---
+
+<Section
+    title="Command Structure"
+>
+
+The Version command currently provides a single subcommand:
+
+```text
+custy version update
+```
+
+Future Custy releases may introduce additional version-related subcommands
+while maintaining the same command structure.
+
+</Section>
+
+---
+
+The internal `apply_version` profile is reused by Custy, but the current public
+Run argument does not accept `custy run apply_version`.
+
+---
+
+<Section
+    title="Global Options"
+>
+
+Like every Custy command, Version Update supports global CLI options.
+
+Examples include:
+
+- `--dry-run`
+- `--debug`
+- `--log-level`
+
+Global options always appear before the command.
+
+Example:
+
+```bash
+custy --dry-run version update
+```
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Direct vs Workflow Execution"
+>
+
+Use the direct command when you only need to synchronize project version
+files.
+
+Use the workflow stage when Version Update should participate in a larger
+automated workflow executed through `custy run`.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Options** page to learn about the command-line arguments
+supported by Version Update.
+
+</Section>

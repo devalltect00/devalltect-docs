@@ -1,0 +1,256 @@
+---
+title: "Overview"
+description: "Safely remove obsolete Git branches using configurable cleanup rules."
+sidebar_position: 1
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - git
+    - maintenance
+
+keywords:
+    - custy cleanup branches
+    - git branch cleanup
+    - cleanup merged branches
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    RelatedCommands,
+    Section,
+    InfoBox,
+    Screenshot,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Branch Cleanup"
+    description="Safely remove obsolete Git branches using configurable filters while protecting important branches."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "git",
+        "branches",
+        "cleanup",
+        "maintenance",
+    ]}
+    links={[
+        {
+            label: "Requirements",
+            href: "./requirements",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+<CommandMetadata
+    metadata={[
+        {
+            label: "Category",
+            value: "Git Maintenance",
+        },
+        {
+            label: "Git Repository",
+            value: "Required",
+        },
+        {
+            label: "Configuration",
+            value: "config.toml",
+        },
+        {
+            label: "Workflow",
+            value: "Manual",
+        },
+    ]}
+/>
+
+## Overview
+
+Branch Cleanup removes Git branches that satisfy the cleanup rules configured
+for your project.
+
+Unlike Backup Cleanup, this command operates directly on your Git repository.
+
+To minimize the risk of accidental branch deletion, Custy applies multiple
+safety checks before removing any branches.
+
+Only branches matching the configured cleanup filters are considered.
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Branch Cleanup Modifies Your Git Repository"
+>
+
+Branch Cleanup permanently removes local Git branches that satisfy the
+configured cleanup rules.
+
+Always review your configuration before executing the command.
+
+Custy automatically protects important branches such as:
+
+- `main`
+- `master`
+- `develop`
+
+These protected branches are never removed by Custy.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What Branch Cleanup Does"
+>
+
+<FeatureGrid
+    title="Responsibilities"
+    items={[
+        {
+            title: "Scan Local Branches",
+            icon: <Icon name="compare" />,
+            children: (
+                <>
+                    Inspect local Git branches before determining which
+                    branches are eligible for cleanup.
+                </>
+            ),
+        },
+        {
+            title: "Apply Cleanup Filters",
+            icon: <Icon name="table" />,
+            children: (
+                <>
+                    Evaluate branch prefixes, merge status, branch age,
+                    and other configured filters.
+                </>
+            ),
+        },
+        {
+            title: "Protect Important Branches",
+            icon: <Icon name="security" />,
+            children: (
+                <>
+                    Prevent removal of protected branches regardless of
+                    configured filters.
+                </>
+            ),
+        },
+        {
+            title: "Remove Eligible Branches",
+            icon: <Icon name="danger" />,
+            children: (
+                <>
+                    Delete only branches that satisfy every configured
+                    cleanup rule.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
+    alt="Branch cleanup process"
+    title="Branch Cleanup"
+    caption="Example output after Custy removes merged release branches according to the configured cleanup rules."
+/>
+
+---
+
+<Section
+    title="Safety First"
+>
+
+Branch Cleanup is intentionally conservative.
+
+By default:
+
+- no branch prefixes are configured,
+- no branches are selected,
+- no branches are deleted.
+
+Projects must explicitly configure which branch prefixes may be cleaned.
+
+This prevents accidental deletion immediately after installing Custy.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Configuration Driven"
+>
+
+Branch Cleanup behavior is controlled entirely by your project's
+`config.toml`.
+
+You decide:
+
+- which branch prefixes may be cleaned,
+- whether merged or unmerged branches are eligible,
+- whether age filters should be applied,
+- and which branches should remain protected.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Workflow Integration"
+>
+
+Branch Cleanup is available as the standalone public command:
+
+```bash
+custy cleanup branches
+```
+
+The internal `cleanup_branches` profile is intentionally **not** included in
+Custy's public automated release workflows and is not accepted as a public Run
+argument.
+
+This ensures that branch removal always remains an explicit user decision.
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {
+            name: "cleanup",
+            description: "Return to the Cleanup command overview.",
+            href: "../overview",
+        },
+        {
+            name: "backup",
+            description: "Clean obsolete backup files instead of Git branches.",
+            href: "../../backup/overview",
+        },
+        {
+            name: "run",
+            description: "Learn how Branch Cleanup can be executed as a workflow stage.",
+            href: "../../run/overview",
+        },
+    ]}
+/>

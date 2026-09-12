@@ -1,0 +1,11 @@
+{
+  "label": "Validate",
+  "position": 2,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-validate",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/validate/overview"
+  }
+}

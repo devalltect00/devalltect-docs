@@ -1,0 +1,65 @@
+---
+title: "Project Structure"
+description: "| File                                                         | Description           |"
+sidebar_key: doc-gen-project
+---
+# Project Structure
+
+This document describes the DocGen project structure.
+
+---
+
+## Repository Overview
+
+```
+doc-gen/
+├── app/
+│   └── doc_gen/          # Main application
+├── docs/                 # Documentation
+├── tests/                # Test suite
+├── Makefile             # Build automation
+├── pyproject.toml       # Python project config
+└── README.md           # Project overview
+```
+
+---
+
+## Source Code Structure
+
+```
+app/doc_gen/
+├── cli/                  # CLI interface
+│   ├── main.py          # Typer entrypoint
+│   ├── commands/       # Command implementations
+│   ├── constants/     # CLI constants
+│   └── utils/         # CLI utilities
+├── core/                # Core logic
+│   ├── initialize/    # Initialization
+│   └── structure/    # Structure generation
+├── config/              # Configuration
+├── constants/           # Shared constants
+├── services/            # Services
+├── templates/           # Templates
+├── theme/              # Theming
+├── ui/                 # UI components
+└── utils/             # Utilities
+```
+
+---
+
+## Key Files
+
+| File                                                         | Description           |
+| ------------------------------------------------------------ | --------------------- |
+| `app/doc_gen/cli/main.py`                                    | CLI entrypoint        |
+| `app/doc_gen/cli/commands/structure/command.py`              | Structure commands    |
+| `app/doc_gen/core/structure/scanner/scanner_service.py`      | File scanner          |
+| `app/doc_gen/core/structure/generator/markdown_generator.py` | Markdown generator    |
+| `.projectstructure.toml`                                     | Project configuration |
+
+---
+
+## Related Documentation
+
+- [Architecture Overview](../diagrams/architecture-overview.mmd)
+- [Developer Guide](../developer-guide/)

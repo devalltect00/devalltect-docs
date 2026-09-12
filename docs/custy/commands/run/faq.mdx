@@ -1,0 +1,113 @@
+---
+title: "FAQ"
+description: "Answers to common questions about custy run profiles."
+sidebar_position: 10
+sidebar_key: custy-run-faq
+tags: [run, faq, pipeline]
+keywords: [custy run faq]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Frequently Asked Questions"
+    description="Find answers about profile selection, changelog generation, composition, pushing, and Full-profile safety."
+    category="Pipeline"
+    status="Support Guide"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "FAQ",
+        "profiles",
+        "support",
+    ]}
+    links={[
+        {label: "Profiles", href: "./profiles"},
+        {label: "Safety", href: "./safety"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+These answers clarify how public profiles are selected, combined, and bounded.
+
+<InfoBox
+    variant="tip"
+    title="Choose the smallest profile"
+>
+
+Prefer a named profile whose effects match the required outcome. More stages do
+not make a workflow inherently safer.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Which Profile Should I Use?"
+>
+
+Use `dev` for daily commit-and-push work, `release` for a tagged release, and
+`full` only when workflow finalization is also intended.
+
+</Section>
+
+---
+
+<Section
+    title="Can I Run Only Changelog Generation?"
+>
+
+Not through the current Run argument. Use `custy changelog generate`.
+
+</Section>
+
+---
+
+<Section
+    title="Can I Combine Profiles?"
+>
+
+Yes, but only from the six accepted names. Custy expands, deduplicates, and
+globally orders the merged steps.
+
+</Section>
+
+---
+
+<Section
+    title="Is `commit tag push` Identical to `release`?"
+>
+
+They are closely related after normalization, but the named `release` profile is
+the clearer source of truth and may evolve intentionally as one workflow.
+
+</Section>
+
+---
+
+<Section
+    title="Does Run Always Push?"
+>
+
+No. The `commit` and `tag` profiles remain local. `push`, `dev`, `release`, and
+`full` contain a push stage.
+
+</Section>
+
+---
+
+<Section
+    title="Is `full` Safer Because It Does More Validation?"
+>
+
+No profile is automatically appropriate for every repository. `full` has the
+broadest effects and also invokes experimental finalization, so it requires the
+most review.
+
+</Section>

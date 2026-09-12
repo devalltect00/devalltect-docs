@@ -1,0 +1,25 @@
+---
+title: "Pemecahan Masalah Run"
+description: "Atasi rejected names, validation failures, partial pipelines, dan remote errors."
+sidebar_position: 9
+sidebar_key: custy-run-troubleshooting
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy run" title="Run Troubleshooting" description="Diagnosa profile selection, normalization, options, partial state, dan push failures." category="Pipeline" status="Panduan Dukungan" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Workflow Guide",href:"../../user-guide/troubleshooting-workflows"},{label:"Profiles",href:"./profiles"},{label:"Options",href:"./options"},{label:"FAQ",href:"./faq"}]} />
+
+## Ringkasan
+<InfoBox variant="warning" title="Inspect Partial State">Jangan rerun profile besar sebelum memeriksa files, commit, tag, dan remotes.</InfoBox>
+
+## Profile Name Ditolak
+<Section compact>Gunakan enam public names yang terdokumentasi; raw/internal steps tidak diterima.</Section>
+## Combined Sequence Berjalan dalam Urutan Berbeda
+<Section compact>Resolver menormalisasi berdasarkan global step order dan melakukan deduplication.</Section>
+## Validation Menghentikan Pipeline
+<Section compact>Perbaiki requirement yang dilaporkan; later stages sengaja tidak dijalankan.</Section>
+## Pipeline Berhenti Setelah Mengubah Files
+<Section compact>Temukan last completed stage dan tinjau diff sebelum retry atau recovery.</Section>
+## Run Option Tidak Berpengaruh
+<Section compact>Periksa adapter limitations dan effective configuration. Tidak semua accepted options dipropagasikan.</Section>
+## Push Gagal
+<Section compact>Periksa destination-by-destination state; commit atau local tag mungkin sudah dibuat.</Section>

@@ -1,0 +1,169 @@
+---
+title: "Output"
+description: "Understand the information reported by the custy validate command."
+sidebar_position: 8
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Output"
+    description="Learn how Custy reports validation results and what they mean."
+    category="Validation"
+    status="Recommended"
+    syntax="custy validate"
+    tags={[
+        "output",
+        "validation",
+        "results",
+    ]}
+    links={[
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+After completing validation, Custy reports whether the project satisfies the
+requirements needed for subsequent workflows.
+
+Successful validation indicates that the checked prerequisites have been
+verified successfully.
+
+If validation encounters a problem, execution stops immediately and Custy
+reports the reason together with guidance for resolving the issue.
+
+---
+
+<Section
+    title="Typical Output"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Successful Validation",
+            description:
+                "All configured validation checks completed successfully.",
+            output:
+`✓ Git repository found
+✓ Git remote verified
+✓ Version file found
+✓ Commit message template found
+✓ Tag message template found
+✓ Repository validation completed`,
+            notes:
+                "The exact output may vary depending on your configuration and enabled validation checks.",
+        },
+        {
+            title: "Validation Failure",
+            description:
+                "A required validation step failed before the workflow could continue.",
+            output:
+`✗ Git repository not found
+
+Hint:
+Run git init`,
+            notes:
+                "Validation stops immediately after the first failure and reports the corresponding guidance.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Successful Validation"
+>
+
+When every validation step succeeds:
+
+- The repository satisfies the configured prerequisites.
+- Required project resources are available.
+- Workflow-oriented commands may safely continue.
+- No repository history is modified.
+
+Successful validation only confirms readiness.
+
+It does not create commits, tags, releases, or modify your project.
+
+</Section>
+
+---
+
+<Section
+    title="Validation Failure"
+>
+
+When validation fails:
+
+- The current validation step is reported.
+- Remaining validation steps are skipped.
+- A descriptive message explains the problem.
+- A helpful hint is provided whenever possible.
+
+This fail-fast behavior helps identify and resolve problems quickly before
+attempting more complex workflow operations.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Read the Hint"
+>
+
+Whenever validation fails, read the accompanying hint before retrying.
+
+Most validation failures can be resolved by following the suggested action,
+such as initializing a Git repository, generating required templates, or
+staging project changes.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Dry Run"
+>
+
+When validation is executed as part of a workflow using the global
+<code>--dry-run</code> option, Custy reports what would normally happen without
+performing workflow actions that modify the repository.
+
+This allows you to inspect workflow readiness before executing the actual
+operation.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+If validation reports a problem, continue to the
+**Troubleshooting** page for guidance on resolving common validation failures.
+
+</Section>

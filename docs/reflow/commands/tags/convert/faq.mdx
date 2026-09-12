@@ -1,0 +1,495 @@
+---
+title: "Faq"
+description: "Convert Version Tags FAQ"
+sidebar_key: reflow-command-tags-convert
+---
+# Convert Version Tags FAQ
+
+## Overview
+
+This document answers common questions about tag conversion.
+
+If you are new to Reflow, start with:
+
+- overview.md
+- workflow.md
+
+before reading this FAQ.
+
+---
+
+# General Questions
+
+## What does convert actually do?
+
+Convert reads existing Git tags and creates Semantic Versioning equivalents.
+
+Example:
+
+Before:
+
+```text id="u3q76u"
+v1.0.0rc1
+```
+
+After:
+
+```text id="7nqajl"
+v1.0.0rc1
+v1.0.0-rc.1
+```
+
+The original tag remains unless cleanup is requested.
+
+---
+
+## Does convert modify commits?
+
+No.
+
+Conversion only creates tags.
+
+Commit history remains unchanged.
+
+Example:
+
+```text id="nzk9jz"
+commit abc123
+```
+
+Before conversion:
+
+```text id="blppho"
+v1.0.0rc1
+```
+
+After conversion:
+
+```text id="n56h6d"
+v1.0.0rc1
+v1.0.0-rc.1
+```
+
+Both point to the same commit.
+
+---
+
+## Does convert modify Git history?
+
+No.
+
+The command:
+
+```text id="6v1kvc"
+✓ Creates tags
+✗ Does not rewrite commits
+✗ Does not rewrite branches
+✗ Does not rebase history
+```
+
+---
+
+## Does convert create releases?
+
+No.
+
+Conversion only creates Git tags.
+
+To recover release automation:
+
+```bash id="eh9q7f"
+reflow tags replay
+```
+
+---
+
+## Does convert build Docker images?
+
+No.
+
+To build images:
+
+```bash id="4fgxgn"
+reflow dockerize
+```
+
+---
+
+# Supported Formats
+
+## What formats are supported?
+
+Current support:
+
+```text id="3whz6x"
+rc
+beta
+alpha
+```
+
+Examples:
+
+```text id="k0j3b8"
+v1.0.0rc1
+v1.0.0b1
+v1.0.0a1
+```
+
+---
+
+## Does convert support stable releases?
+
+Stable releases already follow SemVer-compatible naming.
+
+Example:
+
+```text id="2ejq0u"
+v1.0.0
+```
+
+No conversion is required.
+
+---
+
+## Does convert support custom formats?
+
+Not currently.
+
+Examples:
+
+```text id="jlwmu3"
+release-candidate
+preview
+nightly
+build-123
+```
+
+are not supported.
+
+---
+
+## Does convert support SemVer → PEP440?
+
+Not currently.
+
+Current implementation:
+
+```text id="2b6v4s"
+PEP440
+   ↓
+SemVer
+```
+
+Supported.
+
+---
+
+```text id="0lnu9m"
+SemVer
+   ↓
+PEP440
+```
+
+Not supported.
+
+---
+
+# Safety Questions
+
+## Is conversion safe?
+
+Yes.
+
+The converter preserves:
+
+```text id="pgu0mc"
+✓ SHA
+✓ Commit history
+✓ Tag message
+✓ Repository structure
+```
+
+Only new tags are created.
+
+---
+
+## Should I use dry-run first?
+
+Yes.
+
+Recommended:
+
+```bash id="r53qnk"
+reflow tags convert --dry-run
+```
+
+especially for large repositories.
+
+---
+
+## Should I keep old tags?
+
+Recommended:
+
+Yes.
+
+Workflow:
+
+```bash id="96l1tq"
+reflow tags convert
+```
+
+Validate first.
+
+Remove old tags later if desired.
+
+---
+
+## What does --delete-old do?
+
+Workflow:
+
+```text id="yp81x6"
+Create New Tag
+       ↓
+Delete Original Tag
+```
+
+Example:
+
+Before:
+
+```text id="xhkz4l"
+v1.0.0rc1
+```
+
+After:
+
+```text id="h2qztu"
+v1.0.0-rc.1
+```
+
+Original tag removed.
+
+---
+
+# Repository Questions
+
+## What happens if the new tag already exists?
+
+Example:
+
+Existing:
+
+```text id="i76u83"
+v1.0.0-rc.1
+```
+
+Conversion attempts:
+
+```text id="wz6w4q"
+v1.0.0rc1
+```
+
+Result:
+
+```text id="mdimk0"
+Tag already exists
+```
+
+The converter will not overwrite existing tags.
+
+---
+
+## What happens if a tag is unsupported?
+
+Example:
+
+```text id="epn8mb"
+release-candidate
+```
+
+Result:
+
+```text id="zrrr4e"
+Skipped
+```
+
+Processing continues.
+
+---
+
+## What happens if one conversion fails?
+
+Example:
+
+```text id="h7l7r9"
+v1.0.0rc1   SUCCESS
+v1.1.0b1    SUCCESS
+v2.0.0a1    FAILED
+```
+
+Processing continues whenever possible.
+
+---
+
+# Migration Questions
+
+## Why convert tags?
+
+Common reasons:
+
+- Standardization
+- Container publishing
+- CI/CD compatibility
+- Release tooling compatibility
+- Repository migration
+
+---
+
+## Should I convert all repositories?
+
+Not necessarily.
+
+Conversion is useful when:
+
+```text id="jdlqak"
+Current tooling expects SemVer
+```
+
+and repositories currently use:
+
+```text id="vr3r5q"
+PEP 440
+```
+
+---
+
+## Can I convert only specific tags?
+
+Not currently.
+
+Current implementation processes tag collections.
+
+Possible future feature:
+
+```bash id="snq9gd"
+reflow tags convert --tag v1.0.0rc1
+```
+
+---
+
+## Can I convert a range of tags?
+
+Not currently.
+
+Possible future feature:
+
+```bash id="69oq3n"
+reflow tags convert \
+    --from v1.0.0rc1 \
+    --to v2.0.0rc3
+```
+
+---
+
+# Troubleshooting
+
+## Not a Git repository
+
+Problem:
+
+```text id="b4dd3y"
+fatal: not a git repository
+```
+
+Solution:
+
+Run conversion inside a repository.
+
+---
+
+## No tags found
+
+Problem:
+
+```text id="zh79yz"
+No tags found
+```
+
+Solution:
+
+Verify:
+
+```bash id="x53n4w"
+git tag
+```
+
+---
+
+## Permission denied
+
+Problem:
+
+```text id="73quht"
+Permission denied
+```
+
+Possible causes:
+
+- Repository permissions
+- Filesystem permissions
+- Git configuration issues
+
+---
+
+## Unexpected conversion result
+
+Recommended:
+
+```bash id="m4bx5e"
+reflow tags convert --dry-run
+```
+
+Verify mappings before conversion.
+
+---
+
+# Future Features
+
+Potential enhancements:
+
+```text id="58bwn6"
+✓ SemVer → PEP440
+✓ Custom converters
+✓ User-defined mappings
+✓ Single-tag conversion
+✓ Tag range conversion
+✓ Conversion reports
+✓ Conversion preview UI
+```
+
+---
+
+# Related Commands
+
+Replay release automation:
+
+```bash id="g08suv"
+reflow tags replay
+```
+
+Build Docker images:
+
+```bash id="63m3xa"
+reflow dockerize
+```
+
+---
+
+# Additional Reading
+
+- overview.md
+- workflow.md
+- requirements.md
+- examples.md

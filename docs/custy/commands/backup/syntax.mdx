@@ -1,0 +1,156 @@
+---
+title: "Syntax"
+description: "Learn how to invoke the custy backup command."
+sidebar_position: 3
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Syntax"
+    description="Learn how to create backups for Custy's template resources."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup commit"
+    tags={[
+        "syntax",
+        "backup",
+        "templates",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The **backup** command provides three subcommands that determine which template
+resources should be backed up.
+
+Each subcommand performs a different backup operation while sharing the same
+overall behavior.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Choose the Appropriate Scope"
+>
+
+Use the smallest backup scope that satisfies your workflow.
+
+For example, if only the commit message template has changed, backing up the
+commit template alone is usually sufficient.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Command Syntax"
+>
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Backup Commit Template",
+            description:
+                "Create a backup of the configured commit message template.",
+            command: "custy backup commit",
+        },
+        {
+            title: "Backup Tag Template",
+            description:
+                "Create a backup of the configured tag message template.",
+            command: "custy backup tag",
+        },
+        {
+            title: "Backup All Templates",
+            description:
+                "Create backups for both commit and tag message templates.",
+            command: "custy backup all",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Subcommands"
+>
+
+| Subcommand | Purpose |
+|------------|---------|
+| `commit` | Backup the configured commit message template. |
+| `tag` | Backup the configured tag message template. |
+| `all` | Backup both template files in a single operation. |
+
+Each subcommand creates timestamped backup files inside the configured backup
+directories.
+
+</Section>
+
+---
+
+<Section
+    title="Workflow Integration"
+>
+
+The backup command can be executed directly when you only want to create
+backups.
+
+Backup operations can also participate in larger Custy workflows.
+
+Those workflow-oriented backup stages are documented in the **Run** command
+documentation.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Global CLI Options"
+>
+
+Global options such as
+`--dry-run`,
+`--debug`,
+and
+`--log-level`
+
+are documented separately in the CLI documentation because they apply to all
+Custy commands.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Options** page to learn about the command-line options
+available for each backup subcommand.
+
+</Section>

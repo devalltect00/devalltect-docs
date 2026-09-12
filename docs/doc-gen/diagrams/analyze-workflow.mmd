@@ -1,0 +1,10 @@
+flowchart TD
+    A["CLI structure analyze command invoked"] --> B["Resolve target path"]
+    B --> C["Load configuration"]
+    C --> D["Build scanner context"]
+    D --> E["Discover files recursively"]
+    E --> F["Calculate project metrics"]
+    F --> G["Extract metadata"]
+    G --> H["Generate statistics"]
+    H --> I["Present analysis"]
+    I --> J["Report results"]

@@ -1,0 +1,21 @@
+---
+title: "Output"
+description: "Pahami output Branch Cleanup."
+sidebar_position: 8
+sidebar_key: custy-cleanup-branch
+---
+import {CommandHero, CommandOutput, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy cleanup branches" title="Output" description="Pahami hasil evaluasi dan penghapusan branch." category="Maintenance" status="Reference" syntax="custy cleanup branches" links={[
+    {label: "Examples", href: "./examples"}, {label: "Troubleshooting", href: "./troubleshooting"}, {label: "FAQ", href: "./faq"},
+]} />
+
+## Ringkasan
+
+Output menjelaskan evaluasi, branch yang memenuhi syarat, penghapusan, dan hasil akhir. Teks persisnya dapat berubah berdasarkan konfigurasi dan keadaan repository.
+
+<Section title="Successful Cleanup">Command dapat selesai sukses setelah menghapus branch yang memenuhi seluruh aturan.</Section>
+<Section title="No Matching Branches">Hasil tanpa penghapusan juga sukses jika tidak ada branch yang memenuhi filter.</Section>
+<Section title="Dry Run Output">Dry run menampilkan tindakan yang direncanakan tanpa menghapus branch.</Section>
+
+<InfoBox variant="tip" title="Successful Execution Doesn't Always Remove Branches">Exit yang sukses berarti evaluasi selesai dengan benar; bukan berarti branch harus dihapus.</InfoBox>

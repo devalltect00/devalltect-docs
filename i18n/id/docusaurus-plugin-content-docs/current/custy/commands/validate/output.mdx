@@ -1,0 +1,134 @@
+---
+title: "Output"
+description: "Pahami informasi yang dilaporkan oleh custy validate."
+sidebar_position: 8
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Output"
+    description="Pelajari cara Custy melaporkan hasil validation dan maknanya."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={["output", "validation", "results"]}
+    links={[
+        {label: "Examples", href: "./examples"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Ringkasan
+
+Setelah validation selesai, Custy melaporkan apakah proyek memenuhi
+requirements untuk workflow berikutnya.
+
+Jika validation menemukan masalah, eksekusi langsung berhenti dan Custy
+melaporkan penyebab beserta panduan penyelesaiannya.
+
+---
+
+<Section title="Output Umum">
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Validation Berhasil",
+            description: "Semua configured validation checks berhasil diselesaikan.",
+            output:
+`✓ Git repository found
+✓ Git remote verified
+✓ Version file found
+✓ Commit message template found
+✓ Tag message template found
+✓ Repository validation completed`,
+            notes: "Output tepatnya dapat berbeda sesuai configuration dan validation checks yang diaktifkan.",
+        },
+        {
+            title: "Validation Gagal",
+            description: "Validation step yang diperlukan gagal sebelum workflow dapat dilanjutkan.",
+            output:
+`✗ Git repository not found
+
+Hint:
+Run git init`,
+            notes: "Validation langsung berhenti setelah failure pertama dan melaporkan panduan terkait.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Validation Berhasil">
+
+Ketika setiap validation step berhasil:
+
+- Repository memenuhi prerequisites yang dikonfigurasi.
+- Project resources yang diperlukan tersedia.
+- Workflow-oriented commands dapat dilanjutkan.
+- Riwayat repository tidak diubah.
+
+Validation yang berhasil hanya memastikan kesiapan. Proses ini tidak membuat
+commit, tag, release, atau mengubah proyek.
+
+</Section>
+
+---
+
+<Section title="Validation Gagal">
+
+Ketika validation gagal:
+
+- Validation step saat ini dilaporkan.
+- Validation steps berikutnya dilewati.
+- Pesan deskriptif menjelaskan masalah.
+- Hint yang membantu diberikan selama memungkinkan.
+
+Perilaku fail-fast membantu menemukan dan menyelesaikan masalah sebelum
+menjalankan workflow operation yang lebih kompleks.
+
+</Section>
+
+---
+
+<InfoBox variant="tip" title="Baca Hint">
+
+Ketika validation gagal, baca hint yang diberikan sebelum mencoba kembali.
+Sebagian besar failure dapat diselesaikan dengan mengikuti tindakan yang
+disarankan, seperti menjalankan Git init, membuat templates, atau melakukan
+stage terhadap perubahan.
+
+</InfoBox>
+
+---
+
+<Section title="Dry Run">
+
+Jika validation dijalankan sebagai bagian dari workflow dengan global option
+`--dry-run`, Custy melaporkan tindakan yang biasanya dilakukan tanpa
+menjalankan workflow actions yang mengubah repository.
+
+Dengan demikian, Anda dapat memeriksa workflow readiness sebelum eksekusi
+sebenarnya.
+
+</Section>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Jika validation melaporkan masalah, lanjutkan ke halaman **Troubleshooting**
+untuk panduan penyelesaian validation failure yang umum.
+
+</Section>

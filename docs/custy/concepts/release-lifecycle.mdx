@@ -1,0 +1,226 @@
+---
+title: "Release Lifecycle"
+description: "Understand how Custy's Release profile progresses from preflight validation to versioning, changelog generation, commit, tag, and push."
+sidebar_position: 5
+sidebar_key: custy-concepts-release-lifecycle
+
+tags:
+  - custy
+  - release
+  - pipeline
+
+keywords:
+  - custy release lifecycle
+  - custy run release
+  - custy release pipeline
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run release"
+    title="Release Lifecycle"
+    description="Follow a versioned release from preflight checks through local history and remote publication."
+    category="Core Concepts"
+    status="Stable with Limitations"
+    syntax="custy --dry-run run release [OPTIONS]"
+    tags={[
+        "preflight",
+        "release artifacts",
+        "publication",
+    ]}
+    links={[
+        {label: "Release Profile", href: "../commands/run/release/overview"},
+        {label: "Exact Workflow", href: "../commands/run/release/workflow"},
+        {label: "Safety", href: "./safety-and-side-effects"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Entry Point", value: "custy run release", icon: "terminal"},
+        {label: "Execution", value: "Ordered pipeline", icon: "pipeline"},
+        {label: "Local Effects", value: "Files, commit, and tag", icon: "git"},
+        {label: "Remote Effect", value: "Push", icon: "network"},
+    ]}
+/>
+
+## Overview
+
+The Release profile coordinates Custy's complete versioned publication path.
+It validates the repository, prepares a release version and messages, generates
+and reviews artifacts, applies the version, updates the changelog, creates a
+commit and tag, and pushes the result.
+
+<InfoBox
+    variant="warning"
+    title="Release is consequential"
+>
+
+Normal execution can modify project files, stage changes, create local Git
+history, create a tag, and update remotes. Preview the entire profile with
+`custy --dry-run run release` and review every resolved destination first.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Lifecycle Phases"
+>
+
+<WorkflowTimeline
+    title="Release Profile"
+    items={[
+        {
+            title: "Preflight validation",
+            description: "Validate the repository and the prerequisites for commit, tag, and push operations.",
+            status: "current",
+        },
+        {
+            title: "Prepare release context",
+            description: "Resolve the version, initialize workflow state, and prepare the tag message.",
+            status: "pending",
+        },
+        {
+            title: "Generate and review artifacts",
+            description: "Generate editable release artifacts, open them for review, and validate the edited result.",
+            status: "pending",
+        },
+        {
+            title: "Apply version and changelog",
+            description: "Synchronize the resolved version and update CHANGELOG.md from repository history.",
+            status: "pending",
+        },
+        {
+            title: "Back up and clean",
+            description: "Back up commit and tag messages, then prune retained backup files according to policy.",
+            status: "pending",
+        },
+        {
+            title: "Create local history",
+            description: "Stage the release changes, create the release commit, and create the local tag.",
+            status: "pending",
+        },
+        {
+            title: "Publish",
+            description: "Push HEAD and the release tag to the resolved remote destinations.",
+            status: "pending",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="State Created Along the Way"
+    subtitle="A release is a sequence of durable states, not one indivisible transaction."
+>
+
+<FeatureGrid
+    title="Release Outputs"
+    items={[
+        {
+            title: "Prepared Context",
+            icon: <Icon name="configuration" />,
+            children: "A resolved version, workflow context, and reviewed commit and tag messages.",
+        },
+        {
+            title: "Project Artifacts",
+            icon: <Icon name="file" />,
+            children: "Updated version-bearing files, generated release artifacts, and CHANGELOG.md.",
+        },
+        {
+            title: "Recovery Files",
+            icon: <Icon name="package" />,
+            children: "Commit-message and tag-message backups subject to the configured retention policy.",
+        },
+        {
+            title: "Git Index",
+            icon: <Icon name="dependency" />,
+            children: "The selected release changes staged before commit creation.",
+        },
+        {
+            title: "Local History",
+            icon: <Icon name="git" />,
+            children: "A release commit and local release tag created after validation.",
+        },
+        {
+            title: "Remote State",
+            icon: <Icon name="network" />,
+            children: "Published HEAD and tag references at every resolved destination that completed successfully.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="A failed release can be partially complete"
+>
+
+The pipeline does not roll every earlier effect back when a later stage fails.
+Before retrying, inspect edited files, the Git index, the latest commit, local
+tags, and every resolved remote. Repeating the whole profile without checking
+state can duplicate work or fail for a different reason.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Release and Full Have Different Boundaries"
+>
+
+The registered Release profile ends after push. The Full profile runs the same
+release path and then invokes an additional experimental workflow-finalization
+step. Choose Full only when that finalization is intentionally required and its
+current limitation is acceptable.
+
+<Terminal title="Review before publication" language="bash">
+
+{`# Inspect current repository state
+git status --short
+git remote -v
+
+# Resolve and preview the release
+custy --dry-run run release
+
+# Run normally only after the preview is understood
+custy run release`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Release Profile", href: "../commands/run/release/overview", description: "Review requirements, options, output, and examples."},
+        {title: "Release Workflow", href: "../commands/run/release/workflow", description: "See the exact registered Release stages."},
+        {title: "Full Profile", href: "../commands/run/full/overview", description: "Understand the additional experimental finalization boundary."},
+        {title: "Versioning", href: "./versioning", description: "Understand version selection, synchronization, and tags."},
+    ]}
+/>
+
+</Section>

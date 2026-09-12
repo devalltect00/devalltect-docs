@@ -1,0 +1,459 @@
+---
+title: "Todo Future"
+description: "TODO - Future"
+sidebar_key: reflow-project
+---
+# TODO - Future
+
+This document tracks potential future improvements for Reflow.
+
+Items are grouped by priority and may change over time.
+
+---
+
+# High Priority
+
+Features that align closely with the current architecture and provide immediate value.
+
+## Tag Filtering
+
+Allow processing only matching tags.
+
+Examples:
+
+```bash
+reflow tags convert --match "v2.*"
+
+reflow tags replay --match "v1.*"
+
+reflow dockerize --match "v3.*"
+```
+
+Benefits:
+
+- Faster execution
+- Safer migrations
+- Better control
+
+---
+
+## Single Tag Processing
+
+Allow operating on a single tag.
+
+Examples:
+
+```bash
+reflow tags convert --tag v2.0.0rc1
+
+reflow tags replay --tag v2.0.0
+
+reflow dockerize --tag v2.0.0
+```
+
+Benefits:
+
+- Easier testing
+- Incremental migration
+- Safer production usage
+
+---
+
+## Tag Range Processing
+
+Examples:
+
+```bash
+reflow dockerize \
+    --from v1.0.0 \
+    --to v2.0.0
+
+reflow tags replay \
+    --from v1.0.0 \
+    --to v2.0.0
+```
+
+Benefits:
+
+- Large repository support
+- Controlled rollouts
+
+---
+
+## Rich Summary Reports
+
+Current:
+
+```text
+Success: 10
+Failed: 2
+```
+
+Potential:
+
+```text
+Processed : 42
+Success   : 40
+Skipped   : 1
+Failed    : 1
+```
+
+Export formats:
+
+- JSON
+- Markdown
+
+---
+
+## Improved Dry Run
+
+Current:
+
+```text
+Would process tag.
+```
+
+Potential:
+
+```text
+Old Tag          New Tag
+---------------------------------
+v1.0.0rc1        v1.0.0-rc.1
+v1.0.0b1         v1.0.0-beta.1
+```
+
+---
+
+# Medium Priority
+
+Features that fit the project vision but are not immediately required.
+
+## SemVer → PEP440 Conversion
+
+Current:
+
+```text
+PEP440
+   ↓
+SemVer
+```
+
+Future:
+
+```text
+SemVer
+   ↓
+PEP440
+```
+
+Example:
+
+```text
+v1.0.0-rc.1
+      ↓
+v1.0.0rc1
+```
+
+---
+
+## Custom Version Mappings
+
+Example:
+
+```toml
+[tool.reflow.tags.mapping]
+
+preview = "pre"
+candidate = "rc"
+```
+
+---
+
+## Conversion Plugins
+
+Example:
+
+```python
+class CustomTagConverter:
+    ...
+```
+
+---
+
+## Structured Logging
+
+Support:
+
+```text
+DEBUG
+INFO
+WARNING
+ERROR
+```
+
+Potential outputs:
+
+- Console
+- File
+- JSON
+
+---
+
+## Typed Configuration Models
+
+Current:
+
+```text
+ConfigLoader
+```
+
+Future:
+
+```python
+DockerConfig
+ReplayConfig
+ConvertConfig
+```
+
+---
+
+# Container Registry Support
+
+Additional registry providers.
+
+## Docker Hub
+
+Example:
+
+```toml
+provider = "dockerhub"
+```
+
+---
+
+## AWS ECR
+
+Support publishing to:
+
+```text
+Amazon Elastic Container Registry
+```
+
+---
+
+## Azure ACR
+
+Support publishing to:
+
+```text
+Azure Container Registry
+```
+
+---
+
+## Google Artifact Registry
+
+Support publishing to:
+
+```text
+Google Artifact Registry
+```
+
+---
+
+## Harbor
+
+Support publishing to:
+
+```text
+Harbor Registry
+```
+
+---
+
+# Advanced Docker Features
+
+## Multi-Registry Publishing
+
+Example:
+
+```text
+GHCR
+GitLab
+Docker Hub
+```
+
+from a single command.
+
+---
+
+## Multi-Architecture Images
+
+Example:
+
+```text
+linux/amd64
+linux/arm64
+```
+
+using Docker Buildx.
+
+---
+
+## Latest Tag Support
+
+Current:
+
+```text
+:v1.0.0
+:v2.0.0
+```
+
+Future:
+
+```text
+:latest
+```
+
+support.
+
+---
+
+## SBOM Generation
+
+Potential outputs:
+
+- SPDX
+- CycloneDX
+
+---
+
+# Developer Experience
+
+## Provider Plugin System
+
+Potential architecture:
+
+```text
+Provider Plugin
+Registry Plugin
+Version Plugin
+```
+
+---
+
+## Async Executors
+
+Potential support for:
+
+- Parallel replay
+- Parallel docker builds
+- Parallel pushes
+
+---
+
+## Extended Reporting
+
+Generate:
+
+- Markdown reports
+- JSON reports
+- CI artifacts
+
+---
+
+# Documentation
+
+## Mermaid Diagrams
+
+Add diagrams for:
+
+- Replay workflow
+- Convert workflow
+- Dockerize workflow
+- Architecture workflow
+
+---
+
+## Screenshots
+
+Add CLI screenshots for:
+
+- Replay
+- Convert
+- Dockerize
+
+---
+
+## End-to-End Examples
+
+Add complete examples covering:
+
+```text
+Convert
+    ↓
+Replay
+    ↓
+Dockerize
+```
+
+workflows.
+
+---
+
+# Nice To Have
+
+Interesting ideas that are not currently planned.
+
+## Interactive Mode
+
+Example:
+
+```bash
+reflow interactive
+```
+
+Wizard-based workflow.
+
+---
+
+## Web Dashboard
+
+Potential release-management dashboard.
+
+---
+
+## Release Audit Reports
+
+Generate release history summaries.
+
+---
+
+## Changelog Generation
+
+Generate changelogs from tags and commits.
+
+---
+
+# Out Of Scope
+
+The following are intentionally not planned.
+
+- Kubernetes deployment
+- Helm deployment
+- Dockerfile generation
+- Infrastructure provisioning
+- CI/CD pipeline generation
+- Source code generation
+
+---
+
+# Current Focus
+
+Current project priorities:
+
+1. Stabilize CLI UX
+2. Improve documentation
+3. Improve tag filtering capabilities
+4. Improve reporting
+5. Expand registry support

@@ -1,0 +1,56 @@
+---
+title: "File Logging"
+description: "Konfigurasikan persistent rotating log file Custy, size, retention, dan format."
+sidebar_position: 3
+sidebar_key: custy-configuration-logging-file
+tags: [custy, configuration, logging, rotation]
+keywords: [log_dir, log_file, max_bytes, backup_count]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.logging.file]" title="File Logging" description="Simpan detailed records dalam size-limited rotating file." category="Logging Configuration" status="Active" syntax="[tool.custy.logging.file]" tags={["DEBUG file", "rotation", "retention"]} links={[{label: "Console Logging", href: "./console"}, {label: "Execution", href: "../cli/execution"}, {label: "Configuration File", href: "../config-file"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "6", icon: "table"}, {label: "Default Path", value: "logs/custy.log", icon: "file"}, {label: "Rotation Size", value: "10MB", icon: "package"}, {label: "Rotated Files", value: "5", icon: "directory"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "level", type: "DEBUG | INFO | WARNING | ERROR | CRITICAL", defaultValue: "DEBUG", description: "Threshold untuk persistent records."},
+        {property: "log_dir", type: "Directory path", defaultValue: "logs", description: "Directory yang dibuat saat logging diinisialisasi."},
+        {property: "log_file", type: "Filename", defaultValue: "custy.log", description: "Active log filename di dalam log_dir."},
+        {property: "max_bytes", type: "Size string", defaultValue: "10MB", description: "Maximum active-file size sebelum rotation. Parser menerima size units seperti KB, MB, dan GB."},
+        {property: "backup_count", type: "Integer", defaultValue: "5", description: "Maximum number of rotated files yang dipertahankan."},
+        {property: "file_format", type: "Logging format", defaultValue: "%(asctime)s | %(levelname)s | %(name)s | %(message)s", description: "Persistent Python logging format. Formatter Custy menghapus Rich markup."},
+    ]}
+/>
+
+<Terminal title="Generated file logging" language="toml">
+
+{`[tool.custy.logging.file]
+level = "DEBUG"
+log_dir = "logs"
+log_file = "custy.log"
+max_bytes = "10MB"
+backup_count = 5
+file_format = "%(asctime)s | %(levelname)s | %(name)s | %(message)s"`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Pastikan Destination Dapat Ditulis">
+
+Logging membuat `log_dir` selama setup. Automated atau containerized
+environments harus mengizinkan write di lokasi tersebut. Abaikan directory
+ini dari version control jika logs harus tetap local.
+
+</InfoBox>
+
+<Section title="Contoh Rotation">
+
+Dengan generated values, `custy.log` dirotasi setelah sekitar 10 MB dan
+mempertahankan hingga lima numbered historical files selain active log.
+
+</Section>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Console Logging", href: "./console", description: "Konfigurasikan interactive terminal output."}, {title: "Configuration File", href: "../config-file", description: "Tinjau relative paths dan project ownership."}, {title: "Run Troubleshooting", href: "../../commands/run/troubleshooting", description: "Gunakan persistent detail saat diagnosis failures."}]} /></Section>

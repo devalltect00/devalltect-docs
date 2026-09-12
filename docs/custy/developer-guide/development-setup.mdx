@@ -1,0 +1,168 @@
+---
+title: "Development Setup"
+description: "Prepare a Python 3.14+ environment, install Custy in editable mode, and verify contributor tools."
+sidebar_position: 2
+sidebar_key: custy-developer-guide-development-setup
+tags: [custy, development setup, virtual environment]
+keywords: [Custy editable install, Custy contributor setup, Python 3.14]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="python -m pip install -e &quot;.[dev]&quot;"
+    title="Development Setup"
+    description="Prepare an isolated editable installation for changing and testing Custy itself."
+    category="Developer Guide"
+    status="Python 3.14+"
+    syntax="create venv -> install dev tools -> verify"
+    tags={["editable install", "pytest", "Ruff", "Black"]}
+    links={[
+        {label: "Requirements", href: "#requirements"},
+        {label: "Install", href: "#manual-setup"},
+        {label: "Verify", href: "#verify-the-environment"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Required Python", value: "3.14 or newer", icon: "python"},
+        {label: "Install Mode", value: "Editable", icon: "package"},
+        {label: "Environment", value: "venv recommended", icon: "directory"},
+        {label: "Optional Helper", value: "GNU Make", icon: "command"},
+    ]}
+/>
+
+## Goal
+
+Use an isolated environment whose `custy` executable points to the working
+source checkout. Editable installation means a Python source edit is available
+to the next invocation without rebuilding or reinstalling the package.
+
+---
+
+<Section title="Requirements">
+
+<RequirementGrid
+    items={[
+        {title: "Python 3.14+", level: "required", children: "The current package metadata requires Python 3.14 or newer."},
+        {title: "Git", level: "required", children: "The application and its tests exercise repository, tag, commit, branch, and remote behavior."},
+        {title: "pip", level: "required", children: "Install through the selected virtual-environment interpreter."},
+        {title: "Virtual Environment", level: "recommended", children: "Use the repository's conventional venv directory for predictable Make and command resolution."},
+        {title: "GNU Make", level: "optional", children: "Use the repository helpers for setup and quality checks; every essential action also has a direct Python command."},
+        {title: "Docker", level: "optional", children: "Use the development image or Compose service when native Python setup is not appropriate."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Manual Setup">
+
+<Terminal title="Create and install" language="bash">
+
+{`python -m venv venv
+
+# Windows PowerShell
+venv\\Scripts\\Activate.ps1
+
+# Linux or macOS
+# source venv/bin/activate
+
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"`}
+
+</Terminal>
+
+The `dev` dependency group installs pytest and coverage, Ruff, Black, build and
+publishing tools, pre-commit, and Commitizen. Add `docs` only when working with
+the Custy repository's legacy MkDocs source: `python -m pip install -e
+".[dev,docs]"`.
+
+</Section>
+
+---
+
+<Section title="Makefile Setup">
+
+The repository Makefile expects a `venv/` environment and invokes its Python
+and pip executables directly.
+
+<Terminal title="Equivalent setup helpers" language="bash">
+
+{`make venv
+make upgrade-pip
+make install-dev
+
+# Or run the combined setup, including docs and pre-commit
+make setup`}
+
+</Terminal>
+
+Run `make help-local` to review the active local helper groups before using
+less familiar targets.
+
+</Section>
+
+---
+
+<Section title="Verify the Environment">
+
+<CommandChecklist
+    items={[
+        {title: "Python is supported", description: "python --version reports Python 3.14 or newer."},
+        {title: "Custy resolves from the environment", description: "custy --help renders from the editable installation."},
+        {title: "The module entry point works", description: "python -m app --help distinguishes application issues from executable PATH issues."},
+        {title: "Developer tools are installed", description: "pytest, Ruff, and Black can be invoked through python -m."},
+    ]}
+/>
+
+<Terminal title="Environment check" language="bash">
+
+{`python --version
+python -m pip show custy
+custy --version
+custy --help
+python -m app --help
+python -m pytest --version
+python -m ruff --version
+python -m black --version`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Use the environment executable in automation">
+
+Activating a virtual environment is convenient for an interactive shell, but
+scripts and diagnostics are more predictable when they invoke the selected
+environment's Python directly, such as `venv\Scripts\python.exe` on Windows.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Testing", href: "./testing", description: "Run the smallest useful test set, then the broader checks."},
+        {title: "Installation", href: "../getting-started/installation", description: "Compare contributor setup with end-user installation methods."},
+        {title: "Docker", href: "../getting-started/docker", description: "Use the repository's container development path."},
+        {title: "Contributing", href: "./contributing", description: "Prepare a reviewable change from scope through handoff."},
+    ]}
+/>
+
+</Section>

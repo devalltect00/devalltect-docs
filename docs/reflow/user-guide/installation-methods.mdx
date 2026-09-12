@@ -1,0 +1,489 @@
+---
+title: "Installation Methods"
+description: "Reflow supports multiple installation methods including GitHub Clone, GitLab Clone, Wheel, and Source Archive."
+sidebar_position: 4
+sidebar_key: reflow-user-guide
+---
+
+# Installation Methods
+
+## Overview
+
+Reflow supports multiple installation methods.
+
+This guide helps you choose the most appropriate installation method for your use case.
+
+If you only want installation instructions, see:
+
+```text
+docs/installation.md
+```
+
+---
+
+# Available Installation Methods
+
+Reflow currently supports:
+
+| Method                   | Recommended | Typical Use Case        |
+| ------------------------ | ----------- | ----------------------- |
+| GitHub Clone             | ✅          | Most users              |
+| GitLab Clone             | ✅          | GitLab users            |
+| Wheel (.whl)             | ✅          | Stable releases         |
+| Source Archive (.tar.gz) | ✅          | Offline installation    |
+| Editable Installation    | ✅          | Contributors            |
+| PyPI                     | ❌          | Not currently available |
+
+---
+
+# Method 1 — GitHub Repository
+
+Clone:
+
+```bash
+git clone https://github.com/your-org/reflow.git
+```
+
+Install:
+
+```bash
+pip install -e .
+```
+
+Advantages:
+
+```text
+Latest version
+Easy updates
+Simple workflow
+```
+
+Disadvantages:
+
+```text
+Requires Git
+Requires internet connection
+```
+
+Recommended for:
+
+```text
+Most users
+Open-source users
+Developers
+```
+
+---
+
+# Method 2 — GitLab Repository
+
+Clone:
+
+```bash
+git clone https://gitlab.com/your-org/reflow.git
+```
+
+Install:
+
+```bash
+pip install -e .
+```
+
+Advantages:
+
+```text
+Latest version
+GitLab-native workflow
+Simple updates
+```
+
+Disadvantages:
+
+```text
+Requires Git
+Requires internet connection
+```
+
+Recommended for:
+
+```text
+GitLab users
+GitLab-hosted projects
+```
+
+---
+
+# Method 3 — Wheel File (.whl)
+
+Example:
+
+```text
+reflow-1.0.0-py3-none-any.whl
+```
+
+Install:
+
+```bash
+pip install reflow-1.0.0-py3-none-any.whl
+```
+
+Advantages:
+
+```text
+Fast installation
+Stable release
+No repository required
+```
+
+Disadvantages:
+
+```text
+Must download new wheel for updates
+```
+
+Recommended for:
+
+```text
+Production systems
+Stable environments
+CI/CD runners
+```
+
+---
+
+# Method 4 — Source Archive (.tar.gz)
+
+Example:
+
+```text
+reflow-1.0.0.tar.gz
+```
+
+Install:
+
+```bash
+pip install reflow-1.0.0.tar.gz
+```
+
+Advantages:
+
+```text
+Simple distribution
+Works offline after download
+```
+
+Disadvantages:
+
+```text
+Slower installation
+Less convenient updates
+```
+
+Recommended for:
+
+```text
+Offline environments
+Archived releases
+Long-term storage
+```
+
+---
+
+# Method 5 — Editable Installation
+
+Clone:
+
+```bash
+git clone <repository-url>
+```
+
+Install:
+
+```bash
+pip install -e .
+```
+
+Advantages:
+
+```text
+Instant code changes
+Contributor friendly
+Ideal for development
+```
+
+Disadvantages:
+
+```text
+Not intended for production
+```
+
+Recommended for:
+
+```text
+Contributors
+Maintainers
+Feature development
+Testing
+```
+
+---
+
+# GitHub vs GitLab
+
+## GitHub
+
+Advantages:
+
+```text
+Largest community
+GitHub Releases
+GitHub Container Registry
+```
+
+Typical workflow:
+
+```text
+GitHub
+    ↓
+GitHub Releases
+    ↓
+GitHub Container Registry
+```
+
+---
+
+## GitLab
+
+Advantages:
+
+```text
+Integrated DevOps platform
+GitLab Container Registry
+GitLab CI/CD
+```
+
+Typical workflow:
+
+```text
+GitLab
+    ↓
+GitLab Releases
+    ↓
+GitLab Container Registry
+```
+
+---
+
+# Wheel vs Source Archive
+
+## Wheel
+
+```text
+.whl
+```
+
+Advantages:
+
+```text
+Fast install
+Prebuilt package
+Preferred option
+```
+
+Recommended when available.
+
+---
+
+## Source Archive
+
+```text
+.tar.gz
+```
+
+Advantages:
+
+```text
+Universal format
+Source distribution
+```
+
+Useful when wheel files are unavailable.
+
+---
+
+# Development vs Production
+
+## Development
+
+Recommended:
+
+```bash
+git clone <repository-url>
+
+pip install -e .
+```
+
+Benefits:
+
+```text
+Editable installation
+Easy debugging
+Immediate updates
+```
+
+---
+
+## Production
+
+Recommended:
+
+```bash
+pip install reflow-1.0.0-py3-none-any.whl
+```
+
+Benefits:
+
+```text
+Stable version
+Predictable deployment
+Reproducible environment
+```
+
+---
+
+# Release Assets
+
+Release pages may contain:
+
+```text
+.whl
+.tar.gz
+```
+
+These files are typically generated using:
+
+```bash
+python -m build
+```
+
+and published through:
+
+```text
+GitHub Releases
+GitLab Releases
+```
+
+---
+
+# Which Method Should I Choose?
+
+## New User
+
+Recommended:
+
+```text
+GitHub Clone
+```
+
+---
+
+## GitLab User
+
+Recommended:
+
+```text
+GitLab Clone
+```
+
+---
+
+## Contributor
+
+Recommended:
+
+```text
+Editable Installation
+```
+
+---
+
+## CI/CD Environment
+
+Recommended:
+
+```text
+Wheel File
+```
+
+---
+
+## Offline Environment
+
+Recommended:
+
+```text
+Source Archive
+```
+
+---
+
+# Recommendation Summary
+
+| Scenario    | Recommended Method    |
+| ----------- | --------------------- |
+| New User    | GitHub Clone          |
+| GitLab User | GitLab Clone          |
+| Contributor | Editable Installation |
+| Production  | Wheel                 |
+| CI/CD       | Wheel                 |
+| Offline     | Source Archive        |
+
+---
+
+# Related Documentation
+
+Installation:
+
+```text
+docs/installation.md
+```
+
+Quick Start:
+
+```text
+docs/user-guide/quickstart.md
+```
+
+Getting Started:
+
+```text
+docs/user-guide/getting-started.md
+```
+
+Commands:
+
+```text
+docs/user-guide/commands.md
+```
+
+---
+
+# Summary
+
+For most users:
+
+```bash
+git clone <repository-url>
+
+pip install -e .
+```
+
+is the recommended installation method.
+
+For production and CI/CD environments:
+
+```text
+Wheel (.whl)
+```
+
+is usually the preferred choice.

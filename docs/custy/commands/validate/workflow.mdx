@@ -1,0 +1,218 @@
+---
+title: "Workflow"
+description: "Understand how validation fits into Custy's workflow pipeline."
+sidebar_position: 6
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Workflow"
+    description="Learn how Custy performs validation before executing workflow operations."
+    category="Validation"
+    status="Recommended"
+    syntax="custy validate"
+    tags={[
+        "workflow",
+        "pipeline",
+        "validation",
+    ]}
+    links={[
+        {
+            label: "Validation Checks",
+            href: "./validation-checks",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+Validation is the first stage of nearly every workflow-oriented operation in
+Custy.
+
+Its purpose is to verify that the project is ready before later stages perform
+actions such as committing, tagging, pushing, or generating releases.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Automatic Workflow Stage"
+>
+
+When using commands such as `custy run`, validation is executed automatically
+before the workflow continues.
+
+Running `custy validate` allows you to execute only the validation stage.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Validation Timeline"
+>
+
+<WorkflowTimeline
+    title="Validation Pipeline"
+    description="High-level sequence performed during project validation."
+    items={[
+        {
+            title: "Resolve Configuration",
+            description:
+                "Load project configuration and determine the effective validation settings.",
+            status: "completed",
+        },
+        {
+            title: "Verify Repository",
+            description:
+                "Ensure that the current directory is a valid Git repository and that the configured remote is available.",
+            status: "completed",
+        },
+        {
+            title: "Verify Project Resources",
+            description:
+                "Check the configured version file together with required commit and tag templates.",
+            status: "completed",
+        },
+        {
+            title: "Verify Repository State",
+            description:
+                "Validate staged changes and other repository conditions required before workflow execution.",
+            status: "completed",
+        },
+        {
+            title: "Finish Validation",
+            description:
+                "Report the validation result and allow later workflow stages to continue when successful.",
+            status: "completed",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Workflow Stages"
+>
+
+<WorkflowStep
+    title="1. Resolve Configuration"
+>
+
+Custy begins by loading the project's effective configuration.
+
+Validation targets such as the configured remote, version file, and template
+locations are resolved before any checks begin.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="2. Validate the Repository"
+>
+
+Custy verifies that the current directory is a Git repository and confirms
+that required Git remotes are available.
+
+If either check fails, validation stops immediately.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="3. Validate Project Resources"
+>
+
+Custy verifies the resources required by later workflow stages.
+
+Typical resources include:
+
+- Version files
+- Commit message templates
+- Tag message templates
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="4. Validate Repository State"
+>
+
+Before commit-oriented workflows continue, Custy confirms that the repository
+is in an acceptable state.
+
+Depending on the selected options, this may include checking staged changes or
+performing automatic staging.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="5. Complete Validation"
+>
+
+If every validation step succeeds, Custy reports a successful validation
+result.
+
+Workflow-oriented commands may then continue with the next stage, such as
+committing, tagging, or pushing changes.
+
+</WorkflowStep>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Fail-Fast Workflow"
+>
+
+Validation follows a fail-fast approach.
+
+If any validation step fails, the remaining checks are skipped and the
+workflow stops immediately.
+
+This prevents later workflow stages from operating on an invalid project
+state.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Validation in Larger Workflows"
+>
+
+Validation is designed to be reusable.
+
+It can be executed directly using:
+
+- `custy validate`
+
+or automatically as part of workflow commands such as:
+
+- `custy run commit`
+- `custy run tag`
+- `custy run push`
+- `custy run release`
+
+Using the shared validation stage ensures that every workflow begins with the
+same set of readiness checks.
+
+</Section>

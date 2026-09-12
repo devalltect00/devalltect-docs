@@ -1,0 +1,61 @@
+.related {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-xl);
+
+}
+
+.card {
+
+    height: 100%;
+
+}
+
+.link {
+
+    display: inline-block;
+
+    margin-bottom: .5rem;
+
+    color: var(--ifm-color-primary);
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color var(--docs-transition);
+
+}
+
+.link:hover {
+
+    text-decoration: underline;
+
+}
+
+.title {
+
+    display: inline-block;
+
+    margin-bottom: .5rem;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+}
+
+.description {
+
+    margin: 0;
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+
+}

@@ -1,0 +1,30 @@
+---
+title: "Changelog"
+description: "Buat release notes terstruktur dan kelola CHANGELOG.md dengan Custy."
+sidebar_position: 1
+sidebar_key: custy-changelog
+---
+import {CommandHero, FeatureGrid, Section, InfoBox, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy changelog" title="Changelog Commands" description="Bentuk CHANGELOG.md dari Git history dan project configuration." category="Release" status="Stable" syntax="custy changelog COMMAND" links={[
+    {label: "Generate", href: "./generate/overview"}, {label: "Configuration", href: "./generate/configuration"}, {label: "Examples", href: "./generate/examples"},
+]} />
+
+## Ringkasan
+
+Custy mengumpulkan commit yang memenuhi syarat, membersihkan presentation-only content, mengelompokkan entry, membuat link, lalu merender changelog dengan template proyek.
+
+<InfoBox variant="info" title="Gunakan Public Command">Operasi mandiri yang didukung adalah `custy changelog generate`. Changelog juga dapat dijalankan sebagai internal stage dalam profile publik tertentu.</InfoBox>
+
+<FeatureGrid items={[
+    {title: "Collect", children: "Baca Git history dan tentukan release boundaries."},
+    {title: "Classify", children: "Kelompokkan entry berdasarkan type, scope, dan aturan proyek."},
+    {title: "Render", children: "Terapkan template, metadata, statistics, dan links."},
+    {title: "Write", children: "Buat atau perbarui CHANGELOG.md."},
+]} />
+
+<RelatedCommands commands={[
+    {name: "configuration", description: "Pelajari seluruh pengaturan changelog.", href: "./generate/configuration"},
+    {name: "commit", description: "Buat commit melalui workflow Custy.", href: "../commit/overview"},
+    {name: "release", description: "Jalankan release profile.", href: "../run/release/overview"},
+]} />

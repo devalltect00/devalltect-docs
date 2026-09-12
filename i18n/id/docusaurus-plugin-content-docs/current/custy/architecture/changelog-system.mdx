@@ -1,0 +1,17 @@
+---
+title: "Changelog System"
+description: "Telusuri alur changelog dari Git range dan message provider hingga semantic processing, release planning, Jinja rendering, dan output file."
+sidebar_position: 9
+sidebar_key: custy-architecture-changelog-system
+tags: [custy, changelog, architecture]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, WorkflowDiagram} from "@site/src/components/docs";
+
+<CommandHero command="app/core/changelog/" title="Changelog System" description="Ikuti repository history menjadi structured release model dan Markdown." category="Arsitektur" status="Active Pipeline" syntax="settings -> Git range -> messages -> models -> transform -> render -> write" links={[{label: "Generate Command", href: "../commands/changelog/generate/overview"}, {label: "Configuration", href: "../configuration/changelog/overview"}, {label: "Git Operations", href: "./git-operations"}]} />
+
+<WorkflowDiagram title="Alur Changelog" timeline={[{title: "Load settings", description: "Typed changelog settings dibentuk dari config.toml dan CLI values.", status: "completed"}, {title: "Collect history", description: "Provider mengambil commit message pada Git range yang dipilih.", status: "completed"}, {title: "Build models", description: "Message diparse, dikelompokkan, dibersihkan, dan dimasukkan ke release model.", status: "completed"}, {title: "Plan releases", description: "Existing dan current release digabung serta diurutkan.", status: "current"}, {title: "Render and write", description: "Jinja template menghasilkan Markdown untuk output path.", status: "pending"}]} />
+
+<InfoBox variant="warning" title="Konfigurasi tidak selalu berarti perilaku aktif">Beberapa changelog key bersifat loaded-only, reserved, atau advanced. Gunakan documentation status per property dan jangan menyimpulkan perilaku hanya dari keberadaan key pada template.</InfoBox>
+
+<RelatedCommands commands={[{title: "Generate Changelog", href: "../commands/changelog/generate/overview", description: "Gunakan command publik beserta option dan safety-nya."}, {title: "Changelog Configuration", href: "../configuration/changelog/overview", description: "Jelajahi seluruh table dan property."}, {title: "Workflow Engine", href: "./workflow-engine", description: "Lihat eligibility check dan release phase terkait."}, {title: "Changelog Troubleshooting", href: "../commands/changelog/generate/troubleshooting", description: "Diagnosis history, template, parsing, dan output."}]} />

@@ -1,0 +1,8 @@
+{
+  "label": "Cleanup",
+  "position": 8,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-configuration-cli-cleanup",
+  "link": {"type": "doc", "id": "custy/configuration/cli/cleanup/overview"}
+}

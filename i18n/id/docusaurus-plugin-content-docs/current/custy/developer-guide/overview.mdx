@@ -1,0 +1,18 @@
+---
+title: "Panduan Developer"
+description: "Siapkan Custy untuk development, pahami extension points, test changes, dan buat focused contributions."
+sidebar_position: 1
+sidebar_key: custy-developer-guide-overview
+---
+import {CommandHero,FeatureGrid,Icon,InfoBox,RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy" title="Panduan Developer" description="Ikuti alur setup, architecture, implementation, testing, dan contribution Custy." category="Developer Guide" status="Contributor Guide" syntax="setup -> understand -> implement -> test -> document" links={[{label:"Development Setup",href:"./development-setup"},{label:"Testing",href:"./testing"},{label:"Adding Commands",href:"./adding-commands"},{label:"Architecture",href:"../architecture/overview"},{label:"Contributing",href:"./contributing"}]} />
+
+## Ringkasan
+
+Mulai dengan editable development environment, pilih extension guide yang sesuai,
+jalankan focused tests selama implementation, lalu complete validation sebelum review.
+
+<FeatureGrid items={[{title:"Setup",icon:<Icon name="configuration" />,children:"Siapkan Python environment dan contributor tools."},{title:"Test",icon:<Icon name="success" />,children:"Gunakan focused dan complete validation."},{title:"Extend",icon:<Icon name="dependency" />,children:"Tambahkan commands, pipeline steps, strategies, atau configuration secara end to end."},{title:"Contribute",icon:<Icon name="git" />,children:"Kirim focused change yang tested dan documented."}]} />
+<InfoBox variant="tip" title="Mulai dari Architecture">Baca <a href="../architecture/overview">Architecture Overview</a> sebelum mengubah subsystem yang melintasi CLI, core, configuration, atau pipeline boundaries.</InfoBox>
+<RelatedCommands commands={[{title:"Development Setup",href:"./development-setup",description:"Siapkan environment."},{title:"Testing",href:"./testing",description:"Validasi changes."},{title:"Pipeline Step System",href:"../pipelines/step-system",description:"Pahami internal step contracts."},{title:"Contributing",href:"./contributing",description:"Siapkan review."}]} />

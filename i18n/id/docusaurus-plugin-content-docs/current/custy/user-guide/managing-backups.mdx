@@ -1,0 +1,69 @@
+---
+title: "Managing Backups"
+description: "Buat, verifikasi, pertahankan, bersihkan, dan restore commit serta tag message backups Custy."
+sidebar_position: 4
+sidebar_key: custy-user-guide-managing-backups
+tags: [custy, backups, retention]
+keywords: [custy backup all, custy cleanup backups, restore Custy backup]
+---
+
+import {CommandChecklist, CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+
+<CommandHero command="custy backup" title="Managing Backups" description="Lindungi commit dan tag message files Custy serta simpan timestamped history dengan intentional retention policy." category="User Guide" status="Maintenance Journey" syntax="custy backup <commit|tag|all>" tags={["message files", "timestamped copies", "retention", "restore"]} links={[{label: "Backup Reference", href: "../commands/backup/overview"}, {label: "Backup Cleanup", href: "../commands/cleanup/backup/overview"}, {label: "Backup Directories", href: "../configuration/cli/templates/directories"}]} />
+<CommandMetadata items={[{label: "Protected Inputs", value: "Commit and tag messages", icon: "file"}, {label: "Backup Format", value: "Timestamped .bak.txt", icon: "copy"}, {label: "Default Retention", value: "10 per selected category", icon: "timeline"}, {label: "Git History", value: "Not created by backup command", icon: "git"}]} />
+
+## Tujuan
+
+Custy backups mempertahankan configured commit-message dan tag-message files
+sebelum Anda mengedit conventions atau menyiapkan releases. Backup ini adalah
+focused recovery copies, bukan full project, repository, database, atau remote backups.
+
+---
+
+<Section title="Pilih Backup Scope"><FeatureGrid title="Backup Commands" items={[{title: "Commit Message", icon: <Icon name="git" />, children: <><code>custy backup commit</code> mempertahankan configured commit-message file.</>}, {title: "Tag Message", icon: <Icon name="release" />, children: <><code>custy backup tag</code> mempertahankan configured tag-message file.</>}, {title: "Both Messages", icon: <Icon name="package" />, children: <><code>custy backup all</code> menjalankan kedua focused backup profiles.</>}, {title: "Retention Cleanup", icon: <Icon name="timeline" />, children: <><code>custy cleanup backups</code> menghapus older copies sambil mempertahankan configured count.</>}]} /></Section>
+
+---
+
+<Section title="Recommended Backup Journey"><WorkflowTimeline title="Protect and Retain" items={[{title: "Review source and destination paths", description: "Konfirmasi message files dan separate backup directories dalam project configuration.", status: "completed"}, {title: "Preview creation", description: "Dry-run selected backup command dan konfirmasi timestamped target.", status: "completed"}, {title: "Create the backup", description: "Jalankan focused atau all-message backup command normally.", status: "current"}, {title: "Verify the copy", description: "Pastikan expected file tersedia dan memuat intended source content.", status: "pending"}, {title: "Preview retention cleanup", description: "Dry-run cleanup sebelum menghapus older backups.", status: "pending"}]} />
+<Terminal title="Backup both message files" language="bash">{`custy --dry-run backup all
+custy backup all`}</Terminal>
+Backups menggunakan timestamped names dari source stem. Jika configured source
+file tidak tersedia, Custy melewati backup tersebut dan tidak membuat content.
+</Section>
+
+---
+
+<Section title="Retention dan Cleanup">
+Generated configuration mempertahankan 10 newest files dalam setiap selected
+backup category. `--keep` mengganti count sementara; `--type` memilih `commit`,
+`tag`, atau `all`.
+<Terminal title="Preview and apply retention" language="bash">{`custy --dry-run cleanup backups --type all --keep 10
+custy cleanup backups --type all --keep 10`}</Terminal>
+Tinjau configured `backups_commit` dan `backups_tag` directories sebelum cleanup.
+Location dan retention merupakan settings terpisah.
+</Section>
+
+<InfoBox variant="warning" title="Pipelines Dapat Membersihkan Backups Secara Otomatis">Commit, Tag, Dev, Release, dan Full menyertakan backup dan retention-cleanup steps. Automatic backup dapat langsung diikuti pruning older copies. Tinjau retention sebelum mengandalkan long backup history.</InfoBox>
+
+---
+
+<Section title="Restore Message File">
+
+Custy membuat dan membersihkan backups; restoration merupakan deliberate file
+operation oleh pengguna:
+
+1. Hentikan active Custy workflow.
+2. Temukan timestamped backup yang benar.
+3. Bandingkan dengan active message file.
+4. Pertahankan current active file jika masih diperlukan.
+5. Salin reviewed backup content ke configured active message file.
+6. Jalankan relevant validation atau dry-run sebelum melanjutkan.
+
+Jangan restore `.bak.txt` hanya berdasarkan timestamp. Periksa content dan
+pastikan file tersebut milik commit atau tag messaging.
+
+</Section>
+
+<Section title="Backup Checklist"><CommandChecklist items={[{title: "Source exists", description: "Configured commit atau tag message file tersedia dan memuat version yang ingin dipertahankan."}, {title: "Destination is correct", description: "Commit dan tag backups di-resolve ke intended separate directories."}, {title: "Retention is sufficient", description: "Keep count mempertahankan history yang cukup."}, {title: "The copy is verified", description: "Periksa new backup sebelum mengubah source file."}, {title: "Cleanup is previewed", description: "Gunakan dry-run sebelum menghapus older recovery copies."}]} /></Section>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Backup Files", href: "../commands/backup/backup-files", description: "Tinjau exact paths, naming, dan file behavior."}, {title: "Backup Cleanup Workflow", href: "../commands/cleanup/backup/workflow", description: "Pahami retention selection dan deletion."}, {title: "Template Backup Directories", href: "../configuration/cli/templates/directories", description: "Konfigurasikan commit dan tag backup locations."}, {title: "Backup Cleanup Configuration", href: "../configuration/cli/cleanup/backup", description: "Konfigurasikan category dan keep count."}]} /></Section>

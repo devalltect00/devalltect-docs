@@ -1,0 +1,198 @@
+---
+title: "FAQ"
+description: "Pertanyaan yang sering diajukan tentang custy init."
+sidebar_position: 11
+sidebar_key: custy-commands-init
+
+tags:
+  - faq
+  - initialization
+  - help
+
+keywords:
+  - custy init faq
+  - initialization questions
+  - common questions
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Frequently Asked Questions"
+    description="Jawaban atas pertanyaan umum tentang menjalankan init pada proyek dengan Custy."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "faq",
+        "questions",
+        "support",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Halaman ini menjawab pertanyaan umum tentang project initialization dan
+resource yang dibuat oleh `custy init`.
+
+<InfoBox
+    variant="tip"
+    title="Baru Menggunakan Custy?"
+>
+
+Jika Anda baru pertama kali menggunakan Custy, mulailah dengan membaca halaman
+**Overview**, **Requirements**, dan **Examples** sebelum melihat pertanyaan di
+bawah ini.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Apakah saya harus menjalankan `custy init`?"
+>
+
+Tidak.
+
+Custy memiliki default bawaan, sehingga banyak command dapat berjalan tanpa
+configuration khusus proyek.
+
+Namun, `custy init` sangat direkomendasikan karena membuat file configuration
+dan template yang dapat disesuaikan untuk proyek Anda.
+
+</Section>
+
+---
+
+<Section
+    title="Apakah `custy init` dapat dijalankan lebih dari sekali?"
+>
+
+Ya.
+
+Menjalankan command kembali memungkinkan Anda menambahkan configuration,
+templates, atau example resources yang belum ada.
+
+Individual generated files yang sudah ada dipertahankan secara default.
+Packaged example directories ditelusuri secara recursive, sehingga missing
+nested files ditambahkan walaupun destination sudah ada. Gunakan `--force`
+hanya jika existing selected files memang harus diganti.
+
+</Section>
+
+---
+
+<Section
+    title="Apa yang terjadi jika direktori examples sudah ada?"
+>
+
+Custy menggunakan kembali dan menggabungkan direktori tersebut, bukan
+melewati atau menggantinya. Existing example files tidak berubah pada normal
+run, sedangkan missing files dan nested directories disalin dari packaged
+examples.
+
+Dengan `--force`, existing example files ditimpa secara recursive.
+
+</Section>
+
+---
+
+<Section
+    title="Apakah generated files perlu di-commit?"
+>
+
+Ya.
+
+Configuration dan templates yang dibuat ditujukan untuk menjadi bagian dari
+proyek.
+
+Dengan melakukan commit, setiap kontributor dapat menggunakan configuration
+Custy yang sama.
+
+</Section>
+
+---
+
+<Section
+    title="Apakah init mengubah riwayat Git?"
+>
+
+Tidak.
+
+Init hanya membuat project resources.
+
+Proses ini tidak membuat commit, tag, release, atau mengubah riwayat
+repositori.
+
+</Section>
+
+---
+
+<Section
+    title="Apakah generated templates dapat disesuaikan?"
+>
+
+Tentu.
+
+Template yang dibuat merupakan bagian dari proyek dan dirancang untuk diedit.
+
+Command Custy berikutnya otomatis menggunakan template yang telah Anda
+sesuaikan ketika tersedia.
+
+</Section>
+
+---
+
+<Section
+    title="Command mana yang harus digunakan?"
+>
+
+Gunakan `custy init`. Walaupun init tersedia secara internal sebagai pipeline
+profile, profile tersebut tidak diterima oleh argumen public `custy run` saat
+ini.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Memerlukan Bantuan Lain?"
+>
+
+Jika pertanyaan Anda belum terjawab, tinjau halaman Troubleshooting atau
+generated configuration sebelum membuka issue.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Selesai"
+>
+
+Anda telah menyelesaikan dokumentasi untuk command `custy init`.
+
+Lanjutkan ke dokumentasi command berikutnya untuk mempelajari workflow Custy
+lainnya.
+
+</Section>

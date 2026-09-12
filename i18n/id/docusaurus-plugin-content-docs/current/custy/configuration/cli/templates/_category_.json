@@ -1,0 +1,8 @@
+{
+  "label": "Templates",
+  "position": 4,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-configuration-cli-templates",
+  "link": {"type": "doc", "id": "custy/configuration/cli/templates/overview"}
+}

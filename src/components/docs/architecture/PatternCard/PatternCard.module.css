@@ -1,0 +1,49 @@
+.card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-lg);
+
+    height: 100%;
+
+}
+
+.summary {
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+
+}
+
+.section {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .75rem;
+
+}
+
+.heading {
+
+    margin: 0;
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+}
+
+.tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .5rem;
+
+}

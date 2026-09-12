@@ -1,0 +1,11 @@
+{
+  "label": "Tag",
+  "position": 8,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-tag",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/tag/overview"
+  }
+}

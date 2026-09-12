@@ -1,0 +1,20 @@
+---
+title: "Syntax"
+description: "Command forms yang didukung custy commit."
+sidebar_position: 3
+sidebar_key: custy-commit-syntax
+---
+import {CommandHero, CommandSyntax, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy commit" title="Command Syntax" description="Jalankan profile dengan project defaults atau override terfokus." category="Git Operations" status="Stable" syntax="custy commit [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Options",href:"./options"},{label:"Examples",href:"./examples"}]} />
+
+## Ringkasan
+
+<CommandSyntax examples={[
+ {title:"Direct Command",command:"custy commit"},
+ {title:"Alternative Message File",command:"custy commit --commit-msg-file path/to/commit-message.txt"},
+ {title:"Controlled Staging",command:"custy commit --auto-stage --stage-mode update"},
+ {title:"Preview",command:"custy --dry-run commit"},
+]} />
+
+<InfoBox variant="tip" title="Direct Command and Run Profile">Gunakan direct command untuk CLI overrides. `custy run commit` menjalankan registered public profile dengan resolved configuration.</InfoBox>

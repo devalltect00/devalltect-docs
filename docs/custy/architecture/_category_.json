@@ -1,0 +1,11 @@
+{
+  "label": "Architecture",
+  "position": 8,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-architecture",
+  "link": {
+    "type": "doc",
+    "id": "custy/architecture/overview"
+  }
+}

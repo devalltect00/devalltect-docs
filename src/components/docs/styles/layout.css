@@ -1,0 +1,35 @@
+/**
+ * ============================================================================
+ * Layout
+ * ============================================================================
+ */
+
+.docs-stack {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-lg);
+
+}
+
+.docs-inline {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--docs-space-sm);
+
+}
+
+.docs-center {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}

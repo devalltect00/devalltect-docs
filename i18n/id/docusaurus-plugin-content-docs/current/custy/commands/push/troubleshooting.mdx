@@ -1,0 +1,31 @@
+---
+title: "Pemecahan Masalah Push"
+description: "Atasi missing remotes, authentication failures, rejected pushes, dan tag errors."
+sidebar_position: 9
+sidebar_key: custy-push-troubleshooting
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy push" title="Push Troubleshooting" description="Diagnosa destination resolution, credentials, rejection, backup, dan tag push." category="Git Operations" status="Panduan Dukungan" syntax="custy push [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Requirements",href:"./requirements"},{label:"Remotes",href:"./remotes"},{label:"FAQ",href:"./faq"}]} />
+
+## Ringkasan
+
+<InfoBox variant="danger" title="Do Not Force-Push by Default">Cari penyebab rejection terlebih dahulu. Force push dapat menimpa remote history.</InfoBox>
+
+## Main Remote yang Valid Tidak Ditemukan
+<Section compact>Periksa `git remote -v`, project configuration, remote URL, dan interactive resolution.</Section>
+
+## Authentication Gagal
+<Section compact>Uji Git secara langsung, lalu periksa SSH key, token, credential helper, account, dan permission.</Section>
+
+## Push Ditolak
+<Section compact>Remote mungkin memiliki commit baru atau branch protection. Fetch, tinjau divergence, dan integrasikan perubahan secara aman.</Section>
+
+## Backup Synchronization Dilewati
+<Section compact>Pastikan `--sync-backup` aktif dan eligible backup remote dapat di-resolve.</Section>
+
+## Tag Tidak Ikut Dipush
+<Section compact>Periksa exact tag, `--skip-tag`, local tag existence, dan resolved destination.</Section>
+
+## --remote Tidak Memilih Destination
+<Section compact>Ini sesuai current adapter limitation. Gunakan dry-run output untuk melihat actual destination dan konfigurasi role yang didukung engine.</Section>

@@ -1,0 +1,368 @@
+---
+title: "Overview"
+description: "Initialize a Reflow Project"
+sidebar_key: reflow-commands-init
+---
+# Initialize a Reflow Project
+
+## Overview
+
+The `reflow init` command bootstraps a project for use with Reflow.
+
+It creates the configuration files, project metadata, templates, and example resources needed to start using Reflow commands.
+
+For most users, this is the first command that should be executed after installing Reflow.
+
+---
+
+# Purpose
+
+Reflow commands rely on configuration and project structure.
+
+Instead of creating files manually, `reflow init` can generate them automatically.
+
+This helps:
+
+- Reduce setup time
+- Avoid configuration mistakes
+- Standardize project structure
+- Provide a consistent onboarding experience
+
+---
+
+# What Is Reflow Init?
+
+Command:
+
+```bash
+reflow init
+```
+
+Purpose:
+
+```text
+Initialize a project for Reflow.
+```
+
+The command generates project files and directories required by Reflow.
+
+Depending on the selected mode, this may include:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+---
+
+# Typical Workflow
+
+Most users follow a workflow similar to:
+
+```text
+Install Reflow
+       ↓
+reflow init
+       ↓
+Edit config.toml
+       ↓
+reflow tags convert
+       ↓
+reflow tags replay
+       ↓
+reflow dockerize
+```
+
+---
+
+# When Should I Use It?
+
+## First-Time Setup
+
+After installing Reflow:
+
+```bash
+reflow init
+```
+
+This creates the initial project structure.
+
+---
+
+## New Repository
+
+When adding Reflow to an existing repository:
+
+```bash
+reflow init
+```
+
+This generates the required files without manually creating them.
+
+---
+
+## Recover Missing Files
+
+If configuration files were deleted accidentally:
+
+```bash
+reflow init
+```
+
+can recreate them.
+
+---
+
+## Team Onboarding
+
+When a new contributor joins the project:
+
+```bash
+reflow init
+```
+
+can quickly create the expected structure.
+
+---
+
+# When Should I NOT Use It?
+
+You generally do not need to run `reflow init`:
+
+- Before every command
+- Before every release
+- Before every Docker build
+
+Initialization is usually performed once per project.
+
+After the project is configured, Reflow commands can be used normally.
+
+---
+
+# Supported Modes
+
+Reflow supports multiple initialization modes.
+
+## Config Mode
+
+Command:
+
+```bash
+reflow init --mode config
+```
+
+Purpose:
+
+```text
+Create configuration files only.
+```
+
+Recommended when:
+
+```text
+You only need config.toml.
+```
+
+---
+
+## Templates Mode
+
+Command:
+
+```bash
+reflow init --mode templates
+```
+
+Purpose:
+
+```text
+Create template files only.
+```
+
+---
+
+## Examples Mode
+
+Command:
+
+```bash
+reflow init --mode examples
+```
+
+Purpose:
+
+```text
+Create example resources only.
+```
+
+---
+
+## All Mode
+
+Command:
+
+```bash
+reflow init --mode all
+```
+
+Purpose:
+
+```text
+Create everything.
+```
+
+This is the recommended mode for new users.
+
+---
+
+# Input
+
+Input may come from:
+
+```text
+CLI arguments
+Configuration defaults
+Interactive prompts (optional)
+```
+
+Examples:
+
+```bash
+reflow init
+
+reflow init --mode config
+
+reflow init --force
+```
+
+---
+
+# Output
+
+The command creates files and directories on disk.
+
+Typical outputs include:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+The exact output depends on the selected mode.
+
+---
+
+# Safety
+
+Reflow attempts to avoid overwriting files unintentionally.
+
+Additional options may be used to control behavior:
+
+```text
+--force
+--ask
+--dry-run
+```
+
+See:
+
+```text
+docs/init/examples.md
+docs/init/faq.md
+```
+
+for details.
+
+---
+
+# Requirements
+
+Before running:
+
+```bash
+reflow init
+```
+
+ensure:
+
+```text
+✓ Reflow is installed
+✓ You are inside the target project directory
+✓ You have permission to create files
+```
+
+No Git, Docker, or GitHub CLI installation is required for initialization.
+
+---
+
+# Related Commands
+
+Initialize project:
+
+```bash
+reflow init
+```
+
+Convert tags:
+
+```bash
+reflow tags convert
+```
+
+Replay releases:
+
+```bash
+reflow tags replay
+```
+
+Publish Docker images:
+
+```bash
+reflow dockerize
+```
+
+---
+
+# Related Documentation
+
+Getting Started:
+
+```text
+docs/user-guide/getting-started.md
+```
+
+Workflow:
+
+```text
+docs/init/workflow.md
+```
+
+Examples:
+
+```text
+docs/init/examples.md
+```
+
+FAQ:
+
+```text
+docs/init/faq.md
+```
+
+Lifecycle:
+
+```text
+docs/user-guide/lifecycle.md
+```
+
+---
+
+# Summary
+
+`reflow init` is the recommended starting point for every Reflow project.
+
+It creates the files and structure needed to use the rest of the Reflow ecosystem and provides a consistent foundation for version conversion, release replay, and Docker publishing workflows.

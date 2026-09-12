@@ -1,0 +1,68 @@
+---
+title: "CLI Defaults"
+description: "Navigate every table under tool.custy.cli."
+sidebar_position: 1
+sidebar_key: custy-configuration-cli-overview
+tags: [custy, configuration, cli]
+keywords: [tool.custy.cli, cli defaults]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.cli]"
+    title="CLI Defaults"
+    description="Store repeatable command-level paths and behavior while preserving one-run CLI overrides."
+    category="Configuration"
+    status="Active Namespace"
+    syntax="[tool.custy.cli.SUBSYSTEM]"
+    tags={["command defaults", "nested tables", "CLI overrides"]}
+    links={[
+        {label: "Execution", href: "./execution"},
+        {label: "Templates", href: "./templates/overview"},
+        {label: "Cleanup", href: "./cleanup/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Namespace", value: "tool.custy.cli", icon: "configuration"},
+        {label: "Child Areas", value: "8", icon: "directory"},
+        {label: "Primary Consumer", value: "Command resolvers", icon: "terminal"},
+        {label: "Priority", value: "Below explicit CLI", icon: "dependency"},
+    ]}
+/>
+
+## Configuration Areas
+
+<FeatureGrid
+    items={[
+        {title: "Versioning", icon: <Icon name="release" />, children: <>Configure strategy, bump, and optional date format in <a href="./versioning">cli.versioning</a>.</>},
+        {title: "Templates", icon: <Icon name="file" />, children: <>Configure message files and backup directories in <a href="./templates/overview">cli.templates</a>.</>},
+        {title: "Paths", icon: <Icon name="directory" />, children: <>Locate the version source through <a href="./paths">cli.paths</a>.</>},
+        {title: "Execution", icon: <Icon name="workflow" />, children: <>Configure preview, force, debug, staging, and validation defaults in <a href="./execution">cli.execution</a>.</>},
+        {title: "Push", icon: <Icon name="git" />, children: <>Configure command-level remote and tag behavior in <a href="./push">cli.push</a>.</>},
+        {title: "Changelog Command", icon: <Icon name="release" />, children: <>Configure force generation in <a href="./changelog">cli.changelog</a>.</>},
+        {title: "Cleanup", icon: <Icon name="package" />, children: <>Configure backup retention and branch filters in <a href="./cleanup/overview">cli.cleanup</a>.</>},
+        {title: "Workflow", icon: <Icon name="warning" />, children: <>Review experimental transition defaults in <a href="./workflow">cli.workflow</a>.</>},
+    ]}
+/>
+
+<InfoBox variant="note" title="Namespace versus command">
+
+The `cli` namespace organizes project defaults. It does not mean that every
+property is global or that every command reads every child table.
+
+</InfoBox>
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "All Properties", href: "../reference", description: "Find every full CLI path and status."},
+        {title: "Resolution", href: "../resolution", description: "Understand why an explicit option wins."},
+        {title: "Execution", href: "./execution", description: "Review the broadest cross-command defaults."},
+    ]}
+/>
+
+</Section>

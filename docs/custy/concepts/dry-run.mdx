@@ -1,0 +1,248 @@
+---
+title: "Dry Run"
+description: "Preview supported Custy mutations while allowing discovery, validation, and resolution to continue."
+sidebar_position: 3
+sidebar_key: custy-concepts-dry-run
+
+tags:
+  - custy
+  - dry run
+  - safety
+
+keywords:
+  - custy dry run
+  - preview custy pipeline
+  - safe custy execution
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --dry-run COMMAND"
+    title="Dry Run"
+    description="Resolve and preview supported operations before allowing Custy to change files, Git history, or remotes."
+    category="Core Concepts"
+    status="Recommended First Step"
+    syntax="custy --dry-run COMMAND [OPTIONS]"
+    tags={[
+        "simulation",
+        "safety",
+        "preview",
+    ]}
+    links={[
+        {label: "Run Safety", href: "../commands/run/safety"},
+        {label: "First Workflow", href: "../getting-started/first-workflow"},
+        {label: "Side Effects", href: "./safety-and-side-effects"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Option Scope", value: "Global", icon: "configuration"},
+        {label: "Option Position", value: "Before the command", icon: "terminal"},
+        {label: "Supported Mutations", value: "Simulated", icon: "success"},
+        {label: "Reads and Validation", value: "Still performed", icon: "warning"},
+    ]}
+/>
+
+## Overview
+
+Dry-run mode lets Custy resolve a command and report supported operations
+without performing their normal mutations. It is the recommended first step
+for commands and profiles that can edit project files, stage changes, create
+Git history, or push to remotes.
+
+<InfoBox
+    variant="info"
+    title="Place the option before the command"
+>
+
+`--dry-run` is a global Custy option. Use `custy --dry-run run release`, not
+`custy run release --dry-run`.
+
+</InfoBox>
+
+<Section title="How the Effective Mode Is Resolved">
+
+Custy resolves dry-run behavior in this order: an explicit CLI option, the
+`tool.custy.cli.execution.dry_run` project setting, and finally the built-in
+default of `false`. This means omitting `--dry-run` does not necessarily enable
+normal execution when the project configuration already sets `dry_run = true`.
+
+<Terminal title="Choose preview or normal execution explicitly" language="bash">
+
+{`# Force preview mode, regardless of the configured default
+custy --dry-run changelog generate
+
+# Force normal execution, even when dry_run = true in configuration
+custy --no-dry-run changelog generate`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="What Dry Run Changes"
+    subtitle="Dry run suppresses supported mutations, but it still does enough real work to resolve and validate the requested operation."
+>
+
+<FeatureGrid
+    title="Simulation Boundary"
+    items={[
+        {
+            title: "Project Writes",
+            icon: <Icon name="file" />,
+            children: "Supported version, changelog, artifact, and backup writes are previewed instead of applied.",
+        },
+        {
+            title: "Git Mutations",
+            icon: <Icon name="git" />,
+            children: "Supported staging, commit, tag, and push operations are reported without normal execution.",
+        },
+        {
+            title: "Discovery and Reads",
+            icon: <Icon name="dependency" />,
+            children: "Configuration, project files, repository state, history, tags, and remotes can still be inspected.",
+        },
+        {
+            title: "Validation",
+            icon: <Icon name="success" />,
+            children: "Prerequisite and repository checks still run and can stop the preview with a useful error.",
+        },
+        {
+            title: "Resolution",
+            icon: <Icon name="pipeline" />,
+            children: "Profiles, versions, paths, templates, and destinations are still resolved where the selected flow requires them.",
+        },
+        {
+            title: "Review",
+            icon: <Icon name="terminal" />,
+            children: "The output becomes a plan for checking what normal execution intends to do.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="A Safe Preview Sequence"
+>
+
+<WorkflowTimeline
+    title="Dry-Run Review"
+    items={[
+        {
+            title: "Inspect repository state",
+            description: <>Review <code>git status</code>, the current branch, local tags, and configured remotes.</>,
+            status: "current",
+        },
+        {
+            title: "Run the dry preview",
+            description: <>Place <code>--dry-run</code> before the selected Custy command.</>,
+            status: "pending",
+        },
+        {
+            title: "Read resolved values",
+            description: "Confirm project paths, profile stages, version values, tags, and destinations.",
+            status: "pending",
+        },
+        {
+            title: "Resolve reported errors",
+            description: "Fix invalid configuration, missing resources, or repository prerequisites.",
+            status: "pending",
+        },
+        {
+            title: "Decide whether to execute",
+            description: "Run normally only when every intended effect and destination is understood.",
+            status: "pending",
+        },
+    ]}
+/>
+
+<Terminal title="Preview common operations" language="bash">
+
+{`# Preview changelog content without replacing CHANGELOG.md
+custy --dry-run changelog generate
+
+# Preview the daily development pipeline
+custy --dry-run run dev
+
+# Preview the complete release pipeline
+custy --dry-run run release`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Dry run is a simulation, not a guarantee"
+>
+
+Dry-run mode is designed to suppress mutations in supported stages. It can
+still fail while reading or resolving state, and a successful preview does not
+guarantee that a later normal run will see identical files, Git state,
+credentials, remotes, or network conditions.
+
+</InfoBox>
+
+<InfoBox
+    variant="info"
+    title="Diagnostic logging remains active"
+>
+
+Dry-run protects the command's intended project, Git, and remote mutations.
+Custy's normal logging setup can still create or append diagnostic log files.
+
+</InfoBox>
+
+---
+
+<Section
+    title="After the Preview"
+>
+
+Before normal execution:
+
+- confirm the selected command or profile is the smallest one that reaches the
+  intended result;
+- review paths, generated content, commit and tag messages, and every remote;
+- make sure the working tree contains only changes you intend Custy to include;
+- keep recovery information or backups when the operation can rewrite files or
+  create history; and
+- inspect the working tree, commit, tags, and remotes again after execution.
+
+</Section>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Run Safety", href: "../commands/run/safety", description: "Review the possible effects of combined pipeline profiles."},
+        {title: "First Workflow", href: "../getting-started/first-workflow", description: "Preview the Dev profile as part of onboarding."},
+        {title: "Generate Changelog", href: "../commands/changelog/generate/overview", description: "Preview generated release notes before writing the file."},
+        {title: "Safety and Side Effects", href: "./safety-and-side-effects", description: "Classify local, Git, interactive, and remote effects."},
+    ]}
+/>
+
+</Section>

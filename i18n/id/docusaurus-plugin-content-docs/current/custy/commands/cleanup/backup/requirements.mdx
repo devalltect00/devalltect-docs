@@ -1,0 +1,73 @@
+---
+title: "Requirements"
+description: "Requirements untuk Backup Cleanup."
+sidebar_position: 2
+sidebar_key: custy-cleanup-backup
+tags: [cleanup, backup, requirements]
+keywords: [custy cleanup backups, backup cleanup requirements]
+---
+import {CommandHero, RequirementGrid, Section, InfoBox, Icon} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Requirements"
+    description="Pahami requirements sebelum menghapus obsolete backup files."
+    category="Maintenance"
+    status="Direkomendasikan"
+    syntax="custy cleanup backups"
+    tags={["cleanup", "backup", "requirements"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Syntax", href: "./syntax"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+## Ringkasan
+
+Backup Cleanup bekerja pada backup files yang sebelumnya dibuat Custy. Pastikan
+file sudah tersedia dan retention policy sesuai kebutuhan.
+
+<InfoBox variant="tip" title="Paling Berguna Setelah Operasi Backup">
+
+Proyek dengan sedikit backup files mungkin tidak memiliki file untuk dihapus.
+
+</InfoBox>
+
+<Section title="Prerequisites">
+<RequirementGrid
+    title="Environment yang Diperlukan"
+    items={[
+        {title: "Proyek Sudah Di-init", icon: <Icon name="directory" />, children: <>Configuration dan backup directories Custy sudah tersedia.</>},
+        {title: "Backup Files Tersedia", icon: <Icon name="copy" />, children: <>Cleanup hanya menghapus file yang tersedia.</>},
+        {title: "Project Configuration", icon: <Icon name="configuration" />, children: <>Target, type, dan retention count ditentukan dari configuration.</>},
+        {title: "Directory Dapat Ditulis", icon: <Icon name="directory" />, children: <>Custy dapat memeriksa dan menghapus file.</>},
+    ]}
+/>
+</Section>
+
+<Section title="Persiapan yang Direkomendasikan">
+
+- Pastikan backup files tersedia.
+- Tinjau retention count.
+- Pastikan file penting tidak lagi diperlukan.
+- Tinjau cleanup configuration.
+
+</Section>
+
+<InfoBox variant="note" title="Git Repository Tidak Diperlukan">
+Operasi hanya bekerja pada backup files Custy dan tidak memerlukan Git.
+</InfoBox>
+
+<Section title="Configuration">
+`config.toml` mengatur cleanup target, retention count, dan backup directories.
+Command-line options dapat meng-override nilai untuk satu eksekusi.
+</Section>
+
+<Section title="Apa yang Tidak Diperlukan?">
+Staged changes, commit, branch, tag, dan remote tidak diperlukan.
+</Section>
+
+<Section title="Langkah Berikutnya">
+Lanjutkan ke **Syntax** untuk memilih commit backup, tag backup, atau keduanya.
+</Section>

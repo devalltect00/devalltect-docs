@@ -1,0 +1,166 @@
+---
+title: "Options"
+description: "Command-line options available for the custy backup command."
+sidebar_position: 4
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Options"
+    description="Learn about the command-line options supported by the backup command."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup commit"
+    tags={[
+        "options",
+        "backup",
+        "cli",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Backup Files",
+            href: "./backup-files",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The backup command accepts command-specific options that control how backup
+files are created.
+
+Configuration values may also be resolved from your project's
+`config.toml` file.
+
+<InfoBox
+    variant="tip"
+    title="Configuration First"
+>
+
+Command-line options override configuration values for the current execution
+only.
+
+If no option is supplied, Custy uses the project's configured value or its
+built-in default.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--backup-dir",
+            shorthand: "",
+            required: false,
+            description:
+                "Override the destination directory used for generated backup files.",
+            defaultValue: "Configured backup directory",
+            example:
+                "custy backup commit --backup-dir .config/custy/backups/custom",
+        },
+        {
+            name: "--keep",
+            shorthand: "",
+            required: false,
+            description:
+                "Specify how many backup files should be retained before older backups are pruned.",
+            defaultValue: "Project configuration",
+            example:
+                "custy backup all --keep 20",
+        },
+        {
+            name: "--force",
+            shorthand: "-f",
+            required: false,
+            description:
+                "Create backup directories when necessary and continue without interactive confirmation.",
+            defaultValue: "false",
+            example:
+                "custy backup tag --force",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Option Resolution"
+>
+
+When determining backup behavior, Custy resolves values in the following order.
+
+1. Command-line options.
+2. Project configuration (`config.toml`).
+3. Custy's built-in defaults.
+
+This allows projects to define sensible backup policies while still allowing
+individual executions to override specific settings.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Global CLI Options"
+>
+
+Global options such as
+`--dry-run`,
+`--debug`,
+and
+`--log-level`
+
+are documented separately because they apply to every Custy command.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Backup Directories"
+>
+
+The exact backup destination depends on the selected subcommand.
+
+Typical destinations include dedicated directories for commit backups and tag
+backups.
+
+These locations can be customized through the project configuration.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Backup Files** page to learn what Custy backs up, where those
+files are stored, how backup names are generated, and how old backups are
+managed.
+
+</Section>

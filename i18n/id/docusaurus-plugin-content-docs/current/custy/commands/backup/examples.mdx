@@ -1,0 +1,121 @@
+---
+title: "Examples"
+description: "Contoh praktis penggunaan custy backup."
+sidebar_position: 7
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandExample,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Examples"
+    description="Pelajari cara membuat backup template files Custy dalam skenario development umum."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup commit"
+    tags={["examples", "backup", "templates"]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Output", href: "./output"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Ringkasan
+
+Contoh berikut menunjukkan cara paling umum membuat backup copy dari template
+files Custy.
+
+---
+
+<Section title="Contoh Umum">
+
+<CommandExample
+    examples={[
+        {
+            title: "Backup Commit Message Template",
+            description: "Buat backup commit message template yang dikonfigurasi.",
+            command: "custy backup commit",
+            result: "Membuat timestamped backup dari configured commit message template.",
+        },
+        {
+            title: "Backup Tag Message Template",
+            description: "Buat backup tag message template yang dikonfigurasi.",
+            command: "custy backup tag",
+            result: "Membuat timestamped backup dari configured tag message template.",
+        },
+        {
+            title: "Backup Semua Templates",
+            description: "Buat backup commit dan tag message templates.",
+            command: "custy backup all",
+            result: "Membuat timestamped backup untuk setiap template resource yang didukung.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Penggunaan Umum">
+
+<CommandExample
+    examples={[
+        {
+            title: "Sebelum Mengedit Templates",
+            description: "Pertahankan template saat ini sebelum membuat perubahan.",
+            command:
+`custy backup commit
+
+# Edit commit-message.txt`,
+            result: "Template asli tetap tersimpan dengan aman di backup directory.",
+        },
+        {
+            title: "Sebelum Memperbarui Release Templates",
+            description: "Buat backup sebelum mengubah template terkait release.",
+            command:
+`custy backup all`,
+            result: "Commit dan tag message templates di-backup sebelum perubahan manual.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Workflow yang Direkomendasikan">
+
+Backup paling berguna sebelum:
+
+- Memperbarui commit message templates.
+- Mengubah tag message templates.
+- Menguji format template alternatif.
+- Bereksperimen dengan release workflows.
+- Melakukan pemeliharaan proyek.
+
+</Section>
+
+---
+
+<InfoBox variant="tip" title="Buat Backup Sebelum Mengedit">
+
+Membuat backup sebelum perubahan lebih mudah daripada mencoba memulihkan versi
+lama setelahnya. Backup rutin membantu mempertahankan riwayat revisi template.
+
+</InfoBox>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Lanjutkan ke halaman **Output** untuk mempelajari informasi yang dilaporkan
+Custy setelah membuat backup files.
+
+</Section>

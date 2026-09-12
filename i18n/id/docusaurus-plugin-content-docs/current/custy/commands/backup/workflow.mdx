@@ -1,0 +1,123 @@
+---
+title: "Workflow"
+description: "Pahami posisi backup operations dalam workflow pipeline Custy."
+sidebar_position: 6
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Workflow"
+    description="Pelajari cara Custy menjalankan backup sebelum workflow stages berikutnya."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup all"
+    tags={["workflow", "backup", "pipeline"]}
+    links={[
+        {label: "Backup Files", href: "./backup-files"},
+        {label: "Examples", href: "./examples"},
+        {label: "Output", href: "./output"},
+    ]}
+/>
+
+## Ringkasan
+
+Command **backup** membuat timestamped copy dari template resources sebelum
+resource tersebut diubah atau digunakan kembali.
+
+Jika dijalankan langsung, command hanya melakukan backup yang diminta. Backup
+operations juga dapat menjadi satu stage dalam multi-step pipeline Custy.
+
+<InfoBox variant="tip" title="Standalone atau Workflow Stage">
+
+Command backup dapat dijalankan sendiri atau sebagai bagian dari workflow yang
+lebih besar bersama operasi commit, tag, dan release.
+
+</InfoBox>
+
+---
+
+<Section title="Backup Timeline">
+
+<WorkflowTimeline
+    title="Backup Pipeline"
+    description="Urutan tingkat tinggi selama operasi backup."
+    items={[
+        {title: "Resolve Configuration", description: "Tentukan effective backup configuration, termasuk lokasi template dan backup directories.", status: "completed"},
+        {title: "Locate Template Files", description: "Temukan commit atau tag template files yang diminta.", status: "completed"},
+        {title: "Create Backup", description: "Buat timestamped backup copy di configured backup directory.", status: "completed"},
+        {title: "Manage Existing Backups", description: "Terapkan retention policy dan hapus backup lama jika diperlukan.", status: "completed"},
+        {title: "Finish", description: "Laporkan hasil dan sediakan backup files untuk workflow stages berikutnya.", status: "completed"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Workflow Stages">
+
+<WorkflowStep title="1. Resolve Backup Configuration">
+
+Custy menentukan template files yang di-backup dan lokasi penulisannya. Nilai
+ditentukan dari project configuration selama tersedia.
+
+</WorkflowStep>
+
+<WorkflowStep title="2. Locate Template Resources">
+
+Custy memastikan template files yang dipilih tersedia. Jika optional resource
+tidak tersedia, operasi khusus tersebut dilewati dengan aman.
+
+</WorkflowStep>
+
+<WorkflowStep title="3. Create Timestamped Backup">
+
+Backup copy dibuat dengan timestamp-based filename untuk mempertahankan versi
+sebelumnya tanpa menimpanya.
+
+</WorkflowStep>
+
+<WorkflowStep title="4. Apply Backup Retention">
+
+Custy meninjau backup files yang sudah ada dan menghapus backup lama sesuai
+retention policy, sehingga direktori tetap teratur sambil mempertahankan
+riwayat terbaru.
+
+</WorkflowStep>
+
+<WorkflowStep title="5. Complete Backup">
+
+Setelah semua operasi selesai, Custy melaporkan hasilnya. Generated backup
+files tersedia untuk workflow stage berikutnya atau pemeriksaan manual.
+
+</WorkflowStep>
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Operasi Aman">
+
+Backup membuat file tambahan tetapi tidak mengubah riwayat Git. Tinjau file
+yang dibuat sebelum memutuskan untuk memasukkannya ke commit berikutnya.
+
+</InfoBox>
+
+---
+
+<Section title="Hubungan dengan Workflow Commands">
+
+Command backup menjalankan operasi secara langsung. Workflow-oriented commands
+juga dapat menyertakan backup stage dalam execution pipeline yang lebih besar.
+Kombinasi tersebut didokumentasikan pada command **Run**.
+
+</Section>

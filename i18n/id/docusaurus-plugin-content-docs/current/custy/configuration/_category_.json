@@ -1,0 +1,11 @@
+{
+  "label": "Konfigurasi",
+  "position": 4,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-configuration",
+  "link": {
+    "type": "doc",
+    "id": "custy/configuration/overview"
+  }
+}

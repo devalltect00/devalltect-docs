@@ -1,0 +1,95 @@
+{
+  // =====================================================
+  // 🚀 VISUAL STUDIO CODE DEBUG CONFIGURATION
+  // =====================================================
+  //
+  // Purpose
+  // -------
+  // Common launch configurations for developing and
+  // maintaining the Docusaurus documentation portal.
+  //
+  // Supported Tasks
+  // ---------------
+  // - Development Server
+  // - Production Build
+  // - Local Production Preview
+  // - Cache Cleanup
+  //
+  // Notes
+  // -----
+  // These configurations execute Yarn scripts and are
+  // intended to simplify local development workflows.
+  //
+  // =====================================================
+
+  "version": "0.2.0",
+
+  "configurations": [
+    // =====================================================
+    // 🚀 DOCUSAURUS DEVELOPMENT SERVER
+    // =====================================================
+
+    {
+      "name": "Docusaurus: Start Dev Server",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn start"
+    },
+
+    // =====================================================
+    // 🏗️ DOCUSAURUS BUILD
+    // =====================================================
+
+    {
+      "name": "Docusaurus: Build Site",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn build"
+    },
+
+    // =====================================================
+    // 🌐 DOCUSAURUS PRODUCTION PREVIEW
+    // =====================================================
+
+    {
+      "name": "Docusaurus: Serve Build",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn serve"
+    },
+
+    // =====================================================
+    // 🧹 DOCUSAURUS CLEAR CACHE
+    // =====================================================
+
+    {
+      "name": "Docusaurus: Clear Cache",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn clear"
+    },
+
+    // =====================================================
+    // 🌍 DOCUSAURUS I18N TRANSLATIONS
+    // =====================================================
+
+    {
+      "name": "Docusaurus: Write Translations (ID)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn write-translations --locale id"
+    },
+
+    // =====================================================
+    // 🔍 DOCUSAURUS TYPE CHECK
+    // =====================================================
+
+    {
+      "name": "Docusaurus: Type Check",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn typecheck"
+    }
+
+  ]
+}

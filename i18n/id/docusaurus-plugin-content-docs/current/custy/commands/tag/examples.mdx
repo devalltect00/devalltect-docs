@@ -1,0 +1,23 @@
+---
+title: "Examples"
+description: "Contoh praktis custy tag."
+sidebar_position: 9
+sidebar_key: custy-tag-examples
+---
+import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy tag" title="Examples" description="Gunakan explicit version, strategy, message, dan dry run." category="Git Operations" status="Practical Guide" syntax="custy tag [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Versioning and Tags",href:"./versioning-and-tags"}]} />
+
+## Ringkasan
+
+<InfoBox variant="tip" title="Confirm the Exact Tag">Mulai dengan `custy --dry-run tag --tag v1.4.0`.</InfoBox>
+
+<CommandExample examples={[
+ {title:"Dry Run",command:"custy --dry-run tag --tag v1.4.0",description:"Tinjau exact tag tanpa membuat reference.",result:"Menampilkan planned Tag profile."},
+ {title:"Project Defaults",command:"custy tag",description:"Gunakan resolved configuration.",result:"Membentuk versi dan membuat local tag."},
+ {title:"Explicit SemVer",command:"custy tag --strategy semver --tag v1.4.0",description:"Gunakan exact SemVer.",result:"Membuat v1.4.0."},
+ {title:"PEP 440 Pre-release",command:"custy tag --strategy pep440 --pre rc",description:"Bentuk release candidate.",result:"Menggunakan PEP 440-compatible format."},
+ {title:"Inline Message",command:"custy tag --tag v1.4.0 --tag-message \"Release v1.4.0\"",description:"Gunakan inline tag message.",result:"Membuat annotated tag dengan pesan tersebut."},
+]} />
+
+<InfoBox variant="danger" title="Do Not Force an Unexplained Failure">Jangan gunakan `--force-tag` sebelum memahami conflict dan publication state.</InfoBox>

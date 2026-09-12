@@ -1,0 +1,40 @@
+---
+title: "Template Backup Directories"
+description: "Configure retained commit-message and tag-message backup locations."
+sidebar_position: 3
+sidebar_key: custy-configuration-cli-template-directories
+tags: [custy, configuration, templates, backups]
+keywords: [backups_commit, backups_tag]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.templates.directory]" title="Template Backup Directories" description="Choose where Custy stores retained commit and tag message copies." category="Template Configuration" status="Active" syntax="[tool.custy.cli.templates.directory]" tags={["backups", "retention", "directories"]} links={[{label: "Template Files", href: "./files"}, {label: "Cleanup Backup", href: "../cleanup/backup"}, {label: "Backup Command", href: "../../../commands/backup/overview"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Commit Destination", value: "backups/commit", icon: "directory"}, {label: "Tag Destination", value: "backups/tag", icon: "directory"}, {label: "Retention Policy", value: "cli.cleanup.backup", icon: "package"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "backups_commit", type: "Directory path", defaultValue: ".config/custy/templates/backups/commit", description: "Destination resolved by commit, backup, cleanup, and run flows."},
+        {property: "backups_tag", type: "Directory path", defaultValue: ".config/custy/templates/backups/tag", description: "Destination resolved by tag, backup, cleanup, and run flows."},
+    ]}
+/>
+
+<Terminal title="Generated directories" language="toml">
+
+{`[tool.custy.cli.templates.directory]
+backups_commit = ".config/custy/templates/backups/commit"
+backups_tag = ".config/custy/templates/backups/tag"`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Location and retention are separate">
+
+This table selects destinations. `[tool.custy.cli.cleanup.backup]` selects the
+backup category and number of recent files retained during cleanup.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Backup Retention", href: "../cleanup/backup", description: "Configure type and keep."}, {title: "Backup Command", href: "../../../commands/backup/overview", description: "Create message backups."}, {title: "Cleanup Backup", href: "../../../commands/cleanup/backup/overview", description: "Remove old backups according to retention."}]} /></Section>

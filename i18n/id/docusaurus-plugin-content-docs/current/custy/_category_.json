@@ -1,0 +1,11 @@
+{
+  "label": "Custy",
+  "position": 4,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy",
+  "link": {
+    "type": "doc",
+    "id": "custy/index"
+  }
+}

@@ -1,0 +1,157 @@
+---
+title: "Custom Composition"
+description: "Understand how Custy merges public profiles, removes duplicate steps, and enforces global order."
+sidebar_position: 6
+sidebar_key: custy-pipelines-custom-composition
+tags: [custy, pipelines, composition]
+keywords: [custy run commit tag push, pipeline deduplication]
+---
+
+import {
+    CommandExample,
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run PROFILE PROFILE"
+    title="Custom Profile Composition"
+    description="Merge supported public profiles into one deduplicated pipeline with a safe global phase order."
+    category="Pipelines"
+    status="Advanced"
+    syntax="custy run PROFILE PROFILE [PROFILE ...] [OPTIONS]"
+    tags={["profile merge", "deduplication", "global ordering"]}
+    links={[
+        {label: "Profiles", href: "./profiles"},
+        {label: "Step Priority", href: "./step-order"},
+        {label: "Execution Model", href: "./execution-model"},
+    ]}
+/>
+
+## Overview
+
+Supplying multiple public names does not run several isolated pipelines. Custy
+creates one combined pipeline from the union of their expanded steps.
+
+---
+
+<Section title="Normalization Process">
+
+<WorkflowTimeline
+    title="How Profiles Are Combined"
+    items={[
+        {title: "Validate profile names", description: "Every input must be one of the six accepted public names.", status: "completed"},
+        {title: "Expand nested profiles", description: "Replace profile references with concrete registered step definitions.", status: "completed"},
+        {title: "Collect all steps", description: "Append the expanded steps from every selected profile.", status: "completed"},
+        {title: "Deduplicate by name", description: "Keep the first instance of each repeated step name.", status: "completed"},
+        {title: "Apply global order", description: "Sort the unique steps by Custy's phase priorities before execution.", status: "current"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Worked Example: commit + push">
+
+The two profiles contribute overlapping repository and workflow steps. After
+expansion, deduplication, and priority sorting, Custy produces this exact
+18-step sequence:
+
+<Terminal title="custy run commit push" language="text">
+
+{`01  ensure_git_repo_step
+02  ensure_staged_changes_step
+03  ensure_commitizen_convention_step
+04  ensure_commit_message_file_step
+05  ensure_commit_message_file_exists_step
+06  ensure_remote_exists_step
+07  prepare_version_step
+08  workflow_init_step
+09  generate_artifacts_step
+10  edit_files_step
+11  validate_edited_step
+12  apply_version_step
+13  generate_changelog_step
+14  backup_commit_message_files_step
+15  cleanup_backup_step
+16  stage_step
+17  commit_step
+18  push_step`}
+
+</Terminal>
+
+Reversing the input to `custy run push commit` currently produces the same
+normalized order. See [Step Priority and Ordering](./step-order) for the
+priority attached to every line.
+
+</Section>
+
+---
+
+<Section title="Examples">
+
+<CommandExample
+    examples={[
+        {title: "Commit and push", command: "custy --dry-run run commit push", description: "Preview one flow that prepares a commit and then synchronizes it."},
+        {title: "Commit, tag, and push", command: "custy --dry-run run commit tag push", description: "Preview a merged step set that currently matches the Release profile."},
+        {title: "Input order is normalized", command: "custy --dry-run run push commit", description: "Push is still placed after commit by global ordering."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Important Comparisons">
+
+<FeatureGrid
+    title="Similar Does Not Always Mean Equivalent"
+    items={[
+        {title: "commit + tag + push", icon: <Icon name="release" />, children: "The current resolved step set is equivalent to Release, but the named Release profile communicates intent more clearly."},
+        {title: "commit + push", icon: <Icon name="dependency" />, children: "This is not the same as Dev: it adds commit and push validation and includes version application."},
+        {title: "dev", icon: <Icon name="play" />, children: "This deliberate profile has its own source-defined stage list and omits version application and tag creation."},
+        {title: "full", icon: <Icon name="workflow" />, children: "This is Release plus finalization; combining focused profiles does not add the finalization step."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Composition broadens requirements and side effects">
+
+The combined pipeline inherits every unique validation and mutation stage from
+the selected profiles. Review the normalized outcome and use dry-run before
+normal execution. Prefer a named composite profile when it already expresses
+your intent.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Internal composition is not public CLI composition">
+
+Custy's source profiles may reference internal profiles such as validation
+subprofiles. Public CLI users cannot pass those internal names to `custy run`.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Profiles", href: "./profiles", description: "Choose a built-in profile before composing a broader flow."},
+        {title: "Step Priority and Ordering", href: "./step-order", description: "See why merged input order does not control execution order."},
+        {title: "Execution Model", href: "./execution-model", description: "Understand expansion, ordering, building, and execution."},
+        {title: "Run Custom Sequences", href: "../commands/run/custom-sequences", description: "See the command-level composition guide."},
+    ]}
+/>
+
+</Section>

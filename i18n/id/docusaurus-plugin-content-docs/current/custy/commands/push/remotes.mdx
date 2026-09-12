@@ -1,0 +1,28 @@
+---
+title: "Remotes"
+description: "Pahami main dan backup remote resolution dalam Push workflow."
+sidebar_position: 5
+sidebar_key: custy-push-remotes
+---
+import {CommandHero, FeatureGrid, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="custy push" title="Remote Resolution" description="Pahami bagaimana destination roles dipilih dan diverifikasi." category="Git Operations" status="Important" syntax="custy push [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"}]} />
+
+## Ringkasan
+
+<FeatureGrid items={[
+ {title:"Main Remote",children:"Destination utama untuk current branch dan optional tag."},
+ {title:"Backup Remote",children:"Optional secondary destination saat synchronization aktif."},
+ {title:"Configuration",children:"Role dapat berasal dari project configuration dan repository remotes."},
+ {title:"Interactive Fallback",children:"Pilihan pengguna dapat diminta bila destination ambigu."},
+]} />
+
+<Section title="Branch Safety">Pastikan current branch memang boleh dipush dan upstream/destination sesuai. Custy tidak menggantikan branch-protection rules.</Section>
+<InfoBox variant="warning" title="CLI and Engine Are Not Fully Connected">`--remote` dan `--all-remote` tersedia pada CLI, tetapi destination engine saat ini mungkin tidak memakai override tersebut sepenuhnya.</InfoBox>
+
+<Section title="Inspect Repository Remotes">
+```bash
+git remote -v
+git branch -vv
+```
+</Section>

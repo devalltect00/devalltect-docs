@@ -1,0 +1,37 @@
+.body {
+
+    margin: 0;
+
+    padding: 1.25rem 1.5rem;
+
+    overflow-x: auto;
+
+    background: var(--ifm-code-background);
+
+    font-family: var(--ifm-font-family-monospace);
+
+    font-size: .92rem;
+
+    line-height: 1.75;
+
+    white-space: pre;
+
+}
+
+.body code {
+
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+
+    color: inherit;
+
+}
+
+.lineNumbers {
+
+    counter-reset: line;
+
+}

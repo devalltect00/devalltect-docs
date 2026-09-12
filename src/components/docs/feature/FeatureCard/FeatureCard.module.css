@@ -1,0 +1,25 @@
+.card {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-lg);
+
+    height: 100%;
+
+}
+
+.content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+
+}

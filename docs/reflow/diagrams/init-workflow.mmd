@@ -1,0 +1,33 @@
+flowchart TD
+
+A[User]
+B[reflow init]
+
+C[Resolver]
+D[InitMain]
+
+E[InitBuilder]
+F[InitSpec]
+
+G[ScaffoldGenerator]
+H[Filesystem]
+
+I[InitializationResult]
+J[Presenter]
+
+K[Summary]
+
+A --> B
+B --> C
+C --> D
+
+D --> E
+E --> F
+
+F --> G
+G --> H
+
+H --> I
+I --> J
+
+J --> K

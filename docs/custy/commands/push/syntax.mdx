@@ -1,0 +1,78 @@
+---
+title: "Syntax"
+description: "Supported custy push command forms and current limitations."
+sidebar_position: 3
+sidebar_key: custy-push-syntax
+tags: [push, syntax, cli]
+keywords: [custy push syntax]
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy push"
+    title="Command Syntax"
+    description="Use supported push forms while accounting for current remote-selection adapter limitations."
+    category="Git Operations"
+    status="Limited"
+    syntax="custy push [OPTIONS]"
+    tags={[
+        "syntax",
+        "Git remotes",
+        "dry-run",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Options", href: "./options"},
+        {label: "Remotes", href: "./remotes"},
+    ]}
+/>
+
+## Overview
+
+Use root dry-run before allowing an external operation. The direct and Run
+forms select the same profile, but current adapter limitations still apply.
+
+---
+
+<Section
+    title="Supported Command Forms"
+>
+
+<CommandSyntax
+    examples={[
+        {title: "Run the configured push profile", command: "custy push", description: "Validate and synchronize through the resolved workflow remotes."},
+        {title: "Request backup synchronization", command: "custy push --sync-backup", description: "Also resolve and push eligible backup remotes."},
+        {title: "Push a selected tag with HEAD", command: "custy push --tag v1.2.3", description: "Supply the local tag that should be pushed after HEAD."},
+        {title: "Preview external operations", command: "custy --dry-run push --tag v1.2.3", description: "Report intended remote and tag operations without normal pushes."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Direct Command and Run Profile"
+>
+
+`custy run push` selects the same public push profile but does not expose the
+direct command's full remote and tag option surface.
+
+<InfoBox
+    variant="warning"
+    title="Remote selection limitation"
+>
+
+The current adapter does not reliably propagate `--remote`, `--all-remote`, or
+`--skip-tag` into the workflow engine. Until Custy is corrected, do not use those
+flags as proof of which remotes or tags will be affected.
+
+</InfoBox>
+
+</Section>

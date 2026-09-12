@@ -1,0 +1,11 @@
+{
+  "label": "Push",
+  "position": 9,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-push",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/push/overview"
+  }
+}

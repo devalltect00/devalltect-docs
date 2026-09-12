@@ -1,0 +1,183 @@
+---
+title: "Strategy Pattern"
+description: "Understand Custy's separate strategies for generating version tags, sorting existing tags, and converting version formats."
+sidebar_position: 8
+sidebar_key: custy-architecture-strategy-pattern
+tags: [custy, strategy pattern, versioning]
+keywords: [Custy TagStrategy, TagSorter, version strategies]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    DependencyCard,
+    Grid,
+    InfoBox,
+    PatternCard,
+    PatternTable,
+    RelatedCommands,
+    Section,
+    WorkflowDiagram,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/git_ops/tag_strategy/"
+    title="Strategy Pattern"
+    description="Keep tag generation, existing-tag ordering, and cross-format conversion as separate responsibilities."
+    category="Architecture"
+    status="Contributor Extension Point"
+    syntax="requested strategy -> implementation -> version tag"
+    tags={["TagStrategy", "TagSorter", "factory", "VersionBridge"]}
+    links={[
+        {label: "Git Operations", href: "./git-operations"},
+        {label: "Versioning Concept", href: "../concepts/versioning"},
+        {label: "Add a Strategy", href: "../developer-guide/adding-version-strategies"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Generation Contract", value: "TagStrategy", icon: "release"},
+        {label: "Generation Choices", value: "5", icon: "configuration"},
+        {label: "Sorting Contract", value: "TagSorter", icon: "table"},
+        {label: "Sorting Choices", value: "4", icon: "timeline"},
+    ]}
+/>
+
+## Overview
+
+Custy uses two related but independent strategy families. A `TagStrategy`
+calculates a new tag. A `TagSorter` orders tags that already exist. Keeping the
+families separate prevents parsing and ordering rules from becoming mixed with
+version-bump policy.
+
+`VersionBridge` is a supporting conversion utility. It synchronizes equivalent
+SemVer and PEP 440 representations when a project file requires a different
+format from the selected Git tag; it does not choose the next version.
+
+---
+
+<Section title="The Three Responsibilities">
+
+<Grid columns={3}>
+
+<PatternCard
+    pattern="Strategy"
+    title="Generate a Tag"
+    description="TagStrategy defines get_next_tag(). WorkflowEngine selects a concrete implementation from the resolved strategy."
+    implementation="tag_strategy/base.py and strategy modules"
+/>
+
+<PatternCard
+    pattern="Strategy + Factory"
+    title="Sort Existing Tags"
+    description="TagSorter defines sort(), latest(), and oldest(). TagSorterFactory maps supported strategy choices to concrete sorters."
+    implementation="tag_sorter/base.py and factory.py"
+/>
+
+<PatternCard
+    pattern="Bridge Utility"
+    title="Convert a Version"
+    description="VersionBridge converts compatible SemVer and PEP 440 values when version files and Git tags need different representations."
+    implementation="versioning/version_bridge.py"
+/>
+
+</Grid>
+
+</Section>
+
+---
+
+<Section title="Tag Generation Family">
+
+<PatternTable
+    title="Built-in Tag Strategies"
+    description="These implementations answer one question: what tag should Custy use next?"
+    patterns={[
+        {pattern: "SemVer", purpose: "Increment a semantic version using the selected bump and optional prerelease input.", implementation: "SemverStrategy"},
+        {pattern: "PEP 440", purpose: "Generate a Python-compatible public version from repository state and bump input.", implementation: "PEP440Strategy"},
+        {pattern: "Commitizen", purpose: "Use Commitizen-compatible project metadata, then delegate the version calculation through semantic-version behavior.", implementation: "CommitizenStrategy"},
+        {pattern: "Date", purpose: "Create a date-based tag for projects whose releases are organized by calendar value.", implementation: "DateStrategy"},
+        {pattern: "Git Count", purpose: "Derive the next value from repository commit count.", implementation: "GitCountStrategy"},
+    ]}
+/>
+
+<InfoBox variant="info" title="An explicit tag has highest priority">
+
+When the caller supplies a tag directly, `WorkflowEngine` stores that value
+instead of invoking a generation strategy. The strategy setting matters only
+when Custy must calculate the next tag.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<WorkflowDiagram
+    title="Tag Resolution Flow"
+    timeline={[
+        {title: "Resolve CLI and configuration", description: "The command resolver prepares the explicit tag, strategy, bump, prerelease, and related inputs.", status: "completed"},
+        {title: "Build WorkflowConfig", description: "WorkflowEngineBuilder carries the resolved values into one engine configuration.", status: "completed"},
+        {title: "Check explicit input", description: "A supplied tag is accepted directly and bypasses automatic generation.", status: "completed"},
+        {title: "Select implementation", description: "Without an explicit tag, WorkflowEngine dispatches to the concrete strategy for the selected enum value.", status: "current"},
+        {title: "Generate the value", description: "The strategy reads only the repository or project inputs it needs and returns the next tag string.", status: "pending"},
+        {title: "Apply and consume", description: "Later workflow phases update version files, generate changelog context, create the Git tag, and optionally push it.", status: "pending"},
+    ]}
+/>
+
+---
+
+<Section title="Tag Sorting Family">
+
+<DependencyCard
+    title="Existing-Tag Ordering"
+    dependencies={[
+        {source: "GitService", target: "TagSorterFactory", description: "Requests a sorter that matches the active version strategy."},
+        {source: "TagSorterFactory", target: "SemverSorter", description: "Orders semantic-version tags."},
+        {source: "TagSorterFactory", target: "PEP440Sorter", description: "Orders PEP 440-compatible tags."},
+        {source: "TagSorterFactory", target: "DateSorter", description: "Orders date-based tags."},
+        {source: "TagSorterFactory", target: "GitCountSorter", description: "Orders commit-count tags."},
+    ]}
+/>
+
+`GitService` detects or receives a project strategy, creates the matching
+sorter, and caches it for later tag queries. Commitizen does not have a
+separate sorter: its generated versions use semantic-version behavior, so
+compatible tags are ordered through the SemVer path.
+
+</Section>
+
+---
+
+<Section title="Extension Boundary">
+
+Adding a source-owned generation strategy requires more than implementing
+`get_next_tag()`. The contributor must also extend the strategy choice enum,
+workflow dispatch, CLI and configuration resolution, tests, and documentation.
+If the resulting tag format needs special ordering, the sorter family and
+factory require a corresponding implementation too.
+
+<InfoBox variant="warning" title="This is not a public plugin contract">
+
+The protocols make internal code easier to extend and test, but Custy does not
+currently discover or install third-party strategy plugins at runtime.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Git Operations", href: "./git-operations", description: "See where existing tags are read, sorted, created, and pushed."},
+        {title: "Workflow Engine", href: "./workflow-engine", description: "Inspect the active dispatch and downstream release phases."},
+        {title: "Versioning Concept", href: "../concepts/versioning", description: "Compare strategies, version-file formats, and user-facing behavior."},
+        {title: "Adding Version Strategies", href: "../developer-guide/adding-version-strategies", description: "Follow the complete contributor checklist for a new implementation."},
+    ]}
+/>
+
+</Section>

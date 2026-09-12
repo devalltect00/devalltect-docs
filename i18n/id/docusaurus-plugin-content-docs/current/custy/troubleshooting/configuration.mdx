@@ -1,0 +1,58 @@
+---
+title: "Pemecahan Masalah Konfigurasi"
+description: "Atasi TOML hilang atau invalid, working directory salah, precedence tidak terduga, cache, path, template, dan replacement initialization."
+sidebar_position: 3
+sidebar_key: custy-troubleshooting-configuration
+---
+import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command=".config/custy/config.toml" title="Configuration Troubleshooting" description="Pastikan file, table, key, type, path, dan precedence sesuai consumer runtime." category="Pemecahan Masalah" status="Project-owned" syntax="locate -> parse -> resolve -> verify consumer" links={[{label:"Troubleshooting Hub",href:"./overview"},{label:"Configuration Guide",href:"../configuration/overview"},{label:"All Properties",href:"../configuration/reference"},{label:"Paths",href:"../reference/paths-and-files"}]} />
+
+## Configuration file tidak ditemukan
+
+Jalankan dari project root. File `.config/custy/config.toml` yang belum ada
+merupakan kondisi project yang belum diinisialisasi, bukan startup crash.
+Gunakan `custy init`; gunakan `--force` hanya setelah memahami file yang akan
+diganti.
+
+## TOML gagal diparse
+
+Periksa table header, quote, array, duplicate key, dan tipe nilai pada area yang disebut error. Bandingkan dengan generated template dan property reference tanpa mengganti customization lain.
+
+## Nilai efektif tidak sesuai
+
+Periksa CLI option terlebih dahulu, kemudian project config dan built-in fallback. Restart process setelah mengubah file karena loader melakukan cache per process.
+
+<InfoBox variant="info" title="Key dapat tersedia tetapi tidak aktif">Periksa status active, loaded-only, reserved, atau advanced. Key yang valid secara TOML belum tentu dikonsumsi feature saat ini.</InfoBox>
+
+## Project tanpa directory app
+
+Generated configuration menggunakan automatic layout detection:
+
+<Terminal title="Path configuration yang direkomendasikan" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"
+
+[tool.custy.cli.paths]
+version_file = "auto"`}
+
+</Terminal>
+
+Mode `auto` mendukung layout Python, Node.js, mixed, dan generic, lalu
+menggunakan project root jika `src/` atau `app/` tidak tersedia. Jika
+configuration lama masih berisi `project_source = "app"` atau
+`version_file = "app/__version__.py"`, nilai tersebut merupakan path eksplisit
+dan tetap strict. Ubah ke `auto` jika project memang tidak memiliki path itu.
+
+## Version target tidak ditemukan
+
+Path `tool.custy.cli.paths.version_file` yang eksplisit harus tersedia dan
+berupa file. Gunakan `auto` untuk mendeteksi Python `__version__.py`, static
+version dalam `pyproject.toml`, atau `version` dalam `package.json`. Project
+tanpa metadata yang didukung tetap valid dan dapat menggunakan Git-tag-only
+versioning.
+
+<InfoBox variant="tip" title="Gunakan debug hanya ketika diperlukan">Normal error ditampilkan sebagai pesan Custy yang ringkas. Tambahkan `--debug` sebelum command jika traceback diperlukan untuk diagnosis.</InfoBox>
+
+<Section title="Panduan terkait"><RelatedCommands commands={[{title:"Configuration Resolution",href:"../configuration/resolution",description:"Pelajari precedence, fallback, status, dan exception."},{title:"All Configuration Properties",href:"../configuration/reference",description:"Cari exact path, default, dan status."},{title:"Init Troubleshooting",href:"../commands/init/troubleshooting",description:"Atasi existing files, permission, dan missing examples."},{title:"Validate Troubleshooting",href:"../commands/validate/troubleshooting",description:"Atasi remote, version file, template, staging, dan convention."}]} /></Section>

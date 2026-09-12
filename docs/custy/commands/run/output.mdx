@@ -1,0 +1,102 @@
+---
+title: "Output"
+description: "Understand pipeline progress, artifacts, Git references, and remote results from custy run."
+sidebar_position: 8
+sidebar_key: custy-run-output
+tags: [run, output, pipeline]
+keywords: [custy run output]
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Command Output"
+    description="Interpret combined validation, artifact, backup, Git, remote, and finalization output from resolved profiles."
+    category="Pipeline"
+    status="Profile-dependent"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "output",
+        "pipeline stages",
+        "verification",
+    ]}
+    links={[
+        {label: "Profiles", href: "./profiles"},
+        {label: "Safety", href: "./safety"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+Run output combines every resolved stage. The content therefore changes with
+the selected profile names and their normalized pipeline.
+
+---
+
+<Section
+    title="Representative Output"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Resolved Pipeline Progress",
+            description: "Representative categories reported by a mutating release profile.",
+            output: `Repository validation completed
+Version and artifacts prepared
+Changelog generated
+Commit and tag created
+Remote synchronization completed`,
+            notes: "Exact stages and messages depend on the selected profile and installed Custy version.",
+        },
+        {
+            title: "Dry-Run Intent",
+            description: "Representative preview for external or Git-history operations.",
+            output: `Dry-run: create commit
+Dry-run: create tag
+Dry-run: push HEAD and tag`,
+        },
+    ]}
+/>
+
+Output can also include editor prompts, generated artifact paths, backup
+results, actionable validation errors, and finalization output for `full`.
+
+</Section>
+
+---
+
+<Section
+    title="Verify Repository State"
+>
+
+<Terminal>
+
+{`git status -sb
+git log -1 --decorate --stat
+git tag --points-at HEAD
+git remote -v`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Use profile-specific guides"
+>
+
+Profile-specific stages and results are documented on the Dev, Release, and
+Full pages.
+
+</InfoBox>

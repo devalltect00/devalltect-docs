@@ -1,0 +1,97 @@
+---
+title: "Configuration"
+description: "Configure tag templates, version files, strategies, validation, and backups."
+sidebar_position: 5
+sidebar_key: custy-tag-configuration
+tags: [tag, configuration, toml]
+keywords: [tag configuration, version strategy]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    PropertyTable,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Configuration"
+    description="Configure tag templates, message backups, version files, strategies, and validation defaults."
+    category="Git Operations"
+    status="Advanced"
+    syntax="custy tag [OPTIONS]"
+    tags={[
+        "configuration",
+        "TOML",
+        "version strategy",
+    ]}
+    links={[
+        {label: "Options", href: "./options"},
+        {label: "Versioning", href: "./versioning-and-tags"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+## Overview
+
+Project configuration keeps release strategy and tag-related file locations
+consistent across contributors. CLI values remain available for one-time
+overrides.
+
+---
+
+<Section
+    title="Configuration Groups"
+>
+
+<PropertyTable
+    title="Tag Profile Configuration"
+    items={[
+        {property: "[tool.custy.cli.templates.file]", type: "tag_message", description: "Select the tag-message template used by the profile."},
+        {property: "[tool.custy.cli.templates.directory]", type: "backups_tag", description: "Select the directory used for retained tag-message backups."},
+        {property: "[tool.custy.cli.paths]", type: "version_file", description: "Select the project file that receives the resolved version."},
+        {property: "[tool.custy.cli.versioning]", type: "strategy and bump", description: "Configure the default version strategy and related version inputs."},
+        {property: "[tool.custy.cli.execution]", type: "tag behavior", description: "Configure force_tag and transition-check behavior."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Example Configuration"
+>
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.cli.templates.file]
+tag_message = ".config/custy/templates/tag-message.txt"
+
+[tool.custy.cli.templates.directory]
+backups_tag = ".config/custy/templates/backups/tag"
+
+[tool.custy.cli.paths]
+version_file = "auto"
+
+[tool.custy.cli.versioning]
+strategy = "semver"`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Use shared release inputs"
+>
+
+Command-line values take precedence for one invocation. Keep the project-wide
+strategy and file locations in configuration so every contributor resolves the
+same release inputs.
+
+</InfoBox>

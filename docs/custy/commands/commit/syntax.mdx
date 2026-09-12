@@ -1,0 +1,86 @@
+---
+title: "Syntax"
+description: "Supported custy commit command forms."
+sidebar_position: 3
+sidebar_key: custy-commit-syntax
+tags: [commit, syntax, cli]
+keywords: [custy commit syntax]
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Command Syntax"
+    description="Choose the direct commit form for command-specific overrides or the public Run form for profile selection."
+    category="Git Operations"
+    status="Stable"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "syntax",
+        "CLI",
+        "commit profile",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The direct form exposes commit-specific file, staging, version, and backup
+overrides. Global options such as dry-run must appear before `commit`.
+
+---
+
+<Section
+    title="Supported Command Forms"
+>
+
+<CommandSyntax
+    examples={[
+        {title: "Use resolved project settings", command: "custy commit", description: "Run the complete commit profile."},
+        {title: "Stage tracked modifications", command: "custy commit --auto-stage --stage-mode update", description: "Select update staging for tracked modified and deleted files."},
+        {title: "Use another message template", command: "custy commit --commit-msg-file path/to/commit-message.txt", description: "Override the configured commit-message template."},
+        {title: "Preview the profile", command: "custy --dry-run commit", description: "Pass the root dry-run option before the command."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Direct Command and Run Profile"
+>
+
+The public Run equivalent is `custy run commit`. It selects the same registered
+profile, but it does not expose the direct command's complete option set.
+
+<InfoBox
+    variant="tip"
+    title="Prefer the direct form for overrides"
+>
+
+Use `custy commit` when you need commit-specific paths, staging behavior,
+strategy selection, or backup-directory overrides.
+
+</InfoBox>
+
+</Section>

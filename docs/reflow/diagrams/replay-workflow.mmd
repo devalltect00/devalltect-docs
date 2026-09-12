@@ -1,0 +1,31 @@
+flowchart TD
+
+A[Git Repository]
+
+B[Discover Tags]
+
+C[Selected Tag]
+
+D[GitHub Release Exists?]
+
+E[Skip]
+
+F[Create GitHub Release]
+
+G[Release Created]
+
+H[Next Tag]
+
+A --> B
+
+B --> C
+
+C --> D
+
+D -->|Yes| E
+D -->|No| F
+
+E --> H
+F --> G
+
+G --> H

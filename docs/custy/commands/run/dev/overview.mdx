@@ -1,0 +1,121 @@
+---
+title: "Overview"
+description: "Use custy run dev for daily artifact, changelog, commit, and push work."
+sidebar_position: 1
+sidebar_key: custy-run-dev
+tags: [run, dev, development pipeline]
+keywords: [custy run dev]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Screenshot,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run dev"
+    title="Development Profile"
+    description="Prepare daily artifacts, generate the changelog, back up the commit message, stage, commit, and push."
+    category="Pipeline Profile"
+    status="Stable with limitations"
+    syntax="custy run dev [OPTIONS]"
+    tags={["development", "commit", "push"]}
+    links={[
+        {label: "Workflow", href: "./workflow"},
+        {label: "Examples", href: "./examples"},
+        {label: "User Journey", href: "../../../user-guide/everyday-development"},
+        {label: "Safety", href: "../safety"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Category", value: "Pipeline Profile", icon: "pipeline"},
+        {label: "Use Case", value: "Daily Development", icon: "play"},
+        {label: "Creates Commit", value: "Yes", icon: "git"},
+        {label: "Pushes Remotely", value: "Yes", icon: "network"},
+    ]}
+/>
+
+## Overview
+
+Use the Dev profile for reviewed day-to-day work that should end with a local
+commit and remote push. It prepares a version for artifact generation but, in
+the current registered profile, does **not** include the `apply_version_step`.
+
+<InfoBox
+    variant="warning"
+    title="Push destination limitation"
+>
+
+The profile ends with push. Current remote-selection adapter limitations still
+apply, so preview and confirm the actual destination before normal execution.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Profile Boundaries"
+>
+
+<FeatureGrid
+    title="What Dev Includes"
+    items={[
+        {title: "Prepare Artifacts", icon: <Icon name="file" />, children: "Resolve version context and prepare reviewed development artifacts."},
+        {title: "Generate Changelog", icon: <Icon name="release" />, children: "Update CHANGELOG.md through the internal changelog stage."},
+        {title: "Commit Changes", icon: <Icon name="git" />, children: "Back up the message, stage resolved changes, and create a local commit."},
+        {title: "Push HEAD", icon: <Icon name="network" />, children: "Synchronize through currently resolved remote behavior."},
+    ]}
+/>
+
+<InfoBox
+    variant="note"
+    title="No version application or tag creation"
+>
+
+The current registered Dev profile does not include `apply_version_step` or
+`tag_step`.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Development Pipeline Preview"
+>
+
+<Screenshot
+    src="/img/custy/run/dev-profile.png"
+    alt="Custy development profile stages shown in the terminal"
+    title="Development pipeline"
+    caption="The Dev profile prepares, reviews, commits, and pushes daily work."
+    fallback="Screenshot of the Custy Dev profile will be added later."
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Related Profiles"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "custy run release", href: "../release/overview", description: "Apply the version, create a tag, and publish a complete release."},
+        {title: "custy run full", href: "../full/overview", description: "Extend Release with experimental finalization."},
+        {title: "custy commit", href: "../../commit/overview", description: "Prepare and commit locally without the final push stage."},
+        {title: "custy push", href: "../../push/overview", description: "Review current remote behavior independently."},
+    ]}
+/>
+
+</Section>

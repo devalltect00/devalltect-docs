@@ -1,0 +1,63 @@
+---
+title: "Public Pipeline Profiles"
+description: "Bandingkan enam public Custy Run profiles dan navigasikan complete 20-profile resolver catalog."
+sidebar_position: 3
+sidebar_key: custy-pipelines-profiles
+tags: [custy, pipeline profiles, run]
+keywords: [custy commit profile, custy dev, custy release, custy full]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy run" title="Public Pipeline Profiles" description="Pilih supported public profile terkecil yang mencapai intended Git atau release outcome." category="Pipelines" status="6 Public Profiles" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" tags={["commit", "tag", "push", "dev", "release", "full"]} links={[{label: "Composition", href: "./custom-composition"}, {label: "Complete Reference", href: "./profile-reference"}, {label: "Step Priority", href: "./step-order"}, {label: "Development", href: "./development-pipeline"}]} />
+
+<CommandMetadata items={[{label: "Public Run Profiles", value: "6", icon: "terminal"}, {label: "Resolver Profiles", value: "20", icon: "pipeline"}, {label: "Prioritized Steps", value: "27", icon: "timeline"}, {label: "Composition", value: "Supported for public names", icon: "dependency"}]} />
+
+## Ringkasan
+
+Profiles mengemas related steps menjadi intentional flows. Tiga focused
+profiles membuat commit, tag, atau push. Tiga composite profiles
+mengoordinasikan broader development dan release work. Semuanya merupakan
+public subset dari resolver catalog yang digunakan direct commands dan nested
+pipeline definitions Custy.
+
+---
+
+<Section title="Public Profiles">
+<FeatureGrid title="Pilih Berdasarkan Outcome" items={[{title: "Commit", icon: <Icon name="git" />, children: <>Siapkan dan edit artifacts, terapkan version state, generate changelog, backup commit message, stage files, dan buat local commit. Lihat <a href="../commands/commit/overview">Commit</a>.</>}, {title: "Tag", icon: <Icon name="release" />, children: <>Siapkan version dan tag state, edit artifacts, terapkan version, backup tag message, dan buat local tag. Lihat <a href="../commands/tag/overview">Tag</a>.</>}, {title: "Push", icon: <Icon name="network" />, children: <>Validasi repository dan remote readiness, initialize workflow state, lalu push HEAD dan eligible tag. Lihat <a href="../commands/push/overview">Push</a>.</>}, {title: "Dev", icon: <Icon name="play" />, children: <>Generate dan review daily artifacts, update changelog, commit, dan push tanpa menerapkan version atau membuat tag. Lihat <a href="./development-pipeline">Development Pipeline</a>.</>}, {title: "Release", icon: <Icon name="pipeline" />, children: <>Jalankan release validation, terapkan version state, generate changelog, commit, tag, dan push. Lihat <a href="./release-pipeline">Release Pipeline</a>.</>}, {title: "Full", icon: <Icon name="workflow" />, children: <>Jalankan Release sequence, lalu invoke experimental workflow finalization. Lihat <a href="./full-pipeline">Full Pipeline</a>.</>}]} />
+</Section>
+
+---
+
+<Section title="Complete Resolver Catalog">
+
+20 definitions dalam `PIPELINE_PROFILES` terbagi menjadi empat kelompok:
+
+- **6 public Run profiles** — `commit`, `tag`, `push`, `dev`, `release`, dan `full`.
+- **9 direct-command-only profiles** — validation, changelog, version update,
+  backup, cleanup, dan initialization profiles yang dipilih focused commands.
+- **4 nested validation profiles** — reusable repository, commit, tag, dan remote validation groups.
+- **1 defined aggregate** — `cleanup_all`, sedangkan current Cleanup All command
+  menjalankan dua focused cleanup profiles secara terpisah.
+
+Buka [Complete Profile Reference](./profile-reference) untuk setiap consumer,
+step count, dan exact expanded sequence.
+
+</Section>
+
+---
+
+<Section title="Practical Selection Rules">
+
+- Pilih `commit`, `tag`, atau `push` untuk focused outcome tersebut.
+- Pilih `dev` untuk daily commit-and-push tanpa version application dan tag creation.
+- Pilih `release` untuk complete versioned publication flow.
+- Pilih `full` hanya jika Anda memahami dan membutuhkan branch workflow finalization setelah push.
+
+</Section>
+
+<InfoBox variant="danger" title="Hanya Enam Nama Ini yang Public">Active typed Run argument menolak internal names seperti `validate`, `changelog`, `apply_version`, backup profiles, cleanup profiles, dan validation subprofiles. Gunakan direct commands yang tersedia; jangan dokumentasikan atau script internal names sebagai public `custy run` values.</InfoBox>
+
+<Section title="Direct Command atau Profile?">Gunakan direct command untuk command-specific inputs atau satu focused operation. Gunakan profile saat Custy harus mengoordinasikan validation, preparation, artifact, backup, dan execution stages di sekitarnya. Contohnya, `custy changelog generate` adalah supported focused changelog command; `custy run changelog` bukan public Run invocation.</Section>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Run Command Profiles", href: "../commands/run/profiles", description: "Tinjau command-focused profile reference."}, {title: "Complete Profile Reference", href: "./profile-reference", description: "Periksa seluruh public dan internal resolver profiles."}, {title: "Step Priority and Ordering", href: "./step-order", description: "Pahami 27 priorities dan merged-profile sorting."}, {title: "Custom Composition", href: "./custom-composition", description: "Gabungkan dua atau lebih accepted profile names dengan aman."}]} /></Section>

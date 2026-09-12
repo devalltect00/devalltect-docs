@@ -1,0 +1,35 @@
+---
+title: "Core Collection"
+description: "Configure merge-commit and Conventional Commit type exclusion before changelog processing."
+sidebar_position: 2
+sidebar_key: custy-configuration-changelog-core
+tags: [custy, changelog, configuration, commits]
+keywords: [ignore_merge_commits, ignore_types]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.core]" title="Core Collection" description="Exclude commits before cleaning, grouping, release processing, and rendering." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.core]" tags={["merge commits", "ignored types", "collection"]} links={[{label: "Pending Commit", href: "./pending-commit"}, {label: "Cleaning", href: "./cleaning"}, {label: "Mappings", href: "./mappings"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Merge Commits", value: "Ignored", icon: "git"}, {label: "Ignored Type", value: "chore", icon: "configuration"}, {label: "Stage", value: "Collection", icon: "pipeline"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "ignore_merge_commits", type: "Boolean", defaultValue: "true", description: "Exclude subjects beginning with merge-style history before later processing."}, {property: "ignore_types", type: "String array", defaultValue: "[\"chore\"]", description: "Exclude commits whose parsed Conventional Commit type matches an entry, case-insensitively."}]} />
+
+<Terminal title="Generated collection rules" language="toml">
+
+{`[tool.custy.changelog.core]
+ignore_merge_commits = true
+ignore_types = ["chore"]`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Filtering happens before rendering">
+
+An ignored commit cannot be restored by a rendering option or mapping. Change
+collection rules deliberately and review history coverage afterward.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Pending Commit", href: "./pending-commit", description: "Add uncommitted project content."}, {title: "Mappings", href: "./mappings", description: "Rename retained types and scopes."}, {title: "Generate Workflow", href: "../../commands/changelog/generate/workflow", description: "Follow the complete generation order."}]} /></Section>

@@ -1,0 +1,96 @@
+---
+title: "Installation Methods"
+description: "This guide describes different ways to install DocGen."
+sidebar_position: 5
+sidebar_key: doc-gen-user-guide
+---
+
+# Installation Methods
+
+This guide describes different ways to install DocGen.
+
+## Method 1: PyPI (Recommended)
+
+The easiest way to install DocGen:
+
+```bash
+pip install doc-gen
+```
+
+Verify installation:
+
+```bash
+doc-gen --help
+```
+
+## Method 2: GitHub
+
+Install directly from the GitHub repository:
+
+```bash
+pip install git+https://github.com/devalltect00/doc-gen.git
+```
+
+Install a specific version:
+
+```bash
+pip install git+https://github.com/devalltect00/doc-gen.git@v1.0.0
+```
+
+## Method 3: Docker
+
+Pull the Docker image:
+
+```bash
+docker pull doc-gen
+```
+
+Run DocGen in a container:
+
+```bash
+docker run --rm doc-gen structure generate
+```
+
+Mount your project:
+
+```bash
+docker run --rm -v $(pwd):/workspace doc-gen structure generate
+```
+
+## Method 4: Development Install
+
+Clone and install in development mode:
+
+```bash
+git clone https://github.com/devalltect00/doc-gen.git
+cd doc-gen
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+pip install -e .[dev]
+```
+
+## Choosing a Method
+
+| Method      | Best For                    |
+| ----------- | --------------------------- |
+| PyPI        | Most users                  |
+| GitHub      | Latest development version  |
+| Docker      | Isolated environment        |
+| Development | Contributing to the project |
+
+## Verification
+
+After installation, verify by running:
+
+```bash
+doc-gen structure generate
+```
+
+This should create a PROJECT_STRUCTURE.md file.
+
+---
+
+## Related Documentation
+
+- [Quick Start](./quickstart) - Quick start guide
+- [Installation](../installation) - Full installation guide

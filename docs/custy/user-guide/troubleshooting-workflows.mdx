@@ -1,0 +1,179 @@
+---
+title: "Troubleshooting Workflows"
+description: "Recover safely by identifying the last successful Custy effect before retrying a command or profile."
+sidebar_position: 6
+sidebar_key: custy-user-guide-troubleshooting-workflows
+tags: [custy, troubleshooting, recovery]
+keywords: [Custy workflow failed, partial pipeline recovery]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --debug"
+    title="Troubleshooting Workflows"
+    description="Inspect partial state, identify the failed boundary, and choose the smallest safe recovery action."
+    category="User Guide"
+    status="Recovery Guide"
+    syntax="observe -> inspect state -> correct cause -> recover narrowly -> verify"
+    tags={["partial pipeline", "files", "commit", "tag", "remote"]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../troubleshooting/overview"},
+        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
+        {label: "Safety Model", href: "../concepts/safety-and-side-effects"},
+        {label: "Execution Model", href: "../pipelines/execution-model"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Failure Behavior", value: "Stop at first raised error", icon: "warning"},
+        {label: "Automatic Rollback", value: "No", icon: "danger"},
+        {label: "Recovery Scope", value: "Last completed boundary", icon: "timeline"},
+        {label: "Primary Evidence", value: "Output, logs, Git state", icon: "file"},
+    ]}
+/>
+
+## First Principle
+
+A failed Custy pipeline is not necessarily an untouched pipeline. Earlier steps
+may have generated or edited files, pruned backups, staged changes, created a
+commit or tag, or updated one or more remotes.
+
+<InfoBox variant="danger" title="Do not begin recovery by rerunning everything">
+
+First identify the failed step and the last durable effect. A full retry can
+collide with an existing commit or tag, duplicate work, or publish to a remote
+that already succeeded.
+
+</InfoBox>
+
+---
+
+<Section title="Recovery Method">
+
+<WorkflowTimeline
+    title="Diagnose Before Changing State"
+    items={[
+        {title: "Capture the failure", description: "Save the failed step name, error code or message, hint, and reported destinations.", status: "completed"},
+        {title: "Inspect current state", description: "Check files, index, latest commit, tags, branches, backups, and remotes.", status: "completed"},
+        {title: "Find the last completed boundary", description: "Determine which durable effects already exist and which later stages never ran.", status: "completed"},
+        {title: "Correct the original cause", description: "Fix the first validation, configuration, content, Git, authentication, or remote error.", status: "current"},
+        {title: "Recover narrowly and verify", description: "Use the smallest direct command or manual action that completes or reconciles the intended state.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Evidence Checklist">
+
+<Terminal title="Inspect local state" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git log -3 --decorate --stat
+git tag --points-at HEAD
+git branch --all
+git remote -v`}
+
+</Terminal>
+
+<CommandChecklist
+    items={[
+        {title: "Read the first error", description: "Later messages can be consequences; begin with the step that raised the failure."},
+        {title: "Inspect generated files", description: "Check version files, editable artifacts, CHANGELOG.md, and message files."},
+        {title: "Inspect backups", description: "Confirm whether new copies were created or older copies were pruned."},
+        {title: "Inspect Git objects", description: "Determine whether staging, commit, tag, or branch deletion already occurred."},
+        {title: "Inspect every destination", description: "For multi-remote work, verify each remote independently."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Choose Recovery by Last Completed Effect">
+
+<FeatureGrid
+    title="Common Boundaries"
+    items={[
+        {title: "Validation Only", icon: <Icon name="security" />, children: "Fix the reported prerequisite. Later mutation steps did not run."},
+        {title: "Files Changed", icon: <Icon name="file" />, children: "Review and reconcile generated files and the index before running any command again."},
+        {title: "Commit Exists", icon: <Icon name="git" />, children: "Do not recreate the same commit blindly. Determine whether tag or push is the remaining intended action."},
+        {title: "Tag Exists", icon: <Icon name="release" />, children: "Verify the tag target and message before deciding whether only push remains."},
+        {title: "Some Remotes Succeeded", icon: <Icon name="network" />, children: "Repair authentication or policy for failed destinations and avoid duplicating successful publication."},
+        {title: "Finalization Failed", icon: <Icon name="workflow" />, children: "Release may already be published. Inspect branch transitions separately rather than rerunning Full."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Improve Diagnostic Output">
+
+Global options belong before the command group.
+
+<Terminal title="Diagnostic invocations" language="bash">
+
+{`custy --debug run release
+custy --log-level DEBUG run dev
+custy --debug cleanup brancheses --prefix feature/`}
+
+</Terminal>
+
+Use debug output to understand resolution and execution, but do not include
+secrets, tokens, or sensitive remote credentials when sharing logs.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Dry-run after correction does not prove rollback">
+
+A corrected dry-run previews the next execution from the state that exists now.
+It does not reverse or hide effects left by the failed run. Reinspect state
+before and after the preview.
+
+</InfoBox>
+
+---
+
+<Section title="Escalate When State Is Unclear">
+
+Stop and ask a teammate or repository administrator before deleting commits or
+tags, force-pushing, changing shared branches, restoring remote branches, or
+rewriting published release history. Preserve logs and current state while the
+recovery decision is reviewed.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Troubleshooting Hub", href: "../troubleshooting/overview", description: "Choose Git, configuration, versioning, changelog, or workflow diagnosis."},
+        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Resolve profile names, ordering, validation, and push errors."},
+        {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Resolve staging, message, artifact, and commit failures."},
+        {title: "Tag Troubleshooting", href: "../commands/tag/troubleshooting", description: "Resolve version and existing-tag conflicts."},
+        {title: "Push Troubleshooting", href: "../commands/push/troubleshooting", description: "Resolve remotes, authentication, rejected updates, and partial publication."},
+    ]}
+/>
+
+</Section>

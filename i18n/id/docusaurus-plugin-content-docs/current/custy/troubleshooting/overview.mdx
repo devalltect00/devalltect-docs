@@ -1,0 +1,15 @@
+---
+title: "Pemecahan Masalah"
+description: "Diagnosis kegagalan Custy dari gejala pertama, periksa state aktual, perbaiki penyebab terkecil, dan verifikasi recovery dengan aman."
+sidebar_position: 1
+sidebar_key: custy-troubleshooting-overview
+---
+import {CommandHero, InfoBox, RelatedCommands, Section, WorkflowDiagram} from "@site/src/components/docs";
+
+<CommandHero command="custy COMMAND" title="Troubleshooting" description="Gunakan gejala, phase terakhir, log, dan repository state untuk memilih recovery yang aman." category="Pemecahan Masalah" status="Recovery Guide" syntax="observe -> inspect -> isolate -> correct -> verify" links={[{label:"Git",href:"./git"},{label:"Configuration",href:"./configuration"},{label:"Versioning",href:"./versioning"},{label:"Changelog",href:"./changelog"},{label:"Workflows",href:"./workflows"}]} />
+
+<WorkflowDiagram title="Metode Diagnosis" timeline={[{title:"Hentikan pengulangan",description:"Jangan langsung menjalankan ulang command yang dapat mengulang efek.",status:"completed"},{title:"Catat gejala pertama",description:"Simpan command, output pertama, exit status, dan phase terakhir.",status:"completed"},{title:"Periksa state",description:"Tinjau git status, branch, tags, remotes, config, dan file output.",status:"current"},{title:"Perbaiki penyebab terkecil",description:"Ubah satu input atau state yang terbukti salah.",status:"pending"},{title:"Verifikasi",description:"Jalankan validation atau command paling sempit sebelum pipeline penuh.",status:"pending"}]} />
+
+<InfoBox variant="warning" title="Pipeline tidak transaksional">Commit, tag, file update, atau push yang selesai sebelum failure tidak otomatis di-rollback. Selalu diagnosis dari state repository saat ini.</InfoBox>
+
+<Section title="Pilih jalur diagnosis"><RelatedCommands commands={[{title:"Troubleshooting Workflows",href:"../user-guide/troubleshooting-workflows",description:"Ikuti recovery partial pipeline berbasis tugas."},{title:"Errors and Exit Status",href:"../reference/exit-errors",description:"Interpretasikan process status dan exception family."},{title:"Safety and Side Effects",href:"../concepts/safety-and-side-effects",description:"Pelajari effects, dry-run boundary, dan recovery."},{title:"Command Reference",href:"../commands/overview",description:"Buka troubleshooting khusus command."}]} /></Section>

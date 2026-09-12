@@ -1,0 +1,105 @@
+---
+title: "FAQ"
+description: "Answers about Custy's experimental workflow transition command."
+sidebar_position: 9
+sidebar_key: custy-workflow-branch-faq
+tags: [workflow, faq, experimental]
+keywords: [custy workflow faq]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Frequently Asked Questions"
+    description="Find answers about stability, CI/CD use, Full-profile differences, dry-run, and supported alternatives."
+    category="Experimental Workflow"
+    status="Currently Blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "FAQ",
+        "experimental",
+        "alternatives",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "Full Profile", href: "../../run/full/overview"},
+    ]}
+/>
+
+## Overview
+
+These answers explain why the command is documented but not recommended for
+production use.
+
+<InfoBox
+    variant="danger"
+    title="Experimental and currently blocked"
+>
+
+The current application source must be corrected and validated before this
+interface can provide trustworthy transition results.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Is `custy workflow branch` Stable?"
+>
+
+No. Custy's own help labels it Experimental/Beta, and the current source has a
+blocking step-name mismatch.
+
+</Section>
+
+---
+
+<Section
+    title="Should It Be Used in CI/CD?"
+>
+
+No, not in its current state. Fix and validate the application behavior first,
+then introduce it gradually with validation-only operation.
+
+</Section>
+
+---
+
+<Section
+    title="Is It the Same as `custy run full`?"
+>
+
+No. Full includes a registered `finalize_step` after a complete release. The
+standalone workflow command constructs its own pipeline and currently requests
+the unregistered name `finalize`.
+
+</Section>
+
+---
+
+<Section
+    title="Does Dry-Run Make the Current Command Usable?"
+>
+
+No. Dry-run changes intended mutation behavior; it does not repair pipeline
+construction.
+
+</Section>
+
+---
+
+<Section
+    title="What Should Users Do Meanwhile?"
+>
+
+Use stable direct commands and reviewed Run profiles. Perform branch-policy
+checks through established Git hosting or team processes until Custy's workflow
+command is corrected.
+
+</Section>

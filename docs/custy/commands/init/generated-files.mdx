@@ -1,0 +1,229 @@
+---
+title: "Generated Files"
+description: "Learn which files and directories are created by the custy init command."
+sidebar_position: 6
+sidebar_key: custy-commands-init
+
+tags:
+  - generated files
+  - initialization
+  - templates
+
+keywords:
+  - custy init generated files
+  - config.toml
+  - templates
+  - examples
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Generated Files"
+    description="Understand the project resources created during initialization."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "configuration",
+        "templates",
+        "generated files",
+    ]}
+    links={[
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+Running `custy init` creates a project-specific workspace inside your
+repository.
+
+These resources become part of your project and can be customized to match
+your team's workflow.
+
+<InfoBox
+    variant="tip"
+    title="Version Control"
+>
+
+The generated files are intended to be committed to your repository so that
+every contributor uses the same Custy configuration and templates.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Generated Resources"
+>
+
+<FeatureGrid
+    title="Resources Created"
+    items={[
+        {
+            title: "Configuration",
+            children: (
+                <>
+                    Generates the primary
+                    <code>.config/custy/config.toml</code>
+                    configuration file.
+                </>
+            ),
+        },
+        {
+            title: "Templates",
+            children: (
+                <>
+                    Creates the default commit, tag, and changelog
+                    templates used by future Custy workflows.
+                </>
+            ),
+        },
+        {
+            title: "Examples",
+            children: (
+                <>
+                    Optionally generates example message templates for
+                    experimentation and customization.
+                </>
+            ),
+        },
+        {
+            title: "Directory Structure",
+            children: (
+                <>
+                    Creates the directory layout expected by future
+                    Custy commands.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Project Structure"
+>
+
+After a successful initialization, your project contains a structure similar
+to the following.
+
+<Terminal>
+
+{`
+.config/
+└── custy/
+    ├── config.toml
+    └── templates/
+        ├── backups/
+        │   ├── commit/
+        │   └── tag/
+        ├── changelog/
+        │   └── changelog.j2
+        ├── examples/
+        │   ├── commit_message/
+        │   │   ├── since_custy_v1/
+        │   │   └── since_custy_v2/
+        │   └── tag_message/
+        │       ├── since_custy_v1/
+        │       └── since_custy_v2/
+        ├── commit-message.txt
+        └── tag-message.txt
+`}
+
+</Terminal>
+
+<InfoBox
+    variant="info"
+    title="Project-aware version initialization"
+>
+
+`custy init` no longer assumes that every project has `app/`. Python projects
+without existing version metadata may receive `__version__.py` under the
+detected source directory. Existing Python or Node.js metadata is preserved,
+and Node.js or generic projects do not receive an artificial Python version
+file.
+
+</InfoBox>
+
+<InfoBox
+    variant="note"
+    title="Recursive Example Merge"
+>
+
+When `all` or `examples` mode runs again, Custy merges the complete packaged
+example tree into this directory. Missing nested directories and files are
+added. Existing files are preserved unless `--force` is enabled; the example
+directories themselves are not replaced.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Customization"
+>
+
+All generated resources belong to your project rather than Custy itself.
+
+This means you are free to:
+
+- Modify template contents.
+- Adjust configuration values.
+- Commit the generated files.
+- Share them with your development team.
+
+Future Custy commands automatically use these customized resources whenever
+they are available.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Initialization Modes"
+>
+
+The exact resources created depend on the selected initialization mode.
+
+For example, running with the `examples` mode generates only example
+resources, while `config` creates only the project configuration.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Now that you understand the generated project structure, continue with the
+**Configuration** page to learn how each setting in
+`config.toml` affects Custy's behavior.
+
+</Section>

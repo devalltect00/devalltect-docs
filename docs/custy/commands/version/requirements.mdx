@@ -1,0 +1,189 @@
+---
+title: "Requirements"
+description: "Prerequisites for synchronizing project versions."
+sidebar_position: 2
+sidebar_key: custy-version
+
+tags:
+    - version
+    - requirements
+
+keywords:
+    - custy version requirements
+---
+
+import {
+    CommandHero,
+    RequirementGrid,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version"
+    title="Requirements"
+    description="Project requirements before synchronizing version information."
+    category="Versioning"
+    status="Stable"
+    syntax="custy version update"
+    tags={[
+        "requirements",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+Before Custy updates project version information, several resources must be
+available.
+
+These requirements ensure that version synchronization completes safely and
+updates the intended project files.
+
+---
+
+<RequirementGrid
+    title="Project Requirements"
+    description="Minimum requirements before running Version Update."
+    items={[
+        {
+            title: "Git Repository",
+            level: "required",
+            children: (
+                <>
+                    The current project should already be initialized as a Git
+                    repository.
+                </>
+            ),
+        },
+        {
+            title: "Version Metadata",
+            level: "recommended",
+            children: (
+                <>
+                    Custy can detect supported Python or Node.js metadata.
+                    Projects without it remain valid and can use Git-tag-only
+                    versioning.
+                </>
+            ),
+        },
+        {
+            title: "Project Configuration",
+            level: "recommended",
+            children: (
+                <>
+                    Configure the preferred versioning strategy and bump policy
+                    inside <code>config.toml</code>.
+                </>
+            ),
+        },
+        {
+            title: "Initialized Project",
+            level: "recommended",
+            children: (
+                <>
+                    Projects initialized with
+                    <code>custy init</code>
+                    already contain the recommended directory structure and
+                    configuration files.
+                </>
+            ),
+        },
+    ]}
+/>
+
+---
+
+<Section title="Version Metadata">
+
+With `version_file = "auto"`, Custy looks for an existing target in this order:
+
+- Python `__version__.py` below the detected source directory,
+- static `[project].version` in `pyproject.toml`,
+- string `version` in `package.json`.
+
+Mixed Python and Node.js projects may synchronize both ecosystems. Version
+values written to metadata omit a leading tag prefix such as `v`.
+
+An explicit `tool.custy.cli.paths.version_file` remains strict: the path must
+exist and must be a file. Use `auto` when a project follows supported metadata
+conventions or intentionally has no version file.
+
+</Section>
+
+---
+
+<Section
+    title="Project Detection"
+>
+
+Custy automatically detects the project type before applying version updates.
+
+Depending on the detected ecosystem, different project files are updated.
+
+For example:
+
+- Python projects update an existing version module or static project metadata.
+- Node.js projects update `package.json` and a root lockfile when applicable.
+- Mixed projects update both supported metadata sets.
+- Generic projects without metadata continue without a forced `app/` directory
+  or generated Python version module.
+
+</Section>
+
+---
+
+<Section
+    title="Version Strategy"
+>
+
+A versioning strategy should be selected before running Version Update.
+
+Supported strategies include:
+
+- SemVer
+- PEP 440
+- Commitizen
+- Date
+- Git Count
+
+The selected strategy determines how the next version number is calculated.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Initialize First"
+>
+
+Running `custy init` before using the Version command is recommended because
+it prepares the configuration files and project structure expected by Custy.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Syntax** page to learn how to execute the Version command
+from the command line and as part of a workflow.
+
+</Section>

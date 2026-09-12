@@ -1,0 +1,241 @@
+---
+title: "Workflow"
+description: "Understand how Custy evaluates and removes Git branches during Branch Cleanup."
+sidebar_position: 6
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - workflow
+
+keywords:
+    - custy cleanup branches workflow
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    Section,
+    InfoBox,
+    Screenshot,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Workflow"
+    description="Understand how Custy evaluates configured cleanup rules before removing Git branches."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "workflow",
+        "cleanup",
+        "branch",
+    ]}
+    links={[
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+    ]}
+/>
+
+## Overview
+
+Branch Cleanup follows a multi-stage evaluation process before deleting any
+Git branches.
+
+Rather than deleting branches immediately, Custy progressively filters the
+available branches until only eligible candidates remain.
+
+This layered approach helps minimize the risk of accidental branch removal.
+
+---
+
+<WorkflowTimeline
+    title="Branch Cleanup Workflow"
+    description="High-level execution sequence."
+    items={[
+        {
+            title: "Load Configuration",
+            description:
+                "Resolve cleanup rules from command-line options, project configuration, and built-in defaults.",
+            status: "completed",
+        },
+        {
+            title: "Inspect Repository",
+            description:
+                "Retrieve local Git branches and collect metadata used during cleanup.",
+            status: "completed",
+        },
+        {
+            title: "Apply Cleanup Filters",
+            description:
+                "Evaluate branch prefixes, merge status, age filters, and protected branch rules.",
+            status: "completed",
+        },
+        {
+            title: "Remove Eligible Branches",
+            description:
+                "Delete only branches that satisfy every configured cleanup rule.",
+            status: "completed",
+        },
+        {
+            title: "Display Summary",
+            description:
+                "Present the cleanup results and any skipped branches.",
+            status: "completed",
+        },
+    ]}
+/>
+
+---
+
+<Section
+    title="Workflow Stages"
+>
+
+<WorkflowStep
+    title="1. Resolve Cleanup Configuration"
+>
+
+Custy determines the effective cleanup settings by combining:
+
+- command-line options,
+- project configuration,
+- built-in defaults.
+
+These values determine how the remaining workflow behaves.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="2. Inspect Local Branches"
+>
+
+Custy retrieves the local Git branches and gathers the information required
+to evaluate each branch.
+
+This includes branch names, merge status, and commit dates.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="3. Apply Cleanup Rules"
+>
+
+Each branch is evaluated against the configured cleanup rules.
+
+These include:
+
+- configured branch prefixes,
+- merge status,
+- optional age filters,
+- protected branch rules.
+
+Only branches satisfying every applicable rule remain eligible.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="4. Remove Eligible Branches"
+>
+
+Custy deletes only the branches that remain after all filtering stages have
+been completed.
+
+Protected branches are never removed.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="5. Report Results"
+>
+
+Custy displays a summary showing the outcome of the cleanup operation.
+
+Depending on the project configuration, this may include deleted branches,
+skipped branches, or a message indicating that no cleanup was required.
+
+</WorkflowStep>
+
+</Section>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-branch-release-before.png"
+    alt="Branches before cleanup"
+    title="Before Cleanup"
+    caption="Repository state before Branch Cleanup. Multiple release branches are still present."
+/>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
+    alt="Branch cleanup process"
+    title="Cleanup Execution"
+    caption="Custy evaluates the configured filters and removes only eligible branches."
+/>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-branch-release-after.png"
+    alt="Branches after cleanup"
+    title="After Cleanup"
+    caption="Only the eligible release branches have been removed. Protected and non-matching branches remain."
+/>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Safety by Design"
+>
+
+If no branches satisfy the configured cleanup rules, Custy completes
+successfully without deleting anything.
+
+This is an expected outcome rather than an error.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Filtering Pipeline"
+>
+
+Conceptually, every branch passes through the following evaluation stages:
+
+1. Prefix filter
+2. Merge status filter
+3. Age filter (if configured)
+4. Protected branch check
+
+Only branches that successfully pass every stage are eligible for deletion.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Examples** page to see common Branch Cleanup scenarios and
+recommended configurations.
+
+</Section>

@@ -1,0 +1,196 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about the custy init command."
+sidebar_position: 11
+sidebar_key: custy-commands-init
+
+tags:
+  - faq
+  - initialization
+  - help
+
+keywords:
+  - custy init faq
+  - initialization questions
+  - common questions
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Frequently Asked Questions"
+    description="Answers to common questions about initializing a project with Custy."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "faq",
+        "questions",
+        "support",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+    ]}
+/>
+
+## Overview
+
+This page answers common questions about project initialization and the
+resources created by `custy init`.
+
+<InfoBox
+    variant="tip"
+    title="New to Custy?"
+>
+
+If you're using Custy for the first time, start by reading the
+**Overview**, **Requirements**, and **Examples** pages before exploring the
+questions below.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Do I have to run `custy init`?"
+>
+
+No.
+
+Custy includes built-in defaults, so many commands can operate without
+project-specific configuration.
+
+However, running `custy init` is strongly recommended because it generates
+configuration and template files that can be customized for your project.
+
+</Section>
+
+---
+
+<Section
+    title="Can I run it more than once?"
+>
+
+Yes.
+
+Running the command again allows you to add missing configuration, templates,
+or example resources.
+
+Existing individual generated files are preserved by default. Packaged example
+directories are traversed recursively, so missing nested files are added even
+when the destination already exists. Use `--force` only when existing selected
+files should be replaced.
+
+</Section>
+
+---
+
+<Section
+    title="What happens when the examples directory already exists?"
+>
+
+Custy reuses and merges the directory rather than skipping or replacing it.
+Existing example files remain unchanged during a normal run, while missing
+files and nested directories are copied from the packaged examples.
+
+With `--force`, existing example files are overwritten recursively.
+
+</Section>
+
+---
+
+<Section
+    title="Should I commit the generated files?"
+>
+
+Yes.
+
+The generated configuration and templates are intended to become part of your
+project.
+
+Committing them allows every contributor to use the same Custy
+configuration.
+
+</Section>
+
+---
+
+<Section
+    title="Does initialization change Git history?"
+>
+
+No.
+
+Initialization creates project resources only.
+
+It does not create commits, tags, releases, or modify your repository's
+history.
+
+</Section>
+
+---
+
+<Section
+    title="Can I customize the generated templates?"
+>
+
+Absolutely.
+
+The generated templates belong to your project and are designed to be edited.
+
+Future Custy commands automatically use your customized templates whenever
+they are available.
+
+</Section>
+
+---
+
+<Section
+    title="Which command should I use?"
+>
+
+Use `custy init`. Although initialization exists internally as a pipeline
+profile, it is not accepted by the current public `custy run` argument.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Need More Help?"
+>
+
+If your question isn't answered here, review the troubleshooting page or the
+generated configuration before opening an issue.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Congratulations!"
+>
+
+You have now completed the documentation for the `custy init` command.
+
+Continue with the next command documentation to learn more about the rest of
+Custy's workflow.
+
+</Section>

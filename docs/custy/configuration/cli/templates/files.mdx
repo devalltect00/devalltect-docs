@@ -1,0 +1,42 @@
+---
+title: "Template Files"
+description: "Configure changelog, commit-message, and tag-message file paths."
+sidebar_position: 2
+sidebar_key: custy-configuration-cli-template-files
+tags: [custy, configuration, templates, files]
+keywords: [templates file changelog, commit_message, tag_message]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.templates.file]" title="Template Files" description="Select project-owned inputs for changelog rendering, commits, and annotated tags." category="Template Configuration" status="Active" syntax="[tool.custy.cli.templates.file]" tags={["Jinja2", "commit message", "tag message"]} links={[{label: "Directories", href: "./directories"}, {label: "Changelog Template", href: "../../changelog/overview"}, {label: "Init Files", href: "../../../commands/init/generated-files"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Changelog Format", value: "Jinja2", icon: "configuration"}, {label: "Message Format", value: "Text", icon: "file"}, {label: "Status", value: "Active", icon: "success"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "changelog", type: "Path string", defaultValue: ".config/custy/templates/changelog/changelog.j2", description: "Jinja2 layout loaded by changelog rendering."},
+        {property: "commit_message", type: "Path string", defaultValue: ".config/custy/templates/commit-message.txt", description: "Message input used by commit, backup, validate, run, and pending-changelog flows."},
+        {property: "tag_message", type: "Path string", defaultValue: ".config/custy/templates/tag-message.txt", description: "Annotation message used by tag, backup, validate, and run flows."},
+    ]}
+/>
+
+<Terminal title="Generated paths" language="toml">
+
+{`[tool.custy.cli.templates.file]
+changelog = ".config/custy/templates/changelog/changelog.j2"
+commit_message = ".config/custy/templates/commit-message.txt"
+tag_message = ".config/custy/templates/tag-message.txt"`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Preserve the changelog context contract">
+
+You may redesign the Jinja layout, but keep its documented `context` API.
+Generate and review the `CHANGELOG.md` diff after every structural edit.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Changelog Template Contract", href: "../../changelog/overview", description: "Understand data passed to changelog.j2."}, {title: "Commit Configuration", href: "../../../commands/commit/configuration", description: "See commit-specific message behavior."}, {title: "Tag Configuration", href: "../../../commands/tag/configuration", description: "See tag-specific message behavior."}]} /></Section>

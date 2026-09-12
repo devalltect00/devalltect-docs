@@ -1,0 +1,167 @@
+---
+title: "Output"
+description: "Understand the output produced by the Backup Cleanup command."
+sidebar_position: 7
+sidebar_key: custy-cleanup-backup
+
+tags:
+    - cleanup
+    - backup
+    - output
+
+keywords:
+    - custy cleanup backups output
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    Section,
+    InfoBox,
+    Screenshot,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Output"
+    description="Learn what information Custy reports after removing obsolete backup files."
+    category="Maintenance"
+    status="Recommended"
+    syntax="custy cleanup backups"
+    tags={[
+        "cleanup",
+        "backup",
+        "output",
+    ]}
+    links={[
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+After Backup Cleanup completes, Custy summarizes the operation and reports how
+many backup files were processed.
+
+Depending on the project state, the command may remove obsolete backup files or
+report that no cleanup was necessary.
+
+---
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Successful Cleanup",
+            description:
+                "Backup Cleanup completed successfully.",
+            output:
+`🧹 Cleaning up backup files...
+→ Cleaning commit backups (keeping 10)
+→ Cleaning tag backups (keeping 10)
+
+✓ Pipeline completed successfully!`,
+            notes:
+                "The exact wording may vary depending on your project configuration and cleanup target.",
+        },
+    ]}
+/>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+    alt="Backup cleanup output"
+    title="Backup Cleanup Output"
+    caption="Example CLI output after Backup Cleanup removes obsolete backup files."
+/>
+
+---
+
+<Section
+    title="Successful Cleanup"
+>
+
+When Backup Cleanup succeeds:
+
+- obsolete backup files are removed,
+- recent backups remain preserved,
+- the configured retention policy is respected,
+- the operation completes without affecting project source files.
+
+</Section>
+
+---
+
+<Section
+    title="No Cleanup Required"
+>
+
+If the number of existing backup files is already within the configured
+retention count, Custy completes successfully without deleting any files.
+
+This is considered a normal outcome rather than an error.
+
+</Section>
+
+---
+
+<Section
+    title="Dry Run Output"
+>
+
+When using the global `--dry-run` option, Custy reports the cleanup operations
+that would occur without deleting any backup files.
+
+This allows you to verify the cleanup behavior before making changes.
+
+</Section>
+
+---
+
+<Section
+    title="Pipeline Integration"
+>
+
+When Backup Cleanup is executed as part of a workflow pipeline, its output
+appears alongside the other workflow stages.
+
+The cleanup summary reflects only the Backup Cleanup stage while the pipeline
+continues with the remaining workflow steps.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Routine Maintenance"
+>
+
+It is normal for Backup Cleanup to report that nothing was removed.
+
+This simply indicates that your backup directories already satisfy the
+configured retention policy.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+If Backup Cleanup does not behave as expected, continue to the
+**Troubleshooting** page for solutions to common cleanup problems.
+
+</Section>

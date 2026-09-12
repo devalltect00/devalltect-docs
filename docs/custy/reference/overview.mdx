@@ -1,0 +1,109 @@
+---
+title: "Reference"
+description: "Use concise, source-aligned indexes for Custy's CLI, global options, configuration, version formats, pipeline profiles, paths, environment, and exit behavior."
+sidebar_position: 1
+sidebar_key: custy-reference-overview
+tags: [custy, reference, index]
+keywords: [Custy reference, Custy CLI reference, Custy technical reference]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Custy Reference"
+    description="Find exact names, accepted values, paths, status notes, and links to the detailed guides."
+    category="Reference"
+    status="Source-Aligned Index"
+    syntax="choose a reference topic"
+    tags={["CLI", "configuration", "versions", "pipelines"]}
+    links={[
+        {label: "CLI", href: "./cli"},
+        {label: "Global Options", href: "./global-options"},
+        {label: "Configuration", href: "./configuration"},
+        {label: "Errors and Exit Status", href: "./exit-errors"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Public Commands", value: "11 root names", icon: "terminal"},
+        {label: "Global Options", value: "6", icon: "configuration"},
+        {label: "Public Run Profiles", value: "6", icon: "pipeline"},
+        {label: "Configuration Root", value: "tool.custy", icon: "file"},
+    ]}
+/>
+
+## Overview
+
+The Reference section is the quickest route to an exact name or current
+contract. It intentionally links to the longer command, configuration,
+pipeline, concept, and architecture guides instead of repeating their full
+explanations.
+
+<InfoBox variant="info" title="Current behavior, not a compatibility promise">
+
+These pages describe the active Custy source reviewed for this documentation.
+Items marked experimental, loaded-only, reserved, mismatch, or current
+limitation should not be treated as stable public guarantees.
+
+</InfoBox>
+
+---
+
+<Section title="Reference Topics">
+
+<FeatureGrid
+    items={[
+        {title: "CLI", icon: <Icon name="terminal" />, children: <>Find every root command, command group, and registered subcommand in the <a href="./cli">CLI index</a>.</>},
+        {title: "Global Options", icon: <Icon name="configuration" />, children: <>Review placement, aliases, resolution, and current defaults for <a href="./global-options">root options</a>.</>},
+        {title: "Configuration", icon: <Icon name="file" />, children: <>Jump from the root TOML namespace to the exhaustive <a href="./configuration">configuration reference</a>.</>},
+        {title: "Version Formats", icon: <Icon name="release" />, children: <>Compare tag examples, stage markers, conversions, generation, and sorting in <a href="./version-formats">Version Formats</a>.</>},
+        {title: "Pipeline Profiles", icon: <Icon name="pipeline" />, children: <>Distinguish the six public Run names from direct-command and internal <a href="./pipeline-profiles">resolver profiles</a>.</>},
+        {title: "Paths and Files", icon: <Icon name="directory" />, children: <>Locate project configuration, templates, backups, logs, versions, and output in <a href="./paths-and-files">Paths and Files</a>.</>},
+        {title: "Environment", icon: <Icon name="dependency" />, children: <>Review runtime tools, working-directory assumptions, theme variables, editors, and terminal behavior in <a href="./environment">Environment</a>.</>},
+        {title: "Errors and Exit Status", icon: <Icon name="warning" />, children: <>Interpret validation codes, parser failures, workflow exceptions, and current <a href="./exit-errors">exit behavior</a>.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Choose the Detailed Guide When">
+
+- You need command options, examples, output, side effects, or troubleshooting:
+  use the [Command Reference](../commands/overview).
+- You need every TOML property and its implementation status: use
+  [All Configuration Properties](../configuration/reference).
+- You need exact pipeline expansions and priority order: use the
+  [Complete Profile Reference](../pipelines/profile-reference) and
+  [Step Priority](../pipelines/step-order).
+- You are changing source code: use the
+  [Developer Guide](../developer-guide/overview) and
+  [Architecture](../architecture/overview).
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "CLI Reference", href: "./cli", description: "Find every current public command and group."},
+        {title: "Global Options", href: "./global-options", description: "Apply root options in the correct position."},
+        {title: "Configuration Reference", href: "./configuration", description: "Navigate configuration resolution and all properties."},
+        {title: "Errors and Exit Status", href: "./exit-errors", description: "Interpret failure categories and current process status behavior."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,196 @@
+---
+title: "Examples"
+description: "Common examples of using the Branch Cleanup command."
+sidebar_position: 7
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - examples
+
+keywords:
+    - custy cleanup branches examples
+---
+
+import {
+    CommandHero,
+    CommandExample,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Examples"
+    description="Learn how to remove obsolete Git branches using common Branch Cleanup scenarios."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "examples",
+        "cleanup",
+        "branch",
+    ]}
+    links={[
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+The following examples demonstrate common ways to execute Branch Cleanup.
+
+Remember that the actual branches selected for cleanup are determined by your
+project's configuration and cleanup filters.
+
+---
+
+<Section
+    title="Basic Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Cleanup Using Project Configuration",
+            description:
+                "Remove branches using the cleanup rules defined in config.toml.",
+            command:
+`custy cleanup branches`,
+            result:
+                "Custy evaluates every configured cleanup filter before removing eligible branches.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Temporary Configuration Overrides"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Cleanup Only Release Branches",
+            description:
+                "Temporarily include release branches during cleanup.",
+            command:
+`custy cleanup branches --include-prefix release/`,
+            result:
+                "Only release branches become eligible for further evaluation.",
+        },
+        {
+            title: "Cleanup All Matching Branches",
+            description:
+                "Ignore merge status during cleanup.",
+            command:
+`custy cleanup branches --merge-status all`,
+            result:
+                "Custy evaluates every matching branch regardless of merge status.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Age Filter Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Branches Older Than Thirty Days",
+            description:
+                "Only consider older branches.",
+            command:
+`custy cleanup branches --max-age 30d`,
+            result:
+                "Recently updated branches are excluded from cleanup.",
+        },
+        {
+            title: "Branches Before a Specific Date",
+            description:
+                "Select branches whose latest commit occurred before a fixed date.",
+            command:
+`custy cleanup branches --before 2026-07-01`,
+            result:
+                "Only branches older than the specified date remain eligible.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Global Options"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Preview Branch Cleanup",
+            description:
+                "Review the cleanup operation without deleting branches.",
+            command:
+`custy --dry-run cleanup branches`,
+            result:
+                "Displays which branches would be removed without modifying the repository.",
+        },
+        {
+            title: "Debug Branch Cleanup",
+            description:
+                "Run Branch Cleanup with additional diagnostic information.",
+            command:
+`custy --debug cleanup branches`,
+            result:
+                "Executes Branch Cleanup while producing detailed debug output.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Review Your Configuration"
+>
+
+Command-line examples temporarily override your project configuration.
+
+For regular development, keeping your cleanup rules in `config.toml` provides
+more predictable and consistent behavior across your team.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Output** page to learn how Custy reports the results of a
+Branch Cleanup operation.
+
+</Section>

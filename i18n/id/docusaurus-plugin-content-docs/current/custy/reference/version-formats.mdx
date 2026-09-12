@@ -1,0 +1,15 @@
+---
+title: "Version Formats"
+description: "Referensi SemVer, PEP 440, Commitizen, date, dan Git-count form serta batas generation, conversion, dan sorting Custy."
+sidebar_position: 5
+sidebar_key: custy-reference-version-formats
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy version update" title="Version Formats" description="Bedakan strategy input, generated version, project-file format, dan Git tag." category="Referensi" status="Multiple Strategies" syntax="current version + strategy -> next version -> project files -> tag" links={[{label:"Versioning Concept",href:"../concepts/versioning"},{label:"Version Command",href:"../commands/version/overview"},{label:"Strategy Architecture",href:"../architecture/strategy-pattern"}]} />
+
+<Section title="Format yang perlu dibedakan">SemVer dan PEP 440 memiliki aturan pre-release berbeda. Commitizen dapat menjadi provider workflow. Date dan Git-count strategy menghasilkan bentuk yang bergantung pada waktu atau repository state. Prefix seperti `v` adalah bagian presentasi tag, bukan selalu bagian version file.</Section>
+
+<InfoBox variant="warning" title="Conversion bersifat terbatas">Jangan menganggap setiap string valid dapat dikonversi losslessly antarformat. Uji pre-release, local version, prefix, dan invalid input sebelum mengubah strategy.</InfoBox>
+
+<RelatedCommands commands={[{title:"Versioning Concept",href:"../concepts/versioning",description:"Pahami lifecycle dari selection sampai Git tag."},{title:"Version Strategies",href:"../commands/version/versioning-strategies",description:"Pelajari input strategy dan examples."},{title:"Versioning and Tags",href:"../commands/tag/versioning-and-tags",description:"Pahami explicit tag dan local Git reference."},{title:"Strategy Architecture",href:"../architecture/strategy-pattern",description:"Pelajari generation, factory, sorter, dan bridge."}]} />

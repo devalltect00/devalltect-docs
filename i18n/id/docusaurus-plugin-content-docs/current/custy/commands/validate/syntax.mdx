@@ -1,0 +1,104 @@
+---
+title: "Syntax"
+description: "Pelajari bentuk pemanggilan yang tersedia untuk custy validate."
+sidebar_position: 3
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Syntax"
+    description="Pelajari cara menjalankan command validate melalui CLI Custy."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={["syntax", "validation", "cli"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Options", href: "./options"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+## Ringkasan
+
+Public validation interface adalah standalone command `custy validate`.
+
+<InfoBox variant="tip" title="Public Command">
+
+Gunakan `custy validate` untuk menjalankan validation saja. Public profile
+seperti `custy run commit`, `custy run release`, dan `custy run full` secara
+otomatis menyertakan validation stages yang diperlukan.
+
+</InfoBox>
+
+---
+
+<Section title="Command Syntax">
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Direct Validation",
+            description: "Jalankan proses validation secara langsung.",
+            command: "custy validate",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Cara Validation Dijalankan">
+
+Standalone command menjalankan public validation profile secara lengkap tanpa
+melanjutkan ke operasi commit, tag, atau push.
+
+Setelah validation berhasil, workflow commands berikutnya dapat melanjutkan ke
+operasi commit, tagging, pushing, atau release.
+
+</Section>
+
+---
+
+<Section title="Command Forms">
+
+Command validate memiliki satu bentuk publik.
+
+| Command | Tujuan |
+|---------|--------|
+| `custy validate` | Jalankan validation secara langsung. |
+
+Internal validation profiles digunakan kembali oleh command lain, tetapi
+namanya tidak diterima sebagai public Run arguments.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Validation Otomatis">
+
+Sebagian besar command yang berorientasi pada workflow otomatis melakukan
+validation sebelum menjalankan workflow stages selanjutnya.
+
+Menjalankan `custy validate` secara manual berguna ketika Anda ingin memeriksa
+kesiapan proyek sebelum memulai workflow yang lebih besar.
+
+</InfoBox>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Lanjutkan ke halaman **Options** untuk mempelajari command-line options yang
+mengatur perilaku validation.
+
+</Section>

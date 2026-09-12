@@ -1,0 +1,44 @@
+---
+title: "Pending Commit"
+description: "Configure whether and how the project commit-message file joins generated history."
+sidebar_position: 3
+sidebar_key: custy-configuration-changelog-pending
+tags: [custy, changelog, pending commit]
+keywords: [pending_commit enabled, generation, placement]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.pending_commit]" title="Pending Commit" description="Include project-owned pending message content and review the current limits of generation and placement settings." category="Changelog Configuration" status="Active + Loaded Only" syntax="[tool.custy.changelog.pending_commit]" tags={["commit-message.txt", "provider", "loaded-only settings"]} links={[{label: "Template Files", href: "../cli/templates/files"}, {label: "Core", href: "./core"}, {label: "Troubleshooting", href: "../../troubleshooting/changelog"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enabled", value: "Active", icon: "success"}, {label: "Generation", value: "Loaded only", icon: "workflow"}, {label: "Placement", value: "Loaded only", icon: "file"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "enabled", type: "Boolean", defaultValue: "true", description: "Active. Include the configured commit-message file through PendingCommitProvider for the newest unreleased range."}, {property: "generation", type: "append | regenerate", defaultValue: "regenerate", description: "Loaded only. The active generator does not invoke the integrator that applies this mode."}, {property: "placement", type: "before | after", defaultValue: "before", description: "Loaded only. The active generator does not currently reposition pending content."}]} />
+
+<Terminal title="Generated pending behavior" language="toml">
+
+{`[tool.custy.changelog.pending_commit]
+enabled = true
+generation = "regenerate"
+placement = "before"`}
+
+</Terminal>
+
+<InfoBox variant="tip" title="The message path is configured elsewhere">
+
+Pending content reads `tool.custy.cli.templates.file.commit_message`. Keep the
+file path and pending behavior aligned.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Generation and placement do not currently alter output">
+
+The active generator can include pending content, but it does not invoke
+`PendingCommitIntegrator`. Treat `generation` and `placement` as loaded-only
+settings until that integration path becomes active.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Template Files", href: "../cli/templates/files", description: "Configure commit_message."}, {title: "Cleaning", href: "./cleaning", description: "Remove template-only content before rendering."}, {title: "Commit Command", href: "../../commands/commit/overview", description: "Manage the message's Git operation."}]} /></Section>

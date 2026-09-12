@@ -1,0 +1,222 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about the custy validate command."
+sidebar_position: 10
+sidebar_key: custy-commands-validate
+
+tags:
+  - faq
+  - validation
+  - workflow
+
+keywords:
+  - custy validate
+  - validation faq
+  - project validation
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Frequently Asked Questions"
+    description="Answers to common questions about validating projects before running Custy workflows."
+    category="Validation"
+    status="Recommended"
+    syntax="custy validate"
+    tags={[
+        "faq",
+        "validation",
+        "workflow",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+This page answers common questions about the validation process and explains
+how it fits into the overall Custy workflow.
+
+<InfoBox
+    variant="tip"
+    title="Before Asking"
+>
+
+If you're new to Custy, we recommend reading the **Overview**,
+**Validation Checks**, and **Workflow** pages first.
+
+Most questions about validation are answered there.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Do I have to run `custy validate`?"
+>
+
+No.
+
+Running the command manually is optional.
+
+Most workflow-oriented commands such as `custy run commit`,
+`custy run release`, and other `custy run` workflows automatically perform
+validation before continuing.
+
+</Section>
+
+---
+
+<Section
+    title="What does validation actually check?"
+>
+
+Validation verifies that your project is ready for subsequent Custy workflows.
+
+Depending on your project configuration, this may include checking:
+
+- Git repository availability.
+- Configured Git remotes.
+- Version files.
+- Commit message templates.
+- Tag message templates.
+- Staged Git changes.
+- Commit conventions when applicable.
+
+</Section>
+
+---
+
+<Section
+    title="Does validation modify my project?"
+>
+
+No.
+
+Validation only inspects your project and reports its findings.
+
+It does not:
+
+- create commits,
+- create tags,
+- modify repository history,
+- generate releases,
+- overwrite project files.
+
+</Section>
+
+---
+
+<Section
+    title="When should I run validation manually?"
+>
+
+Running validation manually is useful when:
+
+- preparing for a release,
+- diagnosing workflow failures,
+- checking a newly configured project,
+- verifying project readiness after changing configuration.
+
+If you routinely use `custy run`, manual validation is generally unnecessary.
+
+</Section>
+
+---
+
+<Section
+    title="Why does validation stop after the first error?"
+>
+
+Custy follows a **fail-fast** approach.
+
+As soon as a required prerequisite is missing, validation stops and reports
+the problem together with guidance for resolving it.
+
+This prevents later workflow stages from running against an invalid project
+state.
+
+</Section>
+
+---
+
+<Section
+    title="Can I customize what gets validated?"
+>
+
+Yes.
+
+Many validation targets are resolved from your project's
+`config.toml` configuration.
+
+Examples include:
+
+- configured Git remote,
+- version file location,
+- commit message template,
+- tag message template.
+
+Updating your project configuration changes what Custy validates.
+
+</Section>
+
+---
+
+<Section
+    title="Is validation only for Git repositories?"
+>
+
+No.
+
+Although several checks relate to Git, validation also verifies project
+configuration and resources required by Custy.
+
+Think of it as a **project readiness check** rather than simply a Git
+validation command.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Need More Help?"
+>
+
+If validation reports an unexpected problem, review the
+**Troubleshooting** page before opening an issue.
+
+Most validation failures can be resolved by following the reported hint and
+correcting the first failing validation step.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Congratulations!"
+>
+
+You have completed the documentation for the **custy validate** command.
+
+Continue exploring the remaining Custy commands to learn how validation
+supports the complete development and release workflow.
+
+</Section>

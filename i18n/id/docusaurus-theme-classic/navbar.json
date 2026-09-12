@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "Devalltect",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "DevAlltect00 Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Documentation": {
+    "message": "Documentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Projects Overview": {
+    "message": "Projects Overview",
+    "description": "Navbar item with label Projects Overview"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

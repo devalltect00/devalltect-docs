@@ -1,0 +1,57 @@
+---
+title: "Release Processing and Overrides"
+description: "Configure release extraction plus hidden, title-only, and custom-message behavior per version."
+sidebar_position: 5
+sidebar_key: custy-configuration-changelog-releases
+tags: [custy, changelog, releases]
+keywords: [extract_bullets_only, release_behavior, custom_message]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.release]" title="Release Processing and Overrides" description="Extract useful release content, then customize individual versions without changing global rules." category="Changelog Configuration" status="Active" syntax={'[tool.custy.changelog.release_behavior."VERSION"]'} tags={["release summary", "hidden", "custom message"]} links={[{label: "Cleaning", href: "./cleaning"}, {label: "Links", href: "./links"}, {label: "Rendering", href: "./rendering"}]} />
+
+<CommandMetadata items={[{label: "Release Properties", value: "2", icon: "table"}, {label: "Per-Version Properties", value: "3", icon: "release"}, {label: "Generated Override", value: "1.10.13", icon: "example"}, {label: "Status", value: "Active", icon: "success"}]} />
+
+## Release Properties
+
+<PropertyTable items={[{property: "extract_bullets_only", type: "Boolean", defaultValue: "true", description: "Use Markdown list items from release summaries and ignore preceding narrative."}, {property: "fallback_to_subject", type: "Boolean", defaultValue: "true", description: "Use the release summary or commit subject when no list items exist; otherwise skip the empty release entry."}]} />
+
+<Terminal title="Global release processing" language="toml">
+
+{`[tool.custy.changelog.release]
+extract_bullets_only = true
+fallback_to_subject = true`}
+
+</Terminal>
+
+<Section title="Per-Version Behavior">
+
+<PropertyTable items={[{property: "hidden", type: "Boolean", defaultValue: "false", description: "Exclude the version completely. When true, it overrides title_only and custom_message."}, {property: "title_only", type: "Boolean", defaultValue: "false", description: "Render only the release heading and suppress its body."}, {property: "custom_message", type: "String", defaultValue: "unset", description: "Replace the generated release summary while retaining generated change groups unless hidden."}]} />
+
+<Terminal title="Per-version examples" language="toml">
+
+{`[tool.custy.changelog.release_behavior."1.10.13"]
+custom_message = """
+Repository synchronization improvements.
+"""
+
+[tool.custy.changelog.release_behavior."1.10.12"]
+hidden = true
+
+[tool.custy.changelog.release_behavior."1.10.11"]
+title_only = true`}
+
+</Terminal>
+
+</Section>
+
+<InfoBox variant="warning" title="Use a subsection for multiline messages">
+
+TOML inline tables cannot contain multiline strings. Create a quoted version
+subsection as shown above. If `hidden = true`, Custy clears title-only and
+custom-message behavior for that version.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Links", href: "./links", description: "Build comparison URLs for visible versions."}, {title: "Rendering", href: "./rendering", description: "Control summary and release-status visibility."}, {title: "Generated Output", href: "../../commands/changelog/generate/output", description: "Review the final release structure."}]} /></Section>

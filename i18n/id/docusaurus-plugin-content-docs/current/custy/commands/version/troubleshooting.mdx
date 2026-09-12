@@ -1,0 +1,35 @@
+---
+title: "Pemecahan Masalah Version"
+description: "Atasi masalah umum Version Update."
+sidebar_position: 10
+sidebar_key: custy-version-troubleshooting
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy version update" title="Pemecahan Masalah Version" description="Diagnosa version file, strategy, format, dan sinkronisasi." category="Versioning" status="Panduan Dukungan" syntax="custy version update" links={[
+    {label: "Pusat Pemecahan Masalah", href: "../../troubleshooting/overview"}, {label: "Output", href: "./output"}, {label: "FAQ", href: "./faq"},
+]} />
+
+## Ringkasan
+
+## Version File Tidak Ditemukan
+
+<Section compact>Periksa `version_file` dalam configuration dan pastikan path dihitung dari project root yang benar.</Section>
+
+## Versioning Strategy Tidak Valid
+
+<Section compact>Gunakan strategy yang didukung: `semver`, `pep440`, `commitizen`, `date`, atau `gitcount`.</Section>
+
+## Format Versi Tidak Sesuai Perkiraan
+
+<Section compact>Periksa strategy, project ecosystem, pre/post/dev release option, metadata, dan epoch. Custy dapat menormalisasi representasi untuk file tertentu.</Section>
+
+## File Proyek Tidak Diperbarui
+
+<Section compact>Pastikan file ditemukan, dapat ditulis, dan command tidak menggunakan `--dry-run`. Periksa output debug untuk configuration resolution.</Section>
+
+<InfoBox variant="warning" title="Jangan Memperbaiki File Secara Terpisah">Jika sinkronisasi hanya sebagian, cari penyebabnya sebelum mengubah version file manual agar metadata tidak berbeda.</InfoBox>
+
+## Langkah Diagnostik Berikutnya
+
+<Section compact>Jalankan `custy --debug version update`, periksa effective configuration, project detection, target version, dan setiap file yang dilaporkan.</Section>

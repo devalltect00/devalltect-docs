@@ -1,0 +1,8 @@
+{
+  "label": "Git",
+  "position": 40,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-configuration-git",
+  "link": {"type": "doc", "id": "custy/configuration/git/overview"}
+}

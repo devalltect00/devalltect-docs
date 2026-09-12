@@ -1,0 +1,52 @@
+---
+title: "Pemecahan Masalah Backup Cleanup"
+description: "Atasi masalah umum Backup Cleanup."
+sidebar_position: 8
+sidebar_key: custy-cleanup-backup-troubleshooting
+tags: [cleanup, backup, troubleshooting]
+keywords: [custy cleanup backups troubleshooting]
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy cleanup backups" title="Pemecahan Masalah Backup Cleanup" description="Atasi masalah saat membersihkan file backup lama." category="Maintenance" status="Panduan Dukungan" syntax="custy cleanup backups" tags={["cleanup", "backup", "troubleshooting"]} links={[
+    {label: "Pusat Pemecahan Masalah", href: "../../../troubleshooting/overview"},
+    {label: "Output", href: "./output"},
+    {label: "FAQ", href: "./faq"},
+    {label: "Ringkasan", href: "./overview"},
+]} />
+
+## Ringkasan
+
+Sebagian besar masalah berkaitan dengan konfigurasi, lokasi backup, atau tidak adanya file yang perlu dibersihkan.
+
+## Tidak Ada File Backup yang Dihapus
+
+<Section compact>
+**Yang terlihat:** command berhasil, tetapi tidak menghapus file.
+
+**Penyebab:** jumlah backup masih dalam batas retensi, tidak ada backup, atau `--type` tidak cocok.
+
+**Solusi:** periksa target cleanup, retention count, dan isi direktori backup. Kondisi ini biasanya bukan error.
+</Section>
+
+## File Backup yang Diperkirakan Masih Tersisa
+
+<Section compact>File tersebut mungkin termasuk backup terbaru yang sengaja dipertahankan. Periksa nilai `--keep` atau konfigurasi retensi.</Section>
+
+## File yang Dihapus Lebih Sedikit dari Perkiraan
+
+<Section compact>Periksa jenis backup yang dipilih, retention count, dan file yang benar-benar cocok dengan target cleanup.</Section>
+
+## Dry Run Tidak Menghapus Apa Pun
+
+<Section compact>`--dry-run` hanya menampilkan pratinjau. Jalankan kembali tanpa option tersebut setelah hasilnya sesuai.</Section>
+
+## Lokasi Backup Tidak Sesuai Perkiraan
+
+<Section compact>Periksa direktori backup dalam `.config/custy/config.toml` yang aktif untuk proyek.</Section>
+
+<InfoBox variant="tip" title="Periksa Konfigurasi Terlebih Dahulu">Jenis cleanup, retention count, dan direktori backup mengendalikan hampir seluruh perilaku command ini.</InfoBox>
+
+## Langkah Diagnostik Berikutnya
+
+<Section compact>Periksa konfigurasi, direktori backup, cleanup type, dan output command. Masalah ini umumnya dapat diselesaikan tanpa mengubah source code atau Git history.</Section>

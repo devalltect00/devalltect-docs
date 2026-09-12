@@ -1,0 +1,573 @@
+---
+title: "Faq"
+description: "Init FAQ"
+sidebar_key: reflow-commands-init
+---
+# Init FAQ
+
+## Overview
+
+This document answers common questions about:
+
+```bash
+reflow init
+```
+
+If you are new to Reflow, start with:
+
+```text
+docs/init/overview.md
+docs/init/examples.md
+```
+
+before reading this FAQ.
+
+---
+
+# General Questions
+
+## What Does `reflow init` Do?
+
+The command initializes a project for use with Reflow.
+
+It creates the files and directories required to use Reflow commands.
+
+Depending on the selected mode, this may include:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+---
+
+## When Should I Run It?
+
+Typically:
+
+```text
+Once Per Project
+```
+
+Recommended workflow:
+
+```text
+Install Reflow
+      ↓
+reflow init
+      ↓
+Configure Project
+      ↓
+Use Reflow Commands
+```
+
+---
+
+## Should I Run It Before Every Command?
+
+No.
+
+You generally do not need to run:
+
+```bash
+reflow init
+```
+
+before:
+
+```bash
+reflow tags convert
+
+reflow tags replay
+
+reflow dockerize
+```
+
+Initialization is usually a one-time setup step.
+
+---
+
+## Can I Run It Multiple Times?
+
+Yes.
+
+Running:
+
+```bash
+reflow init
+```
+
+multiple times is supported.
+
+Behavior depends on:
+
+```text
+Existing files
+Selected mode
+Force options
+Interactive options
+```
+
+---
+
+# Configuration Questions
+
+## Does Init Create `config.toml`?
+
+Yes.
+
+Depending on the selected mode, initialization can create:
+
+```text
+config.toml
+```
+
+which contains Reflow configuration settings.
+
+---
+
+## Do I Need To Edit `config.toml`?
+
+Usually yes.
+
+Generated configuration files are intended as starting points.
+
+You should review values such as:
+
+```toml
+[tool.reflow.docker]
+
+provider = "github"
+```
+
+and update them for your project.
+
+---
+
+## Can I Use Reflow Without Configuration?
+
+Some commands may work with defaults.
+
+However:
+
+```text
+Configuration Is Recommended
+```
+
+for predictable and repeatable workflows.
+
+---
+
+# File Questions
+
+## What Files Can Be Generated?
+
+Depending on the selected mode:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+The exact output depends on the current project version.
+
+---
+
+## Will Existing Files Be Overwritten?
+
+Not automatically.
+
+Reflow attempts to avoid overwriting files unintentionally.
+
+Use:
+
+```bash
+reflow init --force
+```
+
+to explicitly allow overwriting.
+
+---
+
+## What Does `--force` Do?
+
+Example:
+
+```bash
+reflow init --force
+```
+
+Behavior:
+
+```text
+Existing File
+      ↓
+Overwrite Allowed
+      ↓
+Replace File
+```
+
+Use carefully.
+
+---
+
+## What Does `--ask` Do?
+
+Example:
+
+```bash
+reflow init --ask
+```
+
+Behavior:
+
+```text
+File Exists
+      ↓
+Prompt User
+      ↓
+Create or Skip
+```
+
+This is useful when working with existing repositories.
+
+---
+
+## What Does `--dry-run` Do?
+
+Example:
+
+```bash
+reflow init --dry-run
+```
+
+Behavior:
+
+```text
+Build Plan
+      ↓
+Preview Changes
+      ↓
+No Files Written
+```
+
+This is the safest way to inspect what initialization would do.
+
+---
+
+# Mode Questions
+
+## What Is Config Mode?
+
+Command:
+
+```bash
+reflow init --mode config
+```
+
+Purpose:
+
+```text
+Create configuration files only.
+```
+
+Recommended when:
+
+```text
+You only need config.toml.
+```
+
+---
+
+## What Is Templates Mode?
+
+Command:
+
+```bash
+reflow init --mode templates
+```
+
+Purpose:
+
+```text
+Create template resources only.
+```
+
+---
+
+## What Is Examples Mode?
+
+Command:
+
+```bash
+reflow init --mode examples
+```
+
+Purpose:
+
+```text
+Create example resources only.
+```
+
+---
+
+## What Is All Mode?
+
+Command:
+
+```bash
+reflow init --mode all
+```
+
+Purpose:
+
+```text
+Generate all supported resources.
+```
+
+Recommended for:
+
+```text
+New projects
+First-time setup
+```
+
+---
+
+# Requirements
+
+## Do I Need Git Installed?
+
+No.
+
+Initialization itself does not require:
+
+```text
+Git
+```
+
+to be installed.
+
+Git becomes relevant when using:
+
+```bash
+reflow tags convert
+
+reflow tags replay
+```
+
+---
+
+## Do I Need Docker Installed?
+
+No.
+
+Initialization does not require:
+
+```text
+Docker
+```
+
+Docker becomes relevant when using:
+
+```bash
+reflow dockerize
+```
+
+---
+
+## Do I Need GitHub CLI Installed?
+
+No.
+
+Initialization does not require:
+
+```text
+GitHub CLI
+```
+
+GitHub CLI becomes relevant when using release-related workflows.
+
+---
+
+## Do I Need To Be Inside A Git Repository?
+
+Not necessarily.
+
+Initialization focuses on project scaffolding and file generation.
+
+Repository-related commands have additional requirements.
+
+---
+
+# Workflow Questions
+
+## What Should I Run After Init?
+
+Typical workflow:
+
+```text
+reflow init
+      ↓
+Edit config.toml
+      ↓
+reflow tags convert
+      ↓
+reflow tags replay
+      ↓
+reflow dockerize
+```
+
+Only run the commands you actually need.
+
+---
+
+## Does Init Convert Tags?
+
+No.
+
+Use:
+
+```bash
+reflow tags convert
+```
+
+for version conversion.
+
+---
+
+## Does Init Replay Releases?
+
+No.
+
+Use:
+
+```bash
+reflow tags replay
+```
+
+for release recovery.
+
+---
+
+## Does Init Build Docker Images?
+
+No.
+
+Use:
+
+```bash
+reflow dockerize
+```
+
+for container publishing.
+
+---
+
+# Troubleshooting
+
+## Nothing Was Created
+
+Possible reasons:
+
+```text
+Existing files already exist
+Selected mode generated nothing new
+Dry-run mode enabled
+```
+
+Try:
+
+```bash
+reflow init --dry-run
+```
+
+to inspect planned changes.
+
+---
+
+## Files Already Exist
+
+Use:
+
+```bash
+reflow init --ask
+```
+
+to review changes interactively.
+
+or:
+
+```bash
+reflow init --force
+```
+
+to overwrite existing resources.
+
+---
+
+## I Accidentally Deleted Configuration Files
+
+Recreate them:
+
+```bash
+reflow init --mode config
+```
+
+---
+
+# Related Documentation
+
+Overview:
+
+```text
+docs/init/overview.md
+```
+
+Workflow:
+
+```text
+docs/init/workflow.md
+```
+
+Examples:
+
+```text
+docs/init/examples.md
+```
+
+Getting Started:
+
+```text
+docs/user-guide/getting-started.md
+```
+
+Lifecycle:
+
+```text
+docs/user-guide/lifecycle.md
+```
+
+---
+
+# Summary
+
+The most common workflow is:
+
+```bash
+reflow init
+```
+
+followed by:
+
+```text
+Edit Configuration
+      ↓
+Use Reflow Commands
+```
+
+Initialization is a safe, repeatable way to prepare a project for use with Reflow.

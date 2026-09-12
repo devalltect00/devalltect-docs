@@ -1,0 +1,197 @@
+---
+title: "Examples"
+description: "Common examples of using the Backup Cleanup command."
+sidebar_position: 6
+sidebar_key: custy-cleanup-backup
+
+tags:
+    - cleanup
+    - backup
+    - examples
+
+keywords:
+    - custy cleanup backups examples
+---
+
+import {
+    CommandHero,
+    CommandExample,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Examples"
+    description="Learn how to remove obsolete backup files using common Backup Cleanup scenarios."
+    category="Maintenance"
+    status="Recommended"
+    syntax="custy cleanup backups"
+    tags={[
+        "examples",
+        "cleanup",
+        "backup",
+    ]}
+    links={[
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+The following examples demonstrate common ways to clean obsolete backup files.
+
+Depending on your project's configuration, Backup Cleanup can remove commit
+backups, tag backups, or both while preserving the configured number of recent
+backups.
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Clean All Backup Files",
+            description:
+                "Remove obsolete backup files using the configured cleanup settings.",
+            command:
+`custy cleanup backups`,
+            result:
+                "Old backup files are removed while the configured number of newest backups is preserved.",
+        },
+        {
+            title: "Clean Commit Backups Only",
+            description:
+                "Remove obsolete commit message backups only.",
+            command:
+`custy cleanup backups --type commit`,
+            result:
+                "Only commit message backup files are considered during cleanup.",
+        },
+        {
+            title: "Clean Tag Backups Only",
+            description:
+                "Remove obsolete tag message backups only.",
+            command:
+`custy cleanup backups --type tag`,
+            result:
+                "Only tag message backup files are cleaned.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Retention Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Keep Five Backups",
+            description:
+                "Preserve only the five newest backup files.",
+            command:
+`custy cleanup backups --keep 5`,
+            result:
+                "Custy removes backup files older than the five newest backups.",
+        },
+        {
+            title: "Keep Twenty Backups",
+            description:
+                "Retain a larger backup history.",
+            command:
+`custy cleanup backups --keep 20`,
+            result:
+                "Custy preserves the newest twenty backups before removing older files.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Public invocation">
+
+Use `custy cleanup backups`. Public release profiles can include internal backup
+cleanup automatically, but the internal profile name is not a public Run value.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Global Options"
+>
+
+Global options are specified before the command.
+
+Examples include:
+
+<CommandExample
+    examples={[
+        {
+            title: "Preview Cleanup",
+            description:
+                "See what would happen without deleting backup files.",
+            command:
+`custy --dry-run cleanup backups`,
+            result:
+                "Displays the cleanup operation without removing any files.",
+        },
+        {
+            title: "Debug Cleanup",
+            description:
+                "Run Backup Cleanup with additional diagnostic information.",
+            command:
+`custy --debug cleanup backups`,
+            result:
+                "Executes Backup Cleanup while producing additional debug output.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Usually Runs Automatically"
+>
+
+Backup Cleanup is included in several Custy workflow pipelines.
+
+In many projects you may rarely need to execute it manually because workflow
+execution already performs backup maintenance automatically.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Output** page to learn how Custy reports the results of a
+Backup Cleanup operation.
+
+</Section>

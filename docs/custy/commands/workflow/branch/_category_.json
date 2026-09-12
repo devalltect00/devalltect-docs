@@ -1,0 +1,11 @@
+{
+  "label": "Branch",
+  "position": 2,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-workflow-branch",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/workflow/branch/overview"
+  }
+}

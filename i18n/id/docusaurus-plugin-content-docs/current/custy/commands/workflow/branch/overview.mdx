@@ -1,0 +1,21 @@
+---
+title: "Ringkasan"
+description: "Experimental branch dan version transition validation dengan Custy."
+sidebar_position: 1
+sidebar_key: custy-workflow-branch
+---
+import {CommandHero, FeatureGrid, InfoBox, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy workflow branch" title="Validate Workflow Transitions" description="Tinjau intended interface dan known implementation blocker." category="Workflow" status="Experimental and Blocked" syntax="custy workflow branch [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Options",href:"./options"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+
+## Ringkasan
+
+<InfoBox variant="danger" title="Known Pipeline-Construction Issue">Current resolver mencoba membangun `finalize` step yang tidak dikenal atau belum terdaftar. Command tidak operational sampai source implementation diperbaiki.</InfoBox>
+
+<FeatureGrid title="Experimental Transition Interface" items={[
+ {title:"Branch Inputs",children:"Terima source dan target branch names."},{title:"Tag Inputs",children:"Terima source dan target version tags."},{title:"Transition Check",children:"Maksudnya mengevaluasi policy dan allowed transition."},{title:"Enforcement",children:"Interface tersedia tetapi behavior belum aman diverifikasi."},
+]} />
+
+<RelatedCommands commands={[
+ {name:"git",description:"Stable repository validation.",href:"../../validate/overview"},{name:"package",description:"Release profile.",href:"../../run/release/overview"},{name:"security",description:"Full profile experimental boundary.",href:"../../run/full/overview"},
+]} />

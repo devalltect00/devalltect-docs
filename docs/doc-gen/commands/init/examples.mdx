@@ -1,0 +1,480 @@
+---
+title: "Examples"
+description: "This guide contains practical examples for the doc-gen init command."
+sidebar_position: 2
+sidebar_key: doc-gen-commands-init
+---
+
+# Init Examples
+
+## Overview
+
+This guide contains practical examples for:
+
+```bash
+doc-gen init
+```
+
+Use these examples as a reference when setting up a new project or recovering existing files.
+
+---
+
+# Quick Start
+
+Initialize a new project:
+
+```bash
+doc-gen init
+```
+
+Result:
+
+```text
+✓ Create configuration files
+✓ Create project metadata
+✓ Create templates
+✓ Create examples
+```
+
+Recommended for:
+
+```text
+New users
+New repositories
+First-time setup
+```
+
+---
+
+# Configuration Only
+
+Create configuration files without generating additional resources.
+
+Command:
+
+```bash
+doc-gen init --mode config
+```
+
+Typical output:
+
+```text
+config.toml
+```
+
+Recommended when:
+
+```text
+You only need configuration.
+```
+
+---
+
+# Templates Only
+
+Generate template resources.
+
+Command:
+
+```bash
+doc-gen init --mode templates
+```
+
+Recommended when:
+
+```text
+Templates were deleted.
+Templates need to be restored.
+```
+
+---
+
+# Examples Only
+
+Generate example resources.
+
+Command:
+
+```bash
+doc-gen init --mode examples
+```
+
+Recommended when:
+
+```text
+You want sample files.
+You need example configurations.
+```
+
+---
+
+# Generate Everything
+
+Explicitly generate all available resources.
+
+Command:
+
+```bash
+doc-gen init --mode all
+```
+
+Result:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+Recommended for:
+
+```text
+New projects
+Complete project setup
+```
+
+---
+
+# Preview Changes
+
+Preview initialization without creating files.
+
+Command:
+
+```bash
+doc-gen init --dry-run
+```
+
+Workflow:
+
+```text
+Build Initialization Plan
+         ↓
+Display Planned Changes
+         ↓
+No Files Written
+```
+
+Recommended before:
+
+```text
+Large migrations
+Existing repositories
+Production repositories
+```
+
+---
+
+# Overwrite Existing Files
+
+Force replacement of existing files.
+
+Command:
+
+```bash
+doc-gen init --force
+```
+
+Workflow:
+
+```text
+Existing File
+       ↓
+Overwrite
+       ↓
+New File
+```
+
+Use carefully.
+
+---
+
+# Ask Before Overwriting
+
+Prompt before modifying files.
+
+Command:
+
+```bash
+doc-gen init --ask
+```
+
+Workflow:
+
+```text
+File Exists
+      ↓
+Prompt User
+      ↓
+Create or Skip
+```
+
+Recommended when:
+
+```text
+Working in existing repositories
+Reviewing changes manually
+```
+
+---
+
+# Combine Options
+
+Configuration-only preview:
+
+```bash
+doc-gen init \
+    --mode config \
+    --dry-run
+```
+
+Result:
+
+```text
+Preview configuration creation
+No files written
+```
+
+---
+
+Configuration-only with confirmation:
+
+```bash
+doc-gen init \
+    --mode config \
+    --ask
+```
+
+Result:
+
+```text
+Prompt before creating files
+```
+
+---
+
+Force complete initialization:
+
+```bash
+doc-gen init \
+    --mode all \
+    --force
+```
+
+Result:
+
+```text
+Overwrite existing resources
+Create missing resources
+```
+
+---
+
+# First-Time User Workflow
+
+Recommended workflow:
+
+## Step 1
+
+Initialize project:
+
+```bash
+doc-gen init
+```
+
+---
+
+## Step 2
+
+Review generated configuration:
+
+```text
+config.toml
+```
+
+---
+
+## Step 3
+
+Update project-specific values.
+
+Example:
+
+```toml
+[tool.doc-gen.docker]
+
+provider = "github"
+```
+
+---
+
+## Step 4
+
+Run desired commands:
+
+Generate project structure:
+
+```bash
+doc-gen structure generate
+```
+
+Print project structure on console:
+
+```bash
+doc-gen structure print
+```
+
+Analyze project structure:
+
+```bash
+doc-gen structure analyze
+```
+
+---
+
+# Recover Missing Configuration
+
+If:
+
+```text
+config.toml
+```
+
+was deleted accidentally:
+
+```bash
+doc-gen init --mode config
+```
+
+This recreates the configuration without generating unrelated resources.
+
+---
+
+# Existing Repository Workflow
+
+Recommended:
+
+Preview:
+
+```bash
+doc-gen init --dry-run
+```
+
+Review planned changes.
+
+Then:
+
+```bash
+doc-gen init --ask
+```
+
+Approve changes interactively.
+
+---
+
+# Team Onboarding Workflow
+
+When joining an existing project:
+
+```bash
+doc-gen init
+```
+
+Then:
+
+```text
+Review generated files
+Review config.toml
+Run project commands
+```
+
+This provides a consistent setup process across the team.
+
+---
+
+# Common Commands
+
+Initialize project:
+
+```bash
+doc-gen init
+```
+
+Configuration only:
+
+```bash
+doc-gen init --mode config
+```
+
+Preview changes:
+
+```bash
+doc-gen init --dry-run
+```
+
+Interactive mode:
+
+```bash
+doc-gen init --ask
+```
+
+Force overwrite:
+
+```bash
+doc-gen init --force
+```
+
+Generate everything:
+
+```bash
+doc-gen init --mode all
+```
+
+---
+
+# Related Documentation
+
+Overview:
+
+```text
+docs/init/overview.md
+```
+
+Workflow:
+
+```text
+docs/init/workflow.md
+```
+
+FAQ:
+
+```text
+docs/init/faq.md
+```
+
+Getting Started:
+
+```text
+docs/user-guide/getting-started.md
+```
+
+---
+
+# Summary
+
+The most common command is:
+
+```bash
+doc-gen init
+```
+
+For existing repositories:
+
+```bash
+doc-gen init --dry-run
+```
+
+is recommended first.
+
+Initialization is typically performed once per project and prepares the project for the rest of the Doc-Gen workflow.

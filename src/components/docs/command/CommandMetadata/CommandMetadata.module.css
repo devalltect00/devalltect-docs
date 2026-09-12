@@ -1,0 +1,39 @@
+.metadata {
+    margin: var(--docs-space-xl) 0;
+}
+
+.row {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 1rem;
+}
+
+.content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .35rem;
+
+    flex: 1;
+}
+
+.label {
+    color: var(--ifm-color-emphasis-700);
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: .05em;
+}
+
+.value {
+    font-size: 1rem;
+
+    font-weight: 500;
+}

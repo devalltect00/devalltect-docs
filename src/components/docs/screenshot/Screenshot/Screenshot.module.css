@@ -1,0 +1,91 @@
+.figure {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+    margin: 2rem 0;
+
+}
+
+.image {
+
+    width: 100%;
+
+    border-radius: var(--ifm-global-radius);
+
+}
+
+.border .image {
+
+    border: 1px solid var(--ifm-toc-border-color);
+
+}
+
+.shadow .image {
+
+    box-shadow: var(--ifm-global-shadow-lw);
+
+}
+
+.caption {
+
+    text-align: center;
+
+    color: var(--ifm-color-emphasis-700);
+
+    font-size: .9rem;
+
+}
+
+.fallback {
+
+    display: flex;
+
+    min-height: 12rem;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: .5rem;
+
+    padding: 2rem;
+
+    border: 1px dashed var(--ifm-color-emphasis-400);
+
+    border-radius: var(--ifm-global-radius);
+
+    background: var(--ifm-color-emphasis-100);
+
+    color: var(--ifm-color-emphasis-700);
+
+    text-align: center;
+
+}
+
+.shadow .fallback {
+
+    box-shadow: var(--ifm-global-shadow-lw);
+
+}
+
+.fallbackTitle {
+
+    color: var(--ifm-color-emphasis-900);
+
+    font-size: 1rem;
+
+}
+
+.fallbackDescription {
+
+    max-width: 36rem;
+
+    font-size: .9rem;
+
+}

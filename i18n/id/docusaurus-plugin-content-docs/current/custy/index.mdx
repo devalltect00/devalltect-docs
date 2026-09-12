@@ -1,0 +1,192 @@
+---
+title: "Custy"
+description: "Otomatiskan alur kerja Git, versioning, changelog, backup, cleanup, dan rilis yang berulang dari satu CLI yang dapat dikonfigurasi."
+sidebar_position: 0
+sidebar_key: custy
+
+tags:
+  - custy
+  - cli
+  - git
+  - otomatisasi rilis
+
+keywords:
+  - dokumentasi custy
+  - otomatisasi alur kerja git
+  - pembuatan changelog
+  - pipeline rilis
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Custy"
+    description="Otomatiskan alur kerja Git, versioning, changelog, backup, cleanup, dan rilis yang berulang dari satu CLI yang dapat dikonfigurasi."
+    category="Produktivitas Developer"
+    status="Pengembangan Aktif"
+    syntax="custy COMMAND [OPTIONS]"
+    tags={[
+        "otomatisasi Git",
+        "alur kerja rilis",
+        "konfigurasi proyek",
+    ]}
+    links={[
+        {label: "Memulai", href: "./custy/getting-started/overview"},
+        {label: "Referensi Perintah", href: "./custy/commands/overview"},
+        {label: "Konfigurasi", href: "./custy/configuration/overview"},
+        {label: "Panduan Pipeline", href: "./custy/pipelines/overview"},
+        {label: "Panduan Pengguna", href: "./custy/user-guide/overview"},
+        {label: "Panduan Developer", href: "./custy/developer-guide/overview"},
+        {label: "Arsitektur", href: "./custy/architecture/overview"},
+        {label: "Referensi", href: "./custy/reference/overview"},
+        {label: "Pemecahan Masalah", href: "./custy/troubleshooting/overview"},
+        {label: "Konsep Inti", href: "./custy/concepts/commands-pipelines-and-workflows"},
+        {label: "Status Dokumentasi", href: "./custy/reference/documentation-status"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Antarmuka", value: "Aplikasi Command Line", icon: "terminal"},
+        {label: "Fokus Utama", value: "Git dan Rilis", icon: "git"},
+        {label: "Konfigurasi", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Bahasa Dokumentasi", value: "Bahasa Indonesia", icon: "feature"},
+    ]}
+/>
+
+## Ringkasan
+
+Custy adalah CLI produktivitas developer yang dapat dikonfigurasi untuk
+mengelola pekerjaan Git dan rilis yang berulang. Custy menyatukan validasi
+proyek, pembaruan versi, pembuatan changelog, backup, cleanup, commit, tag,
+push, dan pipeline multi-langkah dalam satu antarmuka yang konsisten.
+
+<InfoBox
+    variant="info"
+    title="Status dokumentasi"
+>
+
+Referensi perintah mencakup CLI publik yang tersedia saat ini. Profil pipeline
+internal tidak ditampilkan sebagai perintah publik kecuali CLI yang terpasang
+memang mengeksposnya. Keterbatasan implementasi yang diketahui dijelaskan pada
+halaman terkait.
+Halaman [Status Dokumentasi](./custy/reference/documentation-status) menjelaskan
+baseline rilis, tanggal peninjauan, dan cara membandingkan versi terpasang yang
+berbeda.
+
+</InfoBox>
+
+<Section
+    title="Hal yang Dapat Anda Kelola dengan Custy"
+    subtitle="Gunakan perintah individual untuk tugas tertentu atau profil pipeline publik untuk mengoordinasikan pekerjaan pengembangan dan rilis."
+>
+
+<FeatureGrid
+    title="Kemampuan Utama"
+    items={[
+        {
+            title: "Kesiapan Proyek",
+            icon: <Icon name="success" />,
+            children: "Inisialisasi resource proyek dan validasi repositori sebelum operasi yang berdampak dijalankan.",
+        },
+        {
+            title: "Versi dan Changelog",
+            icon: <Icon name="release" />,
+            children: "Siapkan versi dan buat changelog terstruktur dari riwayat repositori serta konfigurasi proyek.",
+        },
+        {
+            title: "Operasi Git",
+            icon: <Icon name="git" />,
+            children: "Buat commit dan tag, lalu sinkronkan branch serta tag dengan remote yang dikonfigurasi.",
+        },
+        {
+            title: "Pipeline yang Dapat Digunakan Kembali",
+            icon: <Icon name="workflow" />,
+            children: "Jalankan profil development, release, dan full yang didukung dengan urutan alur kerja yang dapat diprediksi.",
+        },
+        {
+            title: "Keamanan dan Pemulihan",
+            icon: <Icon name="package" />,
+            children: "Buat backup pesan, pratinjau operasi yang didukung, serta bersihkan file atau branch yang disimpan secara terencana.",
+        },
+        {
+            title: "Konfigurasi Proyek",
+            icon: <Icon name="configuration" />,
+            children: "Sesuaikan path, template, perilaku Git, versioning, output changelog, cleanup, dan logging.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Mulai dari Sini"
+>
+
+[Panduan Memulai](./custy/getting-started/overview) mengantar Anda dari instalasi
+hingga pratinjau pipeline yang sudah ditinjau. Gunakan
+[dokumentasi perintah](./custy/commands/overview) saat Anda memerlukan detail opsi,
+efek samping, contoh, output, dan panduan pemecahan masalah. Gunakan
+[panduan Konfigurasi](./custy/configuration/overview) untuk memahami nilai default
+milik proyek, path, template, remote Git, perilaku changelog, dan logging.
+Gunakan [panduan Pipeline](./custy/pipelines/overview) untuk memahami resolusi profil,
+batas eksekusi, serta detail langkah internal untuk kontributor. Gunakan
+[Panduan Pengguna](./custy/user-guide/overview) untuk alur pengembangan, rilis,
+pemeliharaan, dan pemulihan yang berorientasi pada tugas. Gunakan
+[Panduan Developer](./custy/developer-guide/overview) untuk menyiapkan source checkout,
+menguji perubahan, serta memperluas perintah, pipeline, strategi versi, atau
+konfigurasi dengan aman. Gunakan [panduan Arsitektur](./custy/architecture/overview)
+untuk menelusuri fitur tersebut melalui CLI, layanan inti, batas Git, pipeline,
+workflow engine, strategi, dan subsistem changelog.
+Gunakan [Referensi](./custy/reference/overview) ketika Anda memerlukan nama perintah,
+opsi global, format versi, profil pipeline, path, persyaratan lingkungan, atau
+catatan status keluar secara tepat tanpa membaca panduan yang lebih panjang.
+Gunakan [pusat Pemecahan Masalah](./custy/troubleshooting/overview) untuk mengarahkan
+kegagalan ke diagnosis Git, konfigurasi, versioning, changelog, atau alur kerja
+dan memulihkan kondisi parsial dengan aman.
+
+<Terminal title="Titik awal yang umum" language="bash">
+
+{`# Siapkan resource Custy khusus proyek
+custy init
+
+# Periksa apakah repositori siap
+custy validate
+
+# Lihat profil pipeline publik
+custy run --help`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Pilih Operasi Terkecil yang Sesuai"
+>
+
+- Gunakan perintah langsung ketika Anda hanya memerlukan satu operasi tertentu.
+- Gunakan `custy run dev`, `custy run release`, atau `custy run full` ketika
+  Anda memerlukan pipeline yang terkoordinasi.
+- Tinjau efek samping yang didokumentasikan sebelum menjalankan profil yang
+  dapat mengedit file, membuat riwayat Git, atau berkomunikasi dengan remote.
+- Gunakan dukungan dry run jika tersedia pada perintah atau alur kerja yang
+  dipilih.
+
+Grup perintah `custy workflow` masih eksperimental. Dokumentasinya dipisahkan
+dari profil pipeline yang stabil dan menjelaskan keterbatasan saat ini dengan
+jelas.
+
+</Section>

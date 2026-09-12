@@ -1,0 +1,263 @@
+---
+title: "Branch Cleanup Troubleshooting"
+description: "Resolve common Branch Cleanup issues."
+sidebar_position: 9
+sidebar_key: custy-cleanup-branch-troubleshooting
+
+tags:
+    - cleanup
+    - branch
+    - troubleshooting
+
+keywords:
+    - custy cleanup branches troubleshooting
+    - branch cleanup skipped
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Screenshot,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Branch Cleanup Troubleshooting"
+    description="Resolve common issues encountered while cleaning Git branches."
+    category="Maintenance"
+    status="Support Guide"
+    syntax="custy cleanup branches"
+    tags={[
+        "cleanup",
+        "branch",
+        "troubleshooting",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../../troubleshooting/overview",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+    ]}
+/>
+
+## Overview
+
+Most Branch Cleanup issues are related to project configuration rather than
+the command itself.
+
+In many cases, Custy intentionally skips branch removal because the configured
+cleanup rules do not allow any branches to become eligible.
+
+---
+
+## No Branches Were Removed
+
+<Section compact>
+
+**What you see**
+
+Branch Cleanup completed successfully, but no branches were deleted.
+
+**Why it happens**
+
+- No branches matched the configured prefixes.
+- No branches satisfied the configured merge status.
+- Age filters excluded every branch.
+- Only protected branches matched the configured filters.
+
+**How to resolve it**
+
+Review your cleanup configuration and verify that at least one branch is
+eligible for cleanup.
+
+</Section>
+
+---
+
+## Branch Cleanup Was Skipped
+
+<Section compact>
+
+**What you see**
+
+Custy reports that no branch prefixes were configured.
+
+**Why it happens**
+
+Your project currently uses:
+
+```toml
+include_prefixes = []
+```
+
+Without configured prefixes, Custy intentionally skips Branch Cleanup to
+prevent accidental deletion.
+
+**How to resolve it**
+
+Configure one or more branch prefixes.
+
+For example:
+
+```toml
+include_prefixes = [
+    "release/",
+]
+```
+
+</Section>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-branch-release-process-example-no-branch-prefix-configured.png"
+    alt="Branch Cleanup skipped because no branch prefixes were configured"
+    title="Safe Default Behavior"
+    caption="Custy intentionally skips Branch Cleanup when no branch prefixes are configured. This protects repositories from accidental branch deletion."
+/>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="This Is Expected"
+>
+
+The screenshot above does **not** indicate an error.
+
+It demonstrates Custy's default safety behavior.
+
+Until your project explicitly specifies which branch prefixes may be cleaned,
+Branch Cleanup refuses to remove any branches.
+
+</InfoBox>
+
+---
+
+## Expected Branch Was Not Deleted
+
+<Section compact>
+
+**What you see**
+
+A branch you expected to be removed still exists.
+
+**Why it happens**
+
+- The branch does not match the configured prefixes.
+- The branch is newer than the configured age filter.
+- The branch is not merged.
+- The branch is protected.
+
+**How to resolve it**
+
+Review every configured cleanup filter.
+
+A branch must satisfy **every** applicable rule before Custy considers it
+eligible for removal.
+
+</Section>
+
+---
+
+## Protected Branch Was Not Removed
+
+<Section compact>
+
+**What you see**
+
+Protected branches such as:
+
+- `main`
+- `master`
+- `develop`
+
+remain after cleanup.
+
+**Why it happens**
+
+Custy permanently protects these branches.
+
+**How to resolve it**
+
+No action is required.
+
+If you intentionally want to remove one of these branches, use Git directly
+rather than Custy.
+
+</Section>
+
+---
+
+## Dry Run Didn't Delete Anything
+
+<Section compact>
+
+**What you see**
+
+No branches were removed.
+
+**Why it happens**
+
+The command was executed using:
+
+```bash
+custy --dry-run cleanup branches
+```
+
+**How to resolve it**
+
+Run the command again without the global `--dry-run` option when you're ready
+to perform the cleanup.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Review Configuration Before Cleanup"
+>
+
+Branch Cleanup behavior is determined almost entirely by your project's
+configuration.
+
+Unexpected results are usually resolved by reviewing:
+
+- configured branch prefixes,
+- merge status,
+- age filters,
+- protected branch rules.
+
+</InfoBox>
+
+---
+
+## Next Diagnostic Step
+
+<Section compact>
+
+If Branch Cleanup continues to behave unexpectedly:
+
+- review your `config.toml`,
+- inspect the command output,
+- verify the selected cleanup rules,
+- confirm that at least one branch satisfies every configured filter.
+
+Most Branch Cleanup issues are resolved by adjusting the project
+configuration rather than modifying the command itself.
+
+</Section>

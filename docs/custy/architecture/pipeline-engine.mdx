@@ -1,0 +1,194 @@
+---
+title: "Pipeline Engine"
+description: "Understand Custy's profiles, expansion, global ordering, step registry, builders, shared context, and sequential execution."
+sidebar_position: 6
+sidebar_key: custy-architecture-pipeline-engine
+tags: [custy, pipeline, architecture]
+keywords: [Custy pipeline architecture, StepRegistry, CommandResolver]
+---
+
+import {
+    ArchitectureCard,
+    CommandHero,
+    CommandMetadata,
+    DependencyCard,
+    Grid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    WorkflowDiagram,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/pipeline/"
+    title="Pipeline Engine"
+    description="Trace a profile name into expanded, registered, ordered, and sequentially executed step objects."
+    category="Architecture"
+    status="Application Orchestration"
+    syntax="profiles -> resolver -> registry -> builder -> pipeline"
+    tags={["profiles", "STEP_ORDER", "StepRegistry", "GitContext"]}
+    links={[
+        {label: "Pipeline Guide", href: "../pipelines/overview"},
+        {label: "Execution Model", href: "../pipelines/execution-model"},
+        {label: "Step System", href: "../pipelines/step-system"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Resolver Profiles", value: "20", icon: "workflow"},
+        {label: "Global Priorities", value: "27", icon: "timeline"},
+        {label: "Public Run Names", value: "6", icon: "command"},
+        {label: "Execution", value: "Sequential", icon: "pipeline"},
+    ]}
+/>
+
+## Overview
+
+The pipeline package separates workflow definition from execution. Profiles
+declare names, the resolver expands nested definitions, the registry maps final
+names to classes, builders instantiate those classes, and a pipeline runs every
+step against one shared context.
+
+---
+
+<Section title="Pipeline Components">
+
+<Grid columns={2}>
+
+<ArchitectureCard title="Profile Definitions" subtitle="profiles.py" icon={<Icon name="workflow" />}>
+
+`PIPELINE_PROFILES` defines reusable step sequences. `STEP_ORDER` defines the
+global priority used only when two or more profiles are composed.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Command Resolver" subtitle="command_resolver.py" icon={<Icon name="dependency" />}>
+
+Expands nested profiles, detects cycles, rejects unknown names, preserves one
+profile's declared order, and normalizes merged profiles.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Step Registry" subtitle="registry.py and step_registry.py" icon={<Icon name="configuration" />}>
+
+Stores unique name-to-class mappings and creates step instances. Built-in
+registration must occur before pipeline construction.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Builders" subtitle="builder.py" icon={<Icon name="architecture" />}>
+
+Convert resolved dictionaries into step objects and select either the Rich
+progress pipeline or the simpler logged pipeline presentation.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Pipeline" subtitle="pipeline.py" icon={<Icon name="play" />}>
+
+Executes step objects in list order, advances progress after success, stops at
+the first exception, and re-raises the original failure.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Shared Context" subtitle="context.py" icon={<Icon name="git" />}>
+
+Provides the workflow engine, its Git service, optional Commitizen helper, and
+mutable fields intended for cross-step runtime state.
+
+</ArchitectureCard>
+
+</Grid>
+
+</Section>
+
+---
+
+<WorkflowDiagram
+    title="Profile to Execution"
+    timeline={[
+        {title: "Select profile names", description: "A direct command chooses an internal profile or custy run accepts one or more typed public names.", status: "completed"},
+        {title: "Register built-in classes", description: "register_all_steps maps every known string name to a concrete BaseStep subclass.", status: "completed"},
+        {title: "Expand profiles", description: "CommandResolver recursively replaces nested profile references with final step definitions.", status: "completed"},
+        {title: "Normalize composition", description: "Merged profiles are deduplicated by first occurrence and stably sorted by STEP_ORDER.", status: "completed"},
+        {title: "Build step objects", description: "PipelineBuilder asks StepRegistry to create each class with any configured constructor args.", status: "current"},
+        {title: "Execute with GitContext", description: "The pipeline invokes execute(context) one step at a time.", status: "pending"},
+    ]}
+/>
+
+---
+
+<Section title="Single and Merged Ordering">
+
+<Grid columns={2}>
+
+<DependencyCard
+    title="Single Profile"
+    dependencies={[
+        {source: "profile name", target: "declared sequence", description: "Expand nested references recursively."},
+        {source: "declared sequence", target: "pipeline config", description: "Preserve the exact profile order without global re-sorting."},
+    ]}
+/>
+
+<DependencyCard
+    title="Multiple Profiles"
+    dependencies={[
+        {source: "profile names", target: "expanded steps", description: "Concatenate each expanded sequence in input order."},
+        {source: "expanded steps", target: "unique steps", description: "Keep only the first occurrence of each name."},
+        {source: "unique steps", target: "ordered config", description: "Apply a stable STEP_ORDER sort; unknown priorities use 999."},
+    ]}
+/>
+
+</Grid>
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Sequential does not mean transactional">
+
+If step seven fails, effects from steps one through six may already exist.
+Neither `Pipeline` nor `SimplePipeline` records compensating actions or rolls
+back files, commits, tags, pushes, backups, or branch transitions.
+
+</InfoBox>
+
+---
+
+<Section title="Public and Internal Boundaries">
+
+`PIPELINE_PROFILES` contains validation fragments, direct-command profiles,
+aggregate maintenance profiles, and six supported Run profiles. The typed
+public Run boundary accepts only `commit`, `tag`, `push`, `dev`, `release`, and
+`full`. A registry entry makes a step constructible; a profile entry makes it
+composable; neither action alone exposes new public CLI syntax.
+
+</Section>
+
+---
+
+<Section title="Presentation Variants">
+
+`PipelineBuilder` creates a Rich progress-enabled `Pipeline` and can hide its
+progress task for selected commands. `SimplePipelineBuilder` creates a
+`SimplePipeline` with logged step messages. Both use the same registry and
+`execute(context)` contract, so presentation does not change the resolved
+business sequence.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Pipeline Guide", href: "../pipelines/overview", description: "Review profiles, exact order, safety, and user behavior."},
+        {title: "Workflow Engine", href: "./workflow-engine", description: "See what registered steps delegate to."},
+        {title: "Adding Pipeline Steps", href: "../developer-guide/adding-pipeline-steps", description: "Preserve registration, priority, composition, and tests."},
+        {title: "Run Command", href: "../commands/run/overview", description: "Use the supported public profile boundary."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,159 @@
+---
+title: "Overview"
+description: "Prepare version artifacts and create an annotated Git tag with Custy."
+sidebar_position: 1
+sidebar_key: custy-commands-tag
+tags: [tag, version, git, release]
+keywords: [custy tag, create version tag]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Screenshot,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Create a Version Tag"
+    description="Resolve a release version, prepare tag artifacts, and create a Git tag through Custy's registered tag profile."
+    category="Git Operations"
+    status="Stable"
+    syntax="custy tag [OPTIONS]"
+    tags={["Git tag", "versioning", "release"]}
+    links={[
+        {label: "Options", href: "./options"},
+        {label: "Versioning", href: "./versioning-and-tags"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {
+            label: "Category",
+            value: "Git Operations",
+            icon: "git",
+        },
+        {
+            label: "Complexity",
+            value: "Advanced",
+            icon: "requirement",
+        },
+        {
+            label: "Creates Git History",
+            value: "Local Tag",
+            icon: "warning",
+        },
+        {
+            label: "Pushes Remotely",
+            value: "No",
+            icon: "network",
+        },
+    ]}
+/>
+
+## Overview
+
+The tag profile validates the repository, resolves a version, prepares and opens
+tag-related artifacts, applies the version, backs up the tag message, cleans old
+backups, and creates the Git tag.
+
+<InfoBox
+    variant="danger"
+    title="Creates Git history"
+>
+
+Normal execution can update project files and create a local tag. Confirm the
+target version and existing tags before running it. Use dry-run before a release
+and do not force a tag merely to bypass an unexplained validation failure.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Profile Responsibilities"
+>
+
+<FeatureGrid
+    title="What the Tag Profile Coordinates"
+    items={[
+        {
+            title: "Resolve Version",
+            icon: <Icon name="release" />,
+            children: "Choose the target version from explicit input, project strategy, and repository state.",
+        },
+        {
+            title: "Prepare Artifacts",
+            icon: <Icon name="file" />,
+            children: "Prepare the tag message and any configured version-related artifacts.",
+        },
+        {
+            title: "Back Up Message",
+            icon: <Icon name="package" />,
+            children: "Retain the tag-message backup and clean old retained files.",
+        },
+        {
+            title: "Create Local Tag",
+            icon: <Icon name="git" />,
+            children: "Create the reviewed Git tag at the resolved target commit.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Tag Result Preview"
+>
+
+<Screenshot
+    src="/img/custy/tag/tag-created.png"
+    alt="Terminal confirmation after Custy creates a Git version tag"
+    title="Tag creation result"
+    caption="The final output identifies the local tag created by the profile."
+    fallback="Screenshot showing successful Custy tag creation will be added later."
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Related Commands"
+>
+
+<RelatedCommands
+    commands={[
+        {
+            title: "custy version",
+            href: "../version/overview",
+            description: "Inspect and manage the project version before tagging.",
+        },
+        {
+            title: "custy commit",
+            href: "../commit/overview",
+            description: "Create the release commit that a tag should identify.",
+        },
+        {
+            title: "custy push",
+            href: "../push/overview",
+            description: "Publish a reviewed local tag to resolved remotes.",
+        },
+        {
+            title: "custy run release",
+            href: "../run/release/overview",
+            description: "Coordinate version, commit, tag, and push stages together.",
+        },
+    ]}
+/>
+
+</Section>

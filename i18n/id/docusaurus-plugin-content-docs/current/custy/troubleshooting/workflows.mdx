@@ -1,0 +1,25 @@
+---
+title: "Pemecahan Masalah Workflow"
+description: "Atasi rejected profile, normalized order, validation stop, partial pipeline, inactive option adapter, failed publication, dan experimental workflow."
+sidebar_position: 6
+sidebar_key: custy-troubleshooting-workflows
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy run PROFILE" title="Workflow Troubleshooting" description="Temukan concrete step order dan state terakhir sebelum memulihkan partial pipeline." category="Pemecahan Masalah" status="Sequential Recovery" syntax="profile -> expanded steps -> last success -> focused recovery" links={[{label:"Troubleshooting Hub",href:"./overview"},{label:"Run Troubleshooting",href:"../commands/run/troubleshooting"},{label:"Recovery Journey",href:"../user-guide/troubleshooting-workflows"},{label:"Profiles",href:"../reference/pipeline-profiles"}]} />
+
+## Profile ditolak
+
+Gunakan hanya public Run values yang didukung. Internal composition profile atau direct-command profile di resolver bukan pilihan publik.
+
+## Urutan berbeda dari perkiraan
+
+Profile expansion di-deduplicate dan dinormalisasi memakai `STEP_ORDER`. Periksa concrete sequence pada profile reference, bukan hanya urutan nama saat composition.
+
+## Pipeline berhenti di tengah
+
+Catat step terakhir yang sukses dan periksa Git serta file state. Jalankan validation atau command paling sempit untuk phase tersisa; hindari mengulang `release` atau `full` tanpa audit.
+
+<InfoBox variant="warning" title="Workflow command masih experimental">`custy workflow branch` memiliki batas implementasi yang terdokumentasi. Jangan menganggapnya setara dengan public pipeline yang stabil.</InfoBox>
+
+<Section title="Panduan terkait"><RelatedCommands commands={[{title:"Run Troubleshooting",href:"../commands/run/troubleshooting",description:"Atasi profile, order, validation, option, dan push symptom."},{title:"Recovery Journey",href:"../user-guide/troubleshooting-workflows",description:"Ikuti metode recovery partial state."},{title:"Pipeline Profiles",href:"../reference/pipeline-profiles",description:"Bedakan public value dan ordering rule."},{title:"Workflow Branch Troubleshooting",href:"../commands/workflow/branch/troubleshooting",description:"Periksa experimental blocker dan interface limit."}]} /></Section>

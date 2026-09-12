@@ -1,0 +1,200 @@
+---
+title: "Options"
+description: "Available options for the Backup Cleanup command."
+sidebar_position: 4
+sidebar_key: custy-cleanup-backup
+
+tags:
+    - cleanup
+    - backup
+    - options
+
+keywords:
+    - custy cleanup backups options
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Options"
+    description="Customize how Backup Cleanup removes obsolete backup files."
+    category="Maintenance"
+    status="Recommended"
+    syntax="custy cleanup backups"
+    tags={[
+        "cleanup",
+        "backup",
+        "options",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+Backup Cleanup supports a small number of command-specific options.
+
+Most projects rely on the values configured in
+`config.toml`, while command-line options can temporarily override those
+settings for a single execution.
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--type",
+            shorthand: "-t",
+            required: false,
+            defaultValue: "all",
+            description:
+                "Select which backup category should be cleaned.",
+            example:
+                "--type commit",
+        },
+        {
+            name: "--keep",
+            shorthand: "-k",
+            required: false,
+            defaultValue: "10",
+            description:
+                "Specify how many of the newest backup files should be preserved.",
+            example:
+                "--keep 20",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Cleanup Types"
+>
+
+The cleanup target determines which backup files are considered during the
+operation.
+
+Available values are:
+
+| Value | Description |
+|--------|-------------|
+| `commit` | Clean commit message backups only. |
+| `tag` | Clean tag message backups only. |
+| `all` | Clean both commit and tag backups. |
+
+When no cleanup type is specified, Custy resolves the value from your project
+configuration.
+
+</Section>
+
+---
+
+<Section
+    title="Retention Count"
+>
+
+The `--keep` option specifies the number of newest backup files that should be
+preserved.
+
+For example:
+
+- `--keep 5`
+- `--keep 10`
+- `--keep 20`
+
+Custy sorts backup files by age and removes only those exceeding the configured
+retention count.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Project Defaults"
+>
+
+Most teams configure Backup Cleanup once in their project's
+`config.toml`.
+
+Individual command-line options are useful when temporarily overriding those
+defaults without modifying the project's configuration.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Global Options"
+>
+
+Backup Cleanup also supports Custy's global CLI options.
+
+Examples include:
+
+- `--dry-run`
+- `--debug`
+- `--log-level`
+
+Global options always appear before the command.
+
+Example:
+
+```bash
+custy --dry-run cleanup backups
+```
+
+</Section>
+
+---
+
+<Section
+    title="Configuration Resolution"
+>
+
+When an option is omitted, Custy resolves its value using the following
+priority:
+
+1. Command-line option.
+2. Project configuration (`config.toml`).
+3. Built-in default value.
+
+This resolution strategy provides predictable behavior while allowing
+temporary overrides when needed.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Workflow** page to understand how Backup Cleanup selects,
+retains, and removes obsolete backup files during execution.
+
+</Section>

@@ -1,0 +1,42 @@
+---
+title: "Git Remotes"
+description: "Konfigurasikan default remote Custy serta primary dan optional backup remote groups."
+sidebar_position: 2
+sidebar_key: custy-configuration-git-remotes-v2
+tags: [custy, configuration, git, remotes]
+keywords: [default_remote, main_remotes, backup_remotes]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git]" title="Git Remotes" description="Tentukan satu fallback remote dan pisahkan authoritative destinations dari mirrors atau archives." category="Git Configuration" status="Active + Optional Key" syntax="[tool.custy.git]" tags={["origin", "primary", "backup"]} links={[{label: "Push Strategy", href: "./push-strategy"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Remotes", href: "../../commands/push/remotes"}]} />
+
+<CommandMetadata items={[{label: "Generated Remote Keys", value: "2", icon: "table"}, {label: "Optional Remote Key", value: "1", icon: "note"}, {label: "Primary Default", value: "origin", icon: "git"}, {label: "Backup Default", value: "Empty", icon: "security"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "default_remote", type: "String", defaultValue: "origin", description: "Service fallback ketika operation meminta satu remote. Beberapa direct push resolver paths menyediakan origin sebelum service resolution."},
+        {property: "main_remotes", type: "String array", defaultValue: "[\"origin\"]", description: "Authoritative destinations yang dikembalikan ketika push_to bernilai main."},
+        {property: "backup_remotes", type: "String array", defaultValue: "[]", description: "Optional active mirror atau archive destinations yang dikembalikan ketika push_to bernilai backup. Didukung, tetapi dikomentari dalam generated file."},
+    ]}
+/>
+
+<Terminal title="Multi-host setup" language="toml">
+
+{`[tool.custy.git]
+default_remote = "origin"
+main_remotes = ["origin", "gitlab"]
+backup_remotes = ["mirror"]`}
+
+</Terminal>
+
+<InfoBox variant="danger" title="Verifikasi Names dan URLs Sebelum Push">
+
+Jalankan `git remote -v`, konfirmasi authentication dan branch protection,
+serta pastikan setiap configured name benar-benar tersedia di repository.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Push Strategy", href: "./push-strategy", description: "Pilih main, backup, atau all."}, {title: "CLI Push", href: "../cli/push", description: "Konfigurasikan all_remote dan tag behavior."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Tinjau command-level remote selection."}]} /></Section>

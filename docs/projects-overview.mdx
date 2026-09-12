@@ -1,0 +1,52 @@
+---
+sidebar_position: 2
+title: Projects Overview
+description: Explore the projects documented in the Devalltect portal
+---
+
+# Projects Overview
+
+The portal currently brings together four developer-tool projects. Each project keeps its own domain and documentation structure while sharing navigation, design components, build validation, and deployment.
+
+## Project Directory
+
+| Project | Primary purpose | Documentation |
+| --- | --- | --- |
+| **Path Header Scanner** | Inspect project paths and source headers across supported languages. | [Explore Path Header Scanner](./path-header-scanner) |
+| **Doc Gen** | Generate and analyze project structure documentation. | [Explore Doc Gen](./doc-gen) |
+| **Reflow** | Automate Git tag replay, version conversion, Docker workflows, and releases. | [Explore Reflow](./reflow) |
+| **Custy** | Coordinate Git workflows, validation, versioning, changelogs, commits, tags, pushes, backups, cleanup, and release pipelines. | [Explore Custy](./custy) |
+
+## Path Header Scanner
+
+Available material includes architecture and workflows, installation and usage guidance, developer and user guides, diagrams, testing notes, and project structure references.
+
+## Doc Gen
+
+Available material includes command documentation, architecture, project structure, developer workflows, user lifecycle guidance, testing, and generated-diagram references.
+
+## Reflow
+
+Available material includes `init`, `dockerize`, `tags convert`, and `tags replay` command families, architecture and workflow diagrams, user and developer guidance, testing, and roadmap material.
+
+## Custy
+
+Custy has the most comprehensive portal structure. It includes getting started, command documentation, concepts, full configuration reference, pipeline profiles and ordering, user and developer guides, architecture, concise references, and troubleshooting. English is the default and a complete Indonesian version is available.
+
+:::warning Experimental Custy workflow
+
+The `custy workflow branch` feature is still experimental. Its documentation identifies current implementation limits and should not be read as a stable public workflow contract.
+
+:::
+
+## Documentation Coverage
+
+Documentation depth varies because the projects evolve independently. A page being available does not automatically mean every described feature is stable; use status labels, warnings, and source-aligned references where provided.
+
+## Adding Another Project
+
+1. Create a top-level `docs/<project-name>/` directory.
+2. Add a clear overview and `_category_.json` navigation metadata.
+3. Organize user, command, reference, developer, and architecture material according to the project's actual needs.
+4. Add cross-project navigation from this page.
+5. Run `yarn typecheck` and `yarn build` so MDX, routes, links, and both locales are validated.

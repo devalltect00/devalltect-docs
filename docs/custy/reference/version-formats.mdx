@@ -1,0 +1,146 @@
+---
+title: "Version Formats"
+description: "Reference Custy's SemVer, PEP 440, Commitizen, date, and Git-count forms, stage detection, basic conversion, generation, and sorting boundaries."
+sidebar_position: 5
+sidebar_key: custy-reference-version-formats
+tags: [custy, versions, SemVer, PEP 440]
+keywords: [Custy version formats, SemVer PEP440 conversion, Custy tags]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version update"
+    title="Version Formats"
+    description="Compare generated tag shapes, release stages, project-file conversion, and existing-tag ordering."
+    category="Reference"
+    status="Five Strategy Choices"
+    syntax="strategy + bump + release modifiers -> version"
+    tags={["semver", "pep440", "commitizen", "date", "gitcount"]}
+    links={[
+        {label: "Versioning Concept", href: "../concepts/versioning"},
+        {label: "Version Command", href: "../commands/version/overview"},
+        {label: "Strategy Architecture", href: "../architecture/strategy-pattern"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Strategies", value: "5", icon: "configuration"},
+        {label: "Bump Values", value: "patch, minor, major, auto", icon: "release"},
+        {label: "Detected Stages", value: "6", icon: "timeline"},
+        {label: "Explicit Tag Validator", value: "vX.Y.Z", icon: "security"},
+    ]}
+/>
+
+## Strategy and Format Index
+
+<PropertyTable
+    title="Generated Version Families"
+    items={[
+        {property: "semver", type: "Semantic version", defaultValue: "v1.2.3", description: <>Supports major, minor, patch, prerelease, development, post-style, and build metadata inputs through Custy's semantic-version helper.</>},
+        {property: "pep440", type: "Python package version", defaultValue: "1.2.3", description: <>Supports PEP 440 alpha, beta, release candidate, development, post-release, local metadata, and epoch inputs.</>},
+        {property: "commitizen", type: "Commit-derived SemVer", description: <>Runs <code>cz bump --dry-run --changelog</code>, infers a bump, and is intended to delegate final generation to SemVer.</>},
+        {property: "date", type: "Calendar version", defaultValue: "vYYYY.MM.DD", description: <>Uses the current local date and includes the <code>v</code> prefix by default.</>},
+        {property: "gitcount", type: "Repository count", defaultValue: "v123", description: <>Uses the repository's total commit count as the numeric tag body.</>},
+    ]}
+/>
+
+---
+
+<Section title="Common Shapes">
+
+<KeyValueTable
+    title="Examples"
+    items={[
+        {key: "Final", value: <><code>v1.2.3</code> or <code>1.2.3</code></>},
+        {key: "Alpha", value: <><code>v1.2.3-alpha.1</code> or <code>1.2.3a1</code></>},
+        {key: "Beta", value: <><code>v1.2.3-beta.1</code> or <code>1.2.3b1</code></>},
+        {key: "Release candidate", value: <><code>v1.2.3-rc.1</code> or <code>1.2.3rc1</code></>},
+        {key: "Development", value: <><code>v1.2.3-dev.1</code> or <code>1.2.3.dev1</code></>},
+        {key: "Post release", value: <><code>v1.2.3-post.1</code> or <code>1.2.3.post1</code></>},
+        {key: "Local/build metadata", value: <><code>v1.2.3+linux</code> or <code>1.2.3+linux</code></>},
+        {key: "PEP 440 epoch", value: <><code>1!2.0.0</code>; generation supports epoch input, while the basic bridge does not preserve every advanced PEP 440 form.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Basic SemVer and PEP 440 Bridge">
+
+<Terminal title="Supported conversion examples" language="text">
+
+{`PEP 440              SemVer-style
+1.2.3a1       <->      v1.2.3-alpha.1
+1.2.3b2       <->      v1.2.3-beta.2
+1.2.3rc1      <->      v1.2.3-rc.1
+1.2.3.dev1    <->      v1.2.3-dev.1
+1.2.3.post1   <->      v1.2.3-post.1
+1.2.3+linux   <->      v1.2.3+linux`}
+
+</Terminal>
+
+`VersionBridge` performs basic conversion for compatible three-part versions.
+It returns no value for an invalid base and is not a complete implementation of
+every SemVer or PEP 440 edge case. Review conversions involving epochs,
+compound suffixes, or unusual local identifiers before writing project files.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Explicit CLI tags are narrower than generated formats">
+
+The shared explicit-tag validator normalizes a missing `v` prefix and accepts
+only `vX.Y.Z`. Generated strategies support broader prerelease and PEP 440
+forms, but passing those broader forms through an option wired to the shared
+validator can fail during CLI parsing.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Current Commitizen implementation limitation">
+
+Commitizen is an accepted strategy value, but the active delegation currently
+passes an unsupported keyword to `SemverStrategy`. Treat this path as a known
+implementation limitation until the source is corrected and validated.
+
+</InfoBox>
+
+---
+
+<Section title="Generation, Conversion, and Sorting Are Separate">
+
+- A `TagStrategy` generates the next value.
+- `VersionBridge` converts compatible representations for project files.
+- A `TagSorter` orders tags already present in Git.
+- Commitizen generation produces SemVer-oriented output and therefore does not
+  have a separate existing-tag sorter.
+- Supplying an explicit accepted tag bypasses automatic generation.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Versioning Concept", href: "../concepts/versioning", description: "Understand the lifecycle from selection to project-file application and Git tagging."},
+        {title: "Version Strategies", href: "../commands/version/versioning-strategies", description: "Review user-facing strategy inputs and examples."},
+        {title: "Versioning and Tags", href: "../commands/tag/versioning-and-tags", description: "Understand explicit tags and local Git reference creation."},
+        {title: "Strategy Architecture", href: "../architecture/strategy-pattern", description: "Inspect generation, factory, sorter, and bridge responsibilities."},
+    ]}
+/>
+
+</Section>

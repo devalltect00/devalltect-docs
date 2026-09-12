@@ -1,0 +1,207 @@
+---
+title: "Workflow"
+description: "Understand how backup operations fit into Custy's workflow pipeline."
+sidebar_position: 6
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Workflow"
+    description="Learn how Custy performs backup operations before later workflow stages."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup all"
+    tags={[
+        "workflow",
+        "backup",
+        "pipeline",
+    ]}
+    links={[
+        {
+            label: "Backup Files",
+            href: "./backup-files",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+    ]}
+/>
+
+## Overview
+
+The **backup** command creates timestamped copies of template resources before
+they are modified or reused.
+
+When executed directly, the command performs only the requested backup
+operation.
+
+Backup operations may also participate in larger Custy workflows, where they
+act as one stage in a multi-step pipeline.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Standalone or Workflow Stage"
+>
+
+The backup command can be executed by itself or as part of a larger workflow.
+
+The workflow documentation explains how backup stages are combined with other
+operations such as commit, tag, and release.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Backup Timeline"
+>
+
+<WorkflowTimeline
+    title="Backup Pipeline"
+    description="High-level sequence performed during a backup operation."
+    items={[
+        {
+            title: "Resolve Configuration",
+            description:
+                "Determine the effective backup configuration, including template locations and backup directories.",
+            status: "completed",
+        },
+        {
+            title: "Locate Template Files",
+            description:
+                "Locate the requested commit or tag template files before creating backups.",
+            status: "completed",
+        },
+        {
+            title: "Create Backup",
+            description:
+                "Generate timestamped backup copies inside the configured backup directory.",
+            status: "completed",
+        },
+        {
+            title: "Manage Existing Backups",
+            description:
+                "Apply the configured retention policy and remove older backups when necessary.",
+            status: "completed",
+        },
+        {
+            title: "Finish",
+            description:
+                "Report the backup result and make newly created backup files available for later workflow stages.",
+            status: "completed",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Workflow Stages"
+>
+
+<WorkflowStep
+    title="1. Resolve Backup Configuration"
+>
+
+Custy determines which template files should be backed up and where backup
+files should be written.
+
+Configuration values are resolved from the project configuration whenever
+available.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="2. Locate Template Resources"
+>
+
+Custy verifies that the selected template files exist.
+
+If an optional resource is unavailable, that specific backup operation is
+skipped safely.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="3. Create Timestamped Backup"
+>
+
+A backup copy is created using a timestamp-based filename.
+
+This preserves previous versions without overwriting earlier backups.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="4. Apply Backup Retention"
+>
+
+After creating the backup, Custy reviews existing backup files and removes
+older backups according to the configured retention policy.
+
+This helps keep backup directories organized while preserving recent history.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="5. Complete Backup"
+>
+
+Once all requested backup operations finish successfully, Custy reports the
+result.
+
+The generated backup files remain available for later workflow stages or
+manual inspection.
+
+</WorkflowStep>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Safe Operation"
+>
+
+Backup operations create additional files but do not modify Git history.
+
+Any generated backup files can be reviewed before deciding whether to include
+them in a future commit.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Relationship to Workflow Commands"
+>
+
+The backup command performs backup operations directly.
+
+Workflow-oriented commands can also include backup stages as part of a larger
+execution pipeline.
+
+Those workflow combinations are documented in the **Run** command
+documentation, where backup is described as one reusable workflow stage rather
+than an independent command.
+
+</Section>

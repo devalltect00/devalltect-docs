@@ -1,0 +1,48 @@
+---
+title: "Git Push Strategy"
+description: "Konfigurasikan service-level main, backup, atau all selection dan pahami reserved auto-push behavior."
+sidebar_position: 3
+sidebar_key: custy-configuration-git-push-strategy
+tags: [custy, configuration, git, push]
+keywords: [push_to, auto_push]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git]" title="Git Push Strategy" description="Pilih remote group pada Git-service layer tanpa menganggap generated auto-push behavior sudah active." category="Git Configuration" status="Active + Reserved Key" syntax={'push_to = "main"'} tags={["main", "backup", "all"]} links={[{label: "Remotes", href: "./remotes"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Command", href: "../../commands/push/overview"}]} />
+
+<CommandMetadata items={[{label: "Strategy Property", value: "push_to", icon: "workflow"}, {label: "Generated Strategy", value: "main", icon: "git"}, {label: "auto_push", value: "Reserved", icon: "warning"}, {label: "Explicit Remotes", value: "Highest service priority", icon: "terminal"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "push_to", type: "main | backup | all", defaultValue: "main", description: "Pilih main_remotes, backup_remotes, atau de-duplicated union keduanya ketika Git service me-resolve sebuah group."}, {property: "auto_push", type: "Boolean", defaultValue: "true", description: "Generated intention untuk push setelah commit dan tag work, tetapi belum digunakan current active command resolvers atau Git service flow. Perlakukan sebagai reserved."}]} />
+
+<Terminal title="Service-level strategy" language="toml">
+
+{`[tool.custy.git]
+main_remotes = ["origin"]
+backup_remotes = ["mirror"]
+push_to = "all"
+
+# Tersedia dalam generated file, tetapi saat ini masih reserved.
+auto_push = true`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Explicit Remote Input Selalu Menang">
+
+Ketika service menerima explicit remote list, service mengembalikan list
+tersebut sebelum memeriksa `push_to`. Direct command resolvers juga dapat
+menyediakan remote dan all-remote values sendiri.
+
+</InfoBox>
+
+<InfoBox variant="danger" title="auto_push Bukan Active Guarantee">
+
+Jangan menganggap `auto_push = true` membuat commit atau tag commands
+menghubungi remote. Gunakan documented push command atau run profile dan
+tinjau plan-nya.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Konfigurasikan groups yang dipilih push_to."}, {title: "CLI Push", href: "../cli/push", description: "Konfigurasikan command-level defaults."}, {title: "Push Workflow", href: "../../commands/push/workflow", description: "Tinjau actual remote operations."}]} /></Section>

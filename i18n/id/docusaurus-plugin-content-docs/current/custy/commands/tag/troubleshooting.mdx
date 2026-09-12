@@ -1,0 +1,28 @@
+---
+title: "Pemecahan Masalah Tag"
+description: "Atasi tag conflicts, version errors, dan pre-tag validation failures."
+sidebar_position: 10
+sidebar_key: custy-tag-troubleshooting
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy tag" title="Tag Troubleshooting" description="Diagnosa conflicts, version resolution, files, dan validation." category="Git Operations" status="Panduan Dukungan" syntax="custy tag [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Requirements",href:"./requirements"},{label:"Versioning and Tags",href:"./versioning-and-tags"},{label:"FAQ",href:"./faq"}]} />
+
+## Ringkasan
+
+<InfoBox variant="danger" title="Never Replace a Published Tag Casually">Periksa apakah tag sudah dipush atau dipakai release sebelum menghapus atau menggantinya.</InfoBox>
+
+## Tag Sudah Ada
+<Section compact>Periksa local dan remote tag. Gunakan versi baru kecuali replacement benar-benar diperlukan dan terkoordinasi.</Section>
+
+## Custy Tidak Dapat Menentukan Versi Berikutnya
+<Section compact>Periksa strategy, bump, current version, Git history, dan explicit `--tag`.</Section>
+
+## Version File Tidak Ditemukan
+<Section compact>Periksa configured path atau `--version-file`, lalu pastikan file ada dan writable.</Section>
+
+## Pre-Tag Validation Gagal
+<Section compact>Perbaiki repository state atau artifact yang dilaporkan sebelum retry.</Section>
+
+## Local Tag yang Salah Dibuat
+<Section compact>Jangan push. Verifikasi commit dan publication state, hapus local tag melalui Git hanya bila aman, lalu buat ulang versi yang benar.</Section>

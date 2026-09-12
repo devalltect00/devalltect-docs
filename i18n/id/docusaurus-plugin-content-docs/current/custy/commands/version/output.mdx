@@ -1,0 +1,36 @@
+---
+title: "Output"
+description: "Pahami output Version Update."
+sidebar_position: 9
+sidebar_key: custy-version
+---
+import {CommandHero, CommandOutput, Section, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy version" title="Output" description="Pahami versi target dan file yang disinkronkan Custy." category="Versioning" status="Reference" syntax="custy version update" links={[
+    {label: "Examples", href: "./examples"}, {label: "Troubleshooting", href: "./troubleshooting"}, {label: "FAQ", href: "./faq"},
+]} />
+
+## Ringkasan
+
+<CommandOutput outputs={[
+    {title: "Successful Update", description: "Versi diterapkan ke file proyek.", output: `🔖 Next version: v2.4.0
+
+🔧 Applying version updates...
+
+🐍 Python project detected
+
+✅ app/__version__.py updated → 2.4.0
+
+✅ pyproject.toml updated
+
+✅ .cz.toml updated
+
+🎉 Version synchronization completed successfully.`},
+    {title: "Dry Run", description: "File hanya dipratinjau.", output: `(dry-run) Would update app/__version__.py
+
+(dry-run) Would update pyproject.toml
+
+(dry-run) Would update .cz.toml`},
+]} />
+
+<InfoBox variant="note" title="Output Bergantung pada Proyek">Daftar file berbeda berdasarkan project type, configuration, dan file yang ditemukan.</InfoBox>

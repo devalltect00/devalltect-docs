@@ -1,0 +1,158 @@
+---
+title: "Commands"
+description: "This document provides a complete reference for all DocGen commands."
+sidebar_position: 2
+sidebar_key: doc-gen-user-guide
+---
+
+# Commands Reference
+
+This document provides a complete reference for all DocGen commands.
+
+## Command Overview
+
+```bash
+doc-gen [OPTIONS] COMMAND [ARGS]...
+```
+
+## Main Commands
+
+### init
+
+Initialize project configuration.
+
+```bash
+doc-gen init [OPTIONS]
+```
+
+Options:
+
+- `--mode TEXT` - Initialization mode (all, config)
+- `--force` - Overwrite existing files
+- `--ask` - Ask before overwriting
+
+Examples:
+
+```bash
+doc-gen init
+doc-gen init --mode config
+doc-gen init --mode all --force
+```
+
+---
+
+### structure
+
+Structure-related commands (parent command).
+
+```bash
+doc-gen structure [OPTIONS] COMMAND [ARGS]...
+```
+
+#### structure generate
+
+Generate PROJECT_STRUCTURE.md.
+
+```bash
+doc-gen structure generate [OPTIONS]
+```
+
+Options:
+
+- `--profile [minimal|default|detailed]` - Output profile
+- `--max-depth INTEGER` - Maximum directory depth
+- `--smart / --no-smart` - Enable smart mode
+- `--show-files / --no-files` - Show individual files
+- `--output FILE` - Output file path
+
+Examples:
+
+```bash
+doc-gen structure generate
+doc-gen structure generate --profile minimal
+doc-gen structure generate --smart
+doc-gen structure generate --max-depth 2
+doc-gen structure generate --output my-structure.md
+```
+
+#### structure print
+
+Print structure to console.
+
+```bash
+doc-gen structure print [OPTIONS]
+```
+
+Options: Same as generate command.
+
+Examples:
+
+```bash
+doc-gen structure print
+doc-gen structure print --smart
+doc-gen structure print --max-depth 3
+```
+
+#### structure analyze
+
+Analyze project structure.
+
+```bash
+doc-gen structure analyze [OPTIONS]
+```
+
+Examples:
+
+```bash
+doc-gen structure analyze
+doc-gen structure analyze --smart
+```
+
+---
+
+## Global Options
+
+- `--help` - Show help message
+- `--version` - Show version
+- `--no-banner` - Hide banner
+
+---
+
+## Makefile Commands
+
+For convenience, use Makefile shortcuts:
+
+### Local Commands
+
+```bash
+make l-generate          # Run generate locally
+make l-generate-smart   # Run generate with smart mode
+make l-print           # Run print locally
+make l-analyze        # Run analyze locally
+```
+
+### Docker Commands
+
+```bash
+make d-generate        # Run generate in Docker
+make d-generate-smart # Run generate with smart mode in Docker
+make d-print          # Run print in Docker
+make d-analyze       # Run analyze in Docker
+```
+
+### Docker Compose Commands
+
+```bash
+make c-generate       # Run generate using compose
+make c-generate-smart # Run generate with smart mode using compose
+make c-print        # Run print using compose
+make c-analyze     # Run analyze using compose
+```
+
+---
+
+## Related Documentation
+
+- [Usage](../usage) - Advanced usage guide
+- [Overview](./overview) - User guide overview
+- [Quick Start](./quickstart) - Quick start guide

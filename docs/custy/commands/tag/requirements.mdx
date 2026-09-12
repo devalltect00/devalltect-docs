@@ -1,0 +1,121 @@
+---
+title: "Requirements"
+description: "Prepare version files, tags, and templates before custy tag."
+sidebar_position: 2
+sidebar_key: custy-tag-requirements
+tags: [tag, requirements, git]
+keywords: [custy tag requirements]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Requirements"
+    description="Prepare repository state, local tag history, version inputs, and tag templates before creating a local tag."
+    category="Git Operations"
+    status="Required Review"
+    syntax="custy tag [OPTIONS]"
+    tags={[
+        "requirements",
+        "Git tag",
+        "versioning",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Versioning",
+            href: "./versioning-and-tags",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+A Git tag identifies a specific repository state. Confirm the intended version,
+target commit, and existing tag history before creating it.
+
+---
+
+<Section
+    title="Tag Requirements"
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Git Repository",
+            level: "required",
+            children: "Run Custy inside the intended repository and branch.",
+        },
+        {
+            title: "Current Tag History",
+            level: "required",
+            children: "Fetch or otherwise confirm the relevant local tags before resolving a new version.",
+        },
+        {
+            title: "Version File",
+            level: "required",
+            children: "The configured project version file must exist and be writable.",
+        },
+        {
+            title: "Tag Message Template",
+            level: "required",
+            children: "The configured tag-message template must exist and be reviewable.",
+        },
+        {
+            title: "Unique Approved Tag",
+            level: "required",
+            children: "The requested tag should not already exist unless replacement is explicitly intended and permitted.",
+        },
+        {
+            title: "Compatible Strategy",
+            level: "recommended",
+            children: "Review the selected version strategy and use only compatible release modifiers.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Preflight"
+>
+
+<Terminal>
+
+{`git status
+git log -1 --oneline --decorate
+git tag --list
+custy --dry-run tag --tag v1.2.3`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Local operation first"
+>
+
+`custy tag` creates a local tag. It does not automatically publish it. Review
+the tag and its target commit before using `custy push`.
+
+</InfoBox>

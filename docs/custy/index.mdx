@@ -1,0 +1,189 @@
+---
+title: "Custy"
+description: "Automate repeatable Git, versioning, changelog, backup, cleanup, and release workflows from one configurable CLI."
+sidebar_position: 0
+sidebar_key: custy
+
+tags:
+  - custy
+  - cli
+  - git
+  - release automation
+
+keywords:
+  - custy documentation
+  - git workflow automation
+  - changelog generation
+  - release pipeline
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Custy"
+    description="Automate repeatable Git, versioning, changelog, backup, cleanup, and release workflows from one configurable CLI."
+    category="Developer Productivity"
+    status="Active Development"
+    syntax="custy COMMAND [OPTIONS]"
+    tags={[
+        "Git automation",
+        "release workflows",
+        "project configuration",
+    ]}
+    links={[
+        {label: "Getting Started", href: "./custy/getting-started/overview"},
+        {label: "Command Reference", href: "./custy/commands/overview"},
+        {label: "Configuration", href: "./custy/configuration/overview"},
+        {label: "Pipeline Guide", href: "./custy/pipelines/overview"},
+        {label: "User Guide", href: "./custy/user-guide/overview"},
+        {label: "Developer Guide", href: "./custy/developer-guide/overview"},
+        {label: "Architecture", href: "./custy/architecture/overview"},
+        {label: "Reference", href: "./custy/reference/overview"},
+        {label: "Troubleshooting", href: "./custy/troubleshooting/overview"},
+        {label: "Core Concepts", href: "./custy/concepts/commands-pipelines-and-workflows"},
+        {label: "Documentation Status", href: "./custy/reference/documentation-status"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Interface", value: "Command-Line Application", icon: "terminal"},
+        {label: "Primary Domain", value: "Git and Releases", icon: "git"},
+        {label: "Configuration", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Documentation Language", value: "English", icon: "feature"},
+    ]}
+/>
+
+## Overview
+
+Custy is a configurable developer-productivity CLI for managing repeatable Git
+and release work. It brings project validation, version updates, changelog
+generation, backups, cleanup, commits, tags, pushes, and multi-step pipelines
+into one consistent interface.
+
+<InfoBox
+    variant="info"
+    title="Documentation status"
+>
+
+The English command reference covers the current public CLI. Internal pipeline
+profiles are not presented as public commands unless the installed CLI exposes
+them, and known implementation limitations are identified on the affected pages.
+The [Documentation Status](./custy/reference/documentation-status) page explains
+the release baseline, review date, and how to compare another installed version.
+
+</InfoBox>
+
+<Section
+    title="What Custy Helps You Manage"
+    subtitle="Use individual commands for focused tasks or public pipeline profiles for coordinated development and release work."
+>
+
+<FeatureGrid
+    title="Core Capabilities"
+    items={[
+        {
+            title: "Project Readiness",
+            icon: <Icon name="success" />,
+            children: "Initialize project resources and validate repositories before consequential operations begin.",
+        },
+        {
+            title: "Version and Changelog",
+            icon: <Icon name="release" />,
+            children: "Prepare versions and generate structured changelogs from repository history and project configuration.",
+        },
+        {
+            title: "Git Operations",
+            icon: <Icon name="git" />,
+            children: "Create commits and tags, then synchronize branches and tags with configured remotes.",
+        },
+        {
+            title: "Reusable Pipelines",
+            icon: <Icon name="workflow" />,
+            children: "Run supported development, release, and full profiles with a predictable ordered workflow.",
+        },
+        {
+            title: "Safety and Recovery",
+            icon: <Icon name="package" />,
+            children: "Create message backups, preview supported operations, and clean retained files or branches deliberately.",
+        },
+        {
+            title: "Project Configuration",
+            icon: <Icon name="configuration" />,
+            children: "Customize paths, templates, Git behavior, versioning, changelog output, cleanup, and logging.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Start Here"
+>
+
+The [Getting Started guide](./custy/getting-started/overview) takes you from
+installation to a reviewed pipeline preview. Use the
+[command documentation](./custy/commands/overview) when you need detailed options,
+side effects, examples, output, and troubleshooting guidance. Use the
+[Configuration guide](./custy/configuration/overview) to understand project-owned
+defaults, paths, templates, Git remotes, changelog behavior, and logging. Use
+the [Pipeline guide](./custy/pipelines/overview) to understand profile resolution,
+execution boundaries, and contributor-facing step internals. Use the
+[User Guide](./custy/user-guide/overview) for task-oriented development, release,
+maintenance, and recovery journeys. Use the
+[Developer Guide](./custy/developer-guide/overview) to set up the source checkout,
+test changes, and extend commands, pipelines, version strategies, or
+configuration safely. Use the [Architecture guide](./custy/architecture/overview)
+to trace those features through the CLI, core services, Git boundary,
+pipelines, workflow engine, strategies, and changelog subsystem.
+Use the [Reference](./custy/reference/overview) when you need an exact command name,
+global option, version form, pipeline profile, path, environment requirement,
+or exit-status note without reading a longer guide.
+Use the [Troubleshooting hub](./custy/troubleshooting/overview) to route a failure to
+Git, configuration, versioning, changelog, or workflow diagnosis and recover
+from partial state safely.
+
+<Terminal title="Common starting points" language="bash">
+
+{`# Prepare project-specific Custy resources
+custy init
+
+# Check whether the repository is ready
+custy validate
+
+# Inspect the public pipeline profiles
+custy run --help`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Choose the Smallest Suitable Operation"
+>
+
+- Use a direct command when you need one focused operation.
+- Use `custy run dev`, `custy run release`, or `custy run full` when you need a
+  coordinated pipeline.
+- Review the documented side effects before running a profile that can edit
+  files, create Git history, or communicate with remotes.
+- Use dry-run support where the selected command or workflow provides it.
+
+The `custy workflow` command group is experimental. Its documentation is kept
+separate from the stable pipeline profiles and clearly identifies current
+limitations.
+
+</Section>

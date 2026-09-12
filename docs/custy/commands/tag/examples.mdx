@@ -1,0 +1,79 @@
+---
+title: "Examples"
+description: "Practical custy tag examples."
+sidebar_position: 9
+sidebar_key: custy-tag-examples
+tags: [tag, examples, release]
+keywords: [custy tag examples]
+---
+
+import {
+    CommandExample,
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Examples"
+    description="Use practical tag patterns for configured strategies, explicit releases, pre-releases, messages, and dry-run review."
+    category="Git Operations"
+    status="Stable"
+    syntax="custy tag [OPTIONS]"
+    tags={[
+        "examples",
+        "version tags",
+        "dry-run",
+    ]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Options", href: "./options"},
+        {label: "Versioning", href: "./versioning-and-tags"},
+    ]}
+/>
+
+## Overview
+
+Prefer an explicit approved version for manual releases, then use dry-run to
+inspect how Custy resolves the tag and related artifacts.
+
+<InfoBox
+    variant="tip"
+    title="Confirm the exact tag"
+>
+
+Check the prefix, pre-release format, target commit, and annotation before normal
+execution.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {title: "Use configured strategy", command: "custy tag", description: "Resolve the next tag from project settings and repository state."},
+        {title: "Create an approved SemVer tag", command: "custy tag --strategy semver --tag v1.4.0", description: "Use an explicit version while retaining the SemVer strategy."},
+        {title: "Create a release-candidate tag", command: "custy tag --strategy pep440 --pre rc", description: "Generate a PEP 440 release candidate from repository state."},
+        {title: "Use an explicit annotation", command: "custy tag --tag v1.4.0 --tag-message \"Release v1.4.0\"", description: "Override the annotated tag message."},
+        {title: "Preview the selected tag", command: "custy --dry-run tag --tag v1.4.0", description: "Inspect preparation and the intended tag before creation."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Do not force an unexplained failure"
+>
+
+Resolve pre-tag validation and version-format problems before considering
+forced tag creation.
+
+</InfoBox>

@@ -1,0 +1,216 @@
+---
+title: "Adding Commands"
+description: "Add a Custy CLI command while preserving option, model, resolver, core, registration, and test boundaries."
+sidebar_position: 4
+sidebar_key: custy-developer-guide-adding-commands
+tags: [custy, CLI, Typer]
+keywords: [add Custy command, Typer command, Custy CLI architecture]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/cli/commands/&lt;feature&gt;/"
+    title="Adding Commands"
+    description="Carry one user-facing operation from Typer input to tested core behavior without mixing responsibilities."
+    category="Developer Guide"
+    status="Internal Extension"
+    syntax="options -> model -> resolver -> command -> core"
+    tags={["Typer", "argument model", "configuration resolver", "tests"]}
+    links={[
+        {label: "Command Shape", href: "#command-package-shape"},
+        {label: "Registration", href: "#register-the-command"},
+        {label: "Testing", href: "#test-the-complete-boundary"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "CLI Root", value: "app/cli/main.py", icon: "terminal"},
+        {label: "Command Modules", value: "app/cli/commands", icon: "directory"},
+        {label: "Framework", value: "Typer", icon: "dependency"},
+        {label: "Business Logic", value: "app/core", icon: "architecture"},
+    ]}
+/>
+
+## Overview
+
+An active Custy command normally separates user-facing Typer declarations from
+resolved values and core behavior. Preserve that separation even when a small
+feature could technically fit in one file; it keeps configuration precedence,
+testing, and command registration understandable.
+
+<InfoBox variant="tip" title="Choose direct command or command group first">
+
+Use a direct command for one top-level action such as `custy validate`. Use a
+Typer sub-application when a namespace owns multiple actions, such as `custy
+backup commit` and `custy backup tag`.
+
+</InfoBox>
+
+---
+
+<Section title="Command Package Shape">
+
+<FeatureGrid
+    title="Four Focused Modules"
+    items={[
+        {title: "command.py", icon: <Icon name="terminal" />, children: "Declares Typer callbacks, reads application context, builds resolved arguments, and delegates to a core service or pipeline."},
+        {title: "options.py", icon: <Icon name="configuration" />, children: "Defines reusable Annotated Typer options, aliases, validation, completion, help text, and help-panel grouping."},
+        {title: "models.py", icon: <Icon name="package" />, children: "Defines typed dataclasses for the effective arguments consumed after resolution."},
+        {title: "resolver.py", icon: <Icon name="dependency" />, children: "Applies CLI -> project config -> built-in default precedence and returns the typed argument model."},
+    ]}
+/>
+
+<Terminal title="Recommended package layout" language="text">
+
+{`app/cli/commands/example/
+|- __init__.py
+|- command.py
+|- models.py
+|- options.py
+\- resolver.py
+
+tests/cli/commands/example/
+|- test_command_example.py
+|- test_models_example.py
+|- test_options_example.py
+\- test_resolver_example.py`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="Implementation Flow">
+
+<WorkflowTimeline
+    items={[
+        {title: "Define the public contract", description: "Choose the command path, required inputs, safe defaults, side effects, help text, and whether global dry-run applies.", status: "completed"},
+        {title: "Create typed options and a result model", description: "Keep CLI declarations reusable and make the resolver return one explicit dataclass.", status: "completed"},
+        {title: "Resolve effective values", description: "Use ConfigLoader.resolve for supported project defaults and leave CLI option defaults unspecified when fallback is intended.", status: "current"},
+        {title: "Delegate from the callback", description: "Merge global AppContext values, construct the required core service or pipeline, and avoid implementing domain logic in command.py.", status: "pending"},
+        {title: "Register and test", description: "Expose the command through the root application and cover every layer before updating public documentation.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Resolver Contract">
+
+Resolvers make precedence visible and independently testable.
+
+<Terminal title="Illustrative resolver" language="python">
+
+{`from app.cli.commands.example.models import ExampleArgs
+
+
+def resolve_example_args(config, cli_args) -> ExampleArgs:
+    """Resolve effective arguments for the example command."""
+    return ExampleArgs(
+        output_file=config.resolve(
+            cli_args.output_file,
+            ["cli", "paths", "example_output"],
+            "example.txt",
+        ),
+    )`}
+
+</Terminal>
+
+The configuration path is relative to `[tool.custy]`. Keep the packaged
+configuration template, resolver key, consuming code, tests, and public
+configuration reference synchronized.
+
+</Section>
+
+---
+
+<Section title="Register the Command">
+
+For a new command module, export its `command` module from
+`app/cli/commands/__init__.py`. Then choose one root registration style in
+`app/cli/main.py`:
+
+- `app.command(name="example")(example_command.example)` for one direct
+  top-level command;
+- `app.add_typer(example_command.app, name="example")` for a group containing
+  subcommands.
+
+Registration determines the public CLI path. A pipeline profile with the same
+name does not automatically create a CLI command, and registering a pipeline
+step does not expose a public `custy run` choice.
+
+</Section>
+
+---
+
+<Section title="Command Callback Checklist">
+
+<CommandChecklist
+    items={[
+        {title: "Read the shared configuration", description: "Use get_config() rather than parsing TOML inside the command."},
+        {title: "Create raw CLI arguments", description: "Map Typer values into the existing CliArgs boundary or another explicit input model."},
+        {title: "Resolve effective arguments", description: "Call the feature resolver once and use the returned dataclass downstream."},
+        {title: "Merge global context", description: "Carry dry-run, debug, and log-level values from AppContext when the delegated core flow supports them."},
+        {title: "Delegate business behavior", description: "Invoke a focused core service or construct the appropriate registered pipeline."},
+        {title: "Return actionable failures", description: "Preserve project exception context and give users a corrective next step."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Test the Complete Boundary">
+
+- Verify the command or group appears under the intended public path.
+- Verify option names, aliases, types, defaults, validation, and completion
+  metadata.
+- Verify the dataclass stores the effective values with useful types.
+- Verify explicit CLI values win, configuration fills omitted values, and the
+  built-in fallback is used last.
+- Mock the delegated core boundary and verify the callback passes the expected
+  arguments and global context.
+- Add an integration or regression test when registration, pipeline
+  composition, filesystem state, or Git behavior crosses modules.
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Public CLI changes require documentation">
+
+Adding or renaming a command, option, default, prompt, error, or side effect is
+a public behavior change. Update command reference, configuration, examples,
+safety guidance, and troubleshooting together with the source and tests.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Extending Configuration", href: "./extending-configuration", description: "Carry a command default through the complete configuration lifecycle."},
+        {title: "Adding Pipeline Steps", href: "./adding-pipeline-steps", description: "Delegate multi-stage command behavior through the step system."},
+        {title: "Testing", href: "./testing", description: "Choose the CLI, core, integration, and regression checks for the change."},
+        {title: "Command Reference", href: "../commands/overview", description: "Review the user-facing structure that a public command must update."},
+    ]}
+/>
+
+</Section>

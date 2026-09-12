@@ -1,0 +1,79 @@
+---
+title: "Execution"
+description: "Configure cross-command preview, force, debugging, staging, and validation defaults."
+sidebar_position: 5
+sidebar_key: custy-configuration-cli-execution
+tags: [custy, configuration, execution]
+keywords: [dry_run, force_commit, auto_stage, stage_mode]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.execution]" title="Execution" description="Set reusable safety, staging, validation, and diagnostic defaults across supported commands." category="CLI Configuration" status="Active with Known Mismatch" syntax="[tool.custy.cli.execution]" tags={["dry run", "force", "staging"]} links={[{label: "Dry Run", href: "../../concepts/dry-run"}, {label: "Run Safety", href: "../../commands/run/safety"}, {label: "Resolution", href: "../resolution"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "8", icon: "table"}, {label: "Generated Dry Run", value: "false", icon: "warning"}, {label: "Generated Stage Mode", value: "all", icon: "git"}, {label: "Known Mismatch", value: "skip_checks", icon: "danger"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "dry_run", type: "Boolean", defaultValue: "false", description: "Default global preview state. Read-only discovery continues while intended project-file, editor, Git, and remote mutations are simulated."},
+        {property: "force_commit", type: "Boolean", defaultValue: "false", description: "Default force behavior for direct commit and run commit steps."},
+        {property: "force_tag", type: "Boolean", defaultValue: "false", description: "Default force behavior for direct tag and run tag steps."},
+        {property: "skip_checks", type: "Boolean", defaultValue: "false", description: "Generated plural key. Direct Git-operation and run resolvers currently read singular skip_check, so this is a mismatch."},
+        {property: "no_debug", type: "Boolean", defaultValue: "true", description: "Inverse debug default used by global and experimental workflow resolution."},
+        {property: "auto_stage", type: "Boolean", defaultValue: "false", description: "Automatically stage files in supported commit, validate, and run flows."},
+        {property: "stage_mode", type: "all | update | none | manual", defaultValue: "all", description: "Select all changes, tracked updates only, no automatic staging, or explicit manual staging."},
+        {property: "check_cz", type: "Boolean", defaultValue: "false", description: "Enable supported Commitizen readiness checks in commit, validate, and run flows."},
+    ]}
+/>
+
+<Terminal title="Conservative shared defaults" language="toml">
+
+{`[tool.custy.cli.execution]
+dry_run = false
+force_commit = false
+force_tag = false
+skip_checks = false
+no_debug = true
+auto_stage = false
+stage_mode = "manual"
+check_cz = false`}
+
+</Terminal>
+
+<Section title="Dry-Run Resolution">
+
+Custy resolves `dry_run` using CLI → configuration → built-in default
+precedence. An explicit global option therefore overrides this setting.
+
+<Terminal title="Override the configured default" language="bash">
+
+{`# Enable simulation
+custy --dry-run run release
+
+# Disable simulation and use normal execution
+custy --no-dry-run run release`}
+
+</Terminal>
+
+Read-only discovery and validation may still execute in preview mode. Normal
+diagnostic logging also remains active and may update the configured log file.
+
+</Section>
+
+<InfoBox variant="danger" title="Force and automatic staging broaden side effects">
+
+Keep force settings disabled in shared configuration. Pairing `auto_stage = true`
+with `stage_mode = "all"` can include tracked and untracked changes.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Use the CLI for skip-check behavior">
+
+Until `skip_checks` and `skip_check` are aligned in the source and generated
+template, use the explicit command option and verify the displayed plan.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Run Safety", href: "../../commands/run/safety", description: "Review pipeline-specific safety boundaries."}, {title: "Commit Options", href: "../../commands/commit/options", description: "See staging and force options."}, {title: "Resolution", href: "../resolution", description: "Understand the known naming mismatch."}]} /></Section>

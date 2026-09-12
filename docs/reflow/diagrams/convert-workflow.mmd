@@ -1,0 +1,40 @@
+flowchart TD
+
+A[Git Repository]
+
+B[Discover Tags]
+
+C[PEP440 Tag]
+
+D[TagConverter]
+
+E[SemVer Tag]
+
+F[Preserve SHA]
+
+G[Preserve Message]
+
+H[Create Annotated Tag]
+
+I[Delete Old Tag Optional]
+
+J[Converted Tag]
+
+A --> B
+
+B --> C
+
+C --> D
+
+D --> E
+
+D --> F
+D --> G
+
+E --> H
+F --> H
+G --> H
+
+H --> I
+
+I --> J

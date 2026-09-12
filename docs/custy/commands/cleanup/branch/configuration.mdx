@@ -1,0 +1,318 @@
+---
+title: "Configuration"
+description: "Configure how Custy selects Git branches for cleanup."
+sidebar_position: 5
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - configuration
+
+keywords:
+    - custy cleanup branches configuration
+    - include_prefixes
+    - merge_status
+---
+
+import {
+    CommandHero,
+    Section,
+    InfoBox,
+    PropertyTable,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Configuration"
+    description="Customize how Custy selects Git branches for cleanup."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "configuration",
+        "cleanup",
+        "branch",
+    ]}
+    links={[
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+Branch Cleanup is primarily controlled through your project's
+`config.toml`.
+
+Rather than requiring long command-line invocations, Custy allows teams to
+define consistent cleanup rules that apply across the entire project.
+
+All cleanup decisions are derived from these configuration values.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Configuration Before Execution"
+>
+
+Before removing any branch, Custy evaluates every configured cleanup rule.
+
+Only branches satisfying **all applicable filters** become eligible for
+cleanup.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Cleanup Configuration"
+>
+
+<PropertyTable
+    title="config.toml Cleanup Configuration Properties"
+    description="Configuration fields available under the Branch Cleanup section of your project's config.toml. The following configuration fields control how Custy selects branches eligible for cleanup."
+    items={[
+        {
+            property: "include_prefixes",
+            type: "string[]",
+            required: true,
+            description:
+                "List of branch name prefixes eligible for cleanup.",
+        },
+        {
+            property: "merge_status",
+            type: "merged | unmerged | all",
+            defaultValue: "merged",
+            required: false,
+            description:
+                "Restrict cleanup based on merge status.",
+        },
+        {
+            property: "max_age",
+            type: "duration",
+            required: false,
+            description:
+                "Only consider branches older than the specified relative age.",
+        },
+        {
+            property: "before",
+            type: "date",
+            required: false,
+            description:
+                "Only consider branches whose latest commit occurred before a specific date.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Branch Prefixes"
+>
+
+The most important configuration is:
+
+```toml
+include_prefixes = [
+    "release/",
+    "feature/",
+]
+```
+
+Custy never attempts to clean every branch.
+
+Instead, only branches whose names begin with one of the configured prefixes
+are considered.
+
+For example:
+
+- `release/v2.0`
+- `release/archive`
+- `feature/login`
+
+would all become eligible for further evaluation.
+
+Branches with different names are ignored.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Default Behavior"
+>
+
+A newly initialized project uses:
+
+```toml
+include_prefixes = []
+```
+
+With an empty list, no branches are selected.
+
+This safety mechanism prevents accidental branch deletion until a project
+explicitly defines which branch prefixes may be cleaned.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Merge Status"
+>
+
+Merge status determines whether Custy considers:
+
+| Value | Description |
+|--------|-------------|
+| `merged` | Only merged branches. |
+| `unmerged` | Only unmerged branches. |
+| `all` | Ignore merge status completely. |
+
+Most projects use the default:
+
+```toml
+merge_status = "merged"
+```
+
+to remove branches that have already been integrated into the main
+development history.
+
+</Section>
+
+---
+
+<Section
+    title="Relative Age Filter"
+>
+
+The optional age filter excludes recently updated branches.
+
+Example:
+
+```toml
+max_age = "30d"
+```
+
+Supported units include:
+
+- minutes (`m`)
+- hours (`h`)
+- days (`d`)
+- weeks (`w`)
+- months (`mo`)
+- years (`y`)
+
+Only branches older than the configured duration are considered.
+
+</Section>
+
+---
+
+<Section
+    title="Absolute Date Filter"
+>
+
+Instead of using a relative duration, you may specify an absolute cutoff date.
+
+Example:
+
+```toml
+before = "2026-07-01"
+```
+
+Only branches whose most recent commit occurred before that date become
+eligible.
+
+`before` and `max_age` are mutually exclusive.
+
+</Section>
+
+---
+
+<Section
+    title="Protected Branches"
+>
+
+Regardless of the configured filters, Custy always protects important
+branches.
+
+The default protected branches are:
+
+- `main`
+- `master`
+- `develop`
+
+Even if these branches match every configured filter, they are never removed.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Layered Filtering"
+>
+
+Custy evaluates branch cleanup in multiple stages.
+
+A branch must satisfy every applicable rule before it becomes eligible for
+deletion.
+
+This layered filtering significantly reduces the risk of accidental cleanup.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration Strategy"
+>
+
+A recommended configuration for many projects looks like:
+
+<Terminal>
+
+```toml
+include_prefixes = [
+    "release/",
+]
+
+merge_status = "merged"
+
+max_age = "30d"
+```
+
+</Terminal>
+
+This configuration removes merged release branches that have not been updated
+for at least thirty days while leaving all other branches untouched.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Workflow** page to see how Custy evaluates these filters
+step by step before deleting any branches.
+
+</Section>

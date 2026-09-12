@@ -1,0 +1,221 @@
+---
+title: "Usage"
+description: "This page is the technical reference companion to the primary beginner-friendly guide."
+sidebar_position: 7
+sidebar_key: doc-gen
+---
+
+# Usage (Advanced Reference)
+
+This page is the technical reference companion to:
+
+- `docs/how-to-use.md` (primary beginner-friendly guide)
+
+Use this page when you need command variants, execution context choices, and workflow mapping.
+
+---
+
+## Command model
+
+```bash
+doc-gen [OPTIONS] COMMAND [ARGS]...
+```
+
+Main commands:
+
+- `init`
+- `structure generate`
+- `structure print`
+- `structure analyze`
+
+Global options:
+
+- `--help`
+- `--version`
+- `--no-banner`
+
+---
+
+## Command Reference
+
+### `init` - Initialize Project
+
+```bash
+doc-gen init [--mode <mode>] [--force] [--ask]
+```
+
+Supported modes:
+
+- `all` - Initialize everything
+- `config` - Initialize configuration only
+
+Examples:
+
+```bash
+doc-gen init
+doc-gen init --mode all
+doc-gen init --mode config --ask
+doc-gen init --mode all --force
+```
+
+### `structure generate` - Generate Documentation
+
+```bash
+doc-gen structure generate [OPTIONS]
+```
+
+Supported options:
+
+- `--profile [minimal|default|detailed]`
+- `--smart / --no-smart`
+- `--max-depth INTEGER`
+- `--show-files / --no-files`
+- `--output FILE`
+
+Examples:
+
+```bash
+doc-gen structure generate
+doc-gen structure generate --profile minimal
+doc-gen structure generate --smart
+doc-gen structure generate --max-depth 2
+doc-gen structure generate --show-files
+doc-gen structure generate --output my-docs.md
+```
+
+### `structure print` - Print to Console
+
+```bash
+doc-gen structure print [OPTIONS]
+```
+
+Supported options:
+
+- Same as generate command
+
+Examples:
+
+```bash
+doc-gen structure print
+doc-gen structure print --smart
+doc-gen structure print --max-depth 3
+```
+
+### `structure analyze` - Analyze Project
+
+```bash
+doc-gen structure analyze [OPTIONS]
+```
+
+Examples:
+
+```bash
+doc-gen structure analyze
+doc-gen structure analyze --smart
+```
+
+---
+
+## Execution Contexts
+
+### Local CLI
+
+```bash
+doc-gen structure generate
+```
+
+### Python module mode
+
+```bash
+python -m doc_gen structure generate
+```
+
+### Docker direct run
+
+```bash
+docker run -it --rm -w /workspace -v "${PWD}:/workspace" doc-gen structure generate
+```
+
+### Docker Compose / Makefile workflows
+
+Reference common automation from `Makefile`:
+
+#### Local:
+
+```bash
+make l-generate
+make l-generate-smart
+make l-print
+make l-print-smart
+make l-analyze
+```
+
+#### Docker:
+
+```bash
+make d-generate
+make d-generate-smart
+make d-print
+make d-print-smart
+make d-analyze
+```
+
+#### Compose:
+
+```bash
+make c-generate
+make c-generate-smart
+make c-print
+make c-print-smart
+make c-analyze
+```
+
+---
+
+## Safety and Operational Notes
+
+Recommended sequence:
+
+1. Initialize configuration (if needed) (`doc-gen init`)
+2. Run print command first to preview
+3. Generate documentation
+
+Example:
+
+```bash
+doc-gen init
+doc-gen structure print
+doc-gen structure generate
+```
+
+---
+
+## Troubleshooting Quick Checks
+
+1. Verify command is available:
+   ```bash
+   doc-gen --help
+   ```
+2. Verify target directory exists
+3. Retry with debug (if available):
+   ```bash
+   doc-gen structure generate --help
+   ```
+4. Confirm config exists:
+   - `.projectstructure.toml`
+
+---
+
+## Exit Behavior
+
+- Success: exit code `0`
+- Failure conditions: non-zero exit
+
+---
+
+## See Also
+
+- Beginner guide: `docs/how-to-use.md`
+- Commands detail: `docs/user-guide/commands.md`
+- Configuration: `docs/configuration.md`
+- Installation: `docs/installation.md`

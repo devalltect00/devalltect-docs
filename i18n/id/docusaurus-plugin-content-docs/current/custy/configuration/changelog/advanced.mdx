@@ -1,0 +1,29 @@
+---
+title: "Advanced Changelog Features"
+description: "Tinjau experimental changelog properties yang dimuat tetapi belum diterapkan active pipeline."
+sidebar_position: 10
+sidebar_key: custy-configuration-changelog-advanced
+tags: [custy, changelog, experimental]
+keywords: [auto_detect_type, detect_breaking_changes, smart_formatting]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.advanced]" title="Advanced Changelog Features" description="Pahami experimental switches tanpa menganggapnya telah mengubah output." category="Changelog Configuration" status="Experimental / Loaded Only" syntax="[tool.custy.changelog.advanced]" tags={["heuristics", "experimental", "future behavior"]} links={[{label: "Core", href: "./core"}, {label: "Breaking Changes", href: "./breaking-changes"}, {label: "Rendering", href: "./rendering"}]} />
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Generated Values", value: "All false", icon: "security"}, {label: "Loaded", value: "Yes", icon: "configuration"}, {label: "Applied", value: "Not by active pipeline", icon: "warning"}]} />
+
+## Properties
+<PropertyTable items={[{property: "auto_detect_type", type: "Boolean", defaultValue: "false", description: "Ditujukan untuk menyimpulkan Conventional Commit type dari untyped messages. Dimuat ke configuration tetapi tidak diterapkan active pipeline."}, {property: "detect_breaking_changes", type: "Boolean", defaultValue: "false", description: "Ditujukan untuk heuristic breaking detection di luar configured keywords. Dimuat tetapi tidak diterapkan."}, {property: "smart_formatting", type: "Boolean", defaultValue: "false", description: "Ditujukan untuk evolving spacing, grouping, duplicate reduction, dan formatting heuristics. Dimuat tetapi tidak diterapkan."}]} />
+<Terminal title="Generated experimental defaults" language="toml">{`[tool.custy.changelog.advanced]
+auto_detect_type = false
+detect_breaking_changes = false
+smart_formatting = false`}</Terminal>
+<InfoBox variant="danger" title="Jangan Mengandalkan Switch Ini">Resolver membuat model `AdvancedConfig`, tetapi active generator dan processing pipeline tidak menggunakan fields ini. Mengaktifkannya belum menyediakan stable documented output contract.</InfoBox>
+<Section title="Gunakan Stable Alternatives">
+
+- Tulis explicit Conventional Commit types, bukan mengandalkan inference.
+- Gunakan `changelog.breaking.keywords` untuk active breaking detection.
+- Gunakan documented rendering fields dan edit project Jinja template untuk intentional formatting changes.
+
+</Section>
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Core", href: "./core", description: "Konfigurasikan active type filtering."}, {title: "Breaking Changes", href: "./breaking-changes", description: "Konfigurasikan active keyword detection."}, {title: "Rendering", href: "./rendering", description: "Konfigurasikan active presentation fields."}]} /></Section>

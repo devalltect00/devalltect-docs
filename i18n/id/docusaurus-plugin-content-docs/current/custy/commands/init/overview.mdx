@@ -1,0 +1,315 @@
+---
+title: "Overview"
+description: "Siapkan proyek yang sudah ada untuk digunakan bersama Custy dengan membuat konfigurasi, template, dan resource pendukung khusus proyek."
+sidebar_position: 1
+sidebar_key: custy-commands-init
+
+tags:
+  - initialization
+  - setup
+  - configuration
+  - templates
+
+keywords:
+  - custy init
+  - project initialization
+  - setup custy
+  - configuration
+  - templates
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    FeatureCard,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Init Proyek"
+    description="Siapkan proyek yang sudah ada untuk digunakan bersama Custy dengan membuat konfigurasi, template, dan resource pendukung khusus proyek."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "configuration",
+        "templates",
+        "project setup",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {
+            label: "Kategori",
+            value: "Init",
+            icon: "directory",
+        },
+        {
+            label: "Kompleksitas",
+            value: "Pemula",
+            icon: "requirement",
+        },
+        {
+            label: "Mengubah Riwayat Git",
+            value: "Tidak",
+            icon: "git",
+        },
+        {
+            label: "Durasi Umum",
+            value: "Kurang dari satu menit",
+            icon: "timeline",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Command `custy init` menyiapkan proyek yang sudah ada agar dapat digunakan
+bersama **Custy**.
+
+Command ini tidak mengubah riwayat Git proyek atau menjalankan release
+workflow. Sebagai gantinya, command ini membuat workspace proyek yang dapat
+dikonfigurasi di bawah `.config/custy/`. File yang dibuat memungkinkan Anda
+menyesuaikan perilaku Custy tanpa mengubah aplikasi itu sendiri.
+
+Menjalankan `custy init` adalah langkah pertama yang direkomendasikan saat
+mulai menggunakan Custy pada repositori baru maupun yang sudah ada.
+
+<InfoBox
+    variant="tip"
+    title="Direkomendasikan"
+>
+
+Walaupun Custy menyediakan default bawaan yang masuk akal dan banyak command
+dapat bekerja tanpa konfigurasi khusus proyek, `custy init` sangat
+direkomendasikan karena membuat file konfigurasi serta template yang dapat
+disesuaikan dengan workflow proyek Anda.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Yang Dilakukan Command Ini"
+>
+
+<FeatureGrid
+    title="Yang Dilakukan Command Ini"
+    items={[
+        {
+            title: "Membuat Configuration",
+            icon: <Icon name="configuration" />,
+            children: (
+                <>
+                    Membuat file configuration utama proyek di
+                    <code>.config/custy/config.toml</code>.
+                </>
+            ),
+        },
+        {
+            title: "Membuat Templates",
+            icon: <Icon name="file" />,
+            children: (
+                <>
+                    Membuat template default untuk commit, tag, dan changelog
+                    yang dapat disesuaikan dengan workflow tim Anda.
+                </>
+            ),
+        },
+        {
+            title: "Menyiapkan Proyek",
+            icon: <Icon name="directory" />,
+            children: (
+                <>
+                    Membuat struktur direktori yang diperlukan Custy.
+                </>
+            ),
+        },
+        {
+            title: "Examples Opsional",
+            icon: <Icon name="project" />,
+            children: (
+                <>
+                    Membuat resource contoh untuk memperlihatkan template yang
+                    didukung.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Kapan Command Ini Digunakan?"
+>
+
+Anda biasanya perlu menjalankan `custy init` ketika:
+
+- Menyiapkan Custy di sebuah proyek untuk pertama kali.
+- Menambahkan Custy ke repositori Git yang sudah ada.
+- Membuat configuration khusus proyek.
+- Membuat ulang template default setelah upgrade Custy.
+- Menyiapkan repositori untuk digunakan oleh seluruh tim.
+
+Pada sebagian besar proyek, `custy init` dijalankan sekali saat setup awal.
+Setelah itu, configuration yang dibuat cukup diperbarui seiring perkembangan
+proyek.
+
+</Section>
+
+---
+
+<Section
+    title="Yang Tidak Dilakukan Command Ini"
+>
+
+Berbeda dengan workflow commands, `custy init` **tidak**:
+
+- Membuat commit.
+- Membuat Git tag.
+- Melakukan push ke remote repository.
+- Membuat release.
+- Mengubah riwayat Git.
+- Menjalankan release pipeline.
+
+Tanggung jawabnya hanya menyiapkan proyek untuk workflow Custy berikutnya.
+
+</Section>
+
+---
+
+<Section
+    title="Workspace Proyek"
+>
+
+Setelah init selesai, proyek Anda memiliki workspace Custy khusus.
+
+<Terminal>
+
+{`
+your-project/
+└── .config/
+    └── custy/
+        ├── config.toml
+        └── templates/
+            ├── backups/
+            ├── changelog/
+            ├── examples/
+            ├── commit-message.txt
+            └── tag-message.txt
+`}
+
+</Terminal>
+
+Workspace ini memisahkan configuration khusus proyek dari default internal
+Custy, sehingga perilaku dapat disesuaikan tanpa mengubah aplikasi.
+
+</Section>
+
+---
+
+<Section
+    title="Mengapa Perlu Menjalankan Init?"
+>
+
+Custy sudah dilengkapi perilaku default yang masuk akal.
+
+Artinya, init **direkomendasikan**, tetapi tidak mutlak diwajibkan.
+
+Tanpa menjalankan `custy init`, Custy menggunakan default bawaannya.
+
+Menjalankan `custy init` memberi fleksibilitas tambahan karena proyek dapat
+menentukan sendiri:
+
+- configuration
+- templates
+- preferences
+- struktur direktori
+
+Pendekatan ini menyeimbangkan kemudahan dan kemampuan customization.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Customization"
+>
+
+Karena file yang dibuat merupakan bagian dari proyek, bukan aplikasi Custy,
+file tersebut dapat ditinjau, disimpan dalam version control, dan dibagikan
+kepada kontributor lain di repositori yang sama.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Setelah proyek selesai di-init, langkah berikutnya bergantung pada workflow
+Anda.
+
+Sebagai contoh:
+
+- Validate configuration proyek.
+- Mulai gunakan command Custy secara individual.
+- Jalankan workflow yang telah ditentukan.
+- Sesuaikan configuration dan template yang dibuat.
+
+<RelatedCommands
+    commands={[
+        {
+            title: "Validate",
+            href: "../validate/overview",
+            description:
+                "Verifikasi configuration Custy untuk proyek Anda.",
+        },
+        {
+            title: "Run",
+            href: "../run/overview",
+            description:
+                "Jalankan workflow yang telah ditentukan.",
+        },
+        {
+            title: "Workflow",
+            href: "../workflow/overview",
+            description:
+                "Pelajari orchestration workflow.",
+        },
+        {
+            title: "Version",
+            href: "../version/overview",
+            description:
+                "Kelola versi proyek.",
+        },
+    ]}
+/>
+
+</Section>

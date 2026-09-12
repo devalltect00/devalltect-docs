@@ -1,0 +1,384 @@
+---
+title: "Docker"
+description: "Build Custy secara lokal dengan Docker dan jalankan CLI terhadap workspace proyek yang di-mount secara terencana."
+sidebar_position: 3
+sidebar_key: custy-getting-started
+
+tags:
+  - docker
+  - container
+  - instalasi
+
+keywords:
+  - custy docker
+  - custy docker compose
+  - custy dalam container
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="docker build --target production -t custy-prod:latest ."
+    title="Jalankan Custy dengan Docker"
+    description="Build Custy secara lokal dan jalankan CLI mandirinya terhadap workspace proyek yang di-mount secara terencana."
+    category="Memulai"
+    status="Build dari Source"
+    syntax="docker [build|run|compose] [OPTIONS]"
+    tags={[
+        "image lokal",
+        "Docker Compose",
+        "mount workspace",
+    ]}
+    links={[
+        {label: "Persyaratan", href: "#requirements"},
+        {label: "Build Image", href: "#build-the-production-image"},
+        {label: "Jalankan pada Proyek", href: "#run-custy-on-a-project"},
+        {label: "Helper Make", href: "#optional-makefile-helpers"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Base Image", value: "Python 3.14 slim", icon: "package"},
+        {label: "Tool yang Disertakan", value: "pip, Git, dan Make", icon: "requirement"},
+        {label: "Workspace Container", value: "/workspace", icon: "directory"},
+        {label: "Sumber yang Disarankan", value: "Build image lokal", icon: "docker"},
+    ]}
+/>
+
+## Ringkasan
+
+Dockerfile multi-stage Custy menyediakan target image `development` dan
+`production`. Keduanya menyertakan Python 3.14, pip, Git, dan Make. Target
+production menginstal package runtime, sedangkan target development menginstal
+Custy dalam mode editable beserta dependensi development.
+
+Cara ini menghilangkan kebutuhan untuk menginstal Python atau Git di host.
+Docker tetap harus menerima direktori proyek, metadata repositori, identitas,
+dan kredensial yang diperlukan oleh operasi Custy yang dipilih.
+
+<InfoBox
+    variant="info"
+    title="Gunakan image Custy yang di-build secara lokal"
+>
+
+Cara yang didukung oleh dokumentasi saat ini adalah melakukan build dari
+Dockerfile milik Custy. Jangan menggantinya dengan nama image GHCR kecuali
+rilis Custy yang dipilih secara eksplisit memublikasikan dan mendokumentasikan
+image tersebut.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Persyaratan"
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Docker Engine",
+            level: "required",
+            children: "Instal dan jalankan lingkungan Docker yang dapat membangun serta menjalankan container Linux.",
+        },
+        {
+            title: "Source Checkout Custy",
+            level: "required",
+            children: "Build image dari repositori yang berisi Dockerfile dan metadata package Custy.",
+        },
+        {
+            title: "Workspace Proyek",
+            level: "required",
+            children: "Mount root proyek yang tepat, termasuk direktori .git jika operasi Git diperlukan, ke /workspace.",
+        },
+        {
+            title: "Plugin Docker Compose",
+            level: "optional",
+            children: "Instal Compose hanya ketika menggunakan service development atau production dari repositori.",
+        },
+        {
+            title: "Make",
+            level: "optional",
+            children: "Gunakan Make sebagai wrapper praktis untuk perintah Docker dan Compose dari repositori.",
+        },
+        {
+            title: "Backup Proyek",
+            level: "recommended",
+            children: "Commit atau backup pekerjaan penting sebelum memberi perintah yang dapat mengubah data akses ke proyek nyata.",
+        },
+    ]}
+/>
+
+<InfoBox
+    variant="tip"
+    title="Python dan Git tidak wajib di host"
+>
+
+Image sudah berisi Python 3.14, pip, Git, dan Make. Git di host tetap berguna
+untuk memeriksa proyek sebelum dan sesudah eksekusi, tetapi proses Custy di
+dalam container menggunakan executable Git dari image.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Isi Image"
+>
+
+<FeatureGrid
+    title="Target Build Docker"
+    items={[
+        {
+            title: "Base Bersama",
+            icon: <Icon name="package" />,
+            children: "Python 3.14 slim, pip, Git, Make, direktori kerja /workspace, dan source tree Custy.",
+        },
+        {
+            title: "Production",
+            icon: <Icon name="release" />,
+            children: "Instalasi package runtime normal dengan custy sebagai entrypoint container.",
+        },
+        {
+            title: "Development",
+            icon: <Icon name="command" />,
+            children: "Instalasi editable dengan grup dependensi development opsional, tetapi tanpa editor grafis bawaan.",
+        },
+        {
+            title: "Mount Proyek",
+            icon: <Icon name="directory" />,
+            children: "Proyek host yang di-mount ke /workspace menjadi working tree nyata yang dibaca dan mungkin diubah oleh Custy.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Build Image Production"
+>
+
+Dari root source Custy, build target production dan verifikasi entrypoint
+CLI-nya.
+
+<Terminal title="Build dan verifikasi" language="bash">
+
+{`docker build --target production -t custy-prod:latest .
+docker run --rm custy-prod:latest --version
+docker run --rm custy-prod:latest --help`}
+
+</Terminal>
+
+Gunakan `--target development -t custy-dev:latest` ketika menguji atau
+mengembangkan Custy itu sendiri.
+
+</Section>
+
+---
+
+<Section
+    title="Jalankan Custy pada Proyek"
+>
+
+Jalankan perintah berikut dari root proyek yang ingin dikelola Custy. Karena
+image menggunakan `custy` sebagai entrypoint, argumen setelah nama image
+merupakan argumen Custy.
+
+Menjalankan image tanpa command juga valid: Custy menampilkan root help dan
+berhenti dengan status berhasil.
+
+<Terminal title="Windows PowerShell" language="powershell">
+
+{`docker run --rm -it -v "\${PWD}:/workspace" custy-prod:latest --help
+docker run --rm -it -v "\${PWD}:/workspace" custy-prod:latest init
+docker run --rm -it -v "\${PWD}:/workspace" custy-prod:latest validate`}
+
+</Terminal>
+
+<Terminal title="Linux atau macOS" language="bash">
+
+{`docker run --rm -it -v "$(pwd):/workspace" custy-prod:latest --help
+docker run --rm -it -v "$(pwd):/workspace" custy-prod:latest init
+docker run --rm -it -v "$(pwd):/workspace" custy-prod:latest validate`}
+
+</Terminal>
+
+<InfoBox
+    variant="info"
+    title="Mounted project tidak memerlukan directory app"
+>
+
+Custy mendeteksi layout Python, Node.js, mixed, dan generic saat command
+dijalankan. Repository Docusaurus, React, PHP, documentation-only, atau
+generic lainnya dapat menggunakan project root ketika directory konvensional
+`src/` atau `app/` tidak tersedia. Jalankan `custy init` untuk membuat
+project-owned Custy configuration; jangan menambahkan directory `app/` kosong
+sebagai workaround.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="File yang di-mount adalah file proyek nyata"
+>
+
+Isolasi container tidak melindungi repositori yang di-mount dari perubahan.
+Custy dapat mengedit file yang di-mount, melakukan stage, dan membuat riwayat
+Git. Gunakan mode dry run global untuk operasi berdampak yang mendukungnya dan
+tinjau volume mount sebelum eksekusi normal.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="Profil yang memerlukan editor membutuhkan image khusus"
+>
+
+Image standar tidak menginstal launcher command line VS Code atau Notepad
+Windows, sedangkan profil Commit, Tag, Dev, Release, dan Full menyertakan
+langkah editor interaktif. Untuk saat ini, gunakan profil tersebut secara
+native, atau perluas dan uji image secara sengaja dengan editor yang didukung
+sebelum eksekusi container normal. Mode dry run tetap dapat mempratinjau
+langkah editor tanpa membukanya.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Identitas Git dan Akses Remote"
+>
+
+Mount proyek membuat direktori `.git` lokal tersedia, tetapi tidak otomatis
+menyalin konfigurasi Git global pengguna host, SSH key, atau sesi credential
+manager ke dalam container.
+
+- Konfigurasikan `user.name` dan `user.email` di repositori atau sediakan
+  konfigurasi Git yang sudah ditinjau secara sengaja sebelum alur commit atau
+  tag.
+- Sediakan SSH key, token, atau mekanisme kredensial Git lain yang didukung
+  hanya ketika push diperlukan.
+- Tinjau setiap mount kredensial dan konfigurasi dengan cermat; jangan pernah
+  memasukkan secret ke dalam image.
+- Perintah lokal seperti inisialisasi tidak memerlukan kredensial remote.
+
+<InfoBox
+    variant="danger"
+    title="Dry run tidak mengautentikasi push berikutnya"
+>
+
+Pratinjau yang berhasil tidak dapat menjamin bahwa eksekusi normal memiliki
+kredensial remote yang valid atau bahwa tujuan tetap sama. Verifikasi
+autentikasi dan URL remote secara terpisah sebelum publikasi.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Gunakan Docker Compose"
+>
+
+File Compose terutama merupakan helper development untuk source checkout Custy
+itu sendiri. Service dasarnya me-mount checkout saat ini ke `/workspace`.
+Gunakan perintah `docker run -v` secara langsung ketika menjalankan Custy pada
+root proyek yang berbeda.
+
+<Terminal title="Service production" language="bash">
+
+{`docker compose -f docker-compose.yml -f docker-compose.prod.yml build app
+docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm app --help
+docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm app init`}
+
+</Terminal>
+
+Gunakan stack development untuk pengujian Custy dan tool kontributor.
+
+<Terminal title="Service development" language="bash">
+
+{`docker compose -f docker-compose.yml -f docker-compose.dev.yml build app
+docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm app --help
+docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm test`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Helper Makefile Opsional"
+>
+
+Dari source checkout Custy, GNU Make dapat membungkus perintah Docker dan
+Compose lokal.
+
+<Terminal title="Helper image lokal pilihan" language="bash">
+
+{`# Build target Dockerfile secara langsung
+make d-build-prod
+make d-init
+
+# Gunakan service Docker Compose
+make c-build-prod`}
+
+</Terminal>
+
+Makefile juga menentukan wrapper untuk profil pipeline. Keberadaan wrapper
+tersebut tidak menghilangkan keterbatasan editor pada image standar atau
+menjamin bahwa nama helper lama cocok dengan CLI publik saat ini. Bandingkan
+target dengan referensi perintah terbaru sebelum menggunakannya. Utamakan
+bentuk `docker run` atau `docker compose run` yang didokumentasikan secara
+langsung jika perilakunya belum pasti. Secara khusus, gunakan pemanggilan
+Compose eksplisit yang didokumentasikan di atas sebagai pengganti wrapper
+`c-init` saat ini, karena kelanjutan perintahnya masih perlu diperbaiki di
+repositori Custy.
+
+<InfoBox
+    variant="warning"
+    title="Target Make untuk remote image belum direkomendasikan"
+>
+
+Target yang diawali `r-custy-` mengharapkan image registry yang sudah
+dipublikasikan. Gunakan helper lokal `d-` atau `c-` hingga suatu rilis Custy
+secara eksplisit mendokumentasikan image remote dan tag yang valid.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Lanjutkan"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Instalasi Python", href: "./installation", description: "Instal Custy secara native dari source, artefak rilis, atau Git."},
+        {title: "Mulai Cepat", href: "./quick-start", description: "Inisialisasi dan validasi proyek yang di-mount."},
+        {title: "custy init", href: "../commands/init/overview", description: "Pahami file yang dibuat dan perilaku overwrite."},
+        {title: "custy run", href: "../commands/run/overview", description: "Tinjau profil publik sebelum menjalankannya dalam container."},
+    ]}
+/>
+
+</Section>

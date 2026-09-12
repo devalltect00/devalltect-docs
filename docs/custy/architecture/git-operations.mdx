@@ -1,0 +1,189 @@
+---
+title: "Git Operations"
+description: "Trace Custy's Git factory, executor protocol, high-level service, result models, dry-run boundary, tag sorting, and consumers."
+sidebar_position: 5
+sidebar_key: custy-architecture-git-operations
+tags: [custy, Git, architecture]
+keywords: [Custy GitService, GitCommandExecutor, Git architecture]
+---
+
+import {
+    ArchitectureCard,
+    CommandHero,
+    CommandMetadata,
+    DependencyCard,
+    Grid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    WorkflowDiagram,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/git_ops/"
+    title="Git Operations Architecture"
+    description="Separate repository policy from low-level Git command execution and version-tag interpretation."
+    category="Architecture"
+    status="Core Service Boundary"
+    syntax="consumer -> GitService -> IGitCommandExecutor -> git"
+    tags={["GitService", "protocol", "executor", "dry-run"]}
+    links={[
+        {label: "Core Layer", href: "./core-layer"},
+        {label: "Workflow Engine", href: "./workflow-engine"},
+        {label: "Strategy Pattern", href: "./strategy-pattern"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "High-Level API", value: "GitService", icon: "git"},
+        {label: "Executor Contract", value: "IGitCommandExecutor", icon: "dependency"},
+        {label: "Concrete Executor", value: "GitCommandExecutor", icon: "terminal"},
+        {label: "Construction", value: "create_git_service", icon: "configuration"},
+    ]}
+/>
+
+## Overview
+
+Custy keeps subprocess syntax in `GitCommandExecutor` and repository decisions
+in `GitService`. Callers such as the workflow engine, changelog providers,
+branch cleanup, branch workflow, and version strategies normally depend on the
+service instead of assembling `git` command arguments themselves.
+
+---
+
+<Section title="Git Stack">
+
+<Grid columns={2}>
+
+<ArchitectureCard title="Factory" subtitle="git/factory.py" icon={<Icon name="configuration" />}>
+
+Creates `GitCommandExecutor`, obtains the shared `ConfigLoader`, and returns a
+fully wired `GitService` with optional version strategy context.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Executor Protocol" subtitle="git/protocol.py" icon={<Icon name="dependency" />}>
+
+Defines the command-level operations required by the service, including
+repository, branch, remote, log, tag, commit, stage, and push calls.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Command Executor" subtitle="git/executor.py" icon={<Icon name="terminal" />}>
+
+Builds explicit `git` argument lists, delegates subprocess behavior to
+`Runner`, and normalizes results into `CommandResult`.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Git Service" subtitle="git/service.py" icon={<Icon name="git" />}>
+
+Applies high-level policy, parses results, resolves remotes, selects tag
+sorters, logs operations, and raises meaningful operation failures.
+
+</ArchitectureCard>
+
+</Grid>
+
+</Section>
+
+---
+
+<WorkflowDiagram
+    title="Operation Flow"
+    timeline={[
+        {title: "Request repository behavior", description: "A workflow, changelog provider, cleanup service, or strategy calls GitService.", status: "completed"},
+        {title: "Apply domain policy", description: "GitService chooses remotes, validates state, selects sorting, or prepares command parameters.", status: "completed"},
+        {title: "Invoke protocol operation", description: "The service calls the injected IGitCommandExecutor interface.", status: "completed"},
+        {title: "Execute or simulate", description: "GitCommandExecutor delegates to Runner, which runs subprocess or reports a dry-run simulation.", status: "current"},
+        {title: "Normalize result", description: "CommandResult carries return code, output, error text, and dry-run skipped state.", status: "pending"},
+        {title: "Return or raise", description: "GitService converts low-level output into values or high-level failures for its caller.", status: "pending"},
+    ]}
+/>
+
+---
+
+<Section title="Service Capabilities">
+
+<Grid columns={2}>
+
+<DependencyCard
+    title="Repository and History"
+    dependencies={[
+        {source: "GitService", target: "repository checks", description: "Detect repository and commit state."},
+        {source: "GitService", target: "branch operations", description: "Inspect, list, compare, and delete local or remote branches."},
+        {source: "GitService", target: "history queries", description: "Read hashes, messages, ranges, counts, dates, and structured commits."},
+        {source: "GitService", target: "tag ordering", description: "Select and cache a strategy-aware TagSorter."},
+    ]}
+/>
+
+<DependencyCard
+    title="Mutating Operations"
+    dependencies={[
+        {source: "GitService", target: "staging", description: "Stage all, tracked updates, or explicit files and inspect the index."},
+        {source: "GitService", target: "commit and tag", description: "Create local history from resolved messages and flags."},
+        {source: "GitService", target: "push", description: "Push HEAD or selected tags to one or more resolved remotes."},
+        {source: "GitService", target: "branch deletion", description: "Apply local and remote cleanup selected by the branch service."},
+    ]}
+/>
+
+</Grid>
+
+</Section>
+
+---
+
+<Section title="Dry-Run Boundary">
+
+`GitCommandExecutor` inherits `DryRunSupport`, which owns a `Runner`. In dry-run
+mode, operations explicitly marked as read-only still execute so callers can
+inspect real repository history, branches, tags, status, and configured
+remotes. Mutating operations are reported as simulated and return a successful
+`CommandResult` whose skipped state distinguishes them from executed discovery.
+
+Higher layers may still resolve configuration, read project files, validate
+inputs, render previews, or perform other non-mutating work. Custy's normal
+diagnostic logging can also write to its configured log file. Dry-run is a
+mutation boundary, not a transaction or rollback mechanism.
+
+</Section>
+
+---
+
+<InfoBox variant="info" title="Tag generation and tag sorting are separate">
+
+`tag_strategy` classes generate the next version string. `tag_sorter` classes
+order existing repository tags. `GitService` uses `TagSorterFactory` for
+SemVer, PEP 440, date, or Git-count ordering and may detect a sorting strategy
+when none is supplied or Commitizen generated the version.
+
+</InfoBox>
+
+---
+
+<Section title="Policy Above the Service">
+
+The workflow engine still owns release-specific decisions such as whether to
+push backup remotes, whether a branch is non-critical, when to prompt for a
+fallback remote, and whether to push the current tag. This keeps `GitService`
+reusable, but it means remote behavior is shared between workflow policy and
+service-level resolution rather than centralized in one object.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Workflow Engine", href: "./workflow-engine", description: "See how release policy consumes the Git service."},
+        {title: "Strategy Pattern", href: "./strategy-pattern", description: "Separate tag generation, sorting, and format conversion."},
+        {title: "Push Command", href: "../commands/push/overview", description: "Review the public remote synchronization behavior."},
+        {title: "Git Configuration", href: "../configuration/git/overview", description: "Configure default, primary, and backup remotes."},
+    ]}
+/>
+
+</Section>

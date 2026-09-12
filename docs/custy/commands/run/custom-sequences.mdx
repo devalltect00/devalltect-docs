@@ -1,0 +1,94 @@
+---
+title: "Custom Sequences"
+description: "Merge supported Custy public profiles into one normalized pipeline."
+sidebar_position: 6
+sidebar_key: custy-run-custom-sequences
+tags: [run, custom sequence, resolver]
+keywords: [custy run commit tag push]
+---
+
+import {
+    CommandExample,
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Custom Profile Sequences"
+    description="Merge supported public profiles into one deduplicated and globally ordered pipeline."
+    category="Pipeline"
+    status="Advanced"
+    syntax="custy run PROFILE PROFILE [OPTIONS]"
+    tags={[
+        "composition",
+        "deduplication",
+        "pipeline order",
+    ]}
+    links={[
+        {label: "Profiles", href: "./profiles"},
+        {label: "Syntax", href: "./syntax"},
+        {label: "Safety", href: "./safety"},
+    ]}
+/>
+
+## Overview
+
+You may provide more than one of the six public names. Custy's resolver expands
+every selected profile, removes duplicate step names, and sorts the result using
+the global pipeline order.
+
+---
+
+<Section
+    title="Composition Examples"
+>
+
+<CommandExample
+    examples={[
+        {title: "Commit and push", command: "custy run commit push", description: "Merge preparation, commit, and push stages into one ordered pipeline."},
+        {title: "Commit, tag, and push", command: "custy run commit tag push", description: "Build a release-like sequence from three public profiles."},
+        {title: "Preview tag and push", command: "custy --dry-run run tag push", description: "Inspect the normalized stages before creating or publishing references."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Normalization Behavior"
+>
+
+Input order does not force an unsafe execution order. For example,
+`commit tag push` becomes one coherent flow with shared validation and
+preparation stages executed once, followed by ordered commit, tag, and push
+stages.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Composition can be broader than expected"
+>
+
+Combining profiles takes the union of their stages. Review the equivalent
+built-in `release` profile before constructing `commit tag push`; the built-in
+profile is usually clearer for team automation.
+
+</InfoBox>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Only public names are accepted"
+>
+
+Profiles such as `validate` or `changelog` cannot be added to a public custom
+sequence until the Custy argument enum explicitly exposes them.
+
+</InfoBox>

@@ -1,0 +1,87 @@
+---
+title: "Options"
+description: "Options accepted by custy push and their current implementation status."
+sidebar_position: 4
+sidebar_key: custy-push-options
+tags: [push, options, remote]
+keywords: [all-remote, sync-backup, skip-tag]
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy push"
+    title="Command Options"
+    description="Review the intended remote, tag, and backup controls together with their current implementation status."
+    category="Git Operations"
+    status="Limited"
+    syntax="custy push [OPTIONS]"
+    tags={[
+        "options",
+        "remotes",
+        "adapter limitations",
+    ]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Remotes", href: "./remotes"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+## Overview
+
+Some options are accepted by the CLI but are not reliably propagated into the
+workflow engine. Treat dry-run output as the current destination truth.
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {name: "--all-remote", shorthand: "-ar", description: "Intended to push every configured main remote. Accepted by the CLI but not reliably propagated.", example: "--all-remote"},
+        {name: "--remote", shorthand: "-r", description: "Intended to select one main remote such as origin. Accepted by the CLI but not reliably propagated.", example: "--remote origin"},
+        {name: "--tag", description: "Push the selected local tag after HEAD. This value is propagated.", example: "--tag v1.2.3"},
+        {name: "--skip-tag", shorthand: "-st", description: "Intended to push HEAD without a tag. Accepted by the CLI but not reliably propagated.", example: "--skip-tag"},
+        {name: "--sync-backup", shorthand: "-sb", description: "Enable eligible backup-remote synchronization. This value is propagated.", example: "--sync-backup"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Global Execution Options"
+>
+
+<Terminal>
+
+{`custy --dry-run push
+custy --debug push
+custy --log-level debug push`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Verify actual destinations"
+>
+
+Because several selection flags are not currently wired into the workflow
+engine, use dry-run and read every resolved destination before allowing a normal
+push. This documentation will be updated when the Custy adapter is fixed.
+
+</InfoBox>

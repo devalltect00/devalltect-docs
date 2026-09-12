@@ -1,0 +1,66 @@
+---
+title: "Workflow"
+description: "Pahami cara Custy menjalankan Backup Cleanup."
+sidebar_position: 5
+sidebar_key: custy-cleanup-backup
+tags: [cleanup, backup, workflow]
+keywords: [custy cleanup backups workflow]
+---
+import {CommandHero, WorkflowTimeline, WorkflowStep, Section, InfoBox, Screenshot} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Workflow"
+    description="Pahami urutan operasi Backup Cleanup."
+    category="Maintenance"
+    status="Direkomendasikan"
+    syntax="custy cleanup backups"
+    tags={["workflow", "cleanup", "backup"]}
+    links={[
+        {label: "Options", href: "./options"},
+        {label: "Examples", href: "./examples"},
+        {label: "Output", href: "./output"},
+    ]}
+/>
+
+## Ringkasan
+Backup Cleanup menghapus file lama secara predictable sambil mempertahankan
+backup terbaru. Source files dan Git metadata tidak berubah.
+
+<WorkflowTimeline
+    title="Backup Cleanup Workflow"
+    description="Urutan eksekusi tingkat tinggi."
+    items={[
+        {title: "Resolve Configuration", description: "Tentukan target dan retention count.", status: "completed"},
+        {title: "Locate Backup Files", description: "Scan configured directories.", status: "completed"},
+        {title: "Apply Retention Policy", description: "Urutkan file dan tentukan yang dipertahankan.", status: "completed"},
+        {title: "Remove Obsolete Backups", description: "Hapus file yang melebihi retention count.", status: "completed"},
+        {title: "Display Summary", description: "Laporkan hasil.", status: "completed"},
+    ]}
+/>
+
+<Section title="Workflow Stages">
+<WorkflowStep title="1. Resolve Cleanup Settings">Gabungkan arguments, `config.toml`, dan defaults.</WorkflowStep>
+<WorkflowStep title="2. Scan Backup Directories">Cari commit backup, tag backup, atau keduanya.</WorkflowStep>
+<WorkflowStep title="3. Preserve the Newest Backups">Urutkan terbaru ke terlama dan pertahankan jumlah yang ditentukan.</WorkflowStep>
+<WorkflowStep title="4. Remove Old Backups">Hanya file yang melebihi retention count dihapus.</WorkflowStep>
+<WorkflowStep title="5. Finish">Laporkan summary tanpa mengubah branch, commit, atau tag.</WorkflowStep>
+</Section>
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+    alt="Proses Backup Cleanup"
+    title="Backup Cleanup Process"
+    caption="Contoh penghapusan backup lama sambil mempertahankan jumlah terbaru."
+/>
+
+<InfoBox variant="tip" title="Integrasi Workflow Otomatis">
+Beberapa pipeline menjalankan proses yang sama secara otomatis.
+</InfoBox>
+
+<Section title="Karakteristik Workflow">
+Deterministic, repeatable, configuration-driven, aman untuk source files, dan
+independen dari Git operations.
+</Section>
+
+<Section title="Langkah Berikutnya">Lanjutkan ke **Examples**.</Section>

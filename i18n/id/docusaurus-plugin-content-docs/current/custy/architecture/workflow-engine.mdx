@@ -1,0 +1,21 @@
+---
+title: "Workflow Engine"
+description: "Pahami WorkflowConfig, builder, service construction, phase method, runtime state, dan finalization Custy."
+sidebar_position: 7
+sidebar_key: custy-architecture-workflow-engine
+tags: [custy, workflow, architecture]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="app/core/workflow/" title="Workflow Engine" description="Pelajari application facade yang mengoordinasikan phase release dan shared service." category="Arsitektur" status="Application Facade" syntax="WorkflowConfig -> Builder -> WorkflowEngine -> phase methods" links={[{label: "Pipeline Engine", href: "./pipeline-engine"}, {label: "Git Operations", href: "./git-operations"}, {label: "Release Pipeline", href: "../pipelines/release-pipeline"}]} />
+
+## Peran utama
+
+`WorkflowEngineBuilder` mengubah `WorkflowConfig` menjadi engine dengan Git, changelog, versioning, backup, dan service lain. Registered pipeline step memanggil phase method pada engine melalui shared `GitContext`; engine menyimpan state yang dibutuhkan phase berikutnya.
+
+<InfoBox variant="warning" title="Eksekusi tidak transaksional">Jika phase akhir gagal, commit, tag, atau perubahan file dari phase sebelumnya tidak otomatis dibatalkan. Diagnosis harus dimulai dari state repository aktual.</InfoBox>
+
+<Section title="Batas desain">Engine sebaiknya mengoordinasikan service, bukan menyerap seluruh implementasi. Tambahkan focused service untuk logic baru dan pertahankan phase method singkat serta dapat diuji.</Section>
+
+<RelatedCommands commands={[{title: "Pipeline Engine", href: "./pipeline-engine", description: "Lihat cara step memanggil phase method."}, {title: "Git Operations", href: "./git-operations", description: "Pelajari repository service utama."}, {title: "Changelog System", href: "./changelog-system", description: "Ikuti conditional changelog generation."}, {title: "Release Pipeline", href: "../pipelines/release-pipeline", description: "Periksa urutan release profile aktif."}]} />

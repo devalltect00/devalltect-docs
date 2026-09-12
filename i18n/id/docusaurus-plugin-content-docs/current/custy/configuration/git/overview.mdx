@@ -1,0 +1,25 @@
+---
+title: "Ringkasan Git"
+description: "Navigasikan service-level remote groups dan push strategy melalui tool.custy.git."
+sidebar_position: 1
+sidebar_key: custy-configuration-git-overview
+tags: [custy, configuration, git]
+keywords: [tool.custy.git, git remotes, push_to]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git]" title="Ringkasan Git" description="Tentukan authoritative dan backup repositories secara terpisah dari command-level push options." category="Configuration" status="Active + Reserved Key" syntax="[tool.custy.git]" tags={["remotes", "push strategy", "backup repositories"]} links={[{label: "Remotes", href: "./remotes"}, {label: "Push Strategy", href: "./push-strategy"}, {label: "CLI Push", href: "../cli/push"}]} />
+
+<CommandMetadata items={[{label: "Generated Properties", value: "4", icon: "table"}, {label: "Optional Property", value: "backup_remotes", icon: "note"}, {label: "Default Remote", value: "origin", icon: "git"}, {label: "Network Side Effect", value: "Yes", icon: "warning"}]} />
+
+<FeatureGrid items={[{title: "Remote Groups", icon: <Icon name="network" />, children: <>Konfigurasikan default, primary, dan optional backup destinations melalui <a href="./remotes">Git Remotes</a>.</>}, {title: "Push Strategy", icon: <Icon name="workflow" />, children: <>Pilih main, backup, atau all service-level groups dan tinjau reserved auto-push behavior melalui <a href="./push-strategy">Push Strategy</a>.</>}, {title: "CLI Push Defaults", icon: <Icon name="terminal" />, children: <>Konfigurasikan all-remote, skip-tag, dan backup-sync arguments melalui <a href="../cli/push">tool.custy.cli.push</a>.</>}]} />
+
+<InfoBox variant="warning" title="Jangan Simpan Credentials di Sini">
+
+Configuration berisi remote names, bukan secrets. Gunakan Git credential dan
+authentication facilities yang sesuai untuk setiap hosting service.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Tentukan primary dan backup groups."}, {title: "Push Strategy", href: "./push-strategy", description: "Pilih service-level group."}, {title: "CLI Push", href: "../cli/push", description: "Konfigurasikan direct command defaults."}]} /></Section>

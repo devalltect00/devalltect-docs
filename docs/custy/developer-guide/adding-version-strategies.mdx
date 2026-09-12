@@ -1,0 +1,167 @@
+---
+title: "Adding Version Strategies"
+description: "Add and integrate a Custy version-tag strategy across the protocol, CLI enum, workflow dispatch, tests, and documentation."
+sidebar_position: 6
+sidebar_key: custy-developer-guide-adding-version-strategies
+tags: [custy, versioning, strategy pattern]
+keywords: [add Custy version strategy, TagStrategy, version tag generation]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/git_ops/tag_strategy/"
+    title="Adding Version Strategies"
+    description="Extend tag generation while preserving explicit-tag priority, typed CLI choices, and workflow integration."
+    category="Developer Guide"
+    status="Internal Extension"
+    syntax="strategy.get_next_tag() -> str"
+    tags={["TagStrategy", "StrategyChoices", "WorkflowEngine"]}
+    links={[
+        {label: "Built-in Strategies", href: "../commands/version/versioning-strategies"},
+        {label: "Version Configuration", href: "../configuration/cli/versioning"},
+        {label: "Testing", href: "./testing"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Protocol", value: "TagStrategy", icon: "dependency"},
+        {label: "Required Method", value: "get_next_tag", icon: "command"},
+        {label: "Return Value", value: "Version-tag string", icon: "release"},
+        {label: "Current Strategies", value: "5", icon: "table"},
+    ]}
+/>
+
+## Overview
+
+Custy currently provides SemVer, PEP 440, Commitizen, date, and Git-count
+generation. Each strategy returns the next tag string, but active selection is
+implemented explicitly in `WorkflowEngine.prepare_version_tag()` rather than
+through a strategy factory.
+
+<InfoBox variant="tip" title="Explicit tags bypass generation">
+
+When the workflow receives a direct tag value, it uses that value before
+examining the selected strategy. A new strategy must preserve this priority.
+
+</InfoBox>
+
+---
+
+<Section title="Current Strategy Responsibilities">
+
+<PropertyTable
+    items={[
+        {property: "SemverStrategy", type: "Git-aware", description: "Reads the latest tag and applies semantic bump, prerelease, and build metadata behavior."},
+        {property: "PEP440Strategy", type: "Git-aware", description: "Reads the latest tag and applies PEP 440 bump, pre, post, dev, local, and epoch behavior."},
+        {property: "CommitizenStrategy", type: "External tool", description: "Uses cz bump --dry-run to infer a bump and delegates final construction to SemverStrategy."},
+        {property: "DateStrategy", type: "Clock-based", description: "Returns the current date in vYYYY.MM.DD form by default."},
+        {property: "GitCountStrategy", type: "Repository count", description: "Returns v followed by the repository commit count."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Implement the Protocol">
+
+<Terminal title="Strategy shape" language="python">
+
+{`from app.core.git_ops.tag_strategy.base import TagStrategy
+
+
+class BuildNumberStrategy:
+    """Generate a tag from a validated build number."""
+
+    def __init__(self, build_number: int) -> None:
+        """Store the positive build number used for generation."""
+        if build_number < 1:
+            raise ValueError("build_number must be positive")
+        self.build_number = build_number
+
+    def get_next_tag(self) -> str:
+        """Return the next build-number tag."""
+        return f"vbuild.{self.build_number}"`}
+
+</Terminal>
+
+`TagStrategy` is a structural `Protocol`, so a concrete class does not need to
+inherit it explicitly. The class must still satisfy the documented
+`get_next_tag() -> str` behavior and report invalid inputs or unavailable
+dependencies clearly.
+
+</Section>
+
+---
+
+<Section title="Integration Checklist">
+
+<CommandChecklist
+    items={[
+        {title: "Add the strategy module", description: "Create a documented class under app/core/git_ops/tag_strategy and export it when package-level imports require that."},
+        {title: "Extend StrategyChoices", description: "Add the public string value in app/cli/constants/enums.py so Typer can validate version and Run inputs."},
+        {title: "Update CLI help", description: "Describe the value and its required companion options in both version and Run option declarations where supported."},
+        {title: "Carry required inputs", description: "Extend option declarations, argument models, configuration resolution, WorkflowConfig, and WorkflowEngineBuilder only for data the strategy truly needs."},
+        {title: "Add workflow dispatch", description: "Instantiate the strategy from prepare_version_tag() after explicit-tag handling and before the invalid-configuration branch."},
+        {title: "Update detection if applicable", description: "Change project auto-detection only when there is a reliable, tested signal for selecting the strategy."},
+        {title: "Document configuration", description: "Update allowed values, requirements, examples, generated configuration comments, and public strategy guidance."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Testing Checklist">
+
+- Construct the strategy with default and explicit supported values.
+- Verify the exact returned tag format at important boundaries.
+- Mock the clock, Git service, environment, or subprocess dependency rather
+  than relying on a contributor machine.
+- Verify malformed prior tags, invalid input, missing tools, and command
+  failures produce intentional exceptions.
+- Verify `WorkflowEngine.prepare_version_tag()` selects the new strategy and
+  still gives an explicit tag higher priority.
+- Verify Typer accepts the new `StrategyChoices` value in every supported
+  command path.
+- Add integration coverage when the generated tag affects file updates,
+  changelog content, commit messages, or tag creation.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Generation and synchronization are separate">
+
+A strategy decides the next tag. Version-file synchronization and ecosystem
+conversion are separate responsibilities. Do not add project-file writes to a
+strategy merely because its result is later applied to Python or another
+ecosystem.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Versioning Strategies", href: "../commands/version/versioning-strategies", description: "Review the current user-facing strategy behavior."},
+        {title: "Version Configuration", href: "../configuration/cli/versioning", description: "Review strategy, bump, tag, prerelease, and metadata settings."},
+        {title: "Version Workflow", href: "../commands/version/workflow", description: "See how generation feeds synchronization."},
+        {title: "Testing", href: "./testing", description: "Design unit and integration coverage for the extension."},
+    ]}
+/>
+
+</Section>

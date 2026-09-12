@@ -1,0 +1,39 @@
+.timeline {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-xl);
+
+}
+
+.steps {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: .5rem;
+
+}
+
+.row {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.connector {
+
+    width: 2px;
+
+    height: 2rem;
+
+    margin: 0 auto;
+
+    background: var(--ifm-color-emphasis-300);
+
+}

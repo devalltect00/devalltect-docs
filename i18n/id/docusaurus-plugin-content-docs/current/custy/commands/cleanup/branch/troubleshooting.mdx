@@ -1,0 +1,43 @@
+---
+title: "Pemecahan Masalah Branch Cleanup"
+description: "Atasi masalah umum Branch Cleanup."
+sidebar_position: 9
+sidebar_key: custy-cleanup-branch-troubleshooting
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy cleanup branches" title="Pemecahan Masalah Branch Cleanup" description="Diagnosa filter, konfigurasi, dan hasil cleanup." category="Maintenance" status="Panduan Dukungan" syntax="custy cleanup branches" links={[
+    {label: "Pusat Pemecahan Masalah", href: "../../../troubleshooting/overview"}, {label: "Output", href: "./output"}, {label: "FAQ", href: "./faq"}, {label: "Ringkasan", href: "./overview"},
+]} />
+
+## Ringkasan
+
+Sebagian besar hasil yang tidak terduga berasal dari filter yang terlalu sempit atau konfigurasi keselamatan.
+
+## Tidak Ada Branch yang Dihapus
+
+<Section compact>Periksa apakah ada branch yang cocok dengan prefix, merge status, usia, dan tanggal. Hasil tanpa penghapusan dapat merupakan hasil sukses.</Section>
+
+## Branch Cleanup Dilewati
+
+<Section compact>Custy melewati cleanup bila `include_prefixes` kosong. Tambahkan prefix yang spesifik melalui konfigurasi atau `--include-prefix`.</Section>
+
+<InfoBox variant="tip" title="Safe Default Behavior">Perilaku ini mencegah penghapusan branch secara terlalu luas ketika target belum ditentukan.</InfoBox>
+
+## Branch yang Diperkirakan Tidak Dihapus
+
+<Section compact>Branch mungkin gagal pada salah satu filter. Periksa prefix, merge status, usia relatif, tanggal batas, dan daftar protected branches.</Section>
+
+## Protected Branch Tidak Dihapus
+
+<Section compact>Ini merupakan perilaku yang diharapkan. Protected branch sengaja dikecualikan dari kandidat.</Section>
+
+## Dry Run Tidak Menghapus Apa Pun
+
+<Section compact>`--dry-run` hanya menampilkan pratinjau. Jalankan tanpa option tersebut setelah kandidat terverifikasi.</Section>
+
+<InfoBox variant="warning" title="Tinjau Konfigurasi Sebelum Cleanup">Jangan memperluas filter hanya untuk memaksa penghapusan. Pastikan setiap kandidat memang tidak lagi diperlukan.</InfoBox>
+
+## Langkah Diagnostik Berikutnya
+
+<Section compact>Jalankan dry run dengan `--debug`, periksa configuration resolution, lalu bandingkan setiap kandidat dengan seluruh filter aktif.</Section>

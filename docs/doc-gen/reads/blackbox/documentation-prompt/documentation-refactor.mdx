@@ -1,0 +1,46 @@
+---
+title: "Documentation Refactor"
+description: "On this project. on docs directory. Inside docs direcory. Please create and update the _category_.json. They need to have like this for example"
+sidebar_key: doc-gen-reads-blackbox-documentation-prompt
+---
+/improve
+
+On this project. on docs directory. Inside docs direcory. Please create and update the _category_.json. They need to have like this for example
+
+```
+{
+  "label": "Reflow",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "reflow/index"
+  },
+  "key": "reflow"
+}
+
+```
+
+or like this
+
+```json
+{
+  "label": "Architecture",
+  "key": "reflow-architecture"
+}
+```
+
+
+
+So please update the current  _category_.json on every file and adjust to the folder name. Also if the folder don't have  _category_.json, create it like that example.
+
+label: must be camel case based on folder name or title name
+Position:  value must be unique to avoid conflict with other folder with same name
+
+The key should be like this format
+``` "key": "reflow-architecture"```
+
+So currently there are core parent folder i.e. doc-gen, path-header-scanner, reflow.
+
+For example the folder on docs/path-header-scanner/developer-guide/blackbox/. the key should be like ```"key": "path_header_scanner-developer_guide-blackbox"```. Notice if the folder name using "_" instead of "-". just use the format
+
+So please update the current _category_.json and create a _category_.json if missing

@@ -1,0 +1,178 @@
+---
+title: "Requirements"
+description: "Prerequisites for using the custy backup command."
+sidebar_position: 2
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    RequirementGrid,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Requirements"
+    description="Understand the prerequisites for creating Custy template backups."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup commit"
+    tags={[
+        "requirements",
+        "backup",
+        "templates",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Backup Files",
+            href: "./backup-files",
+        },
+    ]}
+/>
+
+## Overview
+
+The **backup** command operates on files generated or managed by Custy.
+
+Before creating backups, ensure that the required template files already exist
+within your project.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Initialize First"
+>
+
+If you have not yet initialized your project, run
+`custy init`
+before attempting to create backups.
+
+Initialization generates the configuration and template files that the backup
+command operates on.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Prerequisites"
+>
+
+<RequirementGrid
+    title="Required Environment"
+    items={[
+        {
+            title: "Initialized Project",
+            icon: <Icon name="directory" />,
+            children: (
+                <>
+                    The project should already contain Custy's generated
+                    configuration and template files.
+                </>
+            ),
+        },
+        {
+            title: "Template Files",
+            icon: <Icon name="file" />,
+            children: (
+                <>
+                    Commit message and tag message templates should exist
+                    before they can be backed up.
+                </>
+            ),
+        },
+        {
+            title: "Writable Backup Directory",
+            icon: <Icon name="copy" />,
+            children: (
+                <>
+                    Custy must be able to create backup files inside the
+                    configured backup directory.
+                </>
+            ),
+        },
+        {
+            title: "Project Configuration",
+            icon: <Icon name="configuration" />,
+            children: (
+                <>
+                    Backup locations and related settings are resolved from
+                    your project's configuration whenever available.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Preparation"
+>
+
+Before creating backups, it is recommended to:
+
+- Run `custy init` if the project has not been initialized.
+- Review your project's `config.toml` configuration.
+- Verify that the template files you want to back up already exist.
+- Ensure the configured backup directory is writable.
+
+These steps help ensure backups are created successfully.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Safe Operation"
+>
+
+Creating backups does not modify your Git history.
+
+The command simply creates timestamped copies of the selected template files
+inside the configured backup directories.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What Is Not Required?"
+>
+
+The backup command does **not** require:
+
+- staged Git changes,
+- existing Git tags,
+- remote repositories,
+- published releases.
+
+It only requires the files that will be backed up.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Syntax** page to learn how to create commit, tag, and
+combined backups using the available backup subcommands.
+
+</Section>

@@ -1,0 +1,51 @@
+---
+title: "Paths"
+description: "Configure the version source used by Custy commands."
+sidebar_position: 2
+sidebar_key: custy-configuration-cli-paths
+tags: [custy, configuration, paths]
+keywords: [tool.custy.cli.paths, version_file]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.paths]" title="CLI Paths" description="Detect supported version metadata or select an explicit version target." category="CLI Configuration" status="Active" syntax={'version_file = "auto"'} tags={["version metadata", "automatic detection", "project root"]} links={[{label: "Versioning", href: "./versioning"}, {label: "Project", href: "../project"}, {label: "Validate", href: "../../commands/validate/overview"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "1", icon: "table"}, {label: "Generated Default", value: "auto", icon: "file"}, {label: "Status", value: "Active", icon: "success"}, {label: "CLI Override", value: "Supported", icon: "terminal"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "version_file", type: "Path string or auto", defaultValue: "auto", description: "Use auto to detect an existing Python __version__.py, a static project.version in pyproject.toml, or a string version in package.json. An explicit path must exist and be a file."}]} />
+
+<Terminal title="Automatic detection (recommended)" language="toml">
+
+{`[tool.custy.cli.paths]
+version_file = "auto"`}
+
+</Terminal>
+
+<Terminal title="src layout" language="toml">
+
+{`[tool.custy.cli.paths]
+version_file = "src/my_package/__version__.py"`}
+
+</Terminal>
+
+<InfoBox variant="info" title="Projects without version metadata are valid">
+
+If automatic detection finds no supported version target, Custy can still
+start, initialize configuration, and use Git-tag-only versioning. It does not
+invent a Python file in Node.js or generic projects. Configure an explicit
+target only when the project owns a different version file.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="This is not project_source">
+
+`project.project_source` identifies the main source directory. `version_file`
+identifies one metadata file inside the project. Either value can remain
+`auto`, and each explicit override is validated independently.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Versioning", href: "./versioning", description: "Choose how values in the version file are interpreted."}, {title: "Project", href: "../project", description: "Configure the main source directory."}, {title: "Version Configuration", href: "../../commands/version/configuration", description: "Review command-specific version resolution."}]} /></Section>

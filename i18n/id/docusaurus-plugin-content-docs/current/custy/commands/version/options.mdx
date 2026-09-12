@@ -1,0 +1,28 @@
+---
+title: "Options"
+description: "Command-line options untuk Version Update."
+sidebar_position: 4
+sidebar_key: custy-version
+---
+import {CommandHero, CommandOption, Section, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy version" title="Options" description="Sesuaikan pembentukan dan penerapan versi proyek." category="Versioning" status="Stable" syntax="custy version update" links={[
+    {label: "Syntax", href: "./syntax"}, {label: "Configuration", href: "./configuration"}, {label: "Versioning Strategies", href: "./versioning-strategies"},
+]} />
+
+## Ringkasan
+
+<CommandOption options={[
+    {name: "--strategy", required: false, defaultValue: "config.toml", description: "Pilih versioning strategy.", example: "--strategy semver"},
+    {name: "--bump", required: false, defaultValue: "auto", description: "Pilih bump level: auto, patch, minor, atau major.", example: "--bump minor"},
+    {name: "--tag", required: false, description: "Gunakan explicit version.", example: "--tag v2.4.0"},
+    {name: "--pre-release", required: false, description: "Buat pre-release seperti alpha, beta, atau rc.", example: "--pre-release beta"},
+    {name: "--post-release", required: false, defaultValue: "false", description: "Buat post-release jika didukung strategy."},
+    {name: "--dev-release", required: false, defaultValue: "false", description: "Buat development release jika didukung strategy."},
+    {name: "--meta", required: false, description: "Tambahkan build metadata atau local version information.", example: "--meta build.42"},
+    {name: "--epoch", required: false, description: "Tentukan komponen epoch PEP 440.", example: "--epoch 1"},
+]} />
+
+<Section title="Global Options">Contoh: `custy --dry-run version update`. Global option selalu ditempatkan sebelum `version update`.</Section>
+
+<InfoBox variant="tip" title="Configuration First">Simpan default proyek dalam `config.toml`; gunakan CLI options untuk override satu kali.</InfoBox>

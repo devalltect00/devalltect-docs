@@ -1,0 +1,192 @@
+---
+title: "Requirements"
+description: "Learn about the recommended prerequisites before initializing a project with Custy."
+sidebar_position: 2
+sidebar_key: custy-commands-init
+
+tags:
+  - initialization
+  - requirements
+  - setup
+
+keywords:
+  - custy init requirements
+  - prerequisites
+  - project setup
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Requirements"
+    description="Review the recommended prerequisites before preparing a project for use with Custy."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "requirements",
+        "setup",
+        "project initialization",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+Before running `custy init`, make sure the project and your development
+environment are ready.
+
+Although Custy provides sensible defaults and is designed to work with minimal
+setup, meeting the following recommendations will provide the best experience
+and make future workflows easier to manage.
+
+<InfoBox
+    variant="tip"
+    title="Recommended"
+>
+
+Most projects only need to run `custy init` once. After initialization, the
+generated configuration and template files can be customized to match your
+team's workflow.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Recommended Requirements"
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Existing Project",
+            level: "recommended",
+            children:
+                "Run the command from the root directory of an existing software project.",
+        },
+        {
+            title: "Write Permission",
+            level: "required",
+            children:
+                "Custy creates configuration files and directories inside your project.",
+        },
+        {
+            title: "Custy Installed",
+            level: "required",
+            children:
+                "Use a reviewed native installation or a Custy image built locally from the current Dockerfile.",
+        },
+        {
+            title: "Git Repository",
+            level: "recommended",
+            children:
+                "Initialization can write resources without Git, but Custy's main validation, changelog, version, commit, tag, push, and pipeline workflows require it.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Supported Installation Methods"
+>
+
+Choose the reviewed installation source and environment that best fit your
+project:
+
+- a normal Python installation from a source checkout;
+- a wheel or source distribution attached to a selected release;
+- a pinned Git tag or commit;
+- an editable source installation for Custy contributors; or
+- a Docker image built locally from Custy's Dockerfile.
+
+See [Installation](../../getting-started/installation) for native methods and
+[Docker](../../getting-started/docker) for the container requirements.
+
+The command behaves the same regardless of how Custy is installed.
+
+</Section>
+
+---
+
+<Section
+    title="Example"
+>
+
+The following example initializes the current project.
+
+<Terminal>
+
+{`
+custy init
+`}
+
+</Terminal>
+
+If you built the documented local production image, mount the intended project
+root at `/workspace`:
+
+<Terminal>
+
+{`
+docker run -it --rm \
+    -v "<project>:/workspace" \
+    -w /workspace \
+    custy-prod:latest \
+    init
+`}
+
+</Terminal>
+
+The image includes Git, Python 3.14, pip, and Make. Host Git is not required for
+this container invocation, but the mounted project must include its `.git`
+directory before later Git-based Custy commands can use it.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Project Safety"
+>
+
+Running `custy init` prepares your project by generating configuration and
+template files. It does not create commits, modify Git history, or execute
+release workflows.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What Happens Next?"
+>
+
+Once these requirements are satisfied, continue with the syntax documentation
+to learn about the available initialization modes and command options.
+
+</Section>

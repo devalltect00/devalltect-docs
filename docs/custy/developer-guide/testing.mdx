@@ -1,0 +1,168 @@
+---
+title: "Testing"
+description: "Choose focused Custy tests, understand the suite layers, and run complete validation before review."
+sidebar_position: 3
+sidebar_key: custy-developer-guide-testing
+tags: [custy, pytest, testing]
+keywords: [Custy tests, pytest Custy, Custy integration tests]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="python -m pytest"
+    title="Testing Custy"
+    description="Build confidence from one affected contract to the complete test suite."
+    category="Developer Guide"
+    status="Required for Changes"
+    syntax="python -m pytest [PATH] [OPTIONS]"
+    tags={["unit", "CLI", "integration", "regression"]}
+    links={[
+        {label: "Test Layers", href: "#test-layers"},
+        {label: "Focused Tests", href: "#focused-validation"},
+        {label: "Full Validation", href: "#complete-validation"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Framework", value: "pytest", icon: "testing"},
+        {label: "Coverage Target", value: "app", icon: "project"},
+        {label: "Test Root", value: "tests", icon: "directory"},
+        {label: "Import Mode", value: "importlib", icon: "dependency"},
+    ]}
+/>
+
+## Overview
+
+Custy's pytest configuration discovers `test_*.py`, `Test*` classes, and
+`test_*` functions under `tests/`. The default run enables coverage for `app`,
+reports missing lines, uses strict marker and configuration validation, and
+keeps tracebacks short.
+
+<InfoBox variant="tip" title="Validate in widening circles">
+
+Run the test that describes the changed contract first, then its package or
+feature group, then integration or regression coverage, and finally the whole
+suite. This keeps feedback fast without replacing broad validation.
+
+</InfoBox>
+
+---
+
+<Section title="Test Layers">
+
+<FeatureGrid
+    title="Where a Change Is Exercised"
+    items={[
+        {title: "CLI Contracts", icon: <Icon name="terminal" />, children: "Tests under tests/cli cover command wiring, option metadata, dataclass models, resolvers, and application entry points."},
+        {title: "Core Behavior", icon: <Icon name="architecture" />, children: "Tests under tests/core cover pipelines, workflows, Git services, changelog processing, version strategies, initialization, backup, and cleanup."},
+        {title: "Configuration", icon: <Icon name="configuration" />, children: "Tests under tests/config exercise loading, missing files, invalid TOML, nested access, required values, and CLI-to-config fallback."},
+        {title: "Integration", icon: <Icon name="pipeline" />, children: "Tests under tests/integration connect resolvers, builders, profiles, and feature flows across module boundaries."},
+        {title: "Regression", icon: <Icon name="security" />, children: "Tests under tests/regression preserve behavior for previously discovered builder, resolver, configuration, workflow, and pipeline failures."},
+        {title: "Shared Infrastructure", icon: <Icon name="dependency" />, children: "tests/fixtures and tests/helpers provide reusable project, Git, filesystem, configuration, CLI, version, changelog, and pipeline support."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Focused Validation">
+
+Use a path or node ID that matches the changed contract.
+
+<Terminal title="Focused pytest examples" language="bash">
+
+{`# One file
+python -m pytest tests/cli/commands/changelog/test_resolver_changelog.py
+
+# One test class or method
+python -m pytest tests/core/pipeline/test_command_resolver.py::TestCommandResolver
+
+# One feature group
+python -m pytest tests/core/git_ops/tag_strategy
+
+# One integration flow
+python -m pytest tests/integration/test_run_profiles.py`}
+
+</Terminal>
+
+Pipeline tests receive one-time built-in step registration from
+`tests/conftest.py`. Individual tests should not repeatedly register the same
+names because `StepRegistry` rejects duplicates.
+
+</Section>
+
+---
+
+<Section title="What to Test for Each Extension">
+
+<CommandChecklist
+    items={[
+        {title: "Command", description: "Cover Typer registration or callback behavior, option metadata, the resolved argument model, configuration precedence, and the delegated core action."},
+        {title: "Pipeline step", description: "Cover the engine call, registration, profile membership, priority, deduplication, ordering, and failure propagation."},
+        {title: "Version strategy", description: "Cover defaults, explicit inputs, latest-tag or external-tool behavior, returned tag format, and actionable errors."},
+        {title: "Configuration", description: "Cover a present value, a missing value, the built-in default, explicit CLI precedence, invalid shape, and the consuming runtime path."},
+        {title: "Side effect", description: "Use temporary paths and mocked Git or subprocess boundaries; never depend on a contributor's real repository or credentials."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Complete Validation">
+
+<Terminal title="Full tests and quality checks" language="bash">
+
+{`# Complete pytest suite with the configured coverage report
+python -m pytest
+
+# Repository helper: formatting check, lint, then tests
+make check`}
+
+</Terminal>
+
+The lower-level equivalents used by the Make targets are `python -m black
+--check app tests`, `python -m ruff check app tests`, and `python -m pytest`.
+Use the repository's active `SOURCE_DIRS` values when reproducing a Make result
+rather than assuming a hard-coded list.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="A passing narrow test is not completion">
+
+Shared configuration, global pipeline ordering, command registration, and Git
+workflow behavior can affect unrelated-looking features. Run the complete
+suite before handing off a source change unless an environment limitation is
+clearly reported.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Adding Commands", href: "./adding-commands", description: "Map command responsibilities to their matching tests."},
+        {title: "Adding Pipeline Steps", href: "./adding-pipeline-steps", description: "Test registration, ordering, composition, and execution."},
+        {title: "Adding Version Strategies", href: "./adding-version-strategies", description: "Test strategy output and workflow dispatch."},
+        {title: "Contributing", href: "./contributing", description: "Use the final review checklist before handoff."},
+    ]}
+/>
+
+</Section>

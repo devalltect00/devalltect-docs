@@ -1,0 +1,24 @@
+---
+title: "Syntax"
+description: "Command forms untuk membuat dan mempratinjau changelog."
+sidebar_position: 3
+sidebar_key: custy-changelog-generate-syntax
+---
+import {CommandHero, CommandSyntax, Section, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy changelog generate" title="Command Syntax" description="Gunakan direct command dengan project defaults atau override terfokus." category="Changelog" status="Stable" syntax="custy changelog generate [OPTIONS]" links={[
+    {label: "Ringkasan", href: "./overview"}, {label: "Options", href: "./options"}, {label: "Examples", href: "./examples"},
+]} />
+
+## Ringkasan
+
+<CommandSyntax examples={[
+    {title: "Default Generation", command: `custy changelog generate`},
+    {title: "Force Generation", command: `custy changelog generate --force`},
+    {title: "Alternative Pending Message", command: `custy changelog generate --commit-msg-file path/to/commit-message.txt`},
+    {title: "Preview", command: `custy --dry-run changelog generate`},
+]} />
+
+<Section title="Global Option Placement">Tempatkan `--dry-run`, `--debug`, atau `--log-level` sebelum `changelog generate`.</Section>
+
+<InfoBox variant="warning" title="Unsupported Form">Jangan menganggap nama internal pipeline sebagai public Run value. Gunakan `custy changelog generate` untuk operasi langsung.</InfoBox>

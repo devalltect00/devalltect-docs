@@ -1,0 +1,255 @@
+---
+title: "Quick Start"
+description: "Prepare an existing repository with Custy, review generated resources, validate readiness, and preview a pipeline."
+sidebar_position: 4
+sidebar_key: custy-getting-started
+
+tags:
+  - quick start
+  - initialization
+  - validation
+
+keywords:
+  - custy quick start
+  - initialize custy project
+  - validate custy project
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Quick Start"
+    description="Prepare an existing repository with Custy, review generated resources, validate readiness, and preview a pipeline."
+    category="Getting Started"
+    status="Recommended"
+    syntax="custy init && custy validate"
+    tags={[
+        "initialize",
+        "validate",
+        "dry run",
+    ]}
+    links={[
+        {label: "Before You Begin", href: "#before-you-begin"},
+        {label: "Initialize", href: "#initialize-custy"},
+        {label: "Preview", href: "#preview-a-pipeline"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Starting Point", value: "Existing repository", icon: "git"},
+        {label: "First Write", value: "Project resources", icon: "file"},
+        {label: "Readiness Check", value: "custy validate", icon: "success"},
+        {label: "First Pipeline Action", value: "Dry-run preview", icon: "play"},
+    ]}
+/>
+
+## Overview
+
+This quick start prepares a repository without immediately creating commits,
+tags, or remote updates. Initialization writes project resources, validation
+checks readiness, and the final pipeline command uses global dry-run mode.
+
+<InfoBox
+    variant="tip"
+    title="Run commands from the project root"
+>
+
+Custy resolves `.config/custy/`, version files, templates, Git state, and
+remotes relative to the current project. Confirm the working directory before
+you begin.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Before You Begin"
+>
+
+<CommandChecklist
+    items={[
+        {
+            title: "Custy is installed",
+            description: <><code>custy --version</code> resolves from the intended Python environment or container.</>,
+        },
+        {
+            title: "The project is under Git",
+            description: <><code>git status</code> reports the repository and branch you intend to manage.</>,
+        },
+        {
+            title: "Important work is recoverable",
+            description: "Commit, stash, or back up work that should not be mixed with onboarding changes.",
+        },
+        {
+            title: "You understand the configured remote",
+            description: "A later pipeline can push, so verify remote names and destinations before normal execution.",
+        },
+    ]}
+/>
+
+<Terminal title="Confirm the project" language="bash">
+
+{`pwd
+git status --short --branch
+git remote -v
+custy --version`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Initialize Custy"
+>
+
+Run the default initialization mode, then inspect everything it added or
+skipped.
+
+<Terminal title="Initialize and inspect" language="bash">
+
+{`custy init
+git status --short`}
+
+</Terminal>
+
+The default `all` mode can create configuration, templates, example resources,
+and a version file. Existing files are preserved unless force behavior is
+selected. If an examples directory already exists, Custy still adds missing
+nested packaged examples without replacing existing example files.
+
+<FeatureGrid
+    title="Review These Resources"
+    items={[
+        {
+            title: "Configuration",
+            icon: <Icon name="configuration" />,
+            children: <>Review <code>.config/custy/config.toml</code> before relying on project-specific values.</>,
+        },
+        {
+            title: "Message Templates",
+            icon: <Icon name="file" />,
+            children: "Check the generated commit and tag message templates before a Git operation uses them.",
+        },
+        {
+            title: "Changelog Template",
+            icon: <Icon name="release" />,
+            children: "Review the changelog template before generating release notes.",
+        },
+        {
+            title: "Version File",
+            icon: <Icon name="project" />,
+            children: <>Confirm that the generated or configured version-file path matches your project layout.</>,
+        },
+    ]}
+/>
+
+<InfoBox
+    variant="warning"
+    title="Do not use force during initial review"
+>
+
+`custy init --force` can overwrite generated resources. Start with `custy init`
+and inspect skipped files before choosing any overwrite behavior.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Validate the Repository"
+>
+
+Run validation after reviewing the generated project workspace.
+
+<Terminal title="Run the readiness checks" language="bash">
+
+{`custy validate`}
+
+</Terminal>
+
+Validation checks repository state and workflow prerequisites such as required
+files, configuration, version resources, staged changes, and remotes. Resolve
+reported failures before moving to a pipeline.
+
+</Section>
+
+---
+
+<Section
+    title="Preview a Pipeline"
+>
+
+Use the global `--dry-run` option before the command name. The following preview
+resolves the public Dev profile without intentionally applying its normal file,
+commit, and push effects.
+
+<Terminal title="Preview daily development" language="bash">
+
+{`custy --dry-run run dev`}
+
+</Terminal>
+
+<InfoBox
+    variant="warning"
+    title="Preview is the quick-start finish line"
+>
+
+Do not remove `--dry-run` merely because the command completed. First review the
+resolved stages, message files, version behavior, Git changes, and push
+destination described in the Dev profile documentation.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Quick-Start Flow"
+>
+
+<WorkflowTimeline
+    items={[
+        {title: "Confirm repository", description: "Verify the current directory, branch, working tree, and remotes.", status: "completed"},
+        {title: "Initialize resources", description: "Generate configuration, templates, examples, and version resources.", status: "completed"},
+        {title: "Review generated files", description: "Keep, customize, or deliberately remove resources before continuing.", status: "completed"},
+        {title: "Validate readiness", description: "Resolve failed checks before pipeline execution.", status: "completed"},
+        {title: "Preview Dev", description: "Inspect the dry-run output and documented side effects.", status: "current"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "First Workflow", href: "./first-workflow", description: "Understand the Dev profile before normal execution."},
+        {title: "custy init", href: "../commands/init/overview", description: "Review initialization modes and generated files."},
+        {title: "custy validate", href: "../commands/validate/overview", description: "Understand individual readiness checks."},
+        {title: "custy run dev", href: "../commands/run/dev/overview", description: "Review the exact registered development profile."},
+    ]}
+/>
+
+</Section>

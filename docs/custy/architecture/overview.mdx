@@ -1,0 +1,197 @@
+---
+title: "Architecture Overview"
+description: "Understand Custy's active runtime layers, dependency flow, subsystem boundaries, and architectural trade-offs."
+sidebar_position: 1
+sidebar_key: custy-architecture-overview
+tags: [custy, architecture, dependency flow]
+keywords: [Custy architecture, Custy source structure, Custy runtime flow]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    DependencyCard,
+    Grid,
+    Icon,
+    InfoBox,
+    LayerCard,
+    PatternTable,
+    RelatedCommands,
+    Section,
+    WorkflowDiagram,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/"
+    title="Custy Architecture"
+    description="Follow a CLI request through configuration, orchestration, domain services, infrastructure, and presentation."
+    category="Architecture"
+    status="Implementation-Aligned"
+    syntax="entrypoint -> CLI -> pipeline -> workflow -> services -> effects"
+    tags={["Typer", "pipeline", "workflow engine", "Git service"]}
+    links={[
+        {label: "CLI Layer", href: "./cli-layer"},
+        {label: "Core Layer", href: "./core-layer"},
+        {label: "Pipeline Engine", href: "./pipeline-engine"},
+        {label: "Changelog System", href: "./changelog-system"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Runtime", value: "Python 3.14+", icon: "python"},
+        {label: "CLI Framework", value: "Typer and Rich", icon: "terminal"},
+        {label: "Primary Source", value: "app", icon: "directory"},
+        {label: "Execution Style", value: "Sequential orchestration", icon: "pipeline"},
+    ]}
+/>
+
+## Overview
+
+Custy uses a pragmatic layered architecture. Public commands live in the CLI
+layer, but most meaningful operations are expressed as pipeline steps that
+delegate to a shared workflow engine. The workflow engine coordinates focused
+services for Git, changelog generation, backup, initialization, project-file
+updates, and branch transitions.
+
+<InfoBox variant="info" title="Responsibility layers, not rigid folder walls">
+
+The layers describe the active dependency flow. They are not a strict clean-
+architecture boundary: some core modules import CLI enums, Rich presentation,
+or UI helpers. These pages document the implementation as it exists rather
+than implying stronger isolation.
+
+</InfoBox>
+
+---
+
+<Section title="Responsibility Layers">
+
+<Grid columns={2}>
+
+<LayerCard title="CLI and Presentation" subtitle="app/cli, app/ui, app/theme, app/utils" icon={<Icon name="terminal" />}>
+
+Registers commands, declares options, resolves user input, stores global
+context, configures logging, and renders Rich output.
+
+</LayerCard>
+
+<LayerCard title="Application Orchestration" subtitle="app/core/pipeline and app/core/workflow" icon={<Icon name="pipeline" />}>
+
+Expands profiles, creates registered steps, carries runtime state, and
+coordinates ordered validation, generation, Git, release, and finalization
+operations.
+
+</LayerCard>
+
+<LayerCard title="Domain Services" subtitle="git_ops, changelog, initialize, backup, cleanup" icon={<Icon name="architecture" />}>
+
+Implements reusable Git policy, version generation, changelog transformation,
+project scaffolding, backups, and branch or file cleanup.
+
+</LayerCard>
+
+<LayerCard title="Infrastructure and Resources" subtitle="subprocess, filesystem, TOML, Jinja, packaged templates" icon={<Icon name="dependency" />}>
+
+Executes Git commands, reads and writes project files, loads configuration,
+renders templates, and supplies initialization resources.
+
+</LayerCard>
+
+</Grid>
+
+</Section>
+
+---
+
+<WorkflowDiagram
+    title="Primary Runtime Path"
+    description="The common pipeline-backed command path; initialization and a few focused handlers use specialized core coordinators."
+    timeline={[
+        {title: "Entrypoint", description: "The installed custy script or python -m app loads app.cli.main:app.", status: "completed"},
+        {title: "Global callback", description: "Resolve global configuration, create AppContext, configure logging, and render banner or help behavior.", status: "completed"},
+        {title: "Command module", description: "Parse typed options, resolve effective values, and select a service or pipeline profile.", status: "completed"},
+        {title: "Composition", description: "Build WorkflowConfig, WorkflowEngine, GitContext, and registered steps.", status: "completed"},
+        {title: "Sequential execution", description: "Each step delegates one operation to the engine or another focused coordinator.", status: "current"},
+        {title: "Effects and presentation", description: "Services access Git, files, templates, or subprocesses while Rich and logging report progress and failures.", status: "pending"},
+    ]}
+/>
+
+---
+
+<Section title="Primary Dependencies">
+
+<Grid columns={2}>
+
+<DependencyCard
+    title="Command Execution"
+    dependencies={[
+        {source: "Typer command", target: "Argument resolver", description: "Convert explicit options and project configuration into a typed effective model."},
+        {source: "Argument resolver", target: "WorkflowEngineBuilder", description: "Transport resolved values into one workflow configuration."},
+        {source: "CommandResolver", target: "StepRegistry", description: "Turn profile definitions into concrete registered step instances."},
+        {source: "Pipeline step", target: "WorkflowEngine", description: "Delegate one ordered operation through a shared GitContext."},
+    ]}
+/>
+
+<DependencyCard
+    title="External Effects"
+    dependencies={[
+        {source: "WorkflowEngine", target: "GitService", description: "Apply high-level repository policy without calling subprocess directly."},
+        {source: "GitService", target: "IGitCommandExecutor", description: "Use a protocol-backed low-level command boundary."},
+        {source: "ChangelogGenerator", target: "GitService and JinjaRenderer", description: "Collect repository history, build domain models, and render Markdown."},
+        {source: "InitMain", target: "ScaffoldGenerator", description: "Build an initialization plan and create selected packaged resources."},
+    ]}
+/>
+
+</Grid>
+
+</Section>
+
+---
+
+<PatternTable
+    title="Architectural Patterns"
+    description="Patterns are used selectively; they do not form a general plugin framework."
+    patterns={[
+        {pattern: "Builder", purpose: "Construct complex workflow and initialization inputs incrementally.", implementation: "WorkflowEngineBuilder and InitBuilder"},
+        {pattern: "Registry", purpose: "Map stable step names to concrete pipeline classes.", implementation: "StepRegistry and register_all_steps"},
+        {pattern: "Strategy", purpose: "Generate and sort version tags using interchangeable algorithms.", implementation: "TagStrategy and TagSorter implementations"},
+        {pattern: "Factory", purpose: "Centralize service, provider, and sorter construction.", implementation: "create_git_service, MessageProviderFactory, and TagSorterFactory"},
+        {pattern: "Pipeline", purpose: "Execute explicit steps in a predictable sequence.", implementation: "CommandResolver, PipelineBuilder, Pipeline, and BaseStep"},
+        {pattern: "Facade / Application Service", purpose: "Give steps a cohesive workflow API over several services.", implementation: "WorkflowEngine"},
+    ]}
+/>
+
+---
+
+<Section title="Important Architectural Boundaries">
+
+- Pipeline execution is sequential and non-transactional; earlier effects are
+  not rolled back when a later step fails.
+- Internal profiles and registered steps are not automatically public Run
+  choices.
+- Configuration is project-owned after initialization and cached once per
+  process by the shared loader.
+- Version generation, version-file synchronization, and tag sorting are
+  separate responsibilities.
+- Changelog collection and transformation build domain models before the final
+  Markdown write.
+- Registry and strategy interfaces are contributor extension points, not a
+  published third-party plugin contract.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "CLI Layer", href: "./cli-layer", description: "Trace entrypoints, command modules, global context, and registration."},
+        {title: "Core Layer", href: "./core-layer", description: "Review each core subsystem and its current coupling."},
+        {title: "Pipeline Engine", href: "./pipeline-engine", description: "Follow profile resolution through registered sequential steps."},
+        {title: "Developer Guide", href: "../developer-guide/overview", description: "Use the architecture when changing or extending Custy."},
+    ]}
+/>
+
+</Section>

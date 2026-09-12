@@ -1,0 +1,36 @@
+---
+title: "Breaking Changes"
+description: "Configure breaking-change enablement, keyword detection, and the rendered section label."
+sidebar_position: 8
+sidebar_key: custy-configuration-changelog-breaking
+tags: [custy, changelog, breaking changes]
+keywords: [breaking enabled, breaking keywords, breaking label]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.breaking]" title="Breaking Changes" description="Move backward-incompatible changes into a dedicated, clearly labeled group." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.breaking]" tags={["keywords", "classification", "label"]} links={[{label: "Mappings", href: "./mappings"}, {label: "Rendering", href: "./rendering"}, {label: "Advanced", href: "./advanced"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Enabled", value: "true", icon: "warning"}, {label: "Keywords", value: "3", icon: "configuration"}, {label: "Matching", value: "Case-insensitive", icon: "feature"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "enabled", type: "Boolean", defaultValue: "true", description: "Enable active breaking-change classification and grouping."}, {property: "keywords", type: "String array", defaultValue: "BREAKING CHANGE, BREAKING, INCOMPATIBLE", description: "Case-insensitive phrases searched in commit subjects and bodies."}, {property: "label", type: "String", defaultValue: "⚠️ Breaking Changes", description: "Configured section title retained in the breaking settings. Type mapping also defines the displayed breaking group title."}]} />
+
+<Terminal title="Generated breaking configuration" language="toml">
+
+{`[tool.custy.changelog.breaking]
+enabled = true
+keywords = ["BREAKING CHANGE", "BREAKING", "INCOMPATIBLE"]
+label = "⚠️ Breaking Changes"`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Explicit parsing and keyword detection cooperate">
+
+A commit already marked as breaking or containing a configured keyword is moved
+to the `breaking` type group when detection is enabled.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Mappings", href: "./mappings", description: "Configure the displayed breaking type title."}, {title: "Advanced", href: "./advanced", description: "Review the separate experimental heuristic switch."}, {title: "Rendering", href: "./rendering", description: "Control section title icons and ordering."}]} /></Section>

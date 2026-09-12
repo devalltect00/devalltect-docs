@@ -1,0 +1,192 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about Version Update."
+sidebar_position: 11
+sidebar_key: custy-version
+
+tags:
+    - version
+    - faq
+
+keywords:
+    - custy version faq
+---
+
+import {
+    CommandHero,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version"
+    title="Frequently Asked Questions"
+    description="Common questions about version generation and synchronization."
+    category="Versioning"
+    status="Stable"
+    syntax="custy version update"
+    tags={[
+        "faq",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Versioning Strategies",
+            href: "./versioning-strategies",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+This page answers common questions about the Version command and how it fits
+into Custy's release workflow.
+
+---
+
+<Section
+    title="Does Version Update create a Git tag?"
+>
+
+No.
+
+The Version command only synchronizes version information inside the project.
+
+Creating Git tags is handled separately by the **Tag** command.
+
+</Section>
+
+---
+
+<Section
+    title="Can I choose a different versioning strategy?"
+>
+
+Yes.
+
+Custy supports multiple versioning strategies, including:
+
+- SemVer
+- PEP 440
+- Commitizen
+- Date
+- Git Count
+
+The default strategy can be configured in `config.toml`, while command-line
+options can temporarily override it for a single execution.
+
+</Section>
+
+---
+
+<Section
+    title="What happens if I provide --tag?"
+>
+
+Providing `--tag` bypasses automatic version generation.
+
+Custy uses the supplied version directly when synchronizing project files.
+
+</Section>
+
+---
+
+<Section
+    title="Does Version Update modify every project file?"
+>
+
+No.
+
+Custy updates only supported version files for the detected project type.
+
+For example:
+
+- Python projects update Python-related version files.
+- Node.js projects update supported package metadata files.
+
+</Section>
+
+---
+
+<Section
+    title="Can I preview the changes first?"
+>
+
+Yes.
+
+Run:
+
+```bash
+custy --dry-run version update
+```
+
+to preview the synchronization process without modifying project files.
+
+</Section>
+
+---
+
+<Section
+    title="Can Version Update be used inside workflows?"
+>
+
+Yes.
+
+Version Update can be executed independently:
+
+```bash
+custy version update
+```
+
+Larger public profiles reuse the necessary version stages internally. There is
+no public `custy run apply_version` form in the current CLI.
+
+</Section>
+
+---
+
+<Section
+    title="What if my project uses a different version file?"
+>
+
+Custy does not require a fixed file location.
+
+Configure the version file path inside `config.toml`, and Custy will update
+that file during version synchronization.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Recommended Workflow"
+>
+
+For most projects, configure the preferred versioning strategy once in
+`config.toml` and use command-line options only when temporarily overriding
+the default behavior.
+
+This provides a consistent versioning workflow for every contributor.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Where should I go next?"
+>
+
+Now that you understand Version Update, continue with the **Commit**
+documentation to learn how Custy records version changes in your Git history
+before creating tags and releases.
+
+</Section>

@@ -1,0 +1,19 @@
+---
+title: "Adding Commands"
+description: "Tambahkan Custy CLI command sambil mempertahankan option, model, resolver, core, registration, dan test boundaries."
+sidebar_position: 4
+sidebar_key: custy-developer-guide-adding-commands
+---
+import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Section} from "@site/src/components/docs";
+
+<CommandHero command="app/cli/" title="Adding Commands" description="Bawa command baru dari Typer surface menuju typed core behavior dan tests." category="Developer Guide" status="Extension Guide" syntax="CLI -> model -> resolver -> core -> result" links={[{label:"Command Package Shape",href:"#command-package-shape"},{label:"Register",href:"#register-the-command"},{label:"Test",href:"#test-the-complete-boundary"}]} />
+## Command Package Shape
+Pisahkan Typer declaration, options/arguments, request model, resolver, dan core
+delegation sesuai pattern command terdekat. Hindari domain logic dalam CLI callback.
+## Register the Command
+Daftarkan command atau group pada active CLI tree dan pastikan help text,
+aliases, global context, serta exit mapping konsisten.
+## Test the Complete Boundary
+<CommandChecklist items={[{title:"Parsing",description:"Valid dan invalid options diproses benar."},{title:"Resolution",description:"CLI values mengalahkan configuration dan defaults."},{title:"Delegation",description:"Core menerima typed request yang benar."},{title:"Errors",description:"Failures menghasilkan actionable output dan expected exit."},{title:"Docs",description:"Command reference dan configuration diperbarui."}]} />
+<InfoBox variant="warning" title="Jangan Tambahkan Public Behavior Hanya di Resolver">Public contract harus terlihat di CLI types, help, tests, dan documentation; resolver tidak boleh menyembunyikan profile atau option baru.</InfoBox>
+<RelatedCommands commands={[{title:"Extending Configuration",href:"./extending-configuration",description:"Tambahkan persistent setting."},{title:"Adding Pipeline Steps",href:"./adding-pipeline-steps",description:"Tambahkan orchestration stage."},{title:"Testing",href:"./testing",description:"Validasi boundary."},{title:"Command Reference",href:"../commands/overview",description:"Update user docs."}]} />

@@ -1,0 +1,529 @@
+---
+title: "Roadmap"
+description: "Reflow Roadmap"
+sidebar_key: reflow-project
+---
+# Reflow Roadmap
+
+## Overview
+
+This document describes the current state of Reflow, planned improvements, future ideas, and intentionally unsupported features.
+
+The roadmap helps contributors understand where the project is today and where it is expected to evolve.
+
+---
+
+# Vision
+
+Reflow treats Git tags as the source of truth for releases.
+
+Everything else flows from those tags:
+
+```text
+Git Tags
+    ↓
+Release Recovery
+    ↓
+Version Standardization
+    ↓
+Container Publishing
+```
+
+The long-term goal is to provide a consistent release-management workflow that works across multiple ecosystems and providers.
+
+---
+
+# Current Features
+
+The following features are currently implemented and supported.
+
+---
+
+## Tag Replay
+
+Command:
+
+```bash
+reflow tags replay
+```
+
+Capabilities:
+
+```text
+✓ Replay release automation
+✓ Recover missing releases
+✓ Dry-run support
+✓ Configuration support
+```
+
+---
+
+## Tag Conversion
+
+Command:
+
+```bash
+reflow tags convert
+```
+
+Capabilities:
+
+```text
+✓ PEP440 → SemVer conversion
+✓ Preserve SHA
+✓ Preserve tag messages
+✓ Preserve annotations
+✓ Dry-run support
+✓ Optional old-tag deletion
+```
+
+Supported conversions:
+
+```text
+rc    → rc
+b     → beta
+a     → alpha
+```
+
+---
+
+## Docker Publishing
+
+Command:
+
+```bash
+reflow dockerize
+```
+
+Capabilities:
+
+```text
+✓ Build Docker images
+✓ Push Docker images
+✓ Registry configuration
+✓ Local image cleanup
+```
+
+Supported registries:
+
+```text
+✓ GitHub Container Registry
+✓ GitLab Container Registry
+```
+
+---
+
+## Configuration
+
+Capabilities:
+
+```text
+✓ TOML configuration
+✓ ConfigLoader
+✓ CLI override support
+✓ Nested configuration access
+```
+
+---
+
+## Architecture
+
+Capabilities:
+
+```text
+✓ Resolver layer
+✓ Core layer
+✓ Service layer
+✓ Executor layer
+✓ Dependency injection
+✓ Protocol-based testing
+```
+
+---
+
+# Planned Features
+
+These features are considered realistic short-term improvements.
+
+---
+
+## Tag Filtering
+
+Allow processing only matching tags.
+
+Example:
+
+```bash
+reflow tags convert \
+    --match "v2.*"
+```
+
+Benefits:
+
+```text
+✓ Faster processing
+✓ Safer migrations
+✓ Better control
+```
+
+---
+
+## Single Tag Processing
+
+Example:
+
+```bash
+reflow tags convert \
+    --tag v2.0.0rc1
+```
+
+---
+
+## Tag Range Processing
+
+Example:
+
+```bash
+reflow dockerize \
+    --from v1.0.0 \
+    --to v2.0.0
+```
+
+---
+
+## Better Dry Run Output
+
+Current:
+
+```text
+Would process tag.
+```
+
+Future:
+
+```text
+Old Tag
+New Tag
+Action
+Expected Result
+```
+
+---
+
+## Rich Reporting
+
+Example:
+
+```text
+Processed: 42
+Success:   40
+Skipped:    1
+Failed:     1
+```
+
+Export formats:
+
+```text
+JSON
+Markdown
+```
+
+---
+
+# Future Features
+
+These features are interesting but not currently planned for immediate implementation.
+
+---
+
+## SemVer → PEP440
+
+Current:
+
+```text
+PEP440
+   ↓
+SemVer
+```
+
+Future:
+
+```text
+SemVer
+   ↓
+PEP440
+```
+
+Example:
+
+```text
+v1.0.0-rc.1
+      ↓
+v1.0.0rc1
+```
+
+---
+
+## Custom Version Mappings
+
+Example:
+
+```toml
+[tool.reflow.tags.mapping]
+
+preview = "pre"
+candidate = "rc"
+```
+
+---
+
+## Custom Conversion Plugins
+
+Example:
+
+```python
+class MyTagConverter:
+    ...
+```
+
+---
+
+## Multi-Registry Publishing
+
+Example:
+
+```text
+GHCR
+GitLab
+Docker Hub
+```
+
+in a single execution.
+
+---
+
+## Docker Hub Support
+
+Potential command:
+
+```bash
+reflow dockerize
+```
+
+Configuration:
+
+```toml
+provider = "dockerhub"
+```
+
+---
+
+## AWS ECR Support
+
+Potential support:
+
+```text
+Amazon Elastic Container Registry
+```
+
+---
+
+## Azure ACR Support
+
+Potential support:
+
+```text
+Azure Container Registry
+```
+
+---
+
+## Google Artifact Registry
+
+Potential support:
+
+```text
+Google Artifact Registry
+```
+
+---
+
+## Multi-Architecture Builds
+
+Example:
+
+```text
+linux/amd64
+linux/arm64
+```
+
+using Docker Buildx.
+
+---
+
+## SBOM Generation
+
+Potential output:
+
+```text
+CycloneDX
+SPDX
+```
+
+---
+
+# Contributor Improvements
+
+Potential developer-focused enhancements.
+
+---
+
+## Typed Configuration Models
+
+Current:
+
+```text
+ConfigLoader
+```
+
+Future:
+
+```python
+DockerConfig
+ReplayConfig
+ConvertConfig
+```
+
+---
+
+## Structured Logging
+
+Potential:
+
+```text
+DEBUG
+INFO
+WARNING
+ERROR
+```
+
+---
+
+## Plugin System
+
+Potential architecture:
+
+```text
+Provider Plugin
+Version Plugin
+Registry Plugin
+```
+
+---
+
+# Out Of Scope
+
+The following features are intentionally outside the project's current goals.
+
+---
+
+## Dockerfile Generation
+
+Reflow expects an existing Dockerfile.
+
+Not planned:
+
+```text
+Generate Dockerfiles
+```
+
+---
+
+## Kubernetes Deployment
+
+Reflow stops after publishing images.
+
+Not planned:
+
+```text
+kubectl apply
+helm install
+```
+
+---
+
+## Infrastructure Provisioning
+
+Not planned:
+
+```text
+Terraform
+CloudFormation
+Pulumi
+```
+
+---
+
+## CI/CD Pipeline Generation
+
+Not planned:
+
+```text
+Generate GitHub Actions
+Generate GitLab CI
+Generate Jenkinsfiles
+```
+
+---
+
+# Long-Term Direction
+
+The long-term direction is:
+
+```text
+Git Tags
+      ↓
+Release Recovery
+      ↓
+Version Management
+      ↓
+Artifact Publishing
+```
+
+with provider-specific implementations hidden behind a stable core architecture.
+
+---
+
+# Success Criteria
+
+The project should continue to prioritize:
+
+```text
+✓ Simplicity
+✓ Testability
+✓ Predictable behavior
+✓ Small focused commands
+✓ Clear documentation
+```
+
+over feature count.
+
+---
+
+# Revision History
+
+## Current Generation
+
+Major improvements:
+
+```text
+✓ Resolver architecture
+✓ ConfigLoader integration
+✓ TagConverter extraction
+✓ Service-based design
+✓ Executor abstraction
+✓ Documentation overhaul
+✓ Improved CLI UX
+```
+
+This roadmap should evolve as new features are added and priorities change.

@@ -1,0 +1,291 @@
+---
+title: "Validate Troubleshooting"
+description: "Resolve common problems encountered while validating a project."
+sidebar_position: 9
+sidebar_key: custy-commands-validate-troubleshooting
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Validate Troubleshooting"
+    description="Resolve common validation failures before running Custy workflows."
+    category="Validation"
+    status="Support Guide"
+    syntax="custy validate"
+    tags={[
+        "troubleshooting",
+        "validation",
+        "errors",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../troubleshooting/overview",
+        },
+        {
+            label: "Validation Checks",
+            href: "./validation-checks",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+Most validation failures occur because one or more project prerequisites have
+not yet been satisfied.
+
+Fortunately, the reported problem usually includes a helpful hint describing
+how to resolve it.
+
+---
+
+## Git Repository Not Found
+
+<Section compact>
+
+**What you see**
+
+Validation stops immediately and reports that the current directory is not a
+Git repository.
+
+**Why it happens**
+
+The project has not yet been initialized with Git.
+
+**How to resolve it**
+
+Initialize the repository.
+
+```bash
+git init
+```
+
+After initialization, run the validation command again.
+
+</Section>
+
+---
+
+## Configured Remote Not Found
+
+<Section compact>
+
+**What you see**
+
+Custy reports that the configured Git remote cannot be found.
+
+**Why it happens**
+
+The configured remote name does not exist in the repository.
+
+**How to resolve it**
+
+Verify the configured remote.
+
+```bash
+git remote -v
+```
+
+If necessary, add the missing remote.
+
+```bash
+git remote add origin <repository-url>
+```
+
+Alternatively, update the configured remote name in
+`.config/custy/config.toml`.
+
+</Section>
+
+---
+
+## Version File Missing
+
+<Section compact>
+
+**What you see**
+
+Validation reports that the configured version file does not exist.
+
+**Why it happens**
+
+The configured version file has not been created or the configured path is
+incorrect.
+
+**How to resolve it**
+
+Review the configured version file path.
+
+If the project has not yet been initialized, run:
+
+```bash
+custy init
+```
+
+or
+
+```bash
+custy init --mode config
+```
+
+depending on your project's setup.
+
+</Section>
+
+---
+
+## Commit Message Template Missing
+
+<Section compact>
+
+**What you see**
+
+The required commit message template cannot be found.
+
+**Why it happens**
+
+Template resources have not been generated.
+
+**How to resolve it**
+
+Generate the required templates.
+
+```bash
+custy init --mode templates
+```
+
+Then rerun the validation command.
+
+</Section>
+
+---
+
+## Tag Message Template Missing
+
+<Section compact>
+
+**What you see**
+
+The configured tag message template is missing.
+
+**Why it happens**
+
+Template initialization has not been completed.
+
+**How to resolve it**
+
+Generate the required templates.
+
+```bash
+custy init --mode templates
+```
+
+or regenerate project resources using
+
+```bash
+custy init
+```
+
+</Section>
+
+---
+
+## No Staged Changes
+
+<Section compact>
+
+**What you see**
+
+Validation reports that no staged files are available.
+
+**Why it happens**
+
+Project files have not yet been staged.
+
+**How to resolve it**
+
+Stage the required files.
+
+```bash
+git add .
+```
+
+or
+
+```bash
+git add <file>
+```
+
+After staging your changes, rerun validation.
+
+</Section>
+
+---
+
+## Commit Convention Validation Failed
+
+<Section compact>
+
+**What you see**
+
+Commit message validation fails when using the Commitizen strategy.
+
+**Why it happens**
+
+The current commit message does not satisfy the configured convention.
+
+**How to resolve it**
+
+Review the configured Commitizen rules and update the commit message to match
+the required format.
+
+Projects using SemVer, PEP 440, Date, or Git Count strategies generally do not
+require this validation.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Read the Validation Hint"
+>
+
+Whenever validation stops, Custy attempts to provide a helpful hint describing
+the next action.
+
+Reading the reported hint is usually the fastest way to resolve the problem.
+
+</InfoBox>
+
+---
+
+## Next Diagnostic Step
+
+<Section compact>
+
+If validation continues to fail:
+
+- Confirm that you are working inside the correct project directory.
+- Review your `.config/custy/config.toml` configuration.
+- Verify that required project resources exist.
+- Run the command again after correcting the reported issue.
+
+Most validation problems are resolved by addressing the first reported error,
+since Custy uses a fail-fast validation strategy.
+
+</Section>

@@ -1,0 +1,20 @@
+---
+title: "Output"
+description: "Files, backups, staging changes, dan Git history yang dihasilkan custy commit."
+sidebar_position: 7
+sidebar_key: custy-commit-output
+---
+import {CommandHero, CommandOutput, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy commit" title="Command Output" description="Pahami artifact, staging, backups, dan local history changes." category="Git Operations" status="Review Required" syntax="custy commit [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+
+## Ringkasan
+
+<CommandOutput outputs={[{title:"Observable Results",output:`Version and artifacts prepared
+CHANGELOG.md updated
+Commit message backed up
+Resolved changes staged
+Git commit created`,description:"Hasil tingkat tinggi dari profile yang berhasil."}]} />
+
+<Section title="Verify the Result">Periksa `git status`, `git show --stat`, diff artifact, backup directory, dan final commit message.</Section>
+<InfoBox variant="note" title="No Automatic Push">Commit hanya dibuat secara lokal. Gunakan command Push atau broader profile untuk mengirimnya.</InfoBox>

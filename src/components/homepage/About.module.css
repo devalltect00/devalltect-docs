@@ -1,0 +1,35 @@
+.section {
+  padding: 5rem 0;
+}
+
+.content {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  text-align: center;
+}
+
+.content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  margin-bottom: 1.5rem;
+
+  color: var(--ifm-font-color-secondary);
+
+  line-height: 1.9;
+}
+
+.links {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 0.75rem;
+
+  margin-top: 2rem;
+}

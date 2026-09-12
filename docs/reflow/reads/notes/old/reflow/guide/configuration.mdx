@@ -1,0 +1,38 @@
+---
+title: "# 📙 Configuration Guide"
+---
+
+# ⚙️ Configuration (.reflow.toml)
+
+Example:
+
+```toml
+[project]
+name = "reflow"
+
+[docker]
+provider = "both" # github | gitlab | both
+
+[github]
+image = "ghcr.io/your-user/reflow"
+
+[gitlab]
+image = "registry.gitlab.com/your-user/reflow"
+````
+
+---
+
+## 🧠 Provider Modes
+
+| Mode   | Behavior            |
+| ------ | ------------------- |
+| github | Push only to GHCR   |
+| gitlab | Push only to GitLab |
+| both   | Push to both        |
+
+---
+
+## ⚠️ Validation Rules
+
+* `github.image` required if provider includes github
+* `gitlab.image` required if provider includes gitlab

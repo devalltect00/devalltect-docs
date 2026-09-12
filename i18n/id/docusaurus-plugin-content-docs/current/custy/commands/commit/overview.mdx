@@ -1,0 +1,31 @@
+---
+title: "Ringkasan"
+description: "Siapkan release artifacts dan buat structured Git commit dengan Custy."
+sidebar_position: 1
+sidebar_key: custy-commit
+---
+import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy commit" title="Create a Structured Commit" description="Koordinasikan validation, versioning, changelog, staging, backup, dan local commit." category="Git Operations" status="Stable" syntax="custy commit [OPTIONS]" links={[{label:"Requirements",href:"./requirements"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"}]} />
+
+## Ringkasan
+
+`custy commit` adalah multi-stage profile, bukan sekadar wrapper untuk `git commit`.
+
+<InfoBox variant="warning" title="Broad Working-Tree Effects">Profile dapat mengubah version file dan `CHANGELOG.md`, membuat backup, mengubah Git index, lalu membuat commit. Mulai dengan `custy --dry-run commit`.</InfoBox>
+
+<FeatureGrid items={[
+ {title:"Validate",children:"Periksa repository dan artifact sebelum melanjutkan."},
+ {title:"Prepare",children:"Resolve version dan buat message/release artifacts."},
+ {title:"Synchronize",children:"Perbarui version file dan changelog."},
+ {title:"Commit",children:"Backup message, stage perubahan, dan buat local Git commit."},
+]} />
+
+<Screenshot src="/img/custy/commit/commit-editor.png" alt="Editor commit message Custy" title="Commit Message Editing" caption="Template commit message dapat dibuka untuk ditinjau sebelum commit dibuat." />
+
+<RelatedCommands commands={[
+ {name:"file",description:"Buat changelog artifact.",href:"../changelog/generate/overview"},
+ {name:"git",description:"Buat Git tag setelah commit.",href:"../tag/overview"},
+ {name:"package",description:"Jalankan daily development profile.",href:"../run/dev/overview"},
+ {name:"release",description:"Push commit melalui command terpisah.",href:"../push/overview"},
+]} />

@@ -1,0 +1,66 @@
+---
+title: "Examples"
+description: "Safe usage examples for custy run release."
+sidebar_position: 3
+sidebar_key: custy-run-release-examples
+tags: [run, release, examples]
+keywords: [custy run release examples]
+---
+
+import {
+    CommandExample,
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run release"
+    title="Examples"
+    description="Use cautious Release-profile patterns for previews, explicit versions, pre-releases, and backup synchronization."
+    category="Pipeline Profile"
+    status="Stable with Limitations"
+    syntax="custy run release [OPTIONS]"
+    tags={[
+        "examples",
+        "release",
+        "dry-run",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Safety", href: "../safety"},
+    ]}
+/>
+
+## Overview
+
+Use an approved explicit version and preview the full release before normal
+execution.
+
+<InfoBox
+    variant="danger"
+    title="Release publishes Git history"
+>
+
+Confirm the version, artifacts, commit message, tag message, and actual remotes
+before allowing the profile to run normally.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {title: "Preview the configured release", command: "custy --dry-run run release", description: "Inspect every release stage and resolved remote without normal mutations."},
+        {title: "Use an approved version", command: "custy run release --strategy semver --tag v2.0.0", description: "Run the release profile with an explicit SemVer tag."},
+        {title: "Create a pre-release", command: "custy run release --strategy pep440 --tag 2.0.0rc1 --pre rc", description: "Prepare and publish a release candidate."},
+        {title: "Synchronize an eligible backup", command: "custy run release --tag v2.0.0 --sync-backup", description: "Request backup synchronization after main-remote publication.", notes: "Confirm actual resolved remotes because CLI remote selection is not fully propagated."},
+    ]}
+/>
+
+</Section>

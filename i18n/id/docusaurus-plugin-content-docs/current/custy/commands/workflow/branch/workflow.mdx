@@ -1,0 +1,18 @@
+---
+title: "Workflow"
+description: "Intended dan current execution flow untuk custy workflow branch."
+sidebar_position: 5
+sidebar_key: custy-workflow-branch-workflow
+---
+import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy workflow branch" title="Intended Workflow" description="Bandingkan intended transition flow dengan current stop point." category="Workflow" status="Blocked" syntax="custy workflow branch [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Options",href:"./options"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+
+## Ringkasan
+
+<WorkflowTimeline title="Branch Transition Interface" items={[
+ {title:"Resolve inputs",description:"Combine CLI, configuration, dan defaults.",status:"completed"},{title:"Build pipeline",description:"Resolve registered workflow stages.",status:"current"},{title:"Inspect transition",description:"Evaluate branch/tag source dan target.",status:"optional"},{title:"Enforce policy",description:"Apply requested transition rules.",status:"optional"},{title:"Synchronize backup",description:"Run optional backup action.",status:"optional"},{title:"Finalize",description:"Complete workflow state.",status:"optional"},
+]} />
+
+<InfoBox variant="danger" title="Current Stop Point">Pipeline construction berhenti pada unknown/unregistered `finalize` step sebelum intended flow dapat diverifikasi.</InfoBox>
+<Section title="Operational Meaning">Dokumentasi menjelaskan interface yang dimaksud, bukan menjamin command usable pada current build.</Section>

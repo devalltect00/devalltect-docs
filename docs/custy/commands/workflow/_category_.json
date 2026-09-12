@@ -1,0 +1,11 @@
+{
+  "label": "Workflow (Experimental)",
+  "position": 11,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-workflow-experimental",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/workflow/overview"
+  }
+}

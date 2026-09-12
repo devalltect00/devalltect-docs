@@ -1,0 +1,13 @@
+---
+title: "Extending Configuration"
+description: "Bawa setting baru dari packaged TOML template melalui resolution, runtime use, tests, dan documentation."
+sidebar_position: 7
+sidebar_key: custy-developer-guide-extending-configuration
+---
+import {CommandHero,CommandChecklist,InfoBox,RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="tool.custy.*" title="Extending Configuration" description="Pertahankan satu setting secara end to end dari generated file hingga active consumer." category="Developer Guide" status="Cross-Layer Contract" syntax="template -> loader -> typed model/resolver -> consumer -> tests -> docs" links={[{label:"Configuration Overview",href:"../configuration/overview"},{label:"Resolution",href:"../configuration/resolution"},{label:"All Properties",href:"../configuration/reference"}]} />
+## End-to-End Checklist
+<CommandChecklist items={[{title:"Choose canonical path",description:"Gunakan namespace dan name konsisten."},{title:"Update packaged template",description:"Tambahkan safe generated default dan comments."},{title:"Resolve typed value",description:"Tentukan CLI precedence, missing semantics, validation, dan fallback."},{title:"Consume the value",description:"Pastikan active runtime benar-benar menerapkan setting."},{title:"Test lifecycle",description:"Cover generated file, loading, override, invalid input, dan consumer behavior."},{title:"Document status",description:"Tandai Active, Optional, Mismatch, Loaded only, Experimental, atau Reserved secara akurat."}]} />
+<InfoBox variant="danger" title="Generated Key Bukan Bukti Implementation">Key yang hanya ditambahkan ke `config.toml` dapat terlihat supported meskipun consumer tidak pernah membacanya. Jangan berhenti sebelum runtime test membuktikan behavior.</InfoBox>
+<RelatedCommands commands={[{title:"Configuration Overview",href:"../configuration/overview",description:"Namespace model."},{title:"Resolution",href:"../configuration/resolution",description:"Precedence semantics."},{title:"Property Reference",href:"../configuration/reference",description:"Update index."},{title:"Adding Commands",href:"./adding-commands",description:"Connect CLI override."}]} />

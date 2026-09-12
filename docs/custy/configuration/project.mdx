@@ -1,0 +1,99 @@
+---
+title: "Project"
+description: "Configure the primary Custy project source directory."
+sidebar_position: 5
+sidebar_key: custy-configuration-project
+tags: [custy, configuration, project]
+keywords: [tool.custy.project, project_source]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.project]"
+    title="Project"
+    description="Let Custy detect the project source, or select an explicit source directory."
+    category="Configuration"
+    status="Active"
+    syntax={'project_source = "auto"'}
+    tags={["source discovery", "path validation", "project root"]}
+    links={[
+        {label: "CLI Paths", href: "./cli/paths"},
+        {label: "Configuration File", href: "./config-file"},
+        {label: "Validate", href: "../commands/validate/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Table", value: "tool.custy.project", icon: "configuration"},
+        {label: "Properties", value: "1", icon: "table"},
+        {label: "Generated Default", value: "auto", icon: "directory"},
+        {label: "Status", value: "Active", icon: "success"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {
+            property: "project_source",
+            type: "Path string or auto",
+            defaultValue: "auto",
+            required: false,
+            description: "Use auto for runtime discovery, or set an explicit directory relative to the project root. Explicit paths must exist and must be directories.",
+        },
+    ]}
+/>
+
+<Section title="Examples">
+
+<Terminal title="Automatic detection (recommended)" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"`}
+
+</Terminal>
+
+<Terminal title="Explicit layouts" language="toml">
+
+{`[tool.custy.project]
+project_source = "src"
+
+# Other valid paths can include:
+# project_source = "backend"
+# project_source = "services/api"`}
+
+</Terminal>
+
+</Section>
+
+<InfoBox variant="info" title="Automatic source selection">
+
+For Python markers, Custy prefers `app/`, then `src/`. For Node.js and generic
+repositories, it prefers `src/`, then `app/`. If neither directory exists,
+the project root is valid. Detection occurs at command runtime, so a
+Docusaurus, React, PHP, or other repository does not need an `app/` directory
+just to start Custy.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Explicit paths remain strict">
+
+An explicit value is an intentional override. Custy reports a configuration
+error if that path is missing or is not a directory. Switch back to `auto` or
+correct the path instead of creating a placeholder `app/` directory.
+
+</InfoBox>
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "CLI Paths", href: "./cli/paths", description: "Configure the version-file path separately from the source root."},
+        {title: "Validate", href: "../commands/validate/overview", description: "Check project resources before consequential commands."},
+    ]}
+/>
+
+</Section>

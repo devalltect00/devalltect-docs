@@ -1,0 +1,282 @@
+---
+title: "Alur Kerja Pertama"
+description: "Pahami, pratinjau, dan jalankan pipeline development Custy untuk pertama kalinya secara terencana."
+sidebar_position: 5
+sidebar_key: custy-getting-started
+
+tags:
+  - alur kerja pertama
+  - pipeline development
+  - dry run
+
+keywords:
+  - alur kerja custy pertama
+  - custy run dev
+  - dry run pipeline custy
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --dry-run run dev"
+    title="Alur Kerja Custy Pertama Anda"
+    description="Pahami, pratinjau, dan jalankan pipeline development Custy untuk pertama kalinya secara terencana."
+    category="Memulai"
+    status="Pratinjau Dahulu"
+    syntax="custy [GLOBAL OPTIONS] run dev [OPTIONS]"
+    tags={[
+        "profil Dev",
+        "commit",
+        "push",
+    ]}
+    links={[
+        {label: "Pemeriksaan Awal", href: "#preflight-checklist"},
+        {label: "Pratinjau", href: "#preview-the-workflow"},
+        {label: "Referensi Dev", href: "../commands/run/dev/overview"},
+        {label: "Pengembangan Sehari-hari", href: "../user-guide/everyday-development"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Profil", value: "dev", icon: "pipeline"},
+        {label: "Membuat Commit", value: "Ya, dalam mode normal", icon: "git"},
+        {label: "Melakukan Push", value: "Ya, dalam mode normal", icon: "network"},
+        {label: "Eksekusi Pertama", value: "Dry run", icon: "success"},
+    ]}
+/>
+
+## Ringkasan
+
+Profil Dev publik mengoordinasikan pekerjaan development rutin. Urutan yang
+terdaftar saat ini menyiapkan artefak, memperbarui changelog, membuat backup
+pesan commit, melakukan stage, membuat commit, lalu melakukan push.
+
+Untuk eksekusi pertama, gunakan mode dry run global. Lanjutkan ke eksekusi
+normal hanya setelah repositori, resource yang dibuat, pesan commit, dan tujuan
+remote selesai ditinjau.
+
+<InfoBox
+    variant="warning"
+    title="Dev diakhiri dengan push"
+>
+
+`custy run dev` bukan demonstrasi lokal saja. Tanpa `--dry-run`, profil yang
+terdaftar mencapai tahap commit dan push. Gunakan `custy run commit` jika Anda
+memerlukan profil commit lokal yang didokumentasikan.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Checklist Pemeriksaan Awal"
+>
+
+<CommandChecklist
+    items={[
+        {
+            title: "Inisialisasi sudah ditinjau",
+            description: "Konfigurasi proyek, template, dan resource versi tersedia di lokasi yang dimaksud.",
+        },
+        {
+            title: "Validasi berhasil",
+            description: <><code>custy validate</code> selesai tanpa kegagalan kesiapan yang belum diselesaikan.</>,
+        },
+        {
+            title: "Perubahan working tree dipahami",
+            description: "Hanya file yang ditujukan untuk commit berikutnya yang tersedia atau sudah di-stage.",
+        },
+        {
+            title: "Pesan commit sudah siap",
+            description: "File pesan commit yang dikonfigurasi berisi pesan yang sudah ditinjau untuk perubahan ini.",
+        },
+        {
+            title: "Tujuan remote sudah dipastikan",
+            description: "Remote yang dikonfigurasi dapat dijangkau dan mengarah ke repositori yang dimaksud.",
+        },
+    ]}
+/>
+
+<Terminal title="Tinjau kondisi repositori" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git remote -v
+custy validate`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Yang Dilakukan Profil Dev"
+>
+
+<WorkflowTimeline
+    title="Urutan Development yang Terdaftar"
+    items={[
+        {
+            title: "Validasi repositori",
+            description: "Pastikan eksekusi dimulai di dalam repositori Git.",
+            status: "completed",
+        },
+        {
+            title: "Siapkan konteks alur kerja",
+            description: "Tentukan konteks versi dan inisialisasi status alur kerja.",
+            status: "completed",
+        },
+        {
+            title: "Buat dan tinjau artefak",
+            description: "Buat artefak, edit file yang dikonfigurasi, dan validasi hasil edit.",
+            status: "completed",
+        },
+        {
+            title: "Buat dan simpan file pendukung",
+            description: "Perbarui changelog, backup pesan commit, dan bersihkan backup yang disimpan.",
+            status: "completed",
+        },
+        {
+            title: "Publikasikan pekerjaan development",
+            description: "Stage perubahan yang ditentukan, buat commit, lalu lakukan push melalui perilaku remote yang ditentukan saat ini.",
+            status: "current",
+        },
+    ]}
+/>
+
+<InfoBox
+    variant="note"
+    title="Batas profil saat ini"
+>
+
+Profil Dev yang terdaftar tidak menyertakan `apply_version_step` atau
+`tag_step`. Profil ini menyiapkan konteks versi untuk pekerjaan artefak, tetapi
+tidak menerapkan versi atau membuat tag rilis.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Pratinjau Alur Kerja"
+>
+
+Opsi global harus ditempatkan sebelum `run`.
+
+<Terminal title="Dry run profil Dev" language="bash">
+
+{`custy --dry-run run dev`}
+
+</Terminal>
+
+Tinjau output untuk file yang ditentukan, konteks versi, lokasi backup,
+perilaku staging, persiapan commit, dan tujuan remote. Jika ada bagian yang
+tidak sesuai harapan, hentikan dan sesuaikan konfigurasi proyek atau opsi
+perintah.
+
+</Section>
+
+---
+
+<Section
+    title="Jalankan Secara Normal Saat Siap"
+>
+
+Eksekusi normal merupakan keputusan eksplisit setelah pratinjau dan peninjauan
+repositori.
+
+<Terminal title="Jalankan profil development" language="bash">
+
+{`custy run dev`}
+
+</Terminal>
+
+Setelah selesai, verifikasi kondisi lokal dan remote.
+
+<Terminal title="Verifikasi setelah eksekusi" language="bash">
+
+{`git status --short --branch
+git log -1 --decorate --oneline
+git remote -v`}
+
+</Terminal>
+
+<InfoBox
+    variant="warning"
+    title="Keterbatasan pemilihan remote"
+>
+
+Dokumentasi profil Dev saat ini mencatat keterbatasan pada adapter pemilihan
+remote. Pastikan tujuan sebenarnya melalui output dry run dan tinjau
+dokumentasi Push khusus sebelum eksekusi normal.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Pilih Profil Lain"
+>
+
+<FeatureGrid
+    title="Alternatif yang Umum"
+    items={[
+        {
+            title: "Commit",
+            icon: <Icon name="git" />,
+            children: <>Gunakan <a href="../commands/commit/overview">custy commit</a> atau profil Commit dari perintah run untuk persiapan commit lokal yang didokumentasikan tanpa tahap push terakhir dari profil Dev.</>,
+        },
+        {
+            title: "Release",
+            icon: <Icon name="release" />,
+            children: <>Gunakan <a href="../commands/run/release/overview">custy run release</a> hanya setelah meninjau persyaratan versi, changelog, commit, tag, dan push.</>,
+        },
+        {
+            title: "Full",
+            icon: <Icon name="pipeline" />,
+            children: <>Gunakan <a href="../commands/run/full/overview">custy run full</a> ketika tahap rilis dan perilaku finalisasi eksperimental sama-sama memang diinginkan.</>,
+        },
+        {
+            title: "Perintah Langsung",
+            icon: <Icon name="terminal" />,
+            children: <>Pilih perintah tertentu dari <a href="../commands/overview">referensi perintah</a> ketika pipeline multi-langkah tidak diperlukan.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Lanjutkan"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Profil Dev", href: "../commands/run/dev/overview", description: "Tinjau perilaku, keterbatasan, dan contoh secara tepat."},
+        {title: "Keamanan Run", href: "../commands/run/safety", description: "Pahami batas dry run dan tahap yang berdampak."},
+        {title: "Push", href: "../commands/push/overview", description: "Tinjau resolusi remote dan perilaku sinkronisasi."},
+        {title: "Profil Run", href: "../commands/run/profiles", description: "Bandingkan semua nama profil publik yang didukung."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,148 @@
+---
+title: "Development Pipeline"
+description: "Understand the exact Dev profile phases, side effects, omissions, and recovery boundary."
+sidebar_position: 8
+sidebar_key: custy-pipelines-development
+tags: [custy, dev pipeline, git]
+keywords: [custy run dev, Custy development pipeline]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run dev"
+    title="Development Pipeline"
+    description="Coordinate artifact review, changelog generation, a local commit, and remote push for daily development work."
+    category="Pipeline Profile"
+    status="Stable with Limitations"
+    syntax="custy run dev [OPTIONS]"
+    tags={["daily development", "commit", "push"]}
+    links={[
+        {label: "Run Dev Guide", href: "../commands/run/dev/overview"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Safety", href: "../commands/run/safety"},
+    ]}
+/>
+
+## Overview
+
+Dev is a deliberate daily-development profile. It prepares and reviews release
+artifacts, generates the changelog, creates a commit, and pushes it. It does not
+apply the prepared version and does not create a tag.
+
+<Terminal title="Preview before normal execution" language="bash">
+
+{`custy --dry-run run dev
+custy run dev`}
+
+</Terminal>
+
+---
+
+<Section title="Exact Phase Flow">
+
+<WorkflowTimeline
+    title="Dev Profile"
+    items={[
+        {title: "Validate repository", description: "Confirm that execution is inside a Git repository.", status: "completed"},
+        {title: "Prepare runtime state", description: "Resolve version context and initialize branch workflow state.", status: "completed"},
+        {title: "Generate and review artifacts", description: "Generate configured artifacts, open them for editing, and validate the edited files.", status: "completed"},
+        {title: "Generate changelog", description: "Run the conditional changelog generation stage.", status: "completed"},
+        {title: "Back up and clean", description: "Back up the commit-message file and apply backup retention cleanup.", status: "completed"},
+        {title: "Stage and commit", description: "Stage the resolved project changes and create a local commit.", status: "completed"},
+        {title: "Push", description: "Push HEAD and any eligible workflow tag to the resolved remotes.", status: "current"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<KeyValueTable
+    title="Exact Dev Step Order"
+    description="The internal name is shown so users and contributors can match documentation to logs and source."
+    items={[
+        {key: "01 — ensure_git_repo_step", value: "Confirm execution inside a Git repository."},
+        {key: "02 — prepare_version_step", value: "Resolve version and tag context for later services without applying it to files."},
+        {key: "03 — workflow_init_step", value: "Initialize branch workflow state."},
+        {key: "04 — generate_artifacts_step", value: "Generate configured release artifacts."},
+        {key: "05 — edit_files_step", value: "Open generated artifacts for review and editing."},
+        {key: "06 — validate_edited_step", value: "Validate the edited artifact files."},
+        {key: "07 — generate_changelog_step", value: "Run conditional changelog generation."},
+        {key: "08 — backup_commit_message_files_step", value: "Back up the commit-message file."},
+        {key: "09 — cleanup_backup_step", value: "Apply configured backup retention cleanup."},
+        {key: "10 — stage_step", value: "Stage the files selected by the workflow."},
+        {key: "11 — commit_step", value: "Create the local development commit."},
+        {key: "12 — push_step", value: "Push HEAD and an eligible workflow tag to resolved remotes."},
+    ]}
+/>
+
+---
+
+<InfoBox variant="info" title="Prepared version is not applied">
+
+Dev includes version preparation because later services need version context,
+but it does not include `apply_version_step`. It also omits `tag_step`. Use
+Release when you need to write the new version and create a release tag.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Dev has a narrower validation prefix">
+
+The profile explicitly begins with repository validation, not the full
+pre-commit and pre-push validation subprofiles used by Release. Downstream
+services can still reject invalid state. Confirm message files, staged changes,
+and remotes before normal execution.
+
+</InfoBox>
+
+---
+
+<Section title="Before You Run">
+
+<CommandChecklist
+    items={[
+        {title: "Review repository state", description: "Confirm the current branch and ensure unrelated work will not be staged."},
+        {title: "Check project paths", description: "Verify the configured version, commit-message, template, and changelog paths."},
+        {title: "Confirm the destination", description: "Review the default or selected remotes because push is part of Dev."},
+        {title: "Use dry-run first", description: "Inspect planned mutations and remote operations before the normal run."},
+        {title: "Review the result", description: "Check the diff, commit, and remote branch after completion."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Failure and Retry">
+
+If Dev fails before commit, inspect generated files, edits, backups, and the Git
+index. If it fails during or after push, verify whether the local commit and any
+remote updates already completed. Do not rerun the whole profile until that
+state is understood.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Run Dev", href: "../commands/run/dev/overview", description: "Use command options and practical examples for the Dev profile."},
+        {title: "Complete Profile Reference", href: "./profile-reference", description: "Compare Dev with all other resolver profiles."},
+        {title: "Release Pipeline", href: "./release-pipeline", description: "Compare Dev with a versioned, tagged release."},
+        {title: "Commit Command", href: "../commands/commit/overview", description: "Create a focused commit with command-specific controls."},
+    ]}
+/>
+
+</Section>

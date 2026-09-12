@@ -1,0 +1,214 @@
+---
+title: "Backup Troubleshooting"
+description: "Selesaikan masalah umum saat membuat template backup Custy."
+sidebar_position: 9
+sidebar_key: custy-commands-backup-troubleshooting
+
+tags:
+  - troubleshooting
+  - backup
+  - templates
+
+keywords:
+  - custy backup
+  - backup troubleshooting
+  - template backup errors
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Backup Troubleshooting"
+    description="Selesaikan masalah backup yang umum sebelum melanjutkan workflow."
+    category="Backup"
+    status="Panduan Bantuan"
+    syntax="custy backup all"
+    tags={["backup", "errors", "troubleshooting"]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../../troubleshooting/overview"},
+        {label: "Backup Files", href: "./backup-files"},
+        {label: "Output", href: "./output"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Ringkasan
+
+Sebagian besar masalah backup terjadi karena template files tidak ditemukan
+atau configured backup location tidak tersedia. Masalah tersebut biasanya
+mudah diselesaikan.
+
+---
+
+## Commit Message Template Tidak Ditemukan
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Command melewati commit message backup atau melaporkan template tidak
+ditemukan.
+
+**Penyebab**
+
+Configured commit message template tidak tersedia, biasanya karena proyek belum
+di-init.
+
+**Cara menyelesaikan**
+
+```bash
+custy init
+```
+
+Jika proyek sudah di-init, pastikan configured template path benar.
+
+</Section>
+
+---
+
+## Tag Message Template Tidak Ditemukan
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Custy melewati tag message backup atau melaporkan configured tag template tidak
+ditemukan.
+
+**Penyebab**
+
+Template belum dibuat atau configured path tidak benar.
+
+**Cara menyelesaikan**
+
+Verifikasi path dan buat ulang project templates jika diperlukan:
+
+```bash
+custy init
+```
+
+</Section>
+
+---
+
+## Backup Directory Tidak Dapat Dibuat
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Operasi tidak dapat membuat configured backup directory.
+
+**Penyebab**
+
+Destination directory read-only atau pengguna tidak memiliki izin membuat
+file.
+
+**Cara menyelesaikan**
+
+Pastikan lokasi dapat ditulis. Jika perlu, pilih directory lain, perbarui
+project configuration, atau sesuaikan file permissions.
+
+</Section>
+
+---
+
+## Backup File yang Diharapkan Tidak Tersedia
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Command selesai, tetapi backup file yang diharapkan tidak ditemukan.
+
+**Kemungkinan penyebab**
+
+- Backup directory yang diperiksa salah.
+- Template file tidak tersedia.
+- Operasi backup dilewati.
+- Backup lama dihapus oleh retention policy.
+
+**Cara menyelesaikan**
+
+Tinjau configured directory dan pastikan template tersedia sebelum menjalankan
+command kembali.
+
+</Section>
+
+---
+
+## Backup Files Lama Menghilang
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Backup files yang sebelumnya dibuat tidak lagi tersedia.
+
+**Penyebab**
+
+Custy mengelola riwayat backup secara otomatis. File lama dapat dihapus saat
+retention policy diterapkan.
+
+**Cara menyelesaikan**
+
+Tinjau backup retention configuration jika Anda perlu menyimpan riwayat lebih
+banyak.
+
+</Section>
+
+---
+
+## Dry Run Tidak Membuat Backup Files
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Command berhasil, tetapi tidak ada backup file yang dibuat.
+
+**Penyebab**
+
+Command dijalankan dengan global option `--dry-run`.
+
+**Cara menyelesaikan**
+
+Jalankan kembali tanpa dry run:
+
+```bash
+custy backup all
+```
+
+</Section>
+
+---
+
+<InfoBox variant="tip" title="Sebagian Besar Masalah Berhubungan dengan Configuration">
+
+Backup failure umumnya disebabkan template yang tidak tersedia atau lokasi
+yang salah. Meninjau project configuration biasanya menyelesaikan masalah
+dengan cepat.
+
+</InfoBox>
+
+---
+
+## Langkah Diagnosis Berikutnya
+
+<Section compact>
+
+Jika operasi tetap gagal:
+
+- Periksa `config.toml` proyek.
+- Pastikan template files tersedia.
+- Pastikan configured backup directories dapat ditulis.
+- Tinjau output command backup.
+
+Perbaiki masalah pertama yang dilaporkan sebelum menjalankan command kembali.
+
+</Section>

@@ -1,0 +1,81 @@
+---
+title: "Syntax"
+description: "Accepted syntax for Custy's experimental workflow branch interface."
+sidebar_position: 3
+sidebar_key: custy-workflow-branch-syntax
+tags: [workflow, syntax, experimental]
+keywords: [custy workflow branch syntax]
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Command Syntax"
+    description="Review the accepted experimental branch and version transition inputs without treating them as production-ready."
+    category="Experimental Workflow"
+    status="Currently Blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "syntax",
+        "branch transition",
+        "experimental",
+    ]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Options", href: "./options"},
+        {label: "Known Issue", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+These forms document the accepted interface. They do not bypass the current
+pipeline-construction blocker.
+
+---
+
+<Section
+    title="Accepted Command Forms"
+>
+
+<CommandSyntax
+    examples={[
+        {title: "Load configured transition inputs", command: "custy workflow branch", description: "Resolve workflow values from configuration and defaults."},
+        {title: "Request transition validation", command: "custy workflow branch --check_transition", description: "Request validation without policy enforcement."},
+        {title: "Specify branches", command: "custy workflow branch --from-branch develop --to-branch main", description: "Provide an explicit branch transition."},
+        {title: "Specify versions", command: "custy workflow branch --from-tag v1.2.0 --to-tag v1.3.0", description: "Provide an explicit version transition."},
+        {title: "Preview enforcement inputs", command: "custy --dry-run workflow branch --enforce", description: "Resolve enforcement and dry-run settings locally."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Option uses an underscore"
+>
+
+The current declared long option is `--check_transition`, not
+`--check-transition`. Use `-ct` if a shell or team convention makes the
+underscore form inconvenient.
+
+</InfoBox>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Accepted syntax is not operational readiness"
+>
+
+The known step-name mismatch can still prevent the pipeline from running.
+
+</InfoBox>

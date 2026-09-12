@@ -1,0 +1,403 @@
+---
+title: "Workflow"
+description: "Dockerize Releases Workflow"
+sidebar_key: reflow-commands-dockerize
+---
+# Dockerize Releases Workflow
+
+## Overview
+
+This document describes how the Dockerize workflow operates internally.
+
+The Dockerize command transforms Git tags into versioned Docker images and publishes them to a container registry.
+
+Unlike Replay and Convert, Dockerize produces deployable artifacts.
+
+---
+
+# High-Level Workflow
+
+```text id="pjmb0m"
+Git Repository
+       │
+       ▼
+Load Tags
+       │
+       ▼
+Select Tags
+       │
+       ▼
+Build Image
+       │
+       ▼
+Tag Image
+       │
+       ▼
+Push Image
+       │
+       ▼
+Cleanup
+```
+
+---
+
+# Detailed Workflow
+
+## Step 1 — Validate Repository
+
+The command first validates the repository.
+
+Workflow:
+
+1. Verify current directory is a Git repository.
+2. Verify tags can be loaded.
+3. Verify Docker is available.
+
+Failure:
+
+```text id="r9ltbp"
+Not a Git repository.
+```
+
+or
+
+```text id="0lrfpn"
+Docker is not available.
+```
+
+---
+
+## Step 2 — Load Tags
+
+The Git service loads repository tags.
+
+Example:
+
+```text id="8shkgt"
+v1.0.0
+v1.1.0
+v2.0.0
+```
+
+These tags become image versions.
+
+---
+
+## Step 3 — Select Tags
+
+Tags may be filtered before processing.
+
+Examples:
+
+Stable releases only:
+
+```text id="j6wlc4"
+v1.0.0
+v2.0.0
+```
+
+Skipped:
+
+```text id="2hnrxt"
+v2.0.0rc1
+v2.0.0-beta.1
+```
+
+The exact filtering depends on command options and configuration.
+
+---
+
+## Step 4 — Resolve Registry
+
+The resolver determines:
+
+```text id="7itj7r"
+Provider
+Image Name
+Registry Target
+```
+
+Example:
+
+Configuration:
+
+```toml id="sh5e2z"
+[tool.reflow.docker]
+
+provider = "github"
+
+[tool.reflow.github]
+
+image = "ghcr.io/acme/my-app"
+```
+
+Resolved image:
+
+```text id="gkqvkh"
+ghcr.io/acme/my-app
+```
+
+---
+
+## Step 5 — Build Image
+
+For each selected tag:
+
+Workflow:
+
+```text id="o4ch0z"
+Checkout Tag
+      ↓
+Docker Build
+```
+
+Example:
+
+```text id="7xq3ys"
+v1.0.0
+```
+
+Builds:
+
+```text id="2vvzq9"
+ghcr.io/acme/my-app:v1.0.0
+```
+
+---
+
+## Step 6 — Apply Docker Tag
+
+The image is tagged using the Git tag version.
+
+Example:
+
+Git tag:
+
+```text id="l55m9w"
+v2.0.0
+```
+
+Docker tag:
+
+```text id="2th6j6"
+ghcr.io/acme/my-app:v2.0.0
+```
+
+This keeps repository versions aligned with container versions.
+
+---
+
+## Step 7 — Push Image
+
+Workflow:
+
+```text id="2sy75i"
+Local Image
+      ↓
+Registry Push
+```
+
+Example:
+
+```text id="rz3p9s"
+ghcr.io/acme/my-app:v2.0.0
+```
+
+becomes available in the registry.
+
+---
+
+## Step 8 — Optional Cleanup
+
+Configuration:
+
+```toml id="z0dl7r"
+keep_local_images = false
+```
+
+Workflow:
+
+```text id="h1t39d"
+Build
+Push
+Delete Local Image
+```
+
+Purpose:
+
+Reduce disk usage.
+
+---
+
+Configuration:
+
+```toml id="0d4s3f"
+keep_local_images = true
+```
+
+Workflow:
+
+```text id="n7zq7j"
+Build
+Push
+Keep Local Image
+```
+
+Purpose:
+
+Support local testing.
+
+---
+
+# Example Execution
+
+Repository:
+
+```text id="ihhccs"
+v1.0.0
+v1.1.0
+```
+
+Image:
+
+```text id="3n7g1s"
+ghcr.io/acme/my-app
+```
+
+Produced:
+
+```text id="wqpjga"
+ghcr.io/acme/my-app:v1.0.0
+ghcr.io/acme/my-app:v1.1.0
+```
+
+---
+
+# Failure Handling
+
+Each tag is processed independently.
+
+Example:
+
+```text id="91t2x2"
+v1.0.0   SUCCESS
+v1.1.0   FAILED
+v2.0.0   SUCCESS
+```
+
+Processing continues whenever possible.
+
+This prevents one failed image from blocking the entire operation.
+
+---
+
+# Before And After
+
+## Before
+
+Repository:
+
+```text id="1fhg0r"
+v1.0.0
+v2.0.0
+```
+
+Registry:
+
+```text id="u5kk7w"
+(empty)
+```
+
+---
+
+## After
+
+Repository:
+
+```text id="jzkvhm"
+v1.0.0
+v2.0.0
+```
+
+Registry:
+
+```text id="4x1ho9"
+ghcr.io/acme/my-app:v1.0.0
+ghcr.io/acme/my-app:v2.0.0
+```
+
+---
+
+# Sequence Diagram
+
+```text id="r5m0db"
+User
+ │
+ │ reflow dockerize
+ ▼
+Resolver
+ │
+ │ Load Config
+ ▼
+Git
+ │
+ │ Return Tags
+ ▼
+Dockerize
+ │
+ │ Build Image
+ ▼
+Docker
+ │
+ │ Create Image
+ ▼
+Dockerize
+ │
+ │ Push Image
+ ▼
+Registry
+```
+
+---
+
+# Relationship To Other Commands
+
+Typical workflow:
+
+```text id="zjjlwm"
+Convert Tags
+      ↓
+Replay Releases
+      ↓
+Dockerize Images
+```
+
+Example:
+
+```bash id="0cgdjk"
+reflow tags convert
+```
+
+```bash id="rm1t39"
+reflow tags replay
+```
+
+```bash id="zjzvwn"
+reflow dockerize
+```
+
+---
+
+# Summary
+
+The Dockerize workflow:
+
+```text id="6zqjca"
+✓ Reads Git tags
+✓ Builds Docker images
+✓ Applies version tags
+✓ Pushes images
+✓ Optionally removes local images
+```
+
+It provides a repeatable release-to-container workflow using repository tags as the source of truth.

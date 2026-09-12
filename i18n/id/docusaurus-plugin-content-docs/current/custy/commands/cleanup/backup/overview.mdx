@@ -1,0 +1,110 @@
+---
+title: "Overview"
+description: "Hapus obsolete backup files sambil mempertahankan backup terbaru."
+sidebar_position: 1
+sidebar_key: custy-cleanup-backup
+tags: [cleanup, backup, maintenance]
+keywords: [custy cleanup backups, cleanup backups, backup retention]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    RelatedCommands,
+    Section,
+    InfoBox,
+    Screenshot,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Backup Cleanup"
+    description="Hapus backup files lama secara otomatis sambil mempertahankan backup terbaru sesuai retention policy proyek."
+    category="Maintenance"
+    status="Direkomendasikan"
+    syntax="custy cleanup backups"
+    tags={["cleanup", "backup", "maintenance"]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+<CommandMetadata
+    metadata={[
+        {label: "Kategori", value: "Maintenance"},
+        {label: "Resource", value: "Backup Files"},
+        {label: "Workflow", value: "Supported"},
+        {label: "Configuration", value: "config.toml"},
+    ]}
+/>
+
+## Ringkasan
+
+Backup Cleanup menghapus backup files lama yang dibuat Custy sambil
+mempertahankan backup terbaru sesuai retention policy. Operasi ini hanya
+mengubah backup files dan tidak memodifikasi Git repository.
+
+<InfoBox variant="tip" title="Maintenance yang Aman">
+
+Backup Cleanup tidak mengubah source files, commit, branch, atau tag.
+
+</InfoBox>
+
+---
+
+<Section title="Yang Dilakukan Backup Cleanup">
+
+<FeatureGrid
+    title="Tanggung Jawab"
+    items={[
+        {title: "Find Backup Files", icon: <Icon name="compare" />, children: <>Temukan file dalam configured backup directories.</>},
+        {title: "Apply Retention Policy", icon: <Icon name="timeline" />, children: <>Pertahankan backup terbaru dan pilih file lama.</>},
+        {title: "Remove Old Backups", icon: <Icon name="danger" />, children: <>Hapus file yang melebihi retention count.</>},
+        {title: "Keep Workspace Organized", icon: <Icon name="directory" />, children: <>Cegah akumulasi file historis yang tidak diperlukan.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-backups-process.png"
+    alt="Proses Backup Cleanup"
+    title="Backup Cleanup"
+    caption="Contoh output setelah menghapus backup files lama sesuai retention policy."
+/>
+
+---
+
+<Section title="Integrasi Workflow">
+
+Operasi dapat dijalankan langsung atau otomatis setelah backup stages dalam
+beberapa pipeline Custy.
+
+</Section>
+
+<InfoBox variant="note" title="Berbasis Configuration">
+
+Jumlah backup yang dipertahankan dikendalikan oleh `config.toml` proyek.
+
+</InfoBox>
+
+<Section title="Kapan Digunakan?">
+
+Gunakan ketika direktori berisi banyak file historis, ingin menghemat disk,
+atau hanya ingin menyimpan backup terbaru.
+
+</Section>
+
+<RelatedCommands
+    commands={[
+        {name: "backup", description: "Buat backup files sebelum cleanup.", href: "../../backup/overview"},
+        {name: "cleanup", description: "Kembali ke Cleanup overview.", href: "../overview"},
+        {name: "run", description: "Pelajari integrasi Backup Cleanup dalam pipeline.", href: "../../run/overview"},
+    ]}
+/>

@@ -1,0 +1,21 @@
+---
+title: "Configuration System"
+description: "Telusuri konfigurasi Custy dari resource initialization hingga TOML loading, precedence, typed model, dan runtime consumer."
+sidebar_position: 4
+sidebar_key: custy-architecture-configuration-system
+tags: [custy, configuration, architecture]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command=".config/custy/config.toml" title="Configuration System" description="Pahami lifecycle konfigurasi project-owned dan cara nilainya mencapai runtime." category="Arsitektur" status="Project-owned" syntax="template -> custy init -> TOML -> loader -> resolver -> consumer" links={[{label: "Configuration Guide", href: "../configuration/overview"}, {label: "Resolution", href: "../configuration/resolution"}, {label: "Extending Configuration", href: "../developer-guide/extending-configuration"}]} />
+
+## Alur konfigurasi
+
+`custy init` menyalin packaged template ke `.config/custy/`. Setelah itu file tersebut milik project dan dapat diedit pengguna. Loader membaca TOML berdasarkan working directory, resolver menggabungkan CLI value, project config, dan built-in default, lalu subsystem membentuk typed settings yang diperlukan.
+
+<InfoBox variant="warning" title="Cache dan status implementasi">Konfigurasi di-cache sekali per process. Tidak semua key yang tersedia pada template aktif digunakan runtime; periksa status setiap property pada configuration reference.</InfoBox>
+
+<Section title="Saat menambah setting">Perbarui template, loader/model, resolver atau consumer, validation, dokumentasi, dan test terkait. Jangan hanya menambah key TOML tanpa jalur konsumsi yang jelas.</Section>
+
+<RelatedCommands commands={[{title: "Configuration Overview", href: "../configuration/overview", description: "Jelajahi namespace dan property."}, {title: "Configuration File", href: "../configuration/config-file", description: "Pahami ownership dan replacement rule."}, {title: "Resolution and Status", href: "../configuration/resolution", description: "Pelajari precedence serta status implementasi."}, {title: "Extending Configuration", href: "../developer-guide/extending-configuration", description: "Bawa setting baru melalui seluruh layer."}]} />

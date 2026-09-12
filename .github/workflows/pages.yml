@@ -1,0 +1,205 @@
+# .github/workflows/pages.yml
+
+name: 🚀 Deploy GitHub Pages
+
+run-name: 🚀 Deploy Documentation • ${{ github.ref_name }}
+
+# =========================================================
+# 🚀 GitHub Pages Deployment Workflow
+# ---------------------------------------------------------
+# Purpose:
+# - Build the Docusaurus website
+# - Publish generated static files to GitHub Pages
+# - Automatically update public documentation
+#
+# Trigger:
+# - Push to main branch
+# - Manual execution from GitHub Actions UI
+#
+# Deployment Flow:
+#
+# Source Code
+# │
+# ▼
+# yarn install --immutable
+# │
+# ▼
+# yarn build
+# │
+# ▼
+# build/
+# │
+# ▼
+# Upload Pages Artifact
+# │
+# ▼
+# Deploy GitHub Pages
+# │
+# ▼
+# Public Documentation
+#
+#
+# Example URLs
+# ---------------------------------------------------------
+#
+# User Site Repository:
+#
+# Repository:
+# devalltect00.github.io
+#
+# docusaurus.config.ts:
+# url      = https://devalltect00.github.io
+# baseUrl  = /
+#
+# Result:
+# https://devalltect00.github.io/
+#
+#
+# Project Site Repository:
+#
+# Repository:
+# devalltect00-docs
+#
+# docusaurus.config.ts:
+# url      = https://devalltect00.github.io
+# baseUrl  = /devalltect00-docs/
+#
+# Result:
+# https://devalltect00.github.io/devalltect00-docs/
+#
+#
+# Required Repository Settings
+# ---------------------------------------------------------
+#
+# GitHub Repository
+# → Settings
+# → Pages
+#
+# Build and deployment
+# Source:
+# GitHub Actions
+#
+# Do NOT use:
+# Deploy from Branch
+#
+#
+# Notes
+# ---------------------------------------------------------
+# - No Docker required
+# - No Docker Compose required
+# - No container registry required
+# - No release workflow required
+#
+# Docusaurus generates a static website.
+# GitHub Pages serves the generated files directly.
+#
+#
+# Future Enhancements
+# ---------------------------------------------------------
+# - Custom domain support
+# - Cloudflare integration
+# - Lighthouse auditing
+# - Link validation workflow
+# - Documentation versioning workflow
+# =========================================================
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 🏗️ Build Documentation
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # =====================================================
+      # 📥 CHECKOUT
+      # =====================================================
+
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      # =====================================================
+      # 🟢 SETUP NODE.JS
+      # =====================================================
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 🧶 Enable Corepack
+        run: corepack enable
+
+      # =====================================================
+      # 📦 INSTALL DEPENDENCIES
+      # =====================================================
+
+      - name: 📦 Install dependencies
+        run: yarn install --immutable
+
+      # =====================================================
+      # 🏗️ BUILD DOCUMENTATION
+      # =====================================================
+
+      - name: 🏗️ Build documentation
+        run: yarn build
+
+      # =====================================================
+      # ⚙️ CONFIGURE GITHUB PAGES
+      # =====================================================
+
+      - name: ⚙️ Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # =====================================================
+      # 📤 UPLOAD BUILD ARTIFACT
+      # =====================================================
+
+      - name: 📤 Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: build
+
+  deploy:
+    name: 🚀 Deploy Documentation
+
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # =====================================================
+      # 🚀 DEPLOY GITHUB PAGES
+      # =====================================================
+
+      - name: 🚀 Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # =====================================================
+      # ✅ SUCCESS
+      # =====================================================
+
+      - name: ✅ Deployment completed
+        run: |
+          echo "Documentation successfully deployed."
+          echo "URL: ${{ steps.deployment.outputs.page_url }}"

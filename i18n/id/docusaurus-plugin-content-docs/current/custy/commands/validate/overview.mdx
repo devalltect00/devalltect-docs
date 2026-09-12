@@ -1,0 +1,151 @@
+---
+title: "Overview"
+description: "Pastikan proyek Anda siap sebelum menjalankan workflow Custy."
+sidebar_position: 1
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    RelatedCommands,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Validate Proyek"
+    description="Pastikan proyek memenuhi requirements sebelum menjalankan workflow Custy."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={[
+        "validation",
+        "git",
+        "workflow",
+        "pre-flight",
+    ]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Syntax", href: "./syntax"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Kategori", value: "Validate"},
+        {label: "Tersedia Sebagai", value: "custy validate"},
+        {label: "Mengubah Repository", value: "Tidak"},
+        {label: "Direkomendasikan", value: "Sebelum command commit, tag, push, release, dan workflow."},
+    ]}
+/>
+
+## Ringkasan
+
+Command **validate** menjalankan serangkaian pre-flight checks untuk memastikan
+proyek siap digunakan oleh operasi Custy berikutnya.
+
+Command ini tidak mengubah repository. Custy memeriksa proyek, configuration,
+Git repository, serta resource yang diperlukan untuk menemukan masalah sebelum
+masalah tersebut menghentikan workflow yang lebih besar.
+
+<InfoBox variant="tip" title="Validation Otomatis">
+
+Walaupun dapat dijalankan secara manual, command yang berorientasi pada
+workflow seperti `custy run` umumnya melakukan validation secara otomatis
+sebelum melanjutkan ke workflow steps berikutnya.
+
+</InfoBox>
+
+---
+
+<Section title="Yang Dilakukan Command Ini">
+
+<FeatureGrid
+    title="Kategori Validation"
+    items={[
+        {
+            title: "Git Repository",
+            icon: <Icon name="git" />,
+            children: <>Memastikan current directory merupakan Git repository yang valid.</>,
+        },
+        {
+            title: "Project Configuration",
+            icon: <Icon name="configuration" />,
+            children: <>Menentukan nilai configuration dan memastikan project resources yang diperlukan tersedia.</>,
+        },
+        {
+            title: "Git State",
+            icon: <Icon name="success" />,
+            children: <>Memeriksa staged changes dan kesiapan repository sebelum commit workflow.</>,
+        },
+        {
+            title: "Workflow Resources",
+            icon: <Icon name="directory" />,
+            children: <>Memeriksa version file, commit template, tag template, dan workflow resources lainnya.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Mengapa Validation Penting?">
+
+Menjalankan validation sebelum workflow membantu menemukan masalah umum lebih
+awal, misalnya:
+
+- Current directory bukan Git repository.
+- Git remote yang diperlukan belum dikonfigurasi.
+- Version file yang dikonfigurasi tidak ditemukan.
+- Template yang diperlukan tidak tersedia.
+- Tidak ada staged changes sebelum commit workflow.
+- Commit message tidak memenuhi validation strategy yang dipilih.
+
+Dengan menemukan masalah tersebut lebih dahulu, Custy mencegah workflow yang
+tidak lengkap atau gagal.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Berbasis Configuration">
+
+Sebagian besar target validation ditentukan dari `config.toml` proyek.
+Contohnya, lokasi version file, lokasi template, dan nama Git remote ditentukan
+dari project configuration, bukan fixed path, selama memungkinkan.
+
+</InfoBox>
+
+---
+
+<Section title="Kapan Validation Perlu Dijalankan?">
+
+Validation berguna untuk memastikan proyek siap sebelum operasi Git atau
+release, terutama:
+
+- Sebelum membuat commit.
+- Sebelum membuat versi.
+- Sebelum membuat Git tag.
+- Sebelum melakukan push.
+- Sebelum menjalankan release workflow.
+
+Jika Anda biasanya menggunakan `custy run`, checks ini dijalankan otomatis
+sebagai bagian dari workflow.
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {name: "init", description: "Buat configuration dan templates yang diperlukan validation.", href: "../init/overview"},
+        {name: "run", description: "Jalankan workflow pipelines yang menyertakan validation secara otomatis.", href: "../run/overview"},
+        {name: "workflow", description: "Pelajari posisi validation dalam workflow engine Custy.", href: "../workflow/overview"},
+    ]}
+/>

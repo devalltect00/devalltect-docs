@@ -1,0 +1,88 @@
+---
+title: "Examples"
+description: "Practical custy commit examples."
+sidebar_position: 8
+sidebar_key: custy-commit-examples
+tags: [commit, examples, git]
+keywords: [custy commit examples]
+---
+
+import {
+    CommandExample,
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Examples"
+    description="Use practical commit-profile patterns for previews, staging control, version files, and intentional empty commits."
+    category="Git Operations"
+    status="Stable"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "examples",
+        "staging",
+        "dry-run",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+Preview the complete profile before allowing it to edit files, stage changes,
+and create local Git history.
+
+<InfoBox
+    variant="tip"
+    title="Start with dry-run"
+>
+
+Use `custy --dry-run commit` when working in a new repository or after changing
+commit configuration.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {title: "Run the configured commit profile", command: "custy commit", description: "Prepare artifacts, generate the changelog, stage, and commit with project settings.", result: "A reviewed commit is created locally when every stage succeeds."},
+        {title: "Preview before changing the repository", command: "custy --dry-run commit", description: "Inspect the planned pipeline through the global dry-run mode.", notes: "Check output carefully because the normal profile has broad side effects."},
+        {title: "Stage tracked changes only", command: "custy commit --auto-stage --stage-mode update", description: "Use Git's update-style staging for tracked modifications and deletions."},
+        {title: "Use a dedicated version file", command: "custy commit --version-file src/package_version.py", description: "Override the configured version path for one run."},
+        {title: "Permit an empty commit", command: "custy commit --allow-empty-commit", description: "Allow the commit stage to continue when an empty commit is intentional.", notes: "Use this only for a deliberate workflow requirement."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Empty commits are deliberate exceptions"
+>
+
+Do not use `--allow-empty-commit` to bypass an unrelated validation, staging,
+or configuration error.
+
+</InfoBox>

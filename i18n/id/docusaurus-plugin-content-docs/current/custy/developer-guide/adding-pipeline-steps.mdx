@@ -1,0 +1,14 @@
+---
+title: "Adding Pipeline Steps"
+description: "Implement, register, order, compose, dan test satu focused Custy pipeline step."
+sidebar_position: 5
+sidebar_key: custy-developer-guide-adding-pipeline-steps
+---
+import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Terminal} from "@site/src/components/docs";
+
+<CommandHero command="BaseStep.execute(context)" title="Adding Pipeline Steps" description="Tambahkan behavior pipeline tanpa merusak registration, ordering, atau shared context contract." category="Developer Guide" status="Safety-Sensitive" syntax="implement -> register -> order -> profile -> test" links={[{label:"Step System",href:"../pipelines/step-system"},{label:"Step Order",href:"../pipelines/step-order"},{label:"Profiles",href:"../pipelines/profile-reference"}]} />
+## Workflow
+<CommandChecklist items={[{title:"Implement focused step",description:"Subclass BaseStep dan delegate domain behavior ke service atau workflow engine."},{title:"Register unique name",description:"Tambahkan class ke register_all_steps()."},{title:"Assign STEP_ORDER",description:"Tempatkan step dalam safe global phase."},{title:"Update profiles",description:"Tambahkan hanya ke intentional profiles."},{title:"Test",description:"Cover build, execute, failure, membership, deduplication, dan ordering."},{title:"Document",description:"Update exact sequences, requirements, side effects, dan recovery."}]} />
+<Terminal language="text">{`profile definition -> CommandResolver -> StepRegistry -> PipelineBuilder -> execute(context)`}</Terminal>
+<InfoBox variant="danger" title="Ordering adalah Behavioral Contract">Step tanpa `STEP_ORDER` menerima fallback `999`. Priority yang salah dapat menempatkan validation setelah mutation atau finalization sebelum publication selesai.</InfoBox>
+<RelatedCommands commands={[{title:"Step System",href:"../pipelines/step-system",description:"Internal contracts."},{title:"Step Order",href:"../pipelines/step-order",description:"All priorities."},{title:"Profile Reference",href:"../pipelines/profile-reference",description:"Exact expansions."},{title:"Testing",href:"./testing",description:"Validation strategy."}]} />

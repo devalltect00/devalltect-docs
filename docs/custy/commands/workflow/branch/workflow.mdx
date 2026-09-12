@@ -1,0 +1,83 @@
+---
+title: "Workflow"
+description: "Intended and current execution flow for custy workflow branch."
+sidebar_position: 5
+sidebar_key: custy-workflow-branch-workflow
+tags: [workflow, pipeline, experimental]
+keywords: [workflow branch execution]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Intended Workflow"
+    description="Compare the intended transition-policy lifecycle with the current pipeline-construction stop point."
+    category="Experimental Workflow"
+    status="Currently Blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "workflow",
+        "pipeline construction",
+        "known blocker",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Options", href: "./options"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+The intended flow resolves settings and builds a policy pipeline before
+validation or enforcement. Current execution can stop during pipeline building.
+
+---
+
+<Section
+    title="Workflow Timeline"
+>
+
+<WorkflowTimeline
+    title="Branch Transition Interface"
+    items={[
+        {title: "Resolve settings", description: "Combine local options, project workflow configuration, and logging defaults.", status: "completed"},
+        {title: "Update application context", description: "Apply dry-run, debug, and transition inputs.", status: "completed"},
+        {title: "Register pipeline steps", description: "Register the available Custy step implementations.", status: "completed"},
+        {title: "Build finalization pipeline", description: "Request the transition finalization step.", status: "current"},
+        {title: "Validate or enforce", description: "Evaluate configured branch and version policies.", status: "pending"},
+        {title: "Synchronize backup", description: "Perform eligible backup work when requested.", status: "optional"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Current stop point"
+>
+
+The command requests a step named `finalize`, but registration uses
+`finalize_step`. Pipeline building can fail at that point, before policy
+validation or enforcement executes.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Operational Meaning"
+>
+
+Until the registry name is corrected and end-to-end behavior is validated, no
+later transition validation, enforcement, or backup result should be assumed.
+
+</Section>

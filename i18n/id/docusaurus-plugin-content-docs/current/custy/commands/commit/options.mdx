@@ -1,0 +1,25 @@
+---
+title: "Options"
+description: "Options yang diterima custy commit."
+sidebar_position: 4
+sidebar_key: custy-commit-options
+---
+import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy commit" title="Command Options" description="Atur templates, staging, versioning, backups, dan empty-commit behavior." category="Git Operations" status="Stable with Limitation" syntax="custy commit [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Configuration",href:"./configuration"},{label:"Examples",href:"./examples"}]} />
+
+## Ringkasan
+
+<CommandOption options={[
+ {name:"--commit-msg-file",shorthand:"-cmsg",description:"Override existing commit-message template.",example:"--commit-msg-file templates/commit-message.txt"},
+ {name:"--auto-stage",shorthand:"-as",description:"Aktifkan automatic staging.",defaultValue:"Resolved configuration",example:"--auto-stage"},
+ {name:"--stage-mode",shorthand:"-sm",description:"Pilih all, update, none, atau manual.",example:"--stage-mode update"},
+ {name:"--allow-empty-commit / --no-allow-empty-commit",shorthand:"-aec / -Aec",description:"Izinkan atau tolak commit tanpa normal changes.",example:"--allow-empty-commit"},
+ {name:"--strategy",description:"Pilih semver, pep440, date, gitcount, atau commitizen.",example:"--strategy semver"},
+ {name:"--backup-commit-dir",shorthand:"-bcd",description:"Override commit-message backup directory.",example:"--backup-commit-dir .config/custy/templates/backups/commit"},
+ {name:"--version-file",shorthand:"-vf",description:"Override existing project version file.",example:"--version-file app/__version__.py"},
+ {name:"--check-cz",shorthand:"-cz",description:"Minta Commitizen validation jika tersedia.",example:"--check-cz"},
+]} />
+
+<Section title="Global Execution Options">`custy --dry-run commit`, `custy --debug commit`, dan `custy --log-level debug commit`.</Section>
+<InfoBox variant="warning" title="Current Adapter Limitation">CLI menerima `--check-cz`, tetapi adapter saat ini tidak meneruskannya ke workflow engine. Perlakukan option ini sebagai belum tersedia sampai implementasi diperbarui dan diverifikasi.</InfoBox>

@@ -1,0 +1,11 @@
+{
+  "label": "Commands",
+  "position": 2,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-commands",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/overview"
+  }
+}

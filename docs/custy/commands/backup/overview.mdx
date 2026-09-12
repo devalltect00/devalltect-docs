@@ -1,0 +1,205 @@
+---
+title: "Overview"
+description: "Create backup copies of Custy's template files."
+sidebar_position: 1
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    RelatedCommands,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Backup Template Files"
+    description="Create backup copies of Custy's commit and tag message templates before modifying them."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup"
+    tags={[
+        "backup",
+        "templates",
+        "workflow",
+    ]}
+    links={[
+        {
+            label: "Requirements",
+            href: "./requirements",
+        },
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Backup Files",
+            href: "./backup-files",
+        },
+        {
+            label: "User Journey",
+            href: "../../user-guide/managing-backups",
+        },
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {
+            label: "Category",
+            value: "Backup",
+        },
+        {
+            label: "Subcommands",
+            value: "commit, tag, all",
+        },
+        {
+            label: "Modifies Repository",
+            value: "No Git history changes",
+        },
+        {
+            label: "Recommended",
+            value: "Before editing templates or preparing releases.",
+        },
+    ]}
+/>
+
+## Overview
+
+The **backup** command creates backup copies of Custy's template files before
+they are modified or reused by later workflows.
+
+Rather than backing up an entire project, this command focuses specifically on
+Custy's generated template resources, allowing previous versions to be restored
+if needed.
+
+<InfoBox
+    variant="tip"
+    title="Safe Before Changes"
+>
+
+Creating backups before editing templates helps preserve previous versions and
+provides an easy recovery point if changes need to be reverted.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Available Subcommands"
+>
+
+<FeatureGrid
+    title="Backup Operations"
+    items={[
+        {
+            title: "Commit",
+            icon: <Icon name="copy" />,
+            children: (
+                <>
+                    Backup the configured commit message template.
+                </>
+            ),
+        },
+        {
+            title: "Tag",
+            icon: <Icon name="release" />,
+            children: (
+                <>
+                    Backup the configured tag message template.
+                </>
+            ),
+        },
+        {
+            title: "All",
+            icon: <Icon name="directory" />,
+            children: (
+                <>
+                    Backup both commit and tag message templates in a single
+                    operation.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="What Gets Backed Up?"
+>
+
+Custy can create backups for:
+
+- Commit message templates.
+- Tag message templates.
+- Custom template locations configured in
+  <code>.config/custy/config.toml</code>.
+
+Backup files are written into the configured backup directories using
+timestamped filenames to preserve previous versions.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Automatic Backup Management"
+>
+
+Custy automatically creates backup directories when necessary and manages older
+backup files according to the configured retention policy.
+
+</InfoBox>
+
+---
+
+<Section
+    title="When Should I Create Backups?"
+>
+
+Creating backups is recommended before:
+
+- Editing template files.
+- Changing commit conventions.
+- Updating release message formats.
+- Migrating project configuration.
+- Running release workflows.
+
+Although backup is optional, it provides a simple recovery mechanism for
+template changes.
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {
+            name: "init",
+            description:
+                "Generate the template files that can later be backed up.",
+            href: "../init/overview",
+        },
+        {
+            name: "cleanup",
+            description:
+                "Remove old backup files when they are no longer needed.",
+            href: "../cleanup/overview",
+        },
+        {
+            name: "run",
+            description:
+                "Workflow commands may use backed-up templates during release operations.",
+            href: "../run/overview",
+        },
+    ]}
+/>
+

@@ -1,0 +1,71 @@
+---
+title: "Syntax"
+description: "Command syntax untuk menghapus obsolete backup files."
+sidebar_position: 3
+sidebar_key: custy-cleanup-backup
+tags: [cleanup, backup, syntax]
+keywords: [custy cleanup backups syntax, cleanup backup command]
+---
+import {CommandHero, CommandSyntax, Section, InfoBox, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Syntax"
+    description="Pelajari cara menghapus obsolete backup files."
+    category="Maintenance"
+    status="Direkomendasikan"
+    syntax="custy cleanup backups"
+    tags={["cleanup", "backup", "syntax"]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Options", href: "./options"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+## Ringkasan
+
+Command membersihkan commit message backups, tag message backups, atau keduanya
+sesuai options dan project configuration.
+
+<Section title="Basic Syntax">
+<CommandSyntax examples={[{title: "Backup Cleanup", description: "Hapus obsolete backup files dengan configured settings.", command: "custy cleanup backups"}]} />
+</Section>
+
+<InfoBox variant="note" title="Public Invocation">
+Gunakan `custy cleanup backups`. `cleanup_backups` bukan public Run argument.
+</InfoBox>
+
+<Section title="Cleanup Targets">
+Target dapat berupa commit backups, tag backups, atau keduanya.
+</Section>
+
+<Section title="Global Options">
+<Terminal>
+```bash
+custy --dry-run cleanup backups
+```
+</Terminal>
+<Terminal>
+```bash
+custy --debug cleanup backups
+```
+</Terminal>
+<Terminal>
+```bash
+custy --log-level DEBUG cleanup backups
+```
+</Terminal>
+Global options selalu berada sebelum command.
+</Section>
+
+<InfoBox variant="tip" title="Configuration First">
+Jika options tidak diberikan, Custy menggunakan `config.toml`.
+</InfoBox>
+
+<Section title="Exit Behavior">
+Command dapat menghapus file lama, menentukan cleanup tidak diperlukan, lalu
+melaporkan summary tanpa mengubah Git repository.
+</Section>
+
+<Section title="Langkah Berikutnya">Lanjutkan ke **Options**.</Section>

@@ -1,0 +1,160 @@
+---
+title: "Overview"
+description: "Prepare release artifacts and create a structured Git commit with Custy."
+sidebar_position: 1
+sidebar_key: custy-commands-commit
+tags: [commit, git, changelog, staging]
+keywords: [custy commit, structured commit, commit workflow]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Screenshot,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Create a Structured Commit"
+    description="Run Custy's commit profile, including preparation, changelog generation, backup, staging, and Git commit creation."
+    category="Git Operations"
+    status="Stable"
+    syntax="custy commit [OPTIONS]"
+    tags={["Git", "staging", "commit message"]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Options", href: "./options"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {
+            label: "Category",
+            value: "Git Operations",
+            icon: "git",
+        },
+        {
+            label: "Complexity",
+            value: "Advanced",
+            icon: "requirement",
+        },
+        {
+            label: "Creates Git History",
+            value: "Yes",
+            icon: "warning",
+        },
+        {
+            label: "Pushes Remotely",
+            value: "No",
+            icon: "network",
+        },
+    ]}
+/>
+
+## Overview
+
+`custy commit` is not a thin wrapper around `git commit`. It resolves and runs
+the public `commit` profile, which prepares a version, generates and opens
+configured artifacts, applies the version, updates the changelog, backs up and
+cleans message templates, stages files, and finally creates the commit.
+
+<InfoBox
+    variant="danger"
+    title="Broad working-tree effects"
+>
+
+This command can edit project files, update `CHANGELOG.md`, stage changes, and
+create Git history. Inspect the [workflow](./workflow), use dry-run first, and
+run it only in the intended repository.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Profile Responsibilities"
+>
+
+<FeatureGrid
+    title="What the Commit Profile Coordinates"
+    items={[
+        {
+            title: "Prepare Artifacts",
+            icon: <Icon name="file" />,
+            children: "Resolve version context and generate configured release or message artifacts.",
+        },
+        {
+            title: "Update Changelog",
+            icon: <Icon name="release" />,
+            children: "Generate CHANGELOG.md before creating the final commit.",
+        },
+        {
+            title: "Back Up Messages",
+            icon: <Icon name="package" />,
+            children: "Retain the configured commit-message backup and clean old retained files.",
+        },
+        {
+            title: "Stage and Commit",
+            icon: <Icon name="git" />,
+            children: "Stage according to the resolved mode and create the local Git commit.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Commit Editor Preview"
+>
+
+<Screenshot
+    src="/img/custy/commit/commit-editor.png"
+    alt="Commit message editor opened during custy commit"
+    title="Commit message editing"
+    caption="Custy can open the configured message template before creating the commit."
+    fallback="Screenshot of the Custy commit-message editor will be added later."
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Related Commands"
+>
+
+<RelatedCommands
+    commands={[
+        {
+            title: "custy changelog generate",
+            href: "../changelog/generate/overview",
+            description: "Generate the changelog without running the remaining commit stages.",
+        },
+        {
+            title: "custy tag",
+            href: "../tag/overview",
+            description: "Prepare and create a reviewed local release tag.",
+        },
+        {
+            title: "custy push",
+            href: "../push/overview",
+            description: "Synchronize the reviewed commit and optional tag with remotes.",
+        },
+        {
+            title: "custy run dev",
+            href: "../run/dev/overview",
+            description: "Run daily preparation, commit, and push stages together.",
+        },
+    ]}
+/>
+
+</Section>

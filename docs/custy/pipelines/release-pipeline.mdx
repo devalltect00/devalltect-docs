@@ -1,0 +1,160 @@
+---
+title: "Release Pipeline"
+description: "Understand Custy's complete validated version, changelog, commit, tag, and push sequence."
+sidebar_position: 9
+sidebar_key: custy-pipelines-release
+tags: [custy, release pipeline, git]
+keywords: [custy run release, Custy release workflow]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run release"
+    title="Release Pipeline"
+    description="Validate, prepare, document, commit, tag, and publish a versioned release without post-push finalization."
+    category="Pipeline Profile"
+    status="Stable with Limitations"
+    syntax="custy run release [OPTIONS]"
+    tags={["version", "changelog", "commit", "tag", "push"]}
+    links={[
+        {label: "Run Release Guide", href: "../commands/run/release/overview"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Full Pipeline", href: "./full-pipeline"},
+    ]}
+/>
+
+## Overview
+
+Release is the complete public publication profile. It includes repository,
+commit, tag, and remote validation before it applies version state, generates
+release documentation, creates Git history, and pushes to the resolved remotes.
+
+<Terminal title="Preview and execute" language="bash">
+
+{`custy --dry-run run release
+custy run release`}
+
+</Terminal>
+
+---
+
+<Section title="Exact Phase Flow">
+
+<WorkflowTimeline
+    title="Release Profile"
+    items={[
+        {title: "Validate all release prerequisites", description: "Run repository, pre-commit, pre-tag, and pre-push validation subprofiles.", status: "completed"},
+        {title: "Prepare release state", description: "Resolve the version, initialize workflow state, and prepare the tag message.", status: "completed"},
+        {title: "Generate and review artifacts", description: "Generate configured artifacts, open them for editing, and validate the edited files.", status: "completed"},
+        {title: "Apply version", description: "Write the resolved version through the active version update path.", status: "completed"},
+        {title: "Generate changelog", description: "Generate the configured changelog when the version and command rules allow it.", status: "completed"},
+        {title: "Back up and clean", description: "Back up commit and tag messages and apply retention cleanup.", status: "completed"},
+        {title: "Commit and tag", description: "Stage release files, create the release commit, and create the local tag.", status: "completed"},
+        {title: "Push", description: "Publish HEAD and the eligible release tag to resolved remotes.", status: "current"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<KeyValueTable
+    title="Exact Release Step Order"
+    description="Release expands nested validation profiles before the preparation and mutation stages."
+    items={[
+        {key: "01 — ensure_git_repo_step", value: "Require a Git repository."},
+        {key: "02 — ensure_staged_changes_step", value: "Check commit staging readiness."},
+        {key: "03 — ensure_commitizen_convention_step", value: "Validate Commitizen convention support."},
+        {key: "04 — ensure_commit_message_file_step", value: "Validate the configured commit-message file setting."},
+        {key: "05 — ensure_commit_message_file_exists_step", value: "Require the commit-message file."},
+        {key: "06 — ensure_version_file_step", value: "Validate the configured version file."},
+        {key: "07 — ensure_tag_message_file_step", value: "Validate the configured tag-message file setting."},
+        {key: "08 — ensure_tag_message_file_exists_step", value: "Require the tag-message file."},
+        {key: "09 — ensure_remote_exists_step", value: "Require resolved Git remotes."},
+        {key: "10 — prepare_version_step", value: "Resolve the release version and tag context."},
+        {key: "11 — workflow_init_step", value: "Initialize branch workflow state."},
+        {key: "12 — prepare_tag_message_step", value: "Prepare the tag message for the resolved version."},
+        {key: "13 — generate_artifacts_step", value: "Generate configured release artifacts."},
+        {key: "14 — edit_files_step", value: "Open generated files for review and editing."},
+        {key: "15 — validate_edited_step", value: "Validate the edited artifacts."},
+        {key: "16 — apply_version_step", value: "Apply the resolved version through the configured update path."},
+        {key: "17 — generate_changelog_step", value: "Run conditional changelog generation."},
+        {key: "18 — backup_commit_message_files_step", value: "Back up the commit-message file."},
+        {key: "19 — backup_tag_message_files_step", value: "Back up the tag-message file."},
+        {key: "20 — cleanup_backup_step", value: "Apply backup retention cleanup."},
+        {key: "21 — stage_step", value: "Stage the resolved release files."},
+        {key: "22 — commit_step", value: "Create the release commit."},
+        {key: "23 — tag_step", value: "Create the local release tag."},
+        {key: "24 — push_step", value: "Push HEAD and the eligible release tag to resolved remotes."},
+    ]}
+/>
+
+---
+
+<Section title="Before You Run">
+
+<CommandChecklist
+    items={[
+        {title: "Start from reviewed Git state", description: "Confirm branch, status, staged files, existing tags, and remotes."},
+        {title: "Validate project configuration", description: "Check version strategy, paths, templates, changelog rules, and remote policy."},
+        {title: "Review message files", description: "Ensure commit and tag messages exist and satisfy the configured convention."},
+        {title: "Preview with dry-run", description: "Read every planned file, Git, and remote action before normal execution."},
+        {title: "Plan recovery", description: "Know how you will inspect and reconcile a partial commit, tag, or push."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Changelog generation is conditional">
+
+The Release profile contains the changelog step, but the workflow engine can
+skip generation for a non-final version or according to active command and
+configuration rules. A registered step does not guarantee that it will mutate
+a file.
+
+</InfoBox>
+
+<InfoBox variant="danger" title="Publication is not atomic">
+
+A failure can occur after files were changed, after a commit or local tag was
+created, or after one remote succeeded. Inspect the exact completion boundary
+before retrying.
+
+</InfoBox>
+
+---
+
+<Section title="Release or Full?">
+
+Release ends after push. Full contains the same Release stages and then invokes
+experimental branch workflow finalization. Prefer Release unless that
+post-publication transition is deliberately required and understood.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Run Release", href: "../commands/run/release/overview", description: "Use practical release options, examples, and troubleshooting."},
+        {title: "Complete Profile Reference", href: "./profile-reference", description: "Compare Release with all public and internal profiles."},
+        {title: "Full Pipeline", href: "./full-pipeline", description: "Review the post-push finalization difference."},
+        {title: "Changelog Generate", href: "../commands/changelog/generate/overview", description: "Generate a changelog as a focused operation."},
+    ]}
+/>
+
+</Section>

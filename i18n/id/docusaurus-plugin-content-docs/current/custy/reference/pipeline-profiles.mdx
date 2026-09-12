@@ -1,0 +1,15 @@
+---
+title: "Pipeline Profiles"
+description: "Referensi public Run profiles, direct-command profiles, internal composition profiles, step count, dan ordering rules Custy."
+sidebar_position: 6
+sidebar_key: custy-reference-pipeline-profiles
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy run PROFILE" title="Pipeline Profiles" description="Pilih public profile dan pahami concrete step order sebelum menjalankannya." category="Referensi" status="Sequential" syntax="custy run {dev|release|full|validation|maintenance|sync}" links={[{label:"Complete Reference",href:"../pipelines/profile-reference"},{label:"Step Order",href:"../pipelines/step-order"},{label:"Run Command",href:"../commands/run/overview"}]} />
+
+<Section title="Public boundary">Enam public Run values adalah `dev`, `release`, `full`, `validation`, `maintenance`, dan `sync`. Resolver juga memiliki profile untuk direct command dan internal composition; nama tersebut bukan public Run values.</Section>
+
+<InfoBox variant="info" title="Urutan dinormalisasi">Profile expansion di-deduplicate lalu diurutkan memakai `STEP_ORDER`. Urutan deklarasi saat menggabungkan profile tidak selalu menjadi urutan eksekusi akhir.</InfoBox>
+
+<RelatedCommands commands={[{title:"Complete Profile Reference",href:"../pipelines/profile-reference",description:"Periksa setiap resolver profile dan sequence."},{title:"Step Priority",href:"../pipelines/step-order",description:"Pelajari seluruh priority entry dan merged ordering."},{title:"Run Command",href:"../commands/run/overview",description:"Gunakan syntax, options, safety, dan troubleshooting."},{title:"Pipeline Architecture",href:"../architecture/pipeline-engine",description:"Telusuri resolver, registry, builder, context, dan execution."}]} />

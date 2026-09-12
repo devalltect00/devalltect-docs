@@ -1,0 +1,27 @@
+---
+title: "Versioning"
+description: "Cara Custy resolve release version, menyiapkan artifacts, memperbarui files, dan membuat Git tag."
+sidebar_position: 4
+sidebar_key: custy-concepts-versioning
+---
+import {CommandHero, FeatureGrid, WorkflowTimeline, InfoBox, Section, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy version" title="Versioning" description="Pisahkan version value, file synchronization, dan Git tag creation." category="Concept" status="Core Model" syntax="custy version COMMAND [OPTIONS]" links={[{label:"Version Command",href:"../commands/version/overview"},{label:"Strategies",href:"../commands/version/versioning-strategies"}]} />
+
+## Ringkasan
+
+<InfoBox variant="info" title="A Version Value Is Not a Git Tag">Version adalah release identity; tag adalah Git reference yang dibuat pada tahap terpisah.</InfoBox>
+
+<FeatureGrid title="Supported Strategies" subtitle="Strategy menjawab satu pertanyaan: versi berikutnya harus bernilai apa?" items={[
+ {title:"SemVer",children:"Semantic versions untuk aplikasi umum."},{title:"PEP 440",children:"Python packaging-compatible versions."},{title:"Commitizen",children:"Version dari conventional commit history."},{title:"Date / Git Count",children:"Calendar atau repository-count identifiers."},
+]} />
+
+<WorkflowTimeline title="From Strategy to Release Tag" items={[
+ {title:"Resolve source",description:"CLI, configuration, strategy, atau explicit tag.",status:"completed"},{title:"Generate value",description:"Bentuk canonical release version.",status:"completed"},{title:"Normalize",description:"Konversi sesuai project ecosystem.",status:"completed"},{title:"Synchronize files",description:"Update version source dan metadata.",status:"completed"},{title:"Create Git tag",description:"Tag profile menandai target commit.",status:"optional"},
+]} />
+
+<InfoBox variant="warning" title="Review Converted Values">Cross-ecosystem synchronization dapat menggunakan representation berbeda, misalnya SemVer ke PEP 440-compatible format.</InfoBox>
+
+<RelatedCommands commands={[
+ {name:"feature",description:"Version command.",href:"../commands/version/overview"},{name:"package",description:"Version strategies.",href:"../commands/version/versioning-strategies"},{name:"git",description:"Tag versioning guide.",href:"../commands/tag/versioning-and-tags"},{name:"release",description:"Release workflow.",href:"../commands/run/release/workflow"},{name:"dependency",description:"Configuration resolution.",href:"./configuration-resolution"},
+]} />

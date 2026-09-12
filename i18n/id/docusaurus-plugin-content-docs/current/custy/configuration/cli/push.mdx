@@ -1,0 +1,43 @@
+---
+title: "Push Defaults"
+description: "Konfigurasikan direct dan pipeline push defaults melalui tool.custy.cli.push."
+sidebar_position: 6
+sidebar_key: custy-configuration-cli-push
+tags: [custy, configuration, push]
+keywords: [all_remote, skip_tag, sync_backup]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.push]" title="Push Defaults" description="Pilih default remote breadth, tag handling, dan backup synchronization untuk supported push flows." category="CLI Configuration" status="Active" syntax="[tool.custy.cli.push]" tags={["remotes", "tags", "backup sync"]} links={[{label: "Git Namespace", href: "../git/overview"}, {label: "Push Command", href: "../../commands/push/overview"}, {label: "Remotes", href: "../../commands/push/remotes"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "All Remote", value: "true", icon: "network"}, {label: "Skip Tag", value: "false", icon: "release"}, {label: "External Side Effect", value: "Yes", icon: "warning"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Default direct push dan run behavior untuk memilih semua configured remotes, bukan satu primary target."},
+        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push branch changes tanpa push tags jika bernilai true."},
+        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Aktifkan backup-repository synchronization dalam supported push flows."},
+    ]}
+/>
+
+<Terminal title="Generated defaults" language="toml">
+
+{`[tool.custy.cli.push]
+all_remote = true
+skip_tag = false
+sync_backup = false`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="CLI Push dan Git Service Settings Saling Terkait, tetapi Tidak Sama">
+
+Table ini menyediakan command arguments. `[tool.custy.git]` menentukan
+service-level remote groups dan `push_to`. Tinjau keduanya sebelum melakukan
+multi-remote push.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Git Remotes", href: "../git/remotes", description: "Tentukan primary dan backup groups."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Pahami command-level selection."}, {title: "Push Troubleshooting", href: "../../commands/push/troubleshooting", description: "Diagnosis authentication dan rejected pushes."}]} /></Section>

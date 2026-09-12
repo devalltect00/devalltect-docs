@@ -1,0 +1,169 @@
+---
+title: "Output"
+description: "Understand the output and messages produced by the custy init command."
+sidebar_position: 9
+sidebar_key: custy-commands-init
+
+tags:
+  - output
+  - initialization
+  - terminal
+
+keywords:
+  - custy init output
+  - initialization output
+  - terminal messages
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Command Output"
+    description="Learn what to expect when Custy initializes a project."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "output",
+        "terminal",
+        "messages",
+    ]}
+    links={[
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+During initialization, Custy reports its progress through informative terminal
+messages.
+
+These messages help you understand which resources are created, copied,
+skipped, or overwritten, and whether initialization completed successfully.
+
+<InfoBox
+    variant="tip"
+    title="Readable Output"
+>
+
+Custy's output is designed to be human-readable while providing enough
+information to understand what happened during initialization.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Typical Output"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Successful Initialization",
+            description:
+                "Typical output when initializing a project for the first time.",
+            output: `
+Initializing Custy project...
+
+✓ Configuration created
+✓ Templates created
+✓ Examples created
+
+Initialization completed successfully.
+`,
+            notes:
+                "The exact wording may differ slightly between Custy versions, but the overall flow remains the same.",
+        },
+        {
+            title: "Existing Resources",
+            description:
+                "Displayed when Custy preserves existing files while adding a missing packaged example.",
+            output: `
+Skipped .config/custy/config.toml (already exists)
+Skipped .config/custy/templates/commit-message.txt (already exists)
+Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt
+
+Initialization completed successfully.
+`,
+            notes:
+                "An existing examples directory is reused. Missing nested files can be copied even when other files are skipped.",
+        },
+        {
+            title: "Interactive Confirmation",
+            description:
+                "Shown when Custy requires confirmation before replacing an existing resource.",
+            output: `
+Configuration already exists.
+
+Overwrite existing file? (y/N)
+`,
+            notes:
+                "Interactive prompts apply to supported individual generated files. Packaged example files use preserve-or-force merge behavior without per-file prompts.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Interpreting the Output"
+>
+
+The output shown by Custy depends on several factors, including:
+
+- The selected initialization mode.
+- Whether project resources already exist.
+- Whether confirmation prompts are enabled.
+- Whether resources are overwritten.
+- Whether the packaged example tree contains files missing from the project.
+
+Although the exact wording may vary between versions, the overall sequence of
+messages remains consistent.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Successful Completion"
+>
+
+When initialization finishes successfully, your project is ready for future
+Custy commands.
+
+The generated configuration and templates can now be reviewed, customized, and
+committed to version control.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+If the initialization process does not behave as expected, continue to the
+**Troubleshooting** page for common problems and recommended solutions.
+
+</Section>

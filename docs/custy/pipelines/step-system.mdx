@@ -1,0 +1,158 @@
+---
+title: "Step System"
+description: "Developer guide to Custy's BaseStep, registry, builder, shared context, ordering, and tests."
+sidebar_position: 7
+sidebar_key: custy-pipelines-step-system
+tags: [custy, pipeline steps, developer guide]
+keywords: [Custy BaseStep, StepRegistry, PipelineBuilder, GitContext]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/pipeline/"
+    title="Pipeline Step System"
+    description="Understand the internal contracts a contributor must preserve when adding or changing pipeline behavior."
+    category="Developer Guide"
+    status="Internal API"
+    syntax="resolve → create registered steps → execute(context)"
+    tags={["BaseStep", "StepRegistry", "PipelineBuilder", "GitContext"]}
+    links={[
+        {label: "Execution Model", href: "./execution-model"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Step Priority", href: "./step-order"},
+        {label: "Composition", href: "./custom-composition"},
+    ]}
+/>
+
+## Overview
+
+Custy's pipeline package separates workflow definition from execution. Profiles
+name the intended steps, the registry maps names to classes, the builder creates
+instances, and the pipeline invokes each instance with one shared context.
+
+<InfoBox variant="warning" title="Internal extension point, not a public plugin API">
+
+The registry enables dynamic construction inside Custy, but the current project
+does not expose a documented third-party plugin installation contract. Treat
+these modules as contributor-facing internals that may evolve with the source.
+
+</InfoBox>
+
+---
+
+<Section title="Core Responsibilities">
+
+<FeatureGrid
+    title="Pipeline Building Blocks"
+    items={[
+        {title: "BaseStep", icon: <Icon name="dependency" />, children: <>Defines the required <code>execute(context)</code> interface for every step.</>},
+        {title: "StepRegistry", icon: <Icon name="configuration" />, children: "Maps a unique string name to a step class and creates instances on demand."},
+        {title: "Step Registration", icon: <Icon name="project" />, children: "Registers Custy's built-in validation, preparation, generation, backup, cleanup, execution, and finalization steps."},
+        {title: "CommandResolver", icon: <Icon name="pipeline" />, children: "Expands profiles and normalizes multi-profile composition before building begins."},
+        {title: "PipelineBuilder", icon: <Icon name="architecture" />, children: "Converts resolved step dictionaries into concrete objects through the registry."},
+        {title: "GitContext", icon: <Icon name="git" />, children: "Carries the workflow engine, shared services, and mutable runtime values across steps."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Source Map">
+
+- `app/core/pipeline/profiles.py` — profile definitions and global phase order.
+- `app/core/pipeline/command_resolver.py` — expansion, cycle detection,
+  deduplication, and ordering.
+- `app/core/pipeline/registry.py` — name-to-class storage and instance creation.
+- `app/core/pipeline/step_registry.py` — one-time built-in registration.
+- `app/core/pipeline/builder.py` — progress and simple pipeline construction.
+- `app/core/pipeline/pipeline.py` — sequential execution and failure reporting.
+- `app/core/pipeline/context.py` — the shared runtime contract.
+- `app/core/pipeline/steps/` — concrete step adapters.
+- `app/core/workflow/workflow_engine.py` — active workflow operations invoked by
+  most steps.
+
+</Section>
+
+---
+
+<Section title="Contributor Checklist">
+
+<CommandChecklist
+    items={[
+        {title: "Implement one focused step", description: "Subclass BaseStep and provide a documented execute(context) method with one clear responsibility."},
+        {title: "Register a unique name", description: "Add the class to register_all_steps(); duplicate names raise ValueError."},
+        {title: "Assign phase order", description: "Add the name to STEP_ORDER so merged profiles cannot place it in an unsafe phase."},
+        {title: "Add it to intentional profiles", description: "Update only profiles that truly require the new behavior; do not hide profile logic in the resolver."},
+        {title: "Test resolution and execution", description: "Cover profile membership, ordering, deduplication, failure behavior, and the expected engine call."},
+        {title: "Update user and developer docs", description: "Document changed requirements, side effects, output, recovery, and extension behavior."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Registry Contracts">
+
+- Call `register_all_steps()` once before building a pipeline. Registering the
+  same name again raises `ValueError`.
+- Building an unregistered name fails with `KeyError` before execution.
+- Step constructor arguments may be supplied through an `args` object in a
+  resolved step definition.
+- Registration only makes a class buildable; it does not expose a new public
+  `custy run` profile name.
+
+</Section>
+
+---
+
+<Section title="Context and State Discipline">
+
+Keep configuration and services in the workflow engine. Use `GitContext` for
+shared runtime state that must cross a step boundary, such as the current tag,
+workflow case, or staging list. A step should delegate domain behavior to the
+engine or a focused service instead of duplicating Git or release logic.
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Changing order can change safety">
+
+The global order is part of the execution contract for merged profiles. A new
+or moved priority can change whether validation runs before file writes, or
+whether commit, tag, push, cleanup, and finalization occur in a safe sequence.
+Treat ordering changes as behavioral changes and test them accordingly.
+
+</InfoBox>
+
+Every step that can participate in merged profiles should have an explicit
+`STEP_ORDER` entry. Without one, it receives fallback priority `999` and moves
+behind all known steps. Review the complete contract in
+[Step Priority and Ordering](./step-order).
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Execution Model", href: "./execution-model", description: "See how these internal pieces collaborate at runtime."},
+        {title: "Step Priority and Ordering", href: "./step-order", description: "Review all priorities and contributor ordering requirements."},
+        {title: "Custom Composition", href: "./custom-composition", description: "Review the resolver behavior affected by step ordering."},
+        {title: "Adding Pipeline Steps", href: "../developer-guide/adding-pipeline-steps", description: "Follow the complete implementation, registration, ordering, and test workflow."},
+        {title: "Release Pipeline", href: "./release-pipeline", description: "Trace the most complete stable profile through its phases."},
+    ]}
+/>
+
+</Section>

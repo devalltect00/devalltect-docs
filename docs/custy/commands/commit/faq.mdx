@@ -1,0 +1,125 @@
+---
+title: "FAQ"
+description: "Answers to common questions about custy commit."
+sidebar_position: 10
+sidebar_key: custy-commit-faq
+tags: [commit, faq, git]
+keywords: [custy commit faq]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Frequently Asked Questions"
+    description="Find answers about commit scope, pushing, Run equivalence, empty commits, changelog generation, and staging."
+    category="Git Operations"
+    status="Support Guide"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "FAQ",
+        "Git commit",
+        "support",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+These answers clarify how Custy's commit profile differs from a standalone Git
+commit and where its side effects stop.
+
+<InfoBox
+    variant="note"
+    title="A multi-stage profile"
+>
+
+`custy commit` prepares project artifacts before it reaches the final Git commit
+stage.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Is `custy commit` Equivalent to `git commit`?"
+>
+
+No. Custy runs a preparation and release-artifact pipeline before its final Git
+commit stage.
+
+</Section>
+
+---
+
+<Section
+    title="Does It Push the Commit?"
+>
+
+No. Use `custy push` after review, or choose a public profile that intentionally
+includes pushing.
+
+</Section>
+
+---
+
+<Section
+    title="How Does `custy run commit` Differ?"
+>
+
+Both forms select the registered commit profile. The direct command exposes
+commit-specific CLI overrides, while the generic Run command accepts profile
+selection and global execution context.
+
+</Section>
+
+---
+
+<Section
+    title="Can It Create an Empty Commit?"
+>
+
+Yes, when `--allow-empty-commit` or the corresponding resolved configuration is
+enabled. Use it only when empty history is intentional.
+
+</Section>
+
+---
+
+<Section
+    title="Does It Generate the Changelog?"
+>
+
+Yes. Changelog generation is part of the registered commit profile before
+backup, staging, and commit creation.
+
+</Section>
+
+---
+
+<Section
+    title="Should I Stage Manually First?"
+>
+
+You can, but review the resolved stage mode because the profile also contains a
+staging step. Use manual or none behavior when you need to preserve an exact
+pre-staged selection.
+
+</Section>

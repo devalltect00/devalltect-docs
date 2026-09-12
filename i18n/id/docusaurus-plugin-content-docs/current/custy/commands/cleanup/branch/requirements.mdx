@@ -1,0 +1,26 @@
+---
+title: "Requirements"
+description: "Prasyarat untuk Branch Cleanup."
+sidebar_position: 2
+sidebar_key: custy-cleanup-branch
+---
+import {CommandHero, RequirementGrid, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy cleanup branches" title="Requirements" description="Siapkan repository dan aturan keselamatan sebelum menghapus branch." category="Maintenance" status="Required" syntax="custy cleanup branches" links={[
+    {label: "Ringkasan", href: "./overview"}, {label: "Configuration", href: "./configuration"}, {label: "Workflow", href: "./workflow"},
+]} />
+
+## Ringkasan
+
+Pastikan Anda menjalankan command dari Git repository yang benar dan memahami branch mana yang boleh dihapus.
+
+<InfoBox variant="warning" title="Tinjau Sebelum Menghapus">Mulai dengan `custy --dry-run cleanup branches`. Penghapusan local branch tidak selalu mudah dipulihkan.</InfoBox>
+
+<RequirementGrid items={[
+    {title: "Git Repository", level: "required", children: "Current directory harus berada dalam Git repository."},
+    {title: "Cleanup Configuration", level: "required", children: "Tentukan include_prefixes atau berikan --include-prefix."},
+    {title: "Protected Branches", level: "required", children: "Pastikan branch penting tercantum sebagai protected branches."},
+    {title: "Working Tree Review", level: "recommended", children: "Periksa status repository dan kandidat branch sebelum menjalankan cleanup."},
+]} />
+
+<Section title="Perilaku Aman Secara Default">Tanpa prefix yang diizinkan, Custy melewati Branch Cleanup. Git remote tidak diperlukan untuk mengevaluasi local branches, tetapi status dan referensi lokal harus mutakhir agar keputusan Anda akurat.</Section>

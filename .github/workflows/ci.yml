@@ -1,0 +1,121 @@
+# .github/workflows/ci.yml
+
+name: 🧪 Continuous Integration
+
+run-name: 🧪 Documentation Validation • ${{ github.ref_name }}
+
+# =========================================================
+# 🧪 Continuous Integration Workflow
+# ---------------------------------------------------------
+# Purpose:
+# - Validate documentation changes
+# - Ensure TypeScript configuration is valid
+# - Ensure Docusaurus builds successfully
+# - Detect broken links before deployment
+# - Prevent invalid documentation from reaching main
+#
+# Trigger:
+# - Push to:
+# main
+# develop
+# dev
+#
+# - Pull Requests targeting:
+# main
+# develop
+# dev
+#
+# - Manual execution from GitHub Actions UI
+#
+# Why this workflow exists:
+# - Docusaurus sites are generated statically
+# - Build failures should be caught early
+# - Broken links should block merges
+# - Invalid MDX should fail CI immediately
+#
+# Validation Performed:
+# - Install Node.js dependencies
+# - Run TypeScript validation
+# - Build Docusaurus site
+#
+# Future Enhancements:
+# - Markdown linting
+# - Link checking
+# - Spell checking
+# - Documentation quality validation
+# =========================================================
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - dev
+
+  pull_request:
+    branches:
+      - main
+      - develop
+      - dev
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: 🧪 Validate Documentation
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      # =====================================================
+      # 📥 CHECKOUT
+      # =====================================================
+
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      # =====================================================
+      # 🟢 SETUP NODE.JS
+      # =====================================================
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 🧶 Enable Corepack
+        run: corepack enable
+
+      # =====================================================
+      # 📦 INSTALL DEPENDENCIES
+      # =====================================================
+
+      - name: 📦 Install dependencies
+        run: yarn install --immutable
+
+      # =====================================================
+      # 🔍 TYPESCRIPT VALIDATION
+      # =====================================================
+
+      - name: 🔍 Type Check
+        run: yarn typecheck
+
+      # =====================================================
+      # 🏗️ BUILD DOCUMENTATION
+      # =====================================================
+
+      - name: 🏗️ Build documentation
+        run: yarn build
+
+      # =====================================================
+      # ✅ SUCCESS
+      # =====================================================
+
+      - name: ✅ Validation completed
+        run: echo "Documentation validation completed successfully."

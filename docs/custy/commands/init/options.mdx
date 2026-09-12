@@ -1,0 +1,217 @@
+---
+title: "Options"
+description: "Reference for the command-line options supported by the custy init command."
+sidebar_position: 4
+sidebar_key: custy-commands-init
+
+tags:
+  - options
+  - cli
+  - initialization
+
+keywords:
+  - custy init options
+  - mode
+  - force
+  - ask
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Command Options"
+    description="Learn how each command-line option changes the initialization process."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init [OPTIONS]"
+    tags={[
+        "options",
+        "configuration",
+        "initialization",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The `custy init` command provides a small set of options that control **what**
+is initialized and **how** existing files are handled.
+
+Most projects can be initialized successfully using the default behavior.
+
+Use these options only when you need more control over the initialization
+process.
+
+<InfoBox
+    variant="tip"
+    title="Default Behavior"
+>
+
+Running `custy init` without additional options initializes the project using
+the default **all** mode.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--mode",
+            shorthand: "-m",
+            required: false,
+            description:
+                "Select which project resources should be initialized.",
+            defaultValue: "all",
+            example: "custy init --mode templates",
+        },
+        {
+            name: "--force",
+            shorthand: "-f",
+            required: false,
+            description:
+                "Overwrite existing files without prompting.",
+            defaultValue: "false",
+            example: "custy init --force",
+        },
+        {
+            name: "--ask",
+            shorthand: "-a",
+            required: false,
+            description:
+                "Prompt before overwriting supported generated files. Packaged examples are merged without per-file prompts.",
+            defaultValue: "false",
+            example: "custy init --ask",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Initialization Modes"
+>
+
+The `--mode` option determines which resources Custy generates.
+
+| Mode | Description |
+|------|-------------|
+| `all` | Generate configuration, templates, and example resources. |
+| `all_no_examples` | Generate configuration and templates without examples. |
+| `config` | Generate only the project configuration files. |
+| `templates` | Generate only the default templates. |
+| `examples` | Generate only the example resources. |
+
+For most projects, **all** is the recommended choice because it prepares the
+entire project workspace in a single step.
+
+</Section>
+
+---
+
+<Section
+    title="Overwrite Behavior"
+>
+
+The `--force` and `--ask` options control how Custy behaves when generated
+resources already exist.
+
+### `--force`
+
+Use this option when you want Custy to overwrite existing selected files
+without requesting confirmation. For packaged examples, the overwrite applies
+recursively to files while the existing directory tree is merged in place.
+
+This is useful when intentionally regenerating configuration or template files.
+
+### `--ask`
+
+Use this option when you prefer reviewing supported generated-file overwrites
+before they happen. The prompt applies to individually generated resources such
+as configuration and active templates. Packaged example files use merge
+behavior instead: existing examples are preserved and missing examples are
+copied without prompting.
+
+This is particularly helpful when working with an existing project that already
+contains customized templates.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Use Force Carefully"
+>
+
+If your project contains customized configuration or template files,
+`--force` may replace them with newly generated versions.
+
+Review project changes before committing regenerated files.
+
+</InfoBox>
+
+<InfoBox
+    variant="note"
+    title="Existing Example Directories Are Reused"
+>
+
+An existing `.config/custy/templates/examples/` directory does not block the
+copy. Custy walks the packaged tree recursively and decides at each file:
+preserve it normally, or overwrite it when `--force` is active.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration Integration"
+>
+
+The values for `--force` and `--ask` can also be supplied through your Custy
+configuration.
+
+When an option is not explicitly provided on the command line, Custy resolves
+the value from the project's configuration before falling back to its built-in
+defaults.
+
+This allows teams to define consistent initialization behavior without
+requiring every user to specify the same options repeatedly.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Now that you understand the available options, continue to the **Workflow**
+page to learn what happens internally when the initialization process begins.
+
+</Section>

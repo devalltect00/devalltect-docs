@@ -1,0 +1,245 @@
+---
+title: "Safety and Side Effects"
+description: "Classify Custy's local, Git, interactive, and remote effects and review a practical execution checklist."
+sidebar_position: 6
+sidebar_key: custy-concepts-safety-side-effects
+
+tags:
+  - custy
+  - safety
+  - side effects
+
+keywords:
+  - custy side effects
+  - safe custy execution
+  - custy recovery
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --dry-run COMMAND"
+    title="Safety and Side Effects"
+    description="Understand what Custy can read, write, stage, publish, and request before executing a consequential operation."
+    category="Core Concepts"
+    status="Required Review"
+    syntax="custy --dry-run COMMAND [OPTIONS]"
+    tags={[
+        "risk model",
+        "recovery",
+        "verification",
+    ]}
+    links={[
+        {label: "Dry Run", href: "./dry-run"},
+        {label: "Run Safety", href: "../commands/run/safety"},
+        {label: "Release Lifecycle", href: "./release-lifecycle"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Lowest Effect", value: "Reads and validation", icon: "success"},
+        {label: "Local Effects", value: "Files and Git history", icon: "git"},
+        {label: "External Effect", value: "Remote synchronization", icon: "network"},
+        {label: "Best First Step", value: "Dry-run preview", icon: "terminal"},
+    ]}
+/>
+
+## Overview
+
+Custy ranges from inspection and validation to project-file generation, Git
+history creation, and remote publication. Safety begins by choosing the
+smallest suitable command, understanding its complete effect set, previewing
+supported mutations, and verifying state after execution.
+
+<InfoBox variant="info" title="Dry-run separates discovery from mutation">
+
+During dry-run, Custy may still read configuration and project files, inspect
+repository history, branches, tags, and remotes, validate inputs, and render
+previews. Intended file changes, editor launches, Git mutations, and remote
+mutations are simulated. Diagnostic logging can still write to Custy's log
+destination.
+
+</InfoBox>
+
+<InfoBox
+    variant="info"
+    title="Profiles inherit every included effect"
+>
+
+A pipeline profile can include many direct-operation behaviors. When multiple
+public profiles are combined, treat their requirements and side effects as a
+union even though overlapping steps are deduplicated.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Effect Categories"
+>
+
+<FeatureGrid
+    title="What Custy Can Affect"
+    items={[
+        {
+            title: "Reads and Validation",
+            icon: <Icon name="success" />,
+            children: "Inspect configuration, files, repository state, history, tags, branches, and remotes.",
+        },
+        {
+            title: "Project Files",
+            icon: <Icon name="file" />,
+            children: "Generate resources, update versions and changelogs, edit messages, and create or remove retained backups.",
+        },
+        {
+            title: "Git Index",
+            icon: <Icon name="dependency" />,
+            children: "Stage selected tracked or untracked project changes before a commit.",
+        },
+        {
+            title: "Local Git History",
+            icon: <Icon name="git" />,
+            children: "Create commits and tags that become part of the repository's local history.",
+        },
+        {
+            title: "Remote State",
+            icon: <Icon name="network" />,
+            children: "Push HEAD and optional tag references to one or more resolved remotes.",
+        },
+        {
+            title: "Interactive Decisions",
+            icon: <Icon name="terminal" />,
+            children: "Open editable artifacts or request confirmation when a flow requires human review or destination selection.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Risk Increases with Scope"
+>
+
+<PropertyTable
+    items={[
+        {
+            property: "Inspection and validation",
+            type: "Repository-aware",
+            description: "Reads real project and Git state. A validation command can still fail and optional command flags may add effects.",
+        },
+        {
+            property: "Project-file operations",
+            type: "Local mutation",
+            description: "Can create, replace, edit, move, or remove files according to the selected command and configuration.",
+        },
+        {
+            property: "Commit and tag operations",
+            type: "Local history",
+            description: "Create durable Git objects and references that require deliberate recovery if they are wrong.",
+        },
+        {
+            property: "Push operations",
+            type: "External mutation",
+            description: "Make branch or tag state visible at resolved remotes and may affect other people or automation.",
+        },
+        {
+            property: "Release and Full profiles",
+            type: "Combined scope",
+            description: "Coordinate file, index, history, tag, and remote effects; Full also invokes experimental finalization.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Before Normal Execution"
+>
+
+<CommandChecklist
+    items={[
+        {title: "Choose the smallest operation", description: "Prefer a focused command or narrower profile when it reaches the same intended result."},
+        {title: "Inspect repository state", description: "Review the working tree, current branch, local tags, and configured remotes."},
+        {title: "Review project configuration", description: "Confirm paths, templates, strategy, retention, Git, and remote settings."},
+        {title: "Run a supported dry preview", description: "Read every resolved value, planned step, file, tag, and destination."},
+        {title: "Prepare recovery information", description: "Keep intentional changes backed up and know which files or Git references may need recovery."},
+        {title: "Confirm credentials and destinations", description: "Make sure the selected identity and every remote belong to the intended project."},
+    ]}
+/>
+
+<Terminal title="Pre-execution inspection" language="bash">
+
+{`git status --short
+git branch --show-current
+git tag --list
+git remote -v
+
+custy --dry-run run dev`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="After Execution or Failure"
+>
+
+<CommandChecklist
+    items={[
+        {title: "Inspect project files", description: "Review generated content and the complete working-tree diff."},
+        {title: "Inspect the Git index", description: "Confirm which changes remain staged or unstaged."},
+        {title: "Inspect local history", description: "Verify the latest commit and every newly created tag."},
+        {title: "Inspect each remote", description: "Confirm which branch and tag updates actually reached each destination."},
+        {title: "Resume from observed state", description: "Do not repeat a multi-step profile until you know exactly which earlier stages completed."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Remote effects deserve separate review"
+>
+
+Local recovery does not automatically undo a remote push. When an operation
+can publish changes, verify the remote name, URL, branch, tag, credentials, and
+multi-remote behavior before normal execution.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Dry Run", href: "./dry-run", description: "Understand what the simulation suppresses and what still runs."},
+        {title: "Run Safety", href: "../commands/run/safety", description: "Review profile-specific file, Git, prompt, and remote effects."},
+        {title: "Validate", href: "../commands/validate/overview", description: "Check repository readiness before consequential operations."},
+        {title: "Push", href: "../commands/push/overview", description: "Review remote resolution and synchronization behavior."},
+    ]}
+/>
+
+</Section>

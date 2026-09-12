@@ -1,0 +1,174 @@
+---
+title: "Everyday Development"
+description: "Use Custy's Dev profile safely for reviewed artifact, changelog, commit, and push work."
+sidebar_position: 2
+sidebar_key: custy-user-guide-everyday-development
+tags: [custy, development, dev profile]
+keywords: [custy run dev, daily development workflow]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run dev"
+    title="Everyday Development"
+    description="Take reviewed working-tree changes through artifact generation, changelog, commit, and push."
+    category="User Guide"
+    status="Preview First"
+    syntax="custy --dry-run run dev [OPTIONS]"
+    tags={["daily workflow", "commit", "push"]}
+    links={[
+        {label: "Dev Pipeline", href: "../pipelines/development-pipeline"},
+        {label: "Run Dev Reference", href: "../commands/run/dev/overview"},
+        {label: "Recovery", href: "./troubleshooting-workflows"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Creates Commit", value: "Yes", icon: "git"},
+        {label: "Pushes", value: "Yes", icon: "network"},
+        {label: "Applies Version", value: "No", icon: "note"},
+        {label: "Creates Tag", value: "No", icon: "note"},
+    ]}
+/>
+
+## Goal
+
+Use the Dev profile when reviewed daily work should generate supporting
+artifacts and changelog content, create one local commit, and finish with a
+remote push. Choose a direct command instead when you need only one outcome.
+
+<InfoBox variant="warning" title="Dev is not local-only">
+
+Normal execution ends with `push_step`. Confirm the destination during dry-run
+and review the [Push documentation](../commands/push/overview) before using Dev
+on a repository whose remotes you have not verified.
+
+</InfoBox>
+
+---
+
+<Section title="Before You Begin">
+
+<CommandChecklist
+    items={[
+        {title: "Custy resources exist", description: "The project configuration, message files, templates, version file, and changelog paths resolve as intended."},
+        {title: "The active branch is correct", description: "The branch shown by Git is the branch you intend to commit and push."},
+        {title: "Changes are understood", description: "Review unstaged and staged differences so unrelated work is not included."},
+        {title: "The commit message is ready", description: "The configured commit-message file contains a reviewed message."},
+        {title: "Remotes are intentional", description: "Every configured or selected destination points to the expected repository."},
+    ]}
+/>
+
+<Terminal title="Development preflight" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git remote -v
+custy validate`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="Recommended Journey">
+
+<WorkflowTimeline
+    title="Daily Development"
+    items={[
+        {title: "Review the working tree", description: "Confirm branch, changes, staged state, commit message, and remotes.", status: "completed"},
+        {title: "Preview Dev", description: "Run the complete profile in global dry-run mode and read the resolved files and destinations.", status: "completed"},
+        {title: "Review generated intent", description: "Check artifact, editor, changelog, backup, staging, commit, and push messages.", status: "completed"},
+        {title: "Execute normally", description: "Run Dev without dry-run only after every reported action is acceptable.", status: "current"},
+        {title: "Verify local and remote state", description: "Inspect the final status and commit, then confirm the destination branch received it.", status: "pending"},
+    ]}
+/>
+
+<Terminal title="Preview, then execute" language="bash">
+
+{`custy --dry-run run dev
+custy run dev`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="What Dev Actually Includes">
+
+<FeatureGrid
+    title="Profile Effects"
+    items={[
+        {title: "Preparation", icon: <Icon name="configuration" />, children: "Resolve version context and initialize workflow state."},
+        {title: "Artifacts", icon: <Icon name="file" />, children: "Generate, open, and validate configured editable artifacts."},
+        {title: "Changelog and Backup", icon: <Icon name="package" />, children: "Run conditional changelog generation, back up the commit message, and prune retained backups."},
+        {title: "Git Publication", icon: <Icon name="network" />, children: "Stage selected files, create the commit, and push to resolved destinations."},
+    ]}
+/>
+
+Dev prepares version context but does not execute `apply_version_step`, and it
+does not create a tag. The [exact 12-step order](../pipelines/development-pipeline)
+explains every internal step.
+
+</Section>
+
+---
+
+<Section title="Verify Completion">
+
+<Terminal title="Local verification" language="bash">
+
+{`git status --short --branch
+git log -1 --decorate --stat
+git tag --points-at HEAD
+git remote -v`}
+
+</Terminal>
+
+Expect the intended commit to exist and the working tree to reflect only any
+deliberately uncommitted work. Dev should not create a new release tag. Confirm
+the remote result using your repository host or an appropriate Git fetch and
+comparison workflow.
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Do not blindly rerun a failed Dev profile">
+
+Generated files, backups, the Git index, a commit, or a remote push may already
+exist. Use [Troubleshooting Workflows](./troubleshooting-workflows) to identify
+the last completed boundary first.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Development Pipeline", href: "../pipelines/development-pipeline", description: "Inspect the exact 12-step sequence and its omissions."},
+        {title: "Run Dev Examples", href: "../commands/run/dev/examples", description: "Use practical Dev invocations."},
+        {title: "Commit Command", href: "../commands/commit/overview", description: "Choose a focused local commit operation."},
+        {title: "Preparing Releases", href: "./preparing-releases", description: "Move from daily work to a versioned tagged publication."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,132 @@
+---
+title: "Syntax"
+description: "Learn the available invocation forms for the custy validate command."
+sidebar_position: 3
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Syntax"
+    description="Learn how to invoke the validation command using Custy's CLI."
+    category="Validation"
+    status="Recommended"
+    syntax="custy validate"
+    tags={[
+        "syntax",
+        "validation",
+        "cli",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The public validation interface is the standalone `custy validate` command.
+
+<InfoBox
+    variant="tip"
+    title="Public Command"
+>
+
+Use `custy validate` for a validation-only run. Public profiles such as
+`custy run commit`, `custy run release`, and `custy run full` include their own
+required validation stages automatically.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Command Syntax"
+>
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Direct Validation",
+            description:
+                "Run the validation process directly.",
+            command: "custy validate",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="How Validation Is Executed"
+>
+
+The standalone command performs the complete public validation profile without
+continuing into commit, tag, or push operations.
+
+When validation is successful, subsequent workflow commands may continue with
+commit, tagging, pushing, or release operations.
+
+</Section>
+
+---
+
+<Section
+    title="Command Forms"
+>
+
+The validation command has one public form.
+
+| Command | Purpose |
+|---------|---------|
+| `custy validate` | Run validation directly. |
+
+Internal validation profiles are reused by other commands, but their names are
+not accepted as public Run arguments.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Automatic Validation"
+>
+
+Most workflow-oriented commands automatically perform validation before
+executing later workflow stages.
+
+Running `custy validate` manually is useful when you want to verify your
+project's readiness before starting a larger workflow.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Options** page to learn about the command-line options that
+control validation behavior.
+
+</Section>

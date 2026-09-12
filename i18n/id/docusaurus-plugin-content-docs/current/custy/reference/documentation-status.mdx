@@ -1,0 +1,280 @@
+---
+title: "Status Dokumentasi"
+description: "Lihat rilis Custy yang direpresentasikan dokumentasi ini, waktu peninjauannya, dan cara membandingkan versi terpasang yang berbeda."
+sidebar_position: 10
+sidebar_key: custy-reference-documentation-status
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    PropertyTable,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Status Dokumentasi"
+    description="Kenali rilis Custy yang direpresentasikan situs ini dan tentukan kapan verifikasi khusus rilis diperlukan."
+    category="Referensi"
+    status="Diperiksa otomatis untuk v2.0.0"
+    syntax="custy --version"
+    tags={["baseline dokumentasi", "keselarasan rilis", "pemeliharaan"]}
+    links={[
+        {label: "Rilis Custy v2.0.0", href: "https://github.com/devalltect00/Custy/releases/tag/v2.0.0"},
+        {label: "Semua Rilis", href: "https://github.com/devalltect00/Custy/releases"},
+        {label: "Referensi", href: "./overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Baseline Dokumentasi", value: "Custy v2.0.0", icon: "release"},
+        {label: "Terakhir Ditinjau", value: "22 Agustus 2026", icon: "success"},
+        {label: "Bahasa", value: "Inggris dan Indonesia", icon: "feature"},
+        {label: "Mode Kesegaran", value: "Otomatis · PEP 440", icon: "configuration"},
+    ]}
+/>
+
+## Baseline saat ini
+
+Halaman-halaman ini menjelaskan **Custy v2.0.0** dan terakhir ditinjau terhadap
+source aktif pada **22 Agustus 2026**. Tanggal tersebut mencatat peninjauan
+dokumentasi yang disengaja, bukan tanggal edit Git atau deployment otomatis.
+
+<InfoBox variant="info" title="Remote tag diperiksa saat build">
+
+Portal menjalankan `git ls-remote --tags --refs` ketika Docusaurus dimulai atau
+dibangun. Portal tidak meminta GitHub dari browser setiap pengunjung. Hasil yang
+sudah di-deploy tidak berubah sampai situs dokumentasi dibangun kembali.
+
+</InfoBox>
+
+Custy sementara menggunakan deteksi PEP 440 otomatis selama tag repositori lama
+dimigrasikan. Ubah `tagFormat` menjadi `semver` setelah strategi tag repositori
+beralih ke SemVer.
+
+---
+
+<Section title="Bandingkan Versi yang Terpasang">
+
+<Terminal title="Tampilkan versi Custy yang terpasang" language="bash">
+
+{`custy --version`}
+
+</Terminal>
+
+- Jika perintah menampilkan `2.0.0`, dokumentasi ini adalah baseline yang sesuai.
+- Jika versinya lebih lama, gunakan release notes dan tag source versi tersebut
+  untuk mengenali fitur yang belum tersedia.
+- Jika versinya lebih baru, tinjau rilis setelah `v2.0.0` untuk command, option,
+  configuration, perubahan perilaku, dan perbaikan baru.
+- Untuk versi pre-release atau post-release, bandingkan versi lengkap, termasuk
+  penanda seperti `alpha`, `beta`, `rc`, `dev`, atau `post`.
+
+Gunakan [rilis Custy](https://github.com/devalltect00/Custy/releases) dan
+[snapshot source `v2.0.0`](https://github.com/devalltect00/Custy/tree/v2.0.0)
+sebagai referensi khusus rilis.
+
+</Section>
+
+---
+
+<Section title="Status Kesegaran">
+
+<FeatureGrid
+    items={[
+        {title: "Current", icon: <Icon name="success" />, children: "Versi dokumentasi sama dengan remote tag kompatibel terbaru. Notifikasi global disembunyikan agar informasi yang tidak memerlukan tindakan tidak diulang."},
+        {title: "Outdated", icon: <Icon name="warning" />, children: "Tersedia tag kompatibel yang lebih baru. Peringatan muncul di bagian atas setiap halaman proyek terdampak sebelum pengguna mengikuti petunjuk yang bergantung pada versi."},
+        {title: "Preview", icon: <Icon name="info" />, children: "Versi dokumentasi lebih baru daripada remote tag kompatibel terbaru. Notifikasi informasi menandai dokumentasi sebagai pratinjau."},
+        {title: "Unknown", icon: <Icon name="configuration" />, children: "Rilis terbaru tidak dapat diverifikasi dan fallback current tidak dipilih. Notifikasi netral meminta pengguna memeriksa daftar rilis."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Referensi Konfigurasi">
+
+Pengaturan freshness berada pada entri proyek di `src/data/projects.ts`.
+Pengaturan ini mengonfigurasi portal dokumentasi, bukan Custy CLI, sehingga
+tidak ditempatkan di `.config/custy/config.toml`.
+
+<PropertyTable
+    title="Field dokumentasi bersama"
+    items={[
+        {property: "version", type: "string", required: true, description: "Versi aplikasi ternormalisasi yang direpresentasikan halaman, tanpa mewajibkan prefiks v."},
+        {property: "versionTag", type: "string", required: true, description: "Tag repositori untuk rilis yang didokumentasikan, misalnya v2.0.0."},
+        {property: "lastReviewed", type: "YYYY-MM-DD", required: true, description: "Tanggal maintainer meninjau dokumentasi terhadap source secara sengaja."},
+        {property: "releaseUrl", type: "URL", required: true, description: "Halaman rilis untuk baseline yang didokumentasikan."},
+        {property: "statusPath", type: "site path", required: true, description: "Route independen locale menuju halaman status dokumentasi ini."},
+        {property: "freshness.mode", type: "manual | auto", required: true, description: "Pilih status yang dikendalikan maintainer atau deteksi remote tag saat build."},
+    ]}
+/>
+
+<PropertyTable
+    title="Field mode otomatis"
+    items={[
+        {property: "repositoryUrl", type: "Git URL", required: true, description: "Remote yang diperiksa dengan git ls-remote. URL HTTPS publik paling sederhana untuk CI."},
+        {property: "tagFormat", type: "semver | pep440", required: true, description: "Grammar versi untuk memvalidasi dan mengurutkan tag. Format custom sengaja tidak didukung."},
+        {property: "releasesUrl", type: "URL", description: "Tautan daftar rilis opsional ketika pengguna memerlukan versi lain."},
+        {property: "includePrereleases", type: "boolean", defaultValue: "false", description: "Sertakan tag alpha, beta, rc, dan development saat memilih versi terbaru. Post release PEP 440 tetap menjadi kandidat stabil."},
+        {property: "timeoutMs", type: "number", defaultValue: "10000", description: "Timeout pemeriksaan remote dari 1000 hingga 60000 milidetik."},
+        {property: "fallbackStatus", type: "current | unknown", defaultValue: "unknown", description: "Status saat verifikasi otomatis gagal. Gunakan current hanya jika maintainer menerima fallback eksplisit tersebut."},
+    ]}
+/>
+
+### Mode otomatis
+
+```ts title="src/data/projects.ts"
+documentation: {
+  version: "2.0.0",
+  versionTag: "v2.0.0",
+  lastReviewed: "2026-08-22",
+  releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.0.0",
+  statusPath: "/docs/custy/reference/documentation-status",
+  freshness: {
+    mode: "auto",
+    repositoryUrl: "https://github.com/devalltect00/Custy.git",
+    tagFormat: "pep440",
+    releasesUrl: "https://github.com/devalltect00/Custy/releases",
+    includePrereleases: false,
+    timeoutMs: 10_000,
+    fallbackStatus: "unknown",
+  },
+}
+```
+
+### Mode manual
+
+Gunakan mode manual untuk format versi custom, repositori yang tidak dapat
+dijangkau environment build, atau proyek yang status rilisnya memerlukan
+penilaian manusia.
+
+```ts title="src/data/projects.ts"
+freshness: {
+  mode: "manual",
+  status: "current", // current | outdated | preview
+  latestVersionTag: "custom-release-42", // opsional
+}
+```
+
+</Section>
+
+---
+
+<Section title="Aturan Pemilihan Tag">
+
+1. Periksa direct remote tag refs tanpa clone repositori.
+2. Hapus `refs/tags/`, buang duplikat peeled `^{}` secara defensif, dan
+   pertahankan tag asli untuk tampilan.
+3. Terima prefiks `v` konvensional yang opsional.
+4. Abaikan tag yang tidak sesuai grammar `semver` atau `pep440` terpilih.
+5. Kecualikan prerelease kecuali `includePrereleases` bernilai `true`.
+6. Urutkan tag kompatibel menggunakan grammar terpilih, bukan urutan teks.
+   Contohnya, `1.10.14` diurutkan setelah `1.10.9` secara benar.
+7. Bandingkan versi terbaru yang dinormalisasi dengan baseline dokumentasi.
+
+Grammar tag custom tidak diterima dalam mode otomatis. Pilih mode manual alih-alih
+memperkirakan aturan pengurutan custom.
+
+</Section>
+
+---
+
+<Section title="Penanganan Kegagalan">
+
+- Konfigurasi maintainer yang tidak valid, termasuk format yang tidak didukung,
+  baseline tidak valid, URL remote kosong, atau timeout di luar rentang, akan
+  menghentikan build dengan pesan yang dapat ditindaklanjuti.
+- Git tidak tersedia, kegagalan jaringan, kegagalan autentikasi, dan timeout
+  tidak diam-diam menyatakan dokumentasi current. Plugin menggunakan
+  `fallbackStatus` dan mencetak peringatan build.
+- Pemeriksaan berhasil tanpa tag kompatibel menggunakan fallback yang sama
+  dengan kode diagnostik `no-compatible-tags`.
+- Detail error remote tetap berada di log build; raw process error tidak
+  ditampilkan kepada pengunjung dokumentasi.
+- Pemeriksaan remote berjalan satu kali per proyek yang dikonfigurasi pada
+  setiap proses Docusaurus, bukan satu kali per halaman.
+
+Untuk repositori private, pastikan environment build dapat mengautentikasi Git
+URL yang dikonfigurasi. Jangan menaruh credential atau token langsung di
+`src/data/projects.ts`.
+
+</Section>
+
+---
+
+<Section title="Deployment dan Otomatisasi Rilis">
+
+Deteksi otomatis dievaluasi ketika `yarn start`, `yarn build`, atau perintah
+Docusaurus lain memuat plugin. Tag Custy baru tidak mengubah situs statis yang
+sudah di-deploy sampai Devalltect Docs dibangun kembali.
+
+Workflow Pages saat ini membangun ulang ketika ada push ke repositori
+dokumentasi dan ketika workflow dijalankan manual. Integrasi berikutnya dapat
+memicu build dokumentasi dari rilis Custy melalui `repository_dispatch`, atau
+workflow terjadwal dapat memeriksa ulang tag secara berkala. Trigger workflow
+tersebut terpisah dari freshness resolver.
+
+</Section>
+
+---
+
+<Section title="Cakupan Baseline">
+
+<FeatureGrid
+    items={[
+        {
+            title: "CLI Publik",
+            icon: <Icon name="terminal" />,
+            children: "Nama command, option, output, efek samping, dan profil pipeline publik yang didukung diselaraskan dengan v2.0.0.",
+        },
+        {
+            title: "Configuration",
+            icon: <Icon name="configuration" />,
+            children: "Bagian dan property configuration didasarkan pada template v2.0.0 serta perilaku resolution yang aktif.",
+        },
+        {
+            title: "Internal Developer",
+            icon: <Icon name="workflow" />,
+            children: "Materi architecture, extension, testing, dan pipeline mencerminkan source yang ditinjau untuk baseline dokumentasi v2.0.0.",
+        },
+        {
+            title: "Keterbatasan yang Diketahui",
+            icon: <Icon name="warning" />,
+            children: "Perilaku eksperimental, khusus internal, loaded-only, atau yang masih terbatas dijelaskan pada halaman terkait.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Pemeliharaan Dokumentasi">
+
+Maintainer perlu memperbarui baseline pusat ketika rilis Custy mengubah command,
+option, configuration, workflow, output, architecture, atau perilaku lain yang
+didokumentasikan dan terlihat oleh pengguna. Sinkronisasi lengkap mencakup:
+
+1. Tinjau tag rilis baru dan perilaku source aktif.
+2. Perbarui halaman bahasa Inggris yang terdampak.
+3. Terapkan perubahan teknis yang sama pada halaman bahasa Indonesia sambil
+   mempertahankan nama command, option, path, configuration key, dan code.
+4. Ubah versi baseline, tag, URL rilis, dan tanggal terakhir ditinjau.
+5. Pastikan `tagFormat` tetap sesuai strategi repositori. Untuk Custy, ubah
+   `pep440` menjadi `semver` setelah migrasi tag yang direncanakan.
+6. Jalankan freshness tests, type checking, dan production build untuk kedua
+   locale.
+
+Notifikasi global membaca satu entri metadata pusat dan hasil resolver saat
+build. Notifikasi disembunyikan ketika dokumentasi current dan hanya muncul
+ketika pengguna memerlukan konteks preview, outdated, atau kegagalan verifikasi.
+
+</Section>

@@ -1,0 +1,134 @@
+---
+title: "Overview"
+description: "Buat backup copy dari template files Custy."
+sidebar_position: 1
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    RelatedCommands,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Backup Template Files"
+    description="Buat backup copy dari commit dan tag message templates Custy sebelum mengubahnya."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup"
+    tags={["backup", "templates", "workflow"]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Syntax", href: "./syntax"},
+        {label: "Backup Files", href: "./backup-files"},
+        {label: "User Journey", href: "../../user-guide/managing-backups"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Kategori", value: "Backup"},
+        {label: "Subcommands", value: "commit, tag, all"},
+        {label: "Mengubah Repository", value: "Tidak mengubah riwayat Git"},
+        {label: "Direkomendasikan", value: "Sebelum mengedit templates atau menyiapkan release."},
+    ]}
+/>
+
+## Ringkasan
+
+Command **backup** membuat backup copy dari template files Custy sebelum file
+tersebut diubah atau digunakan kembali oleh workflow berikutnya.
+
+Command ini tidak mem-backup seluruh proyek. Fokusnya adalah generated template
+resources Custy agar versi sebelumnya dapat dipulihkan jika diperlukan.
+
+<InfoBox variant="tip" title="Aman Sebelum Perubahan">
+
+Membuat backup sebelum mengedit template mempertahankan versi sebelumnya dan
+memberikan recovery point jika perubahan perlu dibatalkan.
+
+</InfoBox>
+
+---
+
+<Section title="Subcommands yang Tersedia">
+
+<FeatureGrid
+    title="Operasi Backup"
+    items={[
+        {
+            title: "Commit",
+            icon: <Icon name="copy" />,
+            children: <>Backup commit message template yang dikonfigurasi.</>,
+        },
+        {
+            title: "Tag",
+            icon: <Icon name="release" />,
+            children: <>Backup tag message template yang dikonfigurasi.</>,
+        },
+        {
+            title: "All",
+            icon: <Icon name="directory" />,
+            children: <>Backup commit dan tag message templates dalam satu operasi.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Apa yang Di-backup?">
+
+Custy dapat membuat backup untuk:
+
+- Commit message templates.
+- Tag message templates.
+- Custom template locations dalam `.config/custy/config.toml`.
+
+Backup files ditulis ke configured backup directories dengan timestamped
+filenames untuk mempertahankan versi sebelumnya.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Pengelolaan Backup Otomatis">
+
+Custy otomatis membuat backup directories saat diperlukan dan mengelola file
+lama sesuai configured retention policy.
+
+</InfoBox>
+
+---
+
+<Section title="Kapan Backup Perlu Dibuat?">
+
+Backup direkomendasikan sebelum:
+
+- Mengedit template files.
+- Mengubah commit conventions.
+- Memperbarui release message formats.
+- Memigrasikan project configuration.
+- Menjalankan release workflows.
+
+Walaupun opsional, backup memberikan mekanisme pemulihan sederhana untuk
+perubahan template.
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {name: "init", description: "Buat template files yang nantinya dapat di-backup.", href: "../init/overview"},
+        {name: "cleanup", description: "Hapus backup files lama saat tidak lagi diperlukan.", href: "../cleanup/overview"},
+        {name: "run", description: "Workflow commands dapat menggunakan template yang sudah di-backup selama release operations.", href: "../run/overview"},
+    ]}
+/>

@@ -1,0 +1,158 @@
+---
+title: "Execution Model"
+description: "Follow how Custy resolves, builds, and executes a pipeline and how failures are handled."
+sidebar_position: 2
+sidebar_key: custy-pipelines-execution-model
+tags: [custy, pipelines, architecture]
+keywords: [custy pipeline execution, command resolver, pipeline builder]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run PROFILE"
+    title="Pipeline Execution Model"
+    description="Trace the active runtime from resolved CLI configuration to the last registered step."
+    category="Pipelines"
+    status="Implementation-Aligned"
+    syntax="CLI input → profile resolution → build → sequential execution"
+    tags={["resolver", "registry", "context", "failure behavior"]}
+    links={[
+        {label: "Pipeline Overview", href: "./overview"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Step Priority", href: "./step-order"},
+        {label: "Step System", href: "./step-system"},
+    ]}
+/>
+
+## Overview
+
+The Run command does not execute a profile name directly. It resolves CLI and
+project configuration, expands the selected profile names into step
+definitions, builds concrete step objects, and passes one shared runtime
+context through the resulting sequence.
+
+---
+
+<Section title="Runtime Lifecycle">
+
+<WorkflowTimeline
+    title="From Command to Completion"
+    items={[
+        {title: "Resolve command inputs", description: "Combine command options, project configuration, and global dry-run, debug, and logging values.", status: "completed"},
+        {title: "Register step classes", description: "Register every built-in step name before a pipeline is built.", status: "completed"},
+        {title: "Resolve profiles", description: "Expand nested profiles; merged profiles are deduplicated and globally ordered.", status: "completed"},
+        {title: "Build services and context", description: "Create the workflow engine and wrap it in the shared GitContext.", status: "completed"},
+        {title: "Build the pipeline", description: "Instantiate each resolved step through the StepRegistry.", status: "completed"},
+        {title: "Execute sequentially", description: "Run every step with the same context while updating the Rich progress display.", status: "current"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Single and Multiple Profiles">
+
+<FeatureGrid
+    title="Resolver Behavior"
+    items={[
+        {title: "One Profile", icon: <Icon name="workflow" />, children: "Nested profile references are expanded while the profile's declared order is preserved."},
+        {title: "Several Profiles", icon: <Icon name="dependency" />, children: "Expanded steps are combined, duplicate names are removed, and the global phase order is applied."},
+        {title: "Unknown Name", icon: <Icon name="warning" />, children: "Resolution fails before the pipeline is built."},
+        {title: "Circular Reference", icon: <Icon name="danger" />, children: "Nested profile expansion raises an error when it detects a cycle."},
+    ]}
+/>
+
+<InfoBox variant="info" title="Input order is not execution order">
+
+For multiple profiles, Custy uses its global phase priorities: initialization,
+validation, preparation, generation and editing, backup and cleanup, execution,
+branch cleanup, then finalization. Writing `push commit` does not force push to
+run before commit.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="The Exact Ordering Rule">
+
+- With one recognized profile, Custy expands nested profile references and
+  preserves the declared sequence. It does not re-sort that single result with
+  `STEP_ORDER`.
+- With two or more profiles, Custy expands each profile, concatenates their
+  steps, keeps the first occurrence of each name, and applies a stable numeric
+  sort using `STEP_ORDER`.
+- A step with no priority entry receives the fallback value `999` during a
+  merged-profile sort.
+
+See [Step Priority and Ordering](./step-order) for all 27 entries and a complete
+worked example.
+
+</Section>
+
+---
+
+<Section title="Shared Runtime Context">
+
+Every step receives the same `GitContext`. It exposes the workflow engine, Git
+service, optional Commitizen helper, and mutable runtime values such as the
+resolved tag, workflow case, and files selected for staging. This lets one step
+prepare state that a later step consumes without recreating services.
+
+</Section>
+
+---
+
+<Section title="Progress and Failure Semantics">
+
+The active Run pipeline displays a Rich progress indicator and advances it only
+after a step succeeds. When a step raises an exception, Custy stops the progress
+display, identifies the failed step, re-raises the error, and does not execute
+later steps.
+
+<InfoBox variant="danger" title="A stopped pipeline is not rolled back">
+
+Earlier file writes, commits, tags, or pushes may already exist. Determine the
+last successful stage and inspect local and remote state before choosing a
+recovery action.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Two Pipeline Presentations">
+
+`custy run` uses the progress-enabled `Pipeline`. Some focused commands use
+`SimplePipeline`, which executes the same registered step contract with simpler
+logging. This difference affects presentation, not the requirement that each
+step implement `execute(context)`.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Profiles", href: "./profiles", description: "See what each public name resolves into at a practical level."},
+        {title: "Step Priority and Ordering", href: "./step-order", description: "Review the exact single- and multi-profile ordering rules."},
+        {title: "Custom Composition", href: "./custom-composition", description: "Understand merged-profile normalization."},
+        {title: "Step System", href: "./step-system", description: "Review the internal contracts and source responsibilities."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,8 @@
+{
+  "label": "Changelog",
+  "position": 30,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-configuration-changelog",
+  "link": {"type": "doc", "id": "custy/configuration/changelog/overview"}
+}

@@ -1,0 +1,260 @@
+---
+title: "Validate Troubleshooting"
+description: "Selesaikan masalah umum saat melakukan validate pada proyek."
+sidebar_position: 9
+sidebar_key: custy-commands-validate-troubleshooting
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Validate Troubleshooting"
+    description="Selesaikan validation failure yang umum sebelum menjalankan workflow Custy."
+    category="Validate"
+    status="Panduan Bantuan"
+    syntax="custy validate"
+    tags={["troubleshooting", "validation", "errors"]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../../troubleshooting/overview"},
+        {label: "Validation Checks", href: "./validation-checks"},
+        {label: "Output", href: "./output"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Ringkasan
+
+Sebagian besar validation failure terjadi karena satu atau beberapa project
+prerequisites belum terpenuhi. Masalah yang dilaporkan biasanya menyertakan
+hint yang menjelaskan cara menyelesaikannya.
+
+---
+
+## Git Repository Tidak Ditemukan
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Validation langsung berhenti dan melaporkan bahwa current directory bukan Git
+repository.
+
+**Penyebab**
+
+Git belum diinisialisasi pada proyek.
+
+**Cara menyelesaikan**
+
+Inisialisasi repository:
+
+```bash
+git init
+```
+
+Setelah itu, jalankan kembali command validate.
+
+</Section>
+
+---
+
+## Configured Remote Tidak Ditemukan
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Custy melaporkan bahwa Git remote yang dikonfigurasi tidak ditemukan.
+
+**Penyebab**
+
+Nama remote yang dikonfigurasi tidak tersedia di repository.
+
+**Cara menyelesaikan**
+
+Periksa configured remote:
+
+```bash
+git remote -v
+```
+
+Tambahkan remote yang belum tersedia jika diperlukan:
+
+```bash
+git remote add origin <repository-url>
+```
+
+Sebagai alternatif, perbarui nama remote dalam
+`.config/custy/config.toml`.
+
+</Section>
+
+---
+
+## Version File Tidak Tersedia
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Validation melaporkan version file yang dikonfigurasi tidak tersedia.
+
+**Penyebab**
+
+Version file belum dibuat atau configured path tidak benar.
+
+**Cara menyelesaikan**
+
+Tinjau configured version file path. Jika proyek belum di-init, jalankan:
+
+```bash
+custy init
+```
+
+atau:
+
+```bash
+custy init --mode config
+```
+
+sesuai setup proyek.
+
+</Section>
+
+---
+
+## Commit Message Template Tidak Tersedia
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Commit message template yang diperlukan tidak ditemukan.
+
+**Penyebab**
+
+Template resources belum dibuat.
+
+**Cara menyelesaikan**
+
+```bash
+custy init --mode templates
+```
+
+Kemudian jalankan kembali command validate.
+
+</Section>
+
+---
+
+## Tag Message Template Tidak Tersedia
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Tag message template yang dikonfigurasi tidak tersedia.
+
+**Penyebab**
+
+Template initialization belum diselesaikan.
+
+**Cara menyelesaikan**
+
+```bash
+custy init --mode templates
+```
+
+atau buat ulang project resources dengan:
+
+```bash
+custy init
+```
+
+</Section>
+
+---
+
+## Tidak Ada Staged Changes
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Validation melaporkan tidak ada staged files.
+
+**Penyebab**
+
+Project files belum di-stage.
+
+**Cara menyelesaikan**
+
+```bash
+git add .
+```
+
+atau:
+
+```bash
+git add <file>
+```
+
+Setelah melakukan stage, jalankan validation kembali.
+
+</Section>
+
+---
+
+## Commit Convention Validation Gagal
+
+<Section compact>
+
+**Yang Anda lihat**
+
+Commit message validation gagal saat menggunakan Commitizen strategy.
+
+**Penyebab**
+
+Commit message saat ini tidak memenuhi convention yang dikonfigurasi.
+
+**Cara menyelesaikan**
+
+Tinjau configured Commitizen rules dan perbarui commit message agar sesuai
+format yang diperlukan.
+
+Proyek dengan SemVer, PEP 440, Date, atau Git Count strategy umumnya tidak
+memerlukan validation ini.
+
+</Section>
+
+---
+
+<InfoBox variant="tip" title="Baca Validation Hint">
+
+Ketika validation berhenti, Custy berusaha memberikan hint mengenai tindakan
+berikutnya. Membaca hint tersebut biasanya merupakan cara tercepat untuk
+menyelesaikan masalah.
+
+</InfoBox>
+
+---
+
+## Langkah Diagnosis Berikutnya
+
+<Section compact>
+
+Jika validation tetap gagal:
+
+- Pastikan Anda berada di project directory yang benar.
+- Tinjau configuration `.config/custy/config.toml`.
+- Pastikan project resources yang diperlukan tersedia.
+- Jalankan command kembali setelah memperbaiki masalah yang dilaporkan.
+
+Sebagian besar masalah selesai dengan memperbaiki error pertama karena Custy
+menggunakan fail-fast validation strategy.
+
+</Section>

@@ -1,0 +1,192 @@
+---
+title: "Examples"
+description: "Practical examples demonstrating common ways to initialize a project with Custy."
+sidebar_position: 8
+sidebar_key: custy-commands-init
+
+tags:
+  - examples
+  - initialization
+  - cli
+
+keywords:
+  - custy init --mode examples
+  - initialization examples
+---
+
+import {
+    CommandHero,
+    CommandExample,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Examples"
+    description="Learn common ways to initialize a project using Custy."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "examples",
+        "best practices",
+        "initialization",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+    ]}
+/>
+
+## Overview
+
+The following examples demonstrate common ways to initialize a project.
+
+Most users only need the default initialization, while advanced workflows can
+use initialization modes and overwrite options to customize the generated
+resources.
+
+<InfoBox
+    variant="tip"
+    title="Getting Started"
+>
+
+If this is your first time using Custy, begin with the default initialization.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Initialize a Project",
+            description:
+                "Generate the complete Custy project workspace using the default initialization mode.",
+            command: "custy init",
+            result:
+                "Creates the default configuration, templates, directory structure, and recursively merged example resources.",
+            notes:
+                "Existing files are preserved by default, while missing nested examples can still be added.",
+        },
+        {
+            title: "Generate Configuration Only",
+            description:
+                "Create only the Custy configuration file.",
+            command: "custy init --mode config",
+            result:
+                "Generates .config/custy/config.toml without creating templates or example resources.",
+            notes:
+                "Useful when you only need project configuration and plan to create templates later.",
+        },
+        {
+            title: "Generate Templates Only",
+            description:
+                "Generate only the default template resources.",
+            command: "custy init --mode templates",
+            result:
+                "Creates the default commit, tag, and changelog templates.",
+            notes:
+                "Ideal for regenerating templates without modifying other project resources.",
+        },
+        {
+            title: "Generate Example Resources",
+            description:
+                "Generate only the example message templates.",
+            command: "custy init --mode examples",
+            result:
+                "Recursively creates or merges the commit-message and tag-message example trees.",
+            notes:
+                "Existing example files are preserved; missing files and nested directories are added.",
+        },
+        {
+            title: "Overwrite Existing Resources",
+            description:
+                "Replace existing generated resources without prompting.",
+            command: "custy init --force",
+            result:
+                "Existing selected files, including nested example files, are overwritten immediately.",
+            notes:
+                "Directories are merged rather than replaced. Use carefully if configuration, templates, or examples were customized.",
+        },
+        {
+            title: "Prompt Before Overwriting",
+            description:
+                "Ask for confirmation before replacing existing resources.",
+            command: "custy init --ask",
+            result:
+                "Custy prompts before supported individual generated files are overwritten.",
+            notes:
+                "Packaged examples do not prompt per file; they preserve existing files and copy missing files.",
+        },
+    ]}
+/>
+
+</Section>
+
+<InfoBox
+    variant="tip"
+    title="Safely Refresh the Example Catalog"
+>
+
+Run `custy init --mode examples` after upgrading Custy to add newly packaged
+examples without replacing examples you already customized. Add `--force` only
+when you intentionally want packaged content to replace existing example files.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Typical First-Time Setup"
+>
+
+For a new project, the recommended workflow is:
+
+1. Run `custy init`.
+2. Review the generated configuration.
+3. Customize templates if necessary.
+4. Commit the generated resources to version control.
+
+This allows every contributor to share the same project configuration from the
+beginning.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Public Command"
+>
+
+Project initialization is exposed as `custy init`. The current public Run
+argument does not accept an `init` profile.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+After becoming familiar with the initialization process, continue to the
+**Output** page to understand the messages and results produced by the command.
+
+</Section>

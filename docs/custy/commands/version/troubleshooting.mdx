@@ -1,0 +1,178 @@
+---
+title: "Version Troubleshooting"
+description: "Resolve common Version Update issues."
+sidebar_position: 10
+sidebar_key: custy-version-troubleshooting
+
+tags:
+    - version
+    - troubleshooting
+
+keywords:
+    - custy version troubleshooting
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version update"
+    title="Version Troubleshooting"
+    description="Common problems and solutions when synchronizing project versions."
+    category="Versioning"
+    status="Support Guide"
+    syntax="custy version update"
+    tags={[
+        "troubleshooting",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../troubleshooting/overview",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+Most Version Update issues are caused by missing configuration, missing
+project files, or selecting an unsupported versioning strategy.
+
+The following guidance covers the most common situations.
+
+---
+
+## Version File Not Found
+
+<Section compact>
+
+**What you see**
+
+- Version Update stops before synchronizing files.
+- A version file cannot be located.
+
+**Why it happens**
+
+- The configured version file does not exist.
+- The path in `config.toml` is incorrect.
+- The project has not been initialized.
+
+**How to resolve it**
+
+- Verify the configured `version_file`.
+- Ensure the file exists.
+- Run `custy init` if the required project structure has not yet been created.
+
+</Section>
+
+---
+
+## Invalid Version Strategy
+
+<Section compact>
+
+**What you see**
+
+- Version generation fails.
+- The requested strategy is rejected.
+
+**Why it happens**
+
+- Unsupported strategy name.
+- Invalid configuration.
+- Conflicting command-line arguments.
+
+**How to resolve it**
+
+- Verify the configured strategy.
+- Use one of the supported strategies.
+- Remove conflicting command-line options.
+
+</Section>
+
+---
+
+## Unexpected Version Format
+
+<Section compact>
+
+**What you see**
+
+- The generated version format differs from expectations.
+
+**Why it happens**
+
+- A different strategy is being used.
+- Automatic project detection selected a different synchronization format.
+
+**How to resolve it**
+
+- Review the configured versioning strategy.
+- Confirm the detected project type.
+- Verify whether version format conversion is expected.
+
+</Section>
+
+---
+
+## Project Files Were Not Updated
+
+<Section compact>
+
+**What you see**
+
+- Some project files remain unchanged.
+
+**Why it happens**
+
+- The files are not supported.
+- The detected project type differs from expectations.
+- The command was executed using `--dry-run`.
+
+**How to resolve it**
+
+- Verify the project structure.
+- Confirm the detected project type.
+- Re-run without `--dry-run` if changes should be applied.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Use Dry Run First"
+>
+
+When experimenting with new versioning strategies or configuration changes,
+run the command with `--dry-run` first to preview the synchronization process
+before modifying project files.
+
+</InfoBox>
+
+---
+
+## Next Diagnostic Step
+
+<Section compact>
+
+If the issue persists:
+
+- Review your `config.toml`.
+- Verify the configured version file.
+- Confirm the selected versioning strategy.
+- Run with `--debug` to obtain additional diagnostic information.
+
+</Section>

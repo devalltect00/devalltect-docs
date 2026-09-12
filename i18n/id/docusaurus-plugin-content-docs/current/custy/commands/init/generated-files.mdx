@@ -1,0 +1,225 @@
+---
+title: "Generated Files"
+description: "Pelajari file dan direktori yang dibuat oleh custy init."
+sidebar_position: 6
+sidebar_key: custy-commands-init
+
+tags:
+  - generated files
+  - initialization
+  - templates
+
+keywords:
+  - custy init generated files
+  - config.toml
+  - templates
+  - examples
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Generated Files"
+    description="Pahami resource proyek yang dibuat selama init."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "configuration",
+        "templates",
+        "generated files",
+    ]}
+    links={[
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Menjalankan `custy init` membuat workspace khusus proyek di dalam repositori.
+
+Resource ini menjadi bagian dari proyek dan dapat disesuaikan dengan workflow
+tim Anda.
+
+<InfoBox
+    variant="tip"
+    title="Version Control"
+>
+
+File yang dibuat ditujukan untuk disimpan dalam repositori agar setiap
+kontributor menggunakan configuration dan templates Custy yang sama.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Generated Resources"
+>
+
+<FeatureGrid
+    title="Resource yang Dibuat"
+    items={[
+        {
+            title: "Configuration",
+            children: (
+                <>
+                    Membuat file configuration utama
+                    <code>.config/custy/config.toml</code>.
+                </>
+            ),
+        },
+        {
+            title: "Templates",
+            children: (
+                <>
+                    Membuat default templates untuk commit, tag, dan changelog
+                    yang digunakan oleh workflow Custy berikutnya.
+                </>
+            ),
+        },
+        {
+            title: "Examples",
+            children: (
+                <>
+                    Secara opsional membuat example message templates untuk
+                    eksperimen dan customization.
+                </>
+            ),
+        },
+        {
+            title: "Struktur Direktori",
+            children: (
+                <>
+                    Membuat susunan direktori yang diharapkan oleh command
+                    Custy berikutnya.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Struktur Proyek"
+>
+
+Setelah init berhasil, proyek memiliki struktur yang mirip dengan berikut.
+
+<Terminal>
+
+{`
+.config/
+└── custy/
+    ├── config.toml
+    └── templates/
+        ├── backups/
+        │   ├── commit/
+        │   └── tag/
+        ├── changelog/
+        │   └── changelog.j2
+        ├── examples/
+        │   ├── commit_message/
+        │   │   ├── since_custy_v1/
+        │   │   └── since_custy_v2/
+        │   └── tag_message/
+        │       ├── since_custy_v1/
+        │       └── since_custy_v2/
+        ├── commit-message.txt
+        └── tag-message.txt
+`}
+
+</Terminal>
+
+<InfoBox
+    variant="info"
+    title="Project-aware Version Initialization"
+>
+
+`custy init` tidak lagi mengasumsikan setiap project memiliki `app/`. Python
+project tanpa version metadata dapat menerima `__version__.py` di detected
+source directory. Metadata Python atau Node.js yang sudah ada dipertahankan,
+dan project Node.js atau generic tidak menerima file version Python buatan.
+
+</InfoBox>
+
+<InfoBox
+    variant="note"
+    title="Recursive Example Merge"
+>
+
+Ketika mode `all` atau `examples` dijalankan kembali, Custy menggabungkan
+seluruh packaged example tree ke direktori ini. Direktori dan file bertingkat
+yang belum ada akan ditambahkan. File yang sudah ada dipertahankan kecuali
+`--force` diaktifkan; direktori examples itu sendiri tidak diganti.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Customization"
+>
+
+Semua resource yang dibuat merupakan bagian dari proyek, bukan aplikasi Custy.
+
+Artinya, Anda dapat:
+
+- Mengubah isi template.
+- Menyesuaikan nilai configuration.
+- Melakukan commit terhadap file yang dibuat.
+- Membagikannya kepada development team.
+
+Command Custy berikutnya otomatis menggunakan resource yang telah disesuaikan
+tersebut ketika tersedia.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Init Modes"
+>
+
+Resource yang dibuat bergantung pada init mode yang dipilih.
+
+Sebagai contoh, mode `examples` hanya membuat example resources, sedangkan
+`config` hanya membuat project configuration.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Setelah memahami struktur proyek yang dibuat, lanjutkan ke halaman
+**Configuration** untuk mempelajari pengaruh setiap pengaturan dalam
+`config.toml` terhadap perilaku Custy.
+
+</Section>

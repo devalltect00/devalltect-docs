@@ -1,0 +1,230 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about the custy backup command."
+sidebar_position: 10
+sidebar_key: custy-commands-backup
+
+tags:
+  - faq
+  - backup
+  - templates
+
+keywords:
+  - custy backup
+  - backup faq
+  - template backups
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Frequently Asked Questions"
+    description="Answers to common questions about creating and managing Custy template backups."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup all"
+    tags={[
+        "faq",
+        "backup",
+        "templates",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+This page answers common questions about the backup command and explains how
+backup operations fit into the overall Custy workflow.
+
+<InfoBox
+    variant="tip"
+    title="Read the Overview First"
+>
+
+If you are new to the backup command, we recommend reading the
+**Overview**, **Backup Files**, and **Workflow** pages first.
+
+Those pages explain how backups work before covering specific questions.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What does the backup command actually back up?"
+>
+
+The backup command creates timestamped copies of template resources managed by
+Custy.
+
+Typical backup targets include:
+
+- Commit message templates.
+- Tag message templates.
+
+It does not create backups of your entire project or Git repository.
+
+</Section>
+
+---
+
+<Section
+    title="Will backup modify my Git history?"
+>
+
+No.
+
+The backup command only creates additional files inside the configured backup
+directories.
+
+It does not:
+
+- create commits,
+- create tags,
+- push changes,
+- modify repository history.
+
+Any generated backup files remain under your control and may be committed later
+if you choose.
+
+</Section>
+
+---
+
+<Section
+    title="Should I run backup before editing templates?"
+>
+
+Yes.
+
+Creating a backup before editing template files preserves the previous version
+and provides a convenient recovery point if you later decide to revert your
+changes.
+
+Although optional, this is the recommended workflow.
+
+</Section>
+
+---
+
+<Section
+    title="Why are backup filenames timestamped?"
+>
+
+Timestamped filenames allow multiple versions of the same template to coexist.
+
+Instead of overwriting older backups, Custy preserves previous revisions while
+applying the configured backup retention policy.
+
+</Section>
+
+---
+
+<Section
+    title="What happens if the template file does not exist?"
+>
+
+If the requested template file cannot be found, Custy safely skips that backup
+operation.
+
+No empty backup file is created.
+
+Depending on the selected backup subcommand, other backup operations may still
+continue successfully.
+
+</Section>
+
+---
+
+<Section
+    title="Can I change where backups are stored?"
+>
+
+Yes.
+
+Backup locations are determined by your project's configuration.
+
+You can customize the backup directories to match your project's preferred
+layout and organization.
+
+</Section>
+
+---
+
+<Section
+    title="Does Custy remove old backups automatically?"
+>
+
+Yes.
+
+Custy manages backup history according to the configured retention policy.
+
+Older backup files may be removed automatically after new backups are created,
+helping keep backup directories organized.
+
+</Section>
+
+---
+
+<Section
+    title="Can backup operations participate in workflows?"
+>
+
+Yes.
+
+Backup operations can be executed directly using the **backup** command.
+
+They can also participate as workflow stages within larger Custy workflow
+pipelines.
+
+The **Run** command documentation explains how workflow stages can be combined
+into larger automated workflows.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Need More Help?"
+>
+
+If a backup operation does not behave as expected, review the
+**Troubleshooting** page before opening an issue.
+
+Most backup problems can be resolved by checking template locations, backup
+directories, and project configuration.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Congratulations!"
+>
+
+You have completed the documentation for the **custy backup** command.
+
+Continue with the remaining command documentation to learn how backup,
+validation, initialization, versioning, changelog generation, and release
+workflows work together throughout the Custy ecosystem.
+
+</Section>

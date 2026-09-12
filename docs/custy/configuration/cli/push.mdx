@@ -1,0 +1,42 @@
+---
+title: "Push Defaults"
+description: "Configure direct and pipeline push defaults under tool.custy.cli.push."
+sidebar_position: 6
+sidebar_key: custy-configuration-cli-push
+tags: [custy, configuration, push]
+keywords: [all_remote, skip_tag, sync_backup]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.push]" title="Push Defaults" description="Choose the default remote breadth, tag handling, and backup synchronization for supported push flows." category="CLI Configuration" status="Active" syntax="[tool.custy.cli.push]" tags={["remotes", "tags", "backup sync"]} links={[{label: "Git Namespace", href: "../git/overview"}, {label: "Push Command", href: "../../commands/push/overview"}, {label: "Remotes", href: "../../commands/push/remotes"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "All Remote", value: "true", icon: "network"}, {label: "Skip Tag", value: "false", icon: "release"}, {label: "External Side Effect", value: "Yes", icon: "warning"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Default direct push and run behavior for selecting all configured remotes instead of one primary target."},
+        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push branch changes without pushing tags when true."},
+        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Enable backup-repository synchronization in supported push flows."},
+    ]}
+/>
+
+<Terminal title="Generated defaults" language="toml">
+
+{`[tool.custy.cli.push]
+all_remote = true
+skip_tag = false
+sync_backup = false`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="CLI push and Git service settings are related, not identical">
+
+This table supplies command arguments. `[tool.custy.git]` defines service-level
+remote groups and `push_to`. Review both before a multi-remote push.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Git Remotes", href: "../git/remotes", description: "Define primary and backup groups."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Understand command-level selection."}, {title: "Push Troubleshooting", href: "../../commands/push/troubleshooting", description: "Diagnose authentication and rejected pushes."}]} /></Section>

@@ -1,0 +1,173 @@
+---
+title: "FAQ"
+description: "Pertanyaan yang sering diajukan tentang custy validate."
+sidebar_position: 10
+sidebar_key: custy-commands-validate
+
+tags:
+  - faq
+  - validation
+  - workflow
+
+keywords:
+  - custy validate
+  - validation faq
+  - project validation
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Frequently Asked Questions"
+    description="Jawaban atas pertanyaan umum tentang melakukan validate sebelum workflow Custy."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={["faq", "validation", "workflow"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+## Ringkasan
+
+Halaman ini menjawab pertanyaan umum tentang proses validation dan menjelaskan
+posisinya dalam keseluruhan workflow Custy.
+
+<InfoBox variant="tip" title="Sebelum Bertanya">
+
+Jika Anda baru menggunakan Custy, baca halaman **Overview**,
+**Validation Checks**, dan **Workflow** terlebih dahulu. Sebagian besar
+pertanyaan validation dijawab di sana.
+
+</InfoBox>
+
+---
+
+<Section title="Apakah saya harus menjalankan `custy validate`?">
+
+Tidak. Menjalankan command secara manual bersifat opsional.
+
+Sebagian besar workflow-oriented commands seperti `custy run commit`,
+`custy run release`, dan workflow `custy run` lainnya otomatis melakukan
+validation sebelum melanjutkan.
+
+</Section>
+
+---
+
+<Section title="Apa saja yang diperiksa validation?">
+
+Validation memastikan proyek siap untuk workflow Custy berikutnya. Bergantung
+pada project configuration, pemeriksaan dapat mencakup:
+
+- Ketersediaan Git repository.
+- Configured Git remotes.
+- Version files.
+- Commit message templates.
+- Tag message templates.
+- Staged Git changes.
+- Commit conventions jika relevan.
+
+</Section>
+
+---
+
+<Section title="Apakah validation mengubah proyek?">
+
+Tidak. Validation hanya memeriksa proyek dan melaporkan hasilnya.
+
+Validation tidak:
+
+- membuat commit,
+- membuat tag,
+- mengubah riwayat repository,
+- membuat release,
+- menimpa project files.
+
+</Section>
+
+---
+
+<Section title="Kapan validation perlu dijalankan manual?">
+
+Manual validation berguna ketika:
+
+- menyiapkan release,
+- mendiagnosis workflow failure,
+- memeriksa proyek yang baru dikonfigurasi,
+- memastikan project readiness setelah configuration berubah.
+
+Jika Anda rutin menggunakan `custy run`, manual validation umumnya tidak
+diperlukan.
+
+</Section>
+
+---
+
+<Section title="Mengapa validation berhenti setelah error pertama?">
+
+Custy menggunakan pendekatan **fail-fast**. Saat prerequisite yang diperlukan
+belum tersedia, validation berhenti dan melaporkan masalah beserta panduan
+penyelesaiannya.
+
+Hal ini mencegah workflow stages berikutnya berjalan pada project state yang
+tidak valid.
+
+</Section>
+
+---
+
+<Section title="Apakah hal yang diperiksa dapat disesuaikan?">
+
+Ya. Banyak target validation ditentukan dari `config.toml` proyek, termasuk:
+
+- configured Git remote,
+- lokasi version file,
+- commit message template,
+- tag message template.
+
+Memperbarui project configuration akan mengubah hal yang diperiksa Custy.
+
+</Section>
+
+---
+
+<Section title="Apakah validation hanya untuk Git repository?">
+
+Tidak. Walaupun beberapa checks berhubungan dengan Git, validation juga
+memeriksa project configuration dan resource yang diperlukan Custy.
+
+Anggap validation sebagai **project readiness check**, bukan sekadar Git
+validation command.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Memerlukan Bantuan Lain?">
+
+Jika validation melaporkan masalah yang tidak diharapkan, tinjau halaman
+**Troubleshooting** sebelum membuka issue. Sebagian besar failure dapat
+diselesaikan dengan mengikuti hint dan memperbaiki validation step pertama
+yang gagal.
+
+</InfoBox>
+
+---
+
+<Section title="Selesai">
+
+Anda telah menyelesaikan dokumentasi untuk command **custy validate**.
+
+Lanjutkan ke command Custy lainnya untuk mempelajari bagaimana validation
+mendukung development dan release workflow secara lengkap.
+
+</Section>

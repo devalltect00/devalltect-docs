@@ -1,0 +1,134 @@
+---
+title: "Requirements"
+description: "Repository and template requirements for custy commit."
+sidebar_position: 2
+sidebar_key: custy-commit-requirements
+tags: [commit, requirements, git]
+keywords: [custy commit requirements]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Requirements"
+    description="Prepare repository state, project files, templates, and staging expectations before creating a commit."
+    category="Git Operations"
+    status="Required Review"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "requirements",
+        "Git",
+        "staging",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+The commit profile reads and writes several project resources before creating
+Git history. Verify every required path and understand the working tree first.
+
+---
+
+<Section
+    title="Commit Requirements"
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Git Repository",
+            level: "required",
+            children: "Run the command inside the intended repository and branch.",
+        },
+        {
+            title: "Version File",
+            level: "required",
+            children: "The configured project version file must exist and be writable.",
+        },
+        {
+            title: "Commit Template",
+            level: "required",
+            children: "The configured commit-message template must exist and contain the intended message content.",
+        },
+        {
+            title: "Reviewed Working Tree",
+            level: "required",
+            children: "Understand tracked, untracked, modified, staged, and deleted files before the staging step runs.",
+        },
+        {
+            title: "Interactive Editor",
+            level: "recommended",
+            children: "Make the configured editor available when artifacts or message files require review.",
+        },
+        {
+            title: "Commitizen",
+            level: "optional",
+            children: "Install and configure Commitizen only when the project depends on its validation behavior.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Preflight"
+>
+
+<Terminal>
+
+{`git status
+git diff
+git diff --cached
+custy --dry-run commit`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Staging is part of the profile"
+>
+
+The commit profile contains an explicit staging step. The resolved stage mode
+controls whether all changes or only tracked modifications are staged. Do not
+assume the command will use only files that were staged beforehand.
+
+</InfoBox>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Remote access is not required"
+>
+
+`custy commit` stops after local commit creation. Use `custy push` or an
+appropriate public Run profile when reviewed synchronization is also needed.
+
+</InfoBox>

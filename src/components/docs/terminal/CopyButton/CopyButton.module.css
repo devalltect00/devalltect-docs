@@ -1,0 +1,35 @@
+.button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .5rem;
+
+    padding: .45rem .8rem;
+
+    border: 1px solid var(--ifm-toc-border-color);
+
+    border-radius: var(--docs-radius-sm);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: .85rem;
+
+    transition: all var(--docs-transition);
+
+}
+
+.button:hover {
+
+    background: var(--ifm-hover-overlay);
+
+}
+
+.button:active {
+
+    transform: scale(.98);
+
+}

@@ -1,0 +1,40 @@
+---
+title: "Configuration"
+description: "Konfigurasikan commit templates, staging, versioning, dan backups."
+sidebar_position: 5
+sidebar_key: custy-commit-configuration
+---
+import {CommandHero, InfoBox, PropertyTable, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy commit" title="Configuration" description="Atur templates, backups, version file, staging, dan validation defaults." category="Git Operations" status="Advanced" syntax="custy commit [OPTIONS]" links={[{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+## Ringkasan
+
+Direct command membaca `.config/custy/config.toml` ketika CLI override tidak diberikan.
+
+<PropertyTable title="Commit Profile Configuration" items={[
+ {property:"[tool.custy.cli.templates.file]",type:"commit_message",description:"Pilih commit-message template."},
+ {property:"[tool.custy.cli.templates.directory]",type:"backups_commit",description:"Pilih retained backup directory."},
+ {property:"[tool.custy.cli.paths]",type:"version_file",description:"Pilih file yang menerima resolved version."},
+ {property:"[tool.custy.cli.versioning]",type:"strategy",description:"Atur default versioning strategy."},
+ {property:"[tool.custy.cli.execution]",type:"staging and validation",description:"Atur auto_stage, stage_mode, force_commit, dan check_cz."},
+]} />
+
+<Section title="Example Configuration">
+
+```toml
+[tool.custy.cli.templates.file]
+commit_message = ".config/custy/templates/commit-message.txt"
+
+[tool.custy.cli.templates.directory]
+backups_commit = ".config/custy/templates/backups/commit"
+
+[tool.custy.cli.execution]
+auto_stage = false
+stage_mode = "all"
+force_commit = false
+check_cz = false
+```
+</Section>
+
+<InfoBox variant="tip" title="Simpan Shared Behavior dalam Configuration">Gunakan TOML untuk team defaults dan CLI overrides untuk perubahan satu kali yang disengaja.</InfoBox>

@@ -1,0 +1,9 @@
+.diagram {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-2xl);
+
+}

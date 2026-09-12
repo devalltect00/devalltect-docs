@@ -1,0 +1,192 @@
+---
+title: "Requirements"
+description: "Pelajari requirements yang direkomendasikan sebelum menjalankan init pada proyek dengan Custy."
+sidebar_position: 2
+sidebar_key: custy-commands-init
+
+tags:
+  - initialization
+  - requirements
+  - setup
+
+keywords:
+  - custy init requirements
+  - prerequisites
+  - project setup
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Requirements"
+    description="Tinjau requirements yang direkomendasikan sebelum menyiapkan proyek untuk digunakan bersama Custy."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "requirements",
+        "setup",
+        "project initialization",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Sebelum menjalankan `custy init`, pastikan proyek dan development environment
+Anda sudah siap.
+
+Custy menyediakan default yang masuk akal dan dirancang untuk bekerja dengan
+setup minimal. Namun, memenuhi rekomendasi berikut akan memberikan pengalaman
+terbaik serta mempermudah pengelolaan workflow selanjutnya.
+
+<InfoBox
+    variant="tip"
+    title="Direkomendasikan"
+>
+
+Sebagian besar proyek hanya perlu menjalankan `custy init` satu kali. Setelah
+init, file configuration dan template yang dibuat dapat disesuaikan dengan
+workflow tim Anda.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Requirements yang Direkomendasikan"
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Proyek yang Sudah Ada",
+            level: "recommended",
+            children:
+                "Jalankan command dari root directory proyek software yang sudah ada.",
+        },
+        {
+            title: "Izin Tulis",
+            level: "required",
+            children:
+                "Custy membuat file configuration dan direktori di dalam proyek Anda.",
+        },
+        {
+            title: "Custy Sudah Terinstal",
+            level: "required",
+            children:
+                "Gunakan instalasi native yang sudah ditinjau atau image Custy yang di-build secara lokal dari Dockerfile saat ini.",
+        },
+        {
+            title: "Git Repository",
+            level: "recommended",
+            children:
+                "Init dapat menulis resource tanpa Git, tetapi workflow utama Custy untuk validate, changelog, version, commit, tag, push, dan pipeline memerlukannya.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Metode Instalasi yang Didukung"
+>
+
+Pilih sumber instalasi dan environment yang sudah ditinjau serta paling sesuai
+dengan proyek Anda:
+
+- instalasi Python normal dari source checkout;
+- wheel atau source distribution yang dilampirkan pada rilis terpilih;
+- Git tag atau commit yang di-pin;
+- instalasi source editable untuk kontributor Custy; atau
+- image Docker yang di-build secara lokal dari Dockerfile Custy.
+
+Lihat [Installation](../../getting-started/installation) untuk metode native dan
+[Docker](../../getting-started/docker) untuk requirements container.
+
+Perilaku command tetap sama untuk setiap metode instalasi.
+
+</Section>
+
+---
+
+<Section
+    title="Contoh"
+>
+
+Contoh berikut menjalankan init pada proyek saat ini.
+
+<Terminal>
+
+{`
+custy init
+`}
+
+</Terminal>
+
+Jika Anda telah mem-build image production lokal yang didokumentasikan, mount
+root proyek yang dimaksud ke `/workspace`:
+
+<Terminal>
+
+{`
+docker run -it --rm \
+    -v "<project>:/workspace" \
+    -w /workspace \
+    custy-prod:latest \
+    init
+`}
+
+</Terminal>
+
+Image menyertakan Git, Python 3.14, pip, dan Make. Git di host tidak diperlukan
+untuk pemanggilan container ini, tetapi proyek yang di-mount harus menyertakan
+direktori `.git` agar command Custy berbasis Git dapat menggunakannya nanti.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Keamanan Proyek"
+>
+
+Menjalankan `custy init` menyiapkan proyek dengan membuat file configuration
+dan template. Command ini tidak membuat commit, mengubah riwayat Git, atau
+menjalankan release workflow.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Apa yang Terjadi Berikutnya?"
+>
+
+Setelah requirements ini terpenuhi, lanjutkan ke dokumentasi Syntax untuk
+memahami mode init dan command options yang tersedia.
+
+</Section>

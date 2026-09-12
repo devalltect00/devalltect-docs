@@ -1,0 +1,106 @@
+---
+title: "Workflow Branch Troubleshooting"
+description: "Resolve interface and known implementation issues in workflow branch."
+sidebar_position: 8
+sidebar_key: custy-workflow-branch-troubleshooting
+tags: [workflow, troubleshooting, experimental]
+keywords: [unknown finalize step, workflow branch failed]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Workflow Branch Troubleshooting"
+    description="Identify the known finalize-step mismatch and resolve secondary interface, tag-format, enforcement, or backup questions."
+    category="Experimental Workflow"
+    status="Known Blocker"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "troubleshooting",
+        "finalize_step",
+        "experimental",
+    ]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../../../troubleshooting/overview"},
+        {label: "Requirements", href: "./requirements"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Overview
+
+The step-name mismatch is an application blocker, not a project-configuration
+problem. Correct and validate the implementation before diagnosing later
+transition behavior.
+
+<InfoBox
+    variant="danger"
+    title="Do not work around the source mismatch in configuration"
+>
+
+The command requests `finalize` while registration exposes `finalize_step`.
+
+</InfoBox>
+
+---
+
+## An Unknown `finalize` Step Is Reported
+
+<Section compact>
+
+This is the known source mismatch. It requires an application fix, not a
+configuration change.
+
+</Section>
+
+---
+
+## `--check-transition` Is Rejected
+
+<Section compact>
+
+Use the currently declared `--check_transition` spelling or its `-ct` short
+form.
+
+</Section>
+
+---
+
+## A Tag Override Is Rejected
+
+<Section compact>
+
+Use the current shared explicit-tag shape: `vX.Y.Z`. The validator normalizes a
+missing `v`, but it does not accept broader generated prerelease or PEP 440
+forms on this option.
+
+</Section>
+
+---
+
+## Enforcement Behavior Is Unclear
+
+<Section compact>
+
+Do not enable enforcement. Review `[tool.custy.cli.workflow]`, test validation
+in a disposable repository after the implementation is fixed, and document the
+team's allowed transitions first.
+
+</Section>
+
+---
+
+## Backup Synchronization Is Skipped
+
+<Section compact>
+
+Inspect configuration, branch eligibility, remotes, and dry-run diagnostics.
+Do not assume a backup occurred without a clear success result.
+
+</Section>

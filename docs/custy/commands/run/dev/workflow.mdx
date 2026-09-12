@@ -1,0 +1,84 @@
+---
+title: "Workflow"
+description: "Exact registered stages in the Custy Dev profile."
+sidebar_position: 2
+sidebar_key: custy-run-dev-workflow
+tags: [run, dev, workflow]
+keywords: [dev profile stages]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run dev"
+    title="Development Workflow"
+    description="Follow the exact registered Dev stages from repository validation through local commit and remote push."
+    category="Pipeline Profile"
+    status="Stable with Limitations"
+    syntax="custy run dev [OPTIONS]"
+    tags={[
+        "workflow",
+        "development",
+        "commit and push",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Examples", href: "./examples"},
+        {label: "Pipeline Internals", href: "../../../pipelines/development-pipeline"},
+        {label: "Safety", href: "../safety"},
+    ]}
+/>
+
+## Overview
+
+Dev coordinates day-to-day artifact, changelog, commit, and push work without
+applying the version or creating a tag.
+
+---
+
+<Section
+    title="Workflow Timeline"
+>
+
+<WorkflowTimeline
+    title="Dev Profile"
+    items={[
+        {title: "Validate repository", description: "Confirm execution inside a Git repository.", status: "completed"},
+        {title: "Prepare version and workflow", description: "Resolve version context and initialize the workflow engine.", status: "completed"},
+        {title: "Generate and edit artifacts", description: "Create configured artifacts, open them, and validate edits.", status: "completed"},
+        {title: "Generate changelog", description: "Update CHANGELOG.md.", status: "completed"},
+        {title: "Back up and clean", description: "Back up the commit message and prune retained backups.", status: "completed"},
+        {title: "Stage and commit", description: "Stage resolved files and create the Git commit.", status: "completed"},
+        {title: "Push", description: "Push HEAD and an optional workflow tag to resolved remotes.", status: "completed"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="info"
+    title="No tag creation or version application"
+>
+
+The current Dev profile does not contain `apply_version_step` or `tag_step`.
+Choose Release when the workflow must apply the version and create a tag.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Remote Completion"
+>
+
+Because push is the final stage, verify the reported destination and remote
+result before considering the development pipeline complete.
+
+</Section>

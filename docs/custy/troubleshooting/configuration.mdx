@@ -1,0 +1,172 @@
+---
+title: "Configuration Troubleshooting"
+description: "Resolve missing or invalid TOML, wrong working directories, unexpected precedence, stale cached values, path errors, templates, and initialization replacements."
+sidebar_position: 3
+sidebar_key: custy-troubleshooting-configuration
+tags: [custy, troubleshooting, configuration]
+keywords: [Custy config error, invalid TOML, Custy path problem]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command=".config/custy/config.toml"
+    title="Configuration Troubleshooting"
+    description="Confirm file ownership, TOML shape, process location, precedence, status, and resolved paths before retrying."
+    category="Troubleshooting"
+    status="Configuration Recovery"
+    syntax="locate -> parse -> resolve -> validate path -> restart"
+    tags={["TOML", "working directory", "precedence", "cache"]}
+    links={[
+        {label: "Troubleshooting Hub", href: "./overview"},
+        {label: "Configuration Guide", href: "../configuration/overview"},
+        {label: "All Properties", href: "../configuration/reference"},
+        {label: "Paths", href: "../reference/paths-and-files"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Root Table", value: "tool.custy", icon: "table"},
+        {label: "Precedence", value: "CLI -> config -> default", icon: "timeline"},
+        {label: "Shared Cache", value: "Once per process", icon: "dependency"},
+    ]}
+/>
+
+## Scope of This Page
+
+Use this page to diagnose shared TOML loading, precedence, caching, working
+directory, and path-resolution behavior. Use a command-specific guide when the
+configuration file resolves correctly but one invocation still rejects or
+misuses a value.
+
+## Fast Checks
+
+<Terminal title="Confirm project location and files" language="bash">
+
+{`git status --short --branch
+custy --no-banner validate`}
+
+</Terminal>
+
+Confirm the current directory contains the intended `.config/custy/config.toml`
+and configured project source before diagnosing an individual property.
+
+---
+
+<Section title="Common Symptoms">
+
+<KeyValueTable
+    items={[
+        {key: "Config file not found", value: "Run from the intended project root or initialize the project-owned resources. A missing file loads as an empty configuration and resolvers use built-in defaults."},
+        {key: "Invalid TOML", value: "Correct the first TOML parser location. Check quotes, arrays, table headers, duplicate keys, and nesting below tool.custy."},
+        {key: "A property appears ignored", value: "Check the full path, CLI override, generated/default status, and whether the property is active, loaded-only, reserved, mismatch, or experimental."},
+        {key: "An old value remains", value: "The shared ConfigLoader is cached once per process. End the current Custy process and run a new invocation after saving the file."},
+        {key: "A relative path resolves incorrectly", value: "Resolve it from the process working directory or use an explicit path supported by the selected option."},
+        {key: "Configured project source error", value: "An explicit tool.custy.project.project_source must resolve to an existing directory. Use auto for runtime detection; a missing app/ directory is not an error in automatic mode."},
+        {key: "Configured version target error", value: "An explicit tool.custy.cli.paths.version_file must resolve to an existing file. Use auto to detect supported metadata or to allow a tag-only project."},
+        {key: "Generated setting has no effect", value: "Presence in the template is not proof of active consumption; use the property reference's implementation-status column."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Resolution Checklist">
+
+1. Identify the command option and exact TOML path.
+2. Remove assumptions about aliases or similarly named tables.
+3. Check whether a non-`None` CLI value overrides the project setting.
+4. Review the built-in fallback on the detailed configuration page.
+5. Confirm enum spelling, type, and path existence.
+6. Start a new process after editing cached configuration.
+7. Use debug output to verify the selected path or value when available.
+
+</Section>
+
+---
+
+<Section title="Templates and Initialized Files">
+
+- Edit project-owned copies under `.config/custy/`, not packaged files under
+  the installed `app/templates/` directory.
+- Confirm commit, tag, and changelog template paths refer to files rather than
+  directories.
+- Preserve customized resources before `custy init --force`.
+- If examples are absent, check the selected Init mode; configuration-only or
+  template-only modes intentionally omit them.
+- When an explicitly configured version file is missing, correct the path or
+  set `tool.custy.cli.paths.version_file = "auto"`. Automatic mode does not
+  require a version file.
+
+</Section>
+
+---
+
+<Section title="Custy Starts in a Project Without app/">
+
+The generated configuration uses automatic layout detection:
+
+<Terminal title="Recommended path configuration" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"
+
+[tool.custy.cli.paths]
+version_file = "auto"`}
+
+</Terminal>
+
+If an older project configuration still contains `project_source = "app"` or
+`version_file = "app/__version__.py"`, those are explicit paths and remain
+strict. Change them to `auto` for Node.js, Docusaurus, generic, mixed, or other
+layouts that do not own those paths.
+
+Normal errors are rendered as concise Custy messages. Add `--debug` before the
+command when a traceback is needed for diagnosis.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Do not fix application mismatches in TOML">
+
+Some documented limitations come from active source adapters or loaders. Do
+not invent alternate keys or step names to work around an implementation
+mismatch; use the documented active shape or wait for the application fix.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Release metadata has a separate loader mismatch">
+
+The generated file places metadata below `tool.custy.release`, while one
+secondary active loader expects a top-level `release` table. Review the
+[Release configuration page](../configuration/release) before depending on
+those values.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Configuration Resolution", href: "../configuration/resolution", description: "Review precedence, fallback, status, and known exceptions."},
+        {title: "All Configuration Properties", href: "../configuration/reference", description: "Find exact paths, defaults, and implementation status."},
+        {title: "Init Troubleshooting", href: "../commands/init/troubleshooting", description: "Resolve existing files, permissions, unexpected content, and missing examples."},
+        {title: "Validate Troubleshooting", href: "../commands/validate/troubleshooting", description: "Resolve configured remotes, version files, templates, staging, and conventions."},
+    ]}
+/>
+
+</Section>

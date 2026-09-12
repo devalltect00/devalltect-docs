@@ -1,0 +1,16 @@
+---
+title: "Examples"
+description: "Contoh hati-hati custy run full."
+sidebar_position: 3
+sidebar_key: custy-run-full-examples
+---
+import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy run full" title="Examples" description="Preview dan jalankan full lifecycle hanya ketika finalization diperlukan." category="Pipeline Profile" status="Experimental" syntax="custy run full [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Workflow",href:"./workflow"},{label:"Safety",href:"../safety"}]} />
+
+## Ringkasan
+<InfoBox variant="warning" title="Use Release Unless Finalization Is Required">Release lebih kecil dan berhenti setelah push.</InfoBox>
+<CommandExample examples={[
+ {title:"Preview",command:"custy --dry-run run full",result:"Menampilkan lifecycle dan finalization."},{title:"Project Defaults",command:"custy run full",result:"Menjalankan registered Full profile."},{title:"Explicit SemVer",command:"custy run full --strategy semver --tag v2.0.0",result:"Publikasikan v2.0.0 lalu finalize."},{title:"Backup Sync",command:"custy run full --tag v2.0.0 --sync-backup",result:"Minta backup publication sebelum finalization."},
+]} />
+<InfoBox variant="danger" title="A Finalization Failure Can Follow Publication">Periksa remote state sebelum retry agar release work tidak diduplikasi.</InfoBox>

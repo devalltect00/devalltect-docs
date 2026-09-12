@@ -1,0 +1,128 @@
+# =========================================================
+# 🚀 GitLab Pages Deployment
+# =========================================================
+#
+# GitHub Equivalent
+# -----------------
+# .github/workflows/pages.yml
+#
+# Purpose
+# -------
+# Build and publish the Docusaurus documentation site
+# using GitLab Pages.
+#
+# Responsibilities
+# ----------------
+# - Install Node.js dependencies
+# - Build Docusaurus static site
+# - Publish generated files
+# - Host documentation through GitLab Pages
+#
+# Deployment Flow
+# ---------------
+#
+# Source Code
+# │
+# ▼
+# yarn install --immutable
+# │
+# ▼
+# yarn build
+# │
+# ▼
+# build/
+# │
+# ▼
+# public/
+# │
+# ▼
+# GitLab Pages
+#
+#
+# Output
+# ------
+# GitLab Pages expects deployment files to exist inside:
+#
+# public/
+#
+# Docusaurus generates:
+#
+# build/
+#
+# Therefore the build output is copied into:
+#
+# public/
+#
+# before publication.
+#
+#
+# Trigger
+# -------
+# - Push to main branch
+# - Manual pipeline execution
+#
+#
+# Notes
+# -----
+# - No Docker required
+# - No Docker Compose required
+# - No container registry required
+# - No release workflow required
+#
+# Docusaurus produces a fully static website.
+#
+#
+# Future Enhancements
+# -------------------
+# - Custom domain support
+# - Cloudflare integration
+# - Lighthouse auditing
+# - Broken-link validation
+# - Documentation versioning
+#
+# =========================================================
+
+pages:
+  stage: deploy
+
+  image: node:20
+
+  before_script:
+    # =====================================================
+    # 🟢 NODE.JS ENVIRONMENT
+    # =====================================================
+
+    - node --version
+    - corepack enable
+    - yarn --version
+
+    # =====================================================
+    # 📦 INSTALL DEPENDENCIES
+    # =====================================================
+
+    - yarn install --immutable
+
+  script:
+    # =====================================================
+    # 🏗️ BUILD DOCUMENTATION
+    # =====================================================
+
+    - yarn build
+
+    # =====================================================
+    # 📂 PREPARE GITLAB PAGES ARTIFACT
+    # =====================================================
+
+    - mkdir public
+    - cp -r build/* public/
+
+  artifacts:
+    paths:
+      - public
+
+  expire_in: 1 week
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+
+    - if: '$CI_COMMIT_BRANCH == "main"'

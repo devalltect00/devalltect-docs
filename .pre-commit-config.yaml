@@ -1,0 +1,113 @@
+# =========================================================
+# 🪝 PRE-COMMIT CONFIGURATION
+# =========================================================
+#
+# Purpose
+# -------
+# Execute validation and formatting checks before commits
+# are created.
+#
+# Responsibilities
+# ----------------
+# - Format source files
+# - Validate YAML syntax
+# - Validate JSON syntax
+# - Remove trailing whitespace
+# - Ensure consistent end-of-file formatting
+# - Detect merge conflicts
+#
+#
+# Installation
+# ------------
+#
+# Install pre-commit:
+#
+# pip install pre-commit
+#
+# Install hooks:
+#
+# pre-commit install
+#
+# Run manually:
+#
+# pre-commit run --all-files
+#
+#
+# Notes
+# -----
+# This repository uses:
+#
+# - Docusaurus
+# - TypeScript
+# - MDX
+# - GitHub Actions
+# - GitLab CI/CD
+#
+# Therefore the hook set focuses on:
+#
+# - Markdown
+# - MDX
+# - JSON
+# - YAML
+# - TypeScript
+#
+# rather than Python-specific tooling.
+#
+# =========================================================
+repos:
+
+  # =======================================================
+  # 🔍 BASIC FILE VALIDATION
+  # =======================================================
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+
+    hooks:
+
+    # Remove trailing whitespace
+    - id: trailing-whitespace
+
+    # Ensure file ends with newline
+    - id: end-of-file-fixer
+
+    # Validate JSON
+    - id: check-json
+
+    # Validate YAML
+    - id: check-yaml
+
+    # Detect unresolved merge conflicts
+    - id: check-merge-conflict
+
+    # Prevent accidentally committing
+    # very large files
+    - id: check-added-large-files
+
+  # =======================================================
+  # 🎨 PRETTIER
+  # =======================================================
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+
+    hooks:
+
+    - id: prettier
+      additional_dependencies:
+
+      - prettier@3.6.2
+
+      files: >
+      (?x)^(
+      .*.md|
+      .*.mdx|
+      .*.json|
+      .*.ya?ml|
+      .*.js|
+      .*.jsx|
+      .*.ts|
+      .*.tsx
+      )$
+
+  # =========================================================
+  # END
+  # =========================================================

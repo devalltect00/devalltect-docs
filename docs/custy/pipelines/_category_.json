@@ -1,0 +1,11 @@
+{
+  "label": "Pipelines",
+  "position": 5,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-pipelines",
+  "link": {
+    "type": "doc",
+    "id": "custy/pipelines/overview"
+  }
+}

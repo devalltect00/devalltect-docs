@@ -1,0 +1,105 @@
+---
+title: "Rendering"
+description: "Configure all 28 changelog visibility, layout, formatting, sorting, and visual properties."
+sidebar_position: 7
+sidebar_key: custy-configuration-changelog-rendering
+tags: [custy, changelog, rendering]
+keywords: [changelog render, group_by_scope, show_title, sort_scopes]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.render]" title="Rendering" description="Control the final Markdown layout while distinguishing active template behavior from loaded-only fields." category="Changelog Configuration" status="Active + Loaded-Only Fields" syntax="[tool.custy.changelog.render]" tags={["visibility", "layout", "sorting"]} links={[{label: "Links", href: "./links"}, {label: "Mappings", href: "./mappings"}, {label: "Output", href: "../../commands/changelog/generate/output"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "28", icon: "table"}, {label: "Groups", value: "5", icon: "directory"}, {label: "Template", value: "changelog.j2", icon: "file"}, {label: "Loaded-Only", value: "Documented below", icon: "warning"}]} />
+
+## General Visibility
+
+<PropertyTable
+    items={[
+        {property: "show_title", type: "Boolean", defaultValue: "true", description: "Render the main Changelog heading. Active in the generated Jinja template."},
+        {property: "show_description", type: "Boolean", defaultValue: "true", description: "Render the introductory description. Active in the template."},
+        {property: "show_release_status", type: "Boolean", defaultValue: "true", description: "Render a release label when status is available. Active."},
+        {property: "show_summary", type: "Boolean", defaultValue: "true", description: "Render the resolved release summary. Active."},
+        {property: "show_promoted_from", type: "Boolean", defaultValue: "true", description: "Render pre-release versions promoted into the release. Active."},
+        {property: "show_compare_link", type: "Boolean", defaultValue: "true", description: "Display a comparison URL when link generation produced one. Active."},
+    ]}
+/>
+
+## Layout and Empty Content
+
+<PropertyTable
+    items={[
+        {property: "group_by_scope", type: "Boolean", defaultValue: "true", description: "Create scope subsections within commit-type groups. Active."},
+        {property: "collapse_generic_scopes", type: "Boolean", defaultValue: "true", description: "Avoid subsections for scopes that provide little additional meaning. Active."},
+        {property: "generic_scopes", type: "String array", defaultValue: "8 generated values", description: "Scope names treated as generic after scope mapping. Active and normalized to lowercase."},
+        {property: "deduplicate", type: "Boolean", defaultValue: "true", description: "Remove overlapping changelog entries during processing and context construction. Active."},
+        {property: "show_empty_sections", type: "Boolean", defaultValue: "false", description: "Loaded into the rendering model but not consulted by the current active template or context."},
+        {property: "show_empty_groups", type: "Boolean", defaultValue: "false", description: "Keep empty commit-type groups in render context. Active."},
+        {property: "show_empty_scopes", type: "Boolean", defaultValue: "false", description: "Keep empty scope subsections. Active."},
+        {property: "show_empty_metadata", type: "Boolean", defaultValue: "false", description: "Loaded only; the current generated template has no metadata section."},
+        {property: "show_empty_tags", type: "Boolean", defaultValue: "false", description: "Render an empty Tags section when show_tags is enabled. Active."},
+    ]}
+/>
+
+<Terminal title="Generated generic scopes" language="toml">
+
+{`generic_scopes = [
+  "", "main", "core", "general",
+  "default", "root", "changelog", "release",
+]`}
+
+</Terminal>
+
+## Optional Sections
+
+<PropertyTable
+    items={[
+        {property: "show_metadata", type: "Boolean", defaultValue: "true", description: "Loaded only; the current generated template does not render a metadata block."},
+        {property: "show_tags", type: "Boolean", defaultValue: "true", description: "Render grouped release tags. Active."},
+        {property: "show_contributors", type: "Boolean", defaultValue: "false", description: "Loaded only and marked as a future feature in the generated configuration."},
+        {property: "show_statistics", type: "Boolean", defaultValue: "false", description: "Loaded only and marked as a future feature in the generated configuration."},
+    ]}
+/>
+
+## Formatting
+
+<PropertyTable
+    items={[
+        {property: "bullet", type: "String", defaultValue: "-", description: "Character or string placed before rendered items. Active."},
+        {property: "indent", type: "Non-negative integer", defaultValue: "0", description: "Leading spaces before list items. Invalid negative values fall back to 0. Active."},
+        {property: "blank_lines_between_releases", type: "Non-negative integer", defaultValue: "2", description: "Loaded only; spacing is currently controlled by Jinja template structure."},
+        {property: "blank_lines_between_commit_groups", type: "Non-negative integer", defaultValue: "1", description: "Loaded only; spacing is currently controlled by Jinja template structure."},
+    ]}
+/>
+
+## Sorting and Visuals
+
+<PropertyTable
+    items={[
+        {property: "sort_groups", type: "Boolean", defaultValue: "false", description: "Sort commit-type groups alphabetically instead of preserving mapped order. Active."},
+        {property: "sort_scopes", type: "Boolean", defaultValue: "true", description: "Sort scope subsections alphabetically. Active."},
+        {property: "sort_items", type: "Boolean", defaultValue: "false", description: "Sort individual entries alphabetically. Active."},
+        {property: "show_section_icons", type: "Boolean", defaultValue: "true", description: "Keep or strip icon prefixes from mapped section titles. Active."},
+        {property: "show_footer", type: "Boolean", defaultValue: "false", description: "Render the Generated by Custy footer. Active in the generated template."},
+    ]}
+/>
+
+<InfoBox variant="warning" title="Loaded does not always mean visible">
+
+The resolver accepts every property above, but the current generated template
+does not apply metadata, contributors, statistics, global empty-section, or
+blank-line controls. Those fields are documented as loaded only rather than
+presented as working output switches.
+
+</InfoBox>
+
+<Section title="Review Workflow">
+
+Change one rendering group at a time, run `custy changelog generate`, and
+inspect both the rendered Markdown and its Git diff. Template customization can
+also change which rendering fields have a visible effect.
+
+</Section>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Mappings", href: "./mappings", description: "Configure the labels sorted and rendered here."}, {title: "Links", href: "./links", description: "Configure comparison URL generation."}, {title: "Generated Output", href: "../../commands/changelog/generate/output", description: "Review expected Markdown structure."}, {title: "Troubleshooting", href: "../../commands/changelog/generate/troubleshooting", description: "Diagnose missing or unexpected sections."}]} /></Section>

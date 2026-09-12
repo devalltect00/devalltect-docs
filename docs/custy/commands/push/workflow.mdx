@@ -1,0 +1,83 @@
+---
+title: "Workflow"
+description: "Resolved pipeline stages and per-remote actions executed by custy push."
+sidebar_position: 6
+sidebar_key: custy-push-workflow
+tags: [push, workflow, pipeline]
+keywords: [custy push workflow]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy push"
+    title="Push Workflow"
+    description="Follow validation, remote resolution, HEAD synchronization, optional tag publication, and backup behavior."
+    category="Git Operations"
+    status="Limited"
+    syntax="custy push [OPTIONS]"
+    tags={[
+        "workflow",
+        "remotes",
+        "synchronization",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Remotes", href: "./remotes"},
+        {label: "Output", href: "./output"},
+    ]}
+/>
+
+## Overview
+
+The profile validates repository state before resolving and processing each
+eligible destination.
+
+---
+
+<Section
+    title="Workflow Timeline"
+>
+
+<WorkflowTimeline
+    title="Push Profile"
+    items={[
+        {title: "Validate repository", description: "Run repository and pre-push validation.", status: "completed"},
+        {title: "Initialize workflow", description: "Prepare shared Git and execution state.", status: "completed"},
+        {title: "Resolve main remotes", description: "Use configured engine remotes or the confirmed origin fallback.", status: "completed"},
+        {title: "Resolve backup remotes", description: "Resolve eligible backup destinations when synchronization is enabled.", status: "optional"},
+        {title: "Push HEAD", description: "Push the current HEAD to each resolved main and backup remote.", status: "completed"},
+        {title: "Push tag", description: "Push the selected tag when one is available and tag push is not skipped.", status: "optional"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="info"
+    title="Fail-fast behavior"
+>
+
+A failed main push raises an error and stops normal progress. Check the reported
+remote, authentication, network, branch protection, and rejected history before
+retrying.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Retry Safety"
+>
+
+After a failure, inspect the remote response and determine which earlier
+destinations already succeeded. Do not assume every remote remains unchanged.
+
+</Section>

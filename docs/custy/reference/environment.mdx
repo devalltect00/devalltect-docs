@@ -1,0 +1,144 @@
+---
+title: "Environment"
+description: "Reference Custy's runtime tools, working-directory assumptions, external editor behavior, theme variables, Git authentication boundary, and terminal compatibility."
+sidebar_position: 8
+sidebar_key: custy-reference-environment
+tags: [custy, environment, runtime]
+keywords: [Custy environment variables, Custy terminal, Custy editor]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Environment"
+    description="Prepare the Python, Git, working-directory, terminal, editor, and optional tooling boundaries used by Custy."
+    category="Reference"
+    status="Runtime Requirements"
+    syntax="project root + installed custy + Git repository"
+    tags={["Python 3.14+", "Git", "UTF-8 terminal", "editor"]}
+    links={[
+        {label: "Installation", href: "../getting-started/installation"},
+        {label: "Requirements", href: "../commands/validate/requirements"},
+        {label: "Paths", href: "./paths-and-files"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Python", value: "3.14+", icon: "python"},
+        {label: "Repository Tool", value: "Git", icon: "git"},
+        {label: "Preferred Terminal", value: "UTF-8 capable", icon: "terminal"},
+        {label: "Configuration Base", value: "Current directory", icon: "directory"},
+    ]}
+/>
+
+## Runtime Requirements
+
+<RequirementGrid
+    items={[
+        {title: "Python 3.14+", level: "required", children: "The package metadata requires Python 3.14 or newer."},
+        {title: "Git", level: "required", children: "Custy's core workflows inspect and modify Git repository state. Docker images install Git inside the container."},
+        {title: "pip or installed package", level: "required", children: "The custy entrypoint must resolve from the intended virtual environment, release installation, or container."},
+        {title: "UTF-8-capable terminal", level: "recommended", children: "Rich output contains Unicode symbols and emoji; compatible encoding avoids display and redirected-output failures."},
+        {title: "VS Code or Notepad", level: "recommended", children: "Flows that edit message files try code --wait first and then the Windows notepad executable."},
+        {title: "Commitizen", level: "optional", children: "The external cz executable is needed only by Commitizen-dependent validation or strategy paths."},
+        {title: "Docker", level: "optional", children: "Use the supported container workflow without installing Custy and Git directly on the host."},
+        {title: "Make", level: "optional", children: "Use repository Makefile helpers; it is not required by the installed core CLI."},
+    ]}
+/>
+
+---
+
+<Section title="Working Directory">
+
+Run Custy from the project root that contains `.config/custy/config.toml`, the
+configured project source, and the target Git repository. Relative
+configuration, template, backup, log, version, and changelog paths are resolved
+from the process working directory.
+
+<Terminal title="Verify the intended environment" language="bash">
+
+{`custy --version
+custy --no-banner validate
+git status`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="Custy Theme Variables">
+
+The active application reads these environment variables only to customize
+Rich colors and progress presentation:
+
+<KeyValueTable
+    title="Color Overrides"
+    items={[
+        {key: "CUSTY_PRIMARY / CUSTY_SECONDARY", value: "Primary accent and secondary text."},
+        {key: "CUSTY_INFO / CUSTY_WARNING / CUSTY_SUCCESS / CUSTY_ERROR", value: "Semantic output colors."},
+        {key: "CUSTY_DRY_RUN / CUSTY_POINTING", value: "Dry-run and pointer or hint colors."},
+        {key: "CUSTY_HELP_TITLE / CUSTY_HELP_TEXT / CUSTY_HELP_HINT", value: "Help heading, body, and hint styles."},
+        {key: "CUSTY_HELP_OPTION / CUSTY_HELP_EXAMPLE", value: "Help option and example styles."},
+        {key: "CUSTY_PROGRESS_TITLE / CUSTY_PROGRESS_STEP / CUSTY_PROGRESS_DONE", value: "Progress heading, active step, and completion styles."},
+    ]}
+/>
+
+Values must be valid Rich color or style-compatible color strings. These
+variables do not replace project configuration, command arguments, Git
+credentials, or file paths.
+
+</Section>
+
+---
+
+<Section title="External Tools and Credentials">
+
+- Custy invokes `git` and relies on the normal Git executable lookup.
+- Remote authentication belongs to Git and the configured credential helper,
+  SSH agent, CI secret setup, or container environment. Custy does not read a
+  dedicated GitHub or GitLab token variable in the active core path.
+- The editor launcher does not currently read `EDITOR` or `VISUAL`; it tries
+  `code --wait` and then `notepad`.
+- Commitizen strategy behavior invokes `cz` as an external subprocess.
+- Docker bind mounts determine which host project appears as the container's
+  working directory.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Legacy Windows redirected output can fail on Unicode">
+
+During source verification, Rich help redirected through a legacy Windows
+`cp1252` stream raised `UnicodeEncodeError` while rendering emoji. Use a modern
+UTF-8 terminal and configure automation capture for UTF-8. This limitation
+affects presentation and can prevent help output from completing.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Installation", href: "../getting-started/installation", description: "Choose Python source, release asset, Docker, or Makefile setup."},
+        {title: "Paths and Files", href: "./paths-and-files", description: "Locate files resolved from the working directory."},
+        {title: "Validation Requirements", href: "../commands/validate/requirements", description: "Prepare repository, templates, version file, remotes, and staging."},
+        {title: "Errors and Exit Status", href: "./exit-errors", description: "Interpret terminal, parser, validation, and subprocess failures."},
+    ]}
+/>
+
+</Section>

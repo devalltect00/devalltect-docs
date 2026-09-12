@@ -1,0 +1,99 @@
+---
+title: "Syntax"
+description: "Pelajari cara menjalankan custy backup."
+sidebar_position: 3
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Syntax"
+    description="Pelajari cara membuat backup untuk template resources Custy."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup commit"
+    tags={["syntax", "backup", "templates"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Options", href: "./options"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+## Ringkasan
+
+Command **backup** menyediakan tiga subcommands untuk menentukan template
+resources yang di-backup. Setiap subcommand menjalankan operasi berbeda dengan
+perilaku umum yang sama.
+
+<InfoBox variant="tip" title="Pilih Scope yang Sesuai">
+
+Gunakan backup scope terkecil yang memenuhi workflow. Jika hanya commit message
+template yang berubah, backup template tersebut saja biasanya sudah cukup.
+
+</InfoBox>
+
+---
+
+<Section title="Command Syntax">
+
+<CommandSyntax
+    examples={[
+        {title: "Backup Commit Template", description: "Buat backup commit message template yang dikonfigurasi.", command: "custy backup commit"},
+        {title: "Backup Tag Template", description: "Buat backup tag message template yang dikonfigurasi.", command: "custy backup tag"},
+        {title: "Backup Semua Templates", description: "Buat backup commit dan tag message templates.", command: "custy backup all"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Subcommands">
+
+| Subcommand | Tujuan |
+|------------|--------|
+| `commit` | Backup commit message template yang dikonfigurasi. |
+| `tag` | Backup tag message template yang dikonfigurasi. |
+| `all` | Backup kedua template files dalam satu operasi. |
+
+Setiap subcommand membuat timestamped backup files di configured backup
+directories.
+
+</Section>
+
+---
+
+<Section title="Integrasi Workflow">
+
+Command backup dapat dijalankan langsung jika Anda hanya ingin membuat backup.
+Backup operations juga dapat menjadi bagian dari workflow Custy yang lebih
+besar. Workflow-oriented backup stages tersebut dijelaskan dalam dokumentasi
+command **Run**.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Global CLI Options">
+
+Global options `--dry-run`, `--debug`, dan `--log-level` didokumentasikan
+terpisah dalam dokumentasi CLI karena berlaku untuk semua command Custy.
+
+</InfoBox>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Lanjutkan ke halaman **Options** untuk mempelajari command-line options setiap
+backup subcommand.
+
+</Section>

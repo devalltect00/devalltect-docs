@@ -1,0 +1,54 @@
+---
+title: "Branch Cleanup"
+description: "Configure layered prefix, merge-state, age, and date filters for branch cleanup."
+sidebar_position: 3
+sidebar_key: custy-configuration-cli-cleanup-branch
+tags: [custy, configuration, cleanup, branches]
+keywords: [include_prefixes, merge_status, max_age, before]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.cleanup.branch]" title="Branch Cleanup" description="Make Git branch deletion opt-in through layered, explicit selection filters." category="Cleanup Configuration" status="Active + Optional Keys" syntax="[tool.custy.cli.cleanup.branch]" tags={["prefix filter", "merge status", "age"]} links={[{label: "Branch Command", href: "../../../commands/cleanup/branch/overview"}, {label: "Workflow", href: "../../../commands/cleanup/branch/workflow"}, {label: "Safety", href: "../../../concepts/safety-and-side-effects"}]} />
+
+<CommandMetadata items={[{label: "Generated Properties", value: "2", icon: "table"}, {label: "Optional Properties", value: "2", icon: "note"}, {label: "Default Prefixes", value: "None", icon: "security"}, {label: "Default Merge State", value: "merged", icon: "git"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "include_prefixes", type: "String array", defaultValue: "[]", description: "Only branches starting with a configured prefix can advance to later filters. Empty selects none."},
+        {property: "merge_status", type: "merged | unmerged | all", defaultValue: "merged", description: "Restrict eligible branches by integration state."},
+        {property: "max_age", type: "Duration", defaultValue: "unset", description: "Optional active relative cutoff such as 30d, 2w, 6mo, or 1y. Commented out in the generated file."},
+        {property: "before", type: "YYYY-MM-DD", defaultValue: "unset", description: "Optional active absolute latest-commit cutoff. Commented out in the generated file."},
+    ]}
+/>
+
+<Terminal title="Narrow policy" language="toml">
+
+{`[tool.custy.cli.cleanup.branch]
+include_prefixes = ["release/", "feature/"]
+merge_status = "merged"
+max_age = "30d"
+
+# Use before instead of max_age, never both.
+# before = "2026-07-01"`}
+
+</Terminal>
+
+<InfoBox variant="danger" title="max_age and before are mutually exclusive">
+
+Custy rejects configuration that resolves both filters. Start with empty
+prefixes, add the narrowest useful prefixes, and preview eligible branches.
+
+</InfoBox>
+
+<Section title="Protected Branches">
+
+The active cleanup workflow protects important branches such as `main`,
+`master`, and `develop`, even when other filters match. Protection is a final
+safety layer, not a replacement for careful prefix selection.
+
+</Section>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Branch Configuration", href: "../../../commands/cleanup/branch/configuration", description: "Review command-specific syntax and duration units."}, {title: "Branch Workflow", href: "../../../commands/cleanup/branch/workflow", description: "See layered selection before deletion."}, {title: "Troubleshooting", href: "../../../commands/cleanup/branch/troubleshooting", description: "Diagnose empty or unexpected selection."}]} /></Section>

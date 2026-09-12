@@ -1,0 +1,127 @@
+---
+title: "Requirements"
+description: "Requirements untuk menjalankan custy validate."
+sidebar_position: 2
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    RequirementGrid,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Requirements"
+    description="Pahami requirements sebelum melakukan validate pada proyek."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={["requirements", "validation", "git"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Syntax", href: "./syntax"},
+        {label: "Validation Checks", href: "./validation-checks"},
+    ]}
+/>
+
+## Ringkasan
+
+Sebelum menjalankan **custy validate**, proyek sebaiknya memenuhi beberapa
+requirements dasar.
+
+Sebagian besar validation failure terjadi karena satu atau beberapa
+prerequisites belum tersedia, bukan karena masalah pada Custy.
+
+<InfoBox variant="tip" title="Tidak Semua Requirement Bersifat Wajib">
+
+Beberapa validation checks bergantung pada project configuration dan workflow.
+Sebagai contoh, Commitizen validation hanya relevan jika proyek menggunakan
+Commitizen versioning strategy.
+
+</InfoBox>
+
+---
+
+<Section title="Prerequisites">
+
+<RequirementGrid
+    title="Environment yang Diperlukan"
+    items={[
+        {
+            title: "Git Repository",
+            icon: <Icon name="git" />,
+            children: <>Current directory sebaiknya sudah diinisialisasi sebagai Git repository.</>,
+        },
+        {
+            title: "Custy Configuration",
+            icon: <Icon name="configuration" />,
+            children: <>Menjalankan <code>custy init</code> lebih dahulu sangat direkomendasikan agar file configuration dan template tersedia.</>,
+        },
+        {
+            title: "Git Remote",
+            icon: <Icon name="network" />,
+            children: <>Git remote yang dikonfigurasi harus tersedia jika workflow memerlukan remote validation.</>,
+        },
+        {
+            title: "Project Resources",
+            icon: <Icon name="directory" />,
+            children: <>Version file dan template files harus tersedia di lokasi yang dikonfigurasi.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Persiapan yang Direkomendasikan">
+
+Sebelum menjalankan validation:
+
+- Buka root directory proyek.
+- Pastikan Git sudah diinisialisasi.
+- Tinjau configuration `.config/custy/config.toml`.
+- Stage perubahan jika Anda akan melanjutkan ke commit workflow.
+- Pastikan template files yang diperlukan sudah dibuat.
+
+Langkah tersebut mengurangi kemungkinan validation failure.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Validation Otomatis">
+
+Jika workflow biasanya dijalankan melalui `custy run`, Anda umumnya tidak perlu
+menjalankan `custy validate` secara manual karena validation dilakukan otomatis
+sebelum workflow dilanjutkan.
+
+</InfoBox>
+
+---
+
+<Section title="Apa yang Tidak Diperlukan?">
+
+Validation **tidak** memerlukan:
+
+- Git commit yang sudah ada.
+- Git tag yang sudah ada.
+- Release yang sudah dipublikasikan.
+- Remote push.
+
+Command ini memeriksa kesiapan operasi berikutnya, bukan riwayat proyek.
+
+</Section>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Halaman berikutnya menjelaskan command syntax dan bentuk pemanggilan yang
+tersedia untuk menjalankan project validation.
+
+</Section>

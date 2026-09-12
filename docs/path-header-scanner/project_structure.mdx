@@ -1,0 +1,596 @@
+---
+title: "Project Structure"
+description: "Project Structure"
+sidebar_position: 1
+sidebar_key: path-header-scanner
+---
+# Project Structure
+
+# Repository Overview
+
+This repository follows a modular structure commonly used in modern projects.
+
+Common directories include:
+
+- `app/` — Main application source code.
+- `.config/` — Project configuration files.
+- `.github/` — GitHub-related configuration.
+- `.vscode/` — Visual Studio Code workspace settings.
+- `docs/` — Project documentation and technical references.
+- `tests/` — Automated tests.
+- `data/` — Input datasets or static data.
+- `output/` — Generated outputs from the application.
+- `scripts/` — Utility scripts for development or automation.
+- `tools/` — Development tools and automation utilities.
+- `templates/` — Reusable templates used by the project.
+
+---
+
+# Repository Structure
+
+(project type: ProjectType.PYTHON)
+
+```text
+.
+├── .config
+│   ├── doc_gen
+│   │   └── config.toml
+│   └── path_header_scanner
+│       └── config.toml
+├── .ruff_cache
+│   ├── 0.12.0
+│   │   ├── 10222032689004066648
+│   │   ├── 10814644180039952333
+│   │   ├── 11082722589216985790
+│   │   ├── 11160615506443817951
+│   │   ├── 11545413688472703850
+│   │   ├── 11613093094177487332
+│   │   ├── 11839198462642069000
+│   │   ├── 12052029288516441017
+│   │   ├── 12267931922930158688
+│   │   ├── 12791345310050834091
+│   │   ├── 13487101138247828536
+│   │   ├── 13634588024636631422
+│   │   ├── 14003031518102511790
+│   │   ├── 1447758453319669815
+│   │   ├── 14900771114780850257
+│   │   ├── 15221664050889531126
+│   │   ├── 15751860690005923986
+│   │   ├── 15770179881594260778
+│   │   ├── 1585104966027926397
+│   │   ├── 16296858394793201669
+│   │   ├── 1725878999391321203
+│   │   ├── 17265051254203815845
+│   │   ├── 17340867324688992801
+│   │   ├── 17368510037684703387
+│   │   ├── 17590060397142930507
+│   │   ├── 17714107924628394891
+│   │   ├── 18416037890009702478
+│   │   ├── 1842507458467778609
+│   │   ├── 1878464939421915629
+│   │   ├── 1903335508140208755
+│   │   ├── 2307497859219775299
+│   │   ├── 2536871040913520437
+│   │   ├── 2540406113184854749
+│   │   ├── 2664826785912231567
+│   │   ├── 2748929444945591641
+│   │   ├── 2819529765273716262
+│   │   ├── 2886840232679999055
+│   │   ├── 3452701274829892982
+│   │   ├── 3489619533482918655
+│   │   ├── 3661329333412361473
+│   │   ├── 4068869705226757898
+│   │   ├── 4134521767772427960
+│   │   ├── 4149716829889835745
+│   │   ├── 4198726462182280580
+│   │   ├── 4221286300357587076
+│   │   ├── 4856777892712367148
+│   │   ├── 5083099895645044818
+│   │   ├── 5185558861103374345
+│   │   ├── 540389032869302600
+│   │   ├── 7131622346557009963
+│   │   ├── 7164964221407879467
+│   │   ├── 7397982662894917330
+│   │   ├── 822174057436047879
+│   │   ├── 833186046200720520
+│   │   ├── 8576510452668508759
+│   │   ├── 8966590751716161067
+│   │   ├── 8988675606712010734
+│   │   ├── 9068904424147713559
+│   │   ├── 9875514615489951254
+│   │   └── 9957269903109525882
+│   ├── 0.15.12
+│   │   ├── 10046331053014075610
+│   │   ├── 10136320169489912692
+│   │   ├── 1019909890805924189
+│   │   ├── 10400453259449092509
+│   │   ├── 10420678609094975658
+│   │   ├── 10452902074622029067
+│   │   ├── 10497353344443811032
+│   │   ├── 10517723324770260354
+│   │   ├── 10524680831975877478
+│   │   ├── 10625994172305657364
+│   │   ├── 10802396744159738953
+│   │   ├── 10862715246312087420
+│   │   ├── 1110581233466558833
+│   │   ├── 11169486768293433210
+│   │   ├── 11233174340319936067
+│   │   ├── 11469781398569789950
+│   │   ├── 11780974439025029900
+│   │   ├── 11814136371746601577
+│   │   ├── 11921746487485864395
+│   │   ├── 11951031923552222377
+│   │   ├── 120156077332064084
+│   │   ├── 12033773971343170661
+│   │   ├── 12175347246902530775
+│   │   ├── 12229546140888326410
+│   │   ├── 12281160267343030794
+│   │   ├── 12517719946186808824
+│   │   ├── 12671468031312039526
+│   │   ├── 12724537416111249527
+│   │   ├── 12796564277165478336
+│   │   ├── 12983423116987002492
+│   │   ├── 13561599514251935279
+│   │   ├── 13564171801700254954
+│   │   ├── 13835075416416700145
+│   │   ├── 13957901061804259680
+│   │   ├── 13971938600317932669
+│   │   ├── 14061304293796797160
+│   │   ├── 1415673213995263687
+│   │   ├── 14555517393270659204
+│   │   ├── 14907392473555702479
+│   │   ├── 15055999919540329843
+│   │   ├── 15224409957581735238
+│   │   ├── 15269915930175888375
+│   │   ├── 15307281518185819580
+│   │   ├── 1534319101357863189
+│   │   ├── 15349129978689868322
+│   │   ├── 1573441899508225929
+│   │   ├── 15741932635008018513
+│   │   ├── 15815489763860789711
+│   │   ├── 16033153416149141442
+│   │   ├── 16227278075198253906
+│   │   ├── 16312319726023150949
+│   │   ├── 16577026952079686705
+│   │   ├── 16617645737919764574
+│   │   ├── 16826440705454071212
+│   │   ├── 16842653530584508613
+│   │   ├── 17174188308660881455
+│   │   ├── 17546127668239764834
+│   │   ├── 17559659155090825553
+│   │   ├── 17692793088195283448
+│   │   ├── 17784417431669028931
+│   │   ├── 18241097270357127586
+│   │   ├── 1835364019601795883
+│   │   ├── 18434051820553165195
+│   │   ├── 1922691938065131382
+│   │   ├── 1984150607655622364
+│   │   ├── 2541439567427906578
+│   │   ├── 2611436976691492716
+│   │   ├── 2713706286741942773
+│   │   ├── 3078051339648962591
+│   │   ├── 3250069860372476086
+│   │   ├── 3264843074621147885
+│   │   ├── 3564275071389899473
+│   │   ├── 362324651872569406
+│   │   ├── 3661472200255571597
+│   │   ├── 3836566632870669392
+│   │   ├── 4234099193256816771
+│   │   ├── 4332150229609265829
+│   │   ├── 4565255036038772439
+│   │   ├── 4737168344294672813
+│   │   ├── 4833328134538744720
+│   │   ├── 4891785010304523953
+│   │   ├── 489893559182470331
+│   │   ├── 5173038738139518106
+│   │   ├── 5455531647048779016
+│   │   ├── 5622999502000544783
+│   │   ├── 5679661506068583353
+│   │   ├── 5695357988559588937
+│   │   ├── 5879057326706763919
+│   │   ├── 5926232002738765345
+│   │   ├── 6248063701110757415
+│   │   ├── 6775112510145527671
+│   │   ├── 6965672662053766312
+│   │   ├── 702886617627481311
+│   │   ├── 7045034605439230204
+│   │   ├── 7150047615393223533
+│   │   ├── 7152493446264462398
+│   │   ├── 7206958099879139724
+│   │   ├── 7235507540472694277
+│   │   ├── 746109475002167679
+│   │   ├── 7498990930971531784
+│   │   ├── 7513383356888575123
+│   │   ├── 7879781705752184983
+│   │   ├── 8160830737886304744
+│   │   ├── 8328368297728493299
+│   │   ├── 8654247704442193422
+│   │   ├── 8710459143838991843
+│   │   ├── 8724152788380047188
+│   │   ├── 8735578530260735610
+│   │   ├── 8950819668059735588
+│   │   ├── 9252614080123273297
+│   │   ├── 9311985475769901515
+│   │   ├── 9693240701057235376
+│   │   └── 9821836039894776285
+│   ├── 0.15.13
+│   │   ├── 10008929647823255267
+│   │   ├── 10761679032757982226
+│   │   ├── 1094818590232700955
+│   │   ├── 11668464852269788484
+│   │   ├── 12438798726374769605
+│   │   ├── 12971599970278392004
+│   │   ├── 13773779064980747482
+│   │   ├── 14213175544158206678
+│   │   ├── 14518859941628327469
+│   │   ├── 15619105024605557678
+│   │   ├── 15632710938625593306
+│   │   ├── 15837316518492959541
+│   │   ├── 1585594731867277541
+│   │   ├── 16022687607526249086
+│   │   ├── 17068991311739918225
+│   │   ├── 17358395566301008605
+│   │   ├── 17383142252968004344
+│   │   ├── 17846446488660453976
+│   │   ├── 17919605713171225266
+│   │   ├── 1904132668860176958
+│   │   ├── 3209438838516387786
+│   │   ├── 3425530836279100532
+│   │   ├── 4227097564618456548
+│   │   ├── 4317181581612545666
+│   │   ├── 4873670124481492700
+│   │   ├── 5401504062774666849
+│   │   ├── 6351152623392706433
+│   │   ├── 6501035149104670598
+│   │   ├── 731572427336399803
+│   │   ├── 7544743245222888114
+│   │   └── 8340975768986195773
+│   ├── .gitignore
+│   └── CACHEDIR.TAG
+├── .sixth
+│   └── skills
+├── app
+│   ├── cli
+│   │   ├── commands
+│   │   ├── constants
+│   │   ├── utils
+│   │   └── main.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   └── config_loader.py
+│   ├── constants
+│   │   ├── docker.py
+│   │   └── path.py
+│   ├── core
+│   │   ├── initialize
+│   │   └── scan
+│   ├── languages
+│   │   ├── base.py
+│   │   ├── html.py
+│   │   ├── javascript.py
+│   │   ├── markdown.py
+│   │   ├── php.py
+│   │   ├── python.py
+│   │   └── shell.py
+│   ├── models
+│   │   ├── enums.py
+│   │   └── result.py
+│   ├── services
+│   │   ├── __init__.py
+│   │   └── banner_service.py
+│   ├── templates
+│   │   ├── __init__.py
+│   │   ├── __version__.py
+│   │   └── config.toml
+│   ├── theme
+│   │   ├── __init__.py
+│   │   └── theme.py
+│   ├── ui
+│   │   ├── __init__.py
+│   │   ├── console.py
+│   │   ├── exceptions.py
+│   │   ├── panels.py
+│   │   ├── progress.py
+│   │   └── tables.py
+│   ├── utils
+│   │   ├── logging.py
+│   │   ├── parsing.py
+│   │   ├── paths.py
+│   │   └── resolver.py
+│   ├── __init__.py
+│   ├── __main__.py
+│   └── __version__.py
+├── app_test
+│   ├── cli
+│   │   └── main.py
+│   ├── core
+│   │   ├── processor.py
+│   │   ├── scanner.py
+│   │   └── updater.py
+│   ├── languages
+│   │   ├── base.py
+│   │   ├── html.py
+│   │   ├── javascript.py
+│   │   ├── php.py
+│   │   ├── python.py
+│   │   └── shell.py
+│   ├── models
+│   │   ├── enums.py
+│   │   └── result.py
+│   ├── utils
+│   │   ├── logging.py
+│   │   └── paths.py
+│   └── __main__.py
+├── docs
+│   ├── architecture
+│   │   ├── design-patterns.md
+│   │   ├── diagrams.md
+│   │   └── workflow.md
+│   ├── changelog
+│   │   └── diagrams
+│   ├── developer-guide
+│   │   ├── blackbox
+│   │   ├── tooling
+│   │   ├── developer-guide.md
+│   │   ├── docker-workflow.md
+│   │   └── getting-started.md
+│   ├── diagrams
+│   │   ├── generated
+│   │   ├── activity-scan.mmd
+│   │   ├── architecture-overview.mmd
+│   │   ├── cli-menu-design.mmd
+│   │   ├── flowchart-error-handling.mmd
+│   │   ├── init-workflow.mmd
+│   │   ├── models-structure.mmd
+│   │   ├── README.md
+│   │   ├── scan-algorithm-flow.mmd
+│   │   └── use-case.mmd
+│   ├── project
+│   │   ├── languages
+│   │   └── project-structure.md
+│   ├── reads
+│   │   ├── documentation-audit-report.md
+│   │   ├── linting-vs-formatting.md
+│   │   └── ruff.md
+│   ├── testing
+│   │   └── testing-guide.md
+│   ├── user-guide
+│   │   ├── commands.md
+│   │   ├── installation-methods.md
+│   │   ├── legacy-overview.md
+│   │   ├── legacy-user-guide.md
+│   │   ├── lifecycle.md
+│   │   ├── overview.md
+│   │   └── quickstart.md
+│   ├── badges.md
+│   ├── configuration.md
+│   ├── how-to-use.md
+│   ├── index.md
+│   ├── infrastructure.md
+│   ├── installation.md
+│   ├── PROJECT_STRUCTUREe.md
+│   ├── TODO_tracking_history.md
+│   └── usage.md
+├── logs
+├── scripts
+│   ├── docker
+│   │   ├── docker-remove-images.ps1
+│   │   └── docker-remove-images.sh
+│   └── docs
+│       ├── docs
+│       ├── venv/ ... (collapsed)
+│       ├── check_docs_links.py
+│       └── render_mermaid.py
+├── site
+│   ├── architecture
+│   │   ├── design-patterns
+│   │   ├── diagrams
+│   │   └── workflow
+│   ├── assets
+│   │   ├── images
+│   │   ├── javascripts
+│   │   └── stylesheets
+│   ├── badges
+│   │   └── index.html
+│   ├── configuration
+│   │   └── index.html
+│   ├── developer-guide
+│   │   ├── blackbox
+│   │   ├── developer-guide
+│   │   ├── docker-workflow
+│   │   ├── getting-started
+│   │   └── tooling
+│   ├── diagrams
+│   │   ├── activity-scan.mmd
+│   │   ├── architecture-overview.mmd
+│   │   ├── cli-menu-design.mmd
+│   │   ├── flowchart-error-handling.mmd
+│   │   ├── index.html
+│   │   ├── init-workflow.mmd
+│   │   ├── models-structure.mmd
+│   │   ├── scan-algorithm-flow.mmd
+│   │   └── use-case.mmd
+│   ├── how-to-use
+│   │   └── index.html
+│   ├── infrastructure
+│   │   └── index.html
+│   ├── installation
+│   │   └── index.html
+│   ├── project
+│   │   ├── languages
+│   │   └── project-structure
+│   ├── reads
+│   │   ├── documentation-audit-report
+│   │   ├── linting-vs-formatting
+│   │   └── ruff
+│   ├── search
+│   │   └── search_index.json
+│   ├── testing
+│   │   └── testing-guide
+│   ├── TODO_tracking_history
+│   │   └── index.html
+│   ├── usage
+│   │   └── index.html
+│   ├── user-guide
+│   │   ├── commands
+│   │   ├── installation-methods
+│   │   ├── legacy-overview
+│   │   ├── legacy-user-guide
+│   │   ├── lifecycle
+│   │   ├── overview
+│   │   └── quickstart
+│   ├── 404.html
+│   ├── index.html
+│   ├── sitemap.xml
+│   └── sitemap.xml.gz
+├── src
+│   └── __version__.py
+├── tests
+│   ├── cli
+│   │   ├── test_init_command.py
+│   │   ├── test_main.py
+│   │   └── test_versions.py
+│   ├── config
+│   │   └── test_config_loader.py
+│   ├── core
+│   │   ├── initialize
+│   │   └── scan
+│   ├── integration
+│   │   └── test_full_scan.py
+│   ├── languages
+│   │   ├── test_html_strategy.py
+│   │   ├── test_javascript_strategy.py
+│   │   ├── test_php_strategy.py
+│   │   ├── test_python_strategy.py
+│   │   └── test_shell_strategy.py
+│   ├── services
+│   │   └── test_banner_service.py
+│   ├── theme
+│   │   └── test_theme.py
+│   ├── unit
+│   │   └── config
+│   ├── utils
+│   │   ├── test_logging.py
+│   │   ├── test_parsing.py
+│   │   ├── test_paths.py
+│   │   └── test_resolver.py
+│   ├── __init__.py
+│   └── conftest.py
+├── venv/ ... (collapsed)
+├── .coverage
+├── .dockerignore
+├── .gitignore
+├── .gitlab-ci.yml
+├── .pre-commit-config.yaml
+├── .prettierignore
+├── .prettierrc.json
+├── AGENTS.md
+├── CONTRIBUTING.md
+├── docker-compose.dev.yml
+├── docker-compose.prod.yml
+├── docker-compose.yml
+├── Dockerfile
+├── example_command.txt
+├── LICENSE
+├── Makefile
+├── Makefile copy
+├── Makefile copy-experiment
+├── mkdocs.yml
+├── pyproject.toml
+├── README.md
+├── requirements.txt
+├── SECURITY.md
+├── TODO.md
+└── Virtual
+```
+
+---
+
+## Root Files
+
+| File | Description |
+|------|-------------|
+| `README.md` | Project overview and introduction. |
+| `LICENSE` | Project license information. |
+| `CONTRIBUTING.md` | Guidelines for contributing to the project. |
+| `SECURITY.md` | Security policy and vulnerability reporting instructions. |
+| `TODO.md` | Pending tasks and future improvements. |
+| `AGENTS.md` | Instructions and guidance for AI agents and automation tools. |
+| `pyproject.toml` | Main Python project configuration file. |
+| `requirements.txt` | Python package dependencies. |
+| `mkdocs.yml` | MkDocs documentation site configuration. |
+| `Makefile` | Defines common development, testing, and build commands. |
+| `Dockerfile` | Container image build instructions. |
+| `docker-compose.yml` | Default multi-container Docker configuration. |
+| `docker-compose.dev.yml` | Development Docker Compose configuration. |
+| `docker-compose.prod.yml` | Production Docker Compose configuration. |
+| `.gitignore` | Specifies files and directories ignored by Git. |
+| `.dockerignore` | Specifies files excluded from Docker build context. |
+| `.prettierrc.json` | Prettier code formatting configuration. |
+| `.prettierignore` | Files ignored by Prettier. |
+| `.pre-commit-config.yaml` | Pre-commit hooks configuration. |
+| `.gitlab-ci.yml` | GitLab CI/CD pipeline configuration. |
+
+---
+
+## Directory Details
+
+### `.config/`
+Project configuration files.
+
+Stores reusable configuration files used by the project.
+Helps keep the repository root clean and organized.
+
+Common examples:
+- .config/tool-config/
+- .config/templates/
+- .config/settings/
+
+### `app/`
+Main application source code.
+
+Contains the core implementation of the project.
+May include business logic, services, modules, and utilities.
+
+### `docs/`
+Project documentation and technical references.
+
+The documentation folder usually contains structured knowledge about the project.
+
+Common documentation sections:
+- docs/architecture        → system design and architecture diagrams
+- docs/development         → development guides and workflows
+- docs/system              → detailed technical documentation
+- docs/reference           → command references and APIs
+- docs/user-guide          → instructions for end users
+- docs/diagrams            → visual architecture diagrams
+- docs/phases              → project phases and planning
+- docs/Q&A                 → common questions and explanations
+
+Common files:
+- PROJECT_STRUCTURE.md
+- DEVELOPMENT_GUIDE.md
+- HOW_TO_USE.md
+- TODO.md
+- CLI_COMMAND.md
+- references.md
+- badges.md
+
+### `scripts/`
+Utility scripts for development or automation.
+
+May include deployment scripts, maintenance tools, or helpers.
+
+### `tests/`
+Automated tests.
+
+Contains unit tests and integration tests.
+Ensures code reliability and correctness.
+
+
+---
+
+## Notes
+
+- Temporary files, caches, and environment directories are excluded.
+- Structure is generated automatically using DocGen.

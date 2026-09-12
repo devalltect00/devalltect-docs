@@ -1,0 +1,205 @@
+---
+title: "Configuration"
+description: "Pelajari bagaimana file configuration yang dibuat menyesuaikan perilaku Custy."
+sidebar_position: 7
+sidebar_key: custy-commands-init
+
+tags:
+  - configuration
+  - config.toml
+  - initialization
+
+keywords:
+  - custy config
+  - config.toml
+  - customization
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Configuration"
+    description="Pahami bagaimana file configuration yang dibuat mengendalikan perilaku Custy."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "configuration",
+        "customization",
+        "config.toml",
+    ]}
+    links={[
+        {
+            label: "Generated Files",
+            href: "./generated-files",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Salah satu tujuan utama `custy init` adalah membuat file configuration khusus
+proyek.
+
+Custy tidak mengharuskan setiap command-line option diberikan setiap kali.
+Banyak perilaku dapat dikonfigurasi satu kali dan digunakan kembali secara
+otomatis oleh command berikutnya.
+
+<InfoBox
+    variant="tip"
+    title="Project Configuration"
+>
+
+Configuration yang dibuat merupakan bagian dari proyek, bukan aplikasi Custy.
+
+Dengan menyimpan file configuration dalam version control, setiap kontributor
+dapat menggunakan default yang sama dengan mudah.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration File"
+>
+
+Setelah init, file configuration utama berada di:
+
+<Terminal>
+
+{`
+.config/custy/config.toml
+`}
+
+</Terminal>
+
+Command Custy berikutnya otomatis memuat file ini ketika tersedia.
+
+</Section>
+
+---
+
+<Section
+    title="Apa yang Dapat Dikonfigurasi?"
+>
+
+<FeatureGrid
+    title="Kategori Configuration"
+    items={[
+        {
+            title: "Project",
+            children: (
+                <>
+                    Tentukan informasi khusus proyek, seperti source directory
+                    utama yang digunakan Custy.
+                </>
+            ),
+        },
+        {
+            title: "Initialization",
+            children: (
+                <>
+                    Konfigurasikan perilaku default init, termasuk pengaturan
+                    overwrite dan konfirmasi.
+                </>
+            ),
+        },
+        {
+            title: "Release",
+            children: (
+                <>
+                    Konfigurasikan release metadata, seperti author default dan
+                    penanganan release date.
+                </>
+            ),
+        },
+        {
+            title: "Versioning",
+            children: (
+                <>
+                    Tentukan versioning strategy dan perilaku bump default yang
+                    digunakan command terkait release.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Prinsip Configuration"
+>
+
+Custy dirancang dengan prinsip bahwa perilaku proyek sebaiknya dapat
+disesuaikan, bukan di-hard-code.
+
+Configuration yang dibuat menyediakan lokasi terpusat untuk menentukan
+preferensi proyek satu kali, sehingga tim tidak perlu mengulang
+command-line options yang sama pada setiap operasi.
+
+Pendekatan ini meningkatkan konsistensi, tetapi tetap memungkinkan setiap
+command meng-override nilai configuration ketika diperlukan.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Configuration yang Dapat Berkembang"
+>
+
+File configuration sengaja disusun dalam bagian-bagian yang logis.
+
+Ketika Custy memperoleh kemampuan baru, grup configuration tambahan dapat
+ditambahkan tanpa mengubah keseluruhan struktur file.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Hubungan dengan Command-Line Options"
+>
+
+Command-line options selalu memiliki prioritas lebih tinggi daripada nilai
+configuration.
+
+Ketika option tidak diberikan, Custy mencoba menentukan nilainya dari project
+configuration sebelum menggunakan default bawaan.
+
+Dengan demikian, proyek dapat menetapkan default yang sesuai sekaligus tetap
+memberikan fleksibilitas kepada pengguna untuk meng-override nilai saat
+diperlukan.
+
+</Section>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Setelah memahami bagaimana Custy dikonfigurasi, lanjutkan ke halaman
+**Examples** untuk melihat skenario init yang umum dan pola penggunaan yang
+direkomendasikan.
+
+</Section>

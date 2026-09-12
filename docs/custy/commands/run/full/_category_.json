@@ -1,0 +1,11 @@
+{
+  "label": "Full Profile",
+  "position": 13,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-run-full",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/run/full/overview"
+  }
+}

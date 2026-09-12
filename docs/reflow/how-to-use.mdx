@@ -1,0 +1,450 @@
+---
+title: "How To Use"
+description: "How To Use Reflow"
+sidebar_position: 3
+sidebar_key: reflow
+---
+# How To Use Reflow
+
+## Overview
+
+This guide explains how to use Reflow to accomplish common tasks.
+
+Unlike command reference documentation, this guide is task-oriented and focuses on real-world workflows.
+
+If you are new to Reflow, start with:
+
+```text
+docs/user-guide/quickstart.md
+```
+
+---
+
+# Typical Workflow
+
+Most projects follow a workflow similar to:
+
+```text
+Install Reflow
+      ↓
+Initialize Project
+      ↓
+Configure Project
+      ↓
+Convert Tags (Optional)
+      ↓
+Replay Releases (Optional)
+      ↓
+Dockerize Images (Optional)
+```
+
+You only need to run the commands relevant to your workflow.
+
+---
+
+# I Want To Start A New Project
+
+Initialize Reflow:
+
+```bash
+reflow init
+```
+
+Review configuration:
+
+```text
+config.toml
+```
+
+Update project-specific settings.
+
+Documentation:
+
+```text
+docs/init/
+```
+
+---
+
+# I Want To Create Configuration Files
+
+Generate configuration only:
+
+```bash
+reflow init --mode config
+```
+
+Useful when:
+
+```text
+config.toml was deleted
+You only need configuration
+```
+
+---
+
+# I Want To Preview Changes Before Creating Files
+
+Use dry-run mode:
+
+```bash
+reflow init --dry-run
+```
+
+This shows planned actions without modifying files.
+
+---
+
+# I Want To Convert PEP 440 Tags To SemVer
+
+Example:
+
+Before:
+
+```text
+v1.0.0rc1
+```
+
+After:
+
+```text
+v1.0.0-rc.1
+```
+
+Run:
+
+```bash
+reflow tags convert
+```
+
+Typical use cases:
+
+```text
+Migrating release history
+Standardizing version formats
+Preparing Docker image tags
+```
+
+Documentation:
+
+```text
+docs/tags/convert/
+```
+
+---
+
+# I Want To Preserve Existing Git History
+
+Reflow converts tags while preserving:
+
+```text
+Git commit SHA
+Tag messages
+Annotated tag metadata
+```
+
+This allows version migration without losing release history.
+
+---
+
+# I Want To Replay GitHub Releases
+
+Replay existing tags:
+
+```bash
+reflow tags replay
+```
+
+Typical use cases:
+
+```text
+Failed release automation
+Missing GitHub releases
+Repository migration
+```
+
+Documentation:
+
+```text
+docs/tags/replay/
+```
+
+---
+
+# I Want To Recover Missing Releases
+
+Example scenario:
+
+```text
+Tags exist
+GitHub releases do not
+```
+
+Run:
+
+```bash
+reflow tags replay
+```
+
+Reflow can recreate releases from existing tags.
+
+---
+
+# I Want To Build Docker Images
+
+Run:
+
+```bash
+reflow dockerize
+```
+
+Typical workflow:
+
+```text
+Git Tag
+     ↓
+Docker Image
+     ↓
+Container Registry
+```
+
+Documentation:
+
+```text
+docs/dockerize/
+```
+
+---
+
+# I Want To Publish Images To GitHub
+
+Configuration:
+
+```toml
+[tool.reflow.docker]
+
+provider = "github"
+
+[tool.reflow.github]
+
+image = "ghcr.io/your-org/your-image"
+```
+
+Run:
+
+```bash
+reflow dockerize
+```
+
+Result:
+
+```text
+Images published to GHCR
+```
+
+---
+
+# I Want To Publish Images To GitLab
+
+Configuration:
+
+```toml
+[tool.reflow.docker]
+
+provider = "gitlab"
+
+[tool.reflow.gitlab]
+
+image = "registry.gitlab.com/your-org/your-image"
+```
+
+Run:
+
+```bash
+reflow dockerize
+```
+
+Result:
+
+```text
+Images published to GitLab Container Registry
+```
+
+---
+
+# I Want To Use Only One Feature
+
+You do not need to use every command.
+
+Examples:
+
+Only convert tags:
+
+```bash
+reflow tags convert
+```
+
+Only replay releases:
+
+```bash
+reflow tags replay
+```
+
+Only publish Docker images:
+
+```bash
+reflow dockerize
+```
+
+Commands are intentionally independent.
+
+---
+
+# I Want To See Available Commands
+
+Display root help:
+
+```bash
+reflow --help
+```
+
+Display tags help:
+
+```bash
+reflow tags --help
+```
+
+Display init help:
+
+```bash
+reflow init --help
+```
+
+Display dockerize help:
+
+```bash
+reflow dockerize --help
+```
+
+---
+
+# I Want To Understand The Workflow
+
+Read:
+
+```text
+docs/user-guide/lifecycle.md
+```
+
+and:
+
+```text
+docs/architecture/workflow.md
+```
+
+These documents explain how commands fit together.
+
+---
+
+# I Want To Learn The Architecture
+
+Start with:
+
+```text
+docs/architecture/
+```
+
+Recommended reading order:
+
+```text
+workflow.md
+      ↓
+design-patterns.md
+      ↓
+diagrams.md
+```
+
+---
+
+# I Want To Contribute
+
+Read:
+
+```text
+docs/developer-guide/
+```
+
+and:
+
+```text
+docs/project/roadmap.md
+```
+
+before making changes.
+
+---
+
+# Common Scenarios
+
+## New Project
+
+```bash
+reflow init
+```
+
+---
+
+## Version Migration
+
+```bash
+reflow tags convert
+```
+
+---
+
+## Release Recovery
+
+```bash
+reflow tags replay
+```
+
+---
+
+## Container Publishing
+
+```bash
+reflow dockerize
+```
+
+---
+
+## Full Workflow
+
+```text
+reflow init
+      ↓
+Edit config.toml
+      ↓
+reflow tags convert
+      ↓
+reflow tags replay
+      ↓
+reflow dockerize
+```
+
+---
+
+# Summary
+
+Reflow is designed around independent workflows.
+
+Use only the commands that solve your problem:
+
+```text
+Initialize
+Convert
+Replay
+Dockerize
+```
+
+and combine them only when your project requires it.

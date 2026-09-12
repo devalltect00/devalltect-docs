@@ -1,0 +1,63 @@
+.checklist {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-xl);
+
+}
+
+.list {
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+
+}
+
+.item {
+
+    padding: 1rem 0;
+
+    border-bottom: 1px solid var(--ifm-toc-border-color);
+
+}
+
+.item:last-child {
+
+    border-bottom: none;
+
+}
+
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
+
+}
+
+.title {
+
+    font-weight: 600;
+
+}
+
+.description {
+
+    margin: .75rem 0 0;
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+
+}

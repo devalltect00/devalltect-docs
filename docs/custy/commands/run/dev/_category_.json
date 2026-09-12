@@ -1,0 +1,11 @@
+{
+  "label": "Dev Profile",
+  "position": 11,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-run-dev",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/run/dev/overview"
+  }
+}

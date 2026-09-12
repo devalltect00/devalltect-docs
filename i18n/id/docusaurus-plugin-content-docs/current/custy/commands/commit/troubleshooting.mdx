@@ -1,0 +1,31 @@
+---
+title: "Pemecahan Masalah Commit"
+description: "Atasi validation, staging, template, dan commit failures."
+sidebar_position: 9
+sidebar_key: custy-commit-troubleshooting
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy commit" title="Commit Troubleshooting" description="Diagnosa version file, staging, editor, validation, dan changelog failures." category="Git Operations" status="Panduan Dukungan" syntax="custy commit [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Requirements",href:"./requirements"},{label:"Configuration",href:"./configuration"},{label:"FAQ",href:"./faq"}]} />
+
+## Ringkasan
+
+<InfoBox variant="tip" title="Periksa Repository Sebelum Retry">Periksa `git status`, Git index, generated artifacts, backups, dan tahap terakhir yang selesai.</InfoBox>
+
+## Version File Tidak Ditemukan
+<Section compact>Periksa configured path atau `--version-file`, lalu pastikan file ada dan writable.</Section>
+
+## File yang Salah Ikut Di-stage
+<Section compact>Periksa `auto_stage`, `stage_mode`, dan Git index. Unstage perubahan yang tidak dimaksud sebelum retry.</Section>
+
+## Editor Tidak Terbuka
+<Section compact>Periksa editor configuration, environment, template path, dan apakah invocation mendukung interaksi.</Section>
+
+## Commit Validation Gagal
+<Section compact>Perbaiki commit message atau repository checks yang dilaporkan. Jangan melewati validation tanpa memahami penyebabnya.</Section>
+
+## Changelog Generation Gagal
+<Section compact>Periksa Git history, changelog configuration, template, dan working-tree diff sebelum menjalankan profile ulang.</Section>
+
+## Commit Berisi Konten yang Salah
+<Section compact>Periksa final commit dengan `git show`, staging configuration, dan artifact diff. Gunakan Git recovery yang sesuai sebelum push.</Section>

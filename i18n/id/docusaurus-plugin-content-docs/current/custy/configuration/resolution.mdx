@@ -1,0 +1,122 @@
+---
+title: "Resolution dan Status"
+description: "Pahami effective-value priority Custy dan hubungan documentation status dengan implementation."
+sidebar_position: 3
+sidebar_key: custy-configuration-resolution-v2
+tags: [custy, configuration, resolution]
+keywords: [custy config priority, cli override, built-in default]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="CLI -> config.toml -> default"
+    title="Resolution dan Status"
+    description="Tentukan value yang digunakan Custy dan apakah documented property sudah diterapkan sepenuhnya."
+    category="Configuration"
+    status="Reference"
+    syntax="config.resolve(CLI_VALUE, CONFIG_PATH, DEFAULT)"
+    tags={["priority", "fallback", "implementation status"]}
+    links={[
+        {label: "Concept", href: "../concepts/configuration-resolution"},
+        {label: "All Properties", href: "./reference"},
+        {label: "CLI Configuration", href: "./cli/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Priority 1", value: "Explicit CLI", icon: "terminal"},
+        {label: "Priority 2", value: "Project config", icon: "configuration"},
+        {label: "Priority 3", value: "Built-in default", icon: "dependency"},
+        {label: "Required Missing", value: "Configuration error", icon: "danger"},
+    ]}
+/>
+
+## Ringkasan
+
+Sebagian besar command resolvers menggunakan prioritas yang sama, tetapi
+dukungan diterapkan per property. Munculnya sebuah key dalam generated file
+belum membuktikan bahwa semua command menggunakannya.
+
+---
+
+<Section title="Effective-Value Flow">
+
+<WorkflowTimeline
+    items={[
+        {title: "Explicit CLI value", description: "Gunakan invocation-specific value secara langsung.", status: "current"},
+        {title: "Project configuration", description: "Jika CLI value tidak ditentukan, cari full path milik resolver di bawah tool.custy.", status: "pending"},
+        {title: "Built-in default", description: "Gunakan resolver atau service fallback jika dua source pertama tidak tersedia.", status: "pending"},
+        {title: "Required validation", description: "Hasilkan configuration error jika required input tetap unresolved.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Value Semantics">
+
+<PropertyTable
+    items={[
+        {property: "Omitted / None", type: "Falls through", description: "Memungkinkan configuration, lalu built-in default, ikut menentukan value."},
+        {property: "Explicit true", type: "CLI override", description: "Mengalahkan project configuration."},
+        {property: "Explicit false", type: "CLI override", description: "Umumnya tetap menjadi intentional value, kecuali resolver menerapkan special handling."},
+        {property: "Missing key", type: "Fallback", description: "Menggunakan built-in default jika tersedia."},
+        {property: "Invalid present value", type: "Error", description: "Tidak dianggap missing; parsing atau typed validation dapat gagal."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Implementation Status">
+
+<PropertyTable
+    items={[
+        {property: "Active", description: "Dibaca dan diterapkan oleh active resolver, service, pipeline, atau template saat ini."},
+        {property: "Optional", description: "Didukung current code, tetapi dikomentari atau tidak disertakan dalam generated file."},
+        {property: "Mismatch", description: "Generated name atau table shape berbeda dari yang diharapkan active code."},
+        {property: "Loaded only", description: "Dibaca ke model, tetapi belum digunakan current renderer atau processing path."},
+        {property: "Experimental", description: "Behavior dimuat atau diterapkan sebagian dan contract-nya masih dapat berubah."},
+        {property: "Reserved", description: "Dibuat untuk intended behavior, tetapi belum digunakan active command flow."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Known Cross-Cutting Mismatch">
+
+Generated execution key adalah `cli.execution.skip_checks`; direct Git-operation
+dan `custy run` resolvers saat ini mencari `cli.execution.skip_check`. Gunakan
+explicit skip-check option milik command hingga source dan template diselaraskan.
+
+</InfoBox>
+
+---
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "All Properties", href: "./reference", description: "Lihat status dan destination page untuk setiap key."},
+        {title: "Configuration Concept", href: "../concepts/configuration-resolution", description: "Pelajari mental model yang lebih luas."},
+        {title: "Execution", href: "./cli/execution", description: "Tinjau cross-command execution keys dan mismatch."},
+        {title: "Configuration File", href: "./config-file", description: "Tinjau loading dan ownership boundaries."},
+        {title: "Extending Configuration", href: "../developer-guide/extending-configuration", description: "Teruskan setting baru melalui templates, resolution, runtime use, tests, dan docs."},
+    ]}
+/>
+
+</Section>

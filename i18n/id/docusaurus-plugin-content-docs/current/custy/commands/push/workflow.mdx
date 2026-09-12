@@ -1,0 +1,24 @@
+---
+title: "Workflow"
+description: "Resolved pipeline stages dan per-remote actions custy push."
+sidebar_position: 6
+sidebar_key: custy-push-workflow
+---
+import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy push" title="Push Workflow" description="Ikuti resolusi destination hingga optional backup synchronization." category="Git Operations" status="Network Operation" syntax="custy push [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Remotes",href:"./remotes"},{label:"Output",href:"./output"}]} />
+
+## Ringkasan
+
+<WorkflowTimeline title="Push Profile" items={[
+ {title:"Inspect repository",description:"Resolve HEAD, branch, dan optional tag.",status:"completed"},
+ {title:"Resolve main remote",description:"Tentukan destination utama.",status:"completed"},
+ {title:"Push HEAD",description:"Kirim current branch/commit.",status:"completed"},
+ {title:"Push tag",description:"Kirim requested tag bila tidak dilewati.",status:"optional"},
+ {title:"Resolve backup remote",description:"Cari secondary destination bila sync aktif.",status:"optional"},
+ {title:"Synchronize backup",description:"Kirim HEAD dan tag sesuai resolved behavior.",status:"optional"},
+ {title:"Report per destination",description:"Tampilkan sukses, skip, atau failure.",status:"completed"},
+]} />
+
+<InfoBox variant="warning" title="Fail-Fast Behavior">Required main-remote failure menghentikan profile. Periksa destination mana yang sudah menerima perubahan sebelum retry.</InfoBox>
+<Section title="Retry Safety">Jangan rerun secara buta setelah partial success. Verifikasi branch dan tag pada setiap remote secara terpisah.</Section>

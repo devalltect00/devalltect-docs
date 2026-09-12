@@ -1,0 +1,49 @@
+.examples {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--docs-space-xl);
+
+    margin: var(--docs-space-2xl) 0;
+}
+
+.description {
+    margin-bottom: 1rem;
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+}
+
+.header {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: .75rem;
+}
+
+.command {
+    margin: 0;
+
+    padding: 1rem 1.25rem;
+
+    overflow-x: auto;
+
+    border-radius: var(--docs-radius-md);
+
+    background: var(--ifm-code-background);
+
+    font-size: .92rem;
+
+    line-height: 1.7;
+}
+
+.command code {
+    padding: 0;
+
+    background: transparent;
+
+    border: none;
+}

@@ -1,0 +1,21 @@
+---
+title: "Strategy Pattern"
+description: "Pahami strategy terpisah untuk version-tag generation, existing-tag sorting, dan version-format conversion."
+sidebar_position: 8
+sidebar_key: custy-architecture-strategy-pattern
+tags: [custy, strategy, versioning]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="TagStrategy" title="Version Strategies" description="Bedakan generation, sorting, dan conversion agar setiap kontrak tetap jelas." category="Arsitektur" status="Extension Point" syntax="strategy input -> generated version; tags -> sorter -> ordered tags" links={[{label: "Git Operations", href: "./git-operations"}, {label: "Versioning Concept", href: "../concepts/versioning"}, {label: "Add a Strategy", href: "../developer-guide/adding-version-strategies"}]} />
+
+## Tiga tanggung jawab
+
+`TagStrategy` menghasilkan version baru dari input strategy. `TagSorter` mengurutkan tag yang sudah ada. Converter menjembatani format version tertentu. Ketiganya berkaitan, tetapi bukan satu kontrak dan tidak boleh digabungkan hanya karena sama-sama menangani string version.
+
+<InfoBox variant="info" title="Extension point internal">Factory dan strategy memudahkan contributor menambah implementasi, tetapi belum merupakan third-party plugin API yang stabil.</InfoBox>
+
+<Section title="Saat menambah strategy">Tambahkan implementasi, factory dispatch, CLI/config validation, sorter atau conversion hanya bila diperlukan, serta unit dan integration test untuk pre-release, invalid input, dan existing tags.</Section>
+
+<RelatedCommands commands={[{title: "Git Operations", href: "./git-operations", description: "Lihat pembacaan, sorting, creation, dan push tag."}, {title: "Workflow Engine", href: "./workflow-engine", description: "Pelajari dispatch aktif dan downstream phase."}, {title: "Versioning Concept", href: "../concepts/versioning", description: "Bandingkan strategy dan version-file format."}, {title: "Adding Version Strategies", href: "../developer-guide/adding-version-strategies", description: "Ikuti checklist contributor lengkap."}]} />

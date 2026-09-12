@@ -1,0 +1,8 @@
+{
+  "label": "Cleanup",
+  "position": 4,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-cleanup",
+  "link": {"type": "doc", "id": "custy/commands/cleanup/overview"}
+}

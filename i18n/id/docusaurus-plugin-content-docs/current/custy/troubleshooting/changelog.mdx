@@ -1,0 +1,25 @@
+---
+title: "Pemecahan Masalah Changelog"
+description: "Atasi entry hilang atau duplicate, release range salah, grouping noisy, pending-content limit, broken link, template error, dan output tak terduga."
+sidebar_position: 5
+sidebar_key: custy-troubleshooting-changelog
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy changelog generate" title="Changelog Troubleshooting" description="Diagnosis source history, range, processing, release model, template, dan output path." category="Pemecahan Masalah" status="Focused Hub" syntax="history -> messages -> releases -> template -> CHANGELOG.md" links={[{label:"Troubleshooting Hub",href:"./overview"},{label:"Generate Guide",href:"../commands/changelog/generate/troubleshooting"},{label:"Configuration",href:"../configuration/changelog/overview"},{label:"Architecture",href:"../architecture/changelog-system"}]} />
+
+## Entry hilang atau duplicate
+
+Periksa Git range, tag boundary, merge behavior, pending commit source, dan existing release parsing. Pastikan commit yang diharapkan berada pada history yang dikumpulkan.
+
+## Grouping atau heading tidak sesuai
+
+Periksa Conventional Commit parsing, section mapping, cleaning rules, sorting, dan release behavior. Gunakan exact configuration status karena sebagian key belum aktif di runtime.
+
+## Template atau output gagal
+
+Pastikan configured template ada dan valid untuk model yang diberikan. Periksa output path, encoding, permission, serta working directory sebelum mencoba lagi.
+
+<InfoBox variant="info" title="Hub ini tidak menduplikasi panduan command">Langkah symptom-by-symptom paling rinci berada pada Generate Troubleshooting; halaman ini menghubungkan masalah lintas Git, configuration, dan architecture.</InfoBox>
+
+<Section title="Panduan terkait"><RelatedCommands commands={[{title:"Generate Troubleshooting",href:"../commands/changelog/generate/troubleshooting",description:"Gunakan symptom dan recovery khusus command."},{title:"Changelog Configuration",href:"../configuration/changelog/overview",description:"Jelajahi active, loaded-only, reserved, dan advanced settings."},{title:"Changelog Architecture",href:"../architecture/changelog-system",description:"Telusuri provider, model, processing, rendering, dan write."},{title:"Git Troubleshooting",href:"./git",description:"Atasi tag, history, range, dan repository problem."}]} /></Section>

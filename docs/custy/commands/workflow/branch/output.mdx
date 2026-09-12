@@ -1,0 +1,85 @@
+---
+title: "Output"
+description: "Expected diagnostics and current failure behavior for workflow branch."
+sidebar_position: 6
+sidebar_key: custy-workflow-branch-output
+tags: [workflow, output, experimental]
+keywords: [workflow branch output]
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Command Output"
+    description="Understand intended transition diagnostics and the current likely pipeline-construction failure."
+    category="Experimental Workflow"
+    status="Currently Blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "output",
+        "diagnostics",
+        "known failure",
+    ]}
+    links={[
+        {label: "Workflow", href: "./workflow"},
+        {label: "Examples", href: "./examples"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+The intended output includes resolved source and target boundaries, validation
+decisions, enforcement results, dry-run diagnostics, and backup synchronization
+status.
+
+---
+
+<Section
+    title="Representative Current Failure"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Pipeline Construction Error",
+            description: "Representative result when the requested step name cannot be resolved.",
+            output: `Unable to build workflow pipeline
+Unknown or unregistered step: finalize`,
+            notes: "Exact wording can vary, but the transition result must not be treated as successful.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Current likely result"
+>
+
+With the current source mismatch, execution can report an unknown or unregistered
+`finalize` step while building the pipeline. That error means no transition
+result should be trusted or interpreted as successful validation.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Diagnostic Boundary"
+>
+
+Debug output may help confirm argument resolution, but it cannot repair a
+missing registry name. The Custy implementation must use the registered
+`finalize_step` name or register the requested alias.
+
+</Section>

@@ -1,0 +1,125 @@
+---
+title: "User Guide"
+description: "Complete common Custy tasks safely, from daily development and releases to backups, branch cleanup, and recovery."
+sidebar_position: 1
+sidebar_key: custy-user-guide-overview
+tags: [custy, user guide, workflows]
+keywords: [Custy user guide, daily development, release workflow]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="User Guide"
+    description="Follow practical, review-first journeys for the work you want to complete with Custy."
+    category="User Guide"
+    status="Task-Oriented"
+    syntax="prepare -> preview -> execute -> verify"
+    tags={["daily work", "releases", "maintenance", "recovery"]}
+    links={[
+        {label: "Daily Development", href: "./everyday-development"},
+        {label: "Prepare a Release", href: "./preparing-releases"},
+        {label: "Troubleshoot Workflows", href: "./troubleshooting-workflows"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Audience", value: "Custy users", icon: "feature"},
+        {label: "Approach", value: "Outcome first", icon: "workflow"},
+        {label: "Safety Pattern", value: "Preview and verify", icon: "security"},
+        {label: "Detailed Reference", value: "Linked, not duplicated", icon: "dependency"},
+    ]}
+/>
+
+## Overview
+
+This guide organizes Custy around real tasks rather than individual command
+options. Each journey explains what to prepare, which command or profile to
+choose, what can change, how to verify success, and what to inspect when a run
+stops partway through.
+
+Use the [Command Reference](../commands/overview) when you need every option.
+Use [Configuration](../configuration/overview) for persistent project policy,
+and [Pipelines](../pipelines/overview) for exact internal execution order.
+
+<InfoBox variant="tip" title="A reliable operating pattern">
+
+Inspect repository state, run validation, preview consequential operations with
+global `--dry-run`, execute normally only after the preview is understood, and
+verify both local and remote results afterward.
+
+</InfoBox>
+
+---
+
+<Section title="Choose Your Journey">
+
+<FeatureGrid
+    title="Common Custy Work"
+    items={[
+        {title: "Everyday Development", icon: <Icon name="play" />, children: <>Prepare artifacts and a changelog, then commit and push reviewed work with <a href="./everyday-development">the Dev journey</a>.</>},
+        {title: "Preparing Releases", icon: <Icon name="release" />, children: <>Move from release readiness through version, changelog, commit, tag, and publication in <a href="./preparing-releases">the Release journey</a>.</>},
+        {title: "Managing Backups", icon: <Icon name="package" />, children: <>Protect commit and tag message files and apply retention deliberately in <a href="./managing-backups">the Backup journey</a>.</>},
+        {title: "Cleaning Branches", icon: <Icon name="git" />, children: <>Preview layered branch filters before deleting local and remote branches in <a href="./cleaning-branches">the Cleanup journey</a>.</>},
+        {title: "Recovering Workflows", icon: <Icon name="warning" />, children: <>Identify the last completed effect and select a narrow recovery action in <a href="./troubleshooting-workflows">the Troubleshooting journey</a>.</>},
+        {title: "Choosing a Command", icon: <Icon name="terminal" />, children: <>Use the <a href="../commands/overview">Command Reference</a> when one focused operation is safer than a full profile.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Start with Repository State">
+
+<Terminal title="Reusable preflight" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git remote -v
+custy validate`}
+
+</Terminal>
+
+These checks answer four questions before Custy mutates anything: which branch
+is active, which changes exist, which changes are staged, and where remote
+operations can go.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Dry-run is a preview, not a guarantee">
+
+Dry-run suppresses supported mutations, while discovery, validation, file
+reads, configuration resolution, and remote selection can still run. Read the
+[Dry Run concept](../concepts/dry-run) for the exact boundary.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Everyday Development", href: "./everyday-development", description: "Complete a reviewed daily commit-and-push journey."},
+        {title: "Preparing Releases", href: "./preparing-releases", description: "Prepare and publish a versioned release deliberately."},
+        {title: "Managing Backups", href: "./managing-backups", description: "Create, verify, retain, and restore message backups."},
+        {title: "Troubleshooting Workflows", href: "./troubleshooting-workflows", description: "Diagnose partial files, commits, tags, and pushes."},
+    ]}
+/>
+
+</Section>

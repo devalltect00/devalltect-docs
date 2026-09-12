@@ -1,0 +1,11 @@
+{
+  "label": "Concepts",
+  "position": 3,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-concepts",
+  "link": {
+    "type": "generated-index",
+    "description": "Understand the mental models behind Custy commands, pipelines, configuration, versioning, releases, and safety."
+  }
+}

@@ -1,0 +1,124 @@
+---
+title: "Configuration"
+description: "Configure commit templates, staging, versioning, and backups."
+sidebar_position: 5
+sidebar_key: custy-commit-configuration
+tags: [commit, configuration, toml]
+keywords: [commit configuration, stage mode]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    PropertyTable,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Configuration"
+    description="Configure commit templates, message backups, version files, staging, and validation defaults."
+    category="Git Operations"
+    status="Advanced"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "configuration",
+        "TOML",
+        "team defaults",
+    ]}
+    links={[
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The direct command resolves values from `.config/custy/config.toml` when a CLI
+override is absent.
+
+---
+
+<Section
+    title="Configuration Groups"
+>
+
+<PropertyTable
+    title="Commit Profile Configuration"
+    items={[
+        {
+            property: "[tool.custy.cli.templates.file]",
+            type: "commit_message",
+            description: "Select the commit-message template used by the profile.",
+        },
+        {
+            property: "[tool.custy.cli.templates.directory]",
+            type: "backups_commit",
+            description: "Select the directory used for retained commit-message backups.",
+        },
+        {
+            property: "[tool.custy.cli.paths]",
+            type: "version_file",
+            description: "Select the project file that receives the resolved version.",
+        },
+        {
+            property: "[tool.custy.cli.versioning]",
+            type: "strategy",
+            description: "Set the default strategy used while preparing versioned artifacts.",
+        },
+        {
+            property: "[tool.custy.cli.execution]",
+            type: "staging and validation",
+            description: "Configure auto_stage, stage_mode, force_commit, and check_cz defaults.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Example Configuration"
+>
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.cli.templates.file]
+commit_message = ".config/custy/templates/commit-message.txt"
+
+[tool.custy.cli.templates.directory]
+backups_commit = ".config/custy/templates/backups/commit"
+
+[tool.custy.cli.execution]
+auto_stage = false
+stage_mode = "all"
+force_commit = false
+check_cz = false`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Keep shared behavior in configuration"
+>
+
+CLI values override project configuration for that invocation. Keep shared team
+behavior in TOML and reserve CLI overrides for deliberate one-time changes.
+
+</InfoBox>

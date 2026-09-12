@@ -1,0 +1,126 @@
+---
+title: "Run Troubleshooting"
+description: "Resolve rejected profile names, validation failures, partial pipelines, and remote errors."
+sidebar_position: 9
+sidebar_key: custy-run-troubleshooting
+tags: [run, troubleshooting, pipeline]
+keywords: [custy run failed, invalid profile]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Run Troubleshooting"
+    description="Resolve rejected profile names, normalized ordering, validation failures, partial pipelines, ignored options, and push errors."
+    category="Pipeline"
+    status="Support Guide"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "troubleshooting",
+        "partial pipeline",
+        "recovery",
+    ]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../../troubleshooting/overview"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Options", href: "./options"},
+        {label: "Recovery Journey", href: "../../user-guide/troubleshooting-workflows"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Overview
+
+Pipeline recovery begins by identifying the last completed stage. Do not assume
+that a failed profile left every file, reference, and remote unchanged.
+
+<InfoBox
+    variant="warning"
+    title="Inspect partial state"
+>
+
+Generated files, backups, commits, tags, or successful remote operations can
+remain after a later stage fails.
+
+</InfoBox>
+
+---
+
+## The Profile Name Is Rejected
+
+<Section compact>
+
+Use only `commit`, `tag`, `push`, `dev`, `release`, or `full`. Help text that
+lists internal names is ahead of the typed public argument.
+
+</Section>
+
+---
+
+## A Combined Sequence Runs in a Different Order
+
+<Section compact>
+
+The resolver globally orders deduplicated steps. This is expected and prevents
+the command-line order from placing push before preparation or commit.
+
+</Section>
+
+---
+
+## Validation Stops the Pipeline
+
+<Section compact>
+
+Fix the first reported condition. Later stages are intentionally not executed
+after required validation fails.
+
+</Section>
+
+---
+
+## The Pipeline Stopped After Changing Files
+
+<Section compact>
+
+<Terminal>
+
+{`git status -sb
+git diff
+git log -1 --decorate --stat
+git tag --points-at HEAD`}
+
+</Terminal>
+
+Inspect generated artifacts and backups. Determine the last completed stage
+before retrying; do not blindly rerun a partially completed release.
+
+</Section>
+
+---
+
+## A Run Option Had No Effect
+
+<Section compact>
+
+Review [Run options](./options). Several accepted fields are not currently
+mapped into the workflow engine because their model names differ.
+
+</Section>
+
+---
+
+## Push Failed
+
+<Section compact>
+
+Use the [Push troubleshooting guide](../push/troubleshooting) and verify actual
+resolved remotes before retrying.
+
+</Section>

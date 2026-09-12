@@ -1,0 +1,131 @@
+---
+title: "Ringkasan Konfigurasi"
+description: "Navigasikan setiap namespace, table, property, default, dan implementation status konfigurasi Custy."
+sidebar_position: 1
+sidebar_key: custy-configuration-overview-v2
+tags: [custy, configuration, toml]
+keywords: [custy config, tool.custy, config.toml]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command=".config/custy/config.toml"
+    title="Ringkasan Konfigurasi"
+    description="Pahami konfigurasi lengkap milik project, mulai dari initialization dan CLI defaults hingga changelog rendering dan Git remotes."
+    category="Configuration"
+    status="Complete Reference"
+    syntax="[tool.custy]"
+    tags={["TOML hierarchy", "project defaults", "implementation status"]}
+    links={[
+        {label: "Configuration File", href: "./config-file"},
+        {label: "All Properties", href: "./reference"},
+        {label: "Compact Reference", href: "../reference/configuration"},
+        {label: "Resolution", href: "./resolution"},
+        {label: "Troubleshooting", href: "../troubleshooting/configuration"},
+        {label: "System Architecture", href: "../architecture/configuration-system"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Root Namespace", value: "tool.custy", icon: "project"},
+        {label: "Generated Tables", value: "29", icon: "table"},
+        {label: "Ownership", value: "Your project", icon: "file"},
+    ]}
+/>
+
+## Ringkasan
+
+`custy init` membuat file TOML milik project dari packaged source Custy.
+Dokumentasi aktif mengikuti hierarchy file tersebut, sedangkan table yang
+bertingkat dalam dikelompokkan menjadi bagian yang mudah dinavigasi.
+
+<InfoBox variant="tip" title="Mulai dari Namespace, Lalu Buka Property">
+
+Gunakan halaman ini untuk memilih namespace. Gunakan halaman namespace untuk
+penjelasan dan contoh, atau buka [All Properties](./reference) jika Anda sudah
+mengetahui full TOML path.
+
+</InfoBox>
+
+---
+
+<Section title="Top-Level Namespaces">
+
+<FeatureGrid
+    items={[
+        {title: "Project", icon: <Icon name="project" />, children: <>Tentukan source directory melalui <a href="./project">tool.custy.project</a>.</>},
+        {title: "Release", icon: <Icon name="release" />, children: <>Tinjau generated release metadata dan <a href="./release">compatibility gap saat ini</a>.</>},
+        {title: "Initialization", icon: <Icon name="copy" />, children: <>Atur default overwrite dan prompt untuk <a href="./initialization">custy init</a>.</>},
+        {title: "CLI", icon: <Icon name="terminal" />, children: <>Konfigurasikan paths, versioning, templates, execution, push, cleanup, changelog command behavior, dan workflow defaults melalui <a href="./cli/overview">tool.custy.cli</a>.</>},
+        {title: "Logging", icon: <Icon name="file" />, children: <>Konfigurasikan Rich console output dan rotating files melalui <a href="./logging/overview">tool.custy.logging</a>.</>},
+        {title: "Changelog", icon: <Icon name="release" />, children: <>Atur collection, cleaning, releases, mapping, dan rendering melalui <a href="./changelog/overview">tool.custy.changelog</a>.</>},
+        {title: "Git", icon: <Icon name="git" />, children: <>Tentukan perilaku default, primary, dan backup remote melalui <a href="./git/overview">tool.custy.git</a>.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Bentuk Minimal">
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"
+
+[tool.custy.cli.versioning]
+strategy = "semver"
+bump = "auto"
+
+[tool.custy.logging]
+level = "INFO"
+
+[tool.custy.git]
+default_remote = "origin"`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="Status yang Digunakan dalam Panduan Ini">
+
+- **Active** — property digunakan oleh resolver atau service saat ini.
+- **Optional** — didukung active code, tetapi dikomentari atau tidak disertakan
+  dalam generated file.
+- **Mismatch** — generated name atau shape tidak selaras dengan active code.
+- **Loaded only** — dimuat ke model, tetapi belum digunakan renderer atau pipeline aktif.
+- **Experimental** — behavior masih berkembang dan belum boleh dianggap stabil.
+- **Reserved** — dibuat atau dideskripsikan, tetapi belum digunakan active command flow.
+
+</Section>
+
+---
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "Configuration File", href: "./config-file", description: "Pelajari ownership, initialization, TOML shape, dan overwrite safety."},
+        {title: "Configuration Architecture", href: "../architecture/configuration-system", description: "Telusuri initialization, loading, caching, typed resolution, dan runtime consumers."},
+        {title: "All Properties", href: "./reference", description: "Temukan setiap generated dan supported configuration path."},
+        {title: "CLI Configuration", href: "./cli/overview", description: "Tinjau command-level defaults dan nested CLI tables."},
+        {title: "Changelog Configuration", href: "./changelog/overview", description: "Navigasikan seluruh changelog subsystem."},
+    ]}
+/>
+
+</Section>

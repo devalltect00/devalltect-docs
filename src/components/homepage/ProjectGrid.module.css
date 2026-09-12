@@ -1,0 +1,113 @@
+.section {
+  padding: 5rem 0;
+}
+
+.header {
+  text-align: center;
+
+  max-width: 720px;
+
+  margin: 0 auto 3rem auto;
+}
+
+.header h2 {
+  margin-bottom: 1rem;
+
+  font-size: 2.25rem;
+}
+
+.header p {
+  color: var(--ifm-font-color-secondary);
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 1.75rem;
+
+  border-radius: 16px;
+
+  background: var(--ifm-card-background-color);
+
+  border: 1px solid var(--ifm-toc-border-color);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--ifm-color-primary);
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.category {
+  margin-bottom: 1rem;
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: var(--ifm-color-primary);
+}
+
+.name {
+  margin-bottom: 1rem;
+}
+
+.description {
+  flex: 1;
+
+  color: var(--ifm-font-color-secondary);
+
+  line-height: 1.7;
+
+  margin-bottom: 1.5rem;
+}
+
+.techStack {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.tech {
+  padding: 0.35rem 0.75rem;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+
+  border: 1px solid var(--ifm-toc-border-color);
+
+  background: var(--ifm-background-surface-color);
+}
+
+.footer {
+  margin-top: auto;
+}

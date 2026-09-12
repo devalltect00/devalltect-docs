@@ -1,0 +1,89 @@
+---
+title: "Requirements"
+description: "Prepare repository state, files, remotes, and release inputs before running a pipeline."
+sidebar_position: 2
+sidebar_key: custy-run-requirements
+tags: [run, requirements, pipeline]
+keywords: [custy run requirements]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Requirements"
+    description="Prepare the union of repository, file, editor, version, tag, remote, and authentication requirements for selected profiles."
+    category="Pipeline"
+    status="Profile-dependent"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "requirements",
+        "pipeline",
+        "preflight",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Safety", href: "./safety"},
+    ]}
+/>
+
+## Overview
+
+Requirements depend on the selected profile. A combined sequence inherits the
+requirements and side effects of every included stage.
+
+---
+
+<Section
+    title="General Pipeline Requirements"
+>
+
+<RequirementGrid
+    items={[
+        {title: "Git Repository", level: "required", children: "Run the command inside the intended repository and branch."},
+        {title: "Required Project Files", level: "required", children: "Make the selected profile's version, commit-message, and tag-message files available."},
+        {title: "Reviewed Working Tree", level: "required", children: "Understand working-tree and Git-index changes before mutating profiles run."},
+        {title: "Interactive Editor", level: "recommended", children: "Provide the configured editor when generated artifacts require review."},
+        {title: "Current Tag History", level: "recommended", children: "Update local tags before profiles resolve or create versions."},
+        {title: "Remote Access", level: "optional", children: "Profiles that push need reachable remotes, authentication, and permission under branch-protection rules."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Preflight"
+>
+
+<Terminal>
+
+{`git status -sb
+git tag --list
+git remote -v
+custy --dry-run run PROFILE`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Profiles combine requirements"
+>
+
+When multiple profiles are supplied, Custy merges their steps. The resulting
+pipeline requires the union of their files, validation conditions, and external
+access.
+
+</InfoBox>

@@ -1,0 +1,68 @@
+---
+title: "CLI Defaults"
+description: "Navigasikan setiap table di bawah tool.custy.cli."
+sidebar_position: 1
+sidebar_key: custy-configuration-cli-overview
+tags: [custy, configuration, cli]
+keywords: [tool.custy.cli, cli defaults]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.cli]"
+    title="CLI Defaults"
+    description="Simpan command-level paths dan behavior yang dapat digunakan ulang, sambil mempertahankan one-run CLI overrides."
+    category="Configuration"
+    status="Active Namespace"
+    syntax="[tool.custy.cli.SUBSYSTEM]"
+    tags={["command defaults", "nested tables", "CLI overrides"]}
+    links={[
+        {label: "Execution", href: "./execution"},
+        {label: "Templates", href: "./templates/overview"},
+        {label: "Cleanup", href: "./cleanup/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Namespace", value: "tool.custy.cli", icon: "configuration"},
+        {label: "Child Areas", value: "8", icon: "directory"},
+        {label: "Primary Consumer", value: "Command resolvers", icon: "terminal"},
+        {label: "Priority", value: "Below explicit CLI", icon: "dependency"},
+    ]}
+/>
+
+## Area Konfigurasi
+
+<FeatureGrid
+    items={[
+        {title: "Versioning", icon: <Icon name="release" />, children: <>Konfigurasikan strategy, bump, dan optional date format melalui <a href="./versioning">cli.versioning</a>.</>},
+        {title: "Templates", icon: <Icon name="file" />, children: <>Konfigurasikan message files dan backup directories melalui <a href="./templates/overview">cli.templates</a>.</>},
+        {title: "Paths", icon: <Icon name="directory" />, children: <>Tentukan version source melalui <a href="./paths">cli.paths</a>.</>},
+        {title: "Execution", icon: <Icon name="workflow" />, children: <>Konfigurasikan preview, force, debug, staging, dan validation defaults melalui <a href="./execution">cli.execution</a>.</>},
+        {title: "Push", icon: <Icon name="git" />, children: <>Konfigurasikan command-level remote dan tag behavior melalui <a href="./push">cli.push</a>.</>},
+        {title: "Changelog Command", icon: <Icon name="release" />, children: <>Konfigurasikan force generation melalui <a href="./changelog">cli.changelog</a>.</>},
+        {title: "Cleanup", icon: <Icon name="package" />, children: <>Konfigurasikan backup retention dan branch filters melalui <a href="./cleanup/overview">cli.cleanup</a>.</>},
+        {title: "Workflow", icon: <Icon name="warning" />, children: <>Tinjau experimental transition defaults melalui <a href="./workflow">cli.workflow</a>.</>},
+    ]}
+/>
+
+<InfoBox variant="note" title="Namespace dan Command Berbeda">
+
+Namespace `cli` mengatur project defaults. Ini tidak berarti setiap property
+bersifat global atau setiap command membaca semua child table.
+
+</InfoBox>
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "All Properties", href: "../reference", description: "Temukan full CLI path dan status setiap property."},
+        {title: "Resolution", href: "../resolution", description: "Pahami alasan explicit option selalu menang."},
+        {title: "Execution", href: "./execution", description: "Tinjau cross-command defaults terluas."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,149 @@
+---
+title: "Developer Guide"
+description: "│   └── doc_gen/"
+sidebar_key: doc-gen-developer-guide
+---
+# Developer Guide
+
+This guide provides comprehensive information for developers working on DocGen.
+
+## Project Overview
+
+DocGen is a CLI tool that generates project structure documentation. It helps developers quickly understand project layout.
+
+Key features:
+
+- Generate PROJECT_STRUCTURE.md automatically
+- Support multiple profiles (minimal, default, detailed)
+- Smart mode for automatic optimization
+- Configurable via .projectstructure.toml
+
+---
+
+## Development Setup
+
+### Prerequisites
+
+- Python 3.14+
+- Git
+- Docker (optional, for containerized development)
+
+### Quick Setup
+
+```bash
+# Clone repository
+git clone https://github.com/devalltect00/doc-gen.git
+cd doc-gen
+
+# Create virtual environment
+python -m venv .venv
+
+# Activate (Windows)
+.venv\Scripts\activate
+
+# Activate (Linux/Mac)
+source .venv/bin/activate
+
+# Install with dev dependencies
+pip install -e .[dev,docs]
+```
+
+---
+
+## Project Structure
+
+```
+doc-gen/
+├── app/
+│   └── doc_gen/
+│       ├── cli/           # CLI commands
+│       ├── core/         # Core logic
+│       ├── config/       # Configuration
+│       ├── constants/    # Constants
+│       ├── services/    # Services
+│       ├── templates/    # Templates
+│       ├── theme/       # Theming
+│       ├── ui/         # UI components
+│       └── utils/       # Utilities
+├── docs/               # Documentation
+├── tests/              # Tests
+└── Makefile           # Build automation
+```
+
+---
+
+## Common Development Tasks
+
+### Running Tests
+
+```bash
+pytest -v
+```
+
+### Running Lint
+
+```bash
+ruff check app tests
+```
+
+### Running Format
+
+```bash
+ruff format app tests
+```
+
+### Running Full Check
+
+```bash
+make check
+```
+
+### Running Docker Development
+
+```bash
+make d-build-dev
+make d-test
+```
+
+---
+
+## Code Style
+
+- Follow PEP 8
+- Use Ruff for linting
+- Use Black/Ruff formatter for code formatting
+- Write docstrings for all public functions
+
+---
+
+## Testing
+
+Write tests for:
+
+- New features
+- Bug fixes
+- Edge cases
+
+Run specific test:
+
+```bash
+pytest tests/cli/test_main.py -v
+```
+
+---
+
+## Submitting Changes
+
+1. Create a feature branch
+2. Make your changes
+3. Add tests
+4. Run 'make check'
+5. Submit pull request
+
+---
+
+## Related Documentation
+
+- [Getting Started](./getting-started)
+- [Docker Workflow](./docker-workflow)
+- [Testing Guide](../testing/testing-guide)

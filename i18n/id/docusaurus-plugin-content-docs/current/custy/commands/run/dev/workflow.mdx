@@ -1,0 +1,16 @@
+---
+title: "Workflow"
+description: "Exact registered stages dalam Custy Dev profile."
+sidebar_position: 2
+sidebar_key: custy-run-dev-workflow
+---
+import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy run dev" title="Development Workflow" description="Ikuti exact Dev stages dari validation hingga commit dan push." category="Pipeline Profile" status="Stable with Limitations" syntax="custy run dev [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Examples",href:"./examples"},{label:"Pipeline Internals",href:"../../../pipelines/development-pipeline"},{label:"Safety",href:"../safety"}]} />
+
+## Ringkasan
+<WorkflowTimeline title="Dev Profile" items={[
+ {title:"Validate repository",description:"Confirm execution inside Git repository.",status:"completed"},{title:"Prepare version and workflow",description:"Resolve version context dan initialize workflow engine.",status:"completed"},{title:"Generate and edit artifacts",description:"Create, open, dan validate configured artifacts.",status:"completed"},{title:"Generate changelog",description:"Update CHANGELOG.md.",status:"completed"},{title:"Back up and clean",description:"Backup commit message dan prune retained backups.",status:"completed"},{title:"Stage and commit",description:"Stage resolved files dan create Git commit.",status:"completed"},{title:"Push",description:"Push HEAD dan optional workflow tag ke resolved remotes.",status:"completed"},
+]} />
+<InfoBox variant="info" title="No Tag Creation or Version Application">Current Dev profile tidak berisi `apply_version_step` atau `tag_step`.</InfoBox>
+<Section title="Remote Completion">Karena push adalah final stage, verifikasi destination dan remote result.</Section>

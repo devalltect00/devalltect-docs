@@ -1,0 +1,22 @@
+---
+title: "Options"
+description: "Options custy push dan status implementasinya."
+sidebar_position: 4
+sidebar_key: custy-push-options
+---
+import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy push" title="Command Options" description="Atur tag, backup synchronization, dan requested remote selection." category="Git Operations" status="Adapter Limitations" syntax="custy push [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Remotes",href:"./remotes"},{label:"Examples",href:"./examples"}]} />
+
+## Ringkasan
+
+<CommandOption options={[
+ {name:"--tag",description:"Push tag tertentu bersama current HEAD.",example:"--tag v1.2.3"},
+ {name:"--sync-backup",shorthand:"-sb",description:"Minta sinkronisasi ke resolved backup remote.",example:"--sync-backup"},
+ {name:"--skip-tag",shorthand:"-st",description:"Lewati tag push.",example:"--skip-tag"},
+ {name:"--remote",shorthand:"-r",description:"Minta destination tertentu; verifikasi adapter behavior.",example:"--remote origin"},
+ {name:"--all-remote",shorthand:"-ar",description:"Minta seluruh remote yang memenuhi syarat.",example:"--all-remote"},
+]} />
+
+<Section title="Global Execution Options">Gunakan `custy --dry-run push`, `custy --debug push`, atau `custy --log-level debug push`.</Section>
+<InfoBox variant="warning" title="Verify Actual Destinations">Beberapa CLI values belum sepenuhnya dipropagasikan ke engine. Dry-run output adalah current destination truth.</InfoBox>

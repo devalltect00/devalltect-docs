@@ -1,0 +1,11 @@
+{
+  "label": "Generate",
+  "position": 2,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-changelog-generate",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/changelog/generate/overview"
+  }
+}

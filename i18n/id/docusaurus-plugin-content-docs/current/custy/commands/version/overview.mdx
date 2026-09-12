@@ -1,0 +1,26 @@
+---
+title: "Ringkasan"
+description: "Sinkronkan versi proyek menggunakan versioning strategy yang dapat dikonfigurasi."
+sidebar_position: 1
+sidebar_key: custy-version
+---
+import {CommandHero, FeatureGrid, Section, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy version" title="Version" description="Buat versi berikutnya dan sinkronkan ke file proyek yang didukung." category="Versioning" status="Stable" syntax="custy version <subcommand>" links={[
+    {label: "Syntax", href: "./syntax"}, {label: "Versioning Strategies", href: "./versioning-strategies"}, {label: "Workflow", href: "./workflow"},
+]} />
+
+## Ringkasan
+
+Command Version memisahkan dua tanggung jawab: menentukan versi berikutnya dan menerapkan versi tersebut secara konsisten ke file proyek.
+
+<FeatureGrid items={[
+    {title: "Generate", children: "Tentukan versi berikutnya melalui strategy, bump, atau explicit tag."},
+    {title: "Normalize", children: "Sesuaikan format versi dengan jenis file atau project ecosystem."},
+    {title: "Synchronize", children: "Perbarui version file dan metadata proyek yang didukung."},
+    {title: "Preview", children: "Tinjau perubahan lebih dahulu dengan global --dry-run."},
+]} />
+
+<InfoBox variant="tip" title="Satu Versi, Beberapa File">Custy menjaga version source dan metadata proyek tetap selaras sehingga release tidak menggunakan nomor versi yang berbeda.</InfoBox>
+
+<Section title="Command Utama">Gunakan `custy version update` untuk membentuk atau menerima versi target, lalu menyinkronkannya ke proyek.</Section>

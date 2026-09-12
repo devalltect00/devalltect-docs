@@ -1,0 +1,447 @@
+---
+title: "Instalasi"
+description: "Pilih metode instalasi Custy yang didukung, siapkan persyaratannya, dan verifikasi CLI."
+sidebar_position: 2
+sidebar_key: custy-getting-started
+
+tags:
+  - instalasi
+  - python
+  - virtual environment
+
+keywords:
+  - instal custy
+  - instalasi python custy
+  - artefak rilis custy
+  - instalasi editable custy
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="python -m pip install ."
+    title="Instal Custy"
+    description="Pilih metode instalasi native yang didukung, siapkan persyaratannya, dan verifikasi CLI Custy."
+    category="Memulai"
+    status="Python 3.14+"
+    syntax="python -m pip install [OPTIONS] SOURCE"
+    tags={[
+        "source checkout",
+        "artefak rilis",
+        "penyiapan developer",
+    ]}
+    links={[
+        {label: "Persyaratan", href: "#requirements"},
+        {label: "Metode Instalasi", href: "#choose-an-installation-method"},
+        {label: "Penyiapan Developer", href: "#editable-developer-installation"},
+        {label: "Verifikasi", href: "#verify-the-installation"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Python Native", value: "3.14 atau lebih baru", icon: "requirement"},
+        {label: "Tool Sistem Utama", value: "Git", icon: "git"},
+        {label: "Isolasi yang Disarankan", value: "Virtual environment", icon: "directory"},
+        {label: "Alternatif Container", value: "Build Docker lokal", icon: "docker"},
+    ]}
+/>
+
+## Ringkasan
+
+Custy dapat diinstal dari source checkout, artefak Python yang dilampirkan pada
+rilis, atau langsung dari repositori Git. Kontributor sebaiknya menggunakan
+instalasi editable dengan grup dependensi development. Docker merupakan
+alternatif terpisah jika Anda tidak ingin menginstal Python atau Git langsung
+di host.
+
+<InfoBox
+    variant="info"
+    title="Tidak mengasumsikan package index publik"
+>
+
+Petunjuk ini tidak mengasumsikan bahwa `pip install custy` akan menemukan
+proyek ini di package index publik. Instal source checkout, artefak rilis, atau
+revisi Git yang sudah ditinjau secara eksplisit.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Persyaratan"
+    subtitle="Tool host yang diperlukan bergantung pada apakah Custy dijalankan secara native atau di dalam Docker."
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Python 3.14+",
+            level: "required",
+            children: "Diperlukan untuk instalasi native. Ini adalah versi minimum yang dinyatakan oleh metadata package saat ini.",
+        },
+        {
+            title: "pip",
+            level: "required",
+            children: "Diperlukan untuk instalasi native. Jalankan melalui interpreter Python yang dipilih.",
+        },
+        {
+            title: "Git",
+            level: "required",
+            children: "Diperlukan pada host native untuk operasi repositori, versi, changelog, commit, tag, push, dan pipeline Custy.",
+        },
+        {
+            title: "Virtual Environment",
+            level: "recommended",
+            children: "Pisahkan Custy dan dependensinya dari Python sistem serta proyek lain.",
+        },
+        {
+            title: "Docker",
+            level: "optional",
+            children: "Gunakan cara container sebagai pengganti instalasi Python, pip, atau Git di host.",
+        },
+        {
+            title: "Make",
+            level: "optional",
+            children: "Gunakan target Make repositori sebagai helper development dan container; Make tidak diperlukan oleh CLI Custy itu sendiri.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Tool untuk Fitur Tertentu"
+>
+
+<FeatureGrid
+    title="Instal Hanya Saat Diperlukan"
+    items={[
+        {
+            title: "Commitizen",
+            icon: <Icon name="git" />,
+            children: <>Instal dan konfigurasikan perintah <code>cz</code> hanya ketika menggunakan strategi versi Commitizen milik Custy. Tool ini termasuk dalam grup dependensi <code>dev</code>, bukan daftar dependensi runtime.</>,
+        },
+        {
+            title: "Editor Interaktif",
+            icon: <Icon name="file" />,
+            children: "Sediakan launcher command line VS Code atau fallback Notepad Windows ketika alur commit, tag, atau rilis membuka file yang dibuat untuk ditinjau.",
+        },
+        {
+            title: "Kredensial Remote",
+            icon: <Icon name="security" />,
+            children: "Konfigurasikan SSH atau kredensial Git yang didukung di luar Custy sebelum operasi push berkomunikasi dengan remote.",
+        },
+        {
+            title: "Docker Compose",
+            icon: <Icon name="docker" />,
+            children: "Instal plugin Compose hanya ketika menggunakan service development atau production dari repositori.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Pilih Metode Instalasi"
+>
+
+<FeatureGrid
+    title="Pilihan Instalasi Native"
+    items={[
+        {
+            title: "Source Checkout",
+            icon: <Icon name="directory" />,
+            children: "Direkomendasikan jika Anda ingin memeriksa source secara langsung dan menginstal salinan runtime normal.",
+        },
+        {
+            title: "Artefak Rilis",
+            icon: <Icon name="package" />,
+            children: "Instal wheel atau source distribution yang dilampirkan pada rilis yang sudah ditinjau, jika rilis tersebut menyediakannya.",
+        },
+        {
+            title: "Revisi Git",
+            icon: <Icon name="git" />,
+            children: "Instal langsung dari tag atau commit yang sudah ditinjau tanpa menyimpan checkout terpisah.",
+        },
+        {
+            title: "Penyiapan Editable untuk Kontributor",
+            icon: <Icon name="command" />,
+            children: "Instal source tree dalam mode editable beserta tool testing, linting, formatting, packaging, dan Git hook.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Metode 1: Instal dari Source Checkout"
+>
+
+Clone repositori, buat virtual environment, lalu instal package runtime. Ini
+adalah cara native yang direkomendasikan jika Anda belum memilih artefak rilis
+yang sudah ditinjau.
+
+<Terminal title="Clone dan buat environment" language="bash">
+
+{`git clone https://github.com/devalltect00/Custy.git
+cd Custy
+python -m venv venv`}
+
+</Terminal>
+
+Aktifkan environment sesuai shell yang Anda gunakan.
+
+<Terminal title="Windows PowerShell" language="powershell">
+
+{`venv\\Scripts\\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install .`}
+
+</Terminal>
+
+<Terminal title="Linux atau macOS" language="bash">
+
+{`source venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install .`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Metode 2: Instal Artefak Rilis"
+>
+
+Alur rilis Custy dikonfigurasi untuk melampirkan Python wheel dan source
+distribution. Buka
+[halaman Custy Releases](https://github.com/devalltect00/Custy/releases), pilih
+rilis yang sudah ditinjau, lalu pastikan rilis tersebut benar-benar berisi
+artefak yang dimaksud sebelum mengunduhnya.
+
+<Terminal title="Instal wheel yang sudah diunduh" language="bash">
+
+{`python -m pip install ./custy-<version>-py3-none-any.whl`}
+
+</Terminal>
+
+<Terminal title="Instal source distribution yang sudah diunduh" language="bash">
+
+{`python -m pip install ./custy-<version>.tar.gz`}
+
+</Terminal>
+
+<InfoBox
+    variant="warning"
+    title="Jangan mengunci dokumentasi ke satu rilis lama"
+>
+
+Ketersediaan artefak dan nomor versi berubah seiring waktu. Gunakan halaman
+Releases umum, pilih versi yang dituju secara sengaja, dan verifikasi nama
+asset yang ditampilkan oleh rilis tersebut.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Metode 3: Instal Langsung dari Git"
+>
+
+Jika Anda tidak memerlukan checkout lokal, pip dapat menginstal tag atau commit
+Git yang sudah ditinjau ke environment aktif.
+
+<Terminal title="Instal revisi yang sudah ditinjau" language="bash">
+
+{`# Ganti <tag-or-commit> dengan revisi tepat yang sudah Anda tinjau
+python -m pip install "git+https://github.com/devalltect00/Custy.git@<tag-or-commit>"`}
+
+</Terminal>
+
+Menghilangkan `@<tag-or-commit>` akan mengikuti branch default repositori dan
+menghasilkan instalasi yang kurang reproducible.
+
+</Section>
+
+---
+
+<Section
+    title="Instalasi Editable untuk Developer"
+>
+
+Kontributor yang mengembangkan Custy itu sendiri sebaiknya menginstal source
+tree dalam mode editable dengan dependensi development yang dinyatakan dalam
+`pyproject.toml`.
+
+<Terminal title="Instalasi editable dengan tool development" language="bash">
+
+{`python -m pip install -e ".[dev]"`}
+
+</Terminal>
+
+Gunakan `python -m pip install -e .` hanya jika Anda memerlukan kode runtime
+editable tanpa tool development opsional. Tambahkan `docs` saat mengerjakan
+source MkDocs lama milik Custy:
+`python -m pip install -e ".[dev,docs]"`.
+
+<InfoBox
+    variant="tip"
+    title="Mengapa menggunakan python -m pip?"
+>
+
+Menjalankan pip melalui `python -m pip` memastikan instalasi menggunakan
+interpreter Python dari virtual environment yang aktif.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Helper Makefile Opsional"
+>
+
+Makefile repositori dapat membuat environment `venv/` standar dan menjalankan
+target instalasi editable. Helper ini ditujukan untuk source checkout Custy
+dan memerlukan GNU Make.
+
+<Terminal title="Penyiapan kontributor dengan Make" language="bash">
+
+{`make venv
+make upgrade-pip
+make install-dev`}
+
+</Terminal>
+
+- `make install` menginstal dependensi runtime dalam mode editable.
+- `make install-dev` menambahkan grup dependensi development.
+- `make install-all` menambahkan tool development dan dokumentasi lama.
+- Make hanya merupakan lapisan bantu; perintah `python -m pip` yang setara
+  tetap dapat digunakan tanpa Make.
+
+</Section>
+
+---
+
+<Section
+    title="Verifikasi Instalasi"
+>
+
+<CommandChecklist
+    title="Pemeriksaan Instalasi"
+    items={[
+        {
+            title: "Environment yang dimaksud sudah aktif",
+            description: "Shell Anda menemukan Python dan Custy dari virtual environment atau instalasi yang dipilih.",
+        },
+        {
+            title: "Versi Python kompatibel",
+            description: <><code>python --version</code> menampilkan Python 3.14 atau lebih baru untuk penggunaan native.</>,
+        },
+        {
+            title: "Versi yang terinstal dapat dilihat",
+            description: <><code>custy --version</code> menampilkan informasi versi package.</>,
+        },
+        {
+            title: "Bantuan perintah dapat ditampilkan",
+            description: <><code>custy --help</code> menampilkan perintah publik dan opsi global.</>,
+        },
+    ]}
+/>
+
+<Terminal title="Verifikasi CLI" language="bash">
+
+{`python --version
+git --version
+custy --version
+custy --help`}
+
+</Terminal>
+
+Dari source checkout, `python -m app --help` adalah entry point modul
+alternatif untuk membedakan masalah PATH dari masalah aplikasi.
+
+</Section>
+
+---
+
+<Section
+    title="Masalah Instalasi yang Umum"
+>
+
+<InfoBox
+    variant="warning"
+    title="Versi Python terlalu lama"
+>
+
+Jika pip melaporkan versi Python yang tidak kompatibel, instal Python 3.14 atau
+lebih baru, buat ulang virtual environment dengan interpreter tersebut, lalu
+instal kembali.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="custy tidak dikenali"
+>
+
+Pastikan virtual environment yang dimaksud sudah aktif. Anda juga dapat
+menjalankan executable secara langsung, misalnya
+`venv\Scripts\custy.exe --help` di Windows, atau menggunakan
+`python -m app --help` dari source checkout.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="Perintah Git tidak tersedia"
+>
+
+Instal Git dan pastikan `git --version` berfungsi di shell yang sama. Instalasi
+package Python yang berhasil tidak menyediakan executable Git yang diperlukan
+oleh alur kerja utama Custy.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Lanjutkan"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Penyiapan Docker", href: "./docker", description: "Build image Custy mandiri yang sudah menyertakan Python, Git, pip, dan Make."},
+        {title: "Mulai Cepat", href: "./quick-start", description: "Inisialisasi dan validasi repositori yang sudah ada."},
+        {title: "Penyiapan Developer", href: "../developer-guide/development-setup", description: "Siapkan dan verifikasi environment kontributor editable."},
+        {title: "custy init", href: "../commands/init/overview", description: "Buat resource Custy khusus proyek."},
+        {title: "custy validate", href: "../commands/validate/overview", description: "Periksa kesiapan proyek sebelum menjalankan pipeline."},
+    ]}
+/>
+
+</Section>

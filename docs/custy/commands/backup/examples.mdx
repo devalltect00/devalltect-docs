@@ -1,0 +1,160 @@
+---
+title: "Examples"
+description: "Practical examples of using the custy backup command."
+sidebar_position: 7
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandExample,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Examples"
+    description="Learn how to create backups for Custy's template files in common development scenarios."
+    category="Backup"
+    status="Recommended"
+    syntax="custy backup commit"
+    tags={[
+        "examples",
+        "backup",
+        "templates",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+The following examples demonstrate the most common ways to create backup copies
+of Custy's template files.
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Backup Commit Message Template",
+            description:
+                "Create a backup of the configured commit message template.",
+            command: "custy backup commit",
+            result:
+                "Creates a timestamped backup of the configured commit message template.",
+        },
+        {
+            title: "Backup Tag Message Template",
+            description:
+                "Create a backup of the configured tag message template.",
+            command: "custy backup tag",
+            result:
+                "Creates a timestamped backup of the configured tag message template.",
+        },
+        {
+            title: "Backup All Templates",
+            description:
+                "Create backups for both commit and tag message templates.",
+            command: "custy backup all",
+            result:
+                "Creates timestamped backups for every supported template resource.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Typical Usage"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Before Editing Templates",
+            description:
+                "Preserve the current template before making changes.",
+            command:
+`custy backup commit
+
+# Edit commit-message.txt`,
+            result:
+                "The original template remains safely preserved in the backup directory.",
+        },
+        {
+            title: "Before Updating Release Templates",
+            description:
+                "Create backups before modifying release-related templates.",
+            command:
+`custy backup all`,
+            result:
+                "Both commit and tag message templates are backed up before any manual changes are made.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Workflow"
+>
+
+Although backup operations can be executed at any time, they are most useful
+before making changes to project templates.
+
+Typical situations include:
+
+- Updating commit message templates.
+- Modifying tag message templates.
+- Testing alternative template formats.
+- Experimenting with release workflows.
+- Performing project maintenance.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Create Backups Before Editing"
+>
+
+It is generally easier to create a backup before making changes than trying to
+recover a previous version afterward.
+
+Creating backups regularly helps preserve a history of template revisions.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Output** page to learn what information Custy reports after
+creating backup files.
+
+</Section>

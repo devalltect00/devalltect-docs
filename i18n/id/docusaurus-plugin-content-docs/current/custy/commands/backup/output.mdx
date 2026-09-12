@@ -1,0 +1,124 @@
+---
+title: "Output"
+description: "Pahami informasi yang dilaporkan oleh custy backup."
+sidebar_position: 8
+sidebar_key: custy-commands-backup
+
+tags:
+  - output
+  - backup
+  - templates
+
+keywords:
+  - custy backup
+  - backup output
+  - template backup
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Output"
+    description="Pelajari informasi yang dilaporkan Custy setelah membuat template backup."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup all"
+    tags={["output", "backup", "results"]}
+    links={[
+        {label: "Examples", href: "./examples"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Ringkasan
+
+Setelah operasi selesai, Custy melaporkan hasil backup beserta informasi
+generated files. Satu atau beberapa template files dapat di-backup dalam satu
+eksekusi sesuai subcommand.
+
+---
+
+<Section title="Output Umum">
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Commit Template Backup",
+            description: "Commit message template berhasil di-backup.",
+            output:
+`✓ Commit message template found
+✓ Backup directory ready
+✓ Timestamped backup created
+✓ Backup completed successfully`,
+            notes: "Pesan tepatnya dapat berbeda sesuai project configuration.",
+        },
+        {
+            title: "Combined Backup",
+            description: "Kedua template files berhasil di-backup.",
+            output:
+`✓ Commit message template backed up
+✓ Tag message template backed up
+✓ Backup operation completed`,
+            notes: "Subcommand all menjalankan kedua operasi dalam satu eksekusi.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Backup Berhasil">
+
+Ketika backup berhasil:
+
+- File ditulis ke configured backup directory.
+- Backup lama tetap tersedia kecuali dihapus retention policy.
+- Template asli tidak berubah.
+- Riwayat Git tidak berubah.
+
+</Section>
+
+---
+
+<Section title="Backup Retention">
+
+Setelah membuat backup, Custy dapat menghapus file lama sesuai configured
+retention policy. Housekeeping ini mencegah direktori berkembang tanpa perlu
+sambil mempertahankan riwayat terbaru.
+
+</Section>
+
+---
+
+<Section title="Template Files Tidak Tersedia">
+
+Jika template yang diminta tidak tersedia, Custy melewati operasi tersebut
+dengan aman dan tidak membuat backup kosong. Operasi lain masih dapat
+dilanjutkan sesuai subcommand.
+
+</Section>
+
+---
+
+<InfoBox variant="tip" title="Dry Run">
+
+Dengan global option `--dry-run`, Custy melaporkan operasi yang akan dilakukan
+tanpa membuat backup files.
+
+</InfoBox>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Jika backup tidak berhasil, lanjutkan ke halaman **Troubleshooting**.
+
+</Section>

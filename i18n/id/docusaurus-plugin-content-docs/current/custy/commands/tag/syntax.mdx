@@ -1,0 +1,21 @@
+---
+title: "Syntax"
+description: "Command forms yang didukung custy tag."
+sidebar_position: 3
+sidebar_key: custy-tag-syntax
+---
+import {CommandHero, CommandSyntax, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy tag" title="Command Syntax" description="Buat tag melalui explicit version atau versioning strategy." category="Git Operations" status="Stable" syntax="custy tag [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Options",href:"./options"},{label:"Examples",href:"./examples"}]} />
+
+## Ringkasan
+
+<CommandSyntax examples={[
+ {title:"Project Defaults",command:"custy tag"},
+ {title:"Explicit Version",command:"custy tag --tag v1.2.3"},
+ {title:"PEP 440 Strategy",command:"custy tag --strategy pep440"},
+ {title:"Pre-release",command:"custy tag --tag v1.3.0 --pre beta"},
+ {title:"Preview",command:"custy --dry-run tag --tag v1.2.3"},
+]} />
+
+<InfoBox variant="tip" title="Direct Command and Run Profile">`custy run tag` memakai registered profile; direct command lebih cocok untuk explicit CLI overrides.</InfoBox>

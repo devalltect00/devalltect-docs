@@ -1,0 +1,324 @@
+---
+title: "Requirements"
+description: "Replay Existing Tags Requirements"
+sidebar_key: reflow-command-tags-replay
+---
+# Replay Existing Tags Requirements
+
+## Overview
+
+Before running:
+
+```bash
+reflow tags replay
+```
+
+ensure the required tools, permissions, and repository configuration are available.
+
+This document describes everything needed for a successful replay operation.
+
+---
+
+# Required Software
+
+## Git
+
+Git is required.
+
+Reflow interacts with repository tags through Git commands.
+
+Verify installation:
+
+```bash
+git --version
+```
+
+Example:
+
+```text
+git version 2.50.0
+```
+
+---
+
+## GitHub CLI
+
+GitHub CLI (`gh`) is required.
+
+Replay operations use GitHub release information to determine how tags should be processed.
+
+Verify installation:
+
+```bash
+gh --version
+```
+
+Example:
+
+```text
+gh version 2.x.x
+```
+
+---
+
+# Authentication
+
+## Git Authentication
+
+The current repository must be able to communicate with the remote repository.
+
+Verify:
+
+```bash
+git remote -v
+```
+
+Example:
+
+```text
+origin  git@github.com:owner/project.git
+```
+
+or
+
+```text
+origin  https://github.com/owner/project.git
+```
+
+---
+
+## GitHub Authentication
+
+GitHub CLI must be authenticated.
+
+Verify:
+
+```bash
+gh auth status
+```
+
+Expected:
+
+```text
+Logged in to github.com
+```
+
+---
+
+# Repository Requirements
+
+## Valid Git Repository
+
+Replay must be executed inside a Git repository.
+
+Example:
+
+```bash
+cd my-project
+
+reflow tags replay
+```
+
+---
+
+## Existing Tags
+
+The repository must contain tags.
+
+Verify:
+
+```bash
+git tag
+```
+
+Example:
+
+```text
+v1.0.0
+v1.1.0
+v2.0.0
+```
+
+---
+
+## Remote Repository
+
+A remote repository must be configured.
+
+Verify:
+
+```bash
+git remote -v
+```
+
+Example:
+
+```text
+origin  git@github.com:owner/project.git
+```
+
+---
+
+# Recommended Configuration
+
+## Replay Delay
+
+Configuration:
+
+```toml
+[tool.reflow.cli.tags.replay]
+
+delay = 0.5
+```
+
+Purpose:
+
+Introduce a delay between replay operations.
+
+Useful when:
+
+- Processing many tags
+- Avoiding API throttling
+- Reducing load on CI systems
+
+---
+
+## Stable Releases Only
+
+Configuration:
+
+```toml
+only_stable = true
+```
+
+Purpose:
+
+Replay only production releases.
+
+Example:
+
+Included:
+
+```text
+v1.0.0
+v2.0.0
+```
+
+Excluded:
+
+```text
+v2.0.0rc1
+v2.0.0-beta1
+v2.0.0-alpha1
+```
+
+---
+
+# Permissions
+
+The authenticated user should have permission to:
+
+- Read repository tags
+- Push tags
+- Access releases
+- Access GitHub APIs
+
+Without these permissions replay may fail.
+
+---
+
+# Common Problems
+
+## Not a Git Repository
+
+Example:
+
+```text
+fatal: not a git repository
+```
+
+Solution:
+
+Run the command inside a repository.
+
+---
+
+## No Tags Found
+
+Example:
+
+```text
+No tags found
+```
+
+Solution:
+
+Create tags before running replay.
+
+Verify:
+
+```bash
+git tag
+```
+
+---
+
+## GitHub Authentication Failed
+
+Example:
+
+```text
+gh auth status
+```
+
+returns unauthenticated.
+
+Solution:
+
+```bash
+gh auth login
+```
+
+---
+
+## Remote Access Denied
+
+Example:
+
+```text
+Permission denied
+```
+
+Solution:
+
+Verify:
+
+- SSH configuration
+- Access token configuration
+- Repository permissions
+
+---
+
+# Validation Checklist
+
+Before running replay:
+
+```text
+✓ Git installed
+✓ GitHub CLI installed
+✓ GitHub authenticated
+✓ Repository cloned
+✓ Remote configured
+✓ Tags exist
+✓ Push permissions available
+```
+
+---
+
+# Next Reading
+
+Continue with:
+
+- examples.md
+- faq.md
+- workflow.md

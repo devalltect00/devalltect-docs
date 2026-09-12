@@ -1,0 +1,378 @@
+---
+title: "Docker"
+description: "Build Custy locally with Docker and run the CLI against a deliberately mounted project workspace."
+sidebar_position: 3
+sidebar_key: custy-getting-started
+
+tags:
+  - docker
+  - containers
+  - installation
+
+keywords:
+  - custy docker
+  - custy docker compose
+  - containerized custy
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="docker build --target production -t custy-prod:latest ."
+    title="Run Custy with Docker"
+    description="Build Custy locally and run its self-contained CLI against a deliberately mounted project workspace."
+    category="Getting Started"
+    status="Build from Source"
+    syntax="docker [build|run|compose] [OPTIONS]"
+    tags={[
+        "local image",
+        "Docker Compose",
+        "workspace mount",
+    ]}
+    links={[
+        {label: "Requirements", href: "#requirements"},
+        {label: "Build Image", href: "#build-the-production-image"},
+        {label: "Run on a Project", href: "#run-custy-on-a-project"},
+        {label: "Make Helpers", href: "#optional-makefile-helpers"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Base Image", value: "Python 3.14 slim", icon: "package"},
+        {label: "Included Tools", value: "pip, Git, and Make", icon: "requirement"},
+        {label: "Container Workspace", value: "/workspace", icon: "directory"},
+        {label: "Recommended Source", value: "Local image build", icon: "docker"},
+    ]}
+/>
+
+## Overview
+
+Custy's multi-stage Dockerfile provides `development` and `production` image
+targets. Both include Python 3.14, pip, Git, and Make. The production target
+installs the runtime package, while the development target installs Custy in
+editable mode with its development dependencies.
+
+This path removes the need for a host Python or Git installation. Docker must
+still receive the intended project directory, repository metadata, identity,
+and credentials required by the selected Custy operation.
+
+<InfoBox
+    variant="info"
+    title="Use a locally built Custy image"
+>
+
+The current supported documentation path builds from Custy's own Dockerfile.
+Do not substitute a GHCR image name unless a selected Custy release explicitly
+publishes and documents that image.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Requirements"
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Docker Engine",
+            level: "required",
+            children: "Install and start a Docker environment that can build and run Linux containers.",
+        },
+        {
+            title: "Custy Source Checkout",
+            level: "required",
+            children: "Build the image from the repository containing Custy's Dockerfile and package metadata.",
+        },
+        {
+            title: "Project Workspace",
+            level: "required",
+            children: "Mount the exact project root, including its .git directory when Git operations are required, at /workspace.",
+        },
+        {
+            title: "Docker Compose Plugin",
+            level: "optional",
+            children: "Install Compose only when using the repository's development or production services.",
+        },
+        {
+            title: "Make",
+            level: "optional",
+            children: "Use Make as a convenience wrapper around the repository's Docker and Compose commands.",
+        },
+        {
+            title: "Project Backup",
+            level: "recommended",
+            children: "Commit or back up important work before exposing a real project to mutating commands.",
+        },
+    ]}
+/>
+
+<InfoBox
+    variant="tip"
+    title="Host Python and Git are not required"
+>
+
+The image already contains Python 3.14, pip, Git, and Make. Host Git remains
+useful for inspecting the project before and after a run, but the containerized
+Custy process uses the Git executable inside the image.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="What the Image Contains"
+>
+
+<FeatureGrid
+    title="Docker Build Targets"
+    items={[
+        {
+            title: "Shared Base",
+            icon: <Icon name="package" />,
+            children: "Python 3.14 slim, pip, Git, Make, the /workspace working directory, and the Custy source tree.",
+        },
+        {
+            title: "Production",
+            icon: <Icon name="release" />,
+            children: "A normal runtime package installation with custy as the container entrypoint.",
+        },
+        {
+            title: "Development",
+            icon: <Icon name="command" />,
+            children: "An editable installation with the optional development dependency group, but no graphical editor bundled by default.",
+        },
+        {
+            title: "Project Mount",
+            icon: <Icon name="directory" />,
+            children: "The host project mounted at /workspace becomes the real working tree that Custy reads and may modify.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Build the Production Image"
+>
+
+From the Custy source root, build the production target and verify its CLI
+entrypoint.
+
+<Terminal title="Build and verify" language="bash">
+
+{`docker build --target production -t custy-prod:latest .
+docker run --rm custy-prod:latest --version
+docker run --rm custy-prod:latest --help`}
+
+</Terminal>
+
+Use `--target development -t custy-dev:latest` when testing or developing Custy
+itself.
+
+</Section>
+
+---
+
+<Section
+    title="Run Custy on a Project"
+>
+
+Run the following commands from the root of the project that Custy should
+manage. Because the image uses `custy` as its entrypoint, arguments after the
+image name are Custy arguments.
+
+Running the image without a command is also valid: Custy displays its root
+help and exits successfully.
+
+<Terminal title="Windows PowerShell" language="powershell">
+
+{`docker run --rm -it -v "\${PWD}:/workspace" custy-prod:latest --help
+docker run --rm -it -v "\${PWD}:/workspace" custy-prod:latest init
+docker run --rm -it -v "\${PWD}:/workspace" custy-prod:latest validate`}
+
+</Terminal>
+
+<Terminal title="Linux or macOS" language="bash">
+
+{`docker run --rm -it -v "$(pwd):/workspace" custy-prod:latest --help
+docker run --rm -it -v "$(pwd):/workspace" custy-prod:latest init
+docker run --rm -it -v "$(pwd):/workspace" custy-prod:latest validate`}
+
+</Terminal>
+
+<InfoBox
+    variant="info"
+    title="The mounted project does not need an app directory"
+>
+
+Custy detects Python, Node.js, mixed, and generic layouts at command runtime.
+A Docusaurus, React, PHP, documentation-only, or otherwise generic repository
+can use the project root when no conventional `src/` or `app/` directory is
+available. Run `custy init` to create project-owned Custy configuration; do
+not add an empty `app/` directory as a workaround.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="Mounted files are real project files"
+>
+
+Container isolation does not protect a mounted repository from changes. Custy
+can edit mounted files, stage changes, and create Git history. Use global
+dry-run mode for supported consequential operations and review the volume mount
+before normal execution.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="Editor-dependent profiles need a customized image"
+>
+
+The stock image does not install the VS Code command-line launcher or Windows
+Notepad, while the Commit, Tag, Dev, Release, and Full profiles include an
+interactive editor step. Use those profiles natively for now, or deliberately
+extend and test the image with a supported editor before normal container
+execution. Dry-run mode can still preview the editor step without launching it.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Git Identity and Remote Access"
+>
+
+Mounting the project makes its local `.git` directory available, but it does
+not automatically copy the host user's global Git configuration, SSH keys, or
+credential-manager session into the container.
+
+- Configure `user.name` and `user.email` in the repository or provide an
+  intentionally reviewed Git configuration before commit or tag flows.
+- Provide SSH keys, tokens, or another supported Git credential mechanism only
+  when a push is required.
+- Review every credential and configuration mount carefully; never bake
+  secrets into the image.
+- Local-only commands such as initialization do not require remote credentials.
+
+<InfoBox
+    variant="danger"
+    title="Dry run does not authenticate a future push"
+>
+
+A successful preview cannot guarantee that normal execution has valid remote
+credentials or that the destination remains unchanged. Verify authentication
+and remote URLs separately before publication.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Use Docker Compose"
+>
+
+The Compose files are primarily development helpers for the Custy source
+checkout itself. Their base service mounts the current checkout at `/workspace`.
+Use direct `docker run -v` commands when operating on a separate project root.
+
+<Terminal title="Production service" language="bash">
+
+{`docker compose -f docker-compose.yml -f docker-compose.prod.yml build app
+docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm app --help
+docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm app init`}
+
+</Terminal>
+
+Use the development stack for Custy testing and contributor tools.
+
+<Terminal title="Development services" language="bash">
+
+{`docker compose -f docker-compose.yml -f docker-compose.dev.yml build app
+docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm app --help
+docker compose -f docker-compose.yml -f docker-compose.dev.yml run --rm test`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Optional Makefile Helpers"
+>
+
+From the Custy source checkout, GNU Make can wrap the local Docker and Compose
+commands.
+
+<Terminal title="Selected local-image helpers" language="bash">
+
+{`# Build Dockerfile targets directly
+make d-build-prod
+make d-init
+
+# Use the Docker Compose services
+make c-build-prod`}
+
+</Terminal>
+
+The Makefiles also define wrappers for pipeline profiles. Their presence does
+not remove the stock image's editor limitation or guarantee that older helper
+names match the current public CLI. Compare a target with the current command
+reference before using it, and prefer the direct documented `docker run` or
+`docker compose run` form when behavior is uncertain. In particular, use the
+explicit Compose invocation documented above instead of the current `c-init`
+wrapper, whose command continuation still needs correction in the Custy
+repository.
+
+<InfoBox
+    variant="warning"
+    title="Remote-image Make targets are not recommended yet"
+>
+
+Targets beginning with `r-custy-` expect a published registry image. Use the
+local `d-` or `c-` helpers until a Custy release explicitly documents a valid
+remote image and tag.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Python Installation", href: "./installation", description: "Install Custy natively from source, release assets, or Git."},
+        {title: "Quick Start", href: "./quick-start", description: "Initialize and validate the mounted project."},
+        {title: "custy init", href: "../commands/init/overview", description: "Understand generated files and overwrite behavior."},
+        {title: "custy run", href: "../commands/run/overview", description: "Review public profiles before containerized execution."},
+    ]}
+/>
+
+</Section>

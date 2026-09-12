@@ -1,0 +1,120 @@
+---
+title: "Options"
+description: "Command-line options yang tersedia untuk custy backup."
+sidebar_position: 4
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Options"
+    description="Pelajari command-line options yang didukung command backup."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup commit"
+    tags={["options", "backup", "cli"]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Backup Files", href: "./backup-files"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+## Ringkasan
+
+Command backup menerima command-specific options yang mengatur cara backup
+files dibuat. Nilai configuration juga dapat ditentukan dari `config.toml`
+proyek.
+
+<InfoBox variant="tip" title="Configuration First">
+
+Command-line options meng-override nilai configuration hanya untuk eksekusi
+saat ini. Jika option tidak diberikan, Custy memakai configured value proyek
+atau default bawaan.
+
+</InfoBox>
+
+---
+
+<Section title="Options yang Tersedia">
+
+<CommandOption
+    options={[
+        {
+            name: "--backup-dir",
+            shorthand: "",
+            required: false,
+            description: "Override destination directory untuk generated backup files.",
+            defaultValue: "Configured backup directory",
+            example: "custy backup commit --backup-dir .config/custy/backups/custom",
+        },
+        {
+            name: "--keep",
+            shorthand: "",
+            required: false,
+            description: "Tentukan jumlah backup files yang dipertahankan sebelum backup lama di-prune.",
+            defaultValue: "Project configuration",
+            example: "custy backup all --keep 20",
+        },
+        {
+            name: "--force",
+            shorthand: "-f",
+            required: false,
+            description: "Buat backup directories saat diperlukan dan lanjutkan tanpa konfirmasi interaktif.",
+            defaultValue: "false",
+            example: "custy backup tag --force",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Resolusi Option">
+
+Custy menentukan perilaku backup dalam urutan:
+
+1. Command-line options.
+2. Project configuration (`config.toml`).
+3. Default bawaan Custy.
+
+Dengan demikian, proyek dapat menetapkan backup policy dan eksekusi individual
+tetap dapat meng-override pengaturan tertentu.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Global CLI Options">
+
+Global options `--dry-run`, `--debug`, dan `--log-level` didokumentasikan
+terpisah karena berlaku untuk setiap command Custy.
+
+</InfoBox>
+
+---
+
+<Section title="Backup Directories">
+
+Backup destination bergantung pada subcommand yang dipilih. Lokasi umum
+mencakup direktori terpisah untuk commit backup dan tag backup, dan dapat
+disesuaikan melalui project configuration.
+
+</Section>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Lanjutkan ke halaman **Backup Files** untuk mempelajari file yang di-backup,
+lokasi penyimpanan, penamaan, dan pengelolaan backup lama.
+
+</Section>

@@ -1,0 +1,200 @@
+---
+title: "Contributing"
+description: "Prepare a focused, tested, documented, and reviewable contribution to Custy."
+sidebar_position: 8
+sidebar_key: custy-developer-guide-contributing
+tags: [custy, contributing, code review]
+keywords: [contribute to Custy, Custy pull request, Custy code quality]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="make check"
+    title="Contributing"
+    description="Turn one understood problem into a focused change with evidence that reviewers can verify."
+    category="Developer Guide"
+    status="Review Checklist"
+    syntax="scope -> implement -> validate -> document -> hand off"
+    tags={["quality", "tests", "documentation", "review"]}
+    links={[
+        {label: "Setup", href: "./development-setup"},
+        {label: "Testing", href: "./testing"},
+        {label: "Final Checklist", href: "#final-review-checklist"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Primary Branches", value: "main and develop", icon: "git"},
+        {label: "Quality Helper", value: "make check", icon: "testing"},
+        {label: "Source Standard", value: "Typed and documented", icon: "file"},
+        {label: "Change Style", value: "Focused", icon: "security"},
+    ]}
+/>
+
+## Overview
+
+A useful Custy contribution explains the behavior being changed, keeps CLI and
+core responsibilities separated, adds evidence at the right test layers, and
+updates user or developer documentation whenever the public contract changes.
+
+<InfoBox variant="tip" title="Reviewability is part of quality">
+
+Small, coherent changes are easier to test, reason about, and recover. Avoid
+mixing formatting, unrelated cleanup, behavior changes, version bumps, and
+release artifacts into one contribution.
+
+</InfoBox>
+
+---
+
+<Section title="Contribution Workflow">
+
+<WorkflowTimeline
+    items={[
+        {title: "Understand the affected flow", description: "Trace the active CLI entry point, configuration, core behavior, side effects, and existing tests before editing.", status: "completed"},
+        {title: "Define a focused contract", description: "State inputs, outputs, errors, side effects, compatibility expectations, and the smallest set of affected files.", status: "completed"},
+        {title: "Implement with tests", description: "Keep responsibilities separated, document non-obvious interfaces, and add focused coverage alongside behavior.", status: "current"},
+        {title: "Run widening validation", description: "Run the affected tests, integration or regression coverage, then formatting, lint, and the complete suite.", status: "pending"},
+        {title: "Update documentation", description: "Synchronize command, configuration, workflow, architecture, developer, and troubleshooting guidance as applicable.", status: "pending"},
+        {title: "Prepare the handoff", description: "Summarize changed files, decisions, validation results, known limits, and anything intentionally left unchanged.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Branch and Scope Conventions">
+
+<FeatureGrid
+    title="Repository Branch Types"
+    items={[
+        {title: "Feature", icon: <Icon name="feature" />, children: "Use feature/<name> for a focused new capability."},
+        {title: "Bug Fix", icon: <Icon name="warning" />, children: "Use bugfix/<name> for a focused correction."},
+        {title: "Release", icon: <Icon name="release" />, children: "Use release/<version> only for an intentional release-preparation change."},
+        {title: "Primary Development", icon: <Icon name="git" />, children: "Treat main and develop as the repository's primary long-lived branches."},
+    ]}
+/>
+
+Follow the repository owner's current workflow when it differs from these
+defaults. Do not rewrite shared history, publish a tag, bump a version, generate
+a changelog, or push a branch merely because a source change is complete.
+
+</Section>
+
+---
+
+<Section title="Implementation Standards">
+
+<CommandChecklist
+    items={[
+        {title: "Keep boundaries clear", description: "Typer and presentation stay in app/cli; reusable workflow and domain behavior stay in app/core or another focused active package."},
+        {title: "Use useful types", description: "Type public and non-obvious values and prefer explicit dataclasses or enums where they clarify a contract."},
+        {title: "Document behavior", description: "Add accurate module, class, function, and method documentation, including real arguments, returns, errors, side effects, and examples when useful."},
+        {title: "Log deliberately", description: "Use actionable levels and context without secrets, raw credentials, tokens, or duplicate noise."},
+        {title: "Keep functions focused", description: "Prefer readable composition and small responsibilities over clever or unnecessary abstractions."},
+        {title: "Preserve user safety", description: "Use clear errors, safe defaults, predictable prompts, dry-run support where applicable, and explicit confirmation for consequential behavior."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Quality Gates">
+
+Start with the focused commands described in [Testing](./testing), then run the
+complete checks from the active `venv/` environment.
+
+<Terminal title="Contributor validation" language="bash">
+
+{`# Focused example
+python -m pytest tests/core/pipeline
+
+# Full tests with configured coverage
+python -m pytest
+
+# Formatting check, Ruff lint, and full tests
+make check
+
+# Optional local pre-commit verification
+make pre-commit-run`}
+
+</Terminal>
+
+If a check cannot run, report the command, environment limitation, and the
+validation that did run. Do not describe an unexecuted or failing check as
+passing.
+
+</Section>
+
+---
+
+<Section title="Documentation Responsibilities">
+
+Update documentation when a contribution adds or changes commands, options,
+configuration, workflows, profiles, side effects, architecture, extension
+points, errors, requirements, or recovery steps. Keep examples executable and
+distinguish stable public behavior from internal, experimental, loaded-only,
+reserved, or mismatched behavior.
+
+Use the existing Docusaurus component language for consistent navigation and
+scanning. Reuse components before adding a new one, provide meaningful image
+alternative text, and validate MDX routes and internal links with the site
+build.
+
+</Section>
+
+---
+
+<Section title="Final Review Checklist">
+
+<CommandChecklist
+    items={[
+        {title: "Scope is focused", description: "Every changed file supports the stated behavior, tests, or documentation."},
+        {title: "Public behavior is intentional", description: "CLI paths, options, defaults, prompts, errors, and side effects match the agreed contract."},
+        {title: "Tests cover the risk", description: "Focused, integration, and regression coverage address successful and failing paths at the right boundaries."},
+        {title: "Quality checks are reported", description: "Formatting, lint, tests, and relevant builds have explicit outcomes."},
+        {title: "Documentation is synchronized", description: "Users and contributors can understand requirements, behavior, safety, and recovery."},
+        {title: "No unrelated release action occurred", description: "Versions, changelogs, tags, pushes, and publication remain untouched unless they were explicitly part of the work."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Never weaken tests to hide a defect">
+
+Change a test when the intended contract changes and explain why. Do not remove
+assertions, skip coverage, or delete tests only to make the suite pass.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Development Setup", href: "./development-setup", description: "Create the supported editable environment."},
+        {title: "Testing", href: "./testing", description: "Select focused and complete validation."},
+        {title: "Adding Commands", href: "./adding-commands", description: "Preserve the active CLI module boundaries."},
+        {title: "Adding Pipeline Steps", href: "./adding-pipeline-steps", description: "Preserve registration, priority, composition, and failure contracts."},
+    ]}
+/>
+
+</Section>

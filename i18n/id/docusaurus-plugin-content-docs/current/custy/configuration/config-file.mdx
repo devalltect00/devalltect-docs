@@ -1,0 +1,132 @@
+---
+title: "Configuration File"
+description: "Pahami cara Custy membuat, memuat, memiliki, dan mengganti project configuration dengan aman."
+sidebar_position: 2
+sidebar_key: custy-configuration-file-v2
+tags: [custy, configuration, init, toml]
+keywords: [custy init --mode config, packaged config, project config]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Configuration File"
+    description="Bedakan packaged initialization source milik Custy dari editable configuration milik project Anda."
+    category="Configuration"
+    status="Essential"
+    syntax="custy init [--mode config] [--ask | --force]"
+    tags={["ownership", "initialization", "safe replacement"]}
+    links={[
+        {label: "Initialization", href: "./initialization"},
+        {label: "Resolution", href: "./resolution"},
+        {label: "All Properties", href: "./reference"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Packaged Source", value: "app/templates/config.toml", icon: "package"},
+        {label: "Project Copy", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Format", value: "TOML", icon: "file"},
+        {label: "Loaded", value: "Once per process", icon: "dependency"},
+    ]}
+/>
+
+## Ringkasan
+
+Custy menyertakan `app/templates/config.toml` di dalam application package.
+Saat initialization, Custy menyalin isinya ke `.config/custy/config.toml`.
+Pengguna mengedit project copy tersebut dan tidak memerlukan akses ke installed
+source file.
+
+---
+
+<Section title="Ownership">
+
+<PropertyTable
+    items={[
+        {property: "app/templates/config.toml", type: "Application source", description: "Dikemas bersama Custy dan digunakan untuk membuat project configuration baru. Application upgrade dapat menggantinya."},
+        {property: ".config/custy/config.toml", type: "Project-owned copy", description: "Dimuat oleh commands dan ditujukan untuk team-specific edits, review, serta version control."},
+        {property: "app/templates/changelog/changelog.j2", type: "Application source", description: "Packaged source untuk default changelog layout."},
+        {property: ".config/custy/templates/changelog/changelog.j2", type: "Project-owned copy", description: "Editable Jinja template yang dimuat melalui configured path."},
+    ]}
+/>
+
+Packaged dan generated configuration saat ini memiliki logical TOML content
+yang sama. Byte hash dapat berbeda karena line-ending conversion.
+
+</Section>
+
+---
+
+<Section title="Write Behavior">
+
+<WorkflowTimeline
+    items={[
+        {title: "Resource belum ada", description: "Custy membuatnya dari packaged source.", status: "completed"},
+        {title: "Resource sudah ada, normal mode", description: "Custy mempertahankan project copy dan melewati replacement.", status: "current"},
+        {title: "Resource sudah ada dengan --ask", description: "Custy meminta konfirmasi sebelum mengganti setiap file.", status: "pending"},
+        {title: "Resource sudah ada dengan --force", description: "Custy mengganti selected resources tanpa prompt.", status: "pending"},
+    ]}
+/>
+
+<InfoBox variant="danger" title="Force Dapat Menghapus Project Customization">
+
+Commit, salin, atau bandingkan `.config/custy/` sebelum menjalankan forced
+initialization. Operasi ini memang dirancang untuk menimpa selected existing resources.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="TOML Root dan Loading">
+
+<Terminal title="Required namespace shape" language="toml">
+
+{`[tool.custy]
+
+[tool.custy.project]
+project_source = "auto"
+
+[tool.custy.cli.execution]
+dry_run = false`}
+
+</Terminal>
+
+- Central loader menyediakan values di bawah `[tool.custy]`.
+- Missing configuration diperlakukan sebagai project yang belum diinisialisasi
+  dan memuat empty mapping. Gunakan `custy init` ketika project-owned defaults
+  diperlukan.
+- Invalid TOML menghasilkan configuration error.
+- Relative paths umumnya dievaluasi dari current working directory.
+- Custy process baru memuat ulang perubahan pada file.
+- Jangan simpan secrets dan Git credentials di project configuration.
+
+</Section>
+
+---
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "Initialization", href: "./initialization", description: "Konfigurasikan default force dan prompt behavior."},
+        {title: "Resolution", href: "./resolution", description: "Pahami prioritas CLI, file, dan built-in."},
+        {title: "Init Generated Files", href: "../commands/init/generated-files", description: "Tinjau setiap resource yang dibuat initialization."},
+        {title: "Validate", href: "../commands/validate/overview", description: "Periksa kesiapan project setelah mengedit configuration."},
+    ]}
+/>
+
+</Section>

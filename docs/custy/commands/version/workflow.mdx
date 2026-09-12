@@ -1,0 +1,213 @@
+---
+title: "Workflow"
+description: "Understand how Custy prepares and synchronizes project versions."
+sidebar_position: 7
+sidebar_key: custy-version
+
+tags:
+    - version
+    - workflow
+
+keywords:
+    - custy version workflow
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version"
+    title="Workflow"
+    description="Understand how Custy prepares, generates, and synchronizes project version information."
+    category="Versioning"
+    status="Stable"
+    syntax="custy version update"
+    tags={[
+        "workflow",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Versioning Strategies",
+            href: "./versioning-strategies",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+    ]}
+/>
+
+## Overview
+
+Version Update follows a structured workflow that validates the project,
+determines the next version, and synchronizes version information across the
+appropriate project files.
+
+The same workflow is used whether the command is executed directly or as part
+of a larger workflow through `custy run`.
+
+---
+
+<WorkflowTimeline
+    title="Version Update Workflow"
+    description="High-level execution sequence."
+    items={[
+        {
+            title: "Validate Project",
+            description:
+                "Verify the project repository and any explicitly configured version target.",
+            status: "completed",
+        },
+        {
+            title: "Generate Version",
+            description:
+                "Determine the next version using an explicit tag or the selected versioning strategy.",
+            status: "completed",
+        },
+        {
+            title: "Prepare Tag Message",
+            description:
+                "Resolve or initialize the tag message template used by later workflow stages.",
+            status: "completed",
+        },
+        {
+            title: "Detect Project Type",
+            description:
+                "Identify the target project ecosystem before synchronizing version files.",
+            status: "completed",
+        },
+        {
+            title: "Synchronize Project Files",
+            description:
+                "Update every supported version file using the generated version.",
+            status: "completed",
+        },
+    ]}
+/>
+
+---
+
+<Section
+    title="Workflow Stages"
+>
+
+<WorkflowStep
+    title="1. Validate Project"
+>
+
+Custy verifies the Git repository and configuration needed for Version Update.
+An explicitly configured version target must exist. Automatic mode accepts a
+project without supported metadata and treats it as Git-tag-only instead of
+failing during startup.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="2. Generate the Next Version"
+>
+
+Custy determines the version to apply.
+
+The version may come from:
+
+- an explicit command-line version,
+- the configured versioning strategy,
+- automatic project strategy detection.
+
+Once determined, this version becomes the source for every subsequent update.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="3. Prepare the Tag Message"
+>
+
+Custy resolves the tag message by using:
+
+- a command-line value,
+- an existing tag message template,
+- or a newly generated default template.
+
+Although Version Update does not create Git tags, preparing the tag message
+keeps the project ready for later tagging workflows.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="4. Detect the Project Type"
+>
+
+Before updating project files, Custy detects root-level Python, Node.js, and
+PHP markers. A repository can belong to more than one ecosystem. If no marker
+exists, Custy uses a generic layout and safely falls back to the project root.
+
+This ensures that only the appropriate files are modified.
+
+</WorkflowStep>
+
+<WorkflowStep
+    title="5. Synchronize Version Files"
+>
+
+Custy applies the generated version to every supported version file.
+
+Depending on the detected project type, this may include:
+
+- Python `__version__.py` or static `pyproject.toml` metadata,
+- Node.js `package.json` and a supported root lockfile,
+- both sets for mixed projects,
+- no metadata write for a generic or tag-only project.
+
+Metadata receives the normalized version value without a leading `v`. Dry-run
+mode reports the planned targets without writing them.
+
+</WorkflowStep>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Generation Before Synchronization"
+>
+
+Custy always determines the version number before updating project files.
+
+Separating version generation from file synchronization allows different
+versioning strategies to share the same synchronization workflow.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Workflow Execution"
+>
+
+Larger public profiles reuse the necessary version stages internally. The
+internal `apply_version` profile name is not accepted by the current public Run
+argument, so standalone updates use `custy version update`.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Examples** page to see common Version Update scenarios and
+recommended workflows.
+
+</Section>

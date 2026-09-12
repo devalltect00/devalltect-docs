@@ -1,0 +1,147 @@
+---
+title: "Syntax"
+description: "Learn the command syntax and invocation patterns for the custy init command."
+sidebar_position: 3
+sidebar_key: custy-commands-init
+
+tags:
+  - syntax
+  - cli
+  - initialization
+
+keywords:
+  - custy init syntax
+  - command syntax
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Command Syntax"
+    description="Understand the supported invocation patterns for initializing a project with Custy."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "syntax",
+        "cli",
+        "command",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The `custy init` command is the public interface for project initialization.
+
+<InfoBox
+    variant="tip"
+    title="Recommendation"
+>
+
+Initialize the project with:
+
+`custy init`
+
+The internal initialization profile is not exposed by the current public
+`custy run` argument.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Direct Command"
+>
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Initialize a Project",
+            command: "custy init",
+            description:
+                "Initialize the current project using the default configuration.",
+        },
+    ]}
+/>
+
+<Terminal>
+
+{`
+custy init
+`}
+
+</Terminal>
+
+This is the simplest and most commonly used way to initialize a project.
+
+</Section>
+
+---
+
+<Section
+    title="Docker"
+>
+
+After building `custy-prod:latest` from Custy's production Docker target,
+invoke the command against the intended mounted project.
+
+<Terminal>
+
+{`
+docker run -it --rm \
+    -v "<project>:/workspace" \
+    -w /workspace \
+    custy-prod:latest \
+    init
+`}
+
+</Terminal>
+
+See the [Docker setup guide](../../getting-started/docker) for the build command,
+host requirements, workspace-mount behavior, and Git credential considerations.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Public Command"
+>
+
+Use `custy init`. `custy run init` is not accepted by the current public Run
+profile argument.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Now that you understand the command syntax, continue with the **Options**
+page to learn how each command-line option affects project initialization.
+
+</Section>

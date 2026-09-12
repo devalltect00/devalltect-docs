@@ -1,0 +1,42 @@
+---
+title: "Git Remotes"
+description: "Configure Custy's default remote plus primary and optional backup remote groups."
+sidebar_position: 2
+sidebar_key: custy-configuration-git-remotes-v2
+tags: [custy, configuration, git, remotes]
+keywords: [default_remote, main_remotes, backup_remotes]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git]" title="Git Remotes" description="Name one fallback remote and separate authoritative destinations from mirrors or archives." category="Git Configuration" status="Active + Optional Key" syntax="[tool.custy.git]" tags={["origin", "primary", "backup"]} links={[{label: "Push Strategy", href: "./push-strategy"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Remotes", href: "../../commands/push/remotes"}]} />
+
+<CommandMetadata items={[{label: "Generated Remote Keys", value: "2", icon: "table"}, {label: "Optional Remote Key", value: "1", icon: "note"}, {label: "Primary Default", value: "origin", icon: "git"}, {label: "Backup Default", value: "Empty", icon: "security"}]} />
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "default_remote", type: "String", defaultValue: "origin", description: "Service fallback when an operation requests one remote. Some direct push resolver paths supply origin before service resolution."},
+        {property: "main_remotes", type: "String array", defaultValue: "[\"origin\"]", description: "Authoritative destinations returned when push_to is main."},
+        {property: "backup_remotes", type: "String array", defaultValue: "[]", description: "Optional active mirror or archive destinations returned when push_to is backup. Supported but commented out in the generated file."},
+    ]}
+/>
+
+<Terminal title="Multi-host setup" language="toml">
+
+{`[tool.custy.git]
+default_remote = "origin"
+main_remotes = ["origin", "gitlab"]
+backup_remotes = ["mirror"]`}
+
+</Terminal>
+
+<InfoBox variant="danger" title="Verify names and URLs before pushing">
+
+Run `git remote -v`, confirm authentication and branch protection, and ensure
+each configured name is actually present in the repository.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Push Strategy", href: "./push-strategy", description: "Select main, backup, or all."}, {title: "CLI Push", href: "../cli/push", description: "Configure all_remote and tag behavior."}, {title: "Push Remotes", href: "../../commands/push/remotes", description: "Review command-level remote selection."}]} /></Section>

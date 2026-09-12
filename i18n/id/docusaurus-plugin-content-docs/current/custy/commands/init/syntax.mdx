@@ -1,0 +1,147 @@
+---
+title: "Syntax"
+description: "Pelajari command syntax dan pola pemanggilan untuk custy init."
+sidebar_position: 3
+sidebar_key: custy-commands-init
+
+tags:
+  - syntax
+  - cli
+  - initialization
+
+keywords:
+  - custy init syntax
+  - command syntax
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Command Syntax"
+    description="Pahami pola pemanggilan yang didukung untuk menjalankan init pada proyek dengan Custy."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "syntax",
+        "cli",
+        "command",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Options",
+            href: "./options",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Command `custy init` merupakan public interface untuk project initialization.
+
+<InfoBox
+    variant="tip"
+    title="Rekomendasi"
+>
+
+Jalankan init pada proyek dengan:
+
+`custy init`
+
+Profile init internal tidak diekspos oleh argumen public `custy run` saat ini.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Direct Command"
+>
+
+<CommandSyntax
+    examples={[
+        {
+            title: "Init Proyek",
+            command: "custy init",
+            description:
+                "Jalankan init pada proyek saat ini menggunakan configuration default.",
+        },
+    ]}
+/>
+
+<Terminal>
+
+{`
+custy init
+`}
+
+</Terminal>
+
+Ini adalah cara paling sederhana dan paling umum untuk menjalankan init pada
+proyek.
+
+</Section>
+
+---
+
+<Section
+    title="Docker"
+>
+
+Setelah mem-build `custy-prod:latest` dari target production Docker milik
+Custy, jalankan command terhadap proyek yang di-mount.
+
+<Terminal>
+
+{`
+docker run -it --rm \
+    -v "<project>:/workspace" \
+    -w /workspace \
+    custy-prod:latest \
+    init
+`}
+
+</Terminal>
+
+Lihat [panduan setup Docker](../../getting-started/docker) untuk command build,
+requirements host, perilaku workspace mount, dan pertimbangan kredensial Git.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Public Command"
+>
+
+Gunakan `custy init`. `custy run init` tidak diterima oleh argumen public Run
+profile saat ini.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Setelah memahami command syntax, lanjutkan ke halaman **Options** untuk
+mengetahui pengaruh setiap command-line option terhadap project initialization.
+
+</Section>

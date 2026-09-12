@@ -1,0 +1,22 @@
+---
+title: "Testing"
+description: "Pilih focused Custy tests, pahami suite layers, dan jalankan complete validation sebelum review."
+sidebar_position: 3
+sidebar_key: custy-developer-guide-testing
+---
+import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Section,Terminal} from "@site/src/components/docs";
+
+<CommandHero command="pytest" title="Testing" description="Validasi behavior mulai dari smallest relevant tests hingga complete suite." category="Developer Guide" status="Required" syntax="pytest [PATH] [OPTIONS]" links={[{label:"Test Layers",href:"#test-layers"},{label:"Focused Validation",href:"#focused-validation"},{label:"Complete Validation",href:"#complete-validation"}]} />
+## Test Layers
+Unit tests memeriksa focused resolver dan service behavior; integration tests
+memeriksa boundaries; CLI tests memeriksa parsing, output, dan exit behavior.
+## Focused Validation
+<Terminal language="bash">{`pytest tests/path/to/test_file.py -q
+pytest tests/path/to/test_file.py::test_name -q`}</Terminal>
+## Complete Validation
+<Terminal language="bash">{`pytest
+ruff check .
+black --check .`}</Terminal>
+<InfoBox variant="warning" title="Test Behavior dan Boundaries">Changes pada command, step, strategy, atau configuration harus menguji resolution, happy path, invalid input, failure propagation, dan relevant side effects.</InfoBox>
+<CommandChecklist items={[{title:"Focused tests pass",description:"Relevant subsystem behavior tercakup."},{title:"Full suite passes",description:"Tidak ada regression lintas subsystem."},{title:"Docs aligned",description:"User-facing behavior dan examples tetap akurat."}]} />
+<RelatedCommands commands={[{title:"Adding Commands",href:"./adding-commands",description:"Test CLI boundary."},{title:"Adding Pipeline Steps",href:"./adding-pipeline-steps",description:"Test ordering dan execution."},{title:"Adding Version Strategies",href:"./adding-version-strategies",description:"Test generation dan sorting."},{title:"Contributing",href:"./contributing",description:"Final review."}]} />

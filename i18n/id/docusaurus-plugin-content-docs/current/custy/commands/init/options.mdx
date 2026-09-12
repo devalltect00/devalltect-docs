@@ -1,0 +1,218 @@
+---
+title: "Options"
+description: "Referensi command-line options yang didukung oleh custy init."
+sidebar_position: 4
+sidebar_key: custy-commands-init
+
+tags:
+  - options
+  - cli
+  - initialization
+
+keywords:
+  - custy init options
+  - mode
+  - force
+  - ask
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Command Options"
+    description="Pelajari bagaimana setiap command-line option mengubah proses init."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init [OPTIONS]"
+    tags={[
+        "options",
+        "configuration",
+        "initialization",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Command `custy init` menyediakan beberapa options untuk mengatur resource
+**apa** yang dibuat dan **bagaimana** file yang sudah ada ditangani.
+
+Sebagian besar proyek dapat di-init dengan baik menggunakan perilaku default.
+
+Gunakan options berikut hanya ketika Anda memerlukan kontrol tambahan terhadap
+proses init.
+
+<InfoBox
+    variant="tip"
+    title="Perilaku Default"
+>
+
+Menjalankan `custy init` tanpa option tambahan akan menjalankan init menggunakan
+mode default **all**.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Options yang Tersedia"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--mode",
+            shorthand: "-m",
+            required: false,
+            description:
+                "Pilih resource proyek yang akan dibuat.",
+            defaultValue: "all",
+            example: "custy init --mode templates",
+        },
+        {
+            name: "--force",
+            shorthand: "-f",
+            required: false,
+            description:
+                "Timpa file yang sudah ada tanpa meminta konfirmasi.",
+            defaultValue: "false",
+            example: "custy init --force",
+        },
+        {
+            name: "--ask",
+            shorthand: "-a",
+            required: false,
+            description:
+                "Minta konfirmasi sebelum menimpa generated files yang mendukung prompt. Packaged examples digabungkan tanpa prompt per file.",
+            defaultValue: "false",
+            example: "custy init --ask",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Init Modes"
+>
+
+Option `--mode` menentukan resource yang dibuat Custy.
+
+| Mode | Deskripsi |
+|------|-----------|
+| `all` | Membuat configuration, templates, dan example resources. |
+| `all_no_examples` | Membuat configuration dan templates tanpa examples. |
+| `config` | Hanya membuat file configuration proyek. |
+| `templates` | Hanya membuat default templates. |
+| `examples` | Hanya membuat example resources. |
+
+Untuk sebagian besar proyek, **all** merupakan pilihan yang direkomendasikan
+karena menyiapkan seluruh workspace proyek dalam satu langkah.
+
+</Section>
+
+---
+
+<Section
+    title="Perilaku Overwrite"
+>
+
+Options `--force` dan `--ask` mengatur perilaku Custy ketika resource yang akan
+dibuat sudah ada.
+
+### `--force`
+
+Gunakan option ini jika Anda ingin Custy menimpa selected files yang sudah ada
+tanpa meminta konfirmasi. Untuk packaged examples, overwrite diterapkan secara
+recursive pada file sementara directory tree yang ada digabungkan di tempat.
+
+Option ini berguna saat Anda memang ingin membuat ulang file configuration
+atau template.
+
+### `--ask`
+
+Gunakan option ini jika Anda ingin meninjau overwrite terhadap generated files
+yang mendukung prompt sebelum dilakukan. Prompt berlaku pada individual
+resources seperti configuration dan active templates. Packaged example files
+menggunakan merge behavior: file yang sudah ada dipertahankan dan file yang
+belum ada disalin tanpa prompt.
+
+Option ini sangat membantu saat bekerja dengan proyek yang sudah memiliki
+template yang disesuaikan.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Gunakan Force dengan Hati-hati"
+>
+
+Jika proyek berisi file configuration atau template yang sudah disesuaikan,
+`--force` dapat menggantinya dengan versi yang baru dibuat.
+
+Tinjau perubahan proyek sebelum melakukan commit terhadap file yang dibuat
+ulang.
+
+</InfoBox>
+
+<InfoBox
+    variant="note"
+    title="Direktori Examples yang Sudah Ada Digunakan Kembali"
+>
+
+Direktori `.config/custy/templates/examples/` yang sudah ada tidak menghentikan
+proses copy. Custy menelusuri packaged tree secara recursive dan menentukan
+per file: pertahankan secara default, atau timpa ketika `--force` aktif.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Integrasi Configuration"
+>
+
+Nilai `--force` dan `--ask` juga dapat diberikan melalui configuration Custy.
+
+Jika option tidak diberikan secara eksplisit melalui command line, Custy
+menentukan nilainya dari configuration proyek sebelum menggunakan default
+bawaan.
+
+Dengan cara ini, tim dapat menentukan perilaku init yang konsisten tanpa
+mengharuskan setiap pengguna menuliskan options yang sama berulang kali.
+
+</Section>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Setelah memahami options yang tersedia, lanjutkan ke halaman **Workflow** untuk
+mempelajari proses internal saat init dimulai.
+
+</Section>

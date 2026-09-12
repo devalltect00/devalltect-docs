@@ -1,0 +1,115 @@
+---
+title: "Requirements"
+description: "Requirements untuk menggunakan custy backup."
+sidebar_position: 2
+sidebar_key: custy-commands-backup
+---
+
+import {
+    CommandHero,
+    RequirementGrid,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Requirements"
+    description="Pahami requirements untuk membuat backup template Custy."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup commit"
+    tags={["requirements", "backup", "templates"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Syntax", href: "./syntax"},
+        {label: "Backup Files", href: "./backup-files"},
+    ]}
+/>
+
+## Ringkasan
+
+Command **backup** bekerja pada file yang dibuat atau dikelola Custy. Sebelum
+membuat backup, pastikan template files yang diperlukan sudah tersedia dalam
+proyek.
+
+<InfoBox variant="tip" title="Jalankan Init Lebih Dahulu">
+
+Jika proyek belum di-init, jalankan `custy init` sebelum membuat backup.
+Init membuat configuration dan template files yang digunakan command backup.
+
+</InfoBox>
+
+---
+
+<Section title="Prerequisites">
+
+<RequirementGrid
+    title="Environment yang Diperlukan"
+    items={[
+        {
+            title: "Proyek Sudah Di-init",
+            icon: <Icon name="directory" />,
+            children: <>Proyek sebaiknya sudah berisi generated configuration dan template files Custy.</>,
+        },
+        {
+            title: "Template Files",
+            icon: <Icon name="file" />,
+            children: <>Commit dan tag message templates harus tersedia sebelum dapat di-backup.</>,
+        },
+        {
+            title: "Backup Directory Dapat Ditulis",
+            icon: <Icon name="copy" />,
+            children: <>Custy harus dapat membuat backup files di configured backup directory.</>,
+        },
+        {
+            title: "Project Configuration",
+            icon: <Icon name="configuration" />,
+            children: <>Lokasi backup dan pengaturan terkait ditentukan dari project configuration selama tersedia.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Persiapan yang Direkomendasikan">
+
+Sebelum membuat backup:
+
+- Jalankan `custy init` jika proyek belum di-init.
+- Tinjau configuration `config.toml` proyek.
+- Pastikan template files yang ingin di-backup tersedia.
+- Pastikan configured backup directory dapat ditulis.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Operasi Aman">
+
+Backup tidak mengubah riwayat Git. Command hanya membuat timestamped copy dari
+template yang dipilih di configured backup directories.
+
+</InfoBox>
+
+---
+
+<Section title="Apa yang Tidak Diperlukan?">
+
+Command backup tidak memerlukan staged Git changes, Git tags, remote
+repositories, atau published releases. Command hanya memerlukan file yang akan
+di-backup.
+
+</Section>
+
+---
+
+<Section title="Langkah Berikutnya">
+
+Lanjutkan ke halaman **Syntax** untuk mempelajari subcommands `commit`, `tag`,
+dan `all`.
+
+</Section>

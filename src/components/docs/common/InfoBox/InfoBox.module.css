@@ -1,0 +1,63 @@
+.infoBox {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+
+    padding: 1.5rem;
+
+    border-left: 5px solid;
+
+    border-radius: 16px;
+
+    background: var(--ifm-background-surface-color);
+}
+
+/* ---------------------------------- */
+
+.info {
+    border-color: var(--ifm-color-info);
+}
+
+.tip {
+    border-color: var(--ifm-color-primary);
+}
+
+.success {
+    border-color: var(--ifm-color-success);
+}
+
+.warning {
+    border-color: var(--ifm-color-warning);
+}
+
+.danger {
+    border-color: var(--ifm-color-danger);
+}
+
+/* ---------------------------------- */
+
+.content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+.content > :last-child {
+    margin-bottom: 0;
+}
+
+/* ---------------------------------- */
+/* Additional styles for the InfoBox component */
+/* ---------------------------------- */
+
+.infoBoxHeading {
+    margin-bottom: .75rem;
+}
+
+.note {
+    border-color: var(--ifm-color-secondary);
+}

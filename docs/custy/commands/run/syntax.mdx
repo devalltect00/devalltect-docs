@@ -1,0 +1,70 @@
+---
+title: "Syntax"
+description: "Supported custy run profiles and command forms."
+sidebar_position: 3
+sidebar_key: custy-run-syntax
+tags: [run, syntax, cli]
+keywords: [custy run syntax]
+---
+
+import {
+    CommandHero,
+    CommandSyntax,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Command Syntax"
+    description="Select one or more supported public profiles and place global execution options before the Run command."
+    category="Pipeline"
+    status="Stable with Limitations"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "syntax",
+        "profiles",
+        "composition",
+    ]}
+    links={[
+        {label: "Profiles", href: "./profiles"},
+        {label: "Options", href: "./options"},
+        {label: "Custom Sequences", href: "./custom-sequences"},
+    ]}
+/>
+
+## Overview
+
+Run accepts one or more names from the six public profiles. Custy expands,
+deduplicates, and globally orders their registered stages.
+
+---
+
+<Section
+    title="Supported Command Forms"
+>
+
+<CommandSyntax
+    examples={[
+        {title: "Daily development", command: "custy run dev", description: "Run the development profile."},
+        {title: "Standard release", command: "custy run release", description: "Run the release profile through push."},
+        {title: "Release and finalize", command: "custy run full", description: "Run the release stages followed by workflow finalization."},
+        {title: "Merge public profiles", command: "custy run commit tag push", description: "Merge, deduplicate, and globally order the three public profiles."},
+        {title: "Preview a release", command: "custy --dry-run run release", description: "Pass global dry-run before the Run command."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Rejected names"
+>
+
+Forms such as `custy run validate`, `custy run changelog`, `custy run init`,
+`custy run apply_version`, and `custy run cleanup_backups` are not supported by
+the current public argument enum.
+
+</InfoBox>

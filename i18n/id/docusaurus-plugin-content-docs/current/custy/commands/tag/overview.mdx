@@ -1,0 +1,31 @@
+---
+title: "Ringkasan"
+description: "Siapkan version artifacts dan buat annotated Git tag dengan Custy."
+sidebar_position: 1
+sidebar_key: custy-tag
+---
+import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy tag" title="Create a Version Tag" description="Resolve version, siapkan tag message, dan buat local annotated Git tag." category="Git Operations" status="Stable" syntax="custy tag [OPTIONS]" links={[{label:"Options",href:"./options"},{label:"Versioning and Tags",href:"./versioning-and-tags"},{label:"Workflow",href:"./workflow"}]} />
+
+## Ringkasan
+
+`custy tag` adalah release profile yang memvalidasi repository, menentukan versi, memperbarui artifacts, lalu membuat tag lokal.
+
+<InfoBox variant="danger" title="Creates Git History">Tag menjadi Git reference permanen dan dapat memicu CI/CD setelah dipush. Verifikasi commit target dan exact version terlebih dahulu.</InfoBox>
+
+<FeatureGrid items={[
+ {title:"Validate",children:"Periksa repository dan pre-tag requirements."},
+ {title:"Resolve",children:"Tentukan explicit version atau bentuk versi melalui strategy."},
+ {title:"Prepare",children:"Buat, edit, validasi, dan backup tag message."},
+ {title:"Tag",children:"Tulis version file lalu buat local annotated tag."},
+]} />
+
+<Screenshot src="/img/custy/tag/tag-created.png" alt="Tag lokal berhasil dibuat oleh Custy" title="Tag Creation Result" caption="Tag dibuat secara lokal sebelum dipublikasikan." />
+
+<RelatedCommands commands={[
+ {name:"file",description:"Sinkronkan version files.",href:"../version/overview"},
+ {name:"git",description:"Siapkan local commit.",href:"../commit/overview"},
+ {name:"package",description:"Push tag ke remotes.",href:"../push/overview"},
+ {name:"release",description:"Jalankan release profile lengkap.",href:"../run/release/overview"},
+]} />

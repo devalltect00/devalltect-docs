@@ -1,0 +1,114 @@
+---
+title: "FAQ"
+description: "Answers to common questions about custy tag."
+sidebar_position: 11
+sidebar_key: custy-tag-faq
+tags: [tag, faq, release]
+keywords: [custy tag faq]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Frequently Asked Questions"
+    description="Find answers about local tags, Run equivalence, version inputs, file updates, pre-releases, and force behavior."
+    category="Git Operations"
+    status="Support Guide"
+    syntax="custy tag [OPTIONS]"
+    tags={[
+        "FAQ",
+        "version tags",
+        "support",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "Versioning", href: "./versioning-and-tags"},
+    ]}
+/>
+
+## Overview
+
+These answers clarify where tag creation stops and which version inputs are
+currently reliable.
+
+<InfoBox
+    variant="note"
+    title="Local before remote"
+>
+
+`custy tag` creates a local tag. Inspect it before using a separate push
+operation.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Does `custy tag` Push the Tag?"
+>
+
+No. It creates the tag locally. Use a reviewed push operation afterward.
+
+</Section>
+
+---
+
+<Section
+    title="How Does `custy run tag` Differ?"
+>
+
+Both forms select the registered tag profile, but the direct command exposes
+tag-specific version, message, modifier, force, and backup options.
+
+</Section>
+
+---
+
+<Section
+    title="Should I Use `--tag` or `--bump`?"
+>
+
+Use `--tag` when the version is already approved. The CLI advertises `--bump`,
+but its current adapter mapping is incomplete, so it should not be relied on
+until corrected.
+
+</Section>
+
+---
+
+<Section
+    title="Does the Profile Update the Version File?"
+>
+
+Yes. Applying the resolved version is part of the registered tag profile.
+
+</Section>
+
+---
+
+<Section
+    title="Can I Create Pre-Release Versions?"
+>
+
+Yes, using an appropriate strategy and pre-release value. Verify the exact
+resolved format in dry-run first.
+
+</Section>
+
+---
+
+<Section
+    title="When Should I Use `--force-tag`?"
+>
+
+Only after understanding the validation condition and confirming that forced
+creation is safe for the repository. It should not be the default response to an
+unexpected error.
+
+</Section>

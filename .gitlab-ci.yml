@@ -1,0 +1,100 @@
+# =========================================================
+# 🦊 GitLab CI/CD Pipeline
+# =========================================================
+#
+# Purpose
+# -------
+# Main GitLab CI/CD entry point.
+#
+# GitLab automatically discovers ONLY this file.
+#
+# Additional pipeline definitions are organized into
+# smaller files under `.gitlab/` and imported via
+# `include`.
+#
+#
+# Architecture
+# ------------
+#
+# .gitlab-ci.yml
+# ├── .gitlab/ci.yml
+# └── .gitlab/pages.yml
+#
+#
+# GitHub Equivalent
+# -----------------
+#
+# .github/workflows/
+# ├── ci.yml
+# └── pages.yml
+#
+#
+# Responsibilities
+# ----------------
+# - Documentation Validation
+# - Docusaurus Build Verification
+# - GitLab Pages Deployment
+#
+#
+# Deployment Flow
+# ---------------
+#
+# Documentation Source
+# │
+# ▼
+# Validation (CI)
+# │
+# ▼
+# Build Website
+# │
+# ▼
+# GitLab Pages
+#
+#
+# Notes
+# -----
+# GitLab:
+# - Discovers only `.gitlab-ci.yml`
+# - Does NOT automatically discover
+# `.gitlab/*.yml`
+#
+# Therefore all pipeline definitions must be imported
+# through this file.
+#
+#
+# Docusaurus-Specific Notes
+# -------------------------
+# Unlike application repositories, this documentation
+# project does not require:
+#
+# - Docker image builds
+# - Container registries
+# - Kubernetes deployment
+# - Release packaging
+#
+# Docusaurus generates a static website that can be
+# published directly through GitLab Pages.
+#
+#
+# Future Expansion
+# ----------------
+# As the documentation portal grows, additional
+# pipelines may be added:
+#
+# .gitlab/
+# ├── ci.yml
+# ├── pages.yml
+# ├── link-check.yml
+# ├── spell-check.yml
+# └── versioning.yml
+#
+#
+# =========================================================
+
+stages:
+  - test
+  - deploy
+
+include:
+  - local: ".gitlab/ci.yml"
+  - local: ".gitlab/pages.yml"

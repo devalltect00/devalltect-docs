@@ -1,0 +1,59 @@
+---
+title: "Troubleshooting Workflows"
+description: "Recover dengan aman dengan menemukan last successful Custy effect sebelum retry command atau profile."
+sidebar_position: 6
+sidebar_key: custy-user-guide-troubleshooting-workflows
+tags: [custy, troubleshooting, recovery]
+keywords: [Custy workflow failed, partial pipeline recovery]
+---
+
+import {CommandChecklist, CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+
+<CommandHero command="custy --debug" title="Troubleshooting Workflows" description="Periksa partial state, temukan failed boundary, dan pilih smallest safe recovery action." category="User Guide" status="Recovery Guide" syntax="observe -> inspect state -> correct cause -> recover narrowly -> verify" tags={["partial pipeline", "files", "commit", "tag", "remote"]} links={[{label: "Troubleshooting Hub", href: "../troubleshooting/overview"}, {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"}, {label: "Safety Model", href: "../concepts/safety-and-side-effects"}, {label: "Execution Model", href: "../pipelines/execution-model"}]} />
+<CommandMetadata items={[{label: "Failure Behavior", value: "Stop at first raised error", icon: "warning"}, {label: "Automatic Rollback", value: "No", icon: "danger"}, {label: "Recovery Scope", value: "Last completed boundary", icon: "timeline"}, {label: "Primary Evidence", value: "Output, logs, Git state", icon: "file"}]} />
+
+## Prinsip Pertama
+
+Failed Custy pipeline belum tentu untouched pipeline. Earlier steps mungkin
+sudah generate atau edit files, prune backups, stage changes, membuat commit
+atau tag, atau update satu atau lebih remotes.
+
+<InfoBox variant="danger" title="Jangan Memulai Recovery dengan Rerun Semuanya">Temukan failed step dan last durable effect terlebih dahulu. Full retry dapat bertabrakan dengan existing commit atau tag, menduplikasi work, atau publish ke remote yang sudah berhasil.</InfoBox>
+
+---
+
+<Section title="Recovery Method"><WorkflowTimeline title="Diagnosis Sebelum Mengubah State" items={[{title: "Capture the failure", description: "Simpan failed step name, error code atau message, hint, dan reported destinations.", status: "completed"}, {title: "Inspect current state", description: "Periksa files, index, latest commit, tags, branches, backups, dan remotes.", status: "completed"}, {title: "Find the last completed boundary", description: "Tentukan durable effects yang sudah tersedia dan later stages yang belum berjalan.", status: "completed"}, {title: "Correct the original cause", description: "Perbaiki first validation, configuration, content, Git, authentication, atau remote error.", status: "current"}, {title: "Recover narrowly and verify", description: "Gunakan smallest direct command atau manual action untuk menyelesaikan atau reconcile intended state.", status: "pending"}]} /></Section>
+
+---
+
+<Section title="Evidence Checklist">
+<Terminal title="Inspect local state" language="bash">{`git status --short --branch
+git diff
+git diff --staged
+git log -3 --decorate --stat
+git tag --points-at HEAD
+git branch --all
+git remote -v`}</Terminal>
+<CommandChecklist items={[{title: "Read the first error", description: "Later messages dapat merupakan consequences; mulai dari step yang menghasilkan failure."}, {title: "Inspect generated files", description: "Periksa version files, editable artifacts, CHANGELOG.md, dan message files."}, {title: "Inspect backups", description: "Pastikan new copies dibuat atau older copies dipangkas."}, {title: "Inspect Git objects", description: "Tentukan apakah staging, commit, tag, atau branch deletion sudah terjadi."}, {title: "Inspect every destination", description: "Untuk multi-remote work, verifikasi setiap remote secara independen."}]} />
+</Section>
+
+---
+
+<Section title="Pilih Recovery Berdasarkan Last Completed Effect"><FeatureGrid title="Common Boundaries" items={[{title: "Validation Only", icon: <Icon name="security" />, children: "Perbaiki reported prerequisite. Later mutation steps belum berjalan."}, {title: "Files Changed", icon: <Icon name="file" />, children: "Review dan reconcile generated files serta index sebelum menjalankan command lagi."}, {title: "Commit Exists", icon: <Icon name="git" />, children: "Jangan membuat ulang commit yang sama. Tentukan apakah tag atau push merupakan remaining action."}, {title: "Tag Exists", icon: <Icon name="release" />, children: "Verifikasi tag target dan message sebelum memutuskan apakah hanya push yang tersisa."}, {title: "Some Remotes Succeeded", icon: <Icon name="network" />, children: "Perbaiki authentication atau policy untuk failed destinations dan hindari duplicate publication."}, {title: "Finalization Failed", icon: <Icon name="workflow" />, children: "Release mungkin sudah published. Periksa branch transitions terpisah, bukan rerun Full."}]} /></Section>
+
+---
+
+<Section title="Perbaiki Diagnostic Output">
+Global options ditempatkan sebelum command group.
+<Terminal title="Diagnostic invocations" language="bash">{`custy --debug run release
+custy --log-level DEBUG run dev
+custy --debug cleanup brancheses --prefix feature/`}</Terminal>
+Gunakan debug output untuk memahami resolution dan execution, tetapi jangan
+sertakan secrets, tokens, atau sensitive remote credentials saat membagikan logs.
+</Section>
+
+<InfoBox variant="warning" title="Dry-Run Setelah Correction Tidak Membuktikan Rollback">Corrected dry-run mem-preview next execution dari current state. Ini tidak membatalkan atau menyembunyikan effects milik failed run. Periksa ulang state sebelum dan sesudah preview.</InfoBox>
+
+<Section title="Escalate Ketika State Tidak Jelas">Berhenti dan minta bantuan teammate atau repository administrator sebelum menghapus commits atau tags, force-pushing, mengubah shared branches, restore remote branches, atau rewrite published release history. Pertahankan logs dan current state saat recovery decision ditinjau.</Section>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Troubleshooting Hub", href: "../troubleshooting/overview", description: "Pilih Git, configuration, versioning, changelog, atau workflow diagnosis."}, {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Resolve profile names, ordering, validation, dan push errors."}, {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Resolve staging, message, artifact, dan commit failures."}, {title: "Tag Troubleshooting", href: "../commands/tag/troubleshooting", description: "Resolve version dan existing-tag conflicts."}, {title: "Push Troubleshooting", href: "../commands/push/troubleshooting", description: "Resolve remotes, authentication, rejected updates, dan partial publication."}]} /></Section>

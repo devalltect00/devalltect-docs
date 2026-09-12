@@ -1,0 +1,34 @@
+---
+title: "Changelog Command"
+description: "Konfigurasikan command-level changelog generation behavior."
+sidebar_position: 7
+sidebar_key: custy-configuration-cli-changelog
+tags: [custy, configuration, changelog]
+keywords: [cli changelog, force_generation]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.changelog]" title="Changelog Command" description="Konfigurasikan apakah generation tetap berjalan saat tidak ditemukan commit atau release baru." category="CLI Configuration" status="Active" syntax={'force_generation = false'} tags={["force generation", "command behavior", "CHANGELOG.md"]} links={[{label: "Changelog Namespace", href: "../changelog/overview"}, {label: "Generate", href: "../../commands/changelog/generate/overview"}, {label: "Templates", href: "./templates/overview"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "1", icon: "table"}, {label: "Default", value: "false", icon: "security"}, {label: "Resolver", value: "Changelog command", icon: "terminal"}, {label: "Content Settings", value: "Separate namespace", icon: "configuration"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "force_generation", type: "Boolean", defaultValue: "false", description: "Izinkan changelog generation berlanjut ketika normal change detection tidak menemukan release atau commit baru."}]} />
+
+<Terminal title="Generated default" language="toml">
+
+{`[tool.custy.cli.changelog]
+force_generation = false`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Table Ini Tidak Mengatur Content">
+
+Collection, cleaning, releases, links, mappings, dan rendering berada di
+namespace `[tool.custy.changelog]` yang terpisah.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Changelog Namespace", href: "../changelog/overview", description: "Konfigurasikan generated content dan presentation."}, {title: "Generate Options", href: "../../commands/changelog/generate/options", description: "Tinjau invocation-level force behavior."}, {title: "Templates", href: "./templates/overview", description: "Konfigurasikan Jinja layout path."}]} /></Section>

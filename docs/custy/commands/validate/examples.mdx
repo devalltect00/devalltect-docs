@@ -1,0 +1,157 @@
+---
+title: "Examples"
+description: "Practical examples of using the custy validate command."
+sidebar_position: 7
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandExample,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Examples"
+    description="Learn how to use the validation command in common development scenarios."
+    category="Validation"
+    status="Recommended"
+    syntax="custy validate"
+    tags={[
+        "examples",
+        "validation",
+        "workflow",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Output",
+            href: "./output",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+The following examples demonstrate common ways to validate a project before
+executing Git or Custy workflows.
+
+---
+
+<Section
+    title="Common Examples"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Validate the Current Project",
+            description:
+                "Run all validation checks for the current project.",
+            command: "custy validate",
+            result:
+                "Verifies the project repository, configuration, templates, version file, and repository state.",
+        },
+        {
+            title: "Validate Before a Release Workflow",
+            description:
+                "Confirm that the project is ready before performing release-related operations.",
+            command: "custy validate",
+            result:
+                "Reports any missing prerequisites before commit, tag, push, or release workflows begin.",
+            notes:
+                "This step is optional because workflow-oriented commands perform validation automatically.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Typical Development Workflow"
+>
+
+<CommandExample
+    examples={[
+        {
+            title: "Manual Git Workflow",
+            description:
+                "Validate the project before executing Git operations manually.",
+            command:
+`git add .
+custy validate
+custy commit
+custy tag
+custy push`,
+            result:
+                "Validation confirms that the repository is ready before each Custy command executes.",
+        },
+        {
+            title: "Workflow-Oriented Development",
+            description:
+                "Execute a complete workflow using Custy's pipeline system.",
+            command:
+`git add .
+custy run release`,
+            result:
+                "The workflow automatically performs validation before continuing with the remaining stages.",
+            notes:
+                "Running custy validate separately is usually unnecessary when using workflow commands.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="When Should I Run Validation Manually?"
+>
+
+Running **custy validate** is most useful when you want to inspect your
+project's readiness before executing a larger workflow.
+
+If you primarily use **custy run**, validation is already included as the first
+workflow stage.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Common Situations"
+>
+
+Manual validation is especially helpful when:
+
+- Setting up a project for the first time.
+- Reviewing changes before creating a commit.
+- Confirming that required configuration files exist.
+- Verifying template files after running `custy init`.
+- Diagnosing workflow failures before retrying a release.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Output** page to learn what information Custy reports after
+validation completes.
+
+</Section>

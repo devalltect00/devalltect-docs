@@ -1,0 +1,23 @@
+---
+title: "CLI Layer"
+description: "Telusuri entrypoint Typer, registrasi command, global context, argument resolution, dan delegasi core Custy."
+sidebar_position: 2
+sidebar_key: custy-architecture-cli-layer
+tags: [custy, CLI, Typer, architecture]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, WorkflowDiagram} from "@site/src/components/docs";
+
+<CommandHero command="app/cli/" title="CLI Layer" description="Pahami bagaimana input shell diubah menjadi argument ter-resolve dan eksekusi core." category="Arsitektur" status="Public Boundary" syntax="entrypoint -> callback -> command -> resolver -> core" tags={["Typer", "AppContext", "command registration", "Rich"]} links={[{label: "Architecture Overview", href: "./overview"}, {label: "Core Layer", href: "./core-layer"}, {label: "Adding Commands", href: "../developer-guide/adding-commands"}]} />
+
+## Tanggung jawab
+
+CLI layer memiliki public command tree dan mengubah input pengguna menjadi nilai bertipe untuk coordinator di core. Callback menjelaskan perilaku serta merakit dependency; logika Git, changelog, release, backup, cleanup, dan mutasi file tetap berada di luar callback.
+
+<WorkflowDiagram title="Siklus Permintaan" timeline={[{title: "Global options", description: "Root callback menerima banner, help, version, dry-run, debug, dan log level.", status: "completed"}, {title: "Defaults", description: "resolve_main_args menerapkan project config dan fallback bawaan.", status: "completed"}, {title: "Context", description: "AppContext menyimpan flag global pada Typer context.", status: "completed"}, {title: "Command arguments", description: "Command membangun effective model dari option dan config.toml.", status: "current"}, {title: "Delegation", description: "Callback memanggil initialization, handler khusus, atau pipeline.", status: "pending"}]} />
+
+<InfoBox variant="warning" title="AppContext berbeda dari WorkflowConfig">`AppContext` menyimpan flag global pada scope Typer. `WorkflowConfig` adalah model konstruksi core. Setiap callback harus memetakan nilai yang didukung secara eksplisit.</InfoBox>
+
+<Section title="Varian eksekusi">Sebagian besar command merakit workflow engine dan registered pipeline. `custy init` memakai coordinator initialization khusus; branch cleanup memakai handler khusus; group `workflow` masih experimental.</Section>
+
+<RelatedCommands commands={[{title: "Core Layer", href: "./core-layer", description: "Lihat tempat callback mendelegasikan business behavior."}, {title: "Configuration System", href: "./configuration-system", description: "Pahami nilai yang digunakan resolver."}, {title: "Pipeline Engine", href: "./pipeline-engine", description: "Ikuti profile menjadi registered step."}, {title: "Adding Commands", href: "../developer-guide/adding-commands", description: "Ikuti pola command aktif."}]} />

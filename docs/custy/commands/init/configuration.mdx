@@ -1,0 +1,202 @@
+---
+title: "Configuration"
+description: "Learn how the generated configuration file customizes Custy's behavior."
+sidebar_position: 7
+sidebar_key: custy-commands-init
+
+tags:
+  - configuration
+  - config.toml
+  - initialization
+
+keywords:
+  - custy config
+  - config.toml
+  - customization
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Configuration"
+    description="Understand how the generated configuration file controls Custy's behavior."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "configuration",
+        "customization",
+        "config.toml",
+    ]}
+    links={[
+        {
+            label: "Generated Files",
+            href: "./generated-files",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+One of the primary goals of `custy init` is to generate a project-specific
+configuration file.
+
+Rather than requiring every command-line option to be supplied each time,
+Custy allows many behaviors to be configured once and reused automatically by
+future commands.
+
+<InfoBox
+    variant="tip"
+    title="Project Configuration"
+>
+
+The generated configuration belongs to your project, not to Custy itself.
+
+This makes it easy for every contributor to share the same defaults simply by
+committing the configuration file to version control.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration File"
+>
+
+After initialization, the primary configuration file is located at:
+
+<Terminal>
+
+{`
+.config/custy/config.toml
+`}
+
+</Terminal>
+
+Future Custy commands automatically load this file whenever it exists.
+
+</Section>
+
+---
+
+<Section
+    title="What Can Be Configured?"
+>
+
+<FeatureGrid
+    title="Configuration Categories"
+    items={[
+        {
+            title: "Project",
+            children: (
+                <>
+                    Define project-specific information such as the primary
+                    source directory used by Custy.
+                </>
+            ),
+        },
+        {
+            title: "Initialization",
+            children: (
+                <>
+                    Configure default behavior for initialization, including
+                    overwrite and confirmation settings.
+                </>
+            ),
+        },
+        {
+            title: "Release",
+            children: (
+                <>
+                    Configure release metadata such as the default author and
+                    release date handling.
+                </>
+            ),
+        },
+        {
+            title: "Versioning",
+            children: (
+                <>
+                    Define the preferred versioning strategy and default bump
+                    behavior used by release-related commands.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Configuration Philosophy"
+>
+
+Custy is designed around the idea that project behavior should be
+customizable rather than hard-coded.
+
+The generated configuration provides a central location where your team can
+define project preferences once instead of repeating the same command-line
+options for every operation.
+
+This approach improves consistency while still allowing individual commands to
+override configuration values whenever necessary.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Growing Configuration"
+>
+
+The configuration file is intentionally organized into logical sections.
+
+As Custy gains new capabilities, additional configuration groups may be added
+without changing the overall structure of the file.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Relationship with Command-Line Options"
+>
+
+Command-line options always take precedence over configuration values.
+
+When an option is omitted, Custy attempts to resolve the value from the
+project configuration before falling back to its built-in defaults.
+
+This allows projects to define sensible defaults while still giving users the
+flexibility to override them when necessary.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Now that you understand how Custy is configured, continue to the **Examples**
+page to see common initialization scenarios and recommended usage patterns.
+
+</Section>

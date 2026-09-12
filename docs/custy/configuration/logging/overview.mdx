@@ -1,0 +1,25 @@
+---
+title: "Logging Overview"
+description: "Navigate Custy's Rich console and rotating file logging configuration."
+sidebar_position: 1
+sidebar_key: custy-configuration-logging-overview
+tags: [custy, configuration, logging]
+keywords: [tool.custy.logging, console logging, file logging]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.logging]" title="Logging Overview" description="Keep terminal output readable while retaining detailed rotating diagnostic logs." category="Configuration" status="Active" syntax="[tool.custy.logging]" tags={["Rich", "rotation", "diagnostics"]} links={[{label: "Console Logging", href: "./console"}, {label: "File Logging", href: "./file"}, {label: "Execution", href: "../cli/execution"}]} />
+
+<CommandMetadata items={[{label: "Console Properties", value: "6", icon: "terminal"}, {label: "File Properties", value: "6", icon: "file"}, {label: "Console Default", value: "INFO", icon: "info"}, {label: "File Default", value: "DEBUG", icon: "configuration"}]} />
+
+<FeatureGrid items={[{title: "Console", icon: <Icon name="terminal" />, children: <>Configure threshold, Rich formatting, timestamps, level display, and message format in <a href="./console">tool.custy.logging</a>.</>}, {title: "Rotating File", icon: <Icon name="file" />, children: <>Configure level, location, size, retention, and persistent format in <a href="./file">tool.custy.logging.file</a>.</>}]} />
+
+<InfoBox variant="tip" title="Useful default split">
+
+An `INFO` console keeps normal runs readable, while a `DEBUG` file retains
+detail for diagnosis without flooding terminal output.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Console Logging", href: "./console", description: "Configure Rich terminal presentation."}, {title: "File Logging", href: "./file", description: "Configure persistent rotation and retention."}, {title: "Execution", href: "../cli/execution", description: "Connect debug behavior with logging."}]} /></Section>

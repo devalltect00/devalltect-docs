@@ -1,0 +1,8 @@
+{
+  "label": "CLI Defaults",
+  "position": 10,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-custy-configuration-cli",
+  "link": {"type": "doc", "id": "custy/configuration/cli/overview"}
+}

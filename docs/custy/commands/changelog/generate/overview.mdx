@@ -1,0 +1,155 @@
+---
+title: "Overview"
+description: "Generate or update CHANGELOG.md from the repository history and Custy configuration."
+sidebar_position: 1
+sidebar_key: custy-commands-changelog-generate
+tags: [changelog, release notes, conventional commits]
+keywords: [custy changelog generate, generate CHANGELOG.md]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Screenshot,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy changelog generate"
+    title="Generate a Changelog"
+    description="Analyze repository history and render a structured CHANGELOG.md using Custy's changelog configuration."
+    category="Changelog"
+    status="Stable"
+    syntax="custy changelog generate [OPTIONS]"
+    tags={["Git history", "release notes", "Markdown"]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Options", href: "./options"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {
+            label: "Category",
+            value: "Changelog",
+            icon: "release",
+        },
+        {
+            label: "Complexity",
+            value: "Intermediate",
+            icon: "requirement",
+        },
+        {
+            label: "Primary Artifact",
+            value: "CHANGELOG.md",
+            icon: "file",
+        },
+        {
+            label: "Creates Git History",
+            value: "No",
+            icon: "git",
+        },
+    ]}
+/>
+
+## Overview
+
+The command collects eligible commits, parses structured messages, groups and
+sorts them, applies release behavior, and renders the configured changelog file.
+It may also incorporate the pending commit-message template when that feature is
+enabled.
+
+<InfoBox
+    variant="warning"
+    title="Repository file change"
+>
+
+Normal execution writes or updates `CHANGELOG.md`. Review the generated diff
+before committing it. Use the global dry-run form to preview the pipeline where
+supported: `custy --dry-run changelog generate`.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Generation Responsibilities"
+>
+
+<FeatureGrid
+    title="From History to Markdown"
+    items={[
+        {
+            title: "Collect History",
+            icon: <Icon name="git" />,
+            children: "Read eligible commits and determine configured release boundaries.",
+        },
+        {
+            title: "Classify Changes",
+            icon: <Icon name="table" />,
+            children: "Parse, clean, deduplicate, group, and sort changelog entries.",
+        },
+        {
+            title: "Render Releases",
+            icon: <Icon name="release" />,
+            children: "Apply release metadata, links, summaries, statistics, and templates.",
+        },
+        {
+            title: "Write Artifact",
+            icon: <Icon name="file" />,
+            children: "Create or update CHANGELOG.md using the resolved generation behavior.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Terminal Preview"
+>
+
+<Screenshot
+    src="/img/custy/changelog/generate-terminal.png"
+    alt="Terminal output from custy changelog generate"
+    title="Changelog generation"
+    caption="The terminal reports changelog generation and the resulting file."
+    fallback="Terminal screenshot for the changelog generation command will be added later."
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Related Commands"
+>
+
+<RelatedCommands
+    commands={[
+        {
+            title: "custy commit",
+            href: "../../commit/overview",
+            description: "Generate the changelog inside the complete commit profile.",
+        },
+        {
+            title: "custy run dev",
+            href: "../../run/dev/overview",
+            description: "Include changelog generation in daily development work.",
+        },
+        {
+            title: "custy run release",
+            href: "../../run/release/overview",
+            description: "Generate release notes before commit, tag, and push stages.",
+        },
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,25 @@
+---
+title: "Cleanup Overview"
+description: "Navigate backup retention and branch-selection configuration."
+sidebar_position: 1
+sidebar_key: custy-configuration-cli-cleanup-overview
+tags: [custy, configuration, cleanup]
+keywords: [cli cleanup, backup cleanup, branch cleanup]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.cleanup]" title="Cleanup Overview" description="Keep file retention and Git branch deletion in separate, reviewable policies." category="CLI Configuration" status="Destructive Area" syntax="[tool.custy.cli.cleanup.SUBTABLE]" tags={["retention", "branch filters", "safe defaults"]} links={[{label: "Backup Cleanup", href: "./backup"}, {label: "Branch Cleanup", href: "./branch"}, {label: "Cleanup Command", href: "../../../commands/cleanup/overview"}]} />
+
+<CommandMetadata items={[{label: "Child Tables", value: "2", icon: "directory"}, {label: "Backup Properties", value: "2", icon: "package"}, {label: "Branch Properties", value: "2 + 2 optional", icon: "git"}, {label: "Deletion Risk", value: "Requires review", icon: "danger"}]} />
+
+<FeatureGrid items={[{title: "Backup Cleanup", icon: <Icon name="package" />, children: <>Choose backup category and retention count in <a href="./backup">cli.cleanup.backup</a>.</>}, {title: "Branch Cleanup", icon: <Icon name="git" />, children: <>Choose prefixes, merge state, and an optional age or date filter in <a href="./branch">cli.cleanup.branch</a>.</>}]} />
+
+<InfoBox variant="warning" title="The policies affect different resources">
+
+Backup cleanup removes retained message files. Branch cleanup removes eligible
+Git branches. Review the appropriate command workflow before either operation.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Backup Cleanup", href: "./backup", description: "Configure type and keep."}, {title: "Branch Cleanup", href: "./branch", description: "Configure layered branch filters."}, {title: "Safety Concept", href: "../../../concepts/safety-and-side-effects", description: "Review destructive-operation boundaries."}]} /></Section>

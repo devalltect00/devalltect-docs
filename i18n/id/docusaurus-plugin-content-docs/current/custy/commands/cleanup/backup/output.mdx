@@ -1,0 +1,41 @@
+---
+title: "Output"
+description: "Pahami output Backup Cleanup."
+sidebar_position: 7
+sidebar_key: custy-cleanup-backup
+---
+import {CommandHero, CommandOutput, Section, InfoBox} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Output"
+    description="Pelajari informasi yang dilaporkan Backup Cleanup."
+    category="Maintenance"
+    status="Direkomendasikan"
+    syntax="custy cleanup backups"
+    tags={["output", "cleanup", "backup"]}
+    links={[
+        {label: "Examples", href: "./examples"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Ringkasan
+Custy melaporkan target, file yang dipertahankan/dihapus, dan summary.
+
+<Section title="Output Umum">
+<CommandOutput outputs={[
+    {title: "Cleanup Berhasil", description: "Backup Cleanup selesai dengan sukses.", output: `ðŸ§¹ Cleaning up backup files...
+â†’ Cleaning commit backups (keeping 10)
+â†’ Cleaning tag backups (keeping 10)
+
+âœ“ Pipeline completed successfully!`, notes: "Teks persisnya dapat berbeda berdasarkan konfigurasi dan target cleanup."},
+]} />
+</Section>
+
+<InfoBox variant="tip" title="Dry Run">
+Dry run menampilkan kandidat tanpa menghapus file.
+</InfoBox>
+
+<Section title="Langkah Berikutnya">Gunakan **Troubleshooting** jika hasil tidak sesuai.</Section>

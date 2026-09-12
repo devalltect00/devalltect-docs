@@ -1,0 +1,152 @@
+---
+title: "Changelog Generate Troubleshooting"
+description: "Resolve common changelog generation and rendering problems."
+sidebar_position: 9
+sidebar_key: custy-changelog-generate-troubleshooting
+tags: [changelog, troubleshooting, git]
+keywords: [changelog missing commits, changelog error]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy changelog generate"
+    title="Changelog Generate Troubleshooting"
+    description="Resolve missing entries, duplicate content, grouping noise, link errors, and template problems."
+    category="Changelog"
+    status="Support Guide"
+    syntax="custy changelog generate [OPTIONS]"
+    tags={[
+        "troubleshooting",
+        "configuration",
+        "recovery",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../../troubleshooting/overview",
+        },
+        {
+            label: "Requirements",
+            href: "./requirements",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+Most changelog problems originate in release boundaries, local history, commit
+classification, or render configuration. Diagnose the first unexpected stage
+before forcing another generation.
+
+<InfoBox
+    variant="tip"
+    title="Inspect inputs before retrying"
+>
+
+Confirm local commits and tags, then compare the current configuration with the
+generated diff. Repeated forced runs do not correct an incorrect input.
+
+</InfoBox>
+
+---
+
+## A Commit Is Missing
+
+<Section compact>
+
+Check the release boundary, `ignore_merge_commits`, `ignore_types`, type mapping,
+and whether the message matches the configured parser. Also verify that the
+commit exists in local history.
+
+</Section>
+
+---
+
+## The Same Entry Appears More Than Once
+
+<Section compact>
+
+Confirm that `[tool.custy.changelog.render].deduplicate` is enabled and inspect
+whether pending content repeats a committed message.
+
+</Section>
+
+---
+
+## Scope Headings Are Noisy
+
+<Section compact>
+
+Review `group_by_scope`, `collapse_generic_scopes`, `generic_scopes`, and the
+scope map. Generic scopes can be collapsed while meaningful scopes remain.
+
+</Section>
+
+---
+
+## Pending Content Is Misplaced
+
+<Section compact>
+
+Confirm whether pending content is enabled and inspect the configured message
+file. The current placement limitation belongs to the changelog subsystem, so
+see [Pending Content](../../../troubleshooting/changelog#pending-content) for
+the active provider behavior and loaded-only properties.
+
+</Section>
+
+---
+
+## Comparison Links Are Incorrect
+
+<Section compact>
+
+Verify repository-link configuration, detected remote information, tags, and
+the configured release boundaries.
+
+</Section>
+
+---
+
+## An Alternative Pending Message File Is Rejected
+
+<Section compact>
+
+The `--commit-msg-file` path must exist and must refer to a file. Resolve the
+path from the current working directory or use an explicit path. This option
+selects pending commit content; the changelog Jinja template path comes from
+project configuration.
+
+</Section>
+
+---
+
+## Safe Recovery
+
+<Section compact>
+
+<Terminal>
+
+{`git diff -- CHANGELOG.md`}
+
+</Terminal>
+
+If the result is not suitable, preserve any needed manual content, correct the
+input or configuration, and regenerate. Do not discard unrelated working-tree
+changes.
+
+</Section>

@@ -1,0 +1,107 @@
+---
+title: "# 📘 User Guide"
+---
+
+# 🚀 Reflow User Guide
+
+Reflow is a CLI tool for:
+
+- Replaying Git tags
+- Building Docker images per tag
+- Pushing images to GitHub (GHCR) and GitLab Registry
+
+---
+
+## 📦 Installation
+
+```bash
+pip install -e .
+````
+
+---
+
+## ⚙️ Initialize Project
+
+```bash
+reflow init
+```
+
+Creates:
+
+```
+.reflow.toml
+```
+
+---
+
+## 🔁 Replay Tags
+
+Used to trigger CI/CD pipelines.
+
+```bash
+reflow replay-tags
+````
+
+---
+
+## 🐳 Dockerize Images
+
+```bash
+reflow dockerize
+```
+
+### What happens:
+
+1. Read `.reflow.toml`
+2. Get Git tags
+3. Build image per tag
+4. Tag latest
+5. Push to registry
+6. Cleanup local images
+
+---
+
+## 🔍 Dry Run
+
+```bash
+reflow dockerize --dry-run
+```
+
+Shows commands without executing.
+
+---
+
+## 🔄 Convert Tags
+
+```bash
+reflow convert-tags
+```
+
+---
+
+## 📌 Behavior
+
+* Builds image per tag
+* Pushes to configured registry
+* Adds `latest` to newest tag
+* Cleans up local images (except latest)
+
+---
+
+## 🌍 Supported Providers
+
+* GitHub Container Registry (`ghcr.io`)
+* GitLab Container Registry (`registry.gitlab.com`)
+* Both
+
+---
+
+## ⚠️ Requirements
+
+* Docker installed
+* Logged in to registry
+
+```bash
+docker login ghcr.io
+docker login registry.gitlab.com
+```

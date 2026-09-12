@@ -1,0 +1,189 @@
+---
+title: "Extending Configuration"
+description: "Carry a new Custy setting from the packaged TOML template through resolution, runtime use, tests, and documentation."
+sidebar_position: 7
+sidebar_key: custy-developer-guide-extending-configuration
+tags: [custy, configuration, TOML]
+keywords: [extend Custy configuration, ConfigLoader, config.toml]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy]"
+    title="Extending Configuration"
+    description="Add one project setting without creating a mismatch among initialization, resolution, runtime behavior, and reference docs."
+    category="Developer Guide"
+    status="Internal Extension"
+    syntax="template -> user config -> resolver -> consumer"
+    tags={["TOML", "ConfigLoader", "configuration precedence"]}
+    links={[
+        {label: "Configuration Model", href: "../configuration/overview"},
+        {label: "Resolution", href: "../configuration/resolution"},
+        {label: "All Properties", href: "../configuration/reference"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Packaged Source", value: "app/templates/config.toml", icon: "package"},
+        {label: "Project Copy", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Root Namespace", value: "tool.custy", icon: "project"},
+        {label: "Default Priority", value: "CLI -> config -> built-in", icon: "timeline"},
+    ]}
+/>
+
+## Overview
+
+`custy init` copies the packaged configuration resource into a user's project.
+At runtime, `ConfigLoader` parses the project-owned file, extracts
+`[tool.custy]`, and lets command resolvers select explicit CLI values before
+project values and built-in defaults.
+
+<InfoBox variant="warning" title="A template entry alone has no behavior">
+
+A new TOML key becomes active only when a resolver or service reads it and a
+runtime consumer applies it. Update every layer deliberately and document the
+property's actual implementation status.
+
+</InfoBox>
+
+---
+
+<Section title="Configuration Lifecycle">
+
+<WorkflowTimeline
+    items={[
+        {title: "Define the packaged setting", description: "Add the key, safe default, and useful comment to app/templates/config.toml under the correct [tool.custy] table.", status: "completed"},
+        {title: "Initialize a project copy", description: "Custy's initialization registry copies the packaged resource to .config/custy/config.toml according to init overwrite and prompt policy.", status: "completed"},
+        {title: "Load the namespace", description: "ConfigLoader parses TOML and exposes the contents beneath tool.custy.", status: "current"},
+        {title: "Resolve an effective value", description: "A command resolver or typed subsystem resolver reads the exact nested path and applies fallback behavior.", status: "pending"},
+        {title: "Consume and verify", description: "Core behavior uses the value, tests cover precedence and validation, and public docs explain scope, defaults, and status.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Choose the Correct Namespace">
+
+<FeatureGrid
+    title="Configuration Ownership"
+    items={[
+        {title: "Project", icon: <Icon name="project" />, children: "Use tool.custy.project for project-wide source and identity choices."},
+        {title: "CLI Defaults", icon: <Icon name="terminal" />, children: "Use tool.custy.cli for paths, templates, execution, versioning, push, backup, cleanup, and command-level defaults."},
+        {title: "Changelog Engine", icon: <Icon name="release" />, children: "Use tool.custy.changelog for collection, cleaning, release handling, mapping, links, and rendering."},
+        {title: "Git Remotes", icon: <Icon name="git" />, children: "Use tool.custy.git for default, primary, and backup remote policy."},
+        {title: "Logging", icon: <Icon name="file" />, children: "Use tool.custy.logging for console and rotating-file output behavior."},
+        {title: "Initialization", icon: <Icon name="copy" />, children: "Use tool.custy.init for generation, overwrite, and prompting defaults."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Resolve the Setting">
+
+Use `ConfigLoader.resolve()` for a value that can be supplied by the CLI,
+project configuration, or a built-in fallback.
+
+<Terminal title="Resolution example" language="python">
+
+{`effective_value = config.resolve(
+    cli_value=cli_args.example_value,
+    config_keys=["cli", "example", "value"],
+    default="safe-default",
+)`}
+
+</Terminal>
+
+Use `get()` for optional nested reads, `require()` when absence must fail, and
+`get_section()` when a subsystem owns a complete mapping. Paths passed to the
+loader start below `[tool.custy]`.
+
+</Section>
+
+---
+
+<Section title="Carry the Value to Runtime">
+
+<CommandChecklist
+    items={[
+        {title: "CLI declaration", description: "Add an optional Typer value when one-run override is useful; leave it unspecified when configuration fallback should remain possible."},
+        {title: "Resolved model", description: "Add a typed field to the command dataclass or subsystem configuration model."},
+        {title: "Resolver path", description: "Use exactly the table and key written by the packaged template."},
+        {title: "Workflow transport", description: "Extend WorkflowConfig and WorkflowEngineBuilder only when the value must cross from the CLI into pipeline-backed core behavior."},
+        {title: "Runtime consumer", description: "Apply the effective value in one responsible service, engine, renderer, provider, or handler."},
+        {title: "Initialization behavior", description: "Verify fresh init output and deliberate force or prompt handling when the packaged template changes."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Typed Subsystem Configuration">
+
+The changelog subsystem converts nested mappings into dataclasses through
+`ChangelogConfigResolver`. For a new changelog property, update the matching
+dataclass, the appropriate `_load_*()` method and default, the consumer, and
+focused resolver and behavior tests. Normalize invalid shapes intentionally;
+do not assume every TOML value has the expected dictionary or enum form.
+
+</Section>
+
+---
+
+<Section title="Testing and Documentation">
+
+- Test explicit CLI precedence, configured values, missing keys, and the
+  built-in default.
+- Test invalid TOML, invalid types or enum values, and required-value failures
+  according to the intended contract.
+- Test the actual consumer so a key cannot appear implemented while remaining
+  unused.
+- Verify a newly initialized project receives the intended key and comment.
+- Update the matching configuration namespace page and the complete property
+  reference with type, default, effect, and implementation status.
+- Update command options, examples, safety, and troubleshooting when the new
+  value changes user behavior.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Configuration is cached per Custy process">
+
+The shared `get_config()` instance loads the project file once. A separate CLI
+invocation reads it again, but a long-lived test or in-process caller must reset
+or replace cached state deliberately when testing multiple configurations.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Configuration Overview", href: "../configuration/overview", description: "Choose the correct namespace and ownership boundary."},
+        {title: "Resolution and Status", href: "../configuration/resolution", description: "Review precedence and implementation-status language."},
+        {title: "All Properties", href: "../configuration/reference", description: "Keep the full generated and supported key inventory synchronized."},
+        {title: "Adding Commands", href: "./adding-commands", description: "Connect CLI options and typed resolvers to the new setting."},
+    ]}
+/>
+
+</Section>

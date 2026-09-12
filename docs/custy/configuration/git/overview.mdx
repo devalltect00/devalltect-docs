@@ -1,0 +1,25 @@
+---
+title: "Git Overview"
+description: "Navigate service-level remote groups and push strategy under tool.custy.git."
+sidebar_position: 1
+sidebar_key: custy-configuration-git-overview
+tags: [custy, configuration, git]
+keywords: [tool.custy.git, git remotes, push_to]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git]" title="Git Overview" description="Define authoritative and backup repositories separately from command-level push options." category="Configuration" status="Active + Reserved Key" syntax="[tool.custy.git]" tags={["remotes", "push strategy", "backup repositories"]} links={[{label: "Remotes", href: "./remotes"}, {label: "Push Strategy", href: "./push-strategy"}, {label: "CLI Push", href: "../cli/push"}]} />
+
+<CommandMetadata items={[{label: "Generated Properties", value: "4", icon: "table"}, {label: "Optional Property", value: "backup_remotes", icon: "note"}, {label: "Default Remote", value: "origin", icon: "git"}, {label: "Network Side Effect", value: "Yes", icon: "warning"}]} />
+
+<FeatureGrid items={[{title: "Remote Groups", icon: <Icon name="network" />, children: <>Configure default, primary, and optional backup destinations in <a href="./remotes">Git Remotes</a>.</>}, {title: "Push Strategy", icon: <Icon name="workflow" />, children: <>Choose main, backup, or all service-level groups and review reserved auto-push behavior in <a href="./push-strategy">Push Strategy</a>.</>}, {title: "CLI Push Defaults", icon: <Icon name="terminal" />, children: <>Configure all-remote, skip-tag, and backup-sync arguments in <a href="../cli/push">tool.custy.cli.push</a>.</>}]} />
+
+<InfoBox variant="warning" title="Do not store credentials here">
+
+Configuration contains remote names, not secrets. Use Git's credential and
+authentication facilities appropriate to each hosting service.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Define primary and backup groups."}, {title: "Push Strategy", href: "./push-strategy", description: "Select a service-level group."}, {title: "CLI Push", href: "../cli/push", description: "Configure direct command defaults."}]} /></Section>

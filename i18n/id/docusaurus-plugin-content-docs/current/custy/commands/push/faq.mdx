@@ -1,0 +1,20 @@
+---
+title: "FAQ"
+description: "Pertanyaan umum tentang custy push."
+sidebar_position: 10
+sidebar_key: custy-push-faq
+---
+import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy push" title="Pertanyaan yang Sering Diajukan" description="Jawaban tentang destinations, tags, backup remotes, dan dry run." category="Git Operations" status="Reference" syntax="custy push [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Remotes",href:"./remotes"},{label:"Troubleshooting",href:"./troubleshooting"}]} />
+
+## Ringkasan
+
+<InfoBox variant="warning" title="Dry-Run Output Is the Current Destination Truth">Selalu baca remote role, name, dan actions yang dilaporkan.</InfoBox>
+
+<Section title="Apa yang Dipush Secara Default?">Current HEAD dikirim ke resolved main remote. Tag dan backup synchronization bergantung pada options dan state.</Section>
+<Section title="Apakah custy push Membuat Commit atau Tag?">Tidak. Commit dan Tag adalah profile terpisah.</Section>
+<Section title="Dapatkah Push ke Backup Remote?">Ya, bila synchronization diminta dan eligible backup destination ditemukan.</Section>
+<Section title="Dapatkah Saya Mengandalkan --remote Saat Ini?">Belum sepenuhnya. CLI menerima option tersebut, tetapi adapter dan engine belum sepenuhnya terhubung.</Section>
+<Section title="Apa Perbedaan custy run push?">Keduanya memakai registered Push profile; direct command menyediakan push-specific options.</Section>
+<Section title="Apakah Dry Run Menghubungi Remote?">Dry run ditujukan untuk pratinjau tanpa push mutation; jangan menganggapnya sebagai bukti authentication atau remote permission sukses.</Section>

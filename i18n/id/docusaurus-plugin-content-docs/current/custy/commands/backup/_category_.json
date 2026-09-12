@@ -1,0 +1,11 @@
+{
+  "label": "Backup",
+  "position": 3,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-backup",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/backup/overview"
+  }
+}

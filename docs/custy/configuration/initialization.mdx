@@ -1,0 +1,88 @@
+---
+title: "Initialization"
+description: "Configure Custy's default overwrite and confirmation behavior during project initialization."
+sidebar_position: 7
+sidebar_key: custy-configuration-initialization
+tags: [custy, configuration, init]
+keywords: [tool.custy.initialization, init force, init ask]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.initialization]"
+    title="Initialization"
+    description="Choose safe project defaults for preserving, prompting, or replacing generated resources."
+    category="Configuration"
+    status="Active"
+    syntax="custy init [--mode MODE] [--force | --ask]"
+    tags={["scaffolding", "overwrite", "prompts"]}
+    links={[
+        {label: "Init Overview", href: "../commands/init/overview"},
+        {label: "Configuration File", href: "./config-file"},
+        {label: "Generated Files", href: "../commands/init/generated-files"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Table", value: "tool.custy.initialization", icon: "configuration"},
+        {label: "Properties", value: "2", icon: "table"},
+        {label: "Default Mode", value: "Preserve", icon: "security"},
+        {label: "CLI Priority", value: "Higher", icon: "terminal"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "force", type: "Boolean", defaultValue: "false", description: "Overwrite existing selected files without confirmation, including files inside nested example directories. Directories are merged rather than replaced. An explicit CLI force choice wins."},
+        {property: "ask", type: "Boolean", defaultValue: "false", description: "Prompt before replacing supported individual generated files. Packaged example files use merge behavior without per-file prompts. Declining preserves the prompted file."},
+    ]}
+/>
+
+<Terminal title="Safe defaults" language="toml">
+
+{`[tool.custy.initialization]
+force = false
+ask = false`}
+
+</Terminal>
+
+<InfoBox variant="danger" title="Avoid shared force defaults">
+
+Keeping `force = true` in a shared project file can make an ordinary
+`custy init` replace customized configuration and templates. Prefer an explicit
+one-run `--force` after reviewing the affected resources.
+
+</InfoBox>
+
+<Section title="Example Directory Behavior">
+
+The `all` and `examples` modes walk packaged examples recursively. If the
+destination already exists, Custy adds missing nested directories and files
+instead of skipping the whole example tree. Existing files are preserved by
+default and overwritten only when effective force behavior is enabled.
+
+</Section>
+
+<Section title="Modes and Scope">
+
+The mode remains a CLI choice rather than a generated configuration property:
+`all`, `all_no_examples`, `config`, `templates`, or `examples`. When omitted,
+the resolver uses `all`.
+
+</Section>
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Init Syntax", href: "../commands/init/syntax", description: "Review modes, force, and ask invocation forms."},
+        {title: "Generated Files", href: "../commands/init/generated-files", description: "See which resources each mode can create."},
+        {title: "Configuration File", href: "./config-file", description: "Understand packaged and project-owned copies."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,125 @@
+---
+title: "FAQ"
+description: "Answers to common questions about Custy changelog generation."
+sidebar_position: 10
+sidebar_key: custy-changelog-generate-faq
+tags: [changelog, faq, release notes]
+keywords: [custy changelog faq]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy changelog generate"
+    title="Frequently Asked Questions"
+    description="Find concise answers about changelog side effects, public command forms, commit formats, and configuration."
+    category="Changelog"
+    status="Support Guide"
+    syntax="custy changelog generate"
+    tags={[
+        "FAQ",
+        "release notes",
+        "support",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+    ]}
+/>
+
+## Overview
+
+These answers clarify the boundaries of standalone changelog generation and
+the project settings that affect its result.
+
+<InfoBox
+    variant="note"
+    title="Use the direct command"
+>
+
+The supported standalone form is `custy changelog generate`. The internal
+changelog profile is not a public `custy run` argument.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Does Generation Change Git History?"
+>
+
+No. The standalone command writes the changelog file but does not itself create
+a commit or tag. A larger public profile may perform those later stages.
+
+</Section>
+
+---
+
+<Section
+    title="Can I Run `custy run changelog`?"
+>
+
+No. `changelog` is currently an internal profile name, not an accepted public
+`custy run` argument. Use `custy changelog generate`.
+
+</Section>
+
+---
+
+<Section
+    title="Must Every Commit Use Conventional Commits?"
+>
+
+Structured messages give the parser the most reliable type, scope, and breaking
+change information. Unstructured messages may be classified differently or
+excluded depending on configuration.
+
+</Section>
+
+---
+
+<Section
+    title="Will `--force` Ignore All Configuration?"
+>
+
+No. It changes the force-generation decision; collection, parsing, grouping,
+release, link, and rendering settings still apply.
+
+</Section>
+
+---
+
+<Section
+    title="Can I Keep Manual Content in `CHANGELOG.md`?"
+>
+
+That depends on the selected generation and integration behavior. Test the
+configuration on a reviewed branch and inspect the full diff before adopting a
+workflow that mixes generated and manual content.
+
+</Section>
+
+---
+
+<Section
+    title="Where Should I Configure the Generator?"
+>
+
+Use `.config/custy/config.toml`. CLI flags are best for one-time overrides;
+project configuration is better for repeatable team behavior.
+
+</Section>

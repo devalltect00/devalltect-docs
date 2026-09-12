@@ -1,0 +1,31 @@
+flowchart TD
+
+A[Git Repository]
+
+B[Discover Tags]
+
+C[Select Tag]
+
+D[Build Docker Image]
+
+E[Tag Image]
+
+F[Push Image]
+
+G[Registry]
+
+H[Cleanup Images]
+
+A --> B
+
+B --> C
+
+C --> D
+
+D --> E
+
+E --> F
+
+F --> G
+
+F --> H

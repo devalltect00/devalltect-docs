@@ -1,0 +1,205 @@
+---
+title: "Validation Checks"
+description: "Pelajari hal yang diperiksa Custy sebelum menjalankan workflow."
+sidebar_position: 5
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    Section,
+    FeatureGrid,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Validation Checks"
+    description="Pahami setiap validation step yang dijalankan sebelum workflow Custy dimulai."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={["validation", "workflow", "git", "configuration"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Ringkasan
+
+Command **validate** menjalankan serangkaian validation checks yang independen.
+Setiap check memastikan satu prerequisite yang diperlukan oleh workflow Custy
+berikutnya.
+
+Jika suatu validation step gagal, eksekusi langsung berhenti dan Custy
+melaporkan penyebab serta tindakan yang disarankan untuk menyelesaikannya.
+
+---
+
+<InfoBox variant="tip" title="Berbasis Configuration">
+
+Sebagian besar target validation ditentukan dari
+`.config/custy/config.toml`. Version file, lokasi template, dan nama Git remote
+ditentukan dari project configuration selama memungkinkan.
+
+</InfoBox>
+
+---
+
+<Section title="Kategori Validation">
+
+<FeatureGrid
+    title="Yang Diperiksa Custy"
+    items={[
+        {
+            title: "Git Repository",
+            icon: <Icon name="git" />,
+            children: <>Pastikan current directory merupakan Git repository yang valid sebelum melanjutkan.</>,
+        },
+        {
+            title: "Repository Configuration",
+            icon: <Icon name="configuration" />,
+            children: <>Pastikan repository configuration seperti remote dan version file tersedia.</>,
+        },
+        {
+            title: "Project Resources",
+            icon: <Icon name="directory" />,
+            children: <>Pastikan template files dan supporting resources yang diperlukan tersedia.</>,
+        },
+        {
+            title: "Repository State",
+            icon: <Icon name="success" />,
+            children: <>Pastikan repository berada dalam kondisi yang sesuai untuk commit workflow.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Urutan Validation">
+
+Custy menjalankan validation dalam urutan berikut.
+
+| Step | Validation |
+|------|------------|
+| 1 | Git repository |
+| 2 | Git remote |
+| 3 | Version file |
+| 4 | Commit message template |
+| 5 | Tag message template |
+| 6 | Staged changes |
+| 7 | Commitizen convention (jika diaktifkan) |
+| 8 | Commit message template availability |
+| 9 | Tag message template availability |
+
+Urutan ini memastikan environment checks yang ringan diselesaikan sebelum
+workflow-specific validation dimulai.
+
+</Section>
+
+---
+
+<Section title="Repository Validation">
+
+### Git Repository
+
+Custy terlebih dahulu memastikan current directory termasuk dalam Git
+repository. Jika Git belum diinisialisasi, validation berhenti karena workflow
+commands berikutnya bergantung pada operasi Git.
+
+---
+
+### Git Remote
+
+Custy memastikan remote yang dikonfigurasi tersedia. Nama remote diperoleh dari
+project configuration, bukan di-hard-code. Proyek dapat menggunakan `origin`,
+`upstream`, `backup`, atau custom remote lain sesuai configuration.
+
+</Section>
+
+---
+
+<Section title="Project Resource Validation">
+
+### Version File
+
+Custy memastikan version file yang dikonfigurasi tersedia. Lokasinya bergantung
+pada project configuration, misalnya `__version__.py` atau file khusus proyek
+lainnya.
+
+---
+
+### Commit Message Template
+
+Custy memastikan commit message template yang dikonfigurasi tersedia. Template
+ini biasanya dibuat dengan `custy init` atau
+`custy init --mode templates`.
+
+---
+
+### Tag Message Template
+
+Custy juga memeriksa tag message template yang dikonfigurasi sebelum workflow
+yang memerlukan annotated tag atau generated tag message.
+
+</Section>
+
+---
+
+<Section title="Repository State Validation">
+
+### Staged Changes
+
+Sebelum commit-oriented workflow dimulai, Custy memastikan file sudah di-stage.
+Bergantung pada options dan project configuration, Custy dapat:
+
+- menerima staged files yang sudah ada,
+- melakukan stage terhadap modified files secara otomatis,
+- mengizinkan staging kosong jika diminta secara eksplisit, atau
+- menghentikan validation dan menjelaskan cara menyelesaikan masalah.
+
+Check ini membantu mencegah empty commit yang tidak disengaja.
+
+</Section>
+
+---
+
+<Section title="Commit Strategy Validation">
+
+Jika proyek menggunakan **Commitizen** version strategy, Custy memastikan
+commit message memenuhi convention yang dikonfigurasi.
+
+Proyek yang menggunakan SemVer, PEP 440, Date, atau Git Count strategy tidak
+bergantung pada validation ini dengan cara yang sama. Karena itu, commit
+strategy validation bergantung pada versioning strategy yang dipilih.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Fail Fast">
+
+Validation menggunakan pendekatan **fail-fast**. Saat satu validation step
+gagal, checks berikutnya dilewati dan Custy melaporkan masalah beserta panduan
+penyelesaiannya.
+
+</InfoBox>
+
+---
+
+<Section title="Hubungan dengan Workflow">
+
+`custy validate` menjalankan checks ini secara langsung.
+
+`custy run` juga menjalankan validation stage yang sama secara otomatis sebelum
+melanjutkan ke workflow pipeline berikutnya.
+
+Dalam development sehari-hari, pengguna yang terutama memakai workflow
+commands biasanya tidak perlu menjalankan validation secara terpisah.
+
+</Section>

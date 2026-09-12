@@ -1,0 +1,98 @@
+---
+title: "Remotes"
+description: "Understand main and backup remote resolution in the Custy push workflow."
+sidebar_position: 5
+sidebar_key: custy-push-remotes
+tags: [push, remotes, backup]
+keywords: [main remote, backup remote, origin]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy push"
+    title="Remote Resolution"
+    description="Understand how the push engine distinguishes main destinations, backup destinations, and fallback remotes."
+    category="Git Operations"
+    status="Limited"
+    syntax="custy push [OPTIONS]"
+    tags={[
+        "remotes",
+        "origin",
+        "backup",
+    ]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Options", href: "./options"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+## Overview
+
+The workflow engine assigns remotes a main or backup role. The role controls
+when the destination is processed and which safety rules apply.
+
+---
+
+<Section
+    title="Remote Roles"
+>
+
+<FeatureGrid
+    title="Resolved Destination Types"
+    items={[
+        {title: "Main Remotes", icon: <Icon name="network" />, children: "Receive the current HEAD and, when selected, a tag."},
+        {title: "Backup Remotes", icon: <Icon name="package" />, children: "Receive synchronization only when backup sync is enabled and the current branch is eligible."},
+        {title: "Origin Fallback", icon: <Icon name="git" />, children: "May be proposed interactively when no explicit main-remotes list reaches the engine."},
+        {title: "Backup Fallback", icon: <Icon name="configuration" />, children: "A remote named backup can be checked when backup synchronization is enabled without an explicit list."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Branch Safety"
+>
+
+Backup push is intentionally skipped for configured non-critical branch
+prefixes such as feature, CI, or sandbox work.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="CLI and engine are not fully connected"
+>
+
+Although the direct command exposes `--remote` and `--all-remote`, those values
+are not currently mapped to the engine's main-remotes list. Treat the interactive
+fallback and dry-run report as the current source of actual destination truth.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Inspect Repository Remotes"
+>
+
+<Terminal>
+
+{`git remote -v
+git branch --show-current`}
+
+</Terminal>
+
+</Section>

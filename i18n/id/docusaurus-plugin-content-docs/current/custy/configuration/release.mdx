@@ -1,0 +1,71 @@
+---
+title: "Release Metadata"
+description: "Pahami generated release metadata dan compatibility boundary saat ini."
+sidebar_position: 6
+sidebar_key: custy-configuration-release
+tags: [custy, configuration, release]
+keywords: [tool.custy.release, release author, include date]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.release]"
+    title="Release Metadata"
+    description="Tinjau generated author dan date settings tanpa mengasumsikan unsupported output."
+    category="Configuration"
+    status="Compatibility Gap"
+    syntax="[tool.custy.release]"
+    tags={["author", "release date", "legacy loader"]}
+    links={[
+        {label: "Versioning", href: "./cli/versioning"},
+        {label: "Changelog Releases", href: "./changelog/releases"},
+        {label: "Release Lifecycle", href: "../concepts/release-lifecycle"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Table", value: "tool.custy.release", icon: "configuration"},
+        {label: "Properties", value: "2", icon: "table"},
+        {label: "Generated", value: "Yes", icon: "file"},
+        {label: "Active Shape", value: "Not aligned", icon: "warning"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "author", type: "String", defaultValue: "devalltect00", description: "Intended default release author. Active legacy release-note loader saat ini tidak membaca nested tool.custy key ini."},
+        {property: "include_date", type: "Boolean", defaultValue: "true", description: "Intended switch untuk release-date metadata. Active legacy release-note builder mengharapkan configuration shape yang berbeda."},
+    ]}
+/>
+
+<Terminal title="Generated configuration" language="toml">
+
+{`[tool.custy.release]
+author = "devalltect00"
+include_date = true`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Jangan Mengandalkan Key Ini Dulu">
+
+Legacy builder memuat top-level `release` table dan mencari `custom_author`,
+sedangkan generated file menyediakan `tool.custy.release.author`. Verifikasi
+output pada installed version Anda sebelum menganggap values ini active.
+
+</InfoBox>
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "Versioning", href: "./cli/versioning", description: "Konfigurasikan active version strategy dan bump behavior."},
+        {title: "Changelog Releases", href: "./changelog/releases", description: "Konfigurasikan active changelog release extraction dan per-version overrides."},
+        {title: "Release Lifecycle", href: "../concepts/release-lifecycle", description: "Pahami posisi release metadata dalam proses."},
+    ]}
+/>
+
+</Section>

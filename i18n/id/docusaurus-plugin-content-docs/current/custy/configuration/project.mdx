@@ -1,0 +1,99 @@
+---
+title: "Project"
+description: "Konfigurasikan primary Custy project source directory."
+sidebar_position: 5
+sidebar_key: custy-configuration-project
+tags: [custy, configuration, project]
+keywords: [tool.custy.project, project_source]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.project]"
+    title="Project"
+    description="Biarkan Custy mendeteksi project source, atau pilih source directory secara eksplisit."
+    category="Configuration"
+    status="Active"
+    syntax={'project_source = "auto"'}
+    tags={["source discovery", "path validation", "project root"]}
+    links={[
+        {label: "CLI Paths", href: "./cli/paths"},
+        {label: "Configuration File", href: "./config-file"},
+        {label: "Validate", href: "../commands/validate/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Table", value: "tool.custy.project", icon: "configuration"},
+        {label: "Properties", value: "1", icon: "table"},
+        {label: "Generated Default", value: "auto", icon: "directory"},
+        {label: "Status", value: "Active", icon: "success"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {
+            property: "project_source",
+            type: "Path string atau auto",
+            defaultValue: "auto",
+            required: false,
+            description: "Gunakan auto untuk runtime discovery, atau tetapkan directory eksplisit yang relatif terhadap project root. Path eksplisit harus tersedia dan berupa directory.",
+        },
+    ]}
+/>
+
+<Section title="Contoh">
+
+<Terminal title="Deteksi otomatis (direkomendasikan)" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"`}
+
+</Terminal>
+
+<Terminal title="Layout eksplisit" language="toml">
+
+{`[tool.custy.project]
+project_source = "src"
+
+# Path valid lainnya antara lain:
+# project_source = "backend"
+# project_source = "services/api"`}
+
+</Terminal>
+
+</Section>
+
+<InfoBox variant="info" title="Pemilihan source otomatis">
+
+Untuk marker Python, Custy memprioritaskan `app/`, lalu `src/`. Untuk
+repository Node.js dan generic, Custy memprioritaskan `src/`, lalu `app/`.
+Jika keduanya tidak ada, project root tetap valid. Deteksi dilakukan saat
+command dijalankan, sehingga repository Docusaurus, React, PHP, atau lainnya
+tidak memerlukan directory `app/` hanya untuk menjalankan Custy.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Path eksplisit tetap strict">
+
+Nilai eksplisit merupakan override yang disengaja. Custy menampilkan
+configuration error jika path tidak ada atau bukan directory. Kembalikan nilai
+ke `auto` atau perbaiki path; jangan membuat directory `app/` placeholder.
+
+</InfoBox>
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "CLI Paths", href: "./cli/paths", description: "Konfigurasikan version-file path secara terpisah dari source root."},
+        {title: "Validate", href: "../commands/validate/overview", description: "Periksa project resources sebelum consequential commands."},
+    ]}
+/>
+
+</Section>

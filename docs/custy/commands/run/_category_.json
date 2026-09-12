@@ -1,0 +1,11 @@
+{
+  "label": "Run",
+  "position": 10,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-run",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/run/overview"
+  }
+}

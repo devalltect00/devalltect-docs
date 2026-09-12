@@ -1,0 +1,298 @@
+---
+title: "Documentation Status"
+description: "See which Custy release this documentation represents, when it was reviewed, and how to compare another installed version."
+sidebar_position: 10
+sidebar_key: custy-reference-documentation-status
+tags: [custy, reference, documentation status, version]
+keywords: [Custy documentation version, Custy 2.0.0 docs, documentation baseline]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    PropertyTable,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Documentation Status"
+    description="Identify the Custy release represented by this site and decide when release-specific verification is needed."
+    category="Reference"
+    status="Auto-checked for v2.0.0"
+    syntax="custy --version"
+    tags={["documentation baseline", "release alignment", "maintenance"]}
+    links={[
+        {label: "Custy v2.0.0 Release", href: "https://github.com/devalltect00/Custy/releases/tag/v2.0.0"},
+        {label: "All Releases", href: "https://github.com/devalltect00/Custy/releases"},
+        {label: "Reference", href: "./overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Documentation Baseline", value: "Custy v2.0.0", icon: "release"},
+        {label: "Last Reviewed", value: "August 22, 2026", icon: "success"},
+        {label: "Languages", value: "English and Indonesian", icon: "feature"},
+        {label: "Freshness Mode", value: "Automatic · PEP 440", icon: "configuration"},
+    ]}
+/>
+
+## Current baseline
+
+These pages describe **Custy v2.0.0** and were last reviewed against the active
+source on **August 22, 2026**. The date records a deliberate documentation
+review; it is not an automatic Git edit date or deployment timestamp.
+
+<InfoBox variant="info" title="Remote tags are checked at build time">
+
+The portal runs `git ls-remote --tags --refs` when Docusaurus starts or builds.
+It does not query GitHub from each visitor's browser. The deployed result stays
+unchanged until the documentation site is built again.
+
+</InfoBox>
+
+Custy currently uses automatic PEP 440 detection while its existing repository
+tags are being migrated. Change `tagFormat` to `semver` after the repository tag
+strategy changes to SemVer.
+
+---
+
+<Section title="Compare Your Installed Version">
+
+<Terminal title="Show the installed Custy version" language="bash">
+
+{`custy --version`}
+
+</Terminal>
+
+- If the command reports `2.0.0`, this documentation is the matching baseline.
+- If it reports an older version, use that version's release notes and source
+  tag to identify features that were not available yet.
+- If it reports a newer version, review the releases published after `v2.0.0`
+  for new commands, options, configuration, behavior changes, and fixes.
+- For pre-release or post-release identifiers, compare the complete version,
+  including markers such as `alpha`, `beta`, `rc`, `dev`, or `post`.
+
+Use the [Custy releases](https://github.com/devalltect00/Custy/releases) and the
+[`v2.0.0` source snapshot](https://github.com/devalltect00/Custy/tree/v2.0.0)
+as release-specific references.
+
+</Section>
+
+---
+
+<Section title="Freshness States">
+
+<FeatureGrid
+    items={[
+        {
+            title: "Current",
+            icon: <Icon name="success" />,
+            children: "The documented version equals the latest compatible remote tag. The global notice is hidden to avoid repeating non-actionable information.",
+        },
+        {
+            title: "Outdated",
+            icon: <Icon name="warning" />,
+            children: "A newer compatible tag exists. A warning appears at the top of every affected project page before readers follow version-sensitive instructions.",
+        },
+        {
+            title: "Preview",
+            icon: <Icon name="info" />,
+            children: "The documented version is newer than the latest compatible remote tag. An informational notice identifies the documentation as a preview.",
+        },
+        {
+            title: "Unknown",
+            icon: <Icon name="configuration" />,
+            children: "The latest release could not be verified and no current fallback was selected. A neutral notice asks readers to check the release list.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Configuration Reference">
+
+Freshness settings live in the project entry in `src/data/projects.ts`. They
+configure the documentation portal itself; they are not Custy CLI settings and
+do not belong in `.config/custy/config.toml`.
+
+<PropertyTable
+    title="Shared documentation fields"
+    items={[
+        {property: "version", type: "string", required: true, description: "Normalized application version represented by these pages, without requiring a v prefix."},
+        {property: "versionTag", type: "string", required: true, description: "Repository tag intended to represent the documented release, such as v2.0.0."},
+        {property: "lastReviewed", type: "YYYY-MM-DD", required: true, description: "Date when maintainers deliberately reviewed the documentation against source."},
+        {property: "releaseUrl", type: "URL", required: true, description: "Release page for the documented baseline."},
+        {property: "statusPath", type: "site path", required: true, description: "Locale-independent route to this documentation-status page."},
+        {property: "freshness.mode", type: "manual | auto", required: true, description: "Select maintainer-controlled status or build-time remote-tag detection."},
+    ]}
+/>
+
+<PropertyTable
+    title="Automatic-mode fields"
+    items={[
+        {property: "repositoryUrl", type: "Git URL", required: true, description: "Remote queried with git ls-remote. Public HTTPS URLs are the simplest choice for CI."},
+        {property: "tagFormat", type: "semver | pep440", required: true, description: "Version grammar used to validate and order tags. Custom formats are intentionally unsupported."},
+        {property: "releasesUrl", type: "URL", description: "Optional release-list link shown when readers need another version."},
+        {property: "includePrereleases", type: "boolean", defaultValue: "false", description: "Include alpha, beta, rc, and development tags when selecting the latest version. PEP 440 post releases remain stable candidates."},
+        {property: "timeoutMs", type: "number", defaultValue: "10000", description: "Remote-query timeout from 1000 through 60000 milliseconds."},
+        {property: "fallbackStatus", type: "current | unknown", defaultValue: "unknown", description: "Status used only when automatic verification fails. Use current only when maintainers accept that explicit fallback."},
+    ]}
+/>
+
+### Automatic mode
+
+```ts title="src/data/projects.ts"
+documentation: {
+  version: "2.0.0",
+  versionTag: "v2.0.0",
+  lastReviewed: "2026-08-22",
+  releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.0.0",
+  statusPath: "/docs/custy/reference/documentation-status",
+  freshness: {
+    mode: "auto",
+    repositoryUrl: "https://github.com/devalltect00/Custy.git",
+    tagFormat: "pep440",
+    releasesUrl: "https://github.com/devalltect00/Custy/releases",
+    includePrereleases: false,
+    timeoutMs: 10_000,
+    fallbackStatus: "unknown",
+  },
+}
+```
+
+### Manual mode
+
+Use manual mode for custom version formats, repositories that cannot be reached
+from the build environment, or projects whose release status requires human
+judgment.
+
+```ts title="src/data/projects.ts"
+freshness: {
+  mode: "manual",
+  status: "current", // current | outdated | preview
+  latestVersionTag: "custom-release-42", // optional
+}
+```
+
+</Section>
+
+---
+
+<Section title="Tag Selection Rules">
+
+1. Query direct remote tag refs without cloning the repository.
+2. Remove `refs/tags/`, discard peeled `^{}` duplicates defensively, and
+   preserve the original tag for display.
+3. Accept the conventional optional `v` prefix.
+4. Ignore tags that do not match the configured `semver` or `pep440` grammar.
+5. Exclude prereleases unless `includePrereleases` is `true`.
+6. Sort compatible tags with the selected grammar rather than lexical text
+   order. For example, `1.10.14` correctly sorts after `1.10.9`.
+7. Compare the normalized latest version to the documented baseline.
+
+Custom tag grammars are not accepted in automatic mode. Select manual mode
+instead of approximating a custom ordering rule.
+
+</Section>
+
+---
+
+<Section title="Failure Handling">
+
+- Invalid maintainer configuration, including an unsupported format, invalid
+  baseline, missing remote URL, or timeout outside the supported range, stops
+  the build with an actionable error.
+- Missing Git, network failures, authentication failures, and timeouts do not
+  silently claim that documentation is current. The plugin uses
+  `fallbackStatus` and prints a build warning.
+- A successful query with no compatible tags produces the same fallback
+  behavior with the diagnostic code `no-compatible-tags`.
+- Remote error details remain in build logs; raw process errors are not exposed
+  to documentation visitors.
+- The remote query runs once per configured project per Docusaurus process, not
+  once per page.
+
+For private repositories, ensure the build environment can authenticate the
+configured Git URL. Do not place credentials or tokens directly in
+`src/data/projects.ts`.
+
+</Section>
+
+---
+
+<Section title="Deployment and Release Automation">
+
+Automatic detection is evaluated when `yarn start`, `yarn build`, or another
+Docusaurus command loads the plugin. A new Custy tag does not change an already
+deployed static site until Devalltect Docs is rebuilt.
+
+The current Pages workflow rebuilds on pushes to the documentation repository
+and manual workflow runs. A later integration can trigger a documentation build
+from a Custy release through `repository_dispatch`, or a scheduled workflow can
+periodically recheck tags. Those workflow triggers are independent of the
+freshness resolver.
+
+</Section>
+
+---
+
+<Section title="What the Baseline Covers">
+
+<FeatureGrid
+    items={[
+        {
+            title: "Public CLI",
+            icon: <Icon name="terminal" />,
+            children: "Documented command names, options, output, side effects, and supported public pipeline profiles are aligned with v2.0.0.",
+        },
+        {
+            title: "Configuration",
+            icon: <Icon name="configuration" />,
+            children: "Configuration sections and properties are based on the v2.0.0 templates and active resolution behavior.",
+        },
+        {
+            title: "Developer Internals",
+            icon: <Icon name="workflow" />,
+            children: "Architecture, extension, testing, and pipeline material reflects the source reviewed for the v2.0.0 documentation baseline.",
+        },
+        {
+            title: "Known Limitations",
+            icon: <Icon name="warning" />,
+            children: "Experimental, internal-only, loaded-only, or currently limited behavior is identified on the affected pages.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Documentation Maintenance">
+
+Maintainers should update the central baseline when a Custy release changes
+documented commands, options, configuration, workflows, output, architecture,
+or other user-visible behavior. A complete synchronization should include:
+
+1. Review the new release tag and active source behavior.
+2. Update affected English pages.
+3. Apply the same technical changes to the Indonesian pages while preserving
+   command names, options, paths, configuration keys, and code exactly.
+4. Change the baseline version, tag, release URL, and last-reviewed date.
+5. Confirm `tagFormat` still matches the repository strategy. For Custy, change
+   `pep440` to `semver` after the planned tag migration.
+6. Run the freshness tests, type checking, and production builds for both
+   locales.
+
+The global notice reads one central metadata entry and the build-time resolver
+result. It remains hidden when documentation is current and appears only when
+readers need preview, outdated, or verification-failure context.
+
+</Section>

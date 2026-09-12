@@ -1,0 +1,123 @@
+---
+title: "Resolution and Status"
+description: "Understand Custy's effective-value priority and how documentation status maps to implementation."
+sidebar_position: 3
+sidebar_key: custy-configuration-resolution-v2
+tags: [custy, configuration, resolution]
+keywords: [custy config priority, cli override, built-in default]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="CLI -> config.toml -> default"
+    title="Resolution and Status"
+    description="Determine which value Custy uses and whether a documented property is fully implemented."
+    category="Configuration"
+    status="Reference"
+    syntax="config.resolve(CLI_VALUE, CONFIG_PATH, DEFAULT)"
+    tags={["priority", "fallback", "implementation status"]}
+    links={[
+        {label: "Concept", href: "../concepts/configuration-resolution"},
+        {label: "All Properties", href: "./reference"},
+        {label: "CLI Configuration", href: "./cli/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Priority 1", value: "Explicit CLI", icon: "terminal"},
+        {label: "Priority 2", value: "Project config", icon: "configuration"},
+        {label: "Priority 3", value: "Built-in default", icon: "dependency"},
+        {label: "Required Missing", value: "Configuration error", icon: "danger"},
+    ]}
+/>
+
+## Overview
+
+Most command resolvers use the same priority, but support is implemented per
+property. A key appearing in the generated file is not sufficient evidence
+that every command consumes it.
+
+---
+
+<Section title="Effective-Value Flow">
+
+<WorkflowTimeline
+    items={[
+        {title: "Explicit CLI value", description: "Use the invocation-specific value immediately.", status: "current"},
+        {title: "Project configuration", description: "When the CLI value is unspecified, look up the resolver's full path below tool.custy.", status: "pending"},
+        {title: "Built-in default", description: "Use the resolver or service fallback when the first two sources are absent.", status: "pending"},
+        {title: "Required validation", description: "Raise a configuration error when a required input remains unresolved.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Value Semantics">
+
+<PropertyTable
+    items={[
+        {property: "Omitted / None", type: "Falls through", description: "Allows configuration and then the built-in default to participate."},
+        {property: "Explicit true", type: "CLI override", description: "Wins over project configuration."},
+        {property: "Explicit false", type: "CLI override", description: "Normally remains an intentional value unless a resolver opts into special handling."},
+        {property: "Missing key", type: "Fallback", description: "Uses the built-in default when one exists."},
+        {property: "Invalid present value", type: "Error", description: "Is not treated as missing; parsing or typed validation can fail."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Implementation Status">
+
+<PropertyTable
+    items={[
+        {property: "Active", description: "Read and applied by the current active resolver, service, pipeline, or template."},
+        {property: "Optional", description: "Supported by current code but commented out or omitted from the generated file."},
+        {property: "Mismatch", description: "The generated name or table shape differs from what active code expects."},
+        {property: "Loaded only", description: "Parsed into a model but not used by the current renderer or processing path."},
+        {property: "Experimental", description: "Loaded or partially implemented behavior whose contract may change."},
+        {property: "Reserved", description: "Generated for intended behavior but not consumed by the active command flow."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Known cross-cutting mismatch">
+
+The generated execution key is `cli.execution.skip_checks`; current direct
+Git-operation and `custy run` resolvers look up `cli.execution.skip_check`.
+Use the command's explicit skip-check option until the source and template are
+aligned.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "All Properties", href: "./reference", description: "See the status and destination page for every key."},
+        {title: "Configuration Concept", href: "../concepts/configuration-resolution", description: "Learn the broader mental model."},
+        {title: "Execution", href: "./cli/execution", description: "Review the cross-command execution keys and mismatch."},
+        {title: "Configuration File", href: "./config-file", description: "Review loading and ownership boundaries."},
+        {title: "Extending Configuration", href: "../developer-guide/extending-configuration", description: "Carry a new setting through templates, resolution, runtime use, tests, and docs."},
+    ]}
+/>
+
+</Section>

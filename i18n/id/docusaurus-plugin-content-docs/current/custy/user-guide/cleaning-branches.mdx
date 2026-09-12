@@ -1,0 +1,49 @@
+---
+title: "Cleaning Branches"
+description: "Preview layered Custy branch filters sebelum menghapus matching local dan remote branches."
+sidebar_position: 5
+sidebar_key: custy-user-guide-cleaning-branches
+tags: [custy, branch cleanup, git maintenance]
+keywords: [custy cleanup branches, delete merged branches safely]
+---
+
+import {CommandChecklist, CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+
+<CommandHero command="custy cleanup branches" title="Cleaning Branches" description="Pilih branches melalui explicit prefix, merge-state, dan optional age filters sebelum permanent Git deletion." category="User Guide" status="Destructive Maintenance" syntax="custy --dry-run cleanup brancheses [OPTIONS]" tags={["local branches", "remote branches", "preview required"]} links={[{label: "Branch Configuration", href: "../configuration/cli/cleanup/branch"}, {label: "Cleanup Reference", href: "../commands/cleanup/branch/overview"}, {label: "Safety", href: "../concepts/safety-and-side-effects"}]} />
+<CommandMetadata items={[{label: "Active Subcommand", value: "branches", icon: "terminal"}, {label: "Default Prefixes", value: "None", icon: "security"}, {label: "Default Merge Filter", value: "merged", icon: "git"}, {label: "Deletion Scope", value: "Local + origin remote", icon: "warning"}]} />
+
+## Tujuan
+
+Gunakan branch cleanup untuk deliberate repository maintenance setelah merged
+atau stale work tidak diperlukan. Active CLI subcommand bersifat plural:
+`custy cleanup branches`.
+
+<InfoBox variant="danger" title="Matching Branches Dapat Dihapus Locally dan Remotely">Active cleanup request defaults ke local deletion dan remote deletion pada `origin`. Public command belum menyediakan switches untuk mengubah deletion flags atau remote. Perlakukan setiap normal run sebagai operasi yang dapat menghapus kedua copies.</InfoBox>
+
+---
+
+<Section title="Cara Branch Menjadi Eligible"><FeatureGrid title="Semua Applicable Filters Harus Lolos" items={[{title: "Protected Name", icon: <Icon name="security" />, children: "main, master, dan develop dikecualikan oleh active request defaults."}, {title: "Configured Prefix", icon: <Icon name="configuration" />, children: "Branch harus diawali salah satu explicit prefixes. Empty prefixes tidak memilih apa pun."}, {title: "Merge State", icon: <Icon name="git" />, children: "Branch harus cocok dengan merged, unmerged, atau all sesuai resolved policy."}, {title: "Optional Time Filter", icon: <Icon name="timeline" />, children: "Gunakan maximum age atau absolute before date, jangan keduanya."}]} /></Section>
+
+---
+
+<Section title="Recommended Cleanup Journey"><WorkflowTimeline title="Review Before Deletion" items={[{title: "Fetch and inspect repository state", description: "Refresh remote knowledge dan review local serta remote branches manually.", status: "completed"}, {title: "Choose narrow prefixes", description: "Pilih known branch families seperti feature/ atau release/.", status: "completed"}, {title: "Choose merge and time filters", description: "Pilih merged branches dan tambahkan satu optional age boundary bila perlu.", status: "completed"}, {title: "Dry-run the exact command", description: "Review setiap candidate dan skipped branch sebelum normal execution.", status: "current"}, {title: "Execute and verify", description: "Jalankan normally, lalu konfirmasi local dan remote branch lists.", status: "pending"}]} />
+<Terminal title="Narrow merged-branch cleanup" language="bash">{`git fetch --all --prune
+git branch --all
+
+custy --dry-run cleanup brancheses \
+  --prefix feature/ \
+  --merge-status merged \
+  --max-age 30d`}</Terminal>
+Pada PowerShell, letakkan command dalam satu line atau gunakan PowerShell
+continuation syntax, bukan Bash backslashes di atas.
+</Section>
+
+<InfoBox variant="tip" title="Empty Prefixes adalah Safe No-Op">Jika prefixes tidak di-resolve dari CLI atau project configuration, tidak ada eligible branches. Tambahkan narrow prefixes secara deliberate; jangan gunakan broad prefixes hanya agar command memilih sesuatu.</InfoBox>
+
+<Section title="Before Normal Execution"><CommandChecklist items={[{title: "Candidates are listed", description: "Setiap branch hasil dry-run sesuai harapan dan recoverable bila diperlukan."}, {title: "Protected work is pushed", description: "Important commits tersedia dalam safe branch, tag, atau reviewed remote location."}, {title: "Merge status is appropriate", description: "Hindari unmerged atau all kecuali deletion memang dimaksudkan."}, {title: "Only one time filter resolves", description: "max_age dan before mutually exclusive."}, {title: "Remote deletion is acceptable", description: "Konfirmasi matching origin branches dapat ikut dihapus bersama local branches."}]} />
+<Terminal title="Execute and verify" language="bash">{`custy cleanup branches --prefix feature/ --merge-status merged --max-age 30d
+git branch --all`}</Terminal></Section>
+
+<Section title="Jika Wrong Branch Terhapus">Hentikan cleanup tambahan. Jika last commit SHA diketahui dan object masih tersedia locally, buat ulang local branch dengan standard Git recovery tools, review, lalu push hanya jika remote branch juga perlu dipulihkan. Jika commit tidak diketahui, periksa reflog dan repository-host history. Recovery bersifat manual karena Custy tidak menyimpan branch deletion undo journal.</Section>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Branch Cleanup Configuration", href: "../configuration/cli/cleanup/branch", description: "Konfigurasikan prefixes, merge state, dan optional time filters."}, {title: "Branch Cleanup Workflow", href: "../commands/cleanup/branch/workflow", description: "Tinjau layered selection sebelum deletion."}, {title: "Branch Troubleshooting", href: "../commands/cleanup/branch/troubleshooting", description: "Diagnosis empty atau unexpected candidate sets."}, {title: "Managing Backups", href: "./managing-backups", description: "Kelola message-file backups terpisah dari Git branches."}]} /></Section>

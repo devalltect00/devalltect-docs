@@ -1,0 +1,46 @@
+---
+title: "Advanced Changelog Features"
+description: "Review experimental changelog properties that are loaded but not yet applied by the active pipeline."
+sidebar_position: 10
+sidebar_key: custy-configuration-changelog-advanced
+tags: [custy, changelog, experimental]
+keywords: [auto_detect_type, detect_breaking_changes, smart_formatting]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.advanced]" title="Advanced Changelog Features" description="Understand experimental switches without assuming they currently alter output." category="Changelog Configuration" status="Experimental / Loaded Only" syntax="[tool.custy.changelog.advanced]" tags={["heuristics", "experimental", "future behavior"]} links={[{label: "Core", href: "./core"}, {label: "Breaking Changes", href: "./breaking-changes"}, {label: "Rendering", href: "./rendering"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "3", icon: "table"}, {label: "Generated Values", value: "All false", icon: "security"}, {label: "Loaded", value: "Yes", icon: "configuration"}, {label: "Applied", value: "Not by active pipeline", icon: "warning"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "auto_detect_type", type: "Boolean", defaultValue: "false", description: "Intended to infer a Conventional Commit type from untyped messages. Loaded into configuration but not applied by the active pipeline."}, {property: "detect_breaking_changes", type: "Boolean", defaultValue: "false", description: "Intended to add heuristic breaking detection beyond configured keywords. Loaded but not applied."}, {property: "smart_formatting", type: "Boolean", defaultValue: "false", description: "Intended for evolving spacing, grouping, duplicate reduction, and formatting heuristics. Loaded but not applied."}]} />
+
+<Terminal title="Generated experimental defaults" language="toml">
+
+{`[tool.custy.changelog.advanced]
+auto_detect_type = false
+detect_breaking_changes = false
+smart_formatting = false`}
+
+</Terminal>
+
+<InfoBox variant="danger" title="Do not rely on these switches">
+
+The resolver creates an `AdvancedConfig` model, but the active generator and
+processing pipeline do not consume these fields. Enabling them currently does
+not provide a stable documented output contract.
+
+</InfoBox>
+
+<Section title="Use stable alternatives">
+
+- Write explicit Conventional Commit types instead of relying on inference.
+- Use `changelog.breaking.keywords` for active breaking detection.
+- Use documented rendering fields and edit the project Jinja template for
+  intentional formatting changes.
+
+</Section>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Core", href: "./core", description: "Configure active type filtering."}, {title: "Breaking Changes", href: "./breaking-changes", description: "Configure active keyword detection."}, {title: "Rendering", href: "./rendering", description: "Configure active presentation fields."}]} /></Section>

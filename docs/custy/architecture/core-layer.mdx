@@ -1,0 +1,179 @@
+---
+title: "Core Layer"
+description: "Understand Custy's orchestration and domain subsystems, their responsibilities, dependencies, and current coupling."
+sidebar_position: 3
+sidebar_key: custy-architecture-core-layer
+tags: [custy, core, architecture]
+keywords: [Custy core layer, app core, Custy subsystems]
+---
+
+import {
+    ArchitectureCard,
+    CommandHero,
+    CommandMetadata,
+    Grid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/"
+    title="Core Layer"
+    description="Map Custy's pipeline, workflow, Git, changelog, initialization, maintenance, and shared runtime services."
+    category="Architecture"
+    status="Active Source"
+    syntax="orchestration + domain services + infrastructure adapters"
+    tags={["pipeline", "workflow", "git_ops", "changelog"]}
+    links={[
+        {label: "Architecture Overview", href: "./overview"},
+        {label: "Workflow Engine", href: "./workflow-engine"},
+        {label: "Git Operations", href: "./git-operations"},
+        {label: "Changelog", href: "./changelog-system"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Orchestration", value: "pipeline and workflow", icon: "pipeline"},
+        {label: "Repository Boundary", value: "git_ops", icon: "git"},
+        {label: "Release Content", value: "changelog and versioning", icon: "release"},
+        {label: "Maintenance", value: "backup and cleanup", icon: "package"},
+    ]}
+/>
+
+## Overview
+
+`app/core` contains both application orchestration and reusable domain or
+infrastructure services. The central `WorkflowEngine` is the application
+facade used by most pipeline steps, while focused packages own lower-level Git,
+changelog, initialization, backup, cleanup, and project-file behavior.
+
+---
+
+<Section title="Subsystem Map">
+
+<Grid columns={2}>
+
+<ArchitectureCard title="Pipeline" subtitle="app/core/pipeline" icon={<Icon name="pipeline" />}>
+
+Defines profiles, step priority, expansion, registry construction, shared
+context, progress presentation, and sequential failure behavior.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Workflow" subtitle="app/core/workflow" icon={<Icon name="workflow" />}>
+
+Builds `WorkflowConfig`, constructs services, holds release runtime state, and
+coordinates validation, generation, commit, tag, push, and finalization.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Git Operations" subtitle="app/core/git_ops" icon={<Icon name="git" />}>
+
+Separates high-level repository policy from protocol-backed subprocess
+execution, version-tag generation, tag sorting, and format conversion.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Changelog" subtitle="app/core/changelog" icon={<Icon name="release" />}>
+
+Loads typed settings, collects messages, creates release models, transforms
+commit content, applies release behavior, sorts, renders Jinja, and writes
+Markdown.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Initialization" subtitle="app/core/initialize" icon={<Icon name="copy" />}>
+
+Converts an initialization mode into an `InitSpec`, locates packaged resources,
+creates directories and files, and reports results through Rich presentation.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Backup and Cleanup" subtitle="backup, cleanup, branch_workflow" icon={<Icon name="package" />}>
+
+Creates retained message backups, removes old artifacts, filters and deletes
+branches, and coordinates experimental release-branch transitions.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Dry Run and Files" subtitle="dry_run and files" icon={<Icon name="security" />}>
+
+Wraps subprocess simulation through `Runner` and updates supported project
+version files through shared file utilities.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="Shared Contracts" subtitle="shared and exceptions" icon={<Icon name="dependency" />}>
+
+Provides base application exceptions and result types used across
+configuration, validation, Git, and workflow boundaries.
+
+</ArchitectureCard>
+
+</Grid>
+
+</Section>
+
+---
+
+<Section title="Dependency Direction">
+
+The common runtime direction is:
+
+```text
+CLI callback
+  -> pipeline resolver and builders
+  -> registered step
+  -> WorkflowEngine
+  -> focused service
+  -> executor, filesystem, template, or subprocess
+```
+
+Changelog providers and cleanup services depend on `GitService`, not directly
+on the low-level executor. Pipeline steps depend on the workflow engine through
+`GitContext`. Initialization is a separate coordinator that builds a scaffold
+plan instead of using the general workflow engine for file selection.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Current cross-layer coupling">
+
+Several core modules import enum definitions from `app.cli.constants`, and
+pipeline or initialization modules use `app.ui` directly for Rich output. The
+implementation is modular, but it does not yet enforce a one-way dependency
+rule where core is completely independent of CLI and presentation packages.
+
+</InfoBox>
+
+---
+
+<Section title="Centralization Trade-off">
+
+`WorkflowEngine` provides a convenient cohesive API for steps and owns shared
+services, but it also concentrates validation, versioning, editing, staging,
+backup, commit, tag, push, and branch-finalization behavior in one large
+application service. New behavior should prefer a focused service plus a thin
+engine method rather than expanding low-level implementation inside the
+facade.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Workflow Engine", href: "./workflow-engine", description: "Inspect the central facade, state, services, and phase methods."},
+        {title: "Git Operations", href: "./git-operations", description: "Follow high-level Git policy into the executor boundary."},
+        {title: "Changelog System", href: "./changelog-system", description: "Trace repository history into rendered Markdown."},
+        {title: "Developer Guide", href: "../developer-guide/overview", description: "Use these boundaries while implementing changes."},
+    ]}
+/>
+
+</Section>

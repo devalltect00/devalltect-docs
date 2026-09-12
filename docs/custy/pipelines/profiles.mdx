@@ -1,0 +1,142 @@
+---
+title: "Public Pipeline Profiles"
+description: "Compare the six public Custy Run profiles and navigate the complete 20-profile resolver catalog."
+sidebar_position: 3
+sidebar_key: custy-pipelines-profiles
+tags: [custy, pipeline profiles, run]
+keywords: [custy commit profile, custy dev, custy release, custy full]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Public Pipeline Profiles"
+    description="Choose the smallest supported public profile that reaches your intended Git or release outcome."
+    category="Pipelines"
+    status="6 Public Profiles"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={["commit", "tag", "push", "dev", "release", "full"]}
+    links={[
+        {label: "Composition", href: "./custom-composition"},
+        {label: "Complete Reference", href: "./profile-reference"},
+        {label: "Step Priority", href: "./step-order"},
+        {label: "Development", href: "./development-pipeline"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Public Run Profiles", value: "6", icon: "terminal"},
+        {label: "Resolver Profiles", value: "20", icon: "pipeline"},
+        {label: "Prioritized Steps", value: "27", icon: "timeline"},
+        {label: "Composition", value: "Supported for public names", icon: "dependency"},
+    ]}
+/>
+
+## Overview
+
+Profiles package related steps into intentional flows. The three focused
+profiles create a commit, create a tag, or push. The three composite profiles
+coordinate broader development and release work. They are the public subset of
+the larger resolver catalog used throughout Custy's direct commands and nested
+pipeline definitions.
+
+---
+
+<Section title="Public Profiles">
+
+<FeatureGrid
+    title="Choose by Outcome"
+    items={[
+        {title: "Commit", icon: <Icon name="git" />, children: <>Prepare and edit artifacts, apply version state, generate a changelog, back up the commit message, stage files, and create a local commit. See <a href="../commands/commit/overview">Commit</a>.</>},
+        {title: "Tag", icon: <Icon name="release" />, children: <>Prepare version and tag state, edit artifacts, apply the version, back up the tag message, and create a local tag. See <a href="../commands/tag/overview">Tag</a>.</>},
+        {title: "Push", icon: <Icon name="network" />, children: <>Validate repository and remote readiness, initialize workflow state, and push HEAD plus an eligible tag. See <a href="../commands/push/overview">Push</a>.</>},
+        {title: "Dev", icon: <Icon name="play" />, children: <>Generate and review daily artifacts, update the changelog, commit, and push without applying a version or creating a tag. See <a href="./development-pipeline">Development Pipeline</a>.</>},
+        {title: "Release", icon: <Icon name="pipeline" />, children: <>Run release validation, apply version state, generate the changelog, commit, tag, and push. See <a href="./release-pipeline">Release Pipeline</a>.</>},
+        {title: "Full", icon: <Icon name="workflow" />, children: <>Run the Release sequence and then invoke experimental workflow finalization. See <a href="./full-pipeline">Full Pipeline</a>.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="The Complete Resolver Catalog">
+
+The 20 definitions in `PIPELINE_PROFILES` fall into four documentation groups:
+
+- **6 public Run profiles** — `commit`, `tag`, `push`, `dev`, `release`, and
+  `full`.
+- **9 direct-command-only profiles** — validation, changelog, version update,
+  backup, cleanup, and initialization profiles selected internally by their
+  focused commands.
+- **4 nested validation profiles** — reusable repository, commit, tag, and
+  remote validation groups.
+- **1 defined aggregate** — `cleanup_all`, while the current Cleanup All command
+  invokes the two focused cleanup profiles separately.
+
+Open the [Complete Profile Reference](./profile-reference) for every consumer,
+step count, and exact expanded sequence.
+
+</Section>
+
+---
+
+<Section title="Practical Selection Rules">
+
+- Choose `commit`, `tag`, or `push` when you need that focused outcome inside
+  the pipeline system.
+- Choose `dev` for daily commit-and-push work where version application and tag
+  creation are intentionally excluded.
+- Choose `release` for a complete versioned publication flow.
+- Choose `full` only when you understand and require the additional branch
+  workflow finalization that runs after push.
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Only these six names are public">
+
+The active typed Run argument rejects internal names such as `validate`,
+`changelog`, `apply_version`, backup profiles, cleanup profiles, and validation
+subprofiles. Use their direct commands where available; do not document or
+script them as public `custy run` values.
+
+</InfoBox>
+
+---
+
+<Section title="Direct Command or Profile?">
+
+Use a direct command when you need command-specific inputs or one focused
+operation. Use a profile when Custy should coordinate the surrounding
+validation, preparation, artifact, backup, and execution stages. For example,
+`custy changelog generate` is the supported focused changelog command; `custy
+run changelog` is not a public Run invocation.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Run Command Profiles", href: "../commands/run/profiles", description: "Review the command-focused profile reference."},
+        {title: "Complete Profile Reference", href: "./profile-reference", description: "Inspect all public and internal resolver profiles."},
+        {title: "Step Priority and Ordering", href: "./step-order", description: "Understand all 27 priorities and merged-profile sorting."},
+        {title: "Custom Composition", href: "./custom-composition", description: "Combine two or more accepted profile names safely."},
+    ]}
+/>
+
+</Section>

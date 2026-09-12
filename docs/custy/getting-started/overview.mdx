@@ -1,0 +1,202 @@
+---
+title: "Getting Started"
+description: "Install Custy, prepare an existing Git repository, and preview your first development pipeline safely."
+sidebar_position: 1
+sidebar_key: custy-getting-started
+
+tags:
+  - custy
+  - getting started
+  - onboarding
+
+keywords:
+  - install custy
+  - custy quick start
+  - first custy workflow
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Getting Started"
+    description="Install Custy, prepare an existing Git repository, and preview your first development pipeline safely."
+    category="Onboarding"
+    status="Recommended"
+    syntax="custy COMMAND [OPTIONS]"
+    tags={[
+        "installation",
+        "project setup",
+        "first pipeline",
+    ]}
+    links={[
+        {label: "Install Custy", href: "./installation"},
+        {label: "Docker", href: "./docker"},
+        {label: "Quick Start", href: "./quick-start"},
+        {label: "First Workflow", href: "./first-workflow"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Audience", value: "New Custy users", icon: "feature"},
+        {label: "Project Type", value: "Existing Git repository", icon: "git"},
+        {label: "Setup Options", value: "Native Python or Docker", icon: "package"},
+        {label: "Safety Approach", value: "Preview before execution", icon: "success"},
+    ]}
+/>
+
+## Overview
+
+This guide takes you from installation to a reviewed pipeline preview. You will
+install Custy, generate project-specific resources, validate the repository,
+and inspect a development pipeline before allowing it to change files or Git
+history.
+
+<InfoBox
+    variant="info"
+    title="Custy works with an existing project"
+>
+
+Custy is a workflow and release-automation CLI. It does not create your
+application or initialize its Git history. Start from the root of the existing
+repository that you want Custy to manage.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Choose Your Setup Path"
+    subtitle="Every supported path exposes the same public CLI; choose the installation source and environment that fit your project."
+>
+
+<FeatureGrid
+    title="Setup Options"
+    items={[
+        {
+            title: "Native User Installation",
+            icon: <Icon name="command" />,
+            children: <>Install a normal runtime copy from a reviewed source checkout, release artifact, or Git revision.</>,
+        },
+        {
+            title: "Contributor Installation",
+            icon: <Icon name="git" />,
+            children: <>Use an editable source installation with the <code>dev</code> dependency group when working on Custy itself.</>,
+        },
+        {
+            title: "Docker Environment",
+            icon: <Icon name="package" />,
+            children: <>Build Custy's production or development image locally and mount the intended project at <code>/workspace</code>.</>,
+        },
+        {
+            title: "Quick Start",
+            icon: <Icon name="play" />,
+            children: <>Initialize and validate an existing repository, then preview the Dev profile without applying changes.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Learning Path"
+>
+
+<WorkflowTimeline
+    title="From Installation to First Preview"
+    items={[
+        {
+            title: "Install Custy",
+            description: <>Use a reviewed native Python installation or a locally built Docker image.</>,
+            status: "current",
+        },
+        {
+            title: "Prepare the Repository",
+            description: <>Open the project root and confirm that Git tracks the intended repository.</>,
+            status: "pending",
+        },
+        {
+            title: "Initialize Custy Resources",
+            description: <>Run <code>custy init</code>, then review the generated configuration, templates, and version file.</>,
+            status: "pending",
+        },
+        {
+            title: "Validate Readiness",
+            description: <>Run <code>custy validate</code> and resolve missing files, remotes, or repository prerequisites.</>,
+            status: "pending",
+        },
+        {
+            title: "Preview a Pipeline",
+            description: <>Use <code>custy --dry-run run dev</code> before allowing commit or push side effects.</>,
+            status: "pending",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="The Short Version"
+>
+
+<Terminal title="Safe onboarding sequence" language="bash">
+
+{`# From the root of an existing Git repository
+custy --version
+custy init
+git status --short
+custy validate
+custy --dry-run run dev`}
+
+</Terminal>
+
+The dry run is the end of the basic onboarding sequence. Continue to normal
+execution only after you understand the selected profile's file, Git, and
+remote side effects.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Pipeline commands can be consequential"
+>
+
+Profiles such as `dev`, `release`, and `full` can edit files, create Git
+history, create tags, and push to remotes. Read the relevant profile page and
+confirm repository state before running without `--dry-run`.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Installation", href: "./installation", description: "Install Custy in a Python environment."},
+        {title: "Docker", href: "./docker", description: "Build and run Custy from the repository's Docker configuration."},
+        {title: "Quick Start", href: "./quick-start", description: "Prepare and validate an existing repository."},
+        {title: "First Workflow", href: "./first-workflow", description: "Preview and understand the Dev profile."},
+    ]}
+/>
+
+</Section>

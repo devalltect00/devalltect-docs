@@ -1,0 +1,9 @@
+{
+  "label": "Path Header Scanner",
+  "position": 1,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/index"
+  },
+  "key": "path-header-scanner"
+}

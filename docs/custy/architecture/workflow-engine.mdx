@@ -1,0 +1,186 @@
+---
+title: "Workflow Engine"
+description: "Understand WorkflowConfig, WorkflowEngineBuilder, service construction, phase methods, runtime state, and finalization behavior."
+sidebar_position: 7
+sidebar_key: custy-architecture-workflow-engine
+tags: [custy, workflow engine, architecture]
+keywords: [Custy WorkflowEngine, WorkflowConfig, WorkflowEngineBuilder]
+---
+
+import {
+    ArchitectureCard,
+    CommandHero,
+    CommandMetadata,
+    DependencyCard,
+    Grid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    WorkflowDiagram,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="app/core/workflow/"
+    title="Workflow Engine"
+    description="Inspect the application facade that registered steps use for release, Git, changelog, backup, and branch behavior."
+    category="Architecture"
+    status="Central Application Service"
+    syntax="resolved args -> WorkflowConfig -> builder -> WorkflowEngine"
+    tags={["builder", "facade", "runtime state", "services"]}
+    links={[
+        {label: "Pipeline Engine", href: "./pipeline-engine"},
+        {label: "Git Operations", href: "./git-operations"},
+        {label: "Release Pipeline", href: "../pipelines/release-pipeline"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Input Model", value: "WorkflowConfig", icon: "configuration"},
+        {label: "Construction", value: "WorkflowEngineBuilder", icon: "architecture"},
+        {label: "Facade", value: "WorkflowEngine", icon: "workflow"},
+        {label: "Primary Caller", value: "Pipeline steps", icon: "pipeline"},
+    ]}
+/>
+
+## Overview
+
+The workflow package turns resolved command arguments into one engine that
+owns the services and mutable release state needed by pipeline steps. A step is
+usually a thin adapter whose `execute()` method calls one engine method.
+
+---
+
+<Section title="Construction Model">
+
+<Grid columns={2}>
+
+<ArchitectureCard title="WorkflowConfig" subtitle="workflow_config.py" icon={<Icon name="configuration" />}>
+
+A dataclass containing commit, tag, version, execution, file, staging, force,
+remote, backup, and retention inputs used to construct an engine.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="WorkflowEngineBuilder" subtitle="workflow_builder.py" icon={<Icon name="architecture" />}>
+
+Offers fluent setters, maps supported attributes from resolved command models,
+validates configuration relationships, and creates the engine.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="WorkflowEngine" subtitle="workflow_engine.py" icon={<Icon name="workflow" />}>
+
+Copies construction input into runtime fields, creates shared services, holds
+the active tag and staging state, and exposes one method per workflow phase.
+
+</ArchitectureCard>
+
+<ArchitectureCard title="GitContext" subtitle="pipeline/context.py" icon={<Icon name="git" />}>
+
+Wraps the engine for pipeline execution and exposes its Git service plus
+optional cross-step fields. Active steps primarily delegate to engine state.
+
+</ArchitectureCard>
+
+</Grid>
+
+</Section>
+
+---
+
+<Section title="Constructed Services">
+
+<DependencyCard
+    title="WorkflowEngine Service Graph"
+    dependencies={[
+        {source: "WorkflowEngine", target: "GitService", description: "Repository inspection, staging, commit, tag, push, history, branches, and remotes."},
+        {source: "WorkflowEngine", target: "CommitizenHelper", description: "Commit-convention checks and Commitizen-related version behavior."},
+        {source: "WorkflowEngine", target: "ChangelogGenerator", description: "Collect, transform, render, and write changelog content."},
+        {source: "WorkflowEngine", target: "BackupManager", description: "Create retained commit and tag message backups."},
+        {source: "WorkflowEngine", target: "BranchWorkflowManager", description: "Coordinate initial and final branch transitions."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<WorkflowDiagram
+    title="Engine Phase Families"
+    timeline={[
+        {title: "Validate", description: "Check repository, remotes, files, staged state, and commit conventions.", status: "completed"},
+        {title: "Prepare", description: "Resolve the tag, initialize branch policy, and prepare release messages.", status: "completed"},
+        {title: "Generate and review", description: "Create artifacts, open files for editing, and validate edited content.", status: "completed"},
+        {title: "Apply release content", description: "Update supported project versions and conditionally generate the changelog.", status: "completed"},
+        {title: "Protect and commit", description: "Back up messages, prune retained files, stage changes, and create a commit.", status: "current"},
+        {title: "Publish and finalize", description: "Create the tag, push selected remotes, and optionally execute experimental branch finalization.", status: "pending"},
+    ]}
+/>
+
+---
+
+<Section title="Two Orchestration Styles">
+
+The active CLI normally uses pipeline profiles whose individual steps call
+phase methods on the engine. `WorkflowEngine.run()` also contains a complete
+hard-coded release sequence, but public Run behavior is defined by
+`PIPELINE_PROFILES`, the resolver, and registered steps. Contributors should
+not assume that changing `run()` changes `custy run release`.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Builder transport is explicit">
+
+`from_cli_args()` maps known attribute names one by one. Adding a CLI option or
+AppContext field does not automatically make it available to the engine. The
+command resolver, argument model, WorkflowConfig, builder, engine, and tests
+must agree on the name and semantics.
+
+</InfoBox>
+
+---
+
+<Section title="State and Failure Boundaries">
+
+- The engine holds mutable tag, tag-message, workflow-case, and staged-file
+  state across phase calls.
+- `GitContext` references the same engine and Git service; active steps mostly
+  use engine-owned state rather than copying values into context fields.
+- Engine methods convert many service failures into actionable
+  `ValidationError` instances, but the pipeline re-raises and stops.
+- The engine does not record a transaction log or compensation plan, so a
+  later failure does not reverse earlier effects.
+- Dry-run checks exist both in workflow methods and lower-level runner-backed
+  services, but reads, validation, resolution, and prompts can still occur.
+
+</Section>
+
+---
+
+<InfoBox variant="danger" title="Finalization is experimental">
+
+`execute_post_workflow()` can run branch transitions after commit, tag, and
+push when the required workflow context exists. The Full profile includes this
+finalization step; treat its checkout, rebase, merge, push, and cleanup behavior
+as experimental and inspect repository state before retrying a failure.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Pipeline Engine", href: "./pipeline-engine", description: "See how step objects invoke engine phase methods."},
+        {title: "Git Operations", href: "./git-operations", description: "Inspect the main repository service consumed by the engine."},
+        {title: "Changelog System", href: "./changelog-system", description: "Follow conditional changelog generation through its internal pipeline."},
+        {title: "Release Pipeline", href: "../pipelines/release-pipeline", description: "Review the exact active release profile sequence."},
+    ]}
+/>
+
+</Section>

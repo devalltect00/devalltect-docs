@@ -1,0 +1,155 @@
+---
+title: "Full Pipeline"
+description: "Understand Release plus Custy's experimental post-push branch workflow finalization."
+sidebar_position: 10
+sidebar_key: custy-pipelines-full
+tags: [custy, full pipeline, experimental]
+keywords: [custy run full, Custy workflow finalization]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run full"
+    title="Full Pipeline"
+    description="Run the complete Release sequence and then invoke experimental workflow finalization after publication."
+    category="Pipeline Profile"
+    status="Experimental Finalization"
+    syntax="custy run full [OPTIONS]"
+    tags={["release", "push", "branch finalization"]}
+    links={[
+        {label: "Run Full Guide", href: "../commands/run/full/overview"},
+        {label: "Release Pipeline", href: "./release-pipeline"},
+        {label: "Safety", href: "../commands/run/safety"},
+    ]}
+/>
+
+## Overview
+
+Full uses the complete Release step list and adds `finalize_step` at the end.
+Finalization can perform branch transitions, merges, pushes, or cleanup according
+to the workflow case discovered earlier in the pipeline.
+
+<Terminal title="Preview with extra care" language="bash">
+
+{`custy --dry-run run full
+custy run full`}
+
+</Terminal>
+
+---
+
+<Section title="Exact Phase Flow">
+
+<WorkflowTimeline
+    title="Full Profile"
+    items={[
+        {title: "Validate release prerequisites", description: "Run repository, pre-commit, pre-tag, and pre-push checks.", status: "completed"},
+        {title: "Prepare and review", description: "Resolve version and workflow state, prepare messages, generate artifacts, and validate edits.", status: "completed"},
+        {title: "Apply and document", description: "Apply the version and run conditional changelog generation.", status: "completed"},
+        {title: "Back up and clean", description: "Back up commit and tag messages and apply retention cleanup.", status: "completed"},
+        {title: "Commit, tag, and push", description: "Create and publish the release through the same stages used by Release.", status: "completed"},
+        {title: "Finalize workflow", description: "Invoke the experimental post-release branch workflow for the resolved case.", status: "current"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<KeyValueTable
+    title="Exact Full Step Order"
+    description="Steps 1–24 are identical to Release; finalization is step 25."
+    items={[
+        {key: "01–09", value: <>Run the nine release validations listed in the <a href="./release-pipeline">Release Pipeline</a>.</>},
+        {key: "10 — prepare_version_step", value: "Resolve the release version and tag context."},
+        {key: "11 — workflow_init_step", value: "Initialize branch workflow state."},
+        {key: "12 — prepare_tag_message_step", value: "Prepare the tag message."},
+        {key: "13 — generate_artifacts_step", value: "Generate configured release artifacts."},
+        {key: "14 — edit_files_step", value: "Open artifacts for review and editing."},
+        {key: "15 — validate_edited_step", value: "Validate the edited artifacts."},
+        {key: "16 — apply_version_step", value: "Apply the resolved version."},
+        {key: "17 — generate_changelog_step", value: "Run conditional changelog generation."},
+        {key: "18 — backup_commit_message_files_step", value: "Back up the commit message."},
+        {key: "19 — backup_tag_message_files_step", value: "Back up the tag message."},
+        {key: "20 — cleanup_backup_step", value: "Apply backup retention cleanup."},
+        {key: "21 — stage_step", value: "Stage the release files."},
+        {key: "22 — commit_step", value: "Create the release commit."},
+        {key: "23 — tag_step", value: "Create the local release tag."},
+        {key: "24 — push_step", value: "Publish HEAD and the eligible release tag."},
+        {key: "25 — finalize_step", value: "Invoke experimental post-release branch workflow behavior."},
+    ]}
+/>
+
+The [Complete Profile Reference](./profile-reference) lists all 25 internal
+names individually. The grouping above keeps this page readable while making
+Full's one-step difference from Release immediately visible.
+
+---
+
+<InfoBox variant="danger" title="Finalization runs after remote publication">
+
+The release commit, tag, and push can succeed before finalization fails. Never
+retry Full automatically. First inspect the local branches, commit, tag, every
+remote, and the workflow transition that was attempted.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Finalization is conditional and experimental">
+
+The engine skips post-workflow behavior when checks are skipped or no workflow
+context is available. Some workflow cases only report information; others can
+checkout, rebase or merge branches, push, or clean a release branch. If actions
+run successfully, Custy can pause for confirmation before returning.
+
+</InfoBox>
+
+---
+
+<Section title="Use Full Only When">
+
+<CommandChecklist
+    items={[
+        {title: "Release is already appropriate", description: "All version, changelog, commit, tag, and push requirements are satisfied."},
+        {title: "The branch workflow is understood", description: "You know the detected workflow case and its final branch operations."},
+        {title: "Every destination is reviewed", description: "Origin, backup synchronization, and branch cleanup targets are correct."},
+        {title: "A dry-run has been reviewed", description: "You have inspected the planned release and branch operations."},
+        {title: "Recovery is manual and deliberate", description: "You can reconcile a release that succeeded before finalization failed."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Prefer Release by Default">
+
+Choose `custy run release` when you need a complete tagged publication but do
+not need branch lifecycle finalization. It has the same release stages and a
+clearer completion boundary: push.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Run Full", href: "../commands/run/full/overview", description: "Use Full options, examples, and command troubleshooting."},
+        {title: "Complete Profile Reference", href: "./profile-reference", description: "Inspect Full's complete 25-step expansion."},
+        {title: "Release Pipeline", href: "./release-pipeline", description: "Choose the safer default completion boundary."},
+        {title: "Run Safety", href: "../commands/run/safety", description: "Review partial-state and retry risks."},
+    ]}
+/>
+
+</Section>

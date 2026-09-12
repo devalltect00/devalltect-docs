@@ -1,0 +1,489 @@
+---
+title: "FAQ"
+description: "This document answers common questions about the doc-gen init command."
+sidebar_position: 3
+sidebar_key: doc-gen-commands-init
+---
+
+# Init FAQ
+
+## Overview
+
+This document answers common questions about:
+
+```bash
+doc-gen init
+```
+
+If you are new to Doc-Gen, start with:
+
+```text
+docs/init/overview.md
+docs/init/examples.md
+```
+
+before reading this FAQ.
+
+---
+
+# General Questions
+
+## What Does `doc-gen init` Do?
+
+The command initializes a project for use with Doc-Gen.
+
+It creates the files and directories required to use Doc-Gen commands.
+
+Depending on the selected mode, this may include:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+---
+
+## When Should I Run It?
+
+Typically:
+
+```text
+Once Per Project
+```
+
+Recommended workflow:
+
+```text
+Install Doc-Gen
+      ↓
+doc-gen init
+      ↓
+Configure Project
+      ↓
+Use Doc-Gen Commands
+```
+
+---
+
+## Should I Run It Before Every Command?
+
+No.
+
+You generally do not need to run:
+
+```bash
+doc-gen init
+```
+
+before:
+
+```bash
+doc-gen structure generate
+
+doc-gen structure print
+
+doc-gen structure analyze
+```
+
+Initialization is usually a one-time setup step.
+
+---
+
+## Can I Run It Multiple Times?
+
+Yes.
+
+Running:
+
+```bash
+doc-gen init
+```
+
+multiple times is supported.
+
+Behavior depends on:
+
+```text
+Existing files
+Selected mode
+Force options
+Interactive options
+```
+
+---
+
+# Configuration Questions
+
+## Does Init Create `config.toml`?
+
+Yes.
+
+Depending on the selected mode, initialization can create:
+
+```text
+config.toml
+```
+
+which contains Doc-Gen configuration settings.
+
+---
+
+## Do I Need To Edit `config.toml`?
+
+Usually yes.
+
+Generated configuration files are intended as starting points.
+
+You should review values such as:
+
+```toml
+[tool.doc-gen.docker]
+
+provider = "github"
+```
+
+and update them for your project.
+
+---
+
+## Can I Use Doc-Gen Without Configuration?
+
+Some commands may work with defaults.
+
+However:
+
+```text
+Configuration Is Recommended
+```
+
+for predictable and repeatable workflows.
+
+---
+
+# File Questions
+
+## What Files Can Be Generated?
+
+Depending on the selected mode:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+The exact output depends on the current project version.
+
+---
+
+## Will Existing Files Be Overwritten?
+
+Not automatically.
+
+Doc-Gen attempts to avoid overwriting files unintentionally.
+
+Use:
+
+```bash
+doc-gen init --force
+```
+
+to explicitly allow overwriting.
+
+---
+
+## What Does `--force` Do?
+
+Example:
+
+```bash
+doc-gen init --force
+```
+
+Behavior:
+
+```text
+Existing File
+      ↓
+Overwrite Allowed
+      ↓
+Replace File
+```
+
+Use carefully.
+
+---
+
+## What Does `--ask` Do?
+
+Example:
+
+```bash
+doc-gen init --ask
+```
+
+Behavior:
+
+```text
+File Exists
+      ↓
+Prompt User
+      ↓
+Create or Skip
+```
+
+This is useful when working with existing repositories.
+
+---
+
+## What Does `--dry-run` Do?
+
+Example:
+
+```bash
+doc-gen init --dry-run
+```
+
+Behavior:
+
+```text
+Build Plan
+      ↓
+Preview Changes
+      ↓
+No Files Written
+```
+
+This is the safest way to inspect what initialization would do.
+
+---
+
+# Mode Questions
+
+## What Is Config Mode?
+
+Command:
+
+```bash
+doc-gen init --mode config
+```
+
+Purpose:
+
+```text
+Create configuration files only.
+```
+
+Recommended when:
+
+```text
+You only need config.toml.
+```
+
+---
+
+## What Is Templates Mode?
+
+Command:
+
+```bash
+doc-gen init --mode templates
+```
+
+Purpose:
+
+```text
+Create template resources only.
+```
+
+---
+
+## What Is Examples Mode?
+
+Command:
+
+```bash
+doc-gen init --mode examples
+```
+
+Purpose:
+
+```text
+Create example resources only.
+```
+
+---
+
+## What Is All Mode?
+
+Command:
+
+```bash
+doc-gen init --mode all
+```
+
+Purpose:
+
+```text
+Generate all supported resources.
+```
+
+Recommended for:
+
+```text
+New projects
+First-time setup
+```
+
+---
+
+# Requirements
+
+## Do I Need GitHub CLI Installed?
+
+No.
+
+Initialization does not require:
+
+```text
+GitHub CLI
+```
+
+GitHub CLI becomes relevant when using release-related workflows.
+
+---
+
+## Do I Need To Be Inside A Git Repository?
+
+Not necessarily.
+
+Initialization focuses on project scaffolding and file generation.
+
+Repository-related commands have additional requirements.
+
+---
+
+# Workflow Questions
+
+## What Should I Run After Init?
+
+Typical workflow:
+
+```text
+doc-gen init
+      ↓
+Edit config.toml
+      ↓
+doc-gen structure generate
+```
+
+Only run the commands you actually need.
+
+---
+
+# Troubleshooting
+
+## Nothing Was Created
+
+Possible reasons:
+
+```text
+Existing files already exist
+Selected mode generated nothing new
+Dry-run mode enabled
+```
+
+Try:
+
+```bash
+doc-gen init --dry-run
+```
+
+to inspect planned changes.
+
+---
+
+## Files Already Exist
+
+Use:
+
+```bash
+doc-gen init --ask
+```
+
+to review changes interactively.
+
+or:
+
+```bash
+doc-gen init --force
+```
+
+to overwrite existing resources.
+
+---
+
+## I Accidentally Deleted Configuration Files
+
+Recreate them:
+
+```bash
+doc-gen init --mode config
+```
+
+---
+
+# Related Documentation
+
+Overview:
+
+```text
+docs/init/overview.md
+```
+
+Workflow:
+
+```text
+docs/init/workflow.md
+```
+
+Examples:
+
+```text
+docs/init/examples.md
+```
+
+Getting Started:
+
+```text
+docs/user-guide/getting-started.md
+```
+
+Lifecycle:
+
+```text
+docs/user-guide/lifecycle.md
+```
+
+---
+
+# Summary
+
+The most common workflow is:
+
+```bash
+doc-gen init
+```
+
+followed by:
+
+```text
+Edit Configuration
+      ↓
+Use Doc-Gen Commands
+```
+
+Initialization is a safe, repeatable way to prepare a project for use with Doc-Gen.

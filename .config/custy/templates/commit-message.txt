@@ -1,0 +1,122 @@
+feat(portal): launch initial Devalltect documentation hub alpha
+
+Establish the first prerelease of the Devalltect documentation portal from the
+Docusaurus starter baseline. This alpha creates a shared, deployable foundation
+for documenting multiple developer tools while the remaining project sections
+continue to be modernized.
+
+### 📚 Multi-Project Documentation
+
+- Added documentation roots for Custy, Path Header Scanner, Doc Gen, and Reflow.
+- Added shared portal introductions, project discovery, navigation, badges, and
+  repository guidance.
+- Organized project material into command, configuration, architecture,
+  developer, user, reference, troubleshooting, and supporting sections where
+  applicable.
+- Completed the most comprehensive documentation implementation for Custy,
+  including getting started, commands, pipelines, configuration, concepts,
+  architecture, references, troubleshooting, and contributor guidance.
+- Added a complete Indonesian Custy documentation set while retaining English
+  as the default locale.
+- Documented experimental or incomplete behavior with visible status and
+  warning guidance.
+
+### 🧩 Reusable Documentation Components
+
+- Added reusable common layout, badge, card, grid, heading, section, tag, and
+  information components.
+- Added command-focused heroes, syntax, options, outputs, examples, metadata,
+  lifecycle, checklist, and related-command components.
+- Added requirement, feature, workflow, terminal, screenshot, comparison,
+  table, architecture, Mermaid, icon, and utility component families.
+- Added shared styling, theme variables, responsive layouts, dark-mode support,
+  copy interactions, and reusable component type definitions.
+- Added graceful screenshot handling so planned assets do not break pages when
+  an image is not available yet.
+- Integrated the component system throughout the Custy documentation while
+  leaving the other project documentation available for later migration.
+
+### 🌍 Localization and Navigation
+
+- Configured English as the default locale and Indonesian as the secondary
+  locale.
+- Added translated Custy pages, sidebar metadata, navigation, footer content,
+  and shared UI strings.
+- Preserved command names, flags, paths, configuration keys, and technical
+  identifiers where translation would reduce clarity.
+- Added stable category and sidebar translation keys to prevent localization
+  conflicts.
+- Added a route for the documentation root so /docs redirects to the portal
+  homepage instead of displaying a not-found page.
+
+### 🔎 Documentation Freshness
+
+- Added project-level documentation baseline metadata, release links, review
+  dates, and status-page routes.
+- Added manual and automatic freshness modes for maintainers.
+- Added build-time remote tag discovery with SemVer and PEP 440 parsing,
+  prerelease filtering, sorting, timeouts, diagnostics, and safe fallback
+  behavior.
+- Added a version-status notice that remains hidden for current documentation
+  and becomes visible when documentation is outdated, a preview, or cannot be
+  verified.
+- Added focused tests for remote tag parsing, version comparison, and freshness
+  resolution.
+
+### 🎨 Portal UI and Developer Experience
+
+- Added a custom homepage with project discovery, audience guidance,
+  documentation-model explanations, quick links, and project cards.
+- Added centralized project data used by the homepage and documentation
+  freshness system.
+- Added consistent documentation presentation, color themes, typography,
+  spacing, terminal examples, workflow visuals, and responsive layouts.
+- Added internal component guidance and configuration comments for future
+  maintainers.
+- Migrated package management and project commands to Yarn with an immutable
+  lockfile.
+- Fixed TypeScript compatibility issues across reusable components and shared
+  utilities.
+- Added type-checking, locale-aware development, and production-build scripts.
+
+### 🚀 Build and Deployment
+
+- Configured Docusaurus for the Devalltect GitHub Pages project URL and base
+  path.
+- Added GitHub Actions deployment for static GitHub Pages publishing.
+- Added GitLab CI and Pages definitions for validation and mirrored deployment.
+- Repaired route and link issues required for production builds across the
+  existing documentation sets.
+- Added project structure, contribution, security, and repository-level
+  maintenance references.
+
+### 🧪 Alpha Validation
+
+- Verified the English and Indonesian development servers during implementation.
+- Verified TypeScript checks and multilingual production builds after migration
+  and link repairs.
+- Added automated tests for the documentation freshness plugin.
+- Retained clear fallback behavior when remote version checks cannot complete.
+
+### ⚠️ Alpha Status
+
+- This is the first public prerelease of the documentation portal.
+- Custy has the strongest component integration and English/Indonesian coverage.
+- Path Header Scanner, Doc Gen, and Reflow documentation remain available but
+  still require content review, component adoption, consistency improvements,
+  and broader localization.
+- Navigation, component APIs, page organization, and freshness configuration may
+  change before the first stable release.
+- Documentation should be reviewed against each source project before treating
+  every non-Custy page as a complete current reference.
+
+Tag: v0.1.0-alpha.1
+Previous version: none
+Target stable version: v1.0.0
+
+🔖 **Tags**:
+- Type: `#feature`, `#documentation`, `#components`, `#i18n`
+- Platform: `#docusaurus`, `#typescript`, `#yarn`
+- Delivery: `#github-pages`, `#gitlab-pages`, `#ci`
+- Quality: `#typecheck`, `#build`, `#version-awareness`
+- Stability: `#alpha`, `#prerelease`

@@ -1,0 +1,133 @@
+---
+title: "Configuration Overview"
+description: "Navigate every Custy configuration namespace, table, property, default, and implementation status."
+sidebar_position: 1
+sidebar_key: custy-configuration-overview-v2
+tags: [custy, configuration, toml]
+keywords: [custy config, tool.custy, config.toml]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command=".config/custy/config.toml"
+    title="Configuration Overview"
+    description="Understand the complete project-owned configuration, from initialization and CLI defaults to changelog rendering and Git remotes."
+    category="Configuration"
+    status="Complete Reference"
+    syntax="[tool.custy]"
+    tags={["TOML hierarchy", "project defaults", "implementation status"]}
+    links={[
+        {label: "Configuration File", href: "./config-file"},
+        {label: "All Properties", href: "./reference"},
+        {label: "Compact Reference", href: "../reference/configuration"},
+        {label: "Resolution", href: "./resolution"},
+        {label: "Troubleshooting", href: "../troubleshooting/configuration"},
+        {label: "System Architecture", href: "../architecture/configuration-system"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Project File", value: ".config/custy/config.toml", icon: "configuration"},
+        {label: "Root Namespace", value: "tool.custy", icon: "project"},
+        {label: "Generated Tables", value: "29", icon: "table"},
+        {label: "Ownership", value: "Your project", icon: "file"},
+    ]}
+/>
+
+## Overview
+
+`custy init` creates a project-owned TOML file from Custy's packaged source.
+The active documentation mirrors that file's hierarchy, while grouping deeply
+nested tables into navigable sections.
+
+<InfoBox variant="tip" title="Start broad, then move to properties">
+
+Use this page to choose a namespace. Use the namespace pages for explanations
+and examples, or open [All Properties](./reference) when you already know a
+full TOML path.
+
+</InfoBox>
+
+---
+
+<Section title="Top-Level Namespaces">
+
+<FeatureGrid
+    items={[
+        {title: "Project", icon: <Icon name="project" />, children: <>Define the source directory under <a href="./project">tool.custy.project</a>.</>},
+        {title: "Release", icon: <Icon name="release" />, children: <>Review generated release metadata and its <a href="./release">current compatibility gap</a>.</>},
+        {title: "Initialization", icon: <Icon name="copy" />, children: <>Control default overwrite and prompting behavior for <a href="./initialization">custy init</a>.</>},
+        {title: "CLI", icon: <Icon name="terminal" />, children: <>Configure paths, versioning, templates, execution, push, cleanup, changelog command behavior, and workflow defaults under <a href="./cli/overview">tool.custy.cli</a>.</>},
+        {title: "Logging", icon: <Icon name="file" />, children: <>Configure Rich console output and rotating files under <a href="./logging/overview">tool.custy.logging</a>.</>},
+        {title: "Changelog", icon: <Icon name="release" />, children: <>Control collection, cleaning, releases, mapping, and rendering under <a href="./changelog/overview">tool.custy.changelog</a>.</>},
+        {title: "Git", icon: <Icon name="git" />, children: <>Define default, primary, and backup remote behavior under <a href="./git/overview">tool.custy.git</a>.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Minimal Shape">
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.project]
+project_source = "auto"
+
+[tool.custy.cli.versioning]
+strategy = "semver"
+bump = "auto"
+
+[tool.custy.logging]
+level = "INFO"
+
+[tool.custy.git]
+default_remote = "origin"`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="Status Language Used in This Guide">
+
+- **Active** — the current resolver or service consumes the property.
+- **Optional** — supported by active code but commented out or omitted from
+  the generated file.
+- **Mismatch** — generated and active names or shapes do not currently align.
+- **Loaded only** — parsed into a model, but the active renderer or pipeline
+  does not yet use it.
+- **Experimental** — evolving behavior that should not be treated as stable.
+- **Reserved** — generated or described, but not consumed by the current
+  active command flow.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Configuration File", href: "./config-file", description: "Learn ownership, initialization, TOML shape, and overwrite safety."},
+        {title: "Configuration Architecture", href: "../architecture/configuration-system", description: "Trace initialization, loading, caching, typed resolution, and runtime consumers."},
+        {title: "All Properties", href: "./reference", description: "Find every generated and supported configuration path."},
+        {title: "CLI Configuration", href: "./cli/overview", description: "Review command-level defaults and nested CLI tables."},
+        {title: "Changelog Configuration", href: "./changelog/overview", description: "Navigate the complete changelog subsystem."},
+    ]}
+/>
+
+</Section>

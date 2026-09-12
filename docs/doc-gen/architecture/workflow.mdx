@@ -1,0 +1,133 @@
+---
+title: "Workflow"
+description: "This document describes the workflows and execution flows in DocGen."
+sidebar_position: 3
+sidebar_key: doc-gen-architecture
+---
+
+# Architecture Workflow
+
+This document describes the workflows and execution flows in DocGen.
+
+---
+
+## High-Level Flow
+
+```text
+User Command
+    │
+    ▼
+CLI Parser
+    │
+    ▼
+Command Handler
+    │
+    ▼
+Core Service
+    │
+    ▼
+Output (Console / File)
+```
+
+---
+
+## Initialization Flow
+
+```text
+doc-gen init
+    │
+    ├── Load configuration
+    ├── Resolve args (--mode, --force, --ask)
+    ├── Build initialization spec
+    │
+    └── Write artifacts
+        │
+        ├── Config files
+        └── Template files
+```
+
+---
+
+## Structure Generation Flow
+
+```text
+doc-gen structure generate
+    │
+    ├── Scan target directory
+    ├── Build directory tree
+    ├── Apply profiles (minimal/default/detailed)
+    ├── Apply smart mode (if enabled)
+    │
+    └── Generate markdown
+        │
+        └── Write PROJECT_STRUCTURE.md
+```
+
+---
+
+## Structure Print Flow
+
+```text
+doc-gen structure print
+    │
+    ├── Scan target directory
+    ├── Build directory tree
+    ├── Apply profiles
+    ├── Apply smart mode (if enabled)
+    │
+    └── Print to console
+        │
+        └── Rich-formatted output
+```
+
+---
+
+## Analysis Flow
+
+```text
+doc-gen structure analyze
+    │
+    ├── Scan target directory
+    ├── Extract metadata
+    ├── Calculate statistics
+    │
+    └── Present analysis
+        │
+        ├── Metrics
+        └── Recommendations
+```
+
+---
+
+## Configuration Resolution
+
+```text
+CLI Options
+    │
+    ▼
+Environment Variables
+    │
+    ▼
+Config File (.projectstructure.toml)
+    │
+    ▼
+Default Values
+```
+
+---
+
+## Extension Points
+
+The architecture supports extensions through:
+
+1. **Custom Profiles** - Extend the profile system
+2. **Custom Renderers** - Add new output formats
+3. **Custom Scanners** - Support new file types
+4. **Custom Analyzers** - Add new analysis methods
+
+---
+
+## Related Documentation
+
+- [Design Patterns](./design-patterns)
+- [Diagrams](./diagrams)

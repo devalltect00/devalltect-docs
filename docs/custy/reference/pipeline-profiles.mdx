@@ -1,0 +1,133 @@
+---
+title: "Pipeline Profiles"
+description: "Reference Custy's six public Run profiles, direct-command profiles, internal composition profiles, step counts, and ordering rules."
+sidebar_position: 6
+sidebar_key: custy-reference-pipeline-profiles
+tags: [custy, pipelines, profiles]
+keywords: [Custy run profiles, PIPELINE_PROFILES, pipeline reference]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run PROFILE [PROFILE ...]"
+    title="Pipeline Profiles"
+    description="Distinguish supported public Run names from profiles used by direct commands and internal composition."
+    category="Reference"
+    status="20 Resolver Profiles"
+    syntax="profile names -> expanded registered steps -> sequential execution"
+    tags={["6 public names", "20 resolver profiles", "27 priorities"]}
+    links={[
+        {label: "Complete Reference", href: "../pipelines/profile-reference"},
+        {label: "Step Order", href: "../pipelines/step-order"},
+        {label: "Run Command", href: "../commands/run/overview"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Public Run Names", value: "6", icon: "terminal"},
+        {label: "Resolver Profiles", value: "20", icon: "pipeline"},
+        {label: "Priority Entries", value: "27", icon: "timeline"},
+        {label: "Execution", value: "Sequential", icon: "workflow"},
+    ]}
+/>
+
+<Section title="Public Run Profiles">
+
+<KeyValueTable
+    title="Accepted Typed Values"
+    description="Counts are fully expanded concrete steps for one profile."
+    items={[
+        {key: "commit - 16 steps", value: <>Prepare artifacts, validate and edit the commit message, update project state, generate changelog content, back up, stage, and commit.</>},
+        {key: "tag - 13 steps", value: <>Validate version and tag-message inputs, prepare artifacts, apply the version, back up, and create a local tag.</>},
+        {key: "push - 4 steps", value: <>Validate repository and remote state, initialize workflow context, and push resolved refs.</>},
+        {key: "dev - 12 steps", value: <>Run the prepared daily development commit-and-push flow.</>},
+        {key: "release - 24 steps", value: <>Run complete validation, version, artifact, changelog, backup, commit, tag, and push behavior.</>},
+        {key: "full - 25 steps", value: <>Run Release and then the currently experimental finalization step.</>},
+    ]}
+/>
+
+<Terminal title="Public examples" language="bash">
+
+{`custy --dry-run run dev
+custy --dry-run run release
+custy --dry-run run full
+
+# Supported manual composition
+custy --dry-run run commit tag push`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section title="Other Resolver Profiles">
+
+<KeyValueTable
+    title="Not Additional Public Run Values"
+    items={[
+        {key: "Direct-command profiles", value: <><code>validate</code>, <code>changelog</code>, <code>apply_version</code>, <code>backup_commit_message</code>, <code>backup_tag_message</code>, <code>backup_all</code>, <code>cleanup_backups</code>, <code>cleanup_branches</code>, and <code>init</code>.</>},
+        {key: "Nested validation profiles", value: <><code>validate-sub-repo</code>, <code>validate-sub-pre-commit</code>, <code>validate-sub-pre-tag</code>, and <code>validate-sub-pre-push</code>.</>},
+        {key: "Defined cleanup aggregate", value: <><code>cleanup_all</code> exists in the resolver catalog, while the public cleanup-all command currently invokes the two focused cleanup profiles separately.</>},
+    ]}
+/>
+
+<InfoBox variant="danger" title="Resolver name does not mean public Run value">
+
+For example, `validate` is a real profile used by `custy validate`, but the
+typed Run argument does not accept `custy run validate`.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Resolution and Ordering Rules">
+
+- Resolving one profile preserves its declared expanded order.
+- Resolving multiple profiles expands nested definitions, removes duplicate
+  step names, and performs a stable sort by `STEP_ORDER` priority.
+- A missing priority receives fallback value `999` and therefore moves behind
+  explicitly prioritized built-in steps.
+- Cyclic nested profiles and unknown names fail resolution.
+- Duplicate public arguments are rejected by the CLI validator.
+- Execution stops on the first failing step and does not roll back earlier
+  successful side effects.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="Full includes experimental finalization">
+
+The `full` value is accepted publicly, but its additional finalization step
+uses evolving workflow behavior. Prefer `release` unless that final phase is
+specifically required and has been reviewed in a disposable environment.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Complete Profile Reference", href: "../pipelines/profile-reference", description: "Inspect every resolver profile and exact concrete sequence."},
+        {title: "Step Priority", href: "../pipelines/step-order", description: "Review all 27 priority entries and merged-profile ordering."},
+        {title: "Run Command", href: "../commands/run/overview", description: "Use public syntax, options, profiles, safety, and troubleshooting."},
+        {title: "Pipeline Architecture", href: "../architecture/pipeline-engine", description: "Trace resolution through registry, builder, context, and execution."},
+    ]}
+/>
+
+</Section>

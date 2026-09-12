@@ -1,0 +1,15 @@
+flowchart TD
+    A["CLI structure generate command invoked"] --> B["Resolve target path"]
+    B --> C["Load configuration"]
+    C --> D["Build scanner context"]
+    D --> E["Discover files recursively"]
+    E --> F{"Apply filters"}
+    F --> G["Apply profile settings"]
+    G --> H{"Smart mode enabled?"}
+    H -- Yes --> I["Calculate optimal depth"]
+    H -- No --> J["Use max-depth setting"]
+    I --> K["Build directory tree"]
+    J --> K
+    K --> L["Generate markdown content"]
+    L --> M["Write to file"]
+    M --> N["Report result"]

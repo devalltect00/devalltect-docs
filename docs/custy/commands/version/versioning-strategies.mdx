@@ -1,0 +1,221 @@
+---
+title: "Versioning Strategies"
+description: "Learn how Custy generates version numbers using different versioning strategies."
+sidebar_position: 6
+sidebar_key: custy-version
+
+tags:
+    - version
+    - strategy
+    - semver
+    - pep440
+
+keywords:
+    - custy version strategies
+    - semver
+    - pep440
+    - commitizen
+    - gitcount
+    - date
+---
+
+import {
+    CommandHero,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy version"
+    title="Versioning Strategies"
+    description="Choose the strategy that best matches your project's release workflow."
+    category="Versioning"
+    status="Stable"
+    syntax="custy version update"
+    tags={[
+        "strategy",
+        "version",
+    ]}
+    links={[
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+Custy separates **version generation** from **version synchronization**.
+
+A versioning strategy determines **what the next version should be**.
+
+Once the version has been generated, Custy synchronizes that version across
+the appropriate project files.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Multiple Strategies, One Workflow"
+>
+
+Every supported strategy ultimately produces a version number.
+
+The remaining synchronization workflow is identical regardless of which
+strategy generated that version.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Semantic Versioning (SemVer)"
+>
+
+SemVer is the default strategy for many projects.
+
+Typical versions look like:
+
+```text
+v1.4.2
+v2.0.0-beta.1
+v3.1.0+build.42
+```
+
+SemVer is widely recognized by Git hosting platforms and is recommended for
+most applications and libraries.
+
+</Section>
+
+---
+
+<Section
+    title="PEP 440"
+>
+
+PEP 440 follows Python's official version specification.
+
+Typical versions include:
+
+```text
+1.4.2
+2.0.0rc1
+2.0.0.post1
+2.0.0.dev1
+```
+
+Python projects commonly use this strategy because packaging tools understand
+the format.
+
+</Section>
+
+---
+
+<Section
+    title="Commitizen"
+>
+
+The Commitizen strategy derives the next version from conventional commit
+history.
+
+Projects already using Commitizen can integrate directly with Custy while
+continuing to follow their existing release workflow.
+
+</Section>
+
+---
+
+<Section
+    title="Date Strategy"
+>
+
+The Date strategy generates versions using the current release date.
+
+Examples include:
+
+```text
+2026.07.09
+```
+
+This strategy is useful for projects whose releases are primarily organized by
+calendar dates rather than incremental version numbers.
+
+</Section>
+
+---
+
+<Section
+    title="Git Count Strategy"
+>
+
+The Git Count strategy derives the version from repository history.
+
+A simple example is:
+
+```text
+v125
+```
+
+where the version reflects the number of commits or another repository-based
+counting method.
+
+This strategy is useful for projects that prefer automatically increasing
+identifiers without maintaining traditional semantic versions.
+
+</Section>
+
+---
+
+<Section
+    title="Choosing a Strategy"
+>
+
+A common recommendation is:
+
+| Project Type | Recommended Strategy |
+| --- | --- |
+| General applications | SemVer |
+| Python packages | PEP 440 |
+| Conventional Commits | Commitizen |
+| Calendar-based releases | Date |
+| Continuous internal builds | Git Count |
+
+Different projects have different release requirements, and Custy allows each
+project to adopt the strategy that best fits its workflow.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Project Detection"
+>
+
+Version generation and project synchronization are independent concepts.
+
+For example, a version may be generated using SemVer while Custy
+automatically converts it into a PEP 440-compatible format when updating
+Python project files.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Workflow** page to see how Custy prepares, generates, and
+applies version updates regardless of the selected strategy.
+
+</Section>

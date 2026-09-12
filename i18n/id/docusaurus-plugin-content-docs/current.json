@@ -1,0 +1,358 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Path Header Scanner": {
+    "message": "Path Header Scanner",
+    "description": "The label for category 'Path Header Scanner' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-architecture": {
+    "message": "Architecture",
+    "description": "The label for category 'Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-developer-guide": {
+    "message": "Developer Guide",
+    "description": "The label for category 'Developer Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-developer-guide-blackbox": {
+    "message": "Blackbox",
+    "description": "The label for category 'Blackbox' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-developer-guide-tooling": {
+    "message": "Tooling",
+    "description": "The label for category 'Tooling' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-developer-guide-tooling-ruff": {
+    "message": "Ruff",
+    "description": "The label for category 'Ruff' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-project": {
+    "message": "Project",
+    "description": "The label for category 'Project' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.languages": {
+    "message": "languages",
+    "description": "The label for category 'languages' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-reads": {
+    "message": "Reads",
+    "description": "The label for category 'Reads' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-testing": {
+    "message": "Testing",
+    "description": "The label for category 'Testing' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.path-header-scanner-user-guide": {
+    "message": "User Guide",
+    "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Doc Gen": {
+    "message": "Doc Gen",
+    "description": "The label for category 'Doc Gen' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-architecture": {
+    "message": "Architecture",
+    "description": "The label for category 'Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-commands": {
+    "message": "Commands",
+    "description": "The label for category 'Commands' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-command-init": {
+    "message": "Commands Init",
+    "description": "The label for category 'Commands Init' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-developer-guide": {
+    "message": "Developer Guide",
+    "description": "The label for category 'Developer Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-developer-guide-blackbox": {
+    "message": "Blackbox",
+    "description": "The label for category 'Blackbox' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-developer-guide-tooling": {
+    "message": "Tooling",
+    "description": "The label for category 'Tooling' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-developer-guide-tooling-ruff": {
+    "message": "Ruff",
+    "description": "The label for category 'Ruff' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-project": {
+    "message": "Project",
+    "description": "The label for category 'Project' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-reads": {
+    "message": "Reads",
+    "description": "The label for category 'Reads' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.blackbox": {
+    "message": "blackbox",
+    "description": "The label for category 'blackbox' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-reads-blackbox-documentation-prompt": {
+    "message": "Blackbox",
+    "description": "The label for category 'Blackbox' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-testing": {
+    "message": "Testing",
+    "description": "The label for category 'Testing' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.doc-gen-user-guide": {
+    "message": "User Guide",
+    "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Reflow": {
+    "message": "Reflow",
+    "description": "The label for category 'Reflow' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-architecture": {
+    "message": "Architecture",
+    "description": "The label for category 'Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-command": {
+    "message": "Commands",
+    "description": "The label for category 'Commands' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-commands-dockerize": {
+    "message": "Dockerize",
+    "description": "The label for category 'Dockerize' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-commands-init": {
+    "message": "Init",
+    "description": "The label for category 'Init' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-commands-tags": {
+    "message": "Tags",
+    "description": "The label for category 'Tags' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-command-tags-convert": {
+    "message": "Commands Tags Convert",
+    "description": "The label for category 'Commands Tags Convert' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-command-tags-replay": {
+    "message": "Commands Tags Replay",
+    "description": "The label for category 'Commands Tags Replay' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-developer-guide": {
+    "message": "Developer Guide",
+    "description": "The label for category 'Developer Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-developer-guide-blackbox": {
+    "message": "Blackbox",
+    "description": "The label for category 'Blackbox' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-developer-guide-tooling": {
+    "message": "Tooling",
+    "description": "The label for category 'Tooling' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-developer-guide-tooling-ruff": {
+    "message": "Ruff",
+    "description": "The label for category 'Ruff' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-project": {
+    "message": "Project",
+    "description": "The label for category 'Project' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-reads": {
+    "message": "Reads",
+    "description": "The label for category 'Reads' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.notes": {
+    "message": "notes",
+    "description": "The label for category 'notes' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.old": {
+    "message": "old",
+    "description": "The label for category 'old' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow": {
+    "message": "reflow",
+    "description": "The label for category 'reflow' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.guide": {
+    "message": "guide",
+    "description": "The label for category 'guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-testing": {
+    "message": "Testing",
+    "description": "The label for category 'Testing' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.reflow-user-guide": {
+    "message": "User Guide",
+    "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Custy": {
+    "message": "Custy",
+    "description": "The label for category 'Custy' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-getting-started": {
+    "message": "Memulai",
+    "description": "The label for category 'Getting Started' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands": {
+    "message": "Commands",
+    "description": "The label for category 'Commands' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-init": {
+    "message": "Init",
+    "description": "The label for category 'Initialize' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-validate": {
+    "message": "Validate",
+    "description": "The label for category 'Validate' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-backup": {
+    "message": "Backup",
+    "description": "The label for category 'Backup' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-cleanup": {
+    "message": "Cleanup",
+    "description": "The label for category 'Cleanup' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-cleanup-backup": {
+    "message": "Backup Cleanup",
+    "description": "The label for category 'Backup Cleanup' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-cleanup-branch": {
+    "message": "Branch Cleanup",
+    "description": "The label for category 'Branch Cleanup' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-version": {
+    "message": "Version",
+    "description": "The label for category 'Version' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-changelog": {
+    "message": "Changelog",
+    "description": "The label for category 'Changelog' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-changelog-generate": {
+    "message": "Generate",
+    "description": "The label for category 'Generate' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-commit": {
+    "message": "Commit",
+    "description": "The label for category 'Commit' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-tag": {
+    "message": "Tag",
+    "description": "The label for category 'Tag' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-push": {
+    "message": "Push",
+    "description": "The label for category 'Push' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-run": {
+    "message": "Run",
+    "description": "The label for category 'Run' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-run-dev": {
+    "message": "Dev Profile",
+    "description": "The label for category 'Dev Profile' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-run-release": {
+    "message": "Release Profile",
+    "description": "The label for category 'Release Profile' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-run-full": {
+    "message": "Full Profile",
+    "description": "The label for category 'Full Profile' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commands-workflow": {
+    "message": "Workflow (Experimental)",
+    "description": "The label for category 'Workflow (Experimental)' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-workflow-branch": {
+    "message": "Branch",
+    "description": "The label for category 'Branch' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Concepts": {
+    "message": "Concepts",
+    "description": "The label for category 'Concepts' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Concepts.link.generated-index.description": {
+    "message": "Understand the mental models behind Custy commands, pipelines, configuration, versioning, releases, and safety.",
+    "description": "The generated-index page description for category 'Concepts' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-overview-v2": {
+    "message": "Configuration",
+    "description": "The label for category 'Configuration' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-cli-overview": {
+    "message": "CLI Defaults",
+    "description": "The label for category 'CLI Defaults' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-cli-templates-overview": {
+    "message": "Templates",
+    "description": "The label for category 'Templates' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-cli-cleanup-overview": {
+    "message": "Cleanup",
+    "description": "The label for category 'Cleanup' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-logging-overview": {
+    "message": "Logging",
+    "description": "The label for category 'Logging' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-changelog-overview-v2": {
+    "message": "Changelog",
+    "description": "The label for category 'Changelog' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-configuration-git-overview": {
+    "message": "Git",
+    "description": "The label for category 'Git' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-pipelines-overview": {
+    "message": "Pipelines",
+    "description": "The label for category 'Pipelines' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-user-guide-overview": {
+    "message": "User Guide",
+    "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-developer-guide-overview": {
+    "message": "Developer Guide",
+    "description": "The label for category 'Developer Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-architecture-overview": {
+    "message": "Architecture",
+    "description": "The label for category 'Architecture' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-reference-overview": {
+    "message": "Reference",
+    "description": "The label for category 'Reference' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-troubleshooting-overview": {
+    "message": "Troubleshooting",
+    "description": "The label for category 'Troubleshooting' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-changelog": {
+    "message": "Changelog",
+    "description": "The label for category 'Changelog' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-changelog-generate": {
+    "message": "Generate",
+    "description": "The label for category 'Generate' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-commit": {
+    "message": "Commit",
+    "description": "The label for category 'Commit' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-tag": {
+    "message": "Tag",
+    "description": "The label for category 'Tag' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-push": {
+    "message": "Push",
+    "description": "The label for category 'Push' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-run": {
+    "message": "Run",
+    "description": "The label for category 'Run' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.custy-workflow": {
+    "message": "Workflow (Experimental)",
+    "description": "The label for category 'Workflow (Experimental)' in sidebar 'tutorialSidebar'"
+  }
+}

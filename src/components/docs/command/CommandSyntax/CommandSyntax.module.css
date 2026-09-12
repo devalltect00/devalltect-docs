@@ -1,0 +1,46 @@
+.syntax {
+    margin: var(--docs-space-2xl) 0;
+}
+
+.description {
+    margin-bottom: 1rem;
+
+    color: var(--ifm-color-emphasis-700);
+
+    line-height: var(--docs-line-height);
+}
+
+.codeHeader {
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-bottom: .5rem;
+}
+
+.code {
+    margin: 0;
+
+    padding: 1rem 1.25rem;
+
+    overflow-x: auto;
+
+    border-radius: var(--docs-radius-md);
+
+    background: var(--ifm-code-background);
+
+    font-size: .92rem;
+
+    line-height: 1.7;
+}
+
+.code code {
+    background: transparent;
+
+    padding: 0;
+
+    border: none;
+
+    font-family:
+        var(--ifm-font-family-monospace);
+}

@@ -1,0 +1,25 @@
+---
+title: "Pemecahan Masalah Git"
+description: "Atasi repository detection, staging, commit, tag, remote, authentication, push, branch, dan cleanup dengan aman."
+sidebar_position: 2
+sidebar_key: custy-troubleshooting-git
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="git status" title="Git Troubleshooting" description="Periksa repository state sebelum mengulang operasi Git Custy." category="Pemecahan Masalah" status="State-first" syntax="git status -> branch/tags/remotes -> focused recovery" links={[{label:"Troubleshooting Hub",href:"./overview"},{label:"Commit",href:"../commands/commit/troubleshooting"},{label:"Tag",href:"../commands/tag/troubleshooting"},{label:"Push",href:"../commands/push/troubleshooting"}]} />
+
+## Repository tidak terdeteksi
+
+Pastikan command dijalankan di dalam work tree yang benar. Jalankan `git status`, periksa project root, lalu pastikan `.git` dan `.config/custy/config.toml` merujuk project yang sama.
+
+## Commit atau tag sudah ada
+
+Periksa `git status`, recent commits, dan local tags. Jangan membuat ulang efek yang sudah berhasil; lanjutkan hanya phase yang belum selesai atau pilih version/tag yang benar.
+
+## Push ditolak atau authentication gagal
+
+Periksa URL serta nama remote, upstream branch, credential host, dan perbedaan local/remote. Custy memakai authentication Git environment dan tidak menyimpan token.
+
+<InfoBox variant="warning" title="Branch cleanup bersifat destruktif">Gunakan filter konservatif dan dry-run bila tersedia. Pastikan protected branch dan current branch tidak menjadi target.</InfoBox>
+
+<Section title="Panduan khusus"><RelatedCommands commands={[{title:"Commit Troubleshooting",href:"../commands/commit/troubleshooting",description:"Atasi staging, editor, message, changelog, dan commit failure."},{title:"Tag Troubleshooting",href:"../commands/tag/troubleshooting",description:"Atasi version input, validation, dan tag conflict."},{title:"Push Troubleshooting",href:"../commands/push/troubleshooting",description:"Atasi destination, authentication, rejection, dan tag push."},{title:"Branch Cleanup Troubleshooting",href:"../commands/cleanup/branch/troubleshooting",description:"Pahami branch yang dilewati atau dipertahankan."}]} /></Section>

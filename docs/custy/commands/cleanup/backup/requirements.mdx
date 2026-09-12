@@ -1,0 +1,207 @@
+---
+title: "Requirements"
+description: "Prerequisites for using Custy's Backup Cleanup command."
+sidebar_position: 2
+sidebar_key: custy-cleanup-backup
+
+tags:
+    - cleanup
+    - backup
+    - requirements
+
+keywords:
+    - custy cleanup backups
+    - backup cleanup requirements
+---
+
+import {
+    CommandHero,
+    RequirementGrid,
+    Section,
+    InfoBox,
+    Icon,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup backups"
+    title="Requirements"
+    description="Understand the prerequisites before removing obsolete backup files."
+    category="Maintenance"
+    status="Recommended"
+    syntax="custy cleanup backups"
+    tags={[
+        "cleanup",
+        "backup",
+        "requirements",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+Backup Cleanup operates on backup files previously created by Custy.
+
+Before removing old backups, ensure that backup files already exist and that
+your project configuration reflects the desired retention policy.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Works Best After Backup Operations"
+>
+
+Backup Cleanup is most useful after your project has accumulated multiple
+backup files over time.
+
+Projects with only a few backup files may have nothing to remove.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Prerequisites"
+>
+
+<RequirementGrid
+    title="Required Environment"
+    items={[
+        {
+            title: "Initialized Project",
+            icon: <Icon name="directory" />,
+            children: (
+                <>
+                    The project should already be initialized so that Custy's
+                    backup directories and configuration are available.
+                </>
+            ),
+        },
+        {
+            title: "Existing Backup Files",
+            icon: <Icon name="copy" />,
+            children: (
+                <>
+                    Backup Cleanup only removes files that already exist inside
+                    the configured backup directories.
+                </>
+            ),
+        },
+        {
+            title: "Project Configuration",
+            icon: <Icon name="configuration" />,
+            children: (
+                <>
+                    Cleanup behavior, backup type, and retention count are
+                    resolved from your project's configuration whenever
+                    available.
+                </>
+            ),
+        },
+        {
+            title: "Writable Backup Directory",
+            icon: <Icon name="directory" />,
+            children: (
+                <>
+                    Custy must be able to inspect and remove files from the
+                    configured backup directories.
+                </>
+            ),
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Preparation"
+>
+
+Before running Backup Cleanup, consider the following:
+
+- Verify that backup files exist.
+- Review the configured backup retention count.
+- Confirm that important backup files are no longer needed.
+- Review your project's cleanup configuration.
+
+Following these recommendations helps ensure that only obsolete backup files
+are removed.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Git Repository Not Required"
+>
+
+Unlike Branch Cleanup, Backup Cleanup does not require a Git repository.
+
+It operates exclusively on Custy's backup files stored within your project.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration"
+>
+
+Backup Cleanup behavior is controlled through your project's
+`config.toml`.
+
+Typical settings include:
+
+- Cleanup target.
+- Backup retention count.
+- Backup directories.
+
+Command-line options may temporarily override these configuration values for
+the current execution.
+
+</Section>
+
+---
+
+<Section
+    title="What Is Not Required?"
+>
+
+Backup Cleanup does **not** require:
+
+- staged Git changes,
+- commits,
+- branches,
+- tags,
+- remote repositories.
+
+Only the presence of backup files is required.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Syntax** page to learn how to remove commit backups, tag
+backups, or both using the available cleanup modes.
+
+</Section>

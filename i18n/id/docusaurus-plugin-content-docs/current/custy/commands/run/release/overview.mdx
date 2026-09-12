@@ -1,0 +1,20 @@
+---
+title: "Ringkasan"
+description: "Gunakan custy run release untuk applied version, changelog, commit, tag, dan push."
+sidebar_position: 1
+sidebar_key: custy-run-release
+---
+import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy run release" title="Release Profile" description="Jalankan complete versioned publication path tanpa Full finalization." category="Pipeline Profile" status="Stable with Limitations" syntax="custy run release [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Safety",href:"../safety"}]} />
+
+## Ringkasan
+<InfoBox variant="danger" title="Production-Affecting Workflow">Release mengubah files, membuat commit/tag, dan melakukan push. Mulai dengan dry run.</InfoBox>
+<FeatureGrid items={[
+ {title:"Validate",children:"Repository, pre-commit, pre-tag, dan pre-push checks."},{title:"Prepare",children:"Resolve version dan edit release artifacts."},{title:"Record",children:"Apply version, changelog, backup, commit, dan tag."},{title:"Publish",children:"Push HEAD dan release tag."},
+]} />
+<Screenshot src="/img/custy/run/release-profile.png" alt="Custy Release profile" title="Release Pipeline" caption="Versioned release pipeline hingga remote publication." />
+<RelatedCommands commands={[
+ {name:"dev",description:"Dev profile.",href:"../dev/overview"},
+ {name:"file",description:"Preparing releases guide.",href:"../../../user-guide/preparing-releases"},{name:"git",description:"Tag guide.",href:"../../tag/overview"},{name:"network",description:"Push guide.",href:"../../push/overview"},{name:"release",description:"Full profile.",href:"../full/overview"},
+]} />

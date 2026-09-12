@@ -1,0 +1,145 @@
+---
+title: "FAQ"
+description: "Pertanyaan yang sering diajukan tentang custy backup."
+sidebar_position: 10
+sidebar_key: custy-commands-backup
+
+tags:
+  - faq
+  - backup
+  - templates
+
+keywords:
+  - custy backup
+  - backup faq
+  - template backups
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy backup"
+    title="Frequently Asked Questions"
+    description="Jawaban atas pertanyaan umum tentang pembuatan dan pengelolaan template backup Custy."
+    category="Backup"
+    status="Direkomendasikan"
+    syntax="custy backup all"
+    tags={["faq", "backup", "templates"]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "Workflow", href: "./workflow"},
+    ]}
+/>
+
+## Ringkasan
+
+Halaman ini menjawab pertanyaan umum tentang command backup dan posisinya dalam
+workflow Custy.
+
+<InfoBox variant="tip" title="Baca Overview Lebih Dahulu">
+
+Jika baru menggunakan command backup, baca **Overview**, **Backup Files**, dan
+**Workflow** terlebih dahulu.
+
+</InfoBox>
+
+---
+
+<Section title="Apa yang sebenarnya di-backup?">
+
+Command membuat timestamped copy dari template resources yang dikelola Custy,
+terutama commit dan tag message templates. Command tidak mem-backup seluruh
+proyek atau Git repository.
+
+</Section>
+
+---
+
+<Section title="Apakah backup mengubah riwayat Git?">
+
+Tidak. Command hanya membuat file tambahan di configured backup directories.
+Command tidak membuat commit, tag, melakukan push, atau mengubah riwayat
+repository. Generated files tetap berada dalam kendali Anda.
+
+</Section>
+
+---
+
+<Section title="Apakah backup perlu dijalankan sebelum mengedit templates?">
+
+Ya. Backup mempertahankan versi sebelumnya dan memberi recovery point jika
+perubahan perlu dibatalkan. Walaupun opsional, ini adalah workflow yang
+direkomendasikan.
+
+</Section>
+
+---
+
+<Section title="Mengapa filename menggunakan timestamp?">
+
+Timestamped filenames memungkinkan beberapa versi template tersedia bersamaan.
+Custy mempertahankan revisi lama sambil menerapkan configured retention policy.
+
+</Section>
+
+---
+
+<Section title="Apa yang terjadi jika template file tidak tersedia?">
+
+Custy melewati operasi tersebut dengan aman dan tidak membuat file kosong.
+Bergantung pada subcommand, operasi lain masih dapat berhasil.
+
+</Section>
+
+---
+
+<Section title="Apakah lokasi backup dapat diubah?">
+
+Ya. Lokasi ditentukan melalui project configuration dan dapat disesuaikan
+dengan layout proyek.
+
+</Section>
+
+---
+
+<Section title="Apakah Custy otomatis menghapus backup lama?">
+
+Ya. Custy mengelola riwayat sesuai configured retention policy. Backup lama
+dapat dihapus setelah backup baru dibuat.
+
+</Section>
+
+---
+
+<Section title="Apakah backup dapat menjadi bagian dari workflow?">
+
+Ya. Operasi dapat dijalankan langsung melalui command **backup** atau menjadi
+workflow stage dalam pipeline Custy. Dokumentasi **Run** menjelaskan kombinasi
+workflow stages tersebut.
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Memerlukan Bantuan Lain?">
+
+Jika operasi tidak sesuai harapan, tinjau halaman **Troubleshooting** sebelum
+membuka issue. Periksa lokasi template, backup directories, dan project
+configuration.
+
+</InfoBox>
+
+---
+
+<Section title="Selesai">
+
+Anda telah menyelesaikan dokumentasi command **custy backup**. Lanjutkan ke
+command berikutnya untuk memahami hubungan backup dengan validation, init,
+versioning, changelog, dan release workflow.
+
+</Section>

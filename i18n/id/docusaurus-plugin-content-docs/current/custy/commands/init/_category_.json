@@ -1,0 +1,11 @@
+{
+  "label": "Init",
+  "position": 1,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-init",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/init/overview"
+  }
+}

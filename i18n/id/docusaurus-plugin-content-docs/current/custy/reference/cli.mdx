@@ -1,0 +1,21 @@
+---
+title: "Referensi CLI"
+description: "Temukan root command, command group, subcommand, entrypoint, dan rute dokumentasi Custy yang aktif."
+sidebar_position: 2
+sidebar_key: custy-reference-cli
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy" title="CLI Reference" description="Pilih command publik dan lanjutkan ke syntax, options, output, examples, serta troubleshooting." category="Referensi" status="Public CLI" syntax="custy [GLOBAL OPTIONS] COMMAND [ARGS]" links={[{label:"Commands Guide",href:"../commands/overview"},{label:"Global Options",href:"./global-options"},{label:"CLI Architecture",href:"../architecture/cli-layer"}]} />
+
+<Section title="Command publik">
+
+- Direct commands: `init`, `validate`, `commit`, `tag`, `push`, dan `run`.
+- Command groups: `changelog`, `workflow`, `version`, `backup`, dan `cleanup`.
+- Entrypoint setara: installed script `custy` dan `python -m app`.
+
+</Section>
+
+<InfoBox variant="warning" title="Internal profile bukan command publik">Nama dalam pipeline resolver tidak otomatis dapat digunakan melalui `custy run`. Gunakan hanya value yang tercantum pada Run command.</InfoBox>
+
+<RelatedCommands commands={[{title:"Command Guide",href:"../commands/overview",description:"Buka detail syntax, options, output, dan examples."},{title:"Global Options",href:"./global-options",description:"Pelajari option yang diproses root callback."},{title:"Pipeline Profiles",href:"./pipeline-profiles",description:"Bedakan public Run values dari internal profiles."},{title:"CLI Architecture",href:"../architecture/cli-layer",description:"Telusuri entrypoint, registration, resolver, dan AppContext."}]} />

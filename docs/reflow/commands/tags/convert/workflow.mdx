@@ -1,0 +1,426 @@
+---
+title: "Workflow"
+description: "Convert Version Tags Workflow"
+sidebar_key: reflow-command-tags-convert
+---
+# Convert Version Tags Workflow
+
+## Overview
+
+This document describes how the tag conversion workflow operates internally.
+
+Unlike replay operations, tag conversion creates new tags and may optionally remove existing tags.
+
+Understanding this workflow is important before performing large-scale tag migrations.
+
+---
+
+# High-Level Workflow
+
+```text
+Existing Tags
+       │
+       ▼
+Validate Tag
+       │
+       ▼
+Convert Format
+       │
+       ▼
+Create New Tag
+       │
+       ▼
+Optionally Delete Old Tag
+       │
+       ▼
+Continue
+```
+
+---
+
+# Detailed Workflow
+
+## Step 1 — Validate Repository
+
+The command first validates the current repository.
+
+Workflow:
+
+1. Verify repository exists.
+2. Verify Git is available.
+3. Verify tags can be read.
+
+Failure result:
+
+```text
+Not a Git repository.
+```
+
+---
+
+## Step 2 — Load Tags
+
+The converter loads all available tags.
+
+Example:
+
+```text
+v1.0.0
+v1.1.0rc1
+v2.0.0b1
+v3.0.0a2
+```
+
+Only tags matching supported conversion rules are processed.
+
+---
+
+## Step 3 — Validate Tag Format
+
+Each tag is evaluated individually.
+
+Supported examples:
+
+```text
+v1.0.0rc1
+v1.0.0b1
+v1.0.0a1
+```
+
+Unsupported tags are skipped.
+
+Example:
+
+```text
+release-candidate
+latest
+dev-build
+```
+
+---
+
+## Step 4 — Read Original Tag Metadata
+
+Before creating a replacement tag, the converter preserves important information.
+
+Workflow:
+
+1. Read original tag SHA.
+2. Read original tag message.
+3. Store tag metadata.
+
+Example:
+
+```text
+Tag:
+    v1.0.0rc1
+
+SHA:
+    a1b2c3d4
+
+Message:
+    Release candidate 1
+```
+
+This metadata is reused when creating the converted tag.
+
+---
+
+## Step 5 — Generate Semantic Version Tag
+
+The converter maps the original tag into Semantic Versioning.
+
+Examples:
+
+```text
+v1.0.0rc1
+      ↓
+v1.0.0-rc.1
+```
+
+```text
+v1.0.0b2
+      ↓
+v1.0.0-beta.2
+```
+
+```text
+v1.0.0a3
+      ↓
+v1.0.0-alpha.3
+```
+
+---
+
+## Step 6 — Create Temporary Message File
+
+Annotated Git tags require a message.
+
+Workflow:
+
+1. Create temporary file.
+2. Write tag message.
+3. Pass file to Git.
+4. Remove temporary file.
+
+Purpose:
+
+Preserve original annotation metadata.
+
+---
+
+## Step 7 — Create New Annotated Tag
+
+The new tag is created using:
+
+- Original SHA
+- Original message
+- Converted version name
+
+Example:
+
+```text
+Original:
+    v1.0.0rc1
+
+New:
+    v1.0.0-rc.1
+```
+
+The commit reference remains unchanged.
+
+---
+
+## Step 8 — Optional Cleanup
+
+If:
+
+```bash
+reflow tags convert --delete-old
+```
+
+is used:
+
+Workflow:
+
+```text
+Create New Tag
+       │
+       ▼
+Delete Original Tag
+```
+
+Example:
+
+Before:
+
+```text
+v1.0.0rc1
+```
+
+After:
+
+```text
+v1.0.0-rc.1
+```
+
+---
+
+If:
+
+```bash
+reflow tags convert
+```
+
+is used:
+
+Workflow:
+
+```text
+Create New Tag
+       │
+       ▼
+Keep Original Tag
+```
+
+Example:
+
+Before:
+
+```text
+v1.0.0rc1
+```
+
+After:
+
+```text
+v1.0.0rc1
+v1.0.0-rc.1
+```
+
+This is the safest migration strategy.
+
+---
+
+# Safety Characteristics
+
+## Commit History Is Preserved
+
+Conversion does not modify commits.
+
+Example:
+
+```text
+Before:
+    commit abc123
+        ↑
+    v1.0.0rc1
+
+After:
+    commit abc123
+        ↑
+    v1.0.0-rc.1
+```
+
+The underlying commit remains identical.
+
+---
+
+## Tag Messages Are Preserved
+
+Annotated tag messages are reused.
+
+Example:
+
+```text
+Original:
+    Release Candidate 1
+
+Converted:
+    Release Candidate 1
+```
+
+---
+
+## SHA References Are Preserved
+
+The new tag points to the same commit as the original tag.
+
+---
+
+# Before and After Examples
+
+## Release Candidate
+
+Before:
+
+```text
+v2.0.0rc1
+```
+
+After:
+
+```text
+v2.0.0-rc.1
+```
+
+---
+
+## Beta Release
+
+Before:
+
+```text
+v2.0.0b2
+```
+
+After:
+
+```text
+v2.0.0-beta.2
+```
+
+---
+
+## Alpha Release
+
+Before:
+
+```text
+v2.0.0a3
+```
+
+After:
+
+```text
+v2.0.0-alpha.3
+```
+
+---
+
+# Failure Handling
+
+Failures are isolated.
+
+Example:
+
+```text
+v1.0.0rc1     SUCCESS
+v1.1.0b1      SUCCESS
+v2.0.0a1      FAILED
+v3.0.0rc1     SUCCESS
+```
+
+Processing continues whenever possible.
+
+---
+
+# Sequence Diagram
+
+```text
+User
+ │
+ │ reflow tags convert
+ ▼
+Converter
+ │
+ │ Load Tags
+ ▼
+Git
+ │
+ │ Return Tags
+ ▼
+Converter
+ │
+ │ Read SHA
+ │ Read Message
+ │ Generate SemVer
+ ▼
+Git
+ │
+ │ Create Tag
+ ▼
+Repository
+```
+
+---
+
+# Summary
+
+The conversion workflow is designed to be safe and repeatable.
+
+Key guarantees:
+
+```text
+✓ Commit history preserved
+✓ SHA preserved
+✓ Tag message preserved
+✓ Optional cleanup
+✓ Incremental migration
+```
+
+The safest approach is:
+
+1. Convert tags.
+2. Validate results.
+3. Remove old tags later if desired.

@@ -1,0 +1,161 @@
+---
+title: "Workflow"
+description: "Pahami posisi validation dalam workflow pipeline Custy."
+sidebar_position: 6
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Workflow"
+    description="Pelajari cara Custy menjalankan validation sebelum workflow operations."
+    category="Validate"
+    status="Direkomendasikan"
+    syntax="custy validate"
+    tags={["workflow", "pipeline", "validation"]}
+    links={[
+        {label: "Validation Checks", href: "./validation-checks"},
+        {label: "Examples", href: "./examples"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Ringkasan
+
+Validation adalah stage pertama pada hampir setiap workflow-oriented operation
+di Custy. Tujuannya memastikan proyek siap sebelum stage berikutnya melakukan
+commit, tagging, pushing, atau membuat release.
+
+---
+
+<InfoBox variant="tip" title="Workflow Stage Otomatis">
+
+Saat menggunakan command seperti `custy run`, validation dijalankan otomatis
+sebelum workflow dilanjutkan. `custy validate` memungkinkan Anda menjalankan
+hanya validation stage.
+
+</InfoBox>
+
+---
+
+<Section title="Validation Timeline">
+
+<WorkflowTimeline
+    title="Validation Pipeline"
+    description="Urutan tingkat tinggi yang dijalankan selama project validation."
+    items={[
+        {
+            title: "Resolve Configuration",
+            description: "Muat project configuration dan tentukan validation settings yang efektif.",
+            status: "completed",
+        },
+        {
+            title: "Verify Repository",
+            description: "Pastikan current directory merupakan Git repository yang valid dan remote yang dikonfigurasi tersedia.",
+            status: "completed",
+        },
+        {
+            title: "Verify Project Resources",
+            description: "Periksa version file beserta commit dan tag templates yang diperlukan.",
+            status: "completed",
+        },
+        {
+            title: "Verify Repository State",
+            description: "Validate staged changes dan kondisi repository lain sebelum workflow execution.",
+            status: "completed",
+        },
+        {
+            title: "Finish Validation",
+            description: "Laporkan hasil validation dan izinkan workflow stages berikutnya melanjutkan jika berhasil.",
+            status: "completed",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Workflow Stages">
+
+<WorkflowStep title="1. Resolve Configuration">
+
+Custy memulai dengan memuat configuration efektif proyek. Target seperti
+remote, version file, dan lokasi template ditentukan sebelum checks dimulai.
+
+</WorkflowStep>
+
+<WorkflowStep title="2. Validate Repository">
+
+Custy memastikan current directory merupakan Git repository dan Git remote
+yang diperlukan tersedia. Jika salah satu check gagal, validation langsung
+berhenti.
+
+</WorkflowStep>
+
+<WorkflowStep title="3. Validate Project Resources">
+
+Custy memeriksa resource yang diperlukan workflow stages berikutnya, termasuk:
+
+- Version files
+- Commit message templates
+- Tag message templates
+
+</WorkflowStep>
+
+<WorkflowStep title="4. Validate Repository State">
+
+Sebelum commit-oriented workflow dilanjutkan, Custy memastikan repository
+berada dalam kondisi yang dapat diterima. Bergantung pada options, proses ini
+dapat mencakup pemeriksaan staged changes atau automatic staging.
+
+</WorkflowStep>
+
+<WorkflowStep title="5. Complete Validation">
+
+Jika setiap validation step berhasil, Custy melaporkan hasil yang sukses.
+Workflow-oriented commands kemudian dapat melanjutkan ke commit, tag, atau
+push.
+
+</WorkflowStep>
+
+</Section>
+
+---
+
+<InfoBox variant="note" title="Fail-Fast Workflow">
+
+Validation menggunakan pendekatan fail-fast. Jika satu validation step gagal,
+checks berikutnya dilewati dan workflow langsung berhenti. Hal ini mencegah
+stage berikutnya beroperasi pada project state yang tidak valid.
+
+</InfoBox>
+
+---
+
+<Section title="Validation dalam Workflow yang Lebih Besar">
+
+Validation dirancang untuk digunakan kembali. Validation dapat dijalankan
+langsung dengan:
+
+- `custy validate`
+
+atau otomatis sebagai bagian dari workflow command:
+
+- `custy run commit`
+- `custy run tag`
+- `custy run push`
+- `custy run release`
+
+Shared validation stage memastikan setiap workflow dimulai dengan readiness
+checks yang sama.
+
+</Section>

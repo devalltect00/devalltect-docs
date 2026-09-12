@@ -1,0 +1,36 @@
+---
+title: "Workflow"
+description: "Pipeline changelog generation dari Git history hingga Markdown."
+sidebar_position: 6
+sidebar_key: custy-changelog-generate-workflow
+---
+import {CommandHero, InfoBox, Section, WorkflowTimeline} from "@site/src/components/docs";
+
+<CommandHero command="custy changelog generate" title="Generation Workflow" description="Ikuti pipeline dari resolved inputs hingga rendered Markdown." category="Changelog" status="Stable" syntax="custy changelog generate [OPTIONS]" links={[
+    {label: "Ringkasan", href: "./overview"}, {label: "Configuration", href: "./configuration"}, {label: "Output", href: "./output"},
+]} />
+
+## Ringkasan
+
+<WorkflowTimeline title="Changelog Generation" description="Tanggung jawab utama generator." items={[
+    {title: "Resolve inputs", description: "Gabungkan CLI overrides, configuration, dan defaults.", status: "completed"},
+    {title: "Collect history", description: "Baca eligible commits dan release boundaries.", status: "completed"},
+    {title: "Report collection progress", description: "Advance satu kali untuk Unreleased content dan satu kali untuk setiap Git tag yang ditemukan.", status: "completed"},
+    {title: "Parse and clean", description: "Parse structured messages dan bersihkan presentation-only content.", status: "completed"},
+    {title: "Group and sort", description: "Kelompokkan berdasarkan release, type, scope, dan urutan.", status: "completed"},
+    {title: "Integrate pending content", description: "Sertakan pending commit template jika aktif.", status: "optional"},
+    {title: "Render Markdown", description: "Terapkan behavior, links, metadata, statistics, dan template.", status: "completed"},
+    {title: "Write or preview CHANGELOG.md", description: "Buat atau perbarui artifact saat normal execution, atau tampilkan rendered content tanpa menulis saat dry-run.", status: "completed"},
+]} />
+
+<InfoBox variant="info" title="Progress Bar Mencakup History Collection">
+
+Progress counter selesai setelah Custy memproses `Unreleased` dan setiap tagged
+release range. Release behavior, sorting, template rendering, serta keputusan
+normal-write atau dry-run-preview masih berlangsung sesudahnya.
+
+</InfoBox>
+
+<InfoBox variant="info" title="Juga Digunakan oleh Profile Besar">Generation merupakan internal stage dalam `custy run commit`, `custy run dev`, `custy run release`, dan `custy run full`. Standalone command tetap `custy changelog generate`.</InfoBox>
+
+<Section title="Failure Behavior">Jika collection, parsing, template resolution, atau rendering gagal, perbaiki stage tersebut dan periksa working-tree diff sebelum menjalankan ulang.</Section>

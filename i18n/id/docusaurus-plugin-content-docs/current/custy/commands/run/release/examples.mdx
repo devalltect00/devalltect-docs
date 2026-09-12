@@ -1,0 +1,15 @@
+---
+title: "Examples"
+description: "Contoh aman custy run release."
+sidebar_position: 3
+sidebar_key: custy-run-release-examples
+---
+import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy run release" title="Examples" description="Preview dan jalankan release dengan version strategy dan remote inputs." category="Pipeline Profile" status="Practical Guide" syntax="custy run release [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Workflow",href:"./workflow"},{label:"Safety",href:"../safety"}]} />
+
+## Ringkasan
+<InfoBox variant="danger" title="Release Publishes Git History">Verifikasi exact version, commit target, tag, dan destinations.</InfoBox>
+<CommandExample examples={[
+ {title:"Preview",command:"custy --dry-run run release",result:"Menampilkan planned publication."},{title:"Project Defaults",command:"custy run release",result:"Menjalankan registered Release profile."},{title:"SemVer Release",command:"custy run release --strategy semver --tag v2.0.0",result:"Menggunakan explicit SemVer."},{title:"PEP 440 RC",command:"custy run release --strategy pep440 --tag 2.0.0rc1 --pre rc",result:"Menggunakan PEP 440 release candidate."},{title:"Backup Sync",command:"custy run release --tag v2.0.0 --sync-backup",result:"Minta main dan backup publication."},
+]} />

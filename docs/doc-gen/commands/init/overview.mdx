@@ -1,0 +1,366 @@
+---
+title: "Overview"
+description: "The doc-gen init command bootstraps a project for use with Doc-Gen."
+sidebar_position: 1
+sidebar_key: doc-gen-commands-init
+---
+
+# Initialize a Doc-Gen Project
+
+## Overview
+
+The `doc-gen init` command bootstraps a project for use with Doc-Gen.
+
+It creates the configuration files, project metadata, templates, and example resources needed to start using Doc-Gen commands.
+
+For most users, this is the first command that should be executed after installing Doc-Gen.
+
+---
+
+# Purpose
+
+Doc-Gen commands rely on configuration and project structure.
+
+Instead of creating files manually, `doc-gen init` can generate them automatically.
+
+This helps:
+
+- Reduce setup time
+- Avoid configuration mistakes
+- Standardize project structure
+- Provide a consistent onboarding experience
+
+---
+
+# What Is Doc-Gen Init?
+
+Command:
+
+```bash
+doc-gen init
+```
+
+Purpose:
+
+```text
+Initialize a project for Doc-Gen.
+```
+
+The command generates project files and directories required by Doc-Gen.
+
+Depending on the selected mode, this may include:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+---
+
+# Typical Workflow
+
+Most users follow a workflow similar to:
+
+```text
+Install Doc-Gen
+       ↓
+doc-gen init
+       ↓
+Edit config.toml
+       ↓
+doc-gen structure generate
+```
+
+---
+
+# When Should I Use It?
+
+## First-Time Setup
+
+After installing Doc-Gen:
+
+```bash
+doc-gen init
+```
+
+This creates the initial project structure.
+
+---
+
+## New Repository
+
+When adding Doc-Gen to an existing repository:
+
+```bash
+doc-gen init
+```
+
+This generates the required files without manually creating them.
+
+---
+
+## Recover Missing Files
+
+If configuration files were deleted accidentally:
+
+```bash
+doc-gen init
+```
+
+can recreate them.
+
+---
+
+## Team Onboarding
+
+When a new contributor joins the project:
+
+```bash
+doc-gen init
+```
+
+can quickly create the expected structure.
+
+---
+
+# When Should I NOT Use It?
+
+You generally do not need to run `doc-gen init`:
+
+- Before every command
+- Before every release
+- Before every Docker build
+
+Initialization is usually performed once per project.
+
+After the project is configured, Doc-Gen commands can be used normally.
+
+---
+
+# Supported Modes
+
+Doc-Gen supports multiple initialization modes.
+
+## Config Mode
+
+Command:
+
+```bash
+doc-gen init --mode config
+```
+
+Purpose:
+
+```text
+Create configuration files only.
+```
+
+Recommended when:
+
+```text
+You only need config.toml.
+```
+
+---
+
+## Templates Mode
+
+Command:
+
+```bash
+doc-gen init --mode templates
+```
+
+Purpose:
+
+```text
+Create template files only.
+```
+
+---
+
+## Examples Mode
+
+Command:
+
+```bash
+doc-gen init --mode examples
+```
+
+Purpose:
+
+```text
+Create example resources only.
+```
+
+---
+
+## All Mode
+
+Command:
+
+```bash
+doc-gen init --mode all
+```
+
+Purpose:
+
+```text
+Create everything.
+```
+
+This is the recommended mode for new users.
+
+---
+
+# Input
+
+Input may come from:
+
+```text
+CLI arguments
+Configuration defaults
+Interactive prompts (optional)
+```
+
+Examples:
+
+```bash
+doc-gen init
+
+doc-gen init --mode config
+
+doc-gen init --force
+```
+
+---
+
+# Output
+
+The command creates files and directories on disk.
+
+Typical outputs include:
+
+```text
+config.toml
+__version__.py
+templates/
+examples/
+```
+
+The exact output depends on the selected mode.
+
+---
+
+# Safety
+
+Doc-Gen attempts to avoid overwriting files unintentionally.
+
+Additional options may be used to control behavior:
+
+```text
+--force
+--ask
+--dry-run
+```
+
+See:
+
+```text
+docs/init/examples.md
+docs/init/faq.md
+```
+
+for details.
+
+---
+
+# Requirements
+
+Before running:
+
+```bash
+doc-gen init
+```
+
+ensure:
+
+```text
+✓ Doc-Gen is installed
+✓ You are inside the target project directory
+✓ You have permission to create files
+```
+
+No Git, Docker, or GitHub CLI installation is required for initialization.
+
+---
+
+# Related Commands
+
+Initialize project:
+
+```bash
+doc-gen init
+```
+
+Generate project structure:
+
+```bash
+doc-gen structure generate
+```
+
+Print project structure on console:
+
+```bash
+doc-gen structure print
+```
+
+Analyze project structure:
+
+```bash
+doc-gen structure analyze
+```
+
+---
+
+# Related Documentation
+
+Getting Started:
+
+```text
+docs/user-guide/getting-started.md
+```
+
+Workflow:
+
+```text
+docs/init/workflow.md
+```
+
+Examples:
+
+```text
+docs/init/examples.md
+```
+
+FAQ:
+
+```text
+docs/init/faq.md
+```
+
+Lifecycle:
+
+```text
+docs/user-guide/lifecycle.md
+```
+
+---
+
+# Summary
+
+`doc-gen init` is the recommended starting point for every Doc-Gen project.
+
+It creates the files and structure needed to use the rest of the Doc-Gen ecosystem and provides a consistent foundation for version conversion, release replay, and Docker publishing workflows.

@@ -1,0 +1,84 @@
+---
+title: "Workflow"
+description: "Resolved pipeline stages executed by custy tag."
+sidebar_position: 7
+sidebar_key: custy-tag-workflow
+tags: [tag, workflow, pipeline]
+keywords: [custy tag workflow]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Tag Workflow"
+    description="Follow version resolution, artifact preparation, message backup, and local Git tag creation."
+    category="Git Operations"
+    status="Stable"
+    syntax="custy tag [OPTIONS]"
+    tags={[
+        "workflow",
+        "pipeline",
+        "local tag",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Versioning", href: "./versioning-and-tags"},
+        {label: "Output", href: "./output"},
+    ]}
+/>
+
+## Overview
+
+The tag profile prepares release state before creating a permanent local Git
+reference. Required failures stop later stages.
+
+---
+
+<Section
+    title="Workflow Timeline"
+>
+
+<WorkflowTimeline
+    title="Tag Profile"
+    items={[
+        {title: "Validate repository", description: "Run repository and pre-tag checks.", status: "completed"},
+        {title: "Prepare version", description: "Resolve the target version and initialize workflow state.", status: "completed"},
+        {title: "Prepare tag message", description: "Load or generate the annotated tag message.", status: "completed"},
+        {title: "Generate and edit artifacts", description: "Create configured artifacts and allow required editing.", status: "completed"},
+        {title: "Apply version", description: "Write the selected version to the configured version file.", status: "completed"},
+        {title: "Back up and clean", description: "Back up tag-message content and prune retained backups.", status: "completed"},
+        {title: "Create local tag", description: "Create the Git tag at the resolved target commit.", status: "completed"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Publishing is separate"
+>
+
+The tag profile does not push. Publishing is deliberately separated so the
+local tag and its target can be inspected first.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Failure Behavior"
+>
+
+If a stage fails, inspect project files, message backups, and local tags before
+retrying. A later-stage failure may occur after version files were already
+updated.
+
+</Section>

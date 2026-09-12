@@ -1,0 +1,205 @@
+---
+title: "Workflow"
+description: "Understand what happens internally when the custy init command prepares a project."
+sidebar_position: 5
+sidebar_key: custy-commands-init
+
+tags:
+  - workflow
+  - initialization
+  - lifecycle
+
+keywords:
+  - custy init workflow
+  - initialization process
+  - project setup
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Initialization Workflow"
+    description="Understand the sequence of operations performed when initializing a project with Custy."
+    category="Initialization"
+    status="Recommended"
+    syntax="custy init"
+    tags={[
+        "workflow",
+        "initialization",
+        "project setup",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Generated Files",
+            href: "./generated-files",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+    ]}
+/>
+
+## Overview
+
+Running `custy init` prepares a project by generating the resources that Custy
+uses during future operations.
+
+Rather than executing Git workflows immediately, the command creates a
+customizable project workspace that future commands can reuse.
+
+<InfoBox
+    variant="tip"
+    title="Safe Operation"
+>
+
+The initialization workflow does not create commits, tags, releases, or modify
+your Git history.
+
+Its only responsibility is preparing the project for future Custy operations.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Workflow Timeline"
+>
+
+<WorkflowTimeline
+    title="Initialization Timeline"
+    description="High-level sequence of operations performed by the initialization workflow."
+    items={[
+        {
+            title: "Resolve Options",
+            description:
+                "Determine the effective initialization settings by combining command-line arguments, project configuration, and built-in defaults.",
+            status: "completed",
+        },
+        {
+            title: "Prepare Initialization",
+            description:
+                "Build the initialization context and determine which resources need to be generated.",
+            status: "completed",
+        },
+        {
+            title: "Generate Resources",
+            description:
+                "Create configuration files, templates, and optional example resources according to the selected mode.",
+            status: "completed",
+        },
+        {
+            title: "Handle Existing Files",
+            description:
+                "Preserve or overwrite generated files according to their resource type, force behavior, and supported interactive confirmation settings.",
+            status: "completed",
+        },
+        {
+            title: "Complete Initialization",
+            description:
+                "Finish the initialization process and prepare the project for future Custy commands.",
+            status: "completed",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Workflow Stages"
+>
+
+<WorkflowStep
+    number={1}
+    status="completed"
+    title="Resolve Initialization Settings"
+    description="
+Determine the effective initialization mode by combining command-line
+arguments, project configuration, and Custy's built-in defaults.
+"
+/>
+
+<WorkflowStep
+    number={2}
+    status="completed"
+    title="Build the Initialization Context"
+    description="
+Prepare the internal execution context that will be shared by every
+generation step during initialization.
+"
+/>
+
+<WorkflowStep
+    number={3}
+    status="completed"
+    title="Generate Project Resources"
+    description="
+Generate the selected project resources, including configuration files,
+templates, and optional nested example resources depending on the chosen
+initialization mode.
+"
+/>
+
+<WorkflowStep
+    number={4}
+    status="completed"
+    title="Merge Packaged Examples"
+    description="
+Walk the packaged example tree recursively. Add missing directories and files,
+preserve existing example files by default, or overwrite those files when
+force behavior is enabled.
+"
+/>
+
+<WorkflowStep
+    number={5}
+    status="completed"
+    title="Finalize Initialization"
+    description="
+Complete the initialization process and prepare the project for subsequent
+Custy commands.
+"
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Designed for Reuse"
+>
+
+The generated configuration and templates become part of your project.
+
+They can be edited, committed to version control, and shared with other
+developers working on the same repository.
+
+Running init again is additive for packaged examples by default: new nested
+examples are copied while existing example files remain unchanged.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+The next page explains every file and directory created by the initialization
+workflow.
+
+</Section>

@@ -1,0 +1,24 @@
+flowchart TD
+
+A[Install Reflow]
+B[reflow init]
+C[Edit config.toml]
+
+D[reflow tags convert]
+E[reflow tags replay]
+F[reflow dockerize]
+
+G[Git Tags]
+H[GitHub Releases]
+I[Container Registry]
+
+A --> B
+B --> C
+
+C --> D
+C --> E
+C --> F
+
+D --> G
+E --> H
+F --> I

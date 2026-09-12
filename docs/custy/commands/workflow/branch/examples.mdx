@@ -1,0 +1,66 @@
+---
+title: "Examples"
+description: "Non-production interface examples for the experimental workflow branch command."
+sidebar_position: 7
+sidebar_key: custy-workflow-branch-examples
+tags: [workflow, examples, experimental]
+keywords: [workflow branch examples]
+---
+
+import {
+    CommandExample,
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Examples"
+    description="Review non-production interface examples for branch boundaries, version boundaries, and diagnostic output."
+    category="Experimental Workflow"
+    status="Currently Blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "examples",
+        "non-production",
+        "diagnostics",
+    ]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Options", href: "./options"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+These forms explain the declared interface. They are not a recommendation to
+use the blocked command in release automation.
+
+<InfoBox
+    variant="danger"
+    title="Documentation examples only"
+>
+
+Do not add this command to release automation while the current step-name
+mismatch remains. Use these forms only to understand or test the interface in a
+safe environment after the application is corrected.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Interface Examples"
+>
+
+<CommandExample
+    examples={[
+        {title: "Validate a branch transition", command: "custy --dry-run workflow branch --check_transition --from-branch develop --to-branch main", description: "Request validation of a specific branch transition."},
+        {title: "Validate a version transition", command: "custy --dry-run workflow branch -ct --from-tag v1.2.0 --to-tag v1.3.0", description: "Request validation with the short check flag."},
+        {title: "Inspect diagnostics", command: "custy --debug --log-level debug workflow branch --check_transition", description: "Enable local diagnostic output for interface testing."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,168 @@
+---
+title: "Output"
+description: "Pahami output dan pesan yang diberikan oleh custy init."
+sidebar_position: 9
+sidebar_key: custy-commands-init
+
+tags:
+  - output
+  - initialization
+  - terminal
+
+keywords:
+  - custy init output
+  - initialization output
+  - terminal messages
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Command Output"
+    description="Pelajari output yang dapat diharapkan ketika Custy menjalankan init pada proyek."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "output",
+        "terminal",
+        "messages",
+    ]}
+    links={[
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Selama init, Custy melaporkan progres melalui pesan terminal yang informatif.
+
+Pesan tersebut membantu Anda memahami resource mana yang dibuat, disalin,
+dilewati, atau ditimpa, serta apakah init berhasil diselesaikan.
+
+<InfoBox
+    variant="tip"
+    title="Output yang Mudah Dibaca"
+>
+
+Output Custy dirancang agar mudah dibaca manusia sekaligus memberikan informasi
+yang cukup untuk memahami proses yang terjadi selama init.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Output Umum"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Init Berhasil",
+            description:
+                "Output umum saat menjalankan init pada proyek untuk pertama kalinya.",
+            output: `
+Initializing Custy project...
+
+✓ Configuration created
+✓ Templates created
+✓ Examples created
+
+Initialization completed successfully.
+`,
+            notes:
+                "Susunan kata yang tepat dapat sedikit berbeda antarversi Custy, tetapi keseluruhan alurnya tetap sama.",
+        },
+        {
+            title: "Resource Sudah Ada",
+            description:
+                "Ditampilkan ketika Custy mempertahankan existing files sambil menambahkan packaged example yang belum ada.",
+            output: `
+Skipped .config/custy/config.toml (already exists)
+Skipped .config/custy/templates/commit-message.txt (already exists)
+Copied .config/custy/templates/examples/commit_message/since_custy_v2/new-example.txt
+
+Initialization completed successfully.
+`,
+            notes:
+                "Direktori examples yang sudah ada digunakan kembali. Missing nested files dapat disalin walaupun file lain dilewati.",
+        },
+        {
+            title: "Konfirmasi Interaktif",
+            description:
+                "Ditampilkan ketika Custy meminta konfirmasi sebelum mengganti resource yang sudah ada.",
+            output: `
+Configuration already exists.
+
+Overwrite existing file? (y/N)
+`,
+            notes:
+                "Interactive prompts berlaku untuk individual generated files yang mendukung prompt. Packaged examples menggunakan preserve-or-force merge behavior tanpa prompt per file.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Memahami Output"
+>
+
+Output yang ditampilkan Custy bergantung pada beberapa faktor, termasuk:
+
+- Init mode yang dipilih.
+- Apakah project resources sudah ada.
+- Apakah confirmation prompts diaktifkan.
+- Apakah resource ditimpa.
+- Apakah packaged example tree memiliki file yang belum tersedia di proyek.
+
+Walaupun susunan kata yang tepat dapat berbeda antarversi, urutan pesan secara
+keseluruhan tetap konsisten.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Berhasil Diselesaikan"
+>
+
+Ketika init berhasil diselesaikan, proyek siap digunakan oleh command Custy
+berikutnya.
+
+Configuration dan templates yang dibuat sekarang dapat ditinjau, disesuaikan,
+dan disimpan dalam version control.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Jika proses init tidak berjalan sesuai harapan, lanjutkan ke halaman
+**Troubleshooting** untuk melihat masalah umum dan solusi yang direkomendasikan.
+
+</Section>

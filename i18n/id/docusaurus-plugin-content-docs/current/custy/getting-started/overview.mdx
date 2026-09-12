@@ -1,0 +1,203 @@
+---
+title: "Memulai"
+description: "Instal Custy, siapkan repositori Git yang sudah ada, dan pratinjau pipeline development pertama Anda dengan aman."
+sidebar_position: 1
+sidebar_key: custy-getting-started
+
+tags:
+  - custy
+  - memulai
+  - orientasi awal
+
+keywords:
+  - instal custy
+  - mulai cepat custy
+  - alur kerja custy pertama
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy"
+    title="Memulai"
+    description="Instal Custy, siapkan repositori Git yang sudah ada, dan pratinjau pipeline development pertama Anda dengan aman."
+    category="Orientasi Awal"
+    status="Direkomendasikan"
+    syntax="custy COMMAND [OPTIONS]"
+    tags={[
+        "instalasi",
+        "penyiapan proyek",
+        "pipeline pertama",
+    ]}
+    links={[
+        {label: "Instal Custy", href: "./installation"},
+        {label: "Docker", href: "./docker"},
+        {label: "Mulai Cepat", href: "./quick-start"},
+        {label: "Alur Kerja Pertama", href: "./first-workflow"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Pengguna", value: "Pengguna baru Custy", icon: "feature"},
+        {label: "Jenis Proyek", value: "Repositori Git yang sudah ada", icon: "git"},
+        {label: "Pilihan Penyiapan", value: "Python native atau Docker", icon: "package"},
+        {label: "Pendekatan Keamanan", value: "Pratinjau sebelum eksekusi", icon: "success"},
+    ]}
+/>
+
+## Ringkasan
+
+Panduan ini mengantar Anda dari instalasi hingga pratinjau pipeline yang sudah
+ditinjau. Anda akan menginstal Custy, membuat resource khusus proyek,
+memvalidasi repositori, dan memeriksa pipeline development sebelum mengizinkan
+Custy mengubah file atau riwayat Git.
+
+<InfoBox
+    variant="info"
+    title="Custy bekerja dengan proyek yang sudah ada"
+>
+
+Custy adalah CLI untuk otomatisasi alur kerja dan rilis. Custy tidak membuat
+aplikasi Anda atau menginisialisasi riwayat Git-nya. Mulailah dari direktori
+root repositori yang ingin Anda kelola dengan Custy.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Pilih Cara Penyiapan"
+    subtitle="Setiap cara yang didukung menyediakan CLI publik yang sama; pilih sumber instalasi dan lingkungan yang sesuai dengan proyek Anda."
+>
+
+<FeatureGrid
+    title="Pilihan Penyiapan"
+    items={[
+        {
+            title: "Instalasi Native untuk Pengguna",
+            icon: <Icon name="command" />,
+            children: <>Instal salinan runtime normal dari source checkout, artefak rilis, atau revisi Git yang sudah ditinjau.</>,
+        },
+        {
+            title: "Instalasi untuk Kontributor",
+            icon: <Icon name="git" />,
+            children: <>Gunakan instalasi source yang editable dengan grup dependensi <code>dev</code> saat mengembangkan Custy itu sendiri.</>,
+        },
+        {
+            title: "Lingkungan Docker",
+            icon: <Icon name="package" />,
+            children: <>Build image production atau development Custy secara lokal dan mount proyek yang dituju ke <code>/workspace</code>.</>,
+        },
+        {
+            title: "Mulai Cepat",
+            icon: <Icon name="play" />,
+            children: <>Inisialisasi dan validasi repositori yang sudah ada, lalu pratinjau profil Dev tanpa menerapkan perubahan.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Urutan Belajar yang Direkomendasikan"
+>
+
+<WorkflowTimeline
+    title="Dari Instalasi hingga Pratinjau Pertama"
+    items={[
+        {
+            title: "Instal Custy",
+            description: <>Gunakan instalasi Python native atau image Docker hasil build lokal yang sudah ditinjau.</>,
+            status: "current",
+        },
+        {
+            title: "Siapkan Repositori",
+            description: <>Buka direktori root proyek dan pastikan Git melacak repositori yang dimaksud.</>,
+            status: "pending",
+        },
+        {
+            title: "Inisialisasi Resource Custy",
+            description: <>Jalankan <code>custy init</code>, lalu tinjau konfigurasi, template, dan file versi yang dibuat.</>,
+            status: "pending",
+        },
+        {
+            title: "Validasi Kesiapan",
+            description: <>Jalankan <code>custy validate</code> dan selesaikan masalah file, remote, atau prasyarat repositori yang belum terpenuhi.</>,
+            status: "pending",
+        },
+        {
+            title: "Pratinjau Pipeline",
+            description: <>Gunakan <code>custy --dry-run run dev</code> sebelum mengizinkan efek samping commit atau push.</>,
+            status: "pending",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Versi Singkat"
+>
+
+<Terminal title="Urutan orientasi awal yang aman" language="bash">
+
+{`# Dari direktori root repositori Git yang sudah ada
+custy --version
+custy init
+git status --short
+custy validate
+custy --dry-run run dev`}
+
+</Terminal>
+
+Dry run adalah langkah terakhir dalam orientasi awal dasar. Lanjutkan ke
+eksekusi normal hanya setelah Anda memahami efek profil yang dipilih terhadap
+file, Git, dan remote.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Perintah pipeline dapat menimbulkan perubahan penting"
+>
+
+Profil seperti `dev`, `release`, dan `full` dapat mengedit file, membuat riwayat
+Git, membuat tag, serta melakukan push ke remote. Baca halaman profil terkait
+dan pastikan kondisi repositori sudah benar sebelum menjalankannya tanpa
+`--dry-run`.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Lanjutkan"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Instalasi", href: "./installation", description: "Instal Custy di lingkungan Python."},
+        {title: "Docker", href: "./docker", description: "Build dan jalankan Custy melalui konfigurasi Docker repositori."},
+        {title: "Mulai Cepat", href: "./quick-start", description: "Siapkan dan validasi repositori yang sudah ada."},
+        {title: "Alur Kerja Pertama", href: "./first-workflow", description: "Pratinjau dan pahami profil Dev."},
+    ]}
+/>
+
+</Section>

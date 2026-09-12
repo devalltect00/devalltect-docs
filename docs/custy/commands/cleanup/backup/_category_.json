@@ -1,0 +1,11 @@
+{
+    "label": "Backup Cleanup",
+    "position": 2,
+    "collapsed": false,
+    "collapsible": true,
+    "className": "category-cleanup-backup",
+    "link": {
+        "type": "doc",
+        "id": "custy/commands/cleanup/backup/overview"
+    }
+}

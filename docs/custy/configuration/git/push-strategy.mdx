@@ -1,0 +1,47 @@
+---
+title: "Git Push Strategy"
+description: "Configure service-level main, backup, or all selection and understand reserved auto-push behavior."
+sidebar_position: 3
+sidebar_key: custy-configuration-git-push-strategy
+tags: [custy, configuration, git, push]
+keywords: [push_to, auto_push]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git]" title="Git Push Strategy" description="Select a remote group at the Git-service layer without assuming generated auto-push behavior is active." category="Git Configuration" status="Active + Reserved Key" syntax={'push_to = "main"'} tags={["main", "backup", "all"]} links={[{label: "Remotes", href: "./remotes"}, {label: "CLI Push", href: "../cli/push"}, {label: "Push Command", href: "../../commands/push/overview"}]} />
+
+<CommandMetadata items={[{label: "Strategy Property", value: "push_to", icon: "workflow"}, {label: "Generated Strategy", value: "main", icon: "git"}, {label: "auto_push", value: "Reserved", icon: "warning"}, {label: "Explicit Remotes", value: "Highest service priority", icon: "terminal"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "push_to", type: "main | backup | all", defaultValue: "main", description: "Select main_remotes, backup_remotes, or their de-duplicated union when the Git service resolves a group."}, {property: "auto_push", type: "Boolean", defaultValue: "true", description: "Generated intention to push after commit and tag work, but not consumed by the current active command resolvers or Git service flow. Treat as reserved."}]} />
+
+<Terminal title="Service-level strategy" language="toml">
+
+{`[tool.custy.git]
+main_remotes = ["origin"]
+backup_remotes = ["mirror"]
+push_to = "all"
+
+# Present in the generated file but currently reserved.
+auto_push = true`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Explicit remote input wins">
+
+When the service receives an explicit remote list, it returns that list before
+consulting `push_to`. Direct command resolvers can also supply their own remote
+and all-remote values.
+
+</InfoBox>
+
+<InfoBox variant="danger" title="auto_push is not an active guarantee">
+
+Do not assume `auto_push = true` causes commit or tag commands to contact a
+remote. Use the documented push command or run profile and review its plan.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Remotes", href: "./remotes", description: "Configure the groups selected by push_to."}, {title: "CLI Push", href: "../cli/push", description: "Configure command-level defaults."}, {title: "Push Workflow", href: "../../commands/push/workflow", description: "Review actual remote operations."}]} /></Section>

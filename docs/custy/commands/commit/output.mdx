@@ -1,0 +1,108 @@
+---
+title: "Output"
+description: "Files, backups, staging changes, and Git history produced by custy commit."
+sidebar_position: 7
+sidebar_key: custy-commit-output
+tags: [commit, output, git]
+keywords: [custy commit output]
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Command Output"
+    description="Review generated artifacts, backups, staging changes, and the local commit created by the profile."
+    category="Git Operations"
+    status="Review Required"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "output",
+        "Git history",
+        "verification",
+    ]}
+    links={[
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+    ]}
+/>
+
+## Overview
+
+A successful run can change project files, the Git index, and local Git history.
+Review each category rather than relying on the final success message alone.
+
+---
+
+<Section
+    title="Observable Results"
+>
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Successful Commit Profile",
+            description: "Representative high-level progress from a completed profile.",
+            output: `Version and artifacts prepared
+CHANGELOG.md updated
+Commit message backed up
+Resolved changes staged
+Git commit created`,
+            notes: "Exact terminal wording depends on the installed Custy version and project configuration.",
+        },
+    ]}
+/>
+
+A successful run can produce:
+
+- Updated version and release-artifact files.
+- An updated `CHANGELOG.md`.
+- A timestamped or retained commit-message backup.
+- A changed Git index based on the stage mode.
+- A new Git commit on the current branch.
+
+</Section>
+
+---
+
+<Section
+    title="Verify the Result"
+>
+
+<Terminal>
+
+{`git status
+git show --stat --oneline HEAD
+git show --format=fuller --no-ext-diff HEAD`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="No automatic push"
+>
+
+The new commit remains local after this command. Synchronize it separately only
+after reviewing the created commit and intended destination.
+
+</InfoBox>

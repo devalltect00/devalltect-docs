@@ -1,0 +1,115 @@
+---
+title: "Tag Troubleshooting"
+description: "Resolve tag conflicts, version errors, and pre-tag validation failures."
+sidebar_position: 10
+sidebar_key: custy-tag-troubleshooting
+tags: [tag, troubleshooting, git]
+keywords: [custy tag failed, tag already exists]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy tag"
+    title="Tag Troubleshooting"
+    description="Resolve existing-tag conflicts, version errors, missing files, pre-tag validation, and incorrect local tags."
+    category="Git Operations"
+    status="Support Guide"
+    syntax="custy tag [OPTIONS]"
+    tags={[
+        "troubleshooting",
+        "version errors",
+        "tag conflicts",
+    ]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../../troubleshooting/overview"},
+        {label: "Requirements", href: "./requirements"},
+        {label: "Versioning", href: "./versioning-and-tags"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Overview
+
+Stop before publishing any unexpected tag. Confirm local and remote state, then
+correct version or validation inputs before retrying.
+
+<InfoBox
+    variant="warning"
+    title="Never replace a published tag casually"
+>
+
+Moving or replacing a shared tag can invalidate release expectations and
+automation. Follow the repository's explicit correction policy.
+
+</InfoBox>
+
+---
+
+## The Tag Already Exists
+
+<Section compact>
+
+Inspect the existing tag locally and remotely:
+
+<Terminal>
+
+{`git show --decorate <tag>
+git ls-remote --tags origin <tag>`}
+
+</Terminal>
+
+Choose another approved version or follow your team's documented replacement
+procedure. Do not force a replacement without knowing whether it is published.
+
+</Section>
+
+---
+
+## Custy Cannot Determine the Next Version
+
+<Section compact>
+
+Confirm the strategy, existing tags, version file, and required strategy inputs.
+Use an explicit `--tag` when the release version is already known.
+
+</Section>
+
+---
+
+## The Version File Is Missing
+
+<Section compact>
+
+Correct `[tool.custy.cli.paths].version_file` or pass `--version-file` with an
+existing writable file.
+
+</Section>
+
+---
+
+## Pre-Tag Validation Fails
+
+<Section compact>
+
+Read the first validation error and correct repository or branch state. The
+currently advertised `--skip-checks` option is not reliably propagated by the
+adapter, so it should not be used as a recovery mechanism.
+
+</Section>
+
+---
+
+## The Wrong Local Tag Was Created
+
+<Section compact>
+
+Do not publish it. Inspect whether the tag exists on a remote, preserve relevant
+working-tree changes, and follow the team's safe local-tag correction process.
+
+</Section>

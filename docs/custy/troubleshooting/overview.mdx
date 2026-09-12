@@ -1,0 +1,186 @@
+---
+title: "Troubleshooting"
+description: "Diagnose Custy failures from the first symptom, inspect current state, correct the smallest cause, and verify recovery safely."
+sidebar_position: 1
+sidebar_key: custy-troubleshooting-overview
+tags: [custy, troubleshooting, recovery]
+keywords: [Custy troubleshooting, Custy failed, Custy recovery]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --debug COMMAND"
+    title="Troubleshooting"
+    description="Find the first failing boundary, preserve evidence, correct the cause, and recover without duplicating successful effects."
+    category="Troubleshooting"
+    status="Central Support Guide"
+    syntax="observe -> inspect -> isolate -> correct -> verify"
+    tags={["diagnosis", "partial state", "safe recovery"]}
+    links={[
+        {label: "Git", href: "./git"},
+        {label: "Configuration", href: "./configuration"},
+        {label: "Versioning", href: "./versioning"},
+        {label: "Changelog", href: "./changelog"},
+        {label: "Workflows", href: "./workflows"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "First Evidence", value: "First error or failed step", icon: "warning"},
+        {label: "Automatic Rollback", value: "No", icon: "security"},
+        {label: "Primary State", value: "Files and Git", icon: "git"},
+        {label: "Detailed Log", value: "logs/custy.log", icon: "file"},
+    ]}
+/>
+
+## How These Guides Are Organized
+
+The central pages in this section diagnose behavior shared by several
+commands: Git state, configuration resolution, version formats, changelog
+stages, and partial pipelines. Once you know which invocation failed, switch
+to that command's troubleshooting page for the exact symptoms and recovery
+steps.
+
+<InfoBox variant="note" title="One source of guidance for each responsibility">
+
+Central pages explain subsystem boundaries and evidence. Command pages explain
+command-specific failures. They link to each other instead of repeating the
+same full procedure in two places.
+
+</InfoBox>
+
+## Start with the First Failure
+
+Later messages can be consequences of an earlier problem. Record the first
+failed step, error message, optional diagnostic label, hint, paths, and remote
+names before changing anything.
+
+<InfoBox variant="danger" title="Do not begin by rerunning the complete pipeline">
+
+Custy pipelines are sequential and non-transactional. Earlier stages may have
+edited files, pruned backups, staged changes, created a commit or tag, or
+pushed to some remotes before a later stage failed.
+
+</InfoBox>
+
+---
+
+<Section title="Diagnosis Method">
+
+<WorkflowTimeline
+    title="Safe Troubleshooting Sequence"
+    items={[
+        {title: "Capture the first failure", description: "Save the failed step, exact message, hint, diagnostic label, path, and destination.", status: "completed"},
+        {title: "Inspect current state", description: "Review the working tree, index, latest commit, tags, branches, backups, changelog, and every remote.", status: "completed"},
+        {title: "Choose the failure family", description: "Separate environment, configuration, Git, version, changelog, or orchestration behavior.", status: "current"},
+        {title: "Correct the smallest cause", description: "Fix the first invalid input or state without rewriting unrelated or published work.", status: "pending"},
+        {title: "Preview and verify", description: "Use the narrowest applicable dry-run or direct command, then inspect state again.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Choose by Symptom">
+
+<FeatureGrid
+    items={[
+        {title: "Repository, Remotes, or Branches", icon: <Icon name="git" />, children: <>Use <a href="./git">Git Troubleshooting</a> for repository detection, staging, commits, tags, authentication, pushes, and cleanup.</>},
+        {title: "TOML, Paths, or Templates", icon: <Icon name="configuration" />, children: <>Use <a href="./configuration">Configuration Troubleshooting</a> for working-directory, precedence, cache, initialization, and file resolution.</>},
+        {title: "Versions or Tags", icon: <Icon name="release" />, children: <>Use <a href="./versioning">Versioning Troubleshooting</a> for strategy, format, file synchronization, Commitizen, and explicit tags.</>},
+        {title: "CHANGELOG.md", icon: <Icon name="file" />, children: <>Use <a href="./changelog">Changelog Troubleshooting</a> for missing or duplicate entries, grouping, range, links, templates, and output.</>},
+        {title: "Run Profiles or Partial Pipelines", icon: <Icon name="pipeline" />, children: <>Use <a href="./workflows">Workflow Troubleshooting</a> for profile names, merged ordering, failed steps, ignored adapters, and experimental behavior.</>},
+        {title: "Installation, Terminal, or Exit Status", icon: <Icon name="terminal" />, children: <>Use the <a href="../reference/environment">Environment</a> and <a href="../reference/exit-errors">Errors and Exit Status</a> references.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Evidence Checklist">
+
+<Terminal title="Inspect local repository state" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git log -3 --decorate --stat
+git tag --points-at HEAD
+git branch --all
+git remote -v`}
+
+</Terminal>
+
+<CommandChecklist
+    items={[
+        {title: "Read output from the beginning", description: "Begin with the first error, not the final summary or traceback consequence."},
+        {title: "Open the detailed log", description: "Use logs/custy.log and increase the root log level when more context is needed."},
+        {title: "Inspect generated files", description: "Check the version file, editable messages, CHANGELOG.md, and unexpected diffs."},
+        {title: "Inspect durable Git effects", description: "Determine whether staging, commit, tag, branch deletion, or any remote push succeeded."},
+        {title: "Protect unrelated work", description: "Do not discard, overwrite, reset, or clean files merely to make Custy retry."},
+        {title: "Redact shared diagnostics", description: "Remove credentials, tokens, private URLs, and sensitive commit content before sharing output."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Increase Diagnostic Detail">
+
+Global options belong before the selected command.
+
+<Terminal title="Diagnostic examples" language="bash">
+
+{`custy --debug validate
+custy --log-level DEBUG changelog generate
+custy --debug run release
+custy --no-banner --log-level DEBUG push`}
+
+</Terminal>
+
+Debug output explains more resolution and step behavior, but it does not make
+an unsafe operation reversible.
+
+</Section>
+
+---
+
+<Section title="Escalate Before Destructive Recovery">
+
+Ask a repository owner or teammate before deleting commits or tags,
+force-pushing, rewriting shared history, restoring remote branches, changing
+protected-branch policy, or replacing customized configuration and templates.
+Preserve current state and logs while the decision is reviewed.
+
+</Section>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Troubleshooting Workflows", href: "../user-guide/troubleshooting-workflows", description: "Follow the task-oriented partial-pipeline recovery journey."},
+        {title: "Errors and Exit Status", href: "../reference/exit-errors", description: "Interpret process status, validation labels, and exception families."},
+        {title: "Safety and Side Effects", href: "../concepts/safety-and-side-effects", description: "Review effects, dry-run boundaries, and recovery responsibility."},
+        {title: "Command Reference", href: "../commands/overview", description: "Open command-specific troubleshooting from the selected operation."},
+    ]}
+/>
+
+</Section>

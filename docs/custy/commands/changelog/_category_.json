@@ -1,0 +1,11 @@
+{
+  "label": "Changelog",
+  "position": 6,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-changelog",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/changelog/overview"
+  }
+}

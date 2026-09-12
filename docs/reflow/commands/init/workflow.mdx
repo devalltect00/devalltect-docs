@@ -1,0 +1,424 @@
+---
+title: "Workflow"
+description: "Init Workflow"
+sidebar_key: reflow-commands-init
+---
+# Init Workflow
+
+## Overview
+
+This document explains what happens when:
+
+```bash id="w1f1m2"
+reflow init
+```
+
+is executed.
+
+Understanding the workflow helps explain:
+
+- What files are created
+- How initialization decisions are made
+- Where templates come from
+- How Reflow generates project scaffolding
+
+---
+
+# High-Level Workflow
+
+```text id="x1a1b1"
+User
+  ↓
+reflow init
+  ↓
+Resolver
+  ↓
+InitMain
+  ↓
+InitBuilder
+  ↓
+ScaffoldGenerator
+  ↓
+InitializationResult
+  ↓
+Presenter
+```
+
+---
+
+# User Workflow
+
+Typical workflow:
+
+```text id="x1a1b2"
+Install Reflow
+      ↓
+Run reflow init
+      ↓
+Generate Project Files
+      ↓
+Edit config.toml
+      ↓
+Use Reflow Commands
+```
+
+---
+
+# Initialization Lifecycle
+
+When the command starts, Reflow performs several stages.
+
+```text id="x1a1b3"
+1. Parse CLI arguments
+2. Resolve initialization settings
+3. Build initialization plan
+4. Generate files and directories
+5. Collect results
+6. Display summary
+```
+
+---
+
+# Stage 1 — Parse CLI Arguments
+
+Example:
+
+```bash id="x1a1b4"
+reflow init
+
+reflow init --mode config
+
+reflow init --force
+```
+
+The CLI parses:
+
+```text id="x1a1b5"
+mode
+force
+ask
+dry-run
+```
+
+and converts them into a structured initialization request.
+
+---
+
+# Stage 2 — Resolve Settings
+
+Reflow resolves all initialization options.
+
+Example:
+
+```text id="x1a1b6"
+Mode
+Force Flag
+Ask Flag
+Dry Run Flag
+```
+
+Result:
+
+```text id="x1a1b7"
+Initialization Configuration
+```
+
+This configuration becomes the source of truth for the remainder of the workflow.
+
+---
+
+# Stage 3 — Build Initialization Plan
+
+The initialization configuration is converted into an execution plan.
+
+```text id="x1a1b8"
+Configuration
+      ↓
+Builder
+      ↓
+Initialization Plan
+```
+
+The plan determines:
+
+```text id="x1a1b9"
+Which files should be created
+Which directories should be created
+Which templates should be copied
+```
+
+---
+
+# Stage 4 — Determine Resources
+
+The selected mode determines what resources are included.
+
+Example:
+
+```text id="x1a1c0"
+config
+```
+
+may generate:
+
+```text id="x1a1c1"
+config.toml
+```
+
+---
+
+Example:
+
+```text id="x1a1c2"
+all
+```
+
+may generate:
+
+```text id="x1a1c3"
+config.toml
+__version__.py
+templates
+examples
+```
+
+The exact output depends on the current project version and available templates.
+
+---
+
+# Stage 5 — Load Templates
+
+If templates are required:
+
+```text id="x1a1c4"
+Initialization Plan
+       ↓
+Template Loader
+```
+
+Reflow locates template resources and prepares them for generation.
+
+Workflow:
+
+```text id="x1a1c5"
+Template Requested
+       ↓
+Template Found
+       ↓
+Ready For Generation
+```
+
+---
+
+# Stage 6 — Generate Files
+
+The scaffold generator executes the initialization plan.
+
+Responsibilities:
+
+```text id="x1a1c6"
+Create directories
+Create files
+Copy templates
+Skip existing resources
+Track results
+```
+
+Workflow:
+
+```text id="x1a1c7"
+Plan
+  ↓
+Generator
+  ↓
+Filesystem
+```
+
+---
+
+# Stage 7 — Track Results
+
+During execution Reflow records:
+
+```text id="x1a1c8"
+Created files
+Created directories
+Copied files
+Skipped files
+```
+
+These results are collected into a structured result object.
+
+---
+
+# Stage 8 — Display Summary
+
+After generation completes:
+
+```text id="x1a1c9"
+Initialization Result
+         ↓
+Presenter
+         ↓
+Summary Table
+```
+
+Example:
+
+```text id="x1a1d0"
+Created Files: 4
+Created Directories: 2
+Skipped Files: 1
+```
+
+This provides a clear overview of what changed.
+
+---
+
+# Dry Run Workflow
+
+Command:
+
+```bash id="x1a1d1"
+reflow init --dry-run
+```
+
+Workflow:
+
+```text id="x1a1d2"
+Build Plan
+      ↓
+Preview Actions
+      ↓
+Do Not Write Files
+```
+
+Benefits:
+
+```text id="x1a1d3"
+Safe testing
+Preview changes
+Validate setup
+```
+
+---
+
+# Force Workflow
+
+Command:
+
+```bash id="x1a1d4"
+reflow init --force
+```
+
+Workflow:
+
+```text id="x1a1d5"
+Existing File
+      ↓
+Overwrite Allowed
+      ↓
+Replace File
+```
+
+Use carefully.
+
+---
+
+# Ask Workflow
+
+Command:
+
+```bash id="x1a1d6"
+reflow init --ask
+```
+
+Workflow:
+
+```text id="x1a1d7"
+File Exists
+      ↓
+Prompt User
+      ↓
+Continue or Skip
+```
+
+Useful when working with existing repositories.
+
+---
+
+# Internal Architecture
+
+The initialization system follows the same layered architecture used throughout Reflow.
+
+```text id="x1a1d8"
+CLI
+ ↓
+Resolver
+ ↓
+Core
+ ↓
+Generator
+ ↓
+Presenter
+```
+
+Benefits:
+
+```text id="x1a1d9"
+✓ Separation of concerns
+✓ Testability
+✓ Maintainability
+✓ Extensibility
+```
+
+---
+
+# Relationship To Other Commands
+
+Initialization prepares the project for future commands.
+
+Workflow:
+
+```text id="x1a2a0"
+reflow init
+      ↓
+reflow tags convert
+      ↓
+reflow tags replay
+      ↓
+reflow dockerize
+```
+
+Initialization itself does not:
+
+```text id="x1a2a1"
+Convert tags
+Replay releases
+Build Docker images
+Push containers
+```
+
+Its sole responsibility is project setup.
+
+---
+
+# Summary
+
+The initialization workflow follows:
+
+```text id="x1a2a2"
+Parse Arguments
+      ↓
+Resolve Settings
+      ↓
+Build Plan
+      ↓
+Generate Resources
+      ↓
+Collect Results
+      ↓
+Display Summary
+```
+
+This process provides a predictable and repeatable way to prepare a project for use with Reflow.

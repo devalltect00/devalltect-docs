@@ -1,0 +1,169 @@
+---
+title: "Workflow Troubleshooting"
+description: "Resolve rejected profiles, normalized ordering, validation stops, partial pipelines, inactive option adapters, failed publication, and experimental workflow behavior."
+sidebar_position: 6
+sidebar_key: custy-troubleshooting-workflows
+tags: [custy, troubleshooting, workflows]
+keywords: [Custy run failed, partial pipeline, Custy workflow error]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    KeyValueTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --debug run PROFILE"
+    title="Workflow Troubleshooting"
+    description="Find the last completed step and recover from current state instead of assuming the profile rolled back."
+    category="Troubleshooting"
+    status="Pipeline Recovery"
+    syntax="profile -> expanded steps -> first failure -> narrow recovery"
+    tags={["profiles", "ordering", "partial state", "experimental workflow"]}
+    links={[
+        {label: "Troubleshooting Hub", href: "./overview"},
+        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
+        {label: "Recovery Journey", href: "../user-guide/troubleshooting-workflows"},
+        {label: "Profiles", href: "../reference/pipeline-profiles"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Public Run Names", value: "6", icon: "pipeline"},
+        {label: "Execution", value: "Sequential", icon: "timeline"},
+        {label: "Failure Policy", value: "Stop and re-raise", icon: "warning"},
+        {label: "Rollback", value: "None", icon: "security"},
+    ]}
+/>
+
+## Scope of This Page
+
+Use this page when a Run profile or experimental workflow crosses several
+steps and may have left partial state. Use the Run or Workflow Branch command
+guide when the failing invocation and symptom are already clear.
+
+## Find the Last Completed Boundary
+
+<WorkflowTimeline
+    title="Partial Pipeline Recovery"
+    items={[
+        {title: "Read the failed step", description: "Capture its name, message, hint, diagnostic label, and reported paths or remotes.", status: "completed"},
+        {title: "List earlier durable effects", description: "Check files, backups, index, commits, tags, branches, and all destinations.", status: "completed"},
+        {title: "Correct the original cause", description: "Fix the first validation, configuration, content, Git, authentication, or implementation problem.", status: "current"},
+        {title: "Choose narrow recovery", description: "Use a direct command or manual action only for the remaining intended result.", status: "pending"},
+        {title: "Verify final state", description: "Confirm local files, Git references, logs, and every remote before declaring recovery complete.", status: "pending"},
+    ]}
+/>
+
+---
+
+<Section title="Common Symptoms">
+
+<KeyValueTable
+    items={[
+        {key: "Profile name rejected", value: "Use commit, tag, push, dev, release, or full. Other resolver profiles are not additional public Run names."},
+        {key: "Combined profiles run in another order", value: "Multiple profiles are expanded, deduplicated, and stably sorted by global STEP_ORDER priority. This is intentional."},
+        {key: "Duplicate or mixed input rejected", value: "Remove duplicate values and follow the typed validator's supported manual or profile composition rules."},
+        {key: "Validation stops execution", value: "Correct the first prerequisite. Later mutation steps intentionally do not run after validation raises."},
+        {key: "Files changed before failure", value: "Inspect generated artifacts, messages, changelog, backups, and the Git index before retrying."},
+        {key: "A Run option has no effect", value: "Some accepted fields are not mapped into WorkflowEngine because model and builder names differ. Confirm current option status before relying on it."},
+        {key: "Push failed after commit or tag", value: "Verify whether local history is already complete and recover only publication rather than recreating commit or tag state."},
+        {key: "Full finalization failed", value: "The release may already be published; inspect branch transitions separately instead of rerunning Full."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Inspect Partial State">
+
+<Terminal title="Evidence after a failed profile" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git log -3 --decorate --stat
+git tag --points-at HEAD
+git remote -v`}
+
+</Terminal>
+
+<CommandChecklist
+    items={[
+        {title: "Generated files", description: "Inspect version files, editable artifacts, CHANGELOG.md, and message templates."},
+        {title: "Backup retention", description: "Confirm whether backups were created and whether cleanup already pruned older files."},
+        {title: "Commit and tag", description: "Determine whether either object already exists before invoking a direct command."},
+        {title: "Every remote", description: "Check each configured destination; one successful push does not prove all succeeded."},
+        {title: "Original error", description: "Fix the first raised condition instead of bypassing validation or forcing a later effect."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Experimental Workflow Command">
+
+<InfoBox variant="danger" title="workflow branch is currently blocked by a step-name mismatch">
+
+The command requests `finalize`, while the active registry exposes
+`finalize_step`. This is an application issue and cannot be repaired through
+configuration.
+
+</InfoBox>
+
+Other current interface limitations include underscore-style option spellings,
+narrow explicit tag validation, incomplete enforcement behavior, and backup
+synchronization that must be verified rather than assumed. Keep this command
+in a disposable repository until the blocker and later behavior are validated.
+
+</Section>
+
+---
+
+<Section title="Recovery Choice">
+
+- If only validation ran, correct the prerequisite and preview again.
+- If files changed but no commit exists, review and reconcile files and the
+  index before choosing Commit or another direct operation.
+- If a commit exists, determine whether Tag or Push is the only remaining goal.
+- If a tag exists, verify its target and message before publishing.
+- If some remotes succeeded, correct only failed destinations.
+- If finalization failed, treat release publication and branch transition as
+  separate recovery problems.
+
+</Section>
+
+---
+
+<InfoBox variant="warning" title="A corrected dry-run does not erase earlier effects">
+
+Dry-run previews the next invocation from state that exists now. It does not
+reverse the failed pipeline or hide files, commits, tags, or remote changes
+left by earlier successful steps.
+
+</InfoBox>
+
+---
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Resolve focused profile, order, validation, option, and push symptoms."},
+        {title: "Recovery Journey", href: "../user-guide/troubleshooting-workflows", description: "Follow the full user-oriented partial-state recovery method."},
+        {title: "Pipeline Profiles", href: "../reference/pipeline-profiles", description: "Distinguish public values and inspect ordering rules."},
+        {title: "Workflow Branch Troubleshooting", href: "../commands/workflow/branch/troubleshooting", description: "Review the active experimental blocker and interface limitations."},
+    ]}
+/>
+
+</Section>

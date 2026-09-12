@@ -1,0 +1,75 @@
+---
+title: "Custom Composition"
+description: "Pahami cara Custy menggabungkan public profiles, menghapus duplicate steps, dan menerapkan global order."
+sidebar_position: 6
+sidebar_key: custy-pipelines-custom-composition
+tags: [custy, pipelines, composition]
+keywords: [custy run commit tag push, pipeline deduplication]
+---
+
+import {CommandExample, CommandHero, FeatureGrid, Icon, InfoBox, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
+
+<CommandHero command="custy run PROFILE PROFILE" title="Custom Profile Composition" description="Gabungkan supported public profiles menjadi satu deduplicated pipeline dengan safe global phase order." category="Pipelines" status="Advanced" syntax="custy run PROFILE PROFILE [PROFILE ...] [OPTIONS]" tags={["profile merge", "deduplication", "global ordering"]} links={[{label: "Profiles", href: "./profiles"}, {label: "Step Priority", href: "./step-order"}, {label: "Execution Model", href: "./execution-model"}]} />
+
+## Ringkasan
+
+Memberikan beberapa public names tidak menjalankan beberapa isolated
+pipelines. Custy membuat satu combined pipeline dari union expanded steps
+milik selected profiles.
+
+---
+
+<Section title="Normalization Process">
+<WorkflowTimeline title="Cara Profiles Digabungkan" items={[{title: "Validate profile names", description: "Setiap input harus termasuk salah satu dari enam accepted public names.", status: "completed"}, {title: "Expand nested profiles", description: "Ganti profile references dengan concrete registered step definitions.", status: "completed"}, {title: "Collect all steps", description: "Tambahkan expanded steps dari setiap selected profile.", status: "completed"}, {title: "Deduplicate by name", description: "Pertahankan first instance dari setiap repeated step name.", status: "completed"}, {title: "Apply global order", description: "Sort unique steps berdasarkan phase priorities Custy sebelum execution.", status: "current"}]} />
+</Section>
+
+---
+
+<Section title="Worked Example: commit + push">
+
+Kedua profiles menyumbang overlapping repository dan workflow steps. Setelah
+expansion, deduplication, dan priority sorting, Custy menghasilkan exact
+18-step sequence berikut:
+
+<Terminal title="custy run commit push" language="text">{`01  ensure_git_repo_step
+02  ensure_staged_changes_step
+03  ensure_commitizen_convention_step
+04  ensure_commit_message_file_step
+05  ensure_commit_message_file_exists_step
+06  ensure_remote_exists_step
+07  prepare_version_step
+08  workflow_init_step
+09  generate_artifacts_step
+10  edit_files_step
+11  validate_edited_step
+12  apply_version_step
+13  generate_changelog_step
+14  backup_commit_message_files_step
+15  cleanup_backup_step
+16  stage_step
+17  commit_step
+18  push_step`}</Terminal>
+
+Membalik input menjadi `custy run push commit` saat ini menghasilkan normalized
+order yang sama. Lihat [Step Priority and Ordering](./step-order) untuk priority setiap line.
+
+</Section>
+
+---
+
+<Section title="Examples">
+<CommandExample examples={[{title: "Commit and push", command: "custy --dry-run run commit push", description: "Preview satu flow yang menyiapkan commit lalu melakukan synchronization."}, {title: "Commit, tag, and push", command: "custy --dry-run run commit tag push", description: "Preview merged step set yang saat ini sama dengan Release profile."}, {title: "Input order is normalized", command: "custy --dry-run run push commit", description: "Push tetap ditempatkan setelah commit oleh global ordering."}]} />
+</Section>
+
+---
+
+<Section title="Important Comparisons">
+<FeatureGrid title="Mirip Tidak Selalu Berarti Sama" items={[{title: "commit + tag + push", icon: <Icon name="release" />, children: "Current resolved step set sama dengan Release, tetapi named Release profile menyampaikan intent lebih jelas."}, {title: "commit + push", icon: <Icon name="dependency" />, children: "Ini berbeda dari Dev: composition ini menambahkan commit dan push validation serta version application."}, {title: "dev", icon: <Icon name="play" />, children: "Deliberate profile ini memiliki source-defined stage list sendiri serta tidak menerapkan version atau membuat tag."}, {title: "full", icon: <Icon name="workflow" />, children: "Full adalah Release plus finalization; menggabungkan focused profiles tidak menambahkan finalization step."}]} />
+</Section>
+
+<InfoBox variant="warning" title="Composition Memperluas Requirements dan Side Effects">Combined pipeline mewarisi setiap unique validation dan mutation stage dari selected profiles. Review normalized outcome dan gunakan dry-run sebelum normal execution. Pilih named composite profile jika sudah menyatakan intent Anda.</InfoBox>
+<InfoBox variant="note" title="Internal Composition Bukan Public CLI Composition">Source profiles Custy dapat mereferensikan internal profiles seperti validation subprofiles. Public CLI users tidak dapat memberikan internal names tersebut ke `custy run`.</InfoBox>
+
+---
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Profiles", href: "./profiles", description: "Pilih built-in profile sebelum menyusun broader flow."}, {title: "Step Priority and Ordering", href: "./step-order", description: "Lihat alasan merged input order tidak mengatur execution order."}, {title: "Execution Model", href: "./execution-model", description: "Pahami expansion, ordering, building, dan execution."}, {title: "Run Custom Sequences", href: "../commands/run/custom-sequences", description: "Lihat command-level composition guide."}]} /></Section>

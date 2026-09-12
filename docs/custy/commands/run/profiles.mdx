@@ -1,0 +1,85 @@
+---
+title: "Profiles"
+description: "Compare the six public profile names accepted by custy run."
+sidebar_position: 5
+sidebar_key: custy-run-profiles
+tags: [run, profiles, pipeline]
+keywords: [Custy pipeline profiles]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Public Profiles"
+    description="Compare the six profile names accepted by the current public Run argument."
+    category="Pipeline"
+    status="Stable with Limitations"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "profiles",
+        "pipeline selection",
+        "comparison",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Custom Sequences", href: "./custom-sequences"},
+        {label: "Pipeline Guide", href: "../../pipelines/overview"},
+        {label: "Safety", href: "./safety"},
+    ]}
+/>
+
+## Overview
+
+Each accepted name expands to an intentional ordered stage list. Choose the
+smallest profile that reaches the required outcome.
+
+---
+
+<Section
+    title="Available Profiles"
+>
+
+<FeatureGrid
+    title="Public Run Profiles"
+    items={[
+        {title: "Commit", icon: <Icon name="git" />, children: <>Prepare artifacts, update version and changelog, back up, stage, and commit. See the <a href="../commit/overview">Commit guide</a>.</>},
+        {title: "Tag", icon: <Icon name="release" />, children: <>Prepare version and tag artifacts, back up, and create a local tag. See the <a href="../tag/overview">Tag guide</a>.</>},
+        {title: "Push", icon: <Icon name="network" />, children: <>Validate and push current HEAD plus an optional tag. See the <a href="../push/overview">Push guide</a>.</>},
+        {title: "Dev", icon: <Icon name="play" />, children: <>Prepare daily artifacts, generate the changelog, back up, commit, and push. See the <a href="./dev/overview">Dev guide</a>.</>},
+        {title: "Release", icon: <Icon name="pipeline" />, children: <>Validate, prepare, apply version, generate the changelog, commit, tag, and push. See the <a href="./release/overview">Release guide</a>.</>},
+        {title: "Full", icon: <Icon name="workflow" />, children: <>Run Release and then finalize workflow state. See the <a href="./full/overview">Full guide</a>.</>},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="info"
+    title="Profile names are not raw steps"
+>
+
+Each name expands to a complete intentional flow. `commit`, for example,
+contains validation, version, artifact, changelog, backup, cleanup, staging, and
+commit stages.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Internal Profiles"
+>
+
+Internal profiles remain available to Custy's resolver and other commands but
+are not accepted by the current typed public Run argument.
+
+</Section>

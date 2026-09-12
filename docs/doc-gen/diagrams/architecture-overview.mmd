@@ -1,0 +1,33 @@
+flowchart TD
+    CLI["app/doc_gen/cli<br/>Typer entrypoint + command routing"]
+    CORE["app/doc_gen/core<br/>Structure orchestration"]
+    SCANNER["app/doc_gen/core/structure/scanner<br/>File discovery and scanning"]
+    GENERATOR["app/doc_gen/core/structure/generator<br/>Markdown generation"]
+    ANALYZER["app/doc_gen/core/structure/analyze<br/>Project analysis"]
+    CFG["app/doc_gen/config<br/>Config loading and resolution"]
+    MODELS["app/doc_gen/core/structure/generator/models<br/>Domain models"]
+    UTILS["app/doc_gen/utils<br/>Path/logging/parsing helpers"]
+    SERVICES["app/doc_gen/services<br/>Banner/services"]
+    UI["app/doc_gen/ui<br/>Console UI"]
+    THEME["app/doc_gen/theme<br/>CLI style/theme definitions"]
+    CONST["app/doc_gen/constants + app/doc_gen/cli/constants<br/>Shared constants/options enums"]
+
+    CLI --> CORE
+    CLI --> CFG
+    CLI --> SERVICES
+    CLI --> UI
+    CLI --> THEME
+    CLI --> CONST
+
+    CORE --> SCANNER
+    CORE --> GENERATOR
+    CORE --> ANALYZER
+    CORE --> MODELS
+    CORE --> UTILS
+    CORE --> CFG
+
+    SCANNER --> MODELS
+    GENERATOR --> MODELS
+    ANALYZER --> MODELS
+    CFG --> UTILS
+    SERVICES --> UTILS

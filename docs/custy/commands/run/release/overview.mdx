@@ -1,0 +1,112 @@
+---
+title: "Overview"
+description: "Use custy run release for an applied version, changelog, commit, tag, and push."
+sidebar_position: 1
+sidebar_key: custy-run-release
+tags: [run, release, tag, push]
+keywords: [custy run release]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Screenshot,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run release"
+    title="Release Profile"
+    description="Validate release prerequisites, apply the version, generate the changelog, commit, tag, and push."
+    category="Pipeline Profile"
+    status="Stable with limitations"
+    syntax="custy run release [OPTIONS]"
+    tags={["release", "version", "tag", "push"]}
+    links={[
+        {label: "Workflow", href: "./workflow"},
+        {label: "Examples", href: "./examples"},
+        {label: "User Journey", href: "../../../user-guide/preparing-releases"},
+        {label: "Safety", href: "../safety"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Category", value: "Pipeline Profile", icon: "pipeline"},
+        {label: "Use Case", value: "Versioned Release", icon: "release"},
+        {label: "Creates Commit and Tag", value: "Yes", icon: "git"},
+        {label: "Pushes Remotely", value: "Yes", icon: "network"},
+    ]}
+/>
+
+## Overview
+
+Release is the standard all-in-one public profile for preparing and publishing a
+versioned release. It includes commit, tag, and push side effects but does not
+invoke the additional finalization step used by Full.
+
+<InfoBox
+    variant="danger"
+    title="Production-affecting workflow"
+>
+
+This profile edits files, creates Git history and a tag, and communicates with
+remotes. Use an approved version, run dry-run, and review every artifact and
+destination before normal execution.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Profile Responsibilities"
+>
+
+<FeatureGrid
+    title="What Release Includes"
+    items={[
+        {title: "Prepare and Apply Version", icon: <Icon name="release" />, children: "Resolve the approved version and write it to the configured project file."},
+        {title: "Generate Release Notes", icon: <Icon name="file" />, children: "Update CHANGELOG.md and prepare reviewed release artifacts."},
+        {title: "Commit and Tag", icon: <Icon name="git" />, children: "Stage release changes, create the release commit, and create the local tag."},
+        {title: "Publish Remotely", icon: <Icon name="network" />, children: "Push HEAD and the release tag through currently resolved remote behavior."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Release Pipeline Preview"
+>
+
+<Screenshot
+    src="/img/custy/run/release-profile.png"
+    alt="Custy release profile stages shown in the terminal"
+    title="Release pipeline"
+    caption="The Release profile runs preparation through remote publication."
+    fallback="Screenshot of the Custy Release profile will be added later."
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Related Profiles"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "custy run dev", href: "../dev/overview", description: "Use the smaller daily commit-and-push pipeline."},
+        {title: "custy run full", href: "../full/overview", description: "Add experimental workflow finalization after Release."},
+        {title: "custy tag", href: "../../tag/overview", description: "Prepare and create the local tag independently."},
+        {title: "custy push", href: "../../push/overview", description: "Review remote synchronization and adapter limitations."},
+    ]}
+/>
+
+</Section>

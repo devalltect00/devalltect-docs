@@ -1,0 +1,141 @@
+---
+title: "Commit Troubleshooting"
+description: "Resolve validation, staging, template, and commit failures."
+sidebar_position: 9
+sidebar_key: custy-commit-troubleshooting
+tags: [commit, troubleshooting, git]
+keywords: [custy commit failed]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy commit"
+    title="Commit Troubleshooting"
+    description="Resolve version-file, staging, editor, validation, changelog, and commit-content problems."
+    category="Git Operations"
+    status="Support Guide"
+    syntax="custy commit [OPTIONS]"
+    tags={[
+        "troubleshooting",
+        "staging",
+        "recovery",
+    ]}
+    links={[
+        {
+            label: "Troubleshooting Hub",
+            href: "../../troubleshooting/overview",
+        },
+        {
+            label: "Requirements",
+            href: "./requirements",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+Stop at the first failed or unexpected stage. The profile can leave generated
+files, backups, or staged changes even when the final commit is not created.
+
+<InfoBox
+    variant="warning"
+    title="Inspect repository state before retrying"
+>
+
+Determine which stages completed and preserve unrelated work before running the
+profile again.
+
+</InfoBox>
+
+---
+
+## No Version File Was Found
+
+<Section compact>
+
+Confirm `[tool.custy.cli.paths].version_file` or pass `--version-file` with an
+existing writable file.
+
+</Section>
+
+---
+
+## The Wrong Files Were Staged
+
+<Section compact>
+
+Stop before pushing. Inspect the working tree and index:
+
+<Terminal>
+
+{`git status
+git diff --cached`}
+
+</Terminal>
+
+Review `auto_stage` and `stage_mode`; use `update`, `manual`, or `none` when
+appropriate for the project.
+
+</Section>
+
+---
+
+## The Editor Did Not Open
+
+<Section compact>
+
+Verify the commit-message template path and use an interactive environment when
+editing is expected. The active launcher tries `code --wait` and then
+`notepad`; it does not currently read `EDITOR` or `VISUAL`. Open the file
+manually if neither executable is available.
+
+</Section>
+
+---
+
+## Commit Validation Failed
+
+<Section compact>
+
+Read the first validation error, correct repository state or message content,
+and run dry-run again. Do not use `--allow-empty-commit` to bypass an unrelated
+validation problem.
+
+</Section>
+
+---
+
+## Changelog Generation Failed
+
+<Section compact>
+
+Resolve the changelog error before retrying the whole commit profile. The
+[Changelog troubleshooting guide](../changelog/generate/troubleshooting)
+explains common collection and rendering problems.
+
+</Section>
+
+---
+
+## A Commit Contains Incorrect Content
+
+<Section compact>
+
+Do not rewrite shared history automatically. Inspect whether the commit has been
+pushed and follow your team's correction policy. Preserve unrelated changes.
+
+</Section>

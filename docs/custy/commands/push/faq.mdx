@@ -1,0 +1,115 @@
+---
+title: "FAQ"
+description: "Answers to common questions about custy push."
+sidebar_position: 10
+sidebar_key: custy-push-faq
+tags: [push, faq, remote]
+keywords: [custy push faq]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy push"
+    title="Frequently Asked Questions"
+    description="Find answers about default references, backup remotes, adapter limitations, Run equivalence, and dry-run behavior."
+    category="Git Operations"
+    status="Support Guide"
+    syntax="custy push [OPTIONS]"
+    tags={[
+        "FAQ",
+        "remotes",
+        "support",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+        {label: "Remotes", href: "./remotes"},
+    ]}
+/>
+
+## Overview
+
+These answers clarify which references the profile synchronizes and how current
+adapter limitations affect destination selection.
+
+<InfoBox
+    variant="warning"
+    title="Dry-run output is the current destination truth"
+>
+
+Do not infer the active remote solely from accepted CLI flags.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What Does Custy Push by Default?"
+>
+
+The workflow pushes the current `HEAD` to resolved main remotes. It pushes a tag
+only when a tag is present in workflow state and tag pushing is not skipped.
+
+</Section>
+
+---
+
+<Section
+    title="Does `custy push` Create a Commit or Tag?"
+>
+
+No. The push profile validates and synchronizes existing references. Create and
+review commits or tags first.
+
+</Section>
+
+---
+
+<Section
+    title="Can It Push to a Backup Remote?"
+>
+
+Yes, when backup synchronization is enabled, an eligible backup remote resolves,
+and the current branch is not excluded by safety rules.
+
+</Section>
+
+---
+
+<Section
+    title="Can I Rely on `--remote` Today?"
+>
+
+No. The CLI accepts it, but the adapter does not currently populate the engine's
+main-remotes list. Confirm destinations in dry-run output.
+
+</Section>
+
+---
+
+<Section
+    title="How Does `custy run push` Differ?"
+>
+
+Both forms select the registered push profile. The direct command advertises
+push-specific options, while the generic Run form selects the profile. Current
+remote adapter limitations apply to the direct command.
+
+</Section>
+
+---
+
+<Section
+    title="Does Dry-Run Contact the Remote?"
+>
+
+Validation and remote resolution can still inspect repository and remote state.
+Its primary guarantee is that normal push mutations are replaced with reported
+intent; read the actual output for the current version.
+
+</Section>

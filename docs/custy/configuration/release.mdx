@@ -1,0 +1,71 @@
+---
+title: "Release Metadata"
+description: "Understand generated release metadata and its current compatibility boundary."
+sidebar_position: 6
+sidebar_key: custy-configuration-release
+tags: [custy, configuration, release]
+keywords: [tool.custy.release, release author, include date]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.release]"
+    title="Release Metadata"
+    description="Review the generated author and date settings without assuming unsupported output."
+    category="Configuration"
+    status="Compatibility Gap"
+    syntax="[tool.custy.release]"
+    tags={["author", "release date", "legacy loader"]}
+    links={[
+        {label: "Versioning", href: "./cli/versioning"},
+        {label: "Changelog Releases", href: "./changelog/releases"},
+        {label: "Release Lifecycle", href: "../concepts/release-lifecycle"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Table", value: "tool.custy.release", icon: "configuration"},
+        {label: "Properties", value: "2", icon: "table"},
+        {label: "Generated", value: "Yes", icon: "file"},
+        {label: "Active Shape", value: "Not aligned", icon: "warning"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "author", type: "String", defaultValue: "devalltect00", description: "Intended default release author. The active legacy release-note loader does not currently read this nested tool.custy key."},
+        {property: "include_date", type: "Boolean", defaultValue: "true", description: "Intended switch for release-date metadata. The active legacy release-note builder expects a different configuration shape."},
+    ]}
+/>
+
+<Terminal title="Generated configuration" language="toml">
+
+{`[tool.custy.release]
+author = "devalltect00"
+include_date = true`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Do not rely on these keys yet">
+
+The legacy builder loads a top-level `release` table and looks for
+`custom_author`, while the generated file provides `tool.custy.release.author`.
+Verify output in your installed version before treating these values as active.
+
+</InfoBox>
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Versioning", href: "./cli/versioning", description: "Configure the active version strategy and bump behavior."},
+        {title: "Changelog Releases", href: "./changelog/releases", description: "Configure active changelog release extraction and per-version overrides."},
+        {title: "Release Lifecycle", href: "../concepts/release-lifecycle", description: "Understand where release metadata fits in the process."},
+    ]}
+/>
+
+</Section>

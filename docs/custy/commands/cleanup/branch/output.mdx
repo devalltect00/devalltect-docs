@@ -1,0 +1,165 @@
+---
+title: "Output"
+description: "Understand the output produced by the Branch Cleanup command."
+sidebar_position: 8
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - output
+
+keywords:
+    - custy cleanup branches output
+---
+
+import {
+    CommandHero,
+    CommandOutput,
+    Section,
+    InfoBox,
+    Screenshot,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Output"
+    description="Learn how Custy reports the results of a Branch Cleanup operation."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "cleanup",
+        "branch",
+        "output",
+    ]}
+    links={[
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "FAQ",
+            href: "./faq",
+        },
+    ]}
+/>
+
+## Overview
+
+After evaluating every configured cleanup rule, Custy reports the outcome of
+the cleanup operation.
+
+Depending on the repository state and your configuration, the command may
+remove one or more branches, skip cleanup entirely, or report that no eligible
+branches were found.
+
+---
+
+<CommandOutput
+    outputs={[
+        {
+            title: "Successful Branch Cleanup",
+            description:
+                "Eligible branches were successfully removed.",
+            output:
+`🧹 Cleaning Git branches...
+✓ Evaluating configured cleanup rules...
+✓ Removing eligible branches...
+✓ Branch cleanup completed successfully.`,
+            notes:
+                "Actual output varies depending on your repository and cleanup configuration.",
+        },
+    ]}
+/>
+
+---
+
+<Screenshot
+    src="/img/custy/commands/cleanup/cleanup-branch-release-process.png"
+    alt="Branch cleanup process"
+    title="Branch Cleanup Output"
+    caption="Example CLI output showing Custy evaluating cleanup rules and removing eligible branches."
+/>
+
+---
+
+<Section
+    title="Successful Cleanup"
+>
+
+When one or more branches satisfy every configured cleanup rule, Custy removes
+those branches and displays a summary of the completed operation.
+
+Protected branches remain untouched regardless of the configured filters.
+
+</Section>
+
+---
+
+<Section
+    title="No Matching Branches"
+>
+
+If no branches satisfy the configured cleanup rules, Custy completes normally
+without removing any branches.
+
+This indicates that no branch matched the configured filters rather than a
+failure of the command.
+
+</Section>
+
+---
+
+<Section
+    title="Dry Run Output"
+>
+
+When using the global `--dry-run` option, Custy evaluates every configured
+cleanup rule but does not delete any branches.
+
+The reported output allows you to verify the cleanup behavior before modifying
+your repository.
+
+</Section>
+
+---
+
+<Section
+    title="Workflow Execution"
+>
+
+Branch Cleanup is executed publicly with `custy cleanup branches`. Its internal
+profile name is not accepted by the current public Run argument.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Successful Execution Doesn't Always Remove Branches"
+>
+
+A successful Branch Cleanup operation does not necessarily delete branches.
+
+If no branches satisfy the configured cleanup rules, Custy simply reports that
+there was nothing to remove.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+If Branch Cleanup does not behave as expected, continue to the
+**Troubleshooting** page to learn about common configuration issues and safety
+mechanisms.
+
+</Section>

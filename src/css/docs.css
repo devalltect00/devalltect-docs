@@ -1,0 +1,100 @@
+/**
+ * ============================================================================
+ * Documentation Design System
+ * ============================================================================
+ *
+ * Shared design tokens for all documentation components.
+ *
+ * These variables provide a consistent visual language across
+ * the documentation while supporting both light and dark themes.
+ *
+ * Every documentation component should use these variables
+ * instead of hardcoded values whenever possible.
+ * ============================================================================
+ */
+
+:root {
+
+    /* --------------------------------------------------------------------- */
+    /* Radius                                                                */
+    /* --------------------------------------------------------------------- */
+
+    --docs-radius-xs: 4px;
+    --docs-radius-sm: 8px;
+    --docs-radius-md: 12px;
+    --docs-radius-lg: 18px;
+    --docs-radius-xl: 24px;
+    --docs-radius-pill: 999px;
+
+    /* --------------------------------------------------------------------- */
+    /* Spacing                                                               */
+    /* --------------------------------------------------------------------- */
+
+    --docs-space-xs: .25rem;
+    --docs-space-sm: .5rem;
+    --docs-space-md: 1rem;
+    --docs-space-lg: 1.5rem;
+    --docs-space-xl: 2rem;
+    --docs-space-2xl: 3rem;
+
+    /* --------------------------------------------------------------------- */
+    /* Typography                                                            */
+    /* --------------------------------------------------------------------- */
+
+    --docs-line-height: 1.7;
+
+    /* --------------------------------------------------------------------- */
+    /* Grid                                                                   */
+    /* --------------------------------------------------------------------- */
+
+    --docs-grid-gap: 1.5rem;
+
+    /* --------------------------------------------------------------------- */
+    /* Card                                                                   */
+    /* --------------------------------------------------------------------- */
+
+    --docs-card-padding: 1.5rem;
+
+    --docs-card-border-radius: var(--docs-radius-lg);
+
+    --docs-card-border:
+        1px solid var(--ifm-toc-border-color);
+
+    /* --------------------------------------------------------------------- */
+    /* Transition                                                             */
+    /* --------------------------------------------------------------------- */
+
+    --docs-transition-fast: .15s ease;
+
+    --docs-transition: .25s ease;
+
+    /* --------------------------------------------------------------------- */
+    /* Shadow                                                                 */
+    /* --------------------------------------------------------------------- */
+
+    --docs-shadow-sm:
+        0 4px 12px rgb(0 0 0 / 5%);
+
+    --docs-shadow-md:
+        0 10px 24px rgb(0 0 0 / 10%);
+
+    --docs-shadow-lg:
+        0 18px 40px rgb(0 0 0 / 15%);
+
+    /* --------------------------------------------------------------------- */
+    /* Semantic Colors                                                        */
+    /* --------------------------------------------------------------------- */
+
+    --docs-color-success:
+        var(--ifm-color-success);
+
+    --docs-color-warning:
+        var(--ifm-color-warning);
+
+    --docs-color-danger:
+        var(--ifm-color-danger);
+
+    --docs-color-info:
+        var(--ifm-color-info);
+
+}

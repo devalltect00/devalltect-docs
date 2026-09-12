@@ -1,0 +1,11 @@
+{
+  "label": "Commit",
+  "position": 7,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-commit",
+  "link": {
+    "type": "doc",
+    "id": "custy/commands/commit/overview"
+  }
+}

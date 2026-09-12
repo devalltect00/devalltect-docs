@@ -1,0 +1,101 @@
+---
+title: "Options"
+description: "Shared commit, tag, push, and execution options accepted by custy run."
+sidebar_position: 4
+sidebar_key: custy-run-options
+tags: [run, options, pipeline]
+keywords: [custy run options]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    PropertyTable,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Command Options"
+    description="Review the combined commit, tag, push, and execution option surface accepted by public Run profiles."
+    category="Pipeline"
+    status="Stable with Limitations"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={[
+        "options",
+        "pipeline inputs",
+        "adapter limitations",
+    ]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Profiles", href: "./profiles"},
+        {label: "Safety", href: "./safety"},
+    ]}
+/>
+
+## Overview
+
+`custy run` exposes a combined option surface so selected profiles can receive
+commit, tag, and push inputs.
+
+---
+
+<Section
+    title="Option Groups"
+>
+
+<PropertyTable
+    title="Run Profile Inputs"
+    items={[
+        {property: "Commit validation and staging", type: "--check-cz, --auto-stage, --stage-mode, --allow-empty-commit", description: "Control commit checks, staging, and intentional empty-commit behavior."},
+        {property: "Commit files and backup", type: "--commit-msg-file, --backup-commit-dir", description: "Select the commit message and its retained backup location."},
+        {property: "Tag files and version", type: "--tag-msg-file, --version-file, --strategy, --bump, --tag, --tag-message", description: "Control version and tag preparation inputs."},
+        {property: "Release modifiers", type: "--pre, --post, --dev, --meta, --epoch", description: "Apply compatible release-version modifiers."},
+        {property: "Tag behavior and backup", type: "--force-tag, --skip-checks, --backup-tag-dir", description: "Control tag validation, forced creation, and message backup location."},
+        {property: "Push selection", type: "--all-remote, --remote, --skip-tag, --sync-backup", description: "Advertise destination, tag, and backup synchronization choices."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Global Execution Options"
+>
+
+<Terminal>
+
+{`custy --dry-run run release
+custy --debug run full
+custy --log-level debug run release`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="warning"
+    title="Current adapter limitations"
+>
+
+The same mapping limitations documented for the direct commands apply here:
+`check_cz`, `bump`, `skip_check`, `all_remote`, `remote`, and `skip_tag` are not
+reliably propagated to the workflow engine. Use explicit tags where possible and
+verify dry-run destinations and behavior.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Command-Specific References"
+>
+
+See the [Commit options](../commit/options), [Tag options](../tag/options), and
+[Push options](../push/options) for the exact public spellings and limitations.
+
+</Section>

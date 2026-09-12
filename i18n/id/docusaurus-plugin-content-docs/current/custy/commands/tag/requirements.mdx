@@ -1,0 +1,22 @@
+---
+title: "Requirements"
+description: "Persiapkan version files, tags, dan templates sebelum custy tag."
+sidebar_position: 2
+sidebar_key: custy-tag-requirements
+---
+import {CommandHero, RequirementGrid, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy tag" title="Requirements" description="Pastikan repository, version source, dan tag template siap." category="Git Operations" status="Required" syntax="custy tag [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Versioning and Tags",href:"./versioning-and-tags"},{label:"Workflow",href:"./workflow"}]} />
+
+## Ringkasan
+
+<RequirementGrid items={[
+ {title:"Git Repository",level:"required",children:"Jalankan dari repository yang valid pada commit target yang benar."},
+ {title:"Unique Tag",level:"required",children:"Target tag tidak boleh bertabrakan kecuali force benar-benar disengaja."},
+ {title:"Version File",level:"required",children:"Configured version file harus tersedia dan writable."},
+ {title:"Tag Template",level:"required",children:"Tag-message template harus tersedia dan dapat diedit."},
+ {title:"Clean Review Point",level:"recommended",children:"Periksa Git status, current commit, dan existing tags."},
+]} />
+
+<InfoBox variant="warning" title="Recommended Preflight">Bandingkan `git log -1`, `git tag --list`, resolved version, dan dry-run output sebelum membuat tag.</InfoBox>
+<Section title="Local Operation First">Remote access tidak diperlukan untuk membuat local tag. Publishing ditangani oleh Push.</Section>

@@ -1,0 +1,22 @@
+---
+title: "Requirements"
+description: "Persyaratan repository, remote, authentication, dan safety untuk custy push."
+sidebar_position: 2
+sidebar_key: custy-push-requirements
+---
+import {CommandHero, RequirementGrid, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="custy push" title="Requirements" description="Siapkan repository, resolved remotes, dan credentials." category="Git Operations" status="Required" syntax="custy push [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Remotes",href:"./remotes"},{label:"Workflow",href:"./workflow"}]} />
+
+## Ringkasan
+
+<RequirementGrid items={[
+ {title:"Git Repository",level:"required",children:"Jalankan pada repository dan branch yang benar."},
+ {title:"Main Remote",level:"required",children:"Setidaknya satu valid main destination harus dapat di-resolve."},
+ {title:"Authentication",level:"required",children:"SSH key, credential helper, atau token harus diterima remote."},
+ {title:"Push Permission",level:"required",children:"Account harus boleh mengubah target branch/tag."},
+ {title:"Reviewed Local State",level:"recommended",children:"Verifikasi HEAD, upstream, tags, dan working tree."},
+]} />
+
+<InfoBox variant="warning" title="Recommended Preflight">Periksa `git status`, `git log -1`, `git remote -v`, branch protection, lalu dry run.</InfoBox>
+<InfoBox variant="note" title="Interactive Remote Fallback">Bila resolusi konfigurasi tidak cukup, implementasi dapat meminta pilihan interaktif. Hindari mode interaktif dalam unattended automation.</InfoBox>

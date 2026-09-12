@@ -1,0 +1,187 @@
+---
+title: "Options"
+description: "Available options for the Branch Cleanup command."
+sidebar_position: 4
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - options
+
+keywords:
+    - custy cleanup branches options
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Options"
+    description="Customize how Branch Cleanup evaluates and removes Git branches."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "cleanup",
+        "branch",
+        "options",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+Branch Cleanup intentionally provides only a small number of command-line
+options.
+
+Most cleanup behavior is configured once in your project's
+`config.toml`, allowing every team member to use consistent cleanup rules.
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--include-prefix",
+            shorthand: "-i",
+            required: false,
+            description:
+                "Temporarily include one or more branch name prefixes during the current cleanup operation.",
+            example:
+                "--include-prefix release/",
+        },
+        {
+            name: "--merge-status",
+            shorthand: "-m",
+            required: false,
+            defaultValue: "merged",
+            description:
+                "Limit cleanup to merged, unmerged, or all matching branches.",
+            example:
+                "--merge-status all",
+        },
+        {
+            name: "--max-age",
+            required: false,
+            description:
+                "Only consider branches older than the specified relative age.",
+            example:
+                "--max-age 30d",
+        },
+        {
+            name: "--before",
+            required: false,
+            description:
+                "Only consider branches whose latest commit occurred before the specified date.",
+            example:
+                "--before 2026-07-01",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Configuration Takes Priority"
+>
+
+Although these options are available from the command line, most projects
+prefer to define cleanup behavior in `config.toml`.
+
+This keeps cleanup rules consistent across every contributor working on the
+repository.
+
+</Section>
+
+---
+
+<Section
+    title="Global Options"
+>
+
+Like every Custy command, Branch Cleanup also supports the global CLI options.
+
+Examples include:
+
+- `--dry-run`
+- `--debug`
+- `--log-level`
+
+Global options are always placed before the command.
+
+Example:
+
+```bash
+custy --dry-run cleanup branches
+```
+
+</Section>
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Prefer Project Configuration"
+>
+
+Use command-line options when experimenting or temporarily overriding cleanup
+behavior.
+
+For day-to-day development, configuring Branch Cleanup in
+`config.toml` is generally the recommended approach.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Configuration Resolution"
+>
+
+When an option is omitted, Custy resolves the effective value using the
+following priority:
+
+1. Command-line option.
+2. Project configuration (`config.toml`).
+3. Built-in default value.
+
+This resolution strategy provides consistent behavior while still allowing
+temporary overrides for individual executions.
+
+</Section>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+Continue to the **Configuration** page to learn how each cleanup filter works,
+including branch prefixes, merge status, age filters, and protected branches.
+
+</Section>

@@ -1,0 +1,93 @@
+---
+title: "Overview"
+description: "Experimental branch and version transition validation with Custy."
+sidebar_position: 1
+sidebar_key: custy-workflow-branch
+tags: [workflow, branch, experimental]
+keywords: [custy workflow branch]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Validate Workflow Transitions"
+    description="Supply branch and version boundaries for Custy's experimental workflow-policy engine."
+    category="Experimental Workflow"
+    status="Experimental / currently blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={["branch policy", "version transition", "beta"]}
+    links={[
+        {label: "Requirements", href: "./requirements"},
+        {label: "Options", href: "./options"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Category", value: "Experimental Workflow", icon: "workflow"},
+        {label: "Readiness", value: "Currently Blocked", icon: "danger"},
+        {label: "Known Issue", value: "finalize name mismatch", icon: "warning"},
+        {label: "CI/CD Use", value: "Not Recommended", icon: "security"},
+    ]}
+/>
+
+## Overview
+
+The intended command can validate a transition without enforcement or apply
+configured policy enforcement using explicit branch and tag boundaries.
+
+<InfoBox
+    variant="danger"
+    title="Known pipeline-construction issue"
+>
+
+In the current source, this command requests `finalize`; the registered step is
+`finalize_step`. Execution may stop before transition behavior begins. The pages
+in this section document the accepted interface and intended workflow, not a
+production-readiness guarantee.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Intended Responsibilities"
+>
+
+<FeatureGrid
+    title="Experimental Transition Interface"
+    items={[
+        {title: "Resolve Boundaries", icon: <Icon name="git" />, children: "Accept explicit source and target branch or version boundaries."},
+        {title: "Validate Policy", icon: <Icon name="security" />, children: "Evaluate configured transition rules without enforcement when requested."},
+        {title: "Enforce Policy", icon: <Icon name="warning" />, children: "Apply configured transition behavior only after the implementation is corrected and validated."},
+        {title: "Synchronize Backup", icon: <Icon name="package" />, children: "Request eligible workflow-related backup synchronization."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Related Commands"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "custy validate", href: "../../validate/overview", description: "Use stable repository validation while workflow policy remains experimental."},
+        {title: "custy run release", href: "../../run/release/overview", description: "Use the standard release profile without experimental finalization."},
+        {title: "custy run full", href: "../../run/full/overview", description: "Review the separate registered finalize_step path."},
+    ]}
+/>
+
+</Section>

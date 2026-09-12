@@ -1,0 +1,9 @@
+{
+  "label": "Doc Gen",
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/index"
+  },
+  "key": "doc-gen"
+}

@@ -1,0 +1,35 @@
+---
+title: "Repository and Compare Links"
+description: "Configure the repository base URL and version-comparison link generation."
+sidebar_position: 6
+sidebar_key: custy-configuration-changelog-links
+tags: [custy, changelog, links]
+keywords: [repository, enable_compare, compare link]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.changelog.links]" title="Repository and Compare Links" description="Build version comparison URLs beneath release headings." category="Changelog Configuration" status="Active" syntax="[tool.custy.changelog.links]" tags={["repository URL", "compare", "releases"]} links={[{label: "Releases", href: "./releases"}, {label: "Rendering", href: "./rendering"}, {label: "Git Remotes", href: "../git/remotes"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "2", icon: "table"}, {label: "Compare Enabled", value: "true", icon: "success"}, {label: "Host", value: "Configurable", icon: "network"}, {label: "Trailing Slash", value: "Avoid", icon: "warning"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "repository", type: "URL string", defaultValue: "https://github.com/devalltect00/Custy", description: "Base repository URL used to construct comparison links. GitHub, GitLab, Codeberg, and compatible paths can be configured."}, {property: "enable_compare", type: "Boolean", defaultValue: "true", description: "Generate comparison URLs between adjacent releases."}]} />
+
+<Terminal title="Repository links" language="toml">
+
+{`[tool.custy.changelog.links]
+repository = "https://github.com/your-org/your-project"
+enable_compare = true`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Two switches affect visibility">
+
+`enable_compare` creates comparison URLs. `render.show_compare_link` decides
+whether the Jinja template displays available URLs.
+
+</InfoBox>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Rendering", href: "./rendering", description: "Configure show_compare_link."}, {title: "Releases", href: "./releases", description: "Control visible versions."}, {title: "Git Remotes", href: "../git/remotes", description: "Configure operational remotes separately from documentation links."}]} /></Section>

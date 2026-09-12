@@ -1,0 +1,27 @@
+/**
+ * ============================================================================
+ * Typography
+ * ============================================================================
+ */
+
+.docs-lead {
+
+    font-size: 1.125rem;
+
+    line-height: var(--docs-line-height);
+
+}
+
+.docs-muted {
+
+    color: var(--ifm-color-emphasis-700);
+
+}
+
+.docs-caption {
+
+    font-size: .875rem;
+
+    color: var(--ifm-color-emphasis-600);
+
+}

@@ -1,0 +1,155 @@
+---
+title: "Options"
+description: "Command-line options available for the custy validate command."
+sidebar_position: 4
+sidebar_key: custy-commands-validate
+---
+
+import {
+    CommandHero,
+    CommandOption,
+    Section,
+    InfoBox,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy validate"
+    title="Options"
+    description="Learn about the available command-line options for project validation."
+    category="Validation"
+    status="Recommended"
+    syntax="custy validate"
+    tags={[
+        "options",
+        "validation",
+        "cli",
+    ]}
+    links={[
+        {
+            label: "Syntax",
+            href: "./syntax",
+        },
+        {
+            label: "Validation Checks",
+            href: "./validation-checks",
+        },
+        {
+            label: "Examples",
+            href: "./examples",
+        },
+    ]}
+/>
+
+## Overview
+
+The validation command supports several command-line options that influence
+how validation is performed.
+
+Some options change the validation behavior, while others determine how Custy
+interacts with the project during the validation process.
+
+<InfoBox
+    variant="tip"
+    title="Configuration First"
+>
+
+Most validation behavior is controlled by your project's
+<code>.config/custy/config.toml</code> configuration.
+
+Command-line options temporarily override those configuration values for the
+current execution.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Available Options"
+>
+
+<CommandOption
+    options={[
+        {
+            name: "--skip-checks",
+            shorthand: "",
+            required: false,
+            description:
+                "Skip optional validation checks when supported by the current workflow.",
+            defaultValue: "false",
+            example: "custy validate --skip-checks",
+        },
+        {
+            name: "--force-commit",
+            shorthand: "",
+            required: false,
+            description:
+                "Continue validation even when no staged changes are available.",
+            defaultValue: "false",
+            example: "custy validate --force-commit",
+        },
+        {
+            name: "--auto-stage",
+            shorthand: "",
+            required: false,
+            description:
+                "Automatically stage modified files before validating staged changes.",
+            defaultValue: "false",
+            example: "custy validate --auto-stage",
+        },
+        {
+            name: "--stage-mode",
+            shorthand: "",
+            required: false,
+            description:
+                "Choose how automatic staging is performed.",
+            defaultValue: "all",
+            example: "custy validate --stage-mode update",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Option Priority"
+>
+
+When determining validation behavior, Custy resolves values using the
+following order of precedence.
+
+1. Command-line options.
+2. Project configuration (<code>config.toml</code>).
+3. Built-in Custy defaults.
+
+This allows projects to define sensible defaults while still allowing
+individual executions to override specific settings.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Workflow Commands"
+>
+
+When validation is executed as part of a workflow, some options may already be
+supplied by the workflow configuration.
+
+In those cases, manual command-line options override the configured defaults
+for the current execution only.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+The next page explains every validation step performed by Custy and the
+purpose of each check.
+
+</Section>

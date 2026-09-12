@@ -1,0 +1,281 @@
+---
+title: "First Workflow"
+description: "Understand, preview, and deliberately run Custy's development pipeline for the first time."
+sidebar_position: 5
+sidebar_key: custy-getting-started
+
+tags:
+  - first workflow
+  - development pipeline
+  - dry run
+
+keywords:
+  - custy first workflow
+  - custy run dev
+  - custy dry run pipeline
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy --dry-run run dev"
+    title="Your First Custy Workflow"
+    description="Understand, preview, and deliberately run Custy's development pipeline for the first time."
+    category="Getting Started"
+    status="Preview First"
+    syntax="custy [GLOBAL OPTIONS] run dev [OPTIONS]"
+    tags={[
+        "Dev profile",
+        "commit",
+        "push",
+    ]}
+    links={[
+        {label: "Preflight", href: "#preflight-checklist"},
+        {label: "Preview", href: "#preview-the-workflow"},
+        {label: "Dev Reference", href: "../commands/run/dev/overview"},
+        {label: "Everyday Development", href: "../user-guide/everyday-development"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Profile", value: "dev", icon: "pipeline"},
+        {label: "Creates Commit", value: "Yes in normal mode", icon: "git"},
+        {label: "Pushes Remotely", value: "Yes in normal mode", icon: "network"},
+        {label: "First Invocation", value: "Dry run", icon: "success"},
+    ]}
+/>
+
+## Overview
+
+The public Dev profile coordinates routine development work. Its current
+registered sequence prepares artifacts, updates the changelog, backs up the
+commit message, stages changes, creates a commit, and pushes.
+
+For a first run, use global dry-run mode. Move to normal execution only when
+the repository, generated resources, commit message, and remote destination
+have all been reviewed.
+
+<InfoBox
+    variant="warning"
+    title="Dev ends with a push"
+>
+
+`custy run dev` is not a local-only demonstration. Without `--dry-run`, the
+registered profile reaches commit and push stages. Use `custy run commit` when
+you need the documented local commit profile instead.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Preflight Checklist"
+>
+
+<CommandChecklist
+    items={[
+        {
+            title: "Initialization is reviewed",
+            description: "Project configuration, templates, and version resources exist in the intended locations.",
+        },
+        {
+            title: "Validation succeeds",
+            description: <><code>custy validate</code> completes without unresolved readiness failures.</>,
+        },
+        {
+            title: "Working-tree changes are understood",
+            description: "Only the files intended for the next commit are present or staged.",
+        },
+        {
+            title: "Commit message is ready",
+            description: "The configured commit-message file contains a reviewed message for this change.",
+        },
+        {
+            title: "Remote destination is confirmed",
+            description: "The configured remote is reachable and points to the intended repository.",
+        },
+    ]}
+/>
+
+<Terminal title="Review repository state" language="bash">
+
+{`git status --short --branch
+git diff
+git diff --staged
+git remote -v
+custy validate`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="What the Dev Profile Does"
+>
+
+<WorkflowTimeline
+    title="Registered Development Sequence"
+    items={[
+        {
+            title: "Validate the repository",
+            description: "Confirm that execution starts inside a Git repository.",
+            status: "completed",
+        },
+        {
+            title: "Prepare workflow context",
+            description: "Resolve the version context and initialize workflow state.",
+            status: "completed",
+        },
+        {
+            title: "Generate and review artifacts",
+            description: "Generate artifacts, edit configured files, and validate the edited result.",
+            status: "completed",
+        },
+        {
+            title: "Generate and retain supporting files",
+            description: "Update the changelog, back up the commit message, and clean retained backups.",
+            status: "completed",
+        },
+        {
+            title: "Publish development work",
+            description: "Stage resolved changes, create the commit, and push through the currently resolved remote behavior.",
+            status: "current",
+        },
+    ]}
+/>
+
+<InfoBox
+    variant="note"
+    title="Current profile boundary"
+>
+
+The registered Dev profile does not include `apply_version_step` or `tag_step`.
+It prepares version context for artifact work but does not apply the version or
+create a release tag.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Preview the Workflow"
+>
+
+Global options belong before `run`.
+
+<Terminal title="Dry-run the Dev profile" language="bash">
+
+{`custy --dry-run run dev`}
+
+</Terminal>
+
+Review the output for the resolved files, version context, backup locations,
+staging behavior, commit preparation, and remote destination. If any part is
+unexpected, stop and adjust the project configuration or command options.
+
+</Section>
+
+---
+
+<Section
+    title="Run Normally When Ready"
+>
+
+Normal execution is an explicit decision after the preview and repository
+review.
+
+<Terminal title="Run the development profile" language="bash">
+
+{`custy run dev`}
+
+</Terminal>
+
+After completion, verify both local and remote state.
+
+<Terminal title="Post-run verification" language="bash">
+
+{`git status --short --branch
+git log -1 --decorate --oneline
+git remote -v`}
+
+</Terminal>
+
+<InfoBox
+    variant="warning"
+    title="Remote-selection limitation"
+>
+
+The current Dev profile documentation records limitations in the remote
+selection adapter. Confirm the actual destination during dry-run output and
+review the dedicated Push documentation before normal execution.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Choose a Different Profile"
+>
+
+<FeatureGrid
+    title="Common Alternatives"
+    items={[
+        {
+            title: "Commit",
+            icon: <Icon name="git" />,
+            children: <>Use <a href="../commands/commit/overview">custy commit</a> or the Commit run profile for documented local commit preparation without the Dev profile's final push stage.</>,
+        },
+        {
+            title: "Release",
+            icon: <Icon name="release" />,
+            children: <>Use <a href="../commands/run/release/overview">custy run release</a> only after reviewing version, changelog, commit, tag, and push requirements.</>,
+        },
+        {
+            title: "Full",
+            icon: <Icon name="pipeline" />,
+            children: <>Use <a href="../commands/run/full/overview">custy run full</a> when the release stages and experimental finalization behavior are both intentional.</>,
+        },
+        {
+            title: "Direct Commands",
+            icon: <Icon name="terminal" />,
+            children: <>Choose a focused command from the <a href="../commands/overview">command reference</a> when a multi-step pipeline is unnecessary.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Dev Profile", href: "../commands/run/dev/overview", description: "Review exact behavior, limitations, and examples."},
+        {title: "Run Safety", href: "../commands/run/safety", description: "Understand dry-run boundaries and consequential stages."},
+        {title: "Push", href: "../commands/push/overview", description: "Review remote resolution and synchronization behavior."},
+        {title: "Run Profiles", href: "../commands/run/profiles", description: "Compare all supported public profile names."},
+    ]}
+/>
+
+</Section>

@@ -1,0 +1,247 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about Branch Cleanup."
+sidebar_position: 10
+sidebar_key: custy-cleanup-branch
+
+tags:
+    - cleanup
+    - branch
+    - faq
+
+keywords:
+    - custy cleanup branches faq
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy cleanup branches"
+    title="Frequently Asked Questions"
+    description="Answers to common questions about Custy's Branch Cleanup command."
+    category="Maintenance"
+    status="Advanced"
+    syntax="custy cleanup branches"
+    tags={[
+        "faq",
+        "cleanup",
+        "branch",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Troubleshooting",
+            href: "./troubleshooting",
+        },
+        {
+            label: "Workflow",
+            href: "./workflow",
+        },
+    ]}
+/>
+
+## Overview
+
+This page answers the questions most frequently asked about Branch Cleanup and
+explains the safety mechanisms that Custy applies before removing Git
+branches.
+
+---
+
+<InfoBox
+    variant="tip"
+    title="Safety Before Convenience"
+>
+
+Branch Cleanup is intentionally conservative.
+
+Custy prefers skipping cleanup rather than risking accidental branch deletion.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Does Branch Cleanup delete every branch?"
+>
+
+No.
+
+Branch Cleanup only removes branches that satisfy **every configured cleanup
+rule**.
+
+Branches that do not match the configured filters are ignored.
+
+</Section>
+
+---
+
+<Section
+    title="Why weren't any branches removed?"
+>
+
+This is one of the most common outcomes.
+
+Possible reasons include:
+
+- no branch prefixes were configured,
+- no branches matched the configured prefixes,
+- merge status excluded every branch,
+- age filters excluded every branch,
+- only protected branches matched the configured rules.
+
+This indicates that no branch became eligible for cleanup.
+
+</Section>
+
+---
+
+<Section
+    title="Why does Branch Cleanup require include_prefixes?"
+>
+
+Branch prefixes are Custy's primary safety mechanism.
+
+Rather than inspecting every branch in the repository, Custy only considers
+branches whose names begin with one of the configured prefixes.
+
+Without configured prefixes:
+
+```toml
+include_prefixes = []
+```
+
+Branch Cleanup intentionally skips execution.
+
+</Section>
+
+---
+
+<Section
+    title="Can protected branches be deleted?"
+>
+
+Not by Custy.
+
+The default protected branches are:
+
+- `main`
+- `master`
+- `develop`
+
+These branches remain protected regardless of your cleanup filters.
+
+If you intentionally need to remove one of these branches, use Git directly.
+
+</Section>
+
+---
+
+<Section
+    title="Can I preview the cleanup operation?"
+>
+
+Yes.
+
+Use Custy's global dry-run option:
+
+```bash
+custy --dry-run cleanup branches
+```
+
+Custy evaluates every configured cleanup rule but does not delete any
+branches.
+
+</Section>
+
+---
+
+<Section
+    title="Can Branch Cleanup run as part of a workflow?"
+>
+
+No public Run profile exposes branch cleanup. Use `custy cleanup branches`.
+Unlike Backup Cleanup, Branch Cleanup is **not** automatically included in
+larger profiles such as Release or Full.
+
+This design ensures that branch deletion always remains an explicit user
+decision.
+
+</Section>
+
+---
+
+<Section
+    title="Should I configure Branch Cleanup in config.toml?"
+>
+
+Yes.
+
+Although temporary overrides are available from the command line, most teams
+benefit from defining shared cleanup rules in `config.toml`.
+
+This ensures consistent cleanup behavior across every contributor working on
+the project.
+
+</Section>
+
+---
+
+<Section
+    title="Can I combine multiple cleanup filters?"
+>
+
+Yes.
+
+A branch may be evaluated using multiple filters simultaneously.
+
+For example:
+
+- branch prefix,
+- merge status,
+- relative age,
+- absolute date.
+
+Every configured filter must be satisfied before the branch becomes eligible
+for deletion.
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Branch Cleanup Complete"
+>
+
+You have completed the Branch Cleanup documentation.
+
+You now understand how Custy safely evaluates and removes Git branches using
+layered filtering and conservative defaults.
+
+</InfoBox>
+
+---
+
+<Section
+    title="What's Next?"
+>
+
+You have completed the entire **Cleanup** command documentation, including:
+
+- Cleanup Overview
+- Backup Cleanup
+- Branch Cleanup
+
+The next command in the Custy documentation roadmap is **Version**, where
+we'll document how Custy detects, calculates, and manages project versioning
+using SemVer, PEP 440, Git Count, Date, and Commitizen strategies.
+
+</Section>

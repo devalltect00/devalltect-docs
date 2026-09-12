@@ -1,0 +1,106 @@
+.hero {
+    margin-bottom: var(--docs-space-2xl);
+}
+
+.heading {
+    margin-bottom: .75rem;
+}
+
+.syntax {
+    display: block;
+
+    padding: .9rem 1rem;
+
+    border-radius: var(--docs-radius-md);
+
+    background: var(--ifm-code-background);
+
+    font-size: .95rem;
+
+    overflow-x: auto;
+}
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: .75rem;
+}
+
+.links {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 1rem;
+}
+
+.link {
+
+    color: var(--ifm-color-primary);
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: color var(--docs-transition);
+
+}
+
+.link:hover {
+
+    color: var(--ifm-color-primary-dark);
+
+    text-decoration: underline;
+
+}
+
+
+/* ---------------------------------- */
+/* Addtional */
+/* ---------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/* Command                                                                     */
+/* -------------------------------------------------------------------------- */
+
+.commandRow {
+    display: flex;
+
+    align-items: center;
+
+    gap: .75rem;
+
+    margin-bottom: 1.5rem;
+
+    flex-wrap: wrap;
+}
+
+.label {
+    font-size: .875rem;
+
+    font-weight: 600;
+
+    color: var(--ifm-color-emphasis-700);
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+.command {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: .35rem .7rem;
+
+    border-radius: .5rem;
+
+    background: var(--ifm-code-background);
+
+    font-family: var(--ifm-font-family-monospace);
+
+    font-size: .95rem;
+}

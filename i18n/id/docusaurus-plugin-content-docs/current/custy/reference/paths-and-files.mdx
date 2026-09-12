@@ -1,0 +1,15 @@
+---
+title: "Paths and Files"
+description: "Referensi project configuration, templates, version file, changelog, backups, logs, packaged resources, dan working-directory behavior."
+sidebar_position: 7
+sidebar_key: custy-reference-paths-files
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command=".config/custy/" title="Paths and Files" description="Ketahui file yang dibaca, dibuat, diperbarui, dan dimiliki project." category="Referensi" status="Working-directory Relative" syntax="project root -> configured relative paths" links={[{label:"Configuration File",href:"../configuration/config-file"},{label:"Template Files",href:"../configuration/cli/templates/files"},{label:"Generated Files",href:"../commands/init/generated-files"}]} />
+
+<Section title="File utama">Configuration berada di `.config/custy/config.toml`; template changelog berada di `.config/custy/templates/changelog/changelog.j2` secara default. Version file, changelog output, backup directory, dan log path mengikuti setting project.</Section>
+
+<InfoBox variant="warning" title="Working directory menentukan resolution">Jalankan Custy dari project root yang memuat `.config/custy/config.toml`. Relative path dapat menunjuk lokasi yang salah jika command dijalankan dari directory lain.</InfoBox>
+
+<RelatedCommands commands={[{title:"Generated Files",href:"../commands/init/generated-files",description:"Lihat resource yang dibuat setiap Init mode."},{title:"Configuration File",href:"../configuration/config-file",description:"Pahami project ownership dan safe replacement."},{title:"Template Files",href:"../configuration/cli/templates/files",description:"Atur changelog, commit, dan tag message templates."},{title:"Logging Files",href:"../configuration/logging/file",description:"Atur path, level, rotation, count, dan format log."}]} />

@@ -1,0 +1,45 @@
+---
+title: "Ringkasan"
+description: "Hapus Git branch lama secara aman dengan aturan yang dapat dikonfigurasi."
+sidebar_position: 1
+sidebar_key: custy-cleanup-branch
+---
+import {CommandHero, InfoBox, Section, FeatureGrid, RelatedCommands} from "@site/src/components/docs";
+
+<CommandHero command="custy cleanup branches" title="Branch Cleanup" description="Saring dan hapus local branch lama berdasarkan aturan proyek." category="Maintenance" status="Gunakan dengan Hati-hati" syntax="custy cleanup branches" links={[
+    {label: "Requirements", href: "./requirements"}, {label: "Configuration", href: "./configuration"}, {label: "Workflow", href: "./workflow"},
+]} />
+
+## Ringkasan
+
+Branch Cleanup mengevaluasi local Git branch melalui beberapa filter dan hanya menghapus branch yang memenuhi seluruh aturan aktif.
+
+<InfoBox variant="danger" title="Branch Cleanup Mengubah Git Repository">Command ini dapat menghapus local branch. Tinjau konfigurasi dan gunakan `custy --dry-run cleanup branches` sebelum eksekusi nyata.</InfoBox>
+
+<Section title="Yang Dilakukan Branch Cleanup">
+<FeatureGrid items={[
+    {title: "Pilih Kandidat", description: "Membatasi branch berdasarkan prefix yang diizinkan."},
+    {title: "Terapkan Filter", description: "Memeriksa merge status, usia relatif, dan tanggal batas."},
+    {title: "Lindungi Branch Penting", description: "Mengecualikan protected branch dari penghapusan."},
+    {title: "Laporkan Hasil", description: "Menjelaskan branch yang dihapus atau dilewati."},
+]} />
+</Section>
+
+<Section title="Alur Ringkas">
+
+1. Baca configuration.
+2. Periksa local branches.
+3. Terapkan filters.
+4. Lindungi protected branches.
+5. Hapus kandidat.
+6. Tampilkan summary.
+
+</Section>
+
+<InfoBox variant="warning" title="Configuration Driven">Jika `include_prefixes` tidak dikonfigurasi dan tidak diberikan melalui CLI, Custy memilih perilaku aman dan tidak menghapus branch.</InfoBox>
+
+<RelatedCommands commands={[
+    {name: "cleanup", description: "Ringkasan command Cleanup.", href: "../overview"},
+    {name: "backup", description: "Bersihkan backup lama.", href: "../../backup/overview"},
+    {name: "run", description: "Jalankan pipeline profile.", href: "../../run/overview"},
+]} />

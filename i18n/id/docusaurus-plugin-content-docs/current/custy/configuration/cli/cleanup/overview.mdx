@@ -1,0 +1,26 @@
+---
+title: "Ringkasan Cleanup"
+description: "Navigasikan backup retention dan branch-selection configuration."
+sidebar_position: 1
+sidebar_key: custy-configuration-cli-cleanup-overview
+tags: [custy, configuration, cleanup]
+keywords: [cli cleanup, backup cleanup, branch cleanup]
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.cleanup]" title="Ringkasan Cleanup" description="Pisahkan file retention dan Git branch deletion menjadi policy yang dapat ditinjau." category="CLI Configuration" status="Destructive Area" syntax="[tool.custy.cli.cleanup.SUBTABLE]" tags={["retention", "branch filters", "safe defaults"]} links={[{label: "Backup Cleanup", href: "./backup"}, {label: "Branch Cleanup", href: "./branch"}, {label: "Cleanup Command", href: "../../../commands/cleanup/overview"}]} />
+
+<CommandMetadata items={[{label: "Child Tables", value: "2", icon: "directory"}, {label: "Backup Properties", value: "2", icon: "package"}, {label: "Branch Properties", value: "2 + 2 optional", icon: "git"}, {label: "Deletion Risk", value: "Requires review", icon: "danger"}]} />
+
+<FeatureGrid items={[{title: "Backup Cleanup", icon: <Icon name="package" />, children: <>Pilih backup category dan retention count melalui <a href="./backup">cli.cleanup.backup</a>.</>}, {title: "Branch Cleanup", icon: <Icon name="git" />, children: <>Pilih prefixes, merge state, serta optional age atau date filter melalui <a href="./branch">cli.cleanup.branch</a>.</>}]} />
+
+<InfoBox variant="warning" title="Kedua Policy Memengaruhi Resource yang Berbeda">
+
+Backup cleanup menghapus retained message files. Branch cleanup menghapus
+eligible Git branches. Tinjau command workflow yang sesuai sebelum menjalankan
+salah satu operasi.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Backup Cleanup", href: "./backup", description: "Konfigurasikan type dan keep."}, {title: "Branch Cleanup", href: "./branch", description: "Konfigurasikan layered branch filters."}, {title: "Safety Concept", href: "../../../concepts/safety-and-side-effects", description: "Tinjau destructive-operation boundaries."}]} /></Section>

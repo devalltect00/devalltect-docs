@@ -1,0 +1,52 @@
+---
+title: "Paths"
+description: "Konfigurasikan version source yang digunakan Custy commands."
+sidebar_position: 2
+sidebar_key: custy-configuration-cli-paths
+tags: [custy, configuration, paths]
+keywords: [tool.custy.cli.paths, version_file]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.cli.paths]" title="CLI Paths" description="Deteksi version metadata yang didukung atau pilih version target secara eksplisit." category="CLI Configuration" status="Active" syntax={'version_file = "auto"'} tags={["version metadata", "automatic detection", "project root"]} links={[{label: "Versioning", href: "./versioning"}, {label: "Project", href: "../project"}, {label: "Validate", href: "../../commands/validate/overview"}]} />
+
+<CommandMetadata items={[{label: "Properties", value: "1", icon: "table"}, {label: "Generated Default", value: "auto", icon: "file"}, {label: "Status", value: "Active", icon: "success"}, {label: "CLI Override", value: "Supported", icon: "terminal"}]} />
+
+## Properties
+
+<PropertyTable items={[{property: "version_file", type: "Path string atau auto", defaultValue: "auto", description: "Gunakan auto untuk mendeteksi Python __version__.py yang sudah ada, project.version statis dalam pyproject.toml, atau string version dalam package.json. Path eksplisit harus tersedia dan berupa file."}]} />
+
+<Terminal title="Deteksi otomatis (direkomendasikan)" language="toml">
+
+{`[tool.custy.cli.paths]
+version_file = "auto"`}
+
+</Terminal>
+
+<Terminal title="src layout" language="toml">
+
+{`[tool.custy.cli.paths]
+version_file = "src/my_package/__version__.py"`}
+
+</Terminal>
+
+<InfoBox variant="info" title="Project tanpa version metadata tetap valid">
+
+Jika automatic detection tidak menemukan version target yang didukung, Custy
+tetap dapat dijalankan, menginisialisasi configuration, dan menggunakan
+Git-tag-only versioning. Custy tidak membuat file Python pada project Node.js
+atau generic. Gunakan target eksplisit hanya jika project memiliki version
+file lain.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Ini Bukan project_source">
+
+`project.project_source` menentukan main source directory. `version_file`
+menentukan satu metadata file di dalam project. Kedua nilai dapat tetap
+`auto`, dan setiap override eksplisit divalidasi secara terpisah.
+
+</InfoBox>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Versioning", href: "./versioning", description: "Pilih cara value dalam version file diinterpretasikan."}, {title: "Project", href: "../project", description: "Konfigurasikan main source directory."}, {title: "Version Configuration", href: "../../commands/version/configuration", description: "Tinjau command-specific version resolution."}]} /></Section>

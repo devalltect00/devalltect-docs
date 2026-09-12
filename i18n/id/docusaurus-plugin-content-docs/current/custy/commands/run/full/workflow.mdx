@@ -1,0 +1,16 @@
+---
+title: "Workflow"
+description: "Exact registered stages dalam Custy Full profile."
+sidebar_position: 2
+sidebar_key: custy-run-full-workflow
+---
+import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy run full" title="Full Workflow" description="Ikuti complete release lifecycle dan post-push experimental finalization." category="Pipeline Profile" status="Experimental Finalization" syntax="custy run full [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Examples",href:"./examples"},{label:"Pipeline Internals",href:"../../../pipelines/full-pipeline"},{label:"Safety",href:"../safety"}]} />
+
+## Ringkasan
+<WorkflowTimeline title="Full Profile" items={[
+ {title:"Validate",description:"Repository, pre-commit, pre-tag, dan pre-push checks.",status:"completed"},{title:"Prepare and edit",description:"Resolve version/tag state dan validate artifacts.",status:"completed"},{title:"Apply and document",description:"Apply version dan generate changelog.",status:"completed"},{title:"Back up and clean",description:"Backup messages dan prune retention.",status:"completed"},{title:"Commit and tag",description:"Create release commit dan tag.",status:"completed"},{title:"Push",description:"Publish HEAD dan tag.",status:"completed"},{title:"Finalize workflow",description:"Invoke experimental finalization step.",status:"current"},
+]} />
+<InfoBox variant="warning" title="Finalization Runs After Push">Finalization dapat gagal setelah remote publication sukses. Jangan rerun seluruh profile tanpa audit state.</InfoBox>
+<Section title="Retry Boundary">Verifikasi files, commit, tag, dan setiap remote; pulihkan hanya stage yang diperlukan.</Section>

@@ -1,0 +1,442 @@
+---
+title: "Installation"
+description: "Choose a supported Custy installation method, prepare its requirements, and verify the CLI."
+sidebar_position: 2
+sidebar_key: custy-getting-started
+
+tags:
+  - installation
+  - python
+  - virtual environment
+
+keywords:
+  - install custy
+  - custy python installation
+  - custy release assets
+  - custy editable install
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="python -m pip install ."
+    title="Install Custy"
+    description="Choose a supported native installation method, prepare its requirements, and verify the Custy CLI."
+    category="Getting Started"
+    status="Python 3.14+"
+    syntax="python -m pip install [OPTIONS] SOURCE"
+    tags={[
+        "source checkout",
+        "release assets",
+        "developer setup",
+    ]}
+    links={[
+        {label: "Requirements", href: "#requirements"},
+        {label: "Installation Methods", href: "#choose-an-installation-method"},
+        {label: "Developer Setup", href: "#editable-developer-installation"},
+        {label: "Verify", href: "#verify-the-installation"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Native Python", value: "3.14 or newer", icon: "requirement"},
+        {label: "Core System Tool", value: "Git", icon: "git"},
+        {label: "Recommended Isolation", value: "Virtual environment", icon: "directory"},
+        {label: "Container Alternative", value: "Local Docker build", icon: "docker"},
+    ]}
+/>
+
+## Overview
+
+Custy can be installed from a source checkout, a Python artifact attached to a
+release, or the Git repository itself. Contributors should use an editable
+installation with the development dependency group. Docker is a separate
+alternative when you do not want to install Python or Git directly on the host.
+
+<InfoBox
+    variant="info"
+    title="No public package-index assumption"
+>
+
+These instructions do not assume that `pip install custy` resolves to this
+project on a public package index. Install a reviewed source checkout, release
+artifact, or Git revision explicitly.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Requirements"
+    subtitle="The required host tools depend on whether Custy runs natively or inside Docker."
+>
+
+<RequirementGrid
+    items={[
+        {
+            title: "Python 3.14+",
+            level: "required",
+            children: "Required for native installation. This is the minimum version declared by the current package metadata.",
+        },
+        {
+            title: "pip",
+            level: "required",
+            children: "Required for native installation. Invoke it through the selected Python interpreter.",
+        },
+        {
+            title: "Git",
+            level: "required",
+            children: "Required on the native host for Custy's repository, version, changelog, commit, tag, push, and pipeline operations.",
+        },
+        {
+            title: "Virtual Environment",
+            level: "recommended",
+            children: "Keep Custy and its dependencies isolated from the system Python and unrelated projects.",
+        },
+        {
+            title: "Docker",
+            level: "optional",
+            children: "Use the container path instead of installing Python, pip, or Git on the host.",
+        },
+        {
+            title: "Make",
+            level: "optional",
+            children: "Use repository Make targets as development and container helpers; Make is not required by the Custy CLI itself.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Feature-Specific Tools"
+>
+
+<FeatureGrid
+    title="Install Only When Needed"
+    items={[
+        {
+            title: "Commitizen",
+            icon: <Icon name="git" />,
+            children: <>Install and configure the <code>cz</code> command only when using Custy's Commitizen version strategy. It is included in the <code>dev</code> dependency group, not the runtime dependency list.</>,
+        },
+        {
+            title: "Interactive Editor",
+            icon: <Icon name="file" />,
+            children: "Provide the VS Code command-line launcher or the Windows Notepad fallback when a commit, tag, or release flow opens generated files for review.",
+        },
+        {
+            title: "Remote Credentials",
+            icon: <Icon name="security" />,
+            children: "Configure SSH or supported Git credentials outside Custy before a push operation communicates with a remote.",
+        },
+        {
+            title: "Docker Compose",
+            icon: <Icon name="docker" />,
+            children: "Install the Compose plugin only when using the repository's development or production Compose services.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Choose an Installation Method"
+>
+
+<FeatureGrid
+    title="Native Installation Choices"
+    items={[
+        {
+            title: "Source Checkout",
+            icon: <Icon name="directory" />,
+            children: "Recommended when you want to inspect the exact source and install a normal runtime copy.",
+        },
+        {
+            title: "Release Artifact",
+            icon: <Icon name="package" />,
+            children: "Install a wheel or source distribution attached to a reviewed release when that release provides one.",
+        },
+        {
+            title: "Git Revision",
+            icon: <Icon name="git" />,
+            children: "Install directly from a reviewed tag or commit without keeping a separate checkout.",
+        },
+        {
+            title: "Editable Contributor Setup",
+            icon: <Icon name="command" />,
+            children: "Install the source tree in editable mode with testing, linting, formatting, packaging, and Git-hook tools.",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Method 1: Install from a Source Checkout"
+>
+
+Clone the repository, create a virtual environment, and install the runtime
+package. This is the recommended native path when no reviewed release artifact
+has been selected.
+
+<Terminal title="Clone and create the environment" language="bash">
+
+{`git clone https://github.com/devalltect00/Custy.git
+cd Custy
+python -m venv venv`}
+
+</Terminal>
+
+Activate the environment for your shell.
+
+<Terminal title="Windows PowerShell" language="powershell">
+
+{`venv\\Scripts\\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install .`}
+
+</Terminal>
+
+<Terminal title="Linux or macOS" language="bash">
+
+{`source venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install .`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<Section
+    title="Method 2: Install a Release Artifact"
+>
+
+Custy's release workflow is configured to attach a Python wheel and source
+distribution. Open the
+[Custy Releases page](https://github.com/devalltect00/Custy/releases), choose a
+reviewed release, and confirm that the selected release actually contains the
+artifact before downloading it.
+
+<Terminal title="Install a downloaded wheel" language="bash">
+
+{`python -m pip install ./custy-<version>-py3-none-any.whl`}
+
+</Terminal>
+
+<Terminal title="Install a downloaded source distribution" language="bash">
+
+{`python -m pip install ./custy-<version>.tar.gz`}
+
+</Terminal>
+
+<InfoBox
+    variant="warning"
+    title="Do not pin documentation to one old release"
+>
+
+Artifact availability and version numbers change over time. Use the general
+Releases page, select the intended version deliberately, and verify the asset
+name shown by that release.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Method 3: Install Directly from Git"
+>
+
+When you do not need a local checkout, pip can install a reviewed Git tag or
+commit into the active environment.
+
+<Terminal title="Install a reviewed revision" language="bash">
+
+{`# Replace <tag-or-commit> with the exact revision you reviewed
+python -m pip install "git+https://github.com/devalltect00/Custy.git@<tag-or-commit>"`}
+
+</Terminal>
+
+Omitting `@<tag-or-commit>` follows the repository's default branch and is less
+reproducible.
+
+</Section>
+
+---
+
+<Section
+    title="Editable Developer Installation"
+>
+
+Contributors working on Custy itself should install the source tree in editable
+mode with the development dependencies declared in `pyproject.toml`.
+
+<Terminal title="Editable install with development tools" language="bash">
+
+{`python -m pip install -e ".[dev]"`}
+
+</Terminal>
+
+Use `python -m pip install -e .` only when you need editable runtime code
+without the optional development tools. Add `docs` when working on Custy's
+legacy MkDocs sources: `python -m pip install -e ".[dev,docs]"`.
+
+<InfoBox
+    variant="tip"
+    title="Why use python -m pip?"
+>
+
+Calling pip through `python -m pip` ensures that installation uses the Python
+interpreter from the active virtual environment.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Optional Makefile Helpers"
+>
+
+The repository Makefile can create the standard `venv/` environment and run
+the editable installation targets. These helpers are intended for a Custy
+source checkout and require GNU Make.
+
+<Terminal title="Contributor setup with Make" language="bash">
+
+{`make venv
+make upgrade-pip
+make install-dev`}
+
+</Terminal>
+
+- `make install` installs editable runtime dependencies.
+- `make install-dev` adds the development dependency group.
+- `make install-all` adds both development and legacy documentation tools.
+- Make is only a convenience layer; the equivalent `python -m pip` commands
+  remain valid without it.
+
+</Section>
+
+---
+
+<Section
+    title="Verify the Installation"
+>
+
+<CommandChecklist
+    title="Installation Check"
+    items={[
+        {
+            title: "The intended environment is active",
+            description: "Your shell resolves Python and Custy from the selected virtual environment or installation.",
+        },
+        {
+            title: "The Python version is compatible",
+            description: <><code>python --version</code> reports Python 3.14 or newer for native use.</>,
+        },
+        {
+            title: "The installed version is visible",
+            description: <><code>custy --version</code> prints package version information.</>,
+        },
+        {
+            title: "Command help renders",
+            description: <><code>custy --help</code> shows the public commands and global options.</>,
+        },
+    ]}
+/>
+
+<Terminal title="Verify the CLI" language="bash">
+
+{`python --version
+git --version
+custy --version
+custy --help`}
+
+</Terminal>
+
+From a source checkout, `python -m app --help` is an alternative module entry
+point when you need to distinguish a PATH problem from an application problem.
+
+</Section>
+
+---
+
+<Section
+    title="Common Installation Problems"
+>
+
+<InfoBox
+    variant="warning"
+    title="Python version is too old"
+>
+
+If pip reports an incompatible Python version, install Python 3.14 or newer,
+recreate the virtual environment with that interpreter, and install again.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="custy is not recognized"
+>
+
+Confirm that the intended virtual environment is active. You can also invoke
+its executable directly, such as `venv\Scripts\custy.exe --help` on Windows,
+or use `python -m app --help` from the source checkout.
+
+</InfoBox>
+
+<InfoBox
+    variant="warning"
+    title="Git command is unavailable"
+>
+
+Install Git and make sure `git --version` works in the same shell. A successful
+Python package installation alone does not provide the Git executable required
+by Custy's main workflows.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Continue"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "Docker Setup", href: "./docker", description: "Build a self-contained Custy image with Python, Git, pip, and Make included."},
+        {title: "Quick Start", href: "./quick-start", description: "Initialize and validate an existing repository."},
+        {title: "Developer Setup", href: "../developer-guide/development-setup", description: "Prepare and verify an editable contributor environment."},
+        {title: "custy init", href: "../commands/init/overview", description: "Generate project-specific Custy resources."},
+        {title: "custy validate", href: "../commands/validate/overview", description: "Check project readiness before a pipeline."},
+    ]}
+/>
+
+</Section>

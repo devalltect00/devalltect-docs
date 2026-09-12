@@ -1,0 +1,125 @@
+---
+title: "Push Troubleshooting"
+description: "Resolve missing remotes, authentication failures, rejected pushes, and tag errors."
+sidebar_position: 9
+sidebar_key: custy-push-troubleshooting
+tags: [push, troubleshooting, remote]
+keywords: [push rejected, remote missing]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy push"
+    title="Push Troubleshooting"
+    description="Resolve missing remotes, authentication failures, rejected pushes, backup skips, and tag synchronization problems."
+    category="Git Operations"
+    status="Support Guide"
+    syntax="custy push [OPTIONS]"
+    tags={[
+        "troubleshooting",
+        "remotes",
+        "push rejection",
+    ]}
+    links={[
+        {label: "Troubleshooting Hub", href: "../../troubleshooting/overview"},
+        {label: "Requirements", href: "./requirements"},
+        {label: "Remotes", href: "./remotes"},
+        {label: "FAQ", href: "./faq"},
+    ]}
+/>
+
+## Overview
+
+Read the first Git or remote response and identify the exact destination before
+retrying. A partially completed multi-remote push needs destination-by-
+destination verification.
+
+<InfoBox
+    variant="danger"
+    title="Do not force-push by default"
+>
+
+Protected branches, non-fast-forward history, and missing review requirements
+must be resolved according to repository policy.
+
+</InfoBox>
+
+---
+
+## No Valid Main Remote Was Found
+
+<Section compact>
+
+<Terminal>
+
+{`git remote -v`}
+
+</Terminal>
+
+Add or correct the intended remote using normal Git configuration, then run
+Custy dry-run again.
+
+</Section>
+
+---
+
+## Authentication Failed
+
+<Section compact>
+
+Test the remote with Git directly. Repair SSH keys, credential-manager state, or
+provider access without placing secrets in Custy configuration or documentation.
+
+</Section>
+
+---
+
+## The Push Was Rejected
+
+<Section compact>
+
+Read the remote response. Common causes include protected branches, non-fast-
+forward history, required reviews, and missing permissions. Do not force-push
+unless repository policy explicitly permits it.
+
+</Section>
+
+---
+
+## Backup Synchronization Was Skipped
+
+<Section compact>
+
+Check the current branch prefix and whether `sync_backup` is enabled. Custy can
+skip backup remotes for non-critical branches.
+
+</Section>
+
+---
+
+## A Tag Was Not Pushed
+
+<Section compact>
+
+Confirm the tag exists locally and was passed into the workflow. The advertised
+`--skip-tag` adapter is currently incomplete, so rely on dry-run output rather
+than assumptions about the flag.
+
+</Section>
+
+---
+
+## `--remote` Did Not Select the Destination
+
+<Section compact>
+
+This is a known adapter limitation. The current workflow engine can fall back to
+`origin`; cancel the operation if the reported destination is wrong.
+
+</Section>

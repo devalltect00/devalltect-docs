@@ -1,0 +1,71 @@
+---
+title: "Requirements"
+description: "Prerequisites and restrictions for the experimental workflow branch command."
+sidebar_position: 2
+sidebar_key: custy-workflow-branch-requirements
+tags: [workflow, requirements, experimental]
+keywords: [workflow transition requirements]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RequirementGrid,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy workflow branch"
+    title="Requirements"
+    description="Prepare a disposable environment, transition configuration, valid boundaries, and implementation fix before evaluation."
+    category="Experimental Workflow"
+    status="Currently Blocked"
+    syntax="custy workflow branch [OPTIONS]"
+    tags={[
+        "requirements",
+        "experimental",
+        "test environment",
+    ]}
+    links={[
+        {label: "Overview", href: "./overview"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Troubleshooting", href: "./troubleshooting"},
+    ]}
+/>
+
+## Overview
+
+This interface should not be evaluated in production while the pipeline step
+name is unresolved.
+
+---
+
+<Section
+    title="Evaluation Requirements"
+>
+
+<RequirementGrid
+    items={[
+        {title: "Implementation Fix", level: "required", children: "Correct the finalize versus finalize_step mismatch in the Custy application first."},
+        {title: "Disposable Repository", level: "required", children: "Use a reviewed test repository and branch for any later interface evaluation."},
+        {title: "Workflow Configuration", level: "required", children: "Define intended transition behavior under [tool.custy.cli.workflow]."},
+        {title: "Explicit Boundaries", level: "recommended", children: "Identify source and target branches or versions before validation."},
+        {title: "Valid Tag Formats", level: "recommended", children: "Use referenced tags accepted by Custy's tag validator."},
+        {title: "Reviewed Backup Behavior", level: "optional", children: "Confirm remote and branch eligibility before enabling backup synchronization."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="danger"
+    title="Implementation fix required"
+>
+
+The current `finalize` versus `finalize_step` mismatch must be corrected in the
+Custy application before this command can be treated as operational. That source
+change is outside this documentation task.
+
+</InfoBox>

@@ -1,0 +1,114 @@
+---
+title: "Overview"
+description: "Execute supported Custy pipeline profiles for focused Git operations, development, and releases."
+sidebar_position: 1
+sidebar_key: custy-commands-run
+tags: [run, pipeline, automation]
+keywords: [custy run, dev profile, release profile, full profile]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy run"
+    title="Execute Pipeline Profiles"
+    description="Resolve one or more supported public profiles into a deduplicated, globally ordered execution pipeline."
+    category="Pipeline"
+    status="Stable with limitations"
+    syntax="custy run PROFILE [PROFILE ...] [OPTIONS]"
+    tags={["pipeline", "Git automation", "release"]}
+    links={[
+        {label: "Profiles", href: "./profiles"},
+        {label: "Custom sequences", href: "./custom-sequences"},
+        {label: "Safety", href: "./safety"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Category", value: "Pipeline", icon: "pipeline"},
+        {label: "Public Profiles", value: "6", icon: "workflow"},
+        {label: "Side Effects", value: "Profile-dependent", icon: "warning"},
+        {label: "Composition", value: "Supported", icon: "dependency"},
+    ]}
+/>
+
+## Overview
+
+The public Run argument currently accepts exactly six names:
+
+- `commit`
+- `tag`
+- `push`
+- `dev`
+- `release`
+- `full`
+
+<InfoBox
+    variant="danger"
+    title="Ignore the broader help list"
+>
+
+Current CLI help text advertises additional internal names such as `validate`,
+`changelog`, backup, cleanup, and workflow steps. The typed public argument does
+not accept those values. This documentation intentionally covers only the six
+actually accepted names.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Choose a Public Profile"
+>
+
+<FeatureGrid
+    title="Common Pipeline Choices"
+    items={[
+        {title: "Commit", icon: <Icon name="git" />, children: "Prepare artifacts, update the changelog, stage, and create a local commit."},
+        {title: "Tag", icon: <Icon name="release" />, children: "Resolve version state and create a reviewed local tag."},
+        {title: "Push", icon: <Icon name="network" />, children: "Synchronize HEAD and an optional tag with resolved remotes."},
+        {title: "Dev", icon: <Icon name="play" />, children: "Coordinate daily artifact, changelog, commit, and push work."},
+        {title: "Release", icon: <Icon name="pipeline" />, children: "Apply a version, generate release notes, commit, tag, and push."},
+        {title: "Full", icon: <Icon name="workflow" />, children: "Run Release and then invoke experimental workflow finalization."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Recommended Profile Selection"
+>
+
+Use [Dev](./dev/overview) for daily commit-and-push work,
+[Release](./release/overview) for a complete tagged release, and
+[Full](./full/overview) only when release finalization is also required.
+
+</Section>
+
+---
+
+<Section
+    title="Related Commands"
+>
+
+<RelatedCommands
+    commands={[
+        {title: "custy commit", href: "../commit/overview", description: "Use the direct command for commit-specific overrides."},
+        {title: "custy tag", href: "../tag/overview", description: "Use the direct command for tag-specific version and message inputs."},
+        {title: "custy push", href: "../push/overview", description: "Use the direct command for push-specific options and limitations."},
+        {title: "custy changelog generate", href: "../changelog/generate/overview", description: "Generate release notes without selecting an unsupported Run name."},
+    ]}
+/>
+
+</Section>

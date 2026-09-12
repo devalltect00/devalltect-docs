@@ -1,0 +1,83 @@
+---
+title: "Diagrams"
+description: "This document provides visual diagrams of the DocGen architecture."
+sidebar_position: 2
+sidebar_key: doc-gen-architecture
+---
+
+# Architecture Diagrams
+
+This document provides visual diagrams of the DocGen architecture.
+
+## Main Components
+
+See `docs/diagrams/architecture-overview.mmd` for the main architecture diagram.
+
+## Workflows
+
+### Initialization Workflow
+
+See `docs/diagrams/init-workflow.mmd` for the init command workflow.
+
+### Structure Generation Workflow
+
+See `docs/diagrams/generate-workflow.mmd` for the generate command workflow.
+
+### Structure Print Workflow
+
+See `docs/diagrams/print-workflow.mmd` for the print command workflow.
+
+### Analysis Workflow
+
+See `docs/diagrams/analyze-workflow.mmd` for the analyze command workflow.
+
+## Component Interactions
+
+### CLI to Core
+
+```
+CLI (main.py)
+    │
+    ├── Commands (init, structure generate, structure print, structure analyze)
+    │   │
+    │   └── Options & Models
+    │
+    └── Core Services
+        │
+        ├── Scanner Service
+        ├── Generator Service
+        ├── Analyzer Service
+        └── Presenter Service
+```
+
+### Generator Pipeline
+
+```
+Input (Target Directory)
+    │
+    ├── Scanner (discovers files and directories)
+    ├── Analyzer (extracts metadata)
+    ├── Builder (constructs structure model)
+    └── Renderer (outputs markdown)
+        │
+        └── Output (PROJECT_STRUCTURE.md)
+```
+
+## Key Files
+
+| File                                    | Description             |
+| --------------------------------------- | ----------------------- |
+| `app/doc_gen/cli/main.py`               | CLI entrypoint          |
+| `app/doc_gen/cli/commands/`             | Command implementations |
+| `app/doc_gen/core/structure/`           | Core logic              |
+| `app/doc_gen/core/structure/scanner/`   | File discovery          |
+| `app/doc_gen/core/structure/generator/` | Structure generation    |
+| `app/doc_gen/core/structure/analyze/`   | Project analysis        |
+
+---
+
+## Related Documentation
+
+- [Design Patterns](./design-patterns)
+- [Workflow](./workflow)
+- [Architecture Diagram](../diagrams/generated/architecture-overview.png)

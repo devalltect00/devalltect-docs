@@ -1,0 +1,22 @@
+---
+title: "Development Setup"
+description: "Siapkan Python 3.14+ environment, install Custy dalam editable mode, dan verifikasi contributor tools."
+sidebar_position: 2
+sidebar_key: custy-developer-guide-development-setup
+---
+import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Section,Terminal} from "@site/src/components/docs";
+
+<CommandHero command="pip install -e .[dev]" title="Development Setup" description="Buat isolated editable environment untuk mengembangkan dan menguji Custy." category="Developer Guide" status="Python 3.14+" syntax="python -m pip install -e .[dev]" links={[{label:"Requirements",href:"#requirements"},{label:"Manual Setup",href:"#manual-setup"},{label:"Verify",href:"#verify-the-environment"}]} />
+## Requirements
+<CommandChecklist items={[{title:"Python 3.14+",description:"Gunakan interpreter yang memenuhi project metadata."},{title:"Git",description:"Diperlukan source checkout dan Custy workflows."},{title:"pip and venv",description:"Install dependencies dalam isolated environment."}]} />
+## Manual Setup
+<Terminal language="bash">{`python -m venv .venv
+# Activate the environment for your shell
+python -m pip install --upgrade pip
+python -m pip install -e .[dev]`}</Terminal>
+## Verify the Environment
+<Terminal language="bash">{`custy --help
+python -m pytest --version
+ruff --version`}</Terminal>
+<InfoBox variant="note" title="Docker Bersifat Opsional">Docker dan Make helpers berguna untuk project workflows, tetapi editable Python setup adalah jalur contributor utama.</InfoBox>
+<RelatedCommands commands={[{title:"Testing",href:"./testing",description:"Jalankan suite."},{title:"Installation",href:"../getting-started/installation",description:"Bandingkan user installation."},{title:"Docker",href:"../getting-started/docker",description:"Gunakan container workflow."},{title:"Contributing",href:"./contributing",description:"Siapkan contribution."}]} />

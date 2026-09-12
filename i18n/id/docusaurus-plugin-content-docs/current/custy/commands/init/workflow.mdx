@@ -1,0 +1,204 @@
+---
+title: "Workflow"
+description: "Pahami proses internal ketika custy init menyiapkan sebuah proyek."
+sidebar_position: 5
+sidebar_key: custy-commands-init
+
+tags:
+  - workflow
+  - initialization
+  - lifecycle
+
+keywords:
+  - custy init workflow
+  - initialization process
+  - project setup
+---
+
+import {
+    CommandHero,
+    WorkflowTimeline,
+    WorkflowStep,
+    InfoBox,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="custy init"
+    title="Init Workflow"
+    description="Pahami urutan operasi yang dijalankan saat Custy melakukan init pada proyek."
+    category="Init"
+    status="Direkomendasikan"
+    syntax="custy init"
+    tags={[
+        "workflow",
+        "initialization",
+        "project setup",
+    ]}
+    links={[
+        {
+            label: "Overview",
+            href: "./overview",
+        },
+        {
+            label: "Generated Files",
+            href: "./generated-files",
+        },
+        {
+            label: "Configuration",
+            href: "./configuration",
+        },
+    ]}
+/>
+
+## Ringkasan
+
+Menjalankan `custy init` menyiapkan proyek dengan membuat resource yang
+digunakan Custy pada operasi berikutnya.
+
+Command ini tidak langsung menjalankan Git workflow. Sebagai gantinya, Custy
+membuat workspace proyek yang dapat disesuaikan dan digunakan kembali oleh
+command berikutnya.
+
+<InfoBox
+    variant="tip"
+    title="Operasi Aman"
+>
+
+Init workflow tidak membuat commit, tag, release, atau mengubah riwayat Git.
+
+Tanggung jawabnya hanya menyiapkan proyek untuk operasi Custy selanjutnya.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Workflow Timeline"
+>
+
+<WorkflowTimeline
+    title="Init Timeline"
+    description="Urutan tingkat tinggi dari operasi yang dijalankan oleh init workflow."
+    items={[
+        {
+            title: "Resolve Options",
+            description:
+                "Tentukan pengaturan init efektif dengan menggabungkan command-line arguments, project configuration, dan default bawaan.",
+            status: "completed",
+        },
+        {
+            title: "Prepare Initialization",
+            description:
+                "Bangun context init dan tentukan resource yang perlu dibuat.",
+            status: "completed",
+        },
+        {
+            title: "Generate Resources",
+            description:
+                "Buat file configuration, templates, dan example resources opsional sesuai mode yang dipilih.",
+            status: "completed",
+        },
+        {
+            title: "Handle Existing Files",
+            description:
+                "Pertahankan atau timpa generated files sesuai resource type, force behavior, dan pengaturan konfirmasi interaktif yang didukung.",
+            status: "completed",
+        },
+        {
+            title: "Complete Initialization",
+            description:
+                "Selesaikan proses init dan siapkan proyek untuk command Custy berikutnya.",
+            status: "completed",
+        },
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section
+    title="Workflow Stages"
+>
+
+<WorkflowStep
+    number={1}
+    status="completed"
+    title="Resolve Init Settings"
+    description="
+Tentukan init mode efektif dengan menggabungkan command-line arguments,
+project configuration, dan default bawaan Custy.
+"
+/>
+
+<WorkflowStep
+    number={2}
+    status="completed"
+    title="Build Init Context"
+    description="
+Siapkan execution context internal yang akan digunakan bersama oleh setiap
+generation step selama init.
+"
+/>
+
+<WorkflowStep
+    number={3}
+    status="completed"
+    title="Generate Project Resources"
+    description="
+Buat resource proyek yang dipilih, termasuk file configuration, templates,
+dan nested example resources opsional sesuai init mode yang dipilih.
+"
+/>
+
+<WorkflowStep
+    number={4}
+    status="completed"
+    title="Merge Packaged Examples"
+    description="
+Telusuri packaged example tree secara recursive. Tambahkan direktori dan file
+yang belum ada, pertahankan existing example files secara default, atau timpa
+file tersebut ketika force behavior diaktifkan.
+"
+/>
+
+<WorkflowStep
+    number={5}
+    status="completed"
+    title="Finalize Init"
+    description="
+Selesaikan proses init dan siapkan proyek untuk command Custy berikutnya.
+"
+/>
+
+</Section>
+
+---
+
+<InfoBox
+    variant="note"
+    title="Dirancang untuk Digunakan Kembali"
+>
+
+Configuration dan templates yang dibuat menjadi bagian dari proyek Anda.
+
+Resource tersebut dapat diedit, disimpan dalam version control, dan dibagikan
+kepada developer lain yang mengerjakan repositori yang sama.
+
+Menjalankan init kembali bersifat additive untuk packaged examples secara
+default: nested examples baru disalin sementara existing example files tidak
+diubah.
+
+</InfoBox>
+
+---
+
+<Section
+    title="Langkah Berikutnya"
+>
+
+Halaman berikutnya menjelaskan setiap file dan direktori yang dibuat oleh init
+workflow.
+
+</Section>

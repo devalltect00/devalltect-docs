@@ -1,0 +1,15 @@
+---
+title: "Environment"
+description: "Referensi runtime tools, working-directory assumption, external editor, theme variables, Git authentication, dan terminal compatibility Custy."
+sidebar_position: 8
+sidebar_key: custy-reference-environment
+---
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero command="custy --help" title="Environment" description="Siapkan Python, Git, terminal, editor, authentication, dan project root yang benar." category="Referensi" status="Host-dependent" syntax="Python + Git + project files + terminal" links={[{label:"Installation",href:"../getting-started/installation"},{label:"Requirements",href:"../commands/validate/requirements"},{label:"Paths",href:"./paths-and-files"}]} />
+
+<Section title="Kebutuhan dasar">Local installation memerlukan Python yang memenuhi project metadata, `pip`, dan Git. Virtual environment direkomendasikan. Docker dan Make bersifat optional sesuai installation method atau helper yang digunakan.</Section>
+
+<InfoBox variant="info" title="Authentication berada di luar Custy">Push memakai konfigurasi credential Git pada host atau container. Custy tidak menyimpan token remote. Pastikan editor eksternal dan encoding terminal juga sesuai environment Anda.</InfoBox>
+
+<RelatedCommands commands={[{title:"Installation",href:"../getting-started/installation",description:"Pilih source, release asset, Docker, atau Makefile setup."},{title:"Paths and Files",href:"./paths-and-files",description:"Temukan file relatif terhadap working directory."},{title:"Validation Requirements",href:"../commands/validate/requirements",description:"Siapkan repository, template, version file, remote, dan staging."},{title:"Errors and Exit Status",href:"./exit-errors",description:"Interpretasikan parser, validation, terminal, dan subprocess failure."}]} />

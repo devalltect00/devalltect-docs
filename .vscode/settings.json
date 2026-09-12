@@ -1,0 +1,145 @@
+{
+  // =========================================================
+  // 🎨 FORMATTING
+  // =========================================================
+
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+
+  // =========================================================
+  // 📄 PRETTIER
+  // =========================================================
+
+  "eslint.format.enable": true,
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.wordWrap": "on"
+  },
+
+    "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // =========================================================
+  // 📚 MDX
+  // =========================================================
+
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on"
+  },
+
+  // =========================================================
+  // 🔍 ESLINT
+  // =========================================================
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // =========================================================
+  // 📚 MARKDOWN / MDX
+  // =========================================================
+
+  "markdown.validate.enabled": true,
+
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  // =========================================================
+  // 📂 FILE CLEANUP
+  // =========================================================
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // =========================================================
+  // 📦 EXCLUDED FILES
+  // =========================================================
+
+  "files.exclude": {
+    "**/.git": false,
+    "**/node_modules": true,
+    "**/.docusaurus": true,
+    // "**/build": true
+  },
+
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.docusaurus": true,
+    "**/build": true
+  },
+
+  "explorer.excludeGitIgnore": false,
+
+  // =========================================================
+  // 🧩 TYPESCRIPT
+  // =========================================================
+
+  "typescript.preferences.importModuleSpecifier": "relative",
+
+  // =========================================================
+  // 📖 YAML
+  // =========================================================
+
+  "yaml.validate": true,
+
+  // =========================================================
+  // 🌐 GITHUB ACTIONS
+  // =========================================================
+
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json":
+    ".github/workflows/*.yml",
+
+    "https://json.schemastore.org/github-action.json":
+      ".github/actions/*/action.yml"
+  },
+
+  // =========================================================
+  // 🦊 GITLAB CI/CD
+  // =========================================================
+
+  "gitlab.pipelineValidation.enabled": true,
+
+  // =========================================================
+  // 🎨 USER INTERFACE
+  // =========================================================
+
+  "workbench.iconTheme": "material-icon-theme"
+}

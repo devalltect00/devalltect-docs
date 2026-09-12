@@ -1,0 +1,23 @@
+---
+title: "Output"
+description: "Output: reflow tags convert remote"
+sidebar_position: 6
+sidebar_key: reflow-tags-convert-remote
+tags: [reflow, output]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Output" description="Output" category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- URL/path and remote.
+- Complete plan.
+- Atomic push result and totals.
+- Dry-run no-remote-mutation statement.
+
+<Terminal language="text">{`Target     : <resolved repository>
+Operation  : reflow tags convert remote
+Dry run    : true/false
+Successful : <count>
+Failed     : <count>`}</Terminal>
+

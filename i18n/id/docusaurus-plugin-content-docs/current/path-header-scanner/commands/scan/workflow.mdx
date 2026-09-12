@@ -1,0 +1,34 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: path-header-scanner scan"
+sidebar_position: 5
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Alur Kerja" description="Menemukan file didukung, memvalidasi path header, menampilkan preview, dan menerapkan koreksi hanya jika diminta." category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve workdir dan target.
+
+### 2. Tahap 2
+
+Temukan file didukung dengan exclusion.
+
+### 3. Tahap 3
+
+Pilih language strategy dan validasi header.
+
+### 4. Tahap 4
+
+Hitung status valid/inserted/updated/failed.
+
+### 5. Tahap 5
+
+Tulis hanya pada live --apply; mode lain hanya preview.
+
+<InfoBox variant="warning" title="Batas keamanan">Preview adalah default. --apply mengaktifkan write; --dry-run mengungguli apply dari CLI/configuration dan menjamin target tidak berubah.</InfoBox>
+

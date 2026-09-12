@@ -48,7 +48,7 @@ import {
 <CommandMetadata
     items={[
         {label: "Cakupan", value: "Public CLI", icon: "command"},
-        {label: "Grup Utama", value: "10", icon: "terminal"},
+        {label: "Grup Utama", value: "11", icon: "terminal"},
         {label: "Run Profiles", value: "6 nama publik", icon: "pipeline"},
         {label: "Grup Eksperimental", value: "Workflow", icon: "warning"},
     ]}
@@ -84,6 +84,7 @@ sebagai argumen `custy run` yang valid.
         {title: "Version dan Changelog", icon: <Icon name="release" />, children: <>Gunakan <a href="./version/overview">Version</a> untuk versi proyek dan <a href="./changelog/generate/overview">Changelog Generate</a> untuk release notes.</>},
         {title: "Commit dan Tag", icon: <Icon name="git" />, children: <>Gunakan <a href="./commit/overview">Commit</a> untuk menyiapkan riwayat lokal dan <a href="./tag/overview">Tag</a> untuk version tag yang sudah ditinjau.</>},
         {title: "Push dan Run", icon: <Icon name="pipeline" />, children: <>Gunakan <a href="./push/overview">Push</a> untuk sinkronisasi remote dan <a href="./run/overview">Run</a> untuk public profiles.</>},
+        {title: "Configure Credentials", icon: <Icon name="security" />, children: <>Gunakan <a href="./configure/credentials/overview">Configure Credentials</a> untuk menyiapkan optional HTTPS token fallback eksternal tanpa menyimpan token dalam project configuration.</>},
         {title: "Workflow Eksperimental", icon: <Icon name="warning" />, children: <>Grup <a href="./workflow/overview">Workflow</a> masih eksperimental dan saat ini terhalang oleh ketidaksesuaian source yang sudah didokumentasikan.</>},
     ]}
 />

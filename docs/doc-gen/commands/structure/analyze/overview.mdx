@@ -1,0 +1,20 @@
+---
+title: "Overview"
+description: "Inspect repository characteristics and resolved structure settings without writing project documentation."
+sidebar_position: 1
+sidebar_key: doc-gen-structure-analyze
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure analyze" title="Analyze Project Structure" description="Inspect repository characteristics and resolved structure settings without writing project documentation." category="Project Structure" status="Read Only" syntax="doc-gen structure analyze [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+<Section title="Purpose">Inspect repository characteristics and resolved structure settings without writing project documentation.</Section>
+
+<InfoBox variant="warning" title="Safety boundary">Analyze is inherently read-only. It may scan and calculate metadata, but it does not invoke the Markdown writer.</InfoBox>
+
+- Resolve target and shared settings.
+- Scan visible repository entries.
+- Detect project type and calculate structural characteristics.
+- Render analysis and summary without writing output.

@@ -1,0 +1,11 @@
+{
+  "label": "Konversi Tag Remote",
+  "position": 2,
+  "key": "reflow-tags-convert-remote-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/tags/convert/remote/overview"
+  }
+}

@@ -88,6 +88,12 @@ Initializing Custy project...
 ✓ Examples created
 
 Initialization completed successfully.
+
+💡 Next Steps
+1. Review .config/custy/config.toml.
+2. Set tool.custy.changelog.links.repository if changelog compare links are needed.
+3. Verify default_remote, main_remotes, and backup_remotes with git remote -v.
+4. Run custy validate.
 `,
             notes:
                 "The exact wording may differ slightly between Custy versions, but the overall flow remains the same.",
@@ -162,6 +168,11 @@ committed to version control.
 <Section
     title="What's Next?"
 >
+
+Modes that create configuration (`all`, `all_no_examples`, and `config`) finish
+with a project-specific checklist. Review `.config/custy/config.toml`, set the
+changelog browser URL only when comparison links are needed, verify Git remote
+names with `git remote -v`, and then run `custy validate`.
 
 If the initialization process does not behave as expected, continue to the
 **Troubleshooting** page for common problems and recommended solutions.

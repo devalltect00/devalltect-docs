@@ -1,0 +1,30 @@
+---
+title: "Workflow"
+description: "Workflow: path-header-scanner init"
+sidebar_position: 5
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Workflow" description="Create project-owned scanner configuration and supporting resources." category="Initialization" status="Recommended" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+### 1. Stage 1
+
+Resolve initialization defaults.
+
+### 2. Stage 2
+
+Build the selected resource plan.
+
+### 3. Stage 3
+
+Dry-run displays the plan and stops.
+
+### 4. Stage 4
+
+Live mode writes selected resources while obeying ask/force.
+
+<InfoBox variant="warning" title="Safety boundary">Dry-run never creates directories, writes files, replaces content, or prompts.</InfoBox>
+

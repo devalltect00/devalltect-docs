@@ -1,0 +1,21 @@
+---
+title: "Ringkasan"
+description: "Pahami file konfigurasi, urutan prioritas, dan bagian Path Header Scanner yang aktif."
+sidebar_position: 1
+sidebar_key: path-header-scanner-configuration
+tags: [path-header-scanner, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command=".config/path_header_scanner/config.toml" title="Konfigurasi" description="Pahami file konfigurasi, urutan prioritas, dan bagian Path Header Scanner yang aktif." category="Konfigurasi" status="Milik Proyek" syntax=".config/path_header_scanner/config.toml" />
+
+<Section title="Urutan prioritas">
+
+1. Argumen CLI eksplisit
+2. `.config/path_header_scanner/config.toml`
+3. Default internal
+
+</Section>
+
+<InfoBox variant="warning" title="Kepemilikan">Inisialisasi membuat salinan milik proyek. CLI tidak boleh menimpa konfigurasi yang dikelola pengguna secara diam-diam.</InfoBox>

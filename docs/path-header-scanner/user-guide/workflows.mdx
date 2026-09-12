@@ -1,0 +1,21 @@
+---
+title: "Practical Workflows"
+description: "Choose a workflow by its target and side effects."
+sidebar_position: 2
+sidebar_key: path-header-scanner-user-guide
+tags: [path-header-scanner, workflows]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Practical Workflows" description="Choose a workflow by its target and side effects." category="User Guide" status="Practical" syntax="path-header-scanner scan app --dry-run" />
+
+| Command | Effect |
+| --- | --- |
+| `path-header-scanner init` | Project setup |
+| `path-header-scanner scan TARGET` | Primary workflow |
+| `path-header-scanner scan TARGET --apply` | Additional explicit workflow |
+| `path-header-scanner scan TARGET --dry-run` | Additional explicit workflow |
+
+<InfoBox variant="tip" title="Preview">Scan previews by default. Only effective --apply writes target files, and --dry-run overrides CLI and configured apply mode.</InfoBox>
+

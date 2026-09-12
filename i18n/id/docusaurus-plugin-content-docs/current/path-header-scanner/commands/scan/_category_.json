@@ -1,0 +1,11 @@
+{
+  "label": "Pindai Path Header",
+  "position": 2,
+  "key": "phs-scan-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/commands/scan/overview"
+  }
+}

@@ -1,0 +1,49 @@
+---
+title: "Configuration Reference"
+description: "Reference every supported Path Header Scanner configuration section and its command scope."
+sidebar_position: 2
+sidebar_key: path-header-scanner-configuration
+tags: [path-header-scanner, configuration, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command=".config/path_header_scanner/config.toml" title="Configuration Reference" description="Map supported configuration keys to the commands that consume them." category="Configuration" status="v1.0.0 Reference" syntax="CLI option > project configuration > internal default" />
+
+<Section title="Supported sections">
+
+| TOML section | Supported keys | Used by |
+| --- | --- | --- |
+| `[tool.path-header-scanner.cli.execution]` | `dry_run`, `debug` | Shared execution defaults; `dry_run` affects `init` and `scan` |
+| `[tool.path-header-scanner.initialization]` | `force`, `ask` | `path-header-scanner init` |
+| `[tool.path-header-scanner.cli.scan]` | `target_directory`, `apply`, `include_target_directory` | `path-header-scanner scan` |
+| `[tool.path-header-scanner.logging]` | `level`, Rich display flags, `console_format` | Console diagnostics |
+| `[tool.path-header-scanner.logging.file]` | file level/path, rotation, and `file_format` | Persistent diagnostics |
+
+</Section>
+
+<Terminal title="Safe scan defaults" language="toml">{`[tool.path-header-scanner.cli.execution]
+dry_run = false
+
+[tool.path-header-scanner.cli.scan]
+target_directory = "app"
+apply = false
+include_target_directory = true`}</Terminal>
+
+<InfoBox variant="warning" title="Dry-run wins over apply">
+
+An explicit or configured dry-run disables effective apply mode. The scan may
+still discover and validate files, but it does not modify them.
+
+</InfoBox>
+
+<InfoBox variant="note" title="CLI-only working directory">
+
+`--workdir` changes the base used to resolve a relative scan target. It is a
+CLI option, not a supported persistent configuration key in v1.0.0.
+
+</InfoBox>
+
+Unknown keys do not become command options. Compare configuration names with
+the [scan options](../commands/scan/options) and [init options](../commands/init/options)
+before relying on them in automation.

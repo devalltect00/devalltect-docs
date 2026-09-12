@@ -242,19 +242,19 @@ After staging your changes, rerun validation.
 
 **What you see**
 
-Commit message validation fails when using the Commitizen strategy.
+Commitizen configuration, availability, or final message validation fails.
 
 **Why it happens**
 
-The current commit message does not satisfy the configured convention.
+The selected provider is strict but configuration or `cz` is missing, the
+configuration is malformed, or the final message violates project rules.
 
 **How to resolve it**
 
-Review the configured Commitizen rules and update the commit message to match
-the required format.
-
-Projects using SemVer, PEP 440, Date, or Git Count strategies generally do not
-require this validation.
+Read the structured error label, then install `custy[commitizen]`, repair the
+detected configuration, update the message, or select `provider = "custy"`.
+Version strategy and message provider are independent. See the
+[behavior matrix](../../configuration/commit-validation).
 
 </Section>
 

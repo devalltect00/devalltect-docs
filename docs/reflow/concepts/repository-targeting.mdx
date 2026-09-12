@@ -1,0 +1,16 @@
+---
+title: Repository Targeting
+description: Understand how Reflow selects local checkouts and remote Git URLs.
+sidebar_position: 9
+sidebar_key: reflow-repository-targeting
+---
+
+Reflow resolves targets in this order:
+
+1. Explicit `--repository-url` or `--repository`/`--repo`/`-C`.
+2. `[tool.reflow.repository].url` or `.path` from configuration.
+3. The current working directory.
+
+`path` and `url` are mutually exclusive. If both are configured, Reflow reports the conflicting keys and explains how to keep only the intended target.
+
+Local paths operate on an existing checkout. URLs use a temporary clone. A URL alone does not authorize remote mutation: only commands whose documented scope is remote change the provider repository.

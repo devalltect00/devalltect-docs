@@ -1,0 +1,36 @@
+---
+title: "Contoh"
+description: "Contoh: doc-gen structure print"
+sidebar_position: 7
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Contoh" description="Print bersifat read-only. --dry-run diterima dan tetap non-mutating." category="Struktur Proyek" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Print current project
+
+<Terminal language="bash">{`doc-gen structure print .`}</Terminal>
+
+**Hasil:** Displays tree.
+
+### 2. Minimal
+
+<Terminal language="bash">{`doc-gen structure print . --profile minimal`}</Terminal>
+
+**Hasil:** Displays concise tree.
+
+### 3. Directories only
+
+<Terminal language="bash">{`doc-gen structure print . --hide-files`}</Terminal>
+
+**Hasil:** Hides files.
+
+### 4. Dry-run
+
+<Terminal language="bash">{`doc-gen structure print . --dry-run`}</Terminal>
+
+**Hasil:** Remains read-only.
+

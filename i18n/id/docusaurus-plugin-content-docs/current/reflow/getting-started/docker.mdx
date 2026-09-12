@@ -1,0 +1,69 @@
+---
+title: "Docker"
+description: "Pull image production Reflow dengan tag stabil immutable atau bergerak dan jalankan CLI di dalam container."
+sidebar_position: 3
+sidebar_key: reflow-getting-started
+tags: [reflow, docker, container]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="docker pull ghcr.io/devalltect00/reflow:v1.0.0" title="Jalankan Reflow dengan Docker" description="Pilih tag rilis immutable atau alias bergerak yang terkontrol, lalu mount hanya repositori yang ingin dikelola Reflow." category="Memulai" status="Kebijakan Image Stabil" syntax="docker pull ghcr.io/devalltect00/reflow:<tag>" />
+
+<Section title="Tag Image yang Dipublikasikan">
+
+Rilis stabil memublikasikan empat referensi terkoordinasi ke image yang sama:
+
+| Tag | Contoh | Perilaku |
+| --- | --- | --- |
+| Eksak | `v1.0.0` | Pilihan rilis immutable; disarankan untuk CI dan otomasi yang dapat direproduksi. |
+| Minor | `v1.0` | Bergerak ke patch stabil terbaru dalam lini 1.0. |
+| Major | `v1` | Bergerak ke rilis stabil terbaru dalam lini 1.x. |
+| Latest | `latest` | Bergerak ke rilis stabil Reflow terbaru. |
+
+<Terminal title="Pull Reflow" language="bash">
+
+{`docker pull ghcr.io/devalltect00/reflow:v1.0.0
+docker pull ghcr.io/devalltect00/reflow:v1.0
+docker pull ghcr.io/devalltect00/reflow:v1
+docker pull ghcr.io/devalltect00/reflow:latest`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Prerelease hanya memakai tag eksak">
+
+Prerelease seperti `v1.0.0-rc.1` hanya memublikasikan tag eksaknya dan tidak
+pernah memperbarui `v1.0`, `v1`, atau `latest`.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Jalankan dengan Aman">
+
+Menjalankan `--help` tidak memerlukan repositori yang di-mount. Command
+operasional harus menerima target repositori secara eksplisit. Mount checkout
+memberikan container akses ke file nyata dan metadata Git, jadi pratinjau
+operasi berdampak dengan opsi global `--dry-run` terlebih dahulu.
+
+<Terminal title="Verifikasi image" language="bash">
+
+{`docker run --rm ghcr.io/devalltect00/reflow:v1.0.0 --help`}
+
+</Terminal>
+
+<InfoBox variant="info" title="Berbeda dari reflow dockerize">
+
+Tag ini mengidentifikasi container untuk menjalankan Reflow. Command
+`reflow dockerize` membangun atau memublikasikan image untuk repositori target
+dan menggunakan tujuan image yang dikonfigurasi oleh repositori tersebut.
+
+</InfoBox>
+
+</Section>
+
+<RelatedCommands commands={[
+    {title: "Instalasi dan Workflow Pertama", href: "./first-workflow", description: "Instal Reflow dan pratinjau operasi repositori pertama."},
+    {title: "Dockerize", href: "../commands/dockerize/overview", description: "Publikasikan image untuk repositori target."},
+    {title: "Keamanan dan Dry-run", href: "../concepts/safety-and-dry-run", description: "Tinjau batas tanpa mutasi."},
+]} />

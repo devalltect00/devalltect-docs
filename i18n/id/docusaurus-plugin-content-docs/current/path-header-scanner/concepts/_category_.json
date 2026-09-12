@@ -1,0 +1,11 @@
+{
+  "label": "Konsep",
+  "position": 3,
+  "key": "path-header-scanner-concepts",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/concepts/overview"
+  }
+}

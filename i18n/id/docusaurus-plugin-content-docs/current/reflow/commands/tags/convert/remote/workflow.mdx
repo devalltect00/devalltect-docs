@@ -1,0 +1,34 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: reflow tags convert remote"
+sidebar_position: 5
+sidebar_key: reflow-tags-convert-remote
+tags: [reflow, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Alur Kerja" description="Mengganti nama tag pada remote terpilih melalui satu atomic push yang dijaga." category="Konversi Tag" status="Mutasi Remote Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve target dan materialize workspace.
+
+### 2. Tahap 2
+
+Susun rencana remote lengkap.
+
+### 3. Tahap 3
+
+Tolak seluruh operasi jika ada ref tidak aman.
+
+### 4. Tahap 4
+
+Tampilkan target/remote/rencana.
+
+### 5. Tahap 5
+
+Atomic push creation dan deletion setelah konfirmasi.
+
+<InfoBox variant="warning" title="Batas keamanan">Mengubah remote ref hanya setelah seluruh rencana valid dan dikonfirmasi kecuali --yes.</InfoBox>
+

@@ -1,0 +1,27 @@
+---
+title: "Referensi CLI"
+description: "Referensi cepat CLI, path, option, dan safety."
+sidebar_position: 2
+sidebar_key: path-header-scanner-reference
+tags: [path-header-scanner, cli, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Referensi CLI" description="Referensi cepat CLI, path, option, dan safety." category="Reference" status="v1.0.0" syntax="path-header-scanner init" />
+
+## Commands
+
+- `path-header-scanner init`
+- `path-header-scanner scan TARGET`
+- `path-header-scanner scan TARGET --apply`
+- `path-header-scanner scan TARGET --dry-run`
+
+## Global options
+
+- `--no-banner`
+- `--version / -v`
+- `--help / -h`
+
+<InfoBox variant="warning" title="Safety">Scan hanya preview secara default. Effective --apply mengaktifkan write, sedangkan --dry-run mengungguli apply dari CLI dan configuration.</InfoBox>
+

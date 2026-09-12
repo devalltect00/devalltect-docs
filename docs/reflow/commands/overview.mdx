@@ -1,0 +1,60 @@
+---
+title: "Commands"
+description: "Choose a Reflow command by repository target, persistent effect, confirmation behavior, and dry-run boundary."
+sidebar_position: 0
+sidebar_key: reflow-commands
+tags: [reflow, commands, reference]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="reflow"
+    title="Command Overview"
+    description="Choose a workflow by its target and persistent effect before adding live-mode confirmation options."
+    category="Command Reference"
+    status="Reflow 1.0.0"
+    syntax="reflow [GLOBAL OPTIONS] COMMAND"
+    links={[
+        {label: "Initialize", href: "./init/overview"},
+        {label: "Convert Tags", href: "./tags/convert/overview"},
+        {label: "Recover Releases", href: "./releases/recover/overview"},
+        {label: "Dockerize", href: "./dockerize/overview"},
+    ]}
+/>
+
+<Section title="Supported Commands">
+
+| Command | Target and purpose | Persistent live-mode effect |
+| --- | --- | --- |
+| [`reflow init`](./init/overview) | Persistent local directory; create project-owned configuration | Local configuration file |
+| [`reflow tags convert local`](./tags/convert/local/overview) | Persistent local checkout; replace supported tag names | Local tag refs only; never pushes |
+| [`reflow tags convert remote`](./tags/convert/remote/overview) | Checkout remote or Git URL; replace supported remote tag names | One guarded atomic remote push |
+| [`reflow releases recover`](./releases/recover/overview) | GitHub repository; retrigger automation for tags missing releases | Remote tag delete/re-push and CI trigger |
+| [`reflow dockerize`](./dockerize/overview) | Repository tags plus configured image destinations | Docker build, registry push, optional local cleanup |
+
+</Section>
+
+<InfoBox variant="warning" title="Deprecated compatibility alias">
+
+`reflow tags replay` delegates to `reflow releases recover` and prints a
+deprecation warning. Use the [canonical recovery guide](./releases/recover/overview)
+for new documentation, scripts, and automation.
+
+</InfoBox>
+
+Global target and safety options belong before the command path:
+`--repository`/`--repo`/`-C`, `--repository-url`, and `--dry-run`.
+
+<RelatedCommands
+    commands={[
+        {title: "Repository Targeting", href: "../concepts/repository-targeting", description: "Resolve CLI, configuration, and current-directory targets."},
+        {title: "Safety and Dry-run", href: "../concepts/safety-and-dry-run", description: "Understand preview and confirmation boundaries."},
+        {title: "CLI Reference", href: "../reference/cli", description: "Review global options and command paths."},
+    ]}
+/>

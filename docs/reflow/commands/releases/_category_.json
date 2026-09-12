@@ -1,0 +1,12 @@
+{
+  "label": "Releases",
+  "position": 3,
+  "key": "reflow-releases-en",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/releases/overview"
+  }
+}
+

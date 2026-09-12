@@ -1,0 +1,78 @@
+---
+title: "Overview"
+description: "Understand Reflow's contributor workflow, safety boundaries, and validation tools."
+sidebar_position: 1
+sidebar_key: reflow-developer-guide
+tags: [reflow, developer guide, contributing]
+keywords: [Reflow development, Reflow contributor guide, Reflow testing]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="make check"
+    title="Reflow Developer Guide"
+    description="Change repository-aware release workflows without weakening targeting, dry-run, or mutation safeguards."
+    category="Development"
+    status="Contributor Guide"
+    syntax="setup -> focused change -> widening validation"
+    tags={["Python 3.14+", "pytest", "pre-commit", "release safety"]}
+    links={[
+        {label: "Setup", href: "./development-setup"},
+        {label: "Testing", href: "./testing"},
+        {label: "Contributing", href: "./contributing"},
+    ]}
+/>
+
+## Contributor priorities
+
+Reflow can replace Git tag names, re-push remote tags, and publish container
+images. Contributor work must keep repository selection explicit, previews
+accurate, dry-run non-mutating, and external operations outside ordinary test
+runs.
+
+<FeatureGrid
+    title="Development Boundaries"
+    items={[
+        {title: "CLI", icon: <Icon name="terminal" />, children: "Keep Typer parsing, prompts, help, and Rich presentation under app/cli."},
+        {title: "Core Workflows", icon: <Icon name="architecture" />, children: "Keep reusable Git, repository, conversion, recovery, Docker, and initialization behavior under app/core or its service layer."},
+        {title: "Configuration", icon: <Icon name="configuration" />, children: "Preserve CLI → configuration → default precedence and keep packaged templates synchronized with supported fields."},
+        {title: "Safety", icon: <Icon name="security" />, children: "Test local, remote, confirmation, failure, and dry-run boundaries independently; never use production remotes or registries for routine validation."},
+    ]}
+/>
+
+---
+
+<Section title="Quality workflow">
+
+Install the editable development environment, enable the repository hook, run
+the smallest affected test first, then run formatting, lint, and the complete
+suite before handoff.
+
+<InfoBox variant="note" title="Pre-commit complements full validation">
+
+The hook catches common formatting, lint, whitespace, and newline problems on
+the files being committed. It does not replace Reflow's complete pytest suite,
+dry-run regression coverage, or applicable container and documentation checks.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {title: "Development Setup", href: "./development-setup", description: "Install Reflow and contributor tools in an isolated environment."},
+        {title: "Testing", href: "./testing", description: "Choose focused tests and run complete quality gates."},
+        {title: "Contributing", href: "./contributing", description: "Prepare a focused and reviewable Reflow change."},
+        {title: "Architecture", href: "../architecture/overview", description: "Trace Reflow's application layers and workflow boundaries."},
+    ]}
+/>

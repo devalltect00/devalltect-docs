@@ -1,0 +1,12 @@
+{
+  "label": "Tag",
+  "position": 2,
+  "key": "reflow-tags-id",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/tags/overview"
+  }
+}
+

@@ -1,0 +1,30 @@
+---
+title: "Contoh"
+description: "Contoh: reflow dockerize"
+sidebar_position: 7
+sidebar_key: reflow-dockerize
+tags: [reflow, examples]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Contoh" description="Dry-run menjalankan discovery dan validation tanpa mutasi persisten." category="Publikasi Container" status="Mutasi Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`reflow --dry-run -C ../project dockerize`}</Terminal>
+
+**Hasil:** Shows operations.
+
+### 2. Publish
+
+<Terminal language="bash">{`reflow -C ../project dockerize`}</Terminal>
+
+**Hasil:** Builds and pushes.
+
+### 3. URL
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git dockerize`}</Terminal>
+
+**Hasil:** Uses a managed clone.
+

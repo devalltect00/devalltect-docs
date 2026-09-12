@@ -23,9 +23,9 @@ import {
 <CommandHero
     command="STEP_ORDER"
     title="Step Priority and Ordering"
-    description="Understand Custy's 27 priority entries and how they normalize a merged profile sequence."
+    description="Understand Custy's 28 priority entries and how they normalize a merged profile sequence."
     category="Pipeline Reference"
-    status="27 Ordered Steps"
+    status="28 Ordered Steps"
     syntax="lower priority number -> earlier merged-profile position"
     tags={["phase priority", "deduplication", "stable sorting"]}
     links={[
@@ -37,7 +37,7 @@ import {
 
 <CommandMetadata
     items={[
-        {label: "Priority Entries", value: "27", icon: "table"},
+        {label: "Priority Entries", value: "28", icon: "table"},
         {label: "First Priority", value: "0", icon: "play"},
         {label: "Last Priority", value: "90", icon: "workflow"},
         {label: "Unknown Fallback", value: "999", icon: "warning"},
@@ -102,13 +102,14 @@ determines position while normalizing a merged profile.
         {key: "0 — Initialization_custy_step", value: <><strong>Initialization.</strong> Create or refresh project-owned Custy resources.</>},
         {key: "10 — ensure_git_repo_step", value: <><strong>Validation.</strong> Require execution inside a Git repository.</>},
         {key: "11 — ensure_staged_changes_step", value: <><strong>Validation.</strong> Check the staged-change requirement for commit work.</>},
-        {key: "12 — ensure_commitizen_convention_step", value: <><strong>Validation.</strong> Validate the active commit convention support.</>},
-        {key: "13 — ensure_commit_message_file_step", value: <><strong>Validation.</strong> Validate the configured commit-message file setting.</>},
-        {key: "14 — ensure_commit_message_file_exists_step", value: <><strong>Validation.</strong> Require the commit-message file to exist.</>},
-        {key: "15 — ensure_version_file_step", value: <><strong>Validation.</strong> Validate the configured version file.</>},
-        {key: "16 — ensure_tag_message_file_step", value: <><strong>Validation.</strong> Validate the configured tag-message file setting.</>},
-        {key: "17 — ensure_tag_message_file_exists_step", value: <><strong>Validation.</strong> Require the tag-message file to exist.</>},
-        {key: "18 — ensure_remote_exists_step", value: <><strong>Validation.</strong> Require the resolved Git remote destinations.</>},
+        {key: "12 — ensure_commit_validation_provider_step", value: <><strong>Validation.</strong> Resolve built-in, Commitizen, or Git-policy message validation.</>},
+        {key: "13 — ensure_commit_hook_policy_step", value: <><strong>Validation.</strong> Resolve native or safe direct pre-commit hook execution.</>},
+        {key: "14 — ensure_commit_message_file_step", value: <><strong>Validation.</strong> Validate the configured commit-message file setting.</>},
+        {key: "15 — ensure_commit_message_file_exists_step", value: <><strong>Validation.</strong> Require the commit-message file to exist.</>},
+        {key: "16 — ensure_version_file_step", value: <><strong>Validation.</strong> Validate the configured version file.</>},
+        {key: "17 — ensure_tag_message_file_step", value: <><strong>Validation.</strong> Validate the configured tag-message file setting.</>},
+        {key: "18 — ensure_tag_message_file_exists_step", value: <><strong>Validation.</strong> Require the tag-message file to exist.</>},
+        {key: "19 — ensure_remote_exists_step", value: <><strong>Validation.</strong> Require the resolved Git remote destinations.</>},
         {key: "30 — prepare_version_step", value: <><strong>Preparation.</strong> Resolve the version and tag context used by later stages.</>},
         {key: "31 — workflow_init_step", value: <><strong>Preparation.</strong> Initialize branch workflow state and services.</>},
         {key: "32 — prepare_tag_message_step", value: <><strong>Preparation.</strong> Prepare tag-message content for the resolved version.</>},
@@ -136,29 +137,30 @@ determines position while normalizing a merged profile.
 <Section title="Worked Example: push + commit">
 
 Both `custy run push commit` and `custy run commit push` currently normalize to
-the same 18 steps. The CLI input order does not move `push_step` ahead of
+the same 19 steps. The CLI input order does not move `push_step` ahead of
 validation, preparation, or `commit_step`.
 
 <Terminal title="Normalized merged order" language="text">
 
 {`01  ensure_git_repo_step                  priority 10
 02  ensure_staged_changes_step            priority 11
-03  ensure_commitizen_convention_step     priority 12
-04  ensure_commit_message_file_step       priority 13
-05  ensure_commit_message_file_exists_step priority 14
-06  ensure_remote_exists_step             priority 18
-07  prepare_version_step                  priority 30
-08  workflow_init_step                    priority 31
-09  generate_artifacts_step               priority 40
-10  edit_files_step                       priority 41
-11  validate_edited_step                  priority 42
-12  apply_version_step                    priority 43
-13  generate_changelog_step               priority 44
-14  backup_commit_message_files_step      priority 50
-15  cleanup_backup_step                   priority 52
-16  stage_step                            priority 70
-17  commit_step                           priority 71
-18  push_step                             priority 73`}
+03  ensure_commit_validation_provider_step priority 12
+04  ensure_commit_hook_policy_step         priority 13
+05  ensure_commit_message_file_step        priority 14
+06  ensure_commit_message_file_exists_step priority 15
+07  ensure_remote_exists_step              priority 19
+08  prepare_version_step                   priority 30
+09  workflow_init_step                     priority 31
+10  generate_artifacts_step                priority 40
+11  edit_files_step                        priority 41
+12  validate_edited_step                   priority 42
+13  apply_version_step                     priority 43
+14  generate_changelog_step                priority 44
+15  backup_commit_message_files_step       priority 50
+16  cleanup_backup_step                    priority 52
+17  stage_step                             priority 70
+18  commit_step                            priority 71
+19  push_step                              priority 73`}
 
 </Terminal>
 

@@ -1,0 +1,22 @@
+---
+title: "Output"
+description: "Output: doc-gen structure generate"
+sidebar_position: 6
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Output" description="Output" category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Resolved target/profile/output.
+- Scan and render progress.
+- Generated output path in live mode.
+- Dry-run statement confirming no output was written.
+
+<Terminal language="text">{`Target  : <resolved path>
+Command : doc-gen structure generate
+Dry run : true/false
+Status  : <result>`}</Terminal>
+

@@ -1,0 +1,24 @@
+---
+title: "Konfigurasi"
+description: "Konfigurasi: reflow releases recover"
+sidebar_position: 8
+sidebar_key: reflow-releases-recover
+tags: [reflow, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Konfigurasi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Pemulihan Rilis" status="Pemulihan Alur Kerja GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Kunci konfigurasi | Bawaan | Efek |
+| --- | --- | --- |
+| `tool.reflow.cli.releases.recover.delay` | 2 | Jeda dalam detik di antara push ulang tag. |
+| `tool.reflow.cli.releases.recover.only_stable` | false | Pilih hanya tag versi stabil. |
+| `tool.reflow.cli.releases.recover.limit` | tanpa batas | Batasi jumlah tag terpilih secara opsional. |
+
+```toml
+[tool.reflow.cli.releases.recover]
+delay = 2
+only_stable = false
+# limit = 25
+```

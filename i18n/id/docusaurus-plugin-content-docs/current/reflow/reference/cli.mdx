@@ -1,0 +1,30 @@
+---
+title: "Referensi CLI"
+description: "Referensi cepat CLI, path, option, dan safety."
+sidebar_position: 2
+sidebar_key: reflow-reference
+tags: [reflow, cli, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="Referensi CLI" description="Referensi cepat CLI, path, option, dan safety." category="Reference" status="v1.0.0" syntax="reflow init" />
+
+## Commands
+
+- `reflow init`
+- `reflow tags convert local`
+- `reflow tags convert remote`
+- `reflow releases recover`
+- `reflow dockerize`
+
+## Global options
+
+- `--repository / --repo / -C`
+- `--repository-url`
+- `--dry-run`
+- `--debug`
+- `--log-level`
+
+<InfoBox variant="warning" title="Safety">Konversi tag local dan remote memakai command terpisah. Remote push, release recovery, dan registry publishing adalah mutasi eksternal eksplisit.</InfoBox>
+

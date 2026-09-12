@@ -1,0 +1,11 @@
+{
+  "label": "Pemecahan Masalah",
+  "position": 10,
+  "key": "doc-gen-troubleshooting",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/troubleshooting/overview"
+  }
+}

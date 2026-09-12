@@ -1,0 +1,11 @@
+{
+  "label": "Arsitektur",
+  "position": 8,
+  "key": "doc-gen-architecture",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/architecture/overview"
+  }
+}

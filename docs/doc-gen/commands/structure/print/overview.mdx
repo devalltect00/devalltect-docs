@@ -1,0 +1,20 @@
+---
+title: "Overview"
+description: "Scan and render a project tree directly in the terminal without creating a Markdown document."
+sidebar_position: 1
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Print Project Structure" description="Scan and render a project tree directly in the terminal without creating a Markdown document." category="Project Structure" status="Read Only" syntax="doc-gen structure print [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+<Section title="Purpose">Scan and render a project tree directly in the terminal without creating a Markdown document.</Section>
+
+<InfoBox variant="warning" title="Safety boundary">Print is inherently read-only. --dry-run is accepted and remains non-mutating.</InfoBox>
+
+- Resolve target and shared structure settings.
+- Scan with ignore and collapse rules.
+- Render the structure for terminal output.
+- Display the tree and summary without invoking the writer.

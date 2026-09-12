@@ -1,0 +1,21 @@
+---
+title: "Ringkasan"
+description: "Pahami file konfigurasi, urutan prioritas, dan bagian Reflow yang aktif."
+sidebar_position: 1
+sidebar_key: reflow-configuration
+tags: [reflow, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command=".config/reflow/config.toml" title="Konfigurasi" description="Pahami file konfigurasi, urutan prioritas, dan bagian Reflow yang aktif." category="Konfigurasi" status="Milik Proyek" syntax=".config/reflow/config.toml" />
+
+<Section title="Urutan prioritas">
+
+1. Argumen CLI eksplisit
+2. `.config/reflow/config.toml`
+3. Default internal
+
+</Section>
+
+<InfoBox variant="warning" title="Kepemilikan">Inisialisasi membuat salinan milik proyek. CLI tidak boleh menimpa konfigurasi yang dikelola pengguna secara diam-diam.</InfoBox>

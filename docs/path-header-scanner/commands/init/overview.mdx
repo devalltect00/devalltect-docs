@@ -1,0 +1,59 @@
+---
+title: "Overview"
+description: "Create project-owned scanner configuration and supporting resources."
+sidebar_position: 1
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="path-header-scanner init"
+    title="Initialize Path Header Scanner"
+    description="Create the project-owned configuration used by Path Header Scanner."
+    category="Initialization"
+    status="Writes Configuration"
+    syntax="path-header-scanner init [OPTIONS]"
+    tags={["project setup", "configuration", "dry-run"]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Options", href: "./options"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Default Mode", value: "all", icon: "configuration"},
+        {label: "Supported Modes", value: "all and config", icon: "feature"},
+        {label: "Target", value: ".config/path_header_scanner/config.toml", icon: "file"},
+        {label: "Dry-run", value: "No filesystem writes", icon: "success"},
+    ]}
+/>
+
+## Overview
+
+`path-header-scanner init` prepares an existing project by creating its
+configuration directory and configuration file. The current v1.0.0 CLI exposes
+two modes, `all` and `config`; both currently plan the same configuration
+resource.
+
+<InfoBox variant="warning" title="Review before replacement">
+
+Existing resources are skipped by default. Use `--ask` to decide interactively
+or `--force` only after reviewing the project-owned file. `--dry-run` never
+creates directories, writes files, replaces content, or prompts.
+
+</InfoBox>
+
+<Section title="What the command does">
+
+1. Resolve the mode and initialization settings.
+2. Build a plan for `.config/path_header_scanner/config.toml`.
+3. Display the plan and stop when dry-run is active.
+4. In live mode, create or skip the resource according to `--ask` and `--force`.
+5. Render created, copied, skipped, and directory counts.
+
+</Section>

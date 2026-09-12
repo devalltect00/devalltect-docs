@@ -1,0 +1,11 @@
+{
+  "label": "Reference",
+  "position": 9,
+  "key": "path-header-scanner-reference",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/reference/overview"
+  }
+}

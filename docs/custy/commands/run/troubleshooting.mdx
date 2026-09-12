@@ -109,8 +109,82 @@ before retrying; do not blindly rerun a partially completed release.
 
 <Section compact>
 
-Review [Run options](./options). Several accepted fields are not currently
-mapped into the workflow engine because their model names differ.
+Review [Run options](./options) and the effective project configuration.
+Explicit CLI remote selection has the highest priority; otherwise Custy applies
+the configured main, backup, synchronization, and `push_to` behavior.
+
+</Section>
+
+---
+
+## The Editor Could Not Open in Docker
+
+<Section compact>
+
+Use an interactive container so the bundled Micro, Nano, Vim, or Vi editor can
+access the terminal. Micro is the default container candidate. The project
+mount remains live while the editor is open.
+
+<Terminal title="Interactive Docker release" language="powershell">
+
+{`docker run --rm -it -v "\${PWD}:/workspace" -w /workspace custy-prod:latest run release`}
+
+</Terminal>
+
+Custy checks `VISUAL` and `EDITOR` first when enabled, then follows
+`tool.custy.editor.candidates.container`. An override must name an editor
+installed inside the container, not an editor available only on the host. See
+[Editor configuration](../../configuration/editor) for identifiers and
+precedence. If a run already failed at `EditFilesStep`, inspect the generated
+commit and tag message files before retrying because `GenerateArtifactsStep`
+completed first.
+
+An unavailable editor is skipped. A process that starts and then returns an
+error produces `EDITOR_PROCESS_FAILED`; Custy does not open another editor after
+the user may already have edited the message.
+
+<InfoBox variant="warning" title="Non-interactive execution">
+
+Without `-it`, terminal editors are skipped and Custy reports an actionable
+`EDITOR_LAUNCH_FAILED` error. Dry-run simulates the editor step and does not
+launch an editor.
+
+</InfoBox>
+
+</Section>
+
+---
+
+## Progress Overlaps Terminal Editor Content
+
+<Section compact>
+
+Current Custy releases suspend the live pipeline progress display while Micro,
+Nano, Vim, or Vi owns the terminal. The display resumes after the editor closes,
+so an `EditFilesStep` row should not cover or repeat inside the message buffer.
+This presentation handoff does not modify the file being edited.
+
+If progress rows still appear inside the editor, first save or discard the
+message normally and exit the editor. Then verify that the local executable or
+container image matches the Custy build you intended to test:
+
+<Terminal title="Check the running Custy version" language="powershell">
+
+{`custy --version
+docker run --rm custy-prod:latest --version`}
+
+</Terminal>
+
+For a locally built image, rebuild the production target after updating the
+source, then retry with `-it`. An old executable or cached image can retain the
+earlier progress behavior even when the project files already contain the fix.
+
+<InfoBox variant="info" title="Useful details for a bug report">
+
+Include the Custy version, full Docker or local command, selected editor, host
+terminal, and whether the overlap disappears after rebuilding the image.
+
+</InfoBox>
 
 </Section>
 

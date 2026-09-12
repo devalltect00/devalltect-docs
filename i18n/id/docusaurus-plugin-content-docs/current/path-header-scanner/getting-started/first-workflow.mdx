@@ -1,0 +1,35 @@
+---
+title: "Instalasi dan Alur Kerja Pertama"
+description: "Instal CLI, inisialisasi konfigurasi proyek, dan jalankan alur kerja pertama dengan aman."
+sidebar_position: 2
+sidebar_key: path-header-scanner-getting-started
+tags: [path-header-scanner, installation, quick-start]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Instalasi dan Alur Kerja Pertama" description="Gunakan environment khusus, pratinjau persiapan, dan tinjau hasil pemindaian sebelum menerapkan perubahan header." category="Memulai" status="Direkomendasikan" syntax="path-header-scanner scan app" />
+
+<Terminal title="Environment" language="bash">{`python -m venv venv
+python -m pip install -e .
+path-header-scanner --version`}</Terminal>
+
+<Terminal title="Alur kerja pertama yang aman" language="bash">{`cd /path/to/project
+path-header-scanner init --dry-run
+path-header-scanner init
+
+# Scan hanya menampilkan pratinjau secara default
+path-header-scanner scan app
+
+# Terapkan hanya setelah meninjau pratinjau
+path-header-scanner scan app --apply`}</Terminal>
+
+<InfoBox variant="tip" title="Selesaikan target dari basis proyek lain">
+
+Gunakan `path-header-scanner scan app --workdir ../project` ketika `app` harus
+diselesaikan relatif terhadap working directory lain. `--dry-run` eksplisit
+tetap mengungguli `--apply` dan mode apply dari konfigurasi.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Runtime">Kompatibel dengan Python 3.11+; runtime standar menggunakan Python 3.14</InfoBox>

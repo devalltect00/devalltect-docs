@@ -1,0 +1,30 @@
+---
+title: "Overview"
+description: "Install the CLI, initialize project configuration, and run a safe first workflow."
+sidebar_position: 1
+sidebar_key: doc-gen-getting-started
+tags: [doc-gen, getting-started]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Getting Started" description="Install the CLI, initialize project configuration, and run a safe first workflow." category="Getting Started" status="v1.0.0" syntax="doc-gen structure generate . --dry-run" />
+
+<Section title="Requirements">
+
+- Python 3.9+ compatibility; Python 3.14 standard runtime
+- A dedicated virtual environment
+- A reviewed source checkout, trusted artifact, or authorized private GitLab package
+- Write permission only for workflows that intentionally persist output
+
+</Section>
+
+<InfoBox variant="tip" title="Safe first run">Start with [Installation and First Workflow](./first-workflow).</InfoBox>
+
+<InfoBox variant="info" title="Private package distribution">
+
+Reviewed releases can be installed from the project's private GitLab PyPI
+registry. The package and command name are both `doc-gen`.
+
+</InfoBox>
+

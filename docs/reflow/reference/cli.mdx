@@ -1,0 +1,30 @@
+---
+title: "CLI Reference"
+description: "Quick CLI, path, option, and safety reference."
+sidebar_position: 2
+sidebar_key: reflow-reference
+tags: [reflow, cli, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="CLI Reference" description="Quick CLI, path, option, and safety reference." category="Reference" status="v1.0.0" syntax="reflow init" />
+
+## Commands
+
+- `reflow init`
+- `reflow tags convert local`
+- `reflow tags convert remote`
+- `reflow releases recover`
+- `reflow dockerize`
+
+## Global options
+
+- `--repository / --repo / -C`
+- `--repository-url`
+- `--dry-run`
+- `--debug`
+- `--log-level`
+
+<InfoBox variant="warning" title="Safety">Local and remote tag replacement are separate commands. Remote pushes, release recovery, and registry publishing are explicit external mutations.</InfoBox>
+

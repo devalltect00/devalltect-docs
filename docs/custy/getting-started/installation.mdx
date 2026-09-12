@@ -12,6 +12,7 @@ tags:
 keywords:
   - install custy
   - custy python installation
+  - custy private gitlab package
   - custy release assets
   - custy editable install
 ---
@@ -30,13 +31,14 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pip install ."
+    command="python -m pip install --index-url $PRIVATE_INDEX_URL custy==2.1.0"
     title="Install Custy"
     description="Choose a supported native installation method, prepare its requirements, and verify the Custy CLI."
     category="Getting Started"
     status="Python 3.14+"
     syntax="python -m pip install [OPTIONS] SOURCE"
     tags={[
+        "private GitLab PyPI",
         "source checkout",
         "release assets",
         "developer setup",
@@ -54,25 +56,28 @@ import {
         {label: "Native Python", value: "3.14 or newer", icon: "requirement"},
         {label: "Core System Tool", value: "Git", icon: "git"},
         {label: "Recommended Isolation", value: "Virtual environment", icon: "directory"},
+        {label: "Private Registry", value: "GitLab PyPI", icon: "package"},
         {label: "Container Alternative", value: "Local Docker build", icon: "docker"},
     ]}
 />
 
 ## Overview
 
-Custy can be installed from a source checkout, a Python artifact attached to a
-release, or the Git repository itself. Contributors should use an editable
-installation with the development dependency group. Docker is a separate
-alternative when you do not want to install Python or Git directly on the host.
+Custy can be installed from the project's private GitLab PyPI registry, a
+source checkout, a Python artifact attached to a release, or the Git repository
+itself. Contributors should use an editable installation with the development
+dependency group. Docker is a separate alternative when you do not want to
+install Python or Git directly on the host.
 
 <InfoBox
     variant="info"
-    title="No public package-index assumption"
+    title="Private registry, not public PyPI"
 >
 
-These instructions do not assume that `pip install custy` resolves to this
-project on a public package index. Install a reviewed source checkout, release
-artifact, or Git revision explicitly.
+`pip install custy` without an index configuration does not resolve this
+project from public PyPI. Authorized users can select the private GitLab index;
+source checkouts, release artifacts, and reviewed Git revisions remain
+supported alternatives.
 
 </InfoBox>
 
@@ -132,12 +137,17 @@ artifact, or Git revision explicitly.
         {
             title: "Commitizen",
             icon: <Icon name="git" />,
-            children: <>Install and configure the <code>cz</code> command only when using Custy's Commitizen version strategy. It is included in the <code>dev</code> dependency group, not the runtime dependency list.</>,
+            children: <>Install <code>custy[commitizen]</code> when using Commitizen versioning or commit-message validation. It remains optional for normal Custy workflows and is included in the production Docker image.</>,
+        },
+        {
+            title: "Pre-Commit Hooks",
+            icon: <Icon name="success" />,
+            children: <>Install <code>custy[hooks]</code> when local Custy must execute pre-commit-managed hooks directly. Projects without pre-commit do not need this extra. The production image includes it.</>,
         },
         {
             title: "Interactive Editor",
             icon: <Icon name="file" />,
-            children: "Provide the VS Code command-line launcher or the Windows Notepad fallback when a commit, tag, or release flow opens generated files for review.",
+            children: "Install at least one configured editor for commit, tag, or release message review. Windows defaults to VS Code then Notepad; Docker includes Micro, Nano, Vim, and Vi.",
         },
         {
             title: "Remote Credentials",
@@ -163,6 +173,11 @@ artifact, or Git revision explicitly.
 <FeatureGrid
     title="Native Installation Choices"
     items={[
+        {
+            title: "Private GitLab PyPI",
+            icon: <Icon name="package" />,
+            children: "Recommended for authorized users who want an immutable, reviewed package without maintaining a source checkout.",
+        },
         {
             title: "Source Checkout",
             icon: <Icon name="directory" />,
@@ -191,7 +206,45 @@ artifact, or Git revision explicitly.
 ---
 
 <Section
-    title="Method 1: Install from a Source Checkout"
+    title="Method 1: Install from Private GitLab PyPI"
+>
+
+Ask a project maintainer for the GitLab project ID and a deploy token limited
+to `read_package_registry`. Then install one exact package version in an
+isolated environment.
+
+<Terminal title="Install from the private project registry" language="bash">
+
+{`python -m venv venv
+
+# Activate the environment, then install one reviewed version.
+python -m pip install \
+  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+  "custy==2.1.0"
+
+custy --version`}
+
+</Terminal>
+
+The Git release tag remains SemVer, while package metadata is canonical PEP
+440. For example, tag `v2.1.0-rc.1` is installed as `custy==2.1.0rc1`.
+
+<InfoBox variant="warning" title="Keep registry credentials outside the repository">
+
+Do not commit deploy tokens, credential-bearing index URLs, or pip
+configuration containing secrets. Avoid `--extra-index-url` for private
+packages because competing indexes can create dependency-confusion risk. For
+strictly private dependency resolution, project maintainers should also review
+GitLab package-forwarding settings.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Method 2: Install from a Source Checkout"
 >
 
 Clone the repository, create a virtual environment, and install the runtime
@@ -229,7 +282,7 @@ python -m pip install .`}
 ---
 
 <Section
-    title="Method 2: Install a Release Artifact"
+    title="Method 3: Install a Release Artifact"
 >
 
 Custy's release workflow is configured to attach a Python wheel and source
@@ -266,7 +319,7 @@ name shown by that release.
 ---
 
 <Section
-    title="Method 3: Install Directly from Git"
+    title="Method 4: Install Directly from Git"
 >
 
 When you do not need a local checkout, pip can install a reviewed Git tag or

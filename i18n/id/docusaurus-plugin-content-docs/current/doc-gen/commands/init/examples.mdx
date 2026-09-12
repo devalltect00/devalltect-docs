@@ -1,0 +1,35 @@
+---
+title: "Contoh"
+description: "Contoh: doc-gen init"
+sidebar_position: 7
+sidebar_key: doc-gen-init
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen init" title="Contoh" description="Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta konfirmasi." category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`doc-gen init --dry-run`}</Terminal>
+
+**Hasil:** Shows plan.
+
+### 2. Initialize
+
+<Terminal language="bash">{`doc-gen init`}</Terminal>
+
+**Hasil:** Membuat `.config/doc_gen/config.toml` jika file tersebut belum ada.
+
+### 3. Configuration only
+
+<Terminal language="bash">{`doc-gen init --mode config`}</Terminal>
+
+**Hasil:** Membuat file konfigurasi yang sama melalui mode `config` secara eksplisit.
+
+### 4. Force
+
+<Terminal language="bash">{`doc-gen init --mode all --force`}</Terminal>
+
+**Hasil:** Mengganti file konfigurasi yang sudah ada tanpa meminta konfirmasi.

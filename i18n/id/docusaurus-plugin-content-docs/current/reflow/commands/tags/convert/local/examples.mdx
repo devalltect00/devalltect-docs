@@ -1,0 +1,30 @@
+---
+title: "Contoh"
+description: "Contoh: reflow tags convert local"
+sidebar_position: 7
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, examples]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Contoh" description="Dry-run menjalankan discovery dan validation tanpa mutasi persisten." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`reflow --dry-run -C ../project tags convert local`}</Terminal>
+
+**Hasil:** Shows replacements only.
+
+### 2. SemVer
+
+<Terminal language="bash">{`reflow -C ../project tags convert local --yes`}</Terminal>
+
+**Hasil:** Replaces local tag names.
+
+### 3. PEP 440
+
+<Terminal language="bash">{`reflow -C ../project tags convert local --to pep440 --yes`}</Terminal>
+
+**Hasil:** Uses PEP 440 names.
+

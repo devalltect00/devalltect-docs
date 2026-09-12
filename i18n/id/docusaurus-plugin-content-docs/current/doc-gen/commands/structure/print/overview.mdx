@@ -1,0 +1,20 @@
+---
+title: "Ringkasan"
+description: "Memindai dan merender project tree langsung ke terminal tanpa membuat Markdown document."
+sidebar_position: 1
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Tampilkan Struktur Proyek" description="Pindai dan render pohon proyek langsung di terminal tanpa membuat dokumen Markdown." category="Struktur Proyek" status="Hanya Baca" syntax="doc-gen structure print [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+<Section title="Purpose">Memindai dan merender project tree langsung ke terminal tanpa membuat Markdown document.</Section>
+
+<InfoBox variant="warning" title="Batas keamanan">Print bersifat read-only. --dry-run diterima dan tetap non-mutating.</InfoBox>
+
+- Resolve target/setting.
+- Scan dengan rule.
+- Render terminal tree.
+- Tampilkan tanpa writer.

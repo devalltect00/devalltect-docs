@@ -1,0 +1,20 @@
+---
+title: "Workflow Praktis"
+description: "Pilih alur kerja berdasarkan target dan efeknya."
+sidebar_position: 2
+sidebar_key: doc-gen-user-guide
+tags: [doc-gen, workflows]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Alur Kerja Praktis" description="Pilih alur kerja berdasarkan target dan efeknya." category="Panduan Pengguna" status="Praktis" syntax="doc-gen structure generate . --dry-run" />
+
+| Command | Efek |
+| --- | --- |
+| `doc-gen init` | Menyiapkan konfigurasi proyek |
+| `doc-gen structure generate [TARGET]` | Membuat dokumen Markdown yang ditentukan |
+| `doc-gen structure print [TARGET]` | Menampilkan pohon proyek tanpa menulis file |
+| `doc-gen structure analyze [TARGET]` | Menampilkan ringkasan analisis tanpa menulis file |
+
+<InfoBox variant="tip" title="Preview">Generate hanya menulis output Markdown hasil resolution; print dan analyze read-only. Generate dry-run tidak membuat direktori atau file.</InfoBox>

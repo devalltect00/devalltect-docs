@@ -1,0 +1,12 @@
+{
+  "label": "Inisialisasi Path Header Scanner",
+  "position": 1,
+  "key": "phs-init-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/commands/init/overview"
+  }
+}
+

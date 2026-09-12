@@ -1,0 +1,19 @@
+---
+title: "Pemecahan Masalah"
+description: "Pemecahan Masalah: reflow releases recover"
+sidebar_position: 9
+sidebar_key: reflow-releases-recover-troubleshooting
+tags: [reflow, troubleshooting]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Pemecahan Masalah" description="Diagnosis kegagalan penemuan rilis, push ulang tag, dan alur kerja CI/CD." category="Pemulihan Rilis" status="Pemulihan Alur Kerja GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Gejala | Kemungkinan penyebab | Solusi |
+| --- | --- | --- |
+| Penemuan gagal. | Autentikasi atau identitas GitHub tidak tersedia. | Autentikasikan `gh` dan periksa target repositori. |
+| Push ulang ditolak. | Kebijakan remote atau kredensial memblokir operasi. | Tinjau kebijakan dan jalankan kembali dry-run. |
+| Rilis tetap tidak tersedia. | Alur kerja gagal atau tidak berjalan. | Periksa log CI/CD. |
+
+<InfoBox variant="tip" title="Diagnostik">Gunakan `--debug` sebelum mengulangi perubahan mode langsung.</InfoBox>

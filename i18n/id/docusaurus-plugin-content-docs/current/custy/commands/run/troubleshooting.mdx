@@ -4,7 +4,7 @@ description: "Atasi rejected names, validation failures, partial pipelines, dan 
 sidebar_position: 9
 sidebar_key: custy-run-troubleshooting
 ---
-import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
 
 <CommandHero command="custy run" title="Run Troubleshooting" description="Diagnosa profile selection, normalization, options, partial state, dan push failures." category="Pipeline" status="Panduan Dukungan" syntax="custy run PROFILE [PROFILE ...] [OPTIONS]" links={[{label:"Pusat Pemecahan Masalah",href:"../../troubleshooting/overview"},{label:"Workflow Guide",href:"../../user-guide/troubleshooting-workflows"},{label:"Profiles",href:"./profiles"},{label:"Options",href:"./options"},{label:"FAQ",href:"./faq"}]} />
 
@@ -20,6 +20,74 @@ import {CommandHero, InfoBox, Section} from "@site/src/components/docs";
 ## Pipeline Berhenti Setelah Mengubah Files
 <Section compact>Temukan last completed stage dan tinjau diff sebelum retry atau recovery.</Section>
 ## Run Option Tidak Berpengaruh
-<Section compact>Periksa adapter limitations dan effective configuration. Tidak semua accepted options dipropagasikan.</Section>
+<Section compact>Periksa [Run options](./options) dan konfigurasi efektif proyek. Remote CLI eksplisit memiliki prioritas tertinggi; jika tidak ditetapkan, Custy menerapkan konfigurasi main remote, backup remote, sinkronisasi, dan `push_to`.</Section>
+
+## Editor Tidak Dapat Dibuka di Docker
+<Section compact>
+
+Gunakan container interaktif agar editor Micro, Nano, Vim, atau Vi bawaan dapat
+mengakses terminal. Micro menjadi default container candidate. Mount proyek
+tetap aktif selama editor terbuka.
+
+<Terminal title="Release Docker interaktif" language="powershell">
+
+{`docker run --rm -it -v "\${PWD}:/workspace" -w /workspace custy-prod:latest run release`}
+
+</Terminal>
+
+Jika diaktifkan, Custy memeriksa `VISUAL` dan `EDITOR` lebih dahulu, lalu
+mengikuti `tool.custy.editor.candidates.container`. Override harus menunjuk
+editor yang terinstal di dalam container, bukan editor yang hanya tersedia pada
+host. Lihat [Editor configuration](../../configuration/editor) untuk identifier
+dan precedence. Jika eksekusi sebelumnya gagal pada `EditFilesStep`, periksa
+file pesan commit dan tag sebelum mencoba lagi karena `GenerateArtifactsStep`
+sudah selesai lebih dahulu.
+
+Editor yang tidak tersedia akan dilewati. Process yang sudah dimulai kemudian
+gagal menghasilkan `EDITOR_PROCESS_FAILED`; Custy tidak membuka editor lain
+setelah pengguna mungkin telah mengedit message.
+
+<InfoBox variant="warning" title="Eksekusi non-interaktif">
+
+Tanpa `-it`, editor terminal dilewati dan Custy melaporkan error
+`EDITOR_LAUNCH_FAILED` yang dapat ditindaklanjuti. Dry-run menyimulasikan langkah
+editor dan tidak membuka editor.
+
+</InfoBox>
+
+</Section>
+## Progress Menimpa Isi Terminal Editor
+<Section compact>
+
+Custy versi saat ini menangguhkan live pipeline progress display ketika Micro,
+Nano, Vim, atau Vi menggunakan terminal. Display dilanjutkan setelah editor
+ditutup, sehingga row `EditFilesStep` tidak seharusnya menutupi atau berulang
+di dalam message buffer. Handoff presentation ini tidak mengubah file yang
+sedang diedit.
+
+Jika progress row masih muncul di dalam editor, simpan atau batalkan message
+seperti biasa lalu tutup editor. Setelah itu, periksa bahwa local executable
+atau container image sesuai dengan Custy build yang ingin diuji:
+
+<Terminal title="Periksa Custy version yang berjalan" language="powershell">
+
+{`custy --version
+docker run --rm custy-prod:latest --version`}
+
+</Terminal>
+
+Untuk image yang dibuat secara lokal, rebuild production target setelah source
+diperbarui, lalu coba kembali dengan `-it`. Executable lama atau cached image
+dapat tetap menggunakan progress behavior sebelumnya walaupun project files
+sudah berisi perbaikan.
+
+<InfoBox variant="info" title="Detail yang berguna untuk bug report">
+
+Sertakan Custy version, Docker atau local command lengkap, editor yang dipilih,
+host terminal, dan apakah overlap hilang setelah image di-rebuild.
+
+</InfoBox>
+
+</Section>
 ## Push Gagal
 <Section compact>Periksa destination-by-destination state; commit atau local tag mungkin sudah dibuat.</Section>

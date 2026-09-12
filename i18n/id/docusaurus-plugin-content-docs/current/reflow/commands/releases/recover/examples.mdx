@@ -1,0 +1,30 @@
+---
+title: "Contoh"
+description: "Contoh: reflow releases recover"
+sidebar_position: 7
+sidebar_key: reflow-releases-recover
+tags: [reflow, examples]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Contoh" description="Dry-run menjalankan discovery dan validation tanpa mutasi persisten." category="Pemulihan Release" status="Pemulihan Workflow GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`reflow --dry-run --repository-url https://github.com/acme/project.git releases recover`}</Terminal>
+
+**Hasil:** Shows selections.
+
+### 2. Recover
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git releases recover --yes`}</Terminal>
+
+**Hasil:** Re-pushes tags.
+
+### 3. Stable limit
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git releases recover --only-stable --limit 5 --yes`}</Terminal>
+
+**Hasil:** Processes five stable tags maximum.
+

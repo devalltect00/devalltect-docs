@@ -1,23 +1,18 @@
 ---
 title: Path Header Scanner
-description: Documentation hub for Path Header Scanner
-sidebar_position: 1
-sidebar_key: path-header-scanner
+description: Preview, validate, and apply consistent path headers across source and documentation files.
+sidebar_position: 0
+sidebar_key: phs-home
 ---
 
-# Path Header Scanner
+import {CommandHero, CommandMetadata, FeatureGrid, InfoBox, Terminal} from "@site/src/components/docs";
 
-Welcome to the Path Header Scanner project documentation.
+<CommandHero command="path-header-scanner" title="Path Header Scanner" description="Find missing or stale path headers and apply reviewed corrections with language-aware syntax." category="Code Maintenance" status="v1.0.0" syntax="path-header-scanner COMMAND [OPTIONS]" links={[{label:"Get started",href:"./path-header-scanner/getting-started/overview"},{label:"Commands",href:"./path-header-scanner/commands/overview"},{label:"Configuration",href:"./path-header-scanner/configuration/overview"},{label:"Core concepts",href:"./path-header-scanner/concepts/overview"}]} />
+<CommandMetadata items={[{label:"Python",value:"3.11+",icon:"dependency"},{label:"Standard runtime",value:"Python 3.14",icon:"configuration"},{label:"Default",value:"Preview only",icon:"success"},{label:"Version",value:"1.0.0",icon:"release"}]} />
 
-## Main Sections
+<FeatureGrid items={[{title:"Discover",children:"Find supported source and documentation files while honoring exclusions."},{title:"Validate",children:"Compare each path header with the file's resolved project path."},{title:"Preview",children:"Report proposed insertions and updates without changing files."},{title:"Apply",children:"Write only reviewed changes when --apply is explicit."}]} />
 
-- Architecture
-- Commands
-- Developer Guide
-- Diagrams
-- Project
-- Reads
-- Testing
-- User Guide
-
-Use the sidebar to navigate all sections.
+<InfoBox variant="warning" title="Preview is the default">`scan` does not write target files unless `--apply` is supplied. Explicit `--dry-run` also overrides `--apply` and configured apply mode.</InfoBox>
+<Terminal title="First scan" language="bash">{`path-header-scanner scan app
+path-header-scanner scan app --dry-run
+path-header-scanner scan app --apply`}</Terminal>

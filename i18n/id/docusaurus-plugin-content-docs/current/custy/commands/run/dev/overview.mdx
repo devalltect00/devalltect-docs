@@ -6,15 +6,15 @@ sidebar_key: custy-run-dev
 ---
 import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy run dev" title="Development Profile" description="Koordinasikan daily artifact, changelog, commit, dan remote push." category="Pipeline Profile" status="Stable with Limitations" syntax="custy run dev [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Safety",href:"../safety"}]} />
+<CommandHero command="custy run dev" title="Development Profile" description="Koordinasikan daily artifact, changelog, commit, dan remote push." category="Pipeline Profile" status="Stable" syntax="custy run dev [OPTIONS]" links={[{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"},{label:"Safety",href:"../safety"}]} />
 
 ## Ringkasan
-<InfoBox variant="warning" title="Push Destination Limitation">Dev berakhir dengan Push. Verifikasi actual destination dari dry-run dan runtime output.</InfoBox>
+<InfoBox variant="warning" title="Confirm the Push Destination">Dev berakhir dengan Push dan mengikuti explicit serta grouped destination settings yang sama seperti `custy push`. Verifikasi effective remotes dari dry-run output.</InfoBox>
 <FeatureGrid items={[
  {title:"Prepare",children:"Resolve version context dan edit configured artifacts."},{title:"Document",children:"Generate CHANGELOG.md."},{title:"Commit",children:"Backup, clean, stage, dan create local commit."},{title:"Push",children:"Push HEAD dan optional workflow tag."},
 ]} />
 <InfoBox variant="info" title="No Version Application or Tag Creation">Dev tidak berisi `apply_version_step` atau `tag_step`. Gunakan Release bila perlu menerapkan version dan membuat tag.</InfoBox>
-<Screenshot src="/img/custy/run/dev-profile.png" alt="Custy Dev profile" title="Development Pipeline" caption="Daily pipeline dari validation hingga push." />
+<Screenshot src="/img/custy/commands/run/dev-profile.png" alt="Custy Dev profile" title="Development Pipeline" caption="Daily pipeline dari validation hingga push." />
 <RelatedCommands commands={[
  {name:"full",description:"Full profile.",href:"../full/overview"},
  {name:"file",description:"Everyday development guide.",href:"../../../user-guide/everyday-development"},{name:"git",description:"Commit guide.",href:"../../commit/overview"},{name:"network",description:"Push guide.",href:"../../push/overview"},{name:"release",description:"Release profile.",href:"../release/overview"},

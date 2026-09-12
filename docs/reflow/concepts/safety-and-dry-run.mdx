@@ -1,0 +1,16 @@
+---
+title: Safety and Dry-run
+description: Preview Reflow workflows without persistent local, remote, or registry mutations.
+sidebar_position: 10
+sidebar_key: reflow-dry-run
+---
+
+`--dry-run` is global and must appear before the command. Read-only discovery, validation, provider queries, and temporary-clone setup may still run. Persistent local tags, remote tags, generated resources, and registry images are simulated.
+
+```bash
+reflow --dry-run -C ../project tags convert local
+reflow --dry-run --repository-url https://github.com/acme/project.git releases recover
+reflow --dry-run -C ../project dockerize
+```
+
+Dry-run does not prompt for mutation confirmation. Diagnostic logging may still write to the configured log file.

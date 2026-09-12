@@ -1,0 +1,290 @@
+---
+title: "Editor"
+description: "Konfigurasikan prioritas editor untuk meninjau commit dan tag message pada host lokal dan di dalam container."
+sidebar_position: 8
+sidebar_key: custy-configuration-editor
+tags: [custy, configuration, editor, docker]
+keywords: [tool.custy.editor, VISUAL, EDITOR, vscode, micro, nano, vim]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.editor]"
+    title="Editor"
+    description="Pilih editor yang dapat diprediksi untuk workflow lokal dan container tanpa menyimpan arbitrary shell command di project configuration."
+    category="Configuration"
+    status="Active"
+    syntax={'windows = ["vscode", "notepad"]'}
+    tags={["platform precedence", "safe fallback", "container editors"]}
+    links={[
+        {label: "Docker", href: "../getting-started/docker"},
+        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
+        {label: "Environment", href: "../reference/environment"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Tables", value: "tool.custy.editor + candidates", icon: "configuration"},
+        {label: "Supported IDs", value: "7", icon: "table"},
+        {label: "Container Default", value: "Micro", icon: "terminal"},
+        {label: "Dry Run", value: "Tidak membuka proses", icon: "security"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "prefer_environment", type: "Boolean", defaultValue: "true", required: false, description: "Coba VISUAL lalu EDITOR sebelum candidates dari project configuration."},
+        {property: "allow_fallback", type: "Boolean", defaultValue: "true", required: false, description: "Tambahkan built-in candidates Custy setelah configured list."},
+        {property: "candidates.windows", type: "Editor ID array", defaultValue: '["vscode", "notepad"]', required: false, description: "Urutan candidates untuk host Windows."},
+        {property: "candidates.linux", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Urutan candidates untuk Linux native."},
+        {property: "candidates.macos", type: "Editor ID array", defaultValue: '["vscode", "micro", "nano", "vim", "vi"]', required: false, description: "Urutan candidates untuk macOS."},
+        {property: "candidates.container", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Urutan candidates ketika Custy mendeteksi container runtime."},
+    ]}
+/>
+
+<Section title="Configuration yang Direkomendasikan">
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.editor]
+prefer_environment = true
+allow_fallback = true
+
+[tool.custy.editor.candidates]
+windows = ["vscode", "notepad"]
+linux = ["micro", "nano", "vim", "vi"]
+macos = ["vscode", "micro", "nano", "vim", "vi"]
+container = ["micro", "nano", "vim", "vi"]`}
+
+</Terminal>
+
+Identifier pertama memiliki prioritas tertinggi. Custy melewati editor yang
+tidak terinstal atau tidak dapat dimulai, lalu mencoba candidate berikutnya.
+Jika editor sudah dimulai kemudian keluar dengan status gagal, Custy berhenti
+agar tidak membuka editor kedua setelah pengguna mungkin telah mengedit file.
+
+</Section>
+
+## Environment Variables
+
+`VISUAL` dan `EDITOR` berasal dari process environment. Keduanya bukan TOML
+property, dan Custy tidak membuat, menyimpan secara persistent, atau
+memodifikasinya. User, shell profile, operating system, IDE, Docker/Compose
+service, atau CI job dapat mendefinisikannya sebelum menjalankan Custy.
+
+### Nama dan value yang diterima
+
+| Exact variable | Peran | Value yang diterima | Contoh |
+| --- | --- | --- | --- |
+| `VISUAL` | Environment editor utama | Trusted executable dengan optional arguments | `code --wait` |
+| `EDITOR` | Environment editor kedua | Trusted executable dengan optional arguments | `nano` |
+| `PATH` | Executable discovery; bukan untuk memilih editor | Operating-system search paths | Directory yang berisi `code.CMD` atau `micro` |
+| `CUSTY_CONTAINER` | Memilih container candidates; bukan editor command | `1`, `true`, `yes`, atau `on` | Official image menetapkan `1` |
+
+Hanya `VISUAL` dan `EDITOR` yang menerima editor command. Gunakan uppercase
+name tersebut secara tepat agar portable; environment name bersifat
+case-sensitive pada shell Linux dan macOS yang umum. Contoh command yang
+diterima meliputi `code --wait`, `notepad`, `micro`, `nano`, `vim`, dan
+`nvim -f`. Berbeda dari TOML candidate list, environment command dapat menunjuk
+editor terinstal lainnya. Custy memisahkan arguments lalu menjalankan resolved
+executable tanpa shell, tetapi value tersebut tetap harus dianggap trusted
+input.
+
+Value `VISUAL` atau `EDITOR` yang kosong atau tidak didefinisikan dilewati
+tanpa error. Jika executable tidak tersedia, Custy mencatat candidate tersebut
+dan melanjutkan sesuai configured policy.
+
+### Tempat mengaturnya
+
+Untuk process PowerShell saat ini dan command yang dijalankan darinya:
+
+<Terminal title="PowerShell session" language="powershell">
+
+{`$env:VISUAL = "code --wait"
+$env:EDITOR = "notepad"
+custy run release`}
+
+</Terminal>
+
+Untuk process Command Prompt saat ini:
+
+<Terminal title="Command Prompt session" language="batch">
+
+{`set VISUAL=code --wait
+set EDITOR=notepad
+custy run release`}
+
+</Terminal>
+
+Untuk Linux, macOS, WSL, atau POSIX container shell:
+
+<Terminal title="POSIX shell session" language="bash">
+
+{`export VISUAL="micro"
+export EDITOR="nano"
+custy run release`}
+
+</Terminal>
+
+Session value hilang ketika shell ditutup. Untuk local value yang persistent,
+gunakan Windows User/System Environment Variables atau shell startup file
+seperti `~/.bashrc`, `~/.zshrc`, atau `~/.profile`, lalu buka terminal baru.
+
+Untuk container command satu kali, teruskan variable ke dalam container:
+
+<Terminal title="Docker environment" language="bash">
+
+{`docker run --rm -it \
+  -e VISUAL="micro" \
+  -e EDITOR="nano" \
+  -v "\${PWD}:/workspace" \
+  -w /workspace \
+  custy-prod:latest run release`}
+
+</Terminal>
+
+Untuk Compose atau CI, definisikan exact name yang sama pada service atau job:
+
+<Terminal title="Docker Compose service" language="yaml">
+
+{`services:
+  app:
+    environment:
+      VISUAL: micro
+      EDITOR: nano`}
+
+</Terminal>
+
+Custy tidak me-load `.env` file secara langsung. Docker Compose, CI runner,
+atau launcher lain dapat membacanya lalu meneruskan value ke Custy process.
+Host value seperti `VISUAL="code --wait"` tidak otomatis tersedia di dalam
+container, dan executable terkait harus tersedia di environment tempat Custy
+benar-benar berjalan.
+
+### Waktu Custy membacanya
+
+1. Shell, operating system, container runtime, atau CI runner menjalankan Custy
+   dengan process environment miliknya.
+2. Custy me-load `[tool.custy.editor]` dan membangun workflow yang diminta.
+3. Ketika workflow mencapai commit atau tag message editing,
+   `EditorService.resolve_candidates()` membaca `VISUAL` lalu `EDITOR`.
+4. Custy mencoba command dan configured candidates yang dihasilkan secara
+   berurutan.
+
+Atur variable sebelum menjalankan Custy. Mengubah variable di terminal lain
+tidak mengubah environment milik Custy process yang sudah berjalan.
+
+## Behavior Matrix
+
+| `prefer_environment` | `allow_fallback` | Urutan efektif | Penggunaan yang direkomendasikan |
+| --- | --- | --- | --- |
+| `true` | `true` | `VISUAL` → `EDITOR` → configured candidates → built-in defaults | Direkomendasikan untuk sebagian besar user |
+| `true` | `false` | `VISUAL` → `EDITOR` → configured candidates saja | Personal override dengan controlled project list |
+| `false` | `true` | Configured candidates → built-in defaults | Team atau container behavior yang predictable dengan recovery |
+| `false` | `false` | Configured candidates saja | Environment yang strict dan locked-down |
+
+Fallback berarti Custy menambahkan built-in candidates untuk active runtime
+yang sama. Custy dapat melanjutkan ketika candidate tidak tersedia atau tidak
+dapat dimulai. Jika editor process sudah dimulai lalu keluar dengan status
+gagal, Custy berhenti dengan `EDITOR_PROCESS_FAILED` dan tidak membuka editor
+lain secara tidak terduga.
+
+<Section title="Urutan Resolusi">
+
+1. `VISUAL`, lalu `EDITOR`, ketika `prefer_environment = true`.
+2. `candidates.container` di dalam container yang terdeteksi; jika tidak,
+   candidates untuk host Windows, Linux, atau macOS yang aktif.
+3. Built-in candidates untuk runtime yang sama ketika `allow_fallback = true`.
+
+Project configuration hanya menerima identifier yang didukung: `vscode`,
+`notepad`, `micro`, `nano`, `vim`, `vi`, dan `neovim`. `code` diterima sebagai
+alias `vscode`; `nvim` diterima sebagai alias `neovim`.
+
+<InfoBox variant="info" title="Mengapa VS Code dapat dilewati di Windows">
+
+Custy me-resolve executable path sebelum launch, termasuk shim `code.CMD` yang
+dipasang VS Code. Jika Notepad masih terbuka, periksa apakah `VISUAL` atau
+`EDITOR` memilihnya, apakah `code` terlihat pada `PATH` terminal, dan pesan
+candidate yang dilewati pada output Custy.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Host Lokal dan Docker">
+
+Container Linux biasanya tidak dapat membuka graphical editor yang terinstal
+pada host Windows. Karena itu, Custy menggunakan `candidates.container` di
+dalam image dan `candidates.windows` ketika dijalankan secara native pada
+Windows. Pertahankan `-it` agar terminal editor memperoleh TTY.
+
+Production image menyertakan Micro, Nano, Vim, dan Vi. VS Code, Notepad, dan
+Neovim merupakan identifier yang didukung tetapi tidak disertakan dalam image
+standar. Custom image dapat memasangnya, tetapi graphical host integration
+berada di luar workflow container standar.
+
+</Section>
+
+<Section title="Kontrol Terminal Selama Editing">
+
+Ketika blocking terminal editor seperti Micro, Nano, Vim, atau Vi dibuka, Custy
+menyembunyikan dan menghentikan sementara live pipeline progress display. Editor
+kemudian memiliki kontrol eksklusif atas terminal sehingga refresh dari Rich
+tidak menimpa baris editor. Setelah editor ditutup, Custy menjalankan kembali
+display, memulihkan current step, lalu melanjutkan pipeline.
+
+Workflow tetap berada pada `EditFilesStep` selama editor terbuka. Penangguhan
+display tidak melewati step, mengubah message file, atau mengubah dry-run
+behavior; proses ini hanya mengoordinasikan terminal presentation.
+
+<InfoBox variant="tip" title="Jika progress masih menimpa editor">
+
+Progress row yang berulang atau muncul di dalam editor biasanya menandakan
+executable `custy` atau Docker image dibuat sebelum terminal-progress
+suspension tersedia. Periksa version yang benar-benar berjalan, lalu install
+ulang current source checkout atau rebuild/pull image yang dimaksud sebelum
+mencoba lagi. Lihat [Run troubleshooting](../commands/run/troubleshooting)
+untuk pemeriksaan yang lebih terarah.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Keybindings di Container">
+
+| Editor | Undo | Redo | Catatan |
+| --- | --- | --- | --- |
+| Micro | `Ctrl+Z` atau `Alt+Z` | `Ctrl+Y` atau `Alt+Y` | Custy menambahkan alias Alt; shortcut native Micro tetap tersedia. |
+| Nano | `Alt+U` | `Alt+E` | Custy mempertahankan mapping native Nano. `Alt+Z` dan `Alt+Y` tidak diganti karena dipakai Nano untuk toggle interface dan syntax color. |
+| Vim / Vi | `u` atau `Alt+Z` | `Ctrl+R` atau `Alt+Y` | Custy menambahkan alias Alt pada normal dan insert mode tanpa menghapus command native. |
+
+Pengaturan ini hanya berlaku untuk editor yang dibuka di dalam Custy image.
+Custy tidak menimpa pengaturan VS Code atau konfigurasi lokal Micro, Nano, Vim,
+dan Neovim pada host.
+
+</Section>
+
+<InfoBox variant="warning" title="Eksekusi non-interaktif">
+
+Terminal editor memerlukan interactive input dan output stream. Tanpa `-it`,
+Custy melewatinya dan menampilkan `EDITOR_LAUNCH_FAILED` jika tidak ada
+graphical atau non-interactive candidate yang dapat digunakan. Dry-run hanya
+melaporkan editor step tanpa menjalankan editor process.
+
+</InfoBox>
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "Docker", href: "../getting-started/docker", description: "Build image dan jalankan interactive workflow pada mounted project."},
+        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Diagnosa TTY, editor discovery, dan partial release state."},
+        {title: "Environment", href: "../reference/environment", description: "Tinjau VISUAL, EDITOR, PATH, terminal, dan external-tool boundaries."},
+    ]}
+/>
+
+</Section>

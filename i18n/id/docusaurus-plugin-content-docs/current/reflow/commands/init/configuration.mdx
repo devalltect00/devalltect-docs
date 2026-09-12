@@ -1,0 +1,22 @@
+---
+title: "Konfigurasi"
+description: "Atur perilaku penggantian dan konfirmasi default untuk reflow init."
+sidebar_position: 8
+sidebar_key: reflow-init
+tags: [reflow, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow init" title="Konfigurasi" description="Nilai CLI mengungguli konfigurasi milik proyek, kemudian default internal." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Key | Default | Efek |
+| --- | --- | --- |
+| `tool.reflow.initialization.force` | false | Timpa resource yang ada secara default. |
+| `tool.reflow.initialization.ask` | false | Minta konfirmasi sebelum keputusan penggantian. |
+
+```toml
+[tool.reflow.initialization]
+force = false
+ask = false
+```

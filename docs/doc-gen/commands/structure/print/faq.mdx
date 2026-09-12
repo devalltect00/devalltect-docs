@@ -1,0 +1,24 @@
+---
+title: "FAQ"
+description: "FAQ: doc-gen structure print"
+sidebar_position: 10
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="FAQ" description="FAQ" category="Project Structure" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+## Does print write PROJECT_STRUCTURE.md?
+
+No.
+
+## Why accept dry-run?
+
+For a consistent interface; print remains read-only either way.
+
+## Can smart mode change files?
+
+No; it only adjusts rendering decisions.
+

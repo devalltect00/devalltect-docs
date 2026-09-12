@@ -1,0 +1,175 @@
+---
+title: "Development Setup"
+description: "Install Doc Gen in editable mode and configure its pre-commit contributor workflow."
+sidebar_position: 2
+sidebar_key: doc-gen-developer-guide-development-setup
+tags: [doc-gen, development setup, pre-commit]
+keywords: [Doc Gen editable install, Doc Gen pre-commit, Doc Gen development]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    RelatedCommands,
+    RequirementGrid,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="python -m pip install -e &quot;.[dev]&quot;"
+    title="Development Setup"
+    description="Prepare an editable Doc Gen environment with pytest, Ruff, Black, pre-commit, and packaging tools."
+    category="Developer Guide"
+    status="Python 3.9+"
+    syntax="create venv -> install dev tools -> enable hooks"
+    tags={["editable install", "pytest", "Ruff", "Black", "pre-commit"]}
+    links={[
+        {label: "Requirements", href: "#requirements"},
+        {label: "Install", href: "#manual-setup"},
+        {label: "Pre-Commit", href: "#pre-commit-workflow"},
+        {label: "Verify", href: "#verify-the-environment"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Package Python", value: "3.9 or newer", icon: "python"},
+        {label: "Standard Dev Runtime", value: "Python 3.14", icon: "python"},
+        {label: "Install Mode", value: "Editable", icon: "package"},
+        {label: "Optional Helper", value: "GNU Make", icon: "command"},
+    ]}
+/>
+
+## Goal
+
+Use an isolated environment whose `doc-gen` command loads the active checkout.
+Install `.[dev]`; a runtime-only editable installation does not include pytest,
+Ruff, Black, or pre-commit.
+
+---
+
+<Section title="Requirements">
+
+<RequirementGrid
+    items={[
+        {title: "Python 3.9+", level: "required", children: "The package supports Python 3.9 or newer; Python 3.14 is the standard development and container runtime."},
+        {title: "pip and venv", level: "required", children: "Install Doc Gen and quality tools into an isolated environment."},
+        {title: "Git", level: "required", children: "Required for source control and the pre-commit hook workflow."},
+        {title: "GNU Make", level: "optional", children: "Provides repeatable setup, QA, Docker, and Compose targets."},
+        {title: "Docker", level: "optional", children: "Required only for container and Compose validation."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Manual Setup">
+
+<Terminal title="Create and install" language="bash">
+
+{`python -m venv venv
+
+# Windows PowerShell
+venv\\Scripts\\Activate.ps1
+
+# Linux or macOS
+# source venv/bin/activate
+
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"`}
+
+</Terminal>
+
+Use `python -m pip install -e ".[dev,docs]"` only when working with the
+repository's MkDocs source.
+
+</Section>
+
+---
+
+<Section title="Makefile Setup">
+
+<Terminal title="Setup helpers" language="bash">
+
+{`make venv
+make upgrade-pip
+make install-dev
+
+# Combined environment setup and Git-hook installation
+make setup`}
+
+</Terminal>
+
+The Make workflow uses the Python interpreter under the conventional `venv/`
+directory.
+
+</Section>
+
+---
+
+<Section title="Pre-Commit Workflow">
+
+Doc Gen's hook configuration runs Ruff fixes, Ruff formatting, Black,
+trailing-whitespace cleanup, and final-newline correction. Ruff and Black read
+their project policy from `pyproject.toml`.
+
+<Terminal title="Install and run hooks" language="bash">
+
+{`make pre-commit-install-hooks
+make pre-commit-validate
+make pre-commit-run-staged
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Refresh is an intentional hook upgrade">
+
+`make pre-commit-refresh` updates hook revisions, clears and reinstalls hook
+environments, and runs every hook against all files. It may require network
+access and may modify configuration and source files. Review the full diff.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Verify the Environment">
+
+<CommandChecklist
+    items={[
+        {title: "Python is supported", description: "python --version reports a supported interpreter."},
+        {title: "Editable CLI resolves", description: "doc-gen --help loads from the selected environment."},
+        {title: "Quality tools resolve", description: "pytest, Ruff, Black, and pre-commit run through python -m."},
+        {title: "Validation uses safe targets", description: "Use temporary projects and dry-run before live generated-output checks."},
+    ]}
+/>
+
+<Terminal title="Environment check" language="bash">
+
+{`python --version
+python -m pip show doc-gen
+doc-gen --help
+python -m pytest --version
+python -m ruff --version
+python -m black --version
+python -m pre_commit --version`}
+
+</Terminal>
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {title: "Testing", href: "./testing", description: "Validate structure and output behavior."},
+        {title: "Contributing", href: "./contributing", description: "Follow Doc Gen's review workflow."},
+        {title: "Getting Started", href: "../getting-started/overview", description: "Review end-user setup and first use."},
+        {title: "Generate", href: "../commands/structure/generate/overview", description: "Understand the writable structure command."},
+    ]}
+/>

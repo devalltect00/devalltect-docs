@@ -9,9 +9,9 @@ keywords: [STEP_ORDER, Custy step priority, profile sorting]
 
 import {CommandHero, CommandMetadata, FeatureGrid, Icon, InfoBox, KeyValueTable, RelatedCommands, Section, Terminal, WorkflowTimeline} from "@site/src/components/docs";
 
-<CommandHero command="STEP_ORDER" title="Step Priority dan Ordering" description="Pahami 27 priority entries Custy dan cara entries tersebut menormalisasi merged profile sequence." category="Pipeline Reference" status="27 Ordered Steps" syntax="lower priority number -> earlier merged-profile position" tags={["phase priority", "deduplication", "stable sorting"]} links={[{label: "Profile Reference", href: "./profile-reference"}, {label: "Composition", href: "./custom-composition"}, {label: "Execution Model", href: "./execution-model"}]} />
+<CommandHero command="STEP_ORDER" title="Step Priority dan Ordering" description="Pahami 28 priority entries Custy dan cara entries tersebut menormalisasi merged profile sequence." category="Pipeline Reference" status="28 Ordered Steps" syntax="lower priority number -> earlier merged-profile position" tags={["phase priority", "deduplication", "stable sorting"]} links={[{label: "Profile Reference", href: "./profile-reference"}, {label: "Composition", href: "./custom-composition"}, {label: "Execution Model", href: "./execution-model"}]} />
 
-<CommandMetadata items={[{label: "Priority Entries", value: "27", icon: "table"}, {label: "First Priority", value: "0", icon: "play"}, {label: "Last Priority", value: "90", icon: "workflow"}, {label: "Unknown Fallback", value: "999", icon: "warning"}]} />
+<CommandMetadata items={[{label: "Priority Entries", value: "28", icon: "table"}, {label: "First Priority", value: "0", icon: "play"}, {label: "Last Priority", value: "90", icon: "workflow"}, {label: "Unknown Fallback", value: "999", icon: "warning"}]} />
 
 ## Ringkasan
 
@@ -40,13 +40,14 @@ memberi ruang untuk future steps tanpa renumber seluruh pipeline.
  {key: "0 — Initialization_custy_step", value: <><strong>Initialization.</strong> Buat atau refresh project-owned Custy resources.</>},
  {key: "10 — ensure_git_repo_step", value: <><strong>Validation.</strong> Wajibkan execution di dalam Git repository.</>},
  {key: "11 — ensure_staged_changes_step", value: <><strong>Validation.</strong> Periksa staged-change requirement untuk commit work.</>},
- {key: "12 — ensure_commitizen_convention_step", value: <><strong>Validation.</strong> Validasi active commit convention support.</>},
- {key: "13 — ensure_commit_message_file_step", value: <><strong>Validation.</strong> Validasi configured commit-message file setting.</>},
- {key: "14 — ensure_commit_message_file_exists_step", value: <><strong>Validation.</strong> Wajibkan commit-message file tersedia.</>},
- {key: "15 — ensure_version_file_step", value: <><strong>Validation.</strong> Validasi configured version file.</>},
- {key: "16 — ensure_tag_message_file_step", value: <><strong>Validation.</strong> Validasi configured tag-message file setting.</>},
- {key: "17 — ensure_tag_message_file_exists_step", value: <><strong>Validation.</strong> Wajibkan tag-message file tersedia.</>},
- {key: "18 — ensure_remote_exists_step", value: <><strong>Validation.</strong> Wajibkan resolved Git remote destinations.</>},
+ {key: "12 — ensure_commit_validation_provider_step", value: <><strong>Validation.</strong> Resolve built-in, Commitizen, atau Git-policy message validation.</>},
+ {key: "13 — ensure_commit_hook_policy_step", value: <><strong>Validation.</strong> Resolve native hooks atau safe direct pre-commit execution.</>},
+ {key: "14 — ensure_commit_message_file_step", value: <><strong>Validation.</strong> Validasi configured commit-message file setting.</>},
+ {key: "15 — ensure_commit_message_file_exists_step", value: <><strong>Validation.</strong> Wajibkan commit-message file tersedia.</>},
+ {key: "16 — ensure_version_file_step", value: <><strong>Validation.</strong> Validasi configured version file.</>},
+ {key: "17 — ensure_tag_message_file_step", value: <><strong>Validation.</strong> Validasi configured tag-message file setting.</>},
+ {key: "18 — ensure_tag_message_file_exists_step", value: <><strong>Validation.</strong> Wajibkan tag-message file tersedia.</>},
+ {key: "19 — ensure_remote_exists_step", value: <><strong>Validation.</strong> Wajibkan resolved Git remote destinations.</>},
  {key: "30 — prepare_version_step", value: <><strong>Preparation.</strong> Resolve version dan tag context untuk later stages.</>},
  {key: "31 — workflow_init_step", value: <><strong>Preparation.</strong> Initialize branch workflow state dan services.</>},
  {key: "32 — prepare_tag_message_step", value: <><strong>Preparation.</strong> Siapkan tag-message content untuk resolved version.</>},
@@ -72,27 +73,28 @@ memberi ruang untuk future steps tanpa renumber seluruh pipeline.
 <Section title="Worked Example: push + commit">
 
 `custy run push commit` dan `custy run commit push` saat ini dinormalisasi
-menjadi 18 steps yang sama. CLI input order tidak memindahkan `push_step`
+menjadi 19 steps yang sama. CLI input order tidak memindahkan `push_step`
 sebelum validation, preparation, atau `commit_step`.
 
 <Terminal title="Normalized merged order" language="text">{`01  ensure_git_repo_step                  priority 10
 02  ensure_staged_changes_step            priority 11
-03  ensure_commitizen_convention_step     priority 12
-04  ensure_commit_message_file_step       priority 13
-05  ensure_commit_message_file_exists_step priority 14
-06  ensure_remote_exists_step             priority 18
-07  prepare_version_step                  priority 30
-08  workflow_init_step                    priority 31
-09  generate_artifacts_step               priority 40
-10  edit_files_step                       priority 41
-11  validate_edited_step                  priority 42
-12  apply_version_step                    priority 43
-13  generate_changelog_step               priority 44
-14  backup_commit_message_files_step      priority 50
-15  cleanup_backup_step                   priority 52
-16  stage_step                            priority 70
-17  commit_step                           priority 71
-18  push_step                             priority 73`}</Terminal>
+03  ensure_commit_validation_provider_step priority 12
+04  ensure_commit_hook_policy_step         priority 13
+05  ensure_commit_message_file_step        priority 14
+06  ensure_commit_message_file_exists_step priority 15
+07  ensure_remote_exists_step              priority 19
+08  prepare_version_step                   priority 30
+09  workflow_init_step                     priority 31
+10  generate_artifacts_step                priority 40
+11  edit_files_step                        priority 41
+12  validate_edited_step                   priority 42
+13  apply_version_step                     priority 43
+14  generate_changelog_step                priority 44
+15  backup_commit_message_files_step       priority 50
+16  cleanup_backup_step                    priority 52
+17  stage_step                             priority 70
+18  commit_step                            priority 71
+19  push_step                              priority 73`}</Terminal>
 
 </Section>
 

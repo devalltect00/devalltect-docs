@@ -1,0 +1,17 @@
+---
+title: "Pemecahan Masalah"
+description: "Pemecahan Masalah: doc-gen structure generate"
+sidebar_position: 9
+sidebar_key: doc-gen-structure-generate-troubleshooting
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Pemecahan Masalah" description="Diagnosis masalah saat membuat dokumentasi struktur." category="Struktur Proyek" status="Menulis Output Terpilih" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Gejala | Kemungkinan penyebab | Solusi |
+| --- | --- | --- |
+| Target tidak ditemukan. | Resolusi target salah. | Verifikasi target dan ulangi dalam mode dry-run. |
+| Output tidak dapat ditulis. | Izin direktori induk tidak memadai atau path tidak valid. | Pilih path output yang dapat ditulis. |
+| Konten yang diharapkan tidak muncul. | Aturan pengabaian, peringkasan, atau profil menyaringnya. | Tinjau profil aktif dan `collapse_dirs`. |

@@ -6,7 +6,7 @@ sidebar_key: custy-developer-guide-contributing
 ---
 import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Terminal} from "@site/src/components/docs";
 
-<CommandHero command="git diff" title="Contributing" description="Bawa satu scoped change dari issue understanding menuju clean review." category="Developer Guide" status="Review Workflow" syntax="scope -> implement -> test -> document -> review" links={[{label:"Development Setup",href:"./development-setup"},{label:"Testing",href:"./testing"},{label:"Final Checklist",href:"#final-review-checklist"}]} />
+<CommandHero command="make check" title="Contributing" description="Bawa satu scoped change dari issue understanding menuju clean review." category="Developer Guide" status="Review Workflow" syntax="scope -> implement -> test -> document -> review" tags={["quality","tests","documentation","pre-commit"]} links={[{label:"Development Setup",href:"./development-setup"},{label:"Testing",href:"./testing"},{label:"Final Checklist",href:"#final-review-checklist"}]} />
 
 ## Contribution Flow
 
@@ -16,11 +16,15 @@ import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Terminal} from "@si
 
 {`git status --short
 git diff
-pytest
-ruff check .
-black --check .`}
+python -m pytest
+make check
+make pre-commit-validate
+make pre-commit-run-staged
+make pre-commit-run`}
 
 </Terminal>
+
+<InfoBox variant="warning" title="Refresh Adalah Maintainer Operation">Jalankan `make pre-commit-refresh` hanya ketika sengaja meng-upgrade hook revisions. Command ini memperbarui `.pre-commit-config.yaml`, membangun ulang hook environments, meng-install Git hook, dan menjalankan semua hooks terhadap semua files. Command dapat membutuhkan network access dan mengubah active source files, jadi review seluruh diff sebelum commit.</InfoBox>
 
 ## Final Review Checklist
 

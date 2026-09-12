@@ -1,4 +1,12 @@
 {
   "label": "Architecture",
-  "key": "doc-gen-architecture"
+  "position": 8,
+  "key": "doc-gen-architecture",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-architecture",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/architecture/overview"
+  }
 }

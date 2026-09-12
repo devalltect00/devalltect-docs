@@ -56,8 +56,9 @@ missing rather than because of a problem with Custy itself.
 
 Some validation checks depend on your project configuration and workflow.
 
-For example, Commitizen validation is only relevant when your project uses the
-Commitizen versioning strategy.
+Commitizen is optional unless the commit validation provider or version
+strategy explicitly requires it. Auto mode safely uses Custy's built-in
+validator when Commitizen is not configured or installed.
 
 </InfoBox>
 

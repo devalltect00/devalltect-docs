@@ -1,0 +1,20 @@
+---
+title: "Persyaratan"
+description: "Checkout Git lokal persisten. Tag PEP 440 atau SemVer yang dapat dikonversi. Tidak ada collision atau signed tag."
+sidebar_position: 2
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, requirements]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Persyaratan" description="Sebelum menjalankannya" category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+## Sebelum menjalankannya
+
+- Checkout Git lokal persisten.
+- Tag PEP 440 atau SemVer yang dapat dikonversi.
+- Tidak ada collision atau signed tag.
+
+<InfoBox variant="tip" title="Dry run">Dry-run menjalankan discovery dan validation tanpa mutasi persisten.</InfoBox>
+

@@ -1,0 +1,31 @@
+---
+title: "Configuration"
+description: "Configuration: reflow dockerize"
+sidebar_position: 8
+sidebar_key: reflow-dockerize
+tags: [reflow, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Container Publishing" status="External Mutation" syntax="reflow dockerize [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Configuration key | Default | Effect |
+| --- | --- | --- |
+| `tool.reflow.docker.provider` | github | github, gitlab, or both. |
+| `tool.reflow.docker.keep_local_images` | false | Retain local images. |
+| `tool.reflow.github.image` | placeholder | GHCR destination. |
+| `tool.reflow.gitlab.image` | placeholder | GitLab destination. |
+
+```toml
+[tool.reflow.docker]
+provider = "github"
+keep_local_images = false
+
+[tool.reflow.github]
+image = "ghcr.io/acme/project"
+
+[tool.reflow.gitlab]
+image = "registry.gitlab.com/acme/project"
+```
+

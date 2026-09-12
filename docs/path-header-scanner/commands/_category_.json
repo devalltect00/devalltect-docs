@@ -1,0 +1,11 @@
+{
+  "label": "Commands",
+  "position": 2,
+  "key": "path-header-scanner-commands",
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/commands/overview"
+  }
+}

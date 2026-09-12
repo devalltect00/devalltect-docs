@@ -1,0 +1,11 @@
+{
+  "label": "Troubleshooting",
+  "position": 10,
+  "key": "path-header-scanner-troubleshooting",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/troubleshooting/overview"
+  }
+}

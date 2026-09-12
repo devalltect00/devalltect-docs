@@ -1,0 +1,12 @@
+{
+  "label": "Reference",
+  "position": 9,
+  "key": "doc-gen-reference",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-reference",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/reference/overview"
+  }
+}

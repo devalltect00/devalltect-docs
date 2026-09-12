@@ -1,0 +1,34 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: reflow releases recover"
+sidebar_position: 5
+sidebar_key: reflow-releases-recover
+tags: [reflow, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Alur Kerja" description="Menemukan version tag tanpa GitHub release lalu melakukan re-push untuk memicu ulang CI/CD berbasis tag." category="Pemulihan Release" status="Pemulihan Workflow GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Baca tag dan release.
+
+### 2. Tahap 2
+
+Pilih tag tanpa release.
+
+### 3. Tahap 3
+
+Terapkan stable/limit.
+
+### 4. Tahap 4
+
+Tampilkan target/rencana.
+
+### 5. Tahap 5
+
+Hapus dan re-push dengan delay setelah konfirmasi.
+
+<InfoBox variant="warning" title="Batas keamanan">Menghapus dan re-push tag; tidak membuat release record melalui website atau API.</InfoBox>
+

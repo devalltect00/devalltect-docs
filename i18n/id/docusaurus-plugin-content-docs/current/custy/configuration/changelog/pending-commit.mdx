@@ -18,6 +18,59 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
 enabled = true
 generation = "regenerate"
 placement = "before"`}</Terminal>
+## Buat Changelog Hanya dari Riwayat Git
+
+<Section>
+
+Gunakan `enabled` untuk memilih apakah file commit message yang dikonfigurasi
+menambahkan konten ke changelog:
+
+| Pengaturan | Sumber pesan changelog |
+| --- | --- |
+| `enabled = true` | Riwayat commit Git ditambah pesan pending commit, jika tersedia, pada rentang unreleased terbaru. |
+| `enabled = false` | Hanya riwayat commit Git; pesan pending commit tidak disertakan sebagai sumber tambahan. |
+
+Edit bagian yang sudah ada di `.config/custy/config.toml` milik proyek Anda;
+jangan menambahkan bagian kedua dengan nama yang sama:
+
+<Terminal title="Hanya riwayat Git" language="toml">
+
+{`[tool.custy.changelog.pending_commit]
+enabled = false`}
+
+</Terminal>
+
+Anda tidak perlu mengubah `generation` atau `placement` untuk tujuan ini.
+Kemudian buat changelog dengan perintah biasa:
+
+<Terminal title="Buat changelog" language="bash">
+
+{`custy changelog generate`}
+
+</Terminal>
+
+Jika pembuatan changelog dilewati karena aturan normal command, gunakan
+`custy changelog generate --force`. Perintah ini meminta pembuatan ulang tanpa
+mengabaikan `enabled = false` atau pengaturan collection dan rendering lainnya.
+Untuk melihat pratinjau tanpa menulis `CHANGELOG.md`, gunakan
+`custy --dry-run changelog generate`.
+
+<InfoBox variant="note" title="Tetap Simpan File Commit Message Anda">
+
+Jangan menghapus atau mengosongkan `.config/custy/templates/commit-message.txt`
+hanya untuk mengecualikannya dari changelog. Menonaktifkan integrasi pending
+commit tidak mengubah file atau mencegah penggunaannya untuk commit berikutnya.
+Jika pesan sudah di-commit, pesan tersebut masih dapat muncul melalui riwayat
+Git, sesuai filter yang Anda gunakan. Pengaturan ini juga berlaku ketika
+pipeline release memakai generator changelog yang sama; langkah commit pada
+pipeline tersebut tidak dinonaktifkan.
+
+</InfoBox>
+
+Untuk jawaban singkat, lihat [FAQ pembuatan changelog](../../commands/changelog/generate/faq#bagaimana-cara-membuat-changelog-hanya-dari-riwayat-git).
+
+</Section>
+
 <InfoBox variant="tip" title="Message Path Dikonfigurasikan di Tempat Lain">Pending content membaca `tool.custy.cli.templates.file.commit_message`. Selaraskan file path dan pending behavior.</InfoBox>
 <InfoBox variant="warning" title="Generation dan Placement Belum Mengubah Output">Active generator dapat menyertakan pending content, tetapi tidak memanggil `PendingCommitIntegrator`. Perlakukan `generation` dan `placement` sebagai loaded-only settings sampai integration path tersebut active.</InfoBox>
 <Section title="Lanjutkan"><RelatedCommands commands={[{title: "Template Files", href: "../cli/templates/files", description: "Konfigurasikan commit_message."}, {title: "Cleaning", href: "./cleaning", description: "Hapus template-only content sebelum rendering."}, {title: "Commit Command", href: "../../commands/commit/overview", description: "Kelola Git operation untuk message."}]} /></Section>

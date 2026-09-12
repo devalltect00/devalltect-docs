@@ -1,0 +1,16 @@
+---
+title: "Pemecahan Masalah"
+description: "Diagnosis resource yang dilewati dan inisialisasi tanpa penulisan."
+sidebar_position: 9
+sidebar_key: phs-init-troubleshooting
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Pemecahan Masalah" description="Diagnosis resource yang dilewati dan inisialisasi tanpa penulisan." category="Inisialisasi" status="Panduan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Gejala | Kemungkinan penyebab | Solusi |
+| --- | --- | --- |
+| Resource yang ada dilewati. | Penggantian belum disetujui. | Gunakan `--ask`, atau `--force` setelah file ditinjau. |
+| Tidak ada file yang ditulis. | Dry-run aktif. | Jalankan ulang tanpa dry-run setelah rencana ditinjau. |

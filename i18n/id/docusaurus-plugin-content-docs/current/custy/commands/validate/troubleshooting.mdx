@@ -215,19 +215,19 @@ Setelah melakukan stage, jalankan validation kembali.
 
 **Yang Anda lihat**
 
-Commit message validation gagal saat menggunakan Commitizen strategy.
+Commitizen configuration, availability, atau final message validation gagal.
 
 **Penyebab**
 
-Commit message saat ini tidak memenuhi convention yang dikonfigurasi.
+Selected provider bersifat strict tetapi configuration atau `cz` tidak ada,
+configuration malformed, atau final message melanggar project rules.
 
 **Cara menyelesaikan**
 
-Tinjau configured Commitizen rules dan perbarui commit message agar sesuai
-format yang diperlukan.
-
-Proyek dengan SemVer, PEP 440, Date, atau Git Count strategy umumnya tidak
-memerlukan validation ini.
+Baca structured error label, lalu instal `custy[commitizen]`, perbaiki detected
+configuration, perbarui message, atau pilih `provider = "custy"`. Version
+strategy dan message provider terpisah. Lihat
+[behavior matrix](../../configuration/commit-validation).
 
 </Section>
 

@@ -1,0 +1,23 @@
+---
+title: "Configuration"
+description: "Configuration: path-header-scanner init"
+sidebar_position: 8
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Initialization" status="Recommended" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Key | Default | Effect |
+| --- | --- | --- |
+| `tool.path-header-scanner.initialization.force` | false | Overwrite default. |
+| `tool.path-header-scanner.initialization.ask` | false | Prompt default. |
+
+```toml
+[tool.path-header-scanner.initialization]
+force = false
+ask = false
+```
+

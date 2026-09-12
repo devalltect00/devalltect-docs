@@ -1,0 +1,12 @@
+{
+  "label": "Pulihkan Otomasi Release",
+  "position": 1,
+  "key": "reflow-releases-recover-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/releases/recover/overview"
+  }
+}
+

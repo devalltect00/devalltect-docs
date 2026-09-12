@@ -1,0 +1,30 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: path-header-scanner init"
+sidebar_position: 5
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Alur Kerja" description="Membuat scanner configuration dan resource pendukung milik proyek." category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve default inisialisasi.
+
+### 2. Tahap 2
+
+Susun rencana resource.
+
+### 3. Tahap 3
+
+Dry-run menampilkan rencana lalu berhenti.
+
+### 4. Tahap 4
+
+Live mode menulis resource sesuai ask/force.
+
+<InfoBox variant="warning" title="Batas keamanan">Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta konfirmasi.</InfoBox>
+

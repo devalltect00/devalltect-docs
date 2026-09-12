@@ -1,0 +1,28 @@
+---
+title: "CLI Reference"
+description: "Quick CLI, path, option, and safety reference."
+sidebar_position: 2
+sidebar_key: doc-gen-reference
+tags: [doc-gen, cli, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="CLI Reference" description="Quick CLI, path, option, and safety reference." category="Reference" status="v1.0.0" syntax="doc-gen init" />
+
+## Commands
+
+- `doc-gen init`
+- `doc-gen structure generate [TARGET]`
+- `doc-gen structure print [TARGET]`
+- `doc-gen structure analyze [TARGET]`
+
+## Global options
+
+- `--no-banner`
+- `--version / -v`
+- `--debug`
+- `--log-level`
+
+<InfoBox variant="warning" title="Safety">Generate writes only its resolved Markdown output; print and analyze are read-only. Generate dry-run never creates its output directory or file.</InfoBox>
+

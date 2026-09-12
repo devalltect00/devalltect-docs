@@ -11,14 +11,14 @@ import {CommandHero, FeatureGrid, InfoBox, Section, Terminal} from "@site/src/co
 ## Ringkasan
 
 <FeatureGrid items={[
- {title:"Main Remote",children:"Destination utama untuk current branch dan optional tag."},
- {title:"Backup Remote",children:"Optional secondary destination saat synchronization aktif."},
- {title:"Configuration",children:"Role dapat berasal dari project configuration dan repository remotes."},
- {title:"Interactive Fallback",children:"Pilihan pengguna dapat diminta bila destination ambigu."},
+ {title:"Explicit Remote",children:"--remote memilih tepat satu destination dan override group settings."},
+ {title:"Main Remotes",children:"Berasal dari main_remotes, dengan fallback ke default_remote jika list kosong."},
+ {title:"Backup Remotes",children:"Berasal hanya dari backup_remotes dan tetap mengikuti branch safety."},
+ {title:"All Remotes",children:"--all-remote memilih de-duplicated union dari main dan backup groups."},
 ]} />
 
 <Section title="Branch Safety">Pastikan current branch memang boleh dipush dan upstream/destination sesuai. Custy tidak menggantikan branch-protection rules.</Section>
-<InfoBox variant="warning" title="CLI and Engine Are Not Fully Connected">`--remote` dan `--all-remote` tersedia pada CLI, tetapi destination engine saat ini mungkin tidak memakai override tersebut sepenuhnya.</InfoBox>
+<InfoBox variant="info" title="Selection Priority">`--remote` memiliki prioritas tertinggi, dilanjutkan `all_remote = true`, lalu `tool.custy.git.push_to`. `sync_backup = true` menambahkan configured backups ke main-group push jika branch diizinkan.</InfoBox>
 
 <Section title="Inspect Repository Remotes">
 ```bash

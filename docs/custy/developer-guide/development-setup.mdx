@@ -25,10 +25,11 @@ import {
     category="Developer Guide"
     status="Python 3.14+"
     syntax="create venv -> install dev tools -> verify"
-    tags={["editable install", "pytest", "Ruff", "Black"]}
+    tags={["editable install", "pytest", "Ruff", "Black", "pre-commit"]}
     links={[
         {label: "Requirements", href: "#requirements"},
         {label: "Install", href: "#manual-setup"},
+        {label: "Pre-Commit", href: "#pre-commit-workflow"},
         {label: "Verify", href: "#verify-the-environment"},
     ]}
 />
@@ -116,6 +117,41 @@ less familiar targets.
 
 ---
 
+<Section title="Pre-Commit Workflow">
+
+The Make helpers invoke pre-commit through the repository's `venv/` Python
+interpreter. Install the Git hook once, validate its configuration after an
+edit, and choose either staged-file or all-file checks for daily work.
+
+<Terminal title="Pre-commit setup and checks" language="bash">
+
+{`# Install the Git hook and its isolated hook environments
+make pre-commit-install-hooks
+
+# Validate .pre-commit-config.yaml
+make pre-commit-validate
+
+# Check files currently staged for commit
+make pre-commit-run-staged
+
+# Check every tracked repository file
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Reserve refresh for intentional hook upgrades">
+
+`make pre-commit-refresh` runs `autoupdate`, clears cached hook environments,
+reinstalls the hook environments, and runs every hook against all files. It can
+change `.pre-commit-config.yaml` and active source files, and may require
+network access. Review and validate the resulting diff before keeping it.
+
+</InfoBox>
+
+</Section>
+
+---
+
 <Section title="Verify the Environment">
 
 <CommandChecklist
@@ -123,7 +159,7 @@ less familiar targets.
         {title: "Python is supported", description: "python --version reports Python 3.14 or newer."},
         {title: "Custy resolves from the environment", description: "custy --help renders from the editable installation."},
         {title: "The module entry point works", description: "python -m app --help distinguishes application issues from executable PATH issues."},
-        {title: "Developer tools are installed", description: "pytest, Ruff, and Black can be invoked through python -m."},
+        {title: "Developer tools are installed", description: "pytest, Ruff, Black, and pre-commit can be invoked through python -m."},
     ]}
 />
 
@@ -136,7 +172,8 @@ custy --help
 python -m app --help
 python -m pytest --version
 python -m ruff --version
-python -m black --version`}
+python -m black --version
+python -m pre_commit --version`}
 
 </Terminal>
 

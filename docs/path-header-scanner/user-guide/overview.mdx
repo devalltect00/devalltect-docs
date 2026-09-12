@@ -1,52 +1,19 @@
 ---
 title: "Overview"
-description: "This section explains Path Header Scanner from an end-user perspective."
+description: "Choose a workflow by its target and side effects."
 sidebar_position: 1
 sidebar_key: path-header-scanner-user-guide
+tags: [path-header-scanner, user-guide]
 ---
 
-# User Guide Overview
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
 
-This section explains Path Header Scanner from an end-user perspective.
+<CommandHero command="Path Header Scanner" title="User Guide" description="Choose a workflow by its target and side effects." category="User Guide" status="Practical" syntax="path-header-scanner init" />
 
-## What the tool does
+- `path-header-scanner init`
+- `path-header-scanner scan TARGET`
+- `path-header-scanner scan TARGET --apply`
+- `path-header-scanner scan TARGET --dry-run`
 
-Path Header Scanner helps developers/devops/programmers keep file path headers consistent in source files.
+<InfoBox variant="warning" title="Safety">Scan previews by default. Only effective --apply writes target files, and --dry-run overrides CLI and configured apply mode.</InfoBox>
 
-It can:
-
-- scan supported files
-- detect whether file path headers are valid
-- insert missing path headers
-- update invalid headers
-
-## Typical usage model
-
-You usually run the tool inside **your own project** directory.
-
-Example user scenario:
-
-- user has `projectA`
-- user installs Path Header Scanner
-- user runs initialization (`init`)
-- user scans project files (`scan`)
-- user applies changes if output is correct (`--apply`)
-
-## Core command groups
-
-- `init`: initialize local configuration/template assets for the tool
-- `scan`: scan target directories and optionally write changes
-
-## Important behavior
-
-- without `--apply`, scan works in dry-run mode
-- with `--apply`, changes are written to files
-- headers can include or exclude the scan target directory
-- special lines are preserved for supported languages (e.g., shebang, `<?php`)
-
-## Where to continue
-
-- Start quickly: `docs/user-guide/quickstart.md`
-- Full command details: `docs/user-guide/commands.md`
-- Install options (pip, docker, artifacts): `docs/user-guide/installation-methods.md`
-- Start/stop/cleanup lifecycle: `docs/user-guide/lifecycle.md`

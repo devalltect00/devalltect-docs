@@ -1,0 +1,26 @@
+---
+title: "Konfigurasi"
+description: "Konfigurasi: reflow tags convert local"
+sidebar_position: 8
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Konfigurasi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Kunci konfigurasi | Bawaan | Efek |
+| --- | --- | --- |
+| `tool.reflow.repository.path` | direktori saat ini | Pilih checkout lokal persisten. |
+| `tool.reflow.cli.tags.convert.target_format` | semver | Tentukan format tag tujuan. |
+| `tool.reflow.cli.tags.convert.yes` | false | Lewati prompt konfirmasi mode langsung. |
+
+```toml
+[tool.reflow.repository]
+path = "../project"
+
+[tool.reflow.cli.tags.convert]
+target_format = "semver"
+yes = false
+```

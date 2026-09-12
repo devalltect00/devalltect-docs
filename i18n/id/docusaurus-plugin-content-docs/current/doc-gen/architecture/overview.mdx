@@ -1,0 +1,19 @@
+---
+title: "Ringkasan"
+description: "Pahami responsibility dan execution flow."
+sidebar_position: 1
+sidebar_key: doc-gen-architecture
+tags: [doc-gen, architecture]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Arsitektur" description="Pahami responsibility dan execution flow." category="Architecture" status="v1.0.0" syntax="doc-gen init" />
+
+1. Typer/Rich CLI dan error boundary
+2. Configuration/profile resolution
+3. Structure discovery, analysis, dan rendering
+4. Terminal dan Markdown writer
+
+<InfoBox variant="note" title="Separation of responsibilities">Generate hanya menulis output Markdown hasil resolution; print dan analyze read-only. Generate dry-run tidak membuat direktori atau file.</InfoBox>
+

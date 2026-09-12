@@ -1,0 +1,20 @@
+---
+title: "Execution Flow"
+description: "Understand responsibilities and execution flow."
+sidebar_position: 2
+sidebar_key: path-header-scanner-architecture
+tags: [path-header-scanner, architecture, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Execution Flow" description="Understand responsibilities and execution flow." category="Architecture" status="Reference" syntax="path-header-scanner scan app --dry-run" />
+
+<Terminal language="text">{`CLI input
+  -> configuration resolution
+  -> target and safety validation
+  -> core/service execution
+  -> progress, summary, and actionable error boundary`}</Terminal>
+
+<InfoBox variant="warning" title="Mutation boundary">Scan previews by default. Only effective --apply writes target files, and --dry-run overrides CLI and configured apply mode.</InfoBox>
+

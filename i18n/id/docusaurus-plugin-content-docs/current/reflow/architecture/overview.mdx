@@ -1,0 +1,19 @@
+---
+title: "Ringkasan"
+description: "Pahami responsibility dan execution flow."
+sidebar_position: 1
+sidebar_key: reflow-architecture
+tags: [reflow, architecture]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="Arsitektur" description="Pahami responsibility dan execution flow." category="Architecture" status="v1.0.0" syntax="reflow init" />
+
+1. Typer/Rich CLI dan confirmation layer
+2. Repository workspace dan target resolution
+3. Service konversi tag dan release recovery
+4. Service Docker build dan registry
+
+<InfoBox variant="note" title="Separation of responsibilities">Konversi tag local dan remote memakai command terpisah. Remote push, release recovery, dan registry publishing adalah mutasi eksternal eksplisit.</InfoBox>
+

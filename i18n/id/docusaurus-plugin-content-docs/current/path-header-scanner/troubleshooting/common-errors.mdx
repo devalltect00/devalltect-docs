@@ -1,0 +1,28 @@
+---
+title: "Masalah Umum"
+description: "Diagnosis kegagalan konfigurasi, target, lingkungan, dan alur kerja."
+sidebar_position: 2
+sidebar_key: path-header-scanner-troubleshooting
+tags: [path-header-scanner, troubleshooting, errors]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Masalah Umum" description="Diagnosis kegagalan konfigurasi, target, lingkungan, dan alur kerja." category="Dukungan" status="Panduan" syntax="path-header-scanner scan app --dry-run" />
+
+| Gejala | Kemungkinan penyebab | Pemeriksaan pertama |
+| --- | --- | --- |
+| Direktori target tidak ada | Target diselesaikan dari basis yang tidak diharapkan | Bandingkan `TARGET_DIRECTORY` dengan `--workdir`; coba path absolut bila perlu |
+| Tidak ada file yang didukung | Target kosong, dikecualikan, atau berisi ekstensi yang tidak didukung | Tinjau [sintaks header yang didukung](../concepts/path-headers) dan pengecualian bawaan |
+| Perubahan dilaporkan tetapi file tetap sama | Mode preview aktif | Tambahkan `--apply` hanya setelah meninjau hasil yang diusulkan |
+| `--apply` tetap tidak menulis | Dry-run dari CLI atau konfigurasi aktif | Periksa `--dry-run`, `--no-dry-run`, dan `cli.execution.dry_run` |
+| Konfigurasi yang ada dilewati | Penggantian saat inisialisasi belum disetujui | Gunakan `--ask`, atau tinjau file sebelum `--force` |
+| Bantuan memunculkan `UnicodeEncodeError` di Windows | Terminal CP1252 lama tidak dapat mengodekan simbol Rich | Gunakan mode terminal UTF-8 seperti `chcp 65001`, atau atur `PYTHONUTF8=1` |
+
+<InfoBox variant="tip" title="Selesaikan path sebelum menerapkan perubahan">
+
+Gunakan mode preview dan `--debug` untuk memeriksa target yang telah
+diselesaikan. Pemindaian lokal biasa tidak memerlukan Git, Docker, atau CLI
+provider.
+
+</InfoBox>

@@ -21,11 +21,11 @@ import {
     title="Status Dokumentasi"
     description="Kenali rilis Custy yang direpresentasikan situs ini dan tentukan kapan verifikasi khusus rilis diperlukan."
     category="Referensi"
-    status="Diperiksa otomatis untuk v2.0.0"
+    status="Diperiksa otomatis untuk v2.1.0"
     syntax="custy --version"
     tags={["baseline dokumentasi", "keselarasan rilis", "pemeliharaan"]}
     links={[
-        {label: "Rilis Custy v2.0.0", href: "https://github.com/devalltect00/Custy/releases/tag/v2.0.0"},
+        {label: "Rilis Custy v2.1.0", href: "https://github.com/devalltect00/Custy/releases/tag/v2.1.0"},
         {label: "Semua Rilis", href: "https://github.com/devalltect00/Custy/releases"},
         {label: "Referensi", href: "./overview"},
     ]}
@@ -33,17 +33,17 @@ import {
 
 <CommandMetadata
     items={[
-        {label: "Baseline Dokumentasi", value: "Custy v2.0.0", icon: "release"},
-        {label: "Terakhir Ditinjau", value: "22 Agustus 2026", icon: "success"},
+        {label: "Baseline Dokumentasi", value: "Custy v2.1.0", icon: "release"},
+        {label: "Terakhir Ditinjau", value: "25 Agustus 2026", icon: "success"},
         {label: "Bahasa", value: "Inggris dan Indonesia", icon: "feature"},
-        {label: "Mode Kesegaran", value: "Otomatis · PEP 440", icon: "configuration"},
+        {label: "Mode Kesegaran", value: "Otomatis · SemVer", icon: "configuration"},
     ]}
 />
 
 ## Baseline saat ini
 
-Halaman-halaman ini menjelaskan **Custy v2.0.0** dan terakhir ditinjau terhadap
-source aktif pada **22 Agustus 2026**. Tanggal tersebut mencatat peninjauan
+Halaman-halaman ini menjelaskan **Custy v2.1.0** dan terakhir ditinjau terhadap
+source aktif pada **25 Agustus 2026**. Tanggal tersebut mencatat peninjauan
 dokumentasi yang disengaja, bukan tanggal edit Git atau deployment otomatis.
 
 <InfoBox variant="info" title="Remote tag diperiksa saat build">
@@ -54,9 +54,7 @@ sudah di-deploy tidak berubah sampai situs dokumentasi dibangun kembali.
 
 </InfoBox>
 
-Custy sementara menggunakan deteksi PEP 440 otomatis selama tag repositori lama
-dimigrasikan. Ubah `tagFormat` menjadi `semver` setelah strategi tag repositori
-beralih ke SemVer.
+Custy menggunakan deteksi SemVer otomatis sesuai strategi tag repositori saat ini.
 
 ---
 
@@ -68,16 +66,16 @@ beralih ke SemVer.
 
 </Terminal>
 
-- Jika perintah menampilkan `2.0.0`, dokumentasi ini adalah baseline yang sesuai.
+- Jika perintah menampilkan `2.1.0`, dokumentasi ini adalah baseline yang sesuai.
 - Jika versinya lebih lama, gunakan release notes dan tag source versi tersebut
   untuk mengenali fitur yang belum tersedia.
-- Jika versinya lebih baru, tinjau rilis setelah `v2.0.0` untuk command, option,
+- Jika versinya lebih baru, tinjau rilis setelah `v2.1.0` untuk command, option,
   configuration, perubahan perilaku, dan perbaikan baru.
 - Untuk versi pre-release atau post-release, bandingkan versi lengkap, termasuk
   penanda seperti `alpha`, `beta`, `rc`, `dev`, atau `post`.
 
 Gunakan [rilis Custy](https://github.com/devalltect00/Custy/releases) dan
-[snapshot source `v2.0.0`](https://github.com/devalltect00/Custy/tree/v2.0.0)
+[snapshot source `v2.1.0`](https://github.com/devalltect00/Custy/tree/v2.1.0)
 sebagai referensi khusus rilis.
 
 </Section>
@@ -109,7 +107,7 @@ tidak ditempatkan di `.config/custy/config.toml`.
     title="Field dokumentasi bersama"
     items={[
         {property: "version", type: "string", required: true, description: "Versi aplikasi ternormalisasi yang direpresentasikan halaman, tanpa mewajibkan prefiks v."},
-        {property: "versionTag", type: "string", required: true, description: "Tag repositori untuk rilis yang didokumentasikan, misalnya v2.0.0."},
+        {property: "versionTag", type: "string", required: true, description: "Tag repositori untuk rilis yang didokumentasikan, misalnya v2.1.0."},
         {property: "lastReviewed", type: "YYYY-MM-DD", required: true, description: "Tanggal maintainer meninjau dokumentasi terhadap source secara sengaja."},
         {property: "releaseUrl", type: "URL", required: true, description: "Halaman rilis untuk baseline yang didokumentasikan."},
         {property: "statusPath", type: "site path", required: true, description: "Route independen locale menuju halaman status dokumentasi ini."},
@@ -133,15 +131,15 @@ tidak ditempatkan di `.config/custy/config.toml`.
 
 ```ts title="src/data/projects.ts"
 documentation: {
-  version: "2.0.0",
-  versionTag: "v2.0.0",
-  lastReviewed: "2026-08-22",
-  releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.0.0",
+  version: "2.1.0",
+  versionTag: "v2.1.0",
+  lastReviewed: "2026-08-25",
+  releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.0",
   statusPath: "/docs/custy/reference/documentation-status",
   freshness: {
     mode: "auto",
     repositoryUrl: "https://github.com/devalltect00/Custy.git",
-    tagFormat: "pep440",
+    tagFormat: "semver",
     releasesUrl: "https://github.com/devalltect00/Custy/releases",
     includePrereleases: false,
     timeoutMs: 10_000,
@@ -233,17 +231,17 @@ tersebut terpisah dari freshness resolver.
         {
             title: "CLI Publik",
             icon: <Icon name="terminal" />,
-            children: "Nama command, option, output, efek samping, dan profil pipeline publik yang didukung diselaraskan dengan v2.0.0.",
+            children: "Nama command, option, output, efek samping, dan profil pipeline publik yang didukung diselaraskan dengan v2.1.0.",
         },
         {
             title: "Configuration",
             icon: <Icon name="configuration" />,
-            children: "Bagian dan property configuration didasarkan pada template v2.0.0 serta perilaku resolution yang aktif.",
+            children: "Bagian dan property configuration didasarkan pada template v2.1.0 serta perilaku resolution yang aktif.",
         },
         {
             title: "Internal Developer",
             icon: <Icon name="workflow" />,
-            children: "Materi architecture, extension, testing, dan pipeline mencerminkan source yang ditinjau untuk baseline dokumentasi v2.0.0.",
+            children: "Materi architecture, extension, testing, dan pipeline mencerminkan source yang ditinjau untuk baseline dokumentasi v2.1.0.",
         },
         {
             title: "Keterbatasan yang Diketahui",
@@ -268,8 +266,7 @@ didokumentasikan dan terlihat oleh pengguna. Sinkronisasi lengkap mencakup:
 3. Terapkan perubahan teknis yang sama pada halaman bahasa Indonesia sambil
    mempertahankan nama command, option, path, configuration key, dan code.
 4. Ubah versi baseline, tag, URL rilis, dan tanggal terakhir ditinjau.
-5. Pastikan `tagFormat` tetap sesuai strategi repositori. Untuk Custy, ubah
-   `pep440` menjadi `semver` setelah migrasi tag yang direncanakan.
+5. Pastikan `tagFormat` tetap sesuai strategi SemVer repositori.
 6. Jalankan freshness tests, type checking, dan production build untuk kedua
    locale.
 

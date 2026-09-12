@@ -26,6 +26,57 @@ placement = "before"`}
 
 </Terminal>
 
+## Generate from Git History Only
+
+<Section>
+
+Use `enabled` to choose whether the configured commit-message file contributes
+additional content to the changelog:
+
+| Setting | Changelog message sources |
+| --- | --- |
+| `enabled = true` | Git commit history plus the pending message, when available, in the newest unreleased range. |
+| `enabled = false` | Git commit history only; the pending message is not included as an additional source. |
+
+Edit the existing section in your project's `.config/custy/config.toml` rather
+than adding a second section with the same name:
+
+<Terminal title="Git history only" language="toml">
+
+{`[tool.custy.changelog.pending_commit]
+enabled = false`}
+
+</Terminal>
+
+You do not need to change `generation` or `placement` for this purpose. Then
+generate the changelog with the normal command:
+
+<Terminal title="Generate the changelog" language="bash">
+
+{`custy changelog generate`}
+
+</Terminal>
+
+If the command skips generation under its normal rules, use
+`custy changelog generate --force`. This requests regeneration without overriding
+`enabled = false` or your other collection and rendering settings. To preview
+without writing `CHANGELOG.md`, use `custy --dry-run changelog generate`.
+
+<InfoBox variant="note" title="Keep Your Commit Message File">
+
+Do not delete or empty `.config/custy/templates/commit-message.txt` just to exclude
+it from the changelog. Disabling pending integration does not change the file
+or prevent its use for a later commit. If the message was already committed,
+it can still appear through Git history, subject to your existing filters.
+This setting also applies when a release pipeline uses the same changelog
+generator; it does not disable that pipeline's commit step.
+
+</InfoBox>
+
+For the short answer, see the [changelog generation FAQ](../../commands/changelog/generate/faq#how-do-i-generate-a-changelog-from-git-history-only).
+
+</Section>
+
 <InfoBox variant="tip" title="The message path is configured elsewhere">
 
 Pending content reads `tool.custy.cli.templates.file.commit_message`. Keep the

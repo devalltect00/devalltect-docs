@@ -11,7 +11,7 @@ import {CommandHero, CommandMetadata, InfoBox, RelatedCommands, Section} from "@
 
 <CommandHero command="[tool.custy.*]" title="All Configuration Properties" description="Use full TOML paths to locate defaults, implementation status, and detailed guidance." category="Configuration" status="Exhaustive Index" syntax="tool.custy.NAMESPACE.PROPERTY" tags={["property index", "defaults", "status"]} links={[{label: "Overview", href: "./overview"}, {label: "Resolution", href: "./resolution"}, {label: "Config File", href: "./config-file"}]} />
 
-<CommandMetadata items={[{label: "Generated Tables", value: "29", icon: "table"}, {label: "Optional Active Keys", value: "4", icon: "note"}, {label: "Root", value: "tool.custy", icon: "configuration"}, {label: "Details", value: "Linked per group", icon: "directory"}]} />
+<CommandMetadata items={[{label: "Generated Tables", value: "32", icon: "table"}, {label: "Optional Active Keys", value: "4", icon: "note"}, {label: "Root", value: "tool.custy", icon: "configuration"}, {label: "Details", value: "Linked per group", icon: "directory"}]} />
 
 ## Status legend
 
@@ -40,6 +40,32 @@ and changelog breaking defaults.
 | `tool.custy.release.include_date` | `true` | Mismatch | [Release](./release) |
 | `tool.custy.initialization.force` | `false` | Active | [Initialization](./initialization) |
 | `tool.custy.initialization.ask` | `false` | Active | [Initialization](./initialization) |
+
+</Section>
+
+---
+
+<Section title="Commit Validation">
+
+| Full path | Generated default | Status | Details |
+| --- | --- | --- | --- |
+| `tool.custy.commit.validation.provider` | `"auto"` | Active | [Commit Validation](./commit-validation) |
+| `tool.custy.commit.validation.require_tool` | `false` | Active | [Commit Validation](./commit-validation) |
+
+</Section>
+
+---
+
+<Section title="Editor">
+
+| Full path | Generated default | Status | Details |
+| --- | --- | --- | --- |
+| `tool.custy.editor.prefer_environment` | `true` | Active | [Editor](./editor) |
+| `tool.custy.editor.allow_fallback` | `true` | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.windows` | `["vscode", "notepad"]` | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.linux` | `["micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.macos` | `["vscode", "micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
+| `tool.custy.editor.candidates.container` | `["micro", "nano", "vim", "vi"]` | Active | [Editor](./editor) |
 
 </Section>
 
@@ -143,8 +169,8 @@ and changelog breaking defaults.
 | `tool.custy.changelog.release_behavior."VERSION".hidden` | `false` | Active dynamic key | [Releases](./changelog/releases) |
 | `tool.custy.changelog.release_behavior."VERSION".title_only` | `false` | Active dynamic key | [Releases](./changelog/releases) |
 | `tool.custy.changelog.release_behavior."VERSION".custom_message` | unset | Active dynamic key | [Releases](./changelog/releases) |
-| `tool.custy.changelog.links.repository` | Custy GitHub URL | Active | [Links](./changelog/links) |
-| `tool.custy.changelog.links.enable_compare` | `true` | Active | [Links](./changelog/links) |
+| `tool.custy.changelog.links.repository` | `""` | Active | [Links](./changelog/links) |
+| `tool.custy.changelog.links.enable_compare` | `false` | Active | [Links](./changelog/links) |
 
 </Section>
 
@@ -218,6 +244,20 @@ Every generated scope and type entry is listed individually on the
 | `tool.custy.git.main_remotes` | `["origin"]` | Active | [Remotes](./git/remotes) |
 | `tool.custy.git.backup_remotes` | `[]` built-in | Optional | [Remotes](./git/remotes) |
 | `tool.custy.git.push_to` | `"main"` | Active | [Push Strategy](./git/push-strategy) |
+| `tool.custy.git.credentials.mode` | `"native"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.container_only` | `true` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.source_order` | `["file", "environment"]` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.interactive_fallback` | `true` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.fail_non_interactive` | `true` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.enabled` | `false` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.username` | `"x-access-token"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.token_file` | `"github.token"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.github.token_env` | `"CUSTY_GITHUB_TOKEN"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.enabled` | `false` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.username` | `"oauth2"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.token_file` | `"gitlab.token"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.credentials.gitlab.token_env` | `"CUSTY_GITLAB_TOKEN"` | Active | [Git Credentials](./git/credentials) |
+| `tool.custy.git.hooks.mode` | `"auto"` | Active | [Git Commit Hooks](./git/hooks) |
 
 </Section>
 

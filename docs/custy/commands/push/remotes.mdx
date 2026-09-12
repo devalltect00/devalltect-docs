@@ -19,9 +19,9 @@ import {
 <CommandHero
     command="custy push"
     title="Remote Resolution"
-    description="Understand how the push engine distinguishes main destinations, backup destinations, and fallback remotes."
+    description="Understand explicit selection, configured main and backup groups, default fallback, and branch safety."
     category="Git Operations"
-    status="Limited"
+    status="Stable"
     syntax="custy push [OPTIONS]"
     tags={[
         "remotes",
@@ -49,10 +49,10 @@ when the destination is processed and which safety rules apply.
 <FeatureGrid
     title="Resolved Destination Types"
     items={[
-        {title: "Main Remotes", icon: <Icon name="network" />, children: "Receive the current HEAD and, when selected, a tag."},
-        {title: "Backup Remotes", icon: <Icon name="package" />, children: "Receive synchronization only when backup sync is enabled and the current branch is eligible."},
-        {title: "Origin Fallback", icon: <Icon name="git" />, children: "May be proposed interactively when no explicit main-remotes list reaches the engine."},
-        {title: "Backup Fallback", icon: <Icon name="configuration" />, children: "A remote named backup can be checked when backup synchronization is enabled without an explicit list."},
+        {title: "Explicit Remote", icon: <Icon name="terminal" />, children: "--remote selects exactly one destination and overrides group settings."},
+        {title: "Main Remotes", icon: <Icon name="network" />, children: "Come from main_remotes, falling back to default_remote when the list is empty."},
+        {title: "Backup Remotes", icon: <Icon name="package" />, children: "Come only from backup_remotes and remain subject to branch safety."},
+        {title: "All Remotes", icon: <Icon name="configuration" />, children: "--all-remote selects the de-duplicated union of configured main and backup groups."},
     ]}
 />
 
@@ -71,14 +71,11 @@ prefixes such as feature, CI, or sandbox work.
 
 ---
 
-<InfoBox
-    variant="warning"
-    title="CLI and engine are not fully connected"
->
+<InfoBox variant="info" title="Selection priority">
 
-Although the direct command exposes `--remote` and `--all-remote`, those values
-are not currently mapped to the engine's main-remotes list. Treat the interactive
-fallback and dry-run report as the current source of actual destination truth.
+`--remote` wins first, followed by `all_remote = true`, then
+`tool.custy.git.push_to`. When a main group is selected, `sync_backup = true`
+adds configured backups if the branch is eligible.
 
 </InfoBox>
 

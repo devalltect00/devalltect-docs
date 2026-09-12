@@ -1,0 +1,11 @@
+{
+  "label": "Build dan Publish Tagged Image",
+  "position": 4,
+  "key": "reflow-dockerize-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/dockerize/overview"
+  }
+}

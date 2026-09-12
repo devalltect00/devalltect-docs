@@ -1,0 +1,27 @@
+---
+title: "Configuration"
+description: "Configuration: reflow tags convert local"
+sidebar_position: 8
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Configuration key | Default | Effect |
+| --- | --- | --- |
+| `tool.reflow.repository.path` | current directory | Persistent checkout. |
+| `tool.reflow.cli.tags.convert.target_format` | semver | Destination format. |
+| `tool.reflow.cli.tags.convert.yes` | false | Prompt bypass. |
+
+```toml
+[tool.reflow.repository]
+path = "../project"
+
+[tool.reflow.cli.tags.convert]
+target_format = "semver"
+yes = false
+```
+

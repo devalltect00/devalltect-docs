@@ -1,0 +1,12 @@
+{
+  "label": "Convert Local Tags",
+  "position": 1,
+  "key": "reflow-tags-convert-local-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/tags/convert/local/overview"
+  }
+}
+

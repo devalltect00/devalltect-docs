@@ -1,0 +1,34 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: reflow dockerize"
+sidebar_position: 5
+sidebar_key: reflow-dockerize
+tags: [reflow, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Alur Kerja" description="Build image untuk setiap tag lalu publish ke GitHub dan/atau GitLab registry." category="Publikasi Container" status="Mutasi Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve repository.
+
+### 2. Tahap 2
+
+Validasi Git/tag/registry.
+
+### 3. Tahap 3
+
+Build, tag, dan push image.
+
+### 4. Tahap 4
+
+Tandai latest.
+
+### 5. Tahap 5
+
+Hapus non-latest jika tidak dipertahankan; tampilkan total.
+
+<InfoBox variant="warning" title="Batas keamanan">Live mode melakukan build/push dan dapat menghapus local image. Dry-run hanya simulasi.</InfoBox>
+

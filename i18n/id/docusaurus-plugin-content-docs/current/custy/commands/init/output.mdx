@@ -87,6 +87,12 @@ Initializing Custy project...
 ✓ Examples created
 
 Initialization completed successfully.
+
+💡 Next Steps
+1. Review .config/custy/config.toml.
+2. Set tool.custy.changelog.links.repository if changelog compare links are needed.
+3. Verify default_remote, main_remotes, and backup_remotes with git remote -v.
+4. Run custy validate.
 `,
             notes:
                 "Susunan kata yang tepat dapat sedikit berbeda antarversi Custy, tetapi keseluruhan alurnya tetap sama.",
@@ -161,6 +167,11 @@ dan disimpan dalam version control.
 <Section
     title="Langkah Berikutnya"
 >
+
+Mode yang membuat konfigurasi (`all`, `all_no_examples`, dan `config`) diakhiri
+dengan checklist khusus proyek. Tinjau `.config/custy/config.toml`, isi URL
+browser changelog hanya jika comparison links diperlukan, verifikasi nama Git
+remote dengan `git remote -v`, lalu jalankan `custy validate`.
 
 Jika proses init tidak berjalan sesuai harapan, lanjutkan ke halaman
 **Troubleshooting** untuk melihat masalah umum dan solusi yang direkomendasikan.

@@ -16,7 +16,7 @@ import {
 <CommandHero
     command="custy push"
     title="Frequently Asked Questions"
-    description="Find answers about default references, backup remotes, adapter limitations, Run equivalence, and dry-run behavior."
+    description="Find answers about destination precedence, tags, backup remotes, Run equivalence, and dry-run behavior."
     category="Git Operations"
     status="Support Guide"
     syntax="custy push [OPTIONS]"
@@ -34,15 +34,15 @@ import {
 
 ## Overview
 
-These answers clarify which references the profile synchronizes and how current
-adapter limitations affect destination selection.
+These answers clarify which references the profile synchronizes and how
+destination precedence affects the effective remote set.
 
 <InfoBox
     variant="warning"
     title="Dry-run output is the current destination truth"
 >
 
-Do not infer the active remote solely from accepted CLI flags.
+Review the dry-run plan before every unfamiliar or multi-remote push.
 
 </InfoBox>
 
@@ -82,11 +82,11 @@ and the current branch is not excluded by safety rules.
 ---
 
 <Section
-    title="Can I Rely on `--remote` Today?"
+    title="What Does `--remote` Override?"
 >
 
-No. The CLI accepts it, but the adapter does not currently populate the engine's
-main-remotes list. Confirm destinations in dry-run output.
+It selects exactly one destination and overrides `--all-remote`,
+`tool.custy.git.push_to`, and the configured remote groups.
 
 </Section>
 
@@ -96,9 +96,12 @@ main-remotes list. Confirm destinations in dry-run output.
     title="How Does `custy run push` Differ?"
 >
 
-Both forms select the registered push profile. The direct command advertises
-push-specific options, while the generic Run form selects the profile. Current
-remote adapter limitations apply to the direct command.
+Both forms select the registered push profile and propagate the same push
+options. Run profiles such as Dev, Release, and Full inherit the same selection
+precedence whenever their pipeline reaches the push step. The direct form
+disables hidden Rich rendering completely, while `custy run push` suspends its
+visible progress display during interactive authentication. Both forms give
+Git stable terminal ownership for username, PAT, and SSH prompts.
 
 </Section>
 
@@ -111,5 +114,61 @@ remote adapter limitations apply to the direct command.
 Validation and remote resolution can still inspect repository and remote state.
 Its primary guarantee is that normal push mutations are replaced with reported
 intent; read the actual output for the current version.
+
+</Section>
+
+---
+
+<Section title="Why Does Docker Ask for Credentials Again?">
+
+The container does not inherit the host credential-manager session. Use native
+SSH, answer an approved interactive prompt, or configure Custy's optional
+protected external fallback with `custy configure credentials`.
+
+</Section>
+
+---
+
+<Section title="Why Does an Interactive Push Look Frozen?">
+
+Git is normally waiting for username and PAT input. Current Custy releases give
+manual Git authentication direct terminal ownership and print guidance before
+the prompt. Direct commands disable their otherwise hidden Rich renderer, and
+Run pipelines suspend visible progress until authentication finishes. If only
+`custy push` loses the prompt while `custy run push` works, rebuild or pull the
+current image. Do not submit two empty lines: GitHub can report `Repository not
+found` together with `Authentication failed` for missing access to a private
+repository.
+
+</Section>
+
+---
+
+<Section title="What Is the Manual Docker Authentication Flow?">
+
+Run with `-it` and omit the managed credential mount or variable. Enter the
+provider username, then enter a PAT when Git asks for `Password`. The password
+field normally hides input. A disposable container does not retain these values
+and separate GitHub and GitLab remotes may prompt independently.
+
+</Section>
+
+---
+
+<Section title="Does Custy Store My Token?">
+
+Never in project configuration. File mode stores it in an explicitly selected
+external protected file; environment mode reads the named runtime variable.
+Normal Git credentials and SSH remain owned by their native tools.
+
+</Section>
+
+---
+
+<Section title="Can a Non-Interactive Push Wait for Input?">
+
+With the recommended `fail_non_interactive = true`, no. Git prompting is
+disabled when it cannot be answered, so the job fails with an actionable
+authentication error instead of hanging.
 
 </Section>

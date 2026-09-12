@@ -1,4 +1,12 @@
 {
   "label": "Structure",
-  "key": "doc-gen-commands-structure"
+  "position": 2,
+  "key": "doc-gen-structure",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-structure",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/structure/overview"
+  }
 }

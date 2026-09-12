@@ -1,0 +1,16 @@
+---
+title: Profiles and Smart Mode
+description: Control structure detail with profiles or repository-aware optimization.
+sidebar_position: 8
+sidebar_key: doc-gen-profiles
+---
+
+Profiles provide repeatable presets: `minimal`, `default`, `detailed`, and `custom`. Smart mode adapts maximum depth, file visibility, and collapsed directories to repository size and detected characteristics.
+
+```bash
+doc-gen structure print . --profile minimal
+doc-gen structure print . --profile detailed
+doc-gen structure print . --smart
+```
+
+Explicit CLI values override profile, configuration, and built-in values according to the resolver's precedence.

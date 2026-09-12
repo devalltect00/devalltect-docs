@@ -1,0 +1,21 @@
+---
+title: "Persyaratan"
+description: "Docker engine aktif. Dockerfile/build context valid. Autentikasi dan izin registry. Minimal satu Git tag."
+sidebar_position: 2
+sidebar_key: reflow-dockerize
+tags: [reflow, requirements]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Persyaratan" description="Sebelum menjalankannya" category="Publikasi Container" status="Mutasi Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+## Sebelum menjalankannya
+
+- Docker engine aktif.
+- Dockerfile/build context valid.
+- Autentikasi dan izin registry.
+- Minimal satu Git tag.
+
+<InfoBox variant="tip" title="Dry run">Dry-run menjalankan discovery dan validation tanpa mutasi persisten.</InfoBox>
+

@@ -1,0 +1,12 @@
+{
+  "label": "Inisialisasi Doc Gen",
+  "position": 1,
+  "key": "doc-gen-init-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/init/overview"
+  }
+}
+

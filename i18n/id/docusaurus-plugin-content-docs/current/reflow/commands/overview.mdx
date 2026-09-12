@@ -1,0 +1,61 @@
+---
+title: "Perintah"
+description: "Pilih perintah Reflow berdasarkan target repositori, efek persisten, perilaku konfirmasi, dan batas dry-run."
+sidebar_position: 0
+sidebar_key: reflow-commands
+tags: [reflow, perintah, referensi]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="reflow"
+    title="Ringkasan Perintah"
+    description="Pilih workflow berdasarkan target dan efek persistennya sebelum menambahkan opsi konfirmasi mode live."
+    category="Referensi Perintah"
+    status="Reflow 1.0.0"
+    syntax="reflow [GLOBAL OPTIONS] COMMAND"
+    links={[
+        {label: "Inisialisasi", href: "./init/overview"},
+        {label: "Konversi Tag", href: "./tags/convert/overview"},
+        {label: "Pulihkan Release", href: "./releases/recover/overview"},
+        {label: "Dockerize", href: "./dockerize/overview"},
+    ]}
+/>
+
+<Section title="Perintah yang Didukung">
+
+| Perintah | Target dan tujuan | Efek persisten mode live |
+| --- | --- | --- |
+| [`reflow init`](./init/overview) | Direktori lokal persisten; buat konfigurasi milik proyek | File konfigurasi lokal |
+| [`reflow tags convert local`](./tags/convert/local/overview) | Checkout lokal persisten; ganti nama tag yang didukung | Tag ref lokal saja; tidak melakukan push |
+| [`reflow tags convert remote`](./tags/convert/remote/overview) | Remote checkout atau URL Git; ganti nama tag remote | Satu atomic push remote yang dijaga |
+| [`reflow releases recover`](./releases/recover/overview) | Repositori GitHub; picu ulang automasi untuk tag tanpa release | Hapus/push ulang tag remote dan picu CI |
+| [`reflow dockerize`](./dockerize/overview) | Tag repositori dan tujuan image terkonfigurasi | Build Docker, push registry, cleanup lokal opsional |
+
+</Section>
+
+<InfoBox variant="warning" title="Alias kompatibilitas yang deprecated">
+
+`reflow tags replay` mendelegasikan ke `reflow releases recover` dan
+menampilkan peringatan deprecation. Gunakan
+[panduan recovery kanonis](./releases/recover/overview) untuk dokumentasi,
+script, dan automasi baru.
+
+</InfoBox>
+
+Opsi target dan keamanan global harus ditulis sebelum path perintah:
+`--repository`/`--repo`/`-C`, `--repository-url`, dan `--dry-run`.
+
+<RelatedCommands
+    commands={[
+        {title: "Target Repositori", href: "../concepts/repository-targeting", description: "Tentukan target CLI, konfigurasi, dan direktori saat ini."},
+        {title: "Keamanan dan Dry-run", href: "../concepts/safety-and-dry-run", description: "Pahami batas pratinjau dan konfirmasi."},
+        {title: "Referensi CLI", href: "../reference/cli", description: "Tinjau opsi global dan path perintah."},
+    ]}
+/>

@@ -1,0 +1,12 @@
+{
+  "label": "Konfigurasi",
+  "position": 4,
+  "key": "doc-gen-configuration",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-configuration",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/configuration/overview"
+  }
+}

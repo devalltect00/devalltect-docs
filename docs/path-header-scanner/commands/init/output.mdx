@@ -1,0 +1,30 @@
+---
+title: "Output"
+description: "Interpret initialization plans, resource counts, and completion status."
+sidebar_position: 6
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Output" description="Output" category="Initialization" status="Recommended" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Dry-run lists each directory that would be ensured and each file that would be created or updated.
+- Live execution reports the selected mode and resource counts.
+- The final panel identifies normal completion or dry-run completion.
+
+<Terminal title="Initialization summary" language="text">{`Initialization Summary
+Mode                <all or config>
+Created Files       <count>
+Copied Files        <count>
+Skipped Files       <count>
+Created Directories <count>`}</Terminal>
+
+<InfoBox variant="note" title="A skipped file is not a scan failure">
+
+Initialization preserves an existing project-owned resource unless replacement
+is approved. Header states such as valid, inserted, and updated belong to the
+`scan` command, not `init`.
+
+</InfoBox>

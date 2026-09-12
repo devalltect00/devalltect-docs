@@ -1,0 +1,11 @@
+{
+  "label": "Arsitektur",
+  "position": 8,
+  "key": "reflow-architecture",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/architecture/overview"
+  }
+}

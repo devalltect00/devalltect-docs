@@ -1,0 +1,12 @@
+{
+  "label": "Generate Structure Documentation",
+  "position": 1,
+  "key": "doc-gen-structure-generate-category",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-structure-generate",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/structure/generate/overview"
+  }
+}

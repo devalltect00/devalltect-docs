@@ -1,0 +1,11 @@
+{
+  "label": "Troubleshooting",
+  "position": 10,
+  "key": "reflow-troubleshooting",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/troubleshooting/overview"
+  }
+}

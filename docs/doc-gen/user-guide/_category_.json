@@ -1,4 +1,12 @@
 {
   "label": "User Guide",
-  "key": "doc-gen-user-guide"
+  "position": 6,
+  "key": "doc-gen-user-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-user-guide",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/user-guide/overview"
+  }
 }

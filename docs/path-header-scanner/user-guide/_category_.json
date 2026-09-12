@@ -1,4 +1,11 @@
 {
   "label": "User Guide",
-  "key": "path-header-scanner-user-guide"
+  "position": 6,
+  "key": "path-header-scanner-user-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/user-guide/overview"
+  }
 }

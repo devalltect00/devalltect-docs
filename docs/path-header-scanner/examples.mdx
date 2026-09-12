@@ -1,0 +1,58 @@
+---
+title: Examples
+description: Common preview, workdir, and apply workflows.
+sidebar_position: 5
+sidebar_key: phs-examples
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="path-header-scanner"
+    title="Workflow Examples"
+    description="Resolve a scan target, preview path-header changes, and opt into writes only after review."
+    category="Examples"
+    status="Preview First"
+    syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
+    links={[
+        {label: "Scan Guide", href: "./commands/scan/overview"},
+        {label: "Scan Options", href: "./commands/scan/options"},
+        {label: "Path Headers", href: "./concepts/path-headers"},
+        {label: "Configuration", href: "./configuration/reference"},
+    ]}
+/>
+
+<Section title="Preview and resolve targets">
+
+<Terminal language="bash">{`# Preview the configured application target
+path-header-scanner scan app
+
+# Resolve app from another project base
+path-header-scanner scan app --workdir ../project
+
+# Explicit simulation wins over apply
+path-header-scanner scan app --apply --dry-run`}</Terminal>
+
+</Section>
+
+<Section title="Apply after review">
+
+<Terminal language="bash">{`# Re-run with writes enabled only after reviewing the preview
+path-header-scanner scan app --apply`}</Terminal>
+
+</Section>
+
+<InfoBox variant="warning" title="Know the effective mode">
+
+Preview is the default. `--apply` enables writes, but `--dry-run` from the CLI
+or project configuration disables effective apply mode.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "First Workflow", href: "./getting-started/first-workflow", description: "Install, initialize, preview, and apply safely."},
+        {title: "Scan Examples", href: "./commands/scan/examples", description: "See additional target and mode combinations."},
+        {title: "Safety and Dry-run", href: "./concepts/safety-and-dry-run", description: "Understand preview, apply, and explicit simulation."},
+    ]}
+/>

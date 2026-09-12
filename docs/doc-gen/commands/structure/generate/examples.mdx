@@ -1,0 +1,36 @@
+---
+title: "Examples"
+description: "Examples: doc-gen structure generate"
+sidebar_position: 7
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Examples" description="This is the only structure command that writes output. --dry-run renders in memory but creates neither the output directory nor file." category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`doc-gen structure generate . --dry-run`}</Terminal>
+
+**Result:** Renders without writing.
+
+### 2. Default output
+
+<Terminal language="bash">{`doc-gen structure generate .`}</Terminal>
+
+**Result:** Writes configured output.
+
+### 3. Custom output
+
+<Terminal language="bash">{`doc-gen structure generate . --output docs/PROJECT_STRUCTURE.md`}</Terminal>
+
+**Result:** Writes selected file.
+
+### 4. Detailed smart
+
+<Terminal language="bash">{`doc-gen structure generate . --profile detailed --smart`}</Terminal>
+
+**Result:** Uses detailed profile with optimization.
+

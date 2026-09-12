@@ -23,7 +23,7 @@ import {
     title="Push Commits and Tags"
     description="Validate repository state and synchronize the current HEAD, plus an optional tag, with resolved Git remotes."
     category="Git Operations"
-    status="Limited"
+    status="Stable"
     syntax="custy push [OPTIONS]"
     tags={["Git remote", "HEAD", "tag"]}
     links={[
@@ -38,16 +38,16 @@ import {
         {label: "Category", value: "Git Operations", icon: "git"},
         {label: "Complexity", value: "Advanced", icon: "requirement"},
         {label: "External Side Effect", value: "Yes", icon: "network"},
-        {label: "Current Status", value: "Limited", icon: "warning"},
+        {label: "Current Status", value: "Stable", icon: "success"},
     ]}
 />
 
 ## Overview
 
-The push profile performs repository and pre-push validation, initializes
-workflow state, pushes the current `HEAD` to each resolved main remote, and can
-also push a selected tag. Backup synchronization is optional and subject to
-branch-safety rules.
+The push profile performs repository and pre-push validation, resolves
+the current push state, pushes `HEAD` to the effective remote set, and can
+also push a selected tag. Explicit and grouped selection are supported; backup
+destinations remain subject to branch-safety rules.
 
 <InfoBox
     variant="danger"
@@ -70,7 +70,7 @@ execution. Use dry-run first.
     title="What the Push Profile Coordinates"
     items={[
         {title: "Validate State", icon: <Icon name="security" />, children: "Check repository and pre-push conditions before remote operations."},
-        {title: "Resolve Remotes", icon: <Icon name="network" />, children: "Resolve main and optional backup destinations through current engine behavior."},
+        {title: "Resolve Remotes", icon: <Icon name="network" />, children: "Apply explicit-remote, all-remote, push_to, and backup-sync precedence."},
         {title: "Push HEAD", icon: <Icon name="git" />, children: "Synchronize the current HEAD with every resolved destination."},
         {title: "Push Tag", icon: <Icon name="release" />, children: "Publish an available selected tag when tag synchronization is enabled."},
     ]}
@@ -85,7 +85,7 @@ execution. Use dry-run first.
 >
 
 <Screenshot
-    src="/img/custy/push/multi-remote-output.png"
+    src="/img/custy/commands/push/multi-remote-output.png"
     alt="Custy terminal output while synchronizing Git remotes"
     title="Remote synchronization"
     caption="Custy reports the result for each resolved main or backup remote."

@@ -1,0 +1,20 @@
+---
+title: "Output"
+description: "Output: doc-gen init"
+sidebar_position: 6
+sidebar_key: doc-gen-init
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen init" title="Output" description="Output" category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+- Mode/target.
+- File konfigurasi dibuat, dilewati, atau direncanakan.
+- Error path actionable.
+
+<Terminal language="text">{`Target  : <resolved path>
+Command : doc-gen init
+Dry run : true/false
+Status  : <result>`}</Terminal>

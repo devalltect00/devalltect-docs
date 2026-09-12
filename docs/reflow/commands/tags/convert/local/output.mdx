@@ -1,0 +1,23 @@
+---
+title: "Output"
+description: "Output: reflow tags convert local"
+sidebar_position: 6
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, output]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Output" description="Output" category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Target path.
+- Source-to-destination plan.
+- Converted, skipped, and failed totals.
+- Dry-run no-mutation statement.
+
+<Terminal language="text">{`Target     : <resolved repository>
+Operation  : reflow tags convert local
+Dry run    : true/false
+Successful : <count>
+Failed     : <count>`}</Terminal>
+

@@ -1,0 +1,24 @@
+---
+title: "FAQ"
+description: "FAQ: doc-gen structure generate"
+sidebar_position: 10
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="FAQ" description="FAQ" category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+## Which command writes files?
+
+structure generate only.
+
+## Does dry-run create the parent directory?
+
+No.
+
+## Can output be outside target?
+
+Use an explicit path carefully; Doc Gen writes only the resolved output.
+

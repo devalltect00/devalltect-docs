@@ -1,9 +1,6 @@
 {
   "label": "Reflow",
   "position": 3,
-  "link": {
-    "type": "doc",
-    "id": "reflow/index"
-  },
-  "key": "reflow"
+  "collapsed": false,
+  "link": {"type": "doc", "id": "reflow/index"}
 }

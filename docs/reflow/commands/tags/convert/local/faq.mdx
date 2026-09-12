@@ -1,0 +1,24 @@
+---
+title: "FAQ"
+description: "FAQ: reflow tags convert local"
+sidebar_position: 10
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, faq]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="FAQ" description="FAQ" category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+## Does it push?
+
+No.
+
+## Is it a copy?
+
+No. The destination is created and the local source ref is removed.
+
+## Is annotated metadata preserved?
+
+Commit, message, tagger identity, and timestamp are preserved when possible.
+

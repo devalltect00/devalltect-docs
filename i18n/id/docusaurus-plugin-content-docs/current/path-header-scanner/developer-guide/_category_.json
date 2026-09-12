@@ -1,0 +1,12 @@
+{
+  "label": "Panduan Developer",
+  "position": 7,
+  "key": "path-header-scanner-developer-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/developer-guide/overview"
+  }
+}
+

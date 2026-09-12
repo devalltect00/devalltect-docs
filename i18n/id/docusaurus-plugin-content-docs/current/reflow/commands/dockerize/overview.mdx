@@ -1,0 +1,25 @@
+---
+title: "Ringkasan"
+description: "Build image untuk setiap tag lalu publish ke GitHub dan/atau GitLab registry."
+sidebar_position: 1
+sidebar_key: reflow-dockerize
+tags: [reflow, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Build dan Publikasikan Tagged Image" description="Build image untuk setiap tag lalu publikasikan ke registry GitHub dan/atau GitLab." category="Publikasi Container" status="Perubahan Eksternal" syntax="reflow [GLOBAL OPTIONS] dockerize" links={[{label:"Persyaratan",href:"./requirements"},{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+<Section title="Tujuan">
+
+Build image untuk setiap tag lalu publish ke GitHub dan/atau GitLab registry.
+
+</Section>
+
+<InfoBox variant="warning" title="Batas keamanan">Live mode melakukan build/push dan dapat menghapus local image. Dry-run hanya simulasi.</InfoBox>
+
+- Resolve repository.
+- Validasi Git/tag/registry.
+- Build, tag, dan push image.
+- Tandai latest.
+- Hapus non-latest jika tidak dipertahankan; tampilkan total.

@@ -38,7 +38,7 @@ import {
         {label: "Strategies", value: "5", icon: "configuration"},
         {label: "Bump Values", value: "patch, minor, major, auto", icon: "release"},
         {label: "Detected Stages", value: "6", icon: "timeline"},
-        {label: "Explicit Tag Validator", value: "vX.Y.Z", icon: "security"},
+        {label: "Explicit Tag Validator", value: "Stable + lifecycle", icon: "security"},
     ]}
 />
 
@@ -100,12 +100,15 @@ compound suffixes, or unusual local identifiers before writing project files.
 
 ---
 
-<InfoBox variant="warning" title="Explicit CLI tags are narrower than generated formats">
+<InfoBox variant="info" title="Explicit CLI tags support release lifecycle versions">
 
-The shared explicit-tag validator normalizes a missing `v` prefix and accepts
-only `vX.Y.Z`. Generated strategies support broader prerelease and PEP 440
-forms, but passing those broader forms through an option wired to the shared
-validator can fail during CLI parsing.
+The shared `--tag` validator accepts stable three-part versions and Custy's
+supported alpha, beta, release-candidate, development, post-release, and
+build/local-metadata forms. A missing `v` prefix is normalized automatically.
+
+Use SemVer-style values such as `v2.0.0-rc.1` or common PEP 440-style values
+such as `2.0.0rc1`. Arbitrary lifecycle names and incomplete forms such as
+`v2.0-rc.1` remain invalid.
 
 </InfoBox>
 

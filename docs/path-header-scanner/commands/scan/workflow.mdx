@@ -1,0 +1,34 @@
+---
+title: "Workflow"
+description: "Workflow: path-header-scanner scan"
+sidebar_position: 5
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Workflow" description="Discover supported files, validate path headers, preview missing or stale headers, and apply corrections only when explicitly requested." category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+### 1. Stage 1
+
+Resolve workdir and target.
+
+### 2. Stage 2
+
+Discover supported files while respecting exclusions.
+
+### 3. Stage 3
+
+Select a language strategy and validate each header.
+
+### 4. Stage 4
+
+Compute valid, inserted, updated, and failed results.
+
+### 5. Stage 5
+
+Write only in live --apply mode; otherwise render preview and summary.
+
+<InfoBox variant="warning" title="Safety boundary">Preview is the default. --apply enables writes; --dry-run overrides CLI and configured apply mode and guarantees no target-file changes.</InfoBox>
+

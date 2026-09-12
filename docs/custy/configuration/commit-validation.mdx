@@ -1,0 +1,179 @@
+---
+title: "Commit Validation"
+description: "Choose Custy, Commitizen, automatic discovery, or basic Git message-file checks."
+sidebar_position: 9
+sidebar_key: custy-configuration-commit-validation
+tags: [custy, commit, commitizen, configuration]
+keywords: [commit validation provider, check-cz, commitizen optional]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.commit.validation]"
+    title="Commit Validation"
+    description="Keep commit validation available in every project while enabling Commitizen only when the project intentionally adopts it."
+    category="Configuration"
+    status="Active"
+    syntax="provider = auto | custy | commitizen | git"
+    tags={["provider selection", "optional Commitizen", "Git hooks"]}
+    links={[
+        {label: "Commit Configuration", href: "../commands/commit/configuration"},
+        {label: "Commit Troubleshooting", href: "../commands/commit/troubleshooting"},
+        {label: "Execution Defaults", href: "./cli/execution"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Default Provider", value: "auto", icon: "configuration"},
+        {label: "Strict by Default", value: "No", icon: "security"},
+        {label: "Built-in Validator", value: "Always available", icon: "success"},
+        {label: "External Tool", value: "cz (optional)", icon: "terminal"},
+    ]}
+/>
+
+## Recommended Configuration
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.commit.validation]
+provider = "auto"
+require_tool = false`}
+
+</Terminal>
+
+This default does not require Commitizen. Custy activates `cz` only when it
+finds both recognized project configuration and an available executable.
+
+---
+
+<Section title="Behavior Matrix">
+
+| Provider | Commitizen config | `cz` installed | Result |
+| --- | --- | --- | --- |
+| `auto` | No | No | Use Custy validation. |
+| `auto` | No | Yes | Use Custy validation; installation alone does not activate Commitizen. |
+| `auto` | Yes | Yes | Run Custy validation, then Commitizen validation. |
+| `auto` | Yes | No | Warn and fall back to Custy. |
+| `auto` with `require_tool = true` | Yes | No | Stop before mutation with `COMMITIZEN_NOT_AVAILABLE`. |
+| `custy` | Any | Any | Use only Custy's built-in conventional-message rules. |
+| `commitizen` | Yes | Yes | Require both Custy and Commitizen validation. |
+| `commitizen` | No or invalid | Any | Stop before mutation with a focused configuration error. |
+| `git` | Any | Any | Require a readable, non-empty UTF-8 message file; allow project-specific message formats. |
+
+</Section>
+
+<InfoBox variant="tip" title="Use auto for mixed repositories">
+
+`auto` is the best shared default when Custy is used across projects with
+different tooling. Use `commitizen` when a repository intentionally requires
+the same Commitizen policy in local development, containers, and CI.
+
+</InfoBox>
+
+---
+
+<Section title="Properties">
+
+<PropertyTable
+    items={[
+        {property: "provider", type: "auto | custy | commitizen | git", defaultValue: "auto", description: "Select automatic discovery, Custy's internal rules, strict Commitizen integration, or basic Git message-file safety checks."},
+        {property: "require_tool", type: "Boolean", defaultValue: "false", description: "In auto mode, turn a detected invalid or unavailable Commitizen integration from a warning and fallback into an early error."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="What Auto Detects">
+
+Custy recognizes these project configuration sources:
+
+- `.cz.toml`
+- `.cz.yaml` or `.cz.yml`
+- `.cz.json`
+- `[tool.commitizen]` in `pyproject.toml`
+
+Custy separately checks whether the `cz` executable is available. It never
+installs Commitizen during a command and never enables it only because the
+executable happens to be installed globally.
+
+</Section>
+
+---
+
+<Section title="CLI Override">
+
+`--check-cz` is the backward-compatible strict override. For that invocation,
+it behaves like:
+
+<Terminal language="toml">
+
+{`provider = "commitizen"
+require_tool = true`}
+
+</Terminal>
+
+Use persistent TOML configuration for team policy. Use `--check-cz` for an
+intentional one-time verification.
+
+</Section>
+
+---
+
+<Section title="Install Optional Commitizen Support">
+
+<Terminal>
+
+{`pip install "custy[commitizen]"`}
+
+</Terminal>
+
+Custy's production Docker image includes this optional extra so supported
+Commitizen workflows are available in the container. A project-specific
+`pre-commit` installation remains separate.
+
+</Section>
+
+---
+
+<Section title="Versioning and Message Validation Are Independent">
+
+`[tool.custy.cli.versioning].strategy = "commitizen"` asks Commitizen to help
+resolve versions. `[tool.custy.commit.validation].provider = "commitizen"`
+asks it to validate the final commit message. A project may enable either one,
+both, or neither.
+
+</Section>
+
+<InfoBox variant="warning" title="Git hooks still run">
+
+Provider selection does not disable `pre-commit`, `commit-msg`, or other Git
+hooks. If a hook fails, Custy reports `GIT_HOOK_FAILED` with captured output.
+A hook installed on Windows may contain a Windows Python path and cannot run
+unchanged inside Linux Docker; install that hook in the environment where Git
+will execute it.
+
+</InfoBox>
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Commit Configuration", href: "../commands/commit/configuration", description: "Combine provider policy with templates, staging, and backups."},
+        {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Resolve Commitizen and Git-hook failures."},
+        {title: "Docker", href: "../getting-started/docker", description: "Understand container tools and mounted repository hooks."},
+    ]}
+/>
+
+</Section>

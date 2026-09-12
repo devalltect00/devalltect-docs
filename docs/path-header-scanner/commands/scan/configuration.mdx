@@ -1,0 +1,31 @@
+---
+title: "Configuration"
+description: "Configuration: path-header-scanner scan"
+sidebar_position: 8
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Key | Default | Effect |
+| --- | --- | --- |
+| `tool.path-header-scanner.cli.execution.dry_run` | false | Global simulation default. |
+| `tool.path-header-scanner.cli.execution.debug` | false | Diagnostic logging. |
+| `tool.path-header-scanner.cli.scan.target_directory` | app | Default target. |
+| `tool.path-header-scanner.cli.scan.apply` | false | Write opt-in. |
+| `tool.path-header-scanner.cli.scan.include_target_directory` | true | Header path rendering. |
+
+```toml
+[tool.path-header-scanner.cli.execution]
+dry_run = false
+debug = false
+
+[tool.path-header-scanner.cli.scan]
+target_directory = "app"
+apply = false
+include_target_directory = true
+```
+

@@ -17,9 +17,9 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
 
 <PropertyTable
     items={[
-        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Default direct push dan run behavior untuk memilih semua configured remotes, bukan satu primary target."},
-        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push branch changes tanpa push tags jika bernilai true."},
-        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Aktifkan backup-repository synchronization dalam supported push flows."},
+        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Pilih de-duplicated main dan backup groups kecuali explicit --remote meng-override."},
+        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push HEAD tanpa membuat atau push tag dalam combined workflows jika true."},
+        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Tambahkan configured backups ke main-only selection jika branch safety mengizinkan. Nilai ini tidak menonaktifkan backups yang dipilih oleh all_remote atau push_to."},
     ]}
 />
 
@@ -34,9 +34,9 @@ sync_backup = false`}
 
 <InfoBox variant="warning" title="CLI Push dan Git Service Settings Saling Terkait, tetapi Tidak Sama">
 
-Table ini menyediakan command arguments. `[tool.custy.git]` menentukan
-service-level remote groups dan `push_to`. Tinjau keduanya sebelum melakukan
-multi-remote push.
+Table ini menyediakan command defaults. `[tool.custy.git]` menentukan remote
+names dan `push_to`. Prioritas selection adalah explicit `--remote`,
+`all_remote = true`, lalu `push_to`.
 
 </InfoBox>
 

@@ -1,0 +1,50 @@
+---
+title: "Docker"
+description: "Pull image production Doc Gen dengan tag stabil immutable atau bergerak dan jalankan CLI di dalam container."
+sidebar_position: 3
+sidebar_key: doc-gen-getting-started
+tags: [doc-gen, docker, container]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.0" title="Jalankan Doc Gen dengan Docker" description="Gunakan image terpublikasi untuk memeriksa atau mendokumentasikan proyek yang di-mount secara eksplisit." category="Memulai" status="Kebijakan Image Stabil" syntax="docker pull ghcr.io/devalltect00/doc-gen:<tag>" />
+
+<Section title="Tag Image yang Dipublikasikan">
+
+| Tag | Contoh | Perilaku |
+| --- | --- | --- |
+| Eksak | `v1.0.0` | Immutable dan disarankan untuk CI atau otomasi yang dapat direproduksi. |
+| Minor | `v1.0` | Bergerak ke patch stabil terbaru dalam lini 1.0. |
+| Major | `v1` | Bergerak ke rilis stabil terbaru dalam lini 1.x. |
+| Latest | `latest` | Bergerak ke rilis stabil Doc Gen terbaru. |
+
+<Terminal title="Pull dan verifikasi Doc Gen" language="bash">
+
+{`docker pull ghcr.io/devalltect00/doc-gen:v1.0.0
+docker run --rm ghcr.io/devalltect00/doc-gen:v1.0.0 --help`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Prerelease tidak menggeser alias stabil">
+
+`v1.0.0-rc.1` hanya memublikasikan tag eksaknya. Alias stabil hanya diperbarui
+oleh rilis stabil.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Pilih Tag Secara Terencana">
+
+Gunakan versi eksak untuk generation yang dapat diulang dalam CI. Gunakan
+`v1.0`, `v1`, atau `latest` hanya jika upgrade otomatis yang terkontrol dapat
+diterima. Mount hanya proyek yang dituju dan gunakan
+`structure generate --dry-run` sebelum mengizinkan penulisan dokumen.
+
+</Section>
+
+<RelatedCommands commands={[
+    {title: "Instalasi dan Workflow Pertama", href: "./first-workflow", description: "Instal Doc Gen dan pratinjau generation."},
+    {title: "Generate", href: "../commands/structure/generate/overview", description: "Buat dokumentasi struktur proyek dengan aman."},
+]} />

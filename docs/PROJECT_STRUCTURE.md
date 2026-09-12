@@ -33,28 +33,12 @@ Common directories include:
 │           │   └── openai.yaml
 │           └── SKILL.md
 ├── .config
-│   ├── custy
-│   │   ├── templates
-│   │   │   ├── backups/ ... (collapsed)
-│   │   │   ├── changelog
-│   │   │   │   └── changelog.j2
-│   │   │   ├── examples
-│   │   │   │   ├── commit_message
-│   │   │   │   └── tag_message
-│   │   │   ├── commit-message.txt
-│   │   │   └── tag-message.txt
-│   │   └── config.toml
-│   ├── doc_gen
-│   │   └── config.toml
-│   ├── path_header_scanner
-│   │   └── config.toml
-│   └── reflow
+│   └── doc_gen
 │       └── config.toml
 ├── .docusaurus/ ... (collapsed)
 ├── .gitlab
 │   ├── ci.yml
 │   └── pages.yml
-├── .pnpm-store/ ... (collapsed)
 ├── .yarn/ ... (collapsed)
 ├── blog/ ... (collapsed)
 ├── build/ ... (collapsed)
@@ -272,7 +256,6 @@ Common directories include:
 │   │   │   ├── _category_.json
 │   │   │   ├── cli.mdx
 │   │   │   ├── configuration.mdx
-│   │   │   ├── documentation-status.mdx
 │   │   │   ├── environment.mdx
 │   │   │   ├── exit-errors.mdx
 │   │   │   ├── global-options.mdx
@@ -312,6 +295,10 @@ Common directories include:
 │   │   │   │   ├── overview.mdx
 │   │   │   │   └── workflow.mdx
 │   │   │   ├── structure
+│   │   │   │   ├── analyze
+│   │   │   │   ├── common
+│   │   │   │   ├── generate
+│   │   │   │   ├── print
 │   │   │   │   └── _category_.json
 │   │   │   └── _category_.json
 │   │   ├── developer-guide
@@ -376,6 +363,7 @@ Common directories include:
 │   │   │   ├── diagrams.mdx
 │   │   │   └── workflow.mdx
 │   │   ├── changelog
+│   │   │   ├── diagrams
 │   │   │   └── _category_.json
 │   │   ├── developer-guide
 │   │   │   ├── blackbox
@@ -550,7 +538,11 @@ Common directories include:
 │   │   └── translate-your-site.mdx
 │   ├── badges.md
 │   ├── intro.mdx
-│   ├── PROJECT_STRUCTURE.md
+│   ├── project_structure copy 2.md
+│   ├── project_structure copy 3.md
+│   ├── project_structure copy.md
+│   ├── project_structure.md
+│   ├── PROJECT_STRUCTUREe.md
 │   ├── projects-overview.mdx
 │   ├── TODO.md
 │   ├── TODO_category.md
@@ -567,15 +559,6 @@ Common directories include:
 │       └── code.json
 ├── logs/ ... (collapsed)
 ├── node_modules/ ... (collapsed)
-├── plugins
-│   └── documentation-freshness
-│       ├── index.ts
-│       ├── remoteTags.test.ts
-│       ├── remoteTags.ts
-│       ├── resolver.test.ts
-│       ├── resolver.ts
-│       ├── versioning.test.ts
-│       └── versioning.ts
 ├── scripts
 │   └── add_frontmatter.py
 ├── src
@@ -603,7 +586,6 @@ Common directories include:
 │   │   │   │   ├── Badge
 │   │   │   │   ├── Card
 │   │   │   │   ├── Divider
-│   │   │   │   ├── DocumentationVersionNotice
 │   │   │   │   ├── Grid
 │   │   │   │   ├── Heading
 │   │   │   │   ├── Icon
@@ -702,19 +684,12 @@ Common directories include:
 │   │   ├── docs.css
 │   │   └── docs.old.css
 │   ├── data
-│   │   ├── documentationFreshness.ts
 │   │   └── projects.ts
 │   ├── logs/ ... (collapsed)
 │   ├── pages
-│   │   ├── docs.tsx
 │   │   ├── index.module.css
 │   │   ├── index.tsx
 │   │   └── markdown-page.mdx
-│   ├── theme
-│   │   └── DocItem
-│   │       └── Content
-│   │           ├── index.tsx
-│   │           └── NOTE.md
 │   └── __version__.py
 ├── static
 │   ├── img
@@ -736,7 +711,6 @@ Common directories include:
 ├── .prettierignore
 ├── .prettierrc.json
 ├── .yarnrc.yml
-├── CHANGELOG.md
 ├── docusaurus.config.ts
 ├── LICENSE
 ├── Makefile
@@ -756,7 +730,6 @@ Common directories include:
 | File | Description |
 |------|-------------|
 | `README.md` | Project overview and introduction. |
-| `CHANGELOG.md` | History of notable changes between releases. |
 | `LICENSE` | Project license information. |
 | `SECURITY.md` | Security policy and vulnerability reporting instructions. |
 | `Makefile` | Defines common development, testing, and build commands. |

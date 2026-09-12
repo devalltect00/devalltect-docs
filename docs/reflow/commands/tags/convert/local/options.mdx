@@ -1,0 +1,19 @@
+---
+title: "Options"
+description: "Options: reflow tags convert local"
+sidebar_position: 4
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, options]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Tag Conversion" status="Stable" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Flag / value | Default | Effect |
+| --- | --- | --- |
+| `--to, --format, --target-format` | semver | Choose semver or pep440. |
+| `--yes, -y` | false | Apply the local plan without prompting. |
+| `--repository, --repo, -C` | resolved path | Select the checkout; place before tags. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false | Validate without changing refs. |
+

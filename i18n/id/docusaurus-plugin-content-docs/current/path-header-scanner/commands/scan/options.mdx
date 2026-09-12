@@ -1,0 +1,20 @@
+---
+title: "Opsi"
+description: "Pilih target, basis path, mode penulisan, dan diagnostik pemindaian."
+sidebar_position: 4
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Opsi" description="Nilai CLI mengungguli konfigurasi proyek, kemudian default internal." category="Pemindaian Header" status="Pratinjau Terlebih Dahulu" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Flag / nilai | Default | Efek |
+| --- | --- | --- |
+| `TARGET_DIRECTORY` | `app` dari konfigurasi | Direktori yang dipindai. |
+| `--workdir` | tidak diset | Basis untuk menyelesaikan target relatif. |
+| `--apply` | false | Tulis header yang disisipkan atau diperbarui. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false | Paksa simulasi dan ungguli mode apply. |
+| `--include-target-directory/--exclude-target-directory` | true | Atur apakah nama target tampil dalam header. |
+| `--debug` | false | Aktifkan diagnostik pemindaian. |

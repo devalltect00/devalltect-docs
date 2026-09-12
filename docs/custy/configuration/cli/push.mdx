@@ -17,9 +17,9 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
 
 <PropertyTable
     items={[
-        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Default direct push and run behavior for selecting all configured remotes instead of one primary target."},
-        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push branch changes without pushing tags when true."},
-        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Enable backup-repository synchronization in supported push flows."},
+        {property: "all_remote", type: "Boolean", defaultValue: "true", description: "Select the de-duplicated main and backup groups unless an explicit --remote overrides it."},
+        {property: "skip_tag", type: "Boolean", defaultValue: "false", description: "Push HEAD without creating or pushing a tag in combined workflows when true."},
+        {property: "sync_backup", type: "Boolean", defaultValue: "false", description: "Add configured backups to a main-only selection when branch safety permits. It does not disable backups selected by all_remote or push_to."},
     ]}
 />
 
@@ -34,8 +34,9 @@ sync_backup = false`}
 
 <InfoBox variant="warning" title="CLI push and Git service settings are related, not identical">
 
-This table supplies command arguments. `[tool.custy.git]` defines service-level
-remote groups and `push_to`. Review both before a multi-remote push.
+This table supplies command defaults. `[tool.custy.git]` defines the remote
+names and `push_to`. Selection priority is explicit `--remote`,
+`all_remote = true`, then `push_to`.
 
 </InfoBox>
 

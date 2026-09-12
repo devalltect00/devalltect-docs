@@ -59,7 +59,7 @@ adapter fields are documented below with their current limitation.
         {name: "--version-file", shorthand: "-vf", description: "Override the existing project version file.", example: "--version-file app/__version__.py"},
         {name: "--strategy", description: "Select semver, pep440, date, gitcount, or commitizen.", example: "--strategy semver"},
         {name: "--bump", description: "Request patch, minor, major, or Commitizen auto.", example: "--bump minor"},
-        {name: "--tag", description: "Supply an exact tag such as v1.2.3.", example: "--tag v1.2.3"},
+        {name: "--tag", description: "Supply an exact stable or supported lifecycle tag. A missing v prefix is added automatically.", example: "--tag v1.2.3-rc.1"},
         {name: "--tag-message", description: "Override the annotated tag message.", example: "--tag-message \"Release v1.2.3\""},
         {name: "--pre", description: "Add a pre-release label such as alpha, beta, or rc.", example: "--pre rc"},
         {name: "--post", description: "Mark a post-release version.", example: "--post"},

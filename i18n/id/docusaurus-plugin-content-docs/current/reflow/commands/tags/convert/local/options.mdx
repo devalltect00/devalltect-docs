@@ -1,0 +1,18 @@
+---
+title: "Opsi"
+description: "Opsi: reflow tags convert local"
+sidebar_position: 4
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, options]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Opsi" description="Nilai CLI menggantikan konfigurasi proyek, kemudian nilai bawaan internal." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Flag / nilai | Bawaan | Efek |
+| --- | --- | --- |
+| `--to, --format, --target-format` | semver | Pilih `semver` atau `pep440`. |
+| `--yes, -y` | false | Terapkan rencana lokal tanpa prompt interaktif. |
+| `--repository, --repo, -C` | path yang ditentukan | Pilih checkout; letakkan opsi sebelum `tags`. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false | Validasi tanpa mengubah ref. |

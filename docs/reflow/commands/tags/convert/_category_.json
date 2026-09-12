@@ -1,4 +1,12 @@
 {
-  "label": "Commands Tags Convert",
-  "key": "reflow-command-tags-convert"
+  "label": "Convert",
+  "position": 1,
+  "key": "reflow-convert-en",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/tags/convert/overview"
+  }
 }
+

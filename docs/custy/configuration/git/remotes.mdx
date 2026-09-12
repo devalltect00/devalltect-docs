@@ -17,9 +17,9 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
 
 <PropertyTable
     items={[
-        {property: "default_remote", type: "String", defaultValue: "origin", description: "Service fallback when an operation requests one remote. Some direct push resolver paths supply origin before service resolution."},
-        {property: "main_remotes", type: "String array", defaultValue: "[\"origin\"]", description: "Authoritative destinations returned when push_to is main."},
-        {property: "backup_remotes", type: "String array", defaultValue: "[]", description: "Optional active mirror or archive destinations returned when push_to is backup. Supported but commented out in the generated file."},
+        {property: "default_remote", type: "Remote name string", defaultValue: "origin", description: "Fallback when a main-group push has no main_remotes and no explicit --remote. Use a name reported by git remote, not a URL."},
+        {property: "main_remotes", type: "Remote name array", defaultValue: "[\"origin\"]", description: "Authoritative destinations for group-aware push flows."},
+        {property: "backup_remotes", type: "Remote name array", defaultValue: "[]", description: "Optional mirror or archive destinations for group-aware push flows. Supported but commented out in the generated file."},
     ]}
 />
 
@@ -31,6 +31,14 @@ main_remotes = ["origin", "gitlab"]
 backup_remotes = ["mirror"]`}
 
 </Terminal>
+
+<InfoBox variant="note" title="These values are Git remote names">
+
+`origin`, `gitlab`, and `mirror` are local aliases configured by Git. They are
+different from `tool.custy.changelog.links.repository`, which must be a full
+HTTP(S) browser URL and is used only inside the generated changelog.
+
+</InfoBox>
 
 <InfoBox variant="danger" title="Verify names and URLs before pushing">
 

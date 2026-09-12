@@ -1,0 +1,23 @@
+---
+title: "Syntax"
+description: "Syntax: reflow init"
+sidebar_position: 3
+sidebar_key: reflow-init
+tags: [reflow, syntax]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow init" title="Syntax" description="Syntax: reflow init" category="Initialization" status="Recommended" syntax="reflow init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+<Terminal title="Syntax" language="bash">{`reflow init [OPTIONS]
+reflow [GLOBAL OPTIONS] init [OPTIONS]`}</Terminal>
+
+<InfoBox variant="note" title="Target and global options">
+
+Place `--repository`/`--repo`/`-C`, `--dry-run`, `--debug`, and `--log-level`
+before `init`. Although `--repository-url` is a global option, `reflow init`
+rejects URL targets because initialized files must belong to a persistent local
+directory.
+
+</InfoBox>

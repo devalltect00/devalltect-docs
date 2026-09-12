@@ -1,0 +1,19 @@
+---
+title: "Command Struktur"
+description: "Generate, print, atau analyze repository tree."
+sidebar_position: 0
+sidebar_key: doc-gen-structure
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure" title="Perintah Struktur" description="Pilih alur kerja yang menulis output atau hanya membaca proyek." category="Struktur Proyek" status="Stabil" syntax="doc-gen structure generate|print|analyze" />
+
+| Command | Effect |
+| --- | --- |
+| [generate](./generate/overview) | Menulis satu output Markdown kecuali dry-run. |
+| [print](./print/overview) | Terminal saja; read-only. |
+| [analyze](./analyze/overview) | Analisis saja; read-only. |
+
+<InfoBox variant="tip" title="Dry run">Gunakan sebelum generate untuk memverifikasi target, profile, dan output tanpa write.</InfoBox>

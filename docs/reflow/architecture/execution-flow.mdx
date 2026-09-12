@@ -1,0 +1,20 @@
+---
+title: "Execution Flow"
+description: "Understand responsibilities and execution flow."
+sidebar_position: 2
+sidebar_key: reflow-architecture
+tags: [reflow, architecture, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="Execution Flow" description="Understand responsibilities and execution flow." category="Architecture" status="Reference" syntax="reflow --dry-run -C ../project tags convert local" />
+
+<Terminal language="text">{`CLI input
+  -> configuration resolution
+  -> target and safety validation
+  -> core/service execution
+  -> progress, summary, and actionable error boundary`}</Terminal>
+
+<InfoBox variant="warning" title="Mutation boundary">Local and remote tag replacement are separate commands. Remote pushes, release recovery, and registry publishing are explicit external mutations.</InfoBox>
+

@@ -10,15 +10,22 @@ import {CommandHero, WorkflowTimeline, InfoBox, Section} from "@site/src/compone
 
 ## Ringkasan
 
+Profile memvalidasi repository sebelum me-resolve dan memproses setiap
+destination yang eligible. `custy push` dan `custy run push` yang dijalankan
+secara mandiri tidak menginisialisasi release workflow, menghitung versi baru,
+atau meminta konfirmasi release.
+
 <WorkflowTimeline title="Push Profile" items={[
- {title:"Inspect repository",description:"Resolve HEAD, branch, dan optional tag.",status:"completed"},
- {title:"Resolve main remote",description:"Tentukan destination utama.",status:"completed"},
+ {title:"Validate repository",description:"Jalankan repository dan pre-push validation.",status:"completed"},
+ {title:"Resolve destinations",description:"Terapkan explicit --remote, all_remote, lalu push_to.",status:"completed"},
  {title:"Push HEAD",description:"Kirim current branch/commit.",status:"completed"},
  {title:"Push tag",description:"Kirim requested tag bila tidak dilewati.",status:"optional"},
- {title:"Resolve backup remote",description:"Cari secondary destination bila sync aktif.",status:"optional"},
+ {title:"Apply backup safety",description:"Lewati backup destination untuk non-critical branch yang tidak eligible.",status:"optional"},
+ {title:"Resolve authentication",description:"Gunakan native Git atau SSH lebih dulu, lalu enabled external token source untuk eligible container HTTPS push.",status:"optional"},
  {title:"Synchronize backup",description:"Kirim HEAD dan tag sesuai resolved behavior.",status:"optional"},
  {title:"Report per destination",description:"Tampilkan sukses, skip, atau failure.",status:"completed"},
 ]} />
 
 <InfoBox variant="warning" title="Fail-Fast Behavior">Required main-remote failure menghentikan profile. Periksa destination mana yang sudah menerima perubahan sebelum retry.</InfoBox>
+<InfoBox variant="info" title="Non-Interactive Safety">Recommended credential policy mencegah Git menunggu input tanpa batas ketika terminal tidak tersedia. Sediakan configured file atau environment source sebelum non-interactive container push.</InfoBox>
 <Section title="Retry Safety">Jangan rerun secara buta setelah partial success. Verifikasi branch dan tag pada setiap remote secara terpisah.</Section>

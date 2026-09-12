@@ -1,0 +1,23 @@
+---
+title: "Sintaks"
+description: "Sintaks reflow init."
+sidebar_position: 3
+sidebar_key: reflow-init
+tags: [reflow, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow init" title="Sintaks" description="Pola pemanggilan command." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+<Terminal language="bash">{`reflow init [OPTIONS]
+reflow --dry-run init`}</Terminal>
+
+<InfoBox variant="note" title="Target dan opsi global">
+
+Letakkan `--repository`/`--repo`/`-C`, `--dry-run`, `--debug`, dan `--log-level`
+sebelum `init`. Walaupun `--repository-url` adalah opsi global, `reflow init`
+menolak target URL karena file hasil inisialisasi harus dimiliki direktori lokal
+persisten.
+
+</InfoBox>

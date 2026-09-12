@@ -1,0 +1,18 @@
+---
+title: "Requirements"
+description: "A readable target directory. A writable output parent for live generation. An output path that does not identify unrelated documentation."
+sidebar_position: 2
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Requirements" description="Before you run it" category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- A readable target directory.
+- A writable output parent for live generation.
+- An output path that does not identify unrelated documentation.
+
+<InfoBox variant="tip" title="Dry run">This is the only structure command that writes output. --dry-run renders in memory but creates neither the output directory nor file.</InfoBox>
+

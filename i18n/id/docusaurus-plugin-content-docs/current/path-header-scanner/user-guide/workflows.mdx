@@ -1,0 +1,20 @@
+---
+title: "Alur Kerja Praktis"
+description: "Pilih alur kerja berdasarkan target dan efek sampingnya."
+sidebar_position: 2
+sidebar_key: path-header-scanner-user-guide
+tags: [path-header-scanner, workflows]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Alur Kerja Praktis" description="Pilih alur kerja berdasarkan target dan efek sampingnya." category="Panduan Pengguna" status="Praktis" syntax="path-header-scanner scan app --dry-run" />
+
+| Perintah | Efek |
+| --- | --- |
+| `path-header-scanner init` | Buat konfigurasi proyek. |
+| `path-header-scanner scan TARGET` | Temukan dan pratinjau perubahan header. |
+| `path-header-scanner scan TARGET --apply` | Terapkan perubahan yang sudah ditinjau. |
+| `path-header-scanner scan TARGET --dry-run` | Paksa simulasi tanpa penulisan. |
+
+<InfoBox variant="tip" title="Pratinjau">Scan hanya menampilkan pratinjau secara default. `--apply` efektif mengaktifkan penulisan, sedangkan `--dry-run` mengungguli apply dari CLI maupun konfigurasi.</InfoBox>

@@ -1,0 +1,17 @@
+---
+title: "Pemecahan Masalah"
+description: "Pemecahan Masalah: doc-gen structure print"
+sidebar_position: 9
+sidebar_key: doc-gen-structure-print-troubleshooting
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Pemecahan Masalah" description="Diagnosis masalah saat menampilkan struktur proyek." category="Struktur Proyek" status="Hanya Baca" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Gejala | Kemungkinan penyebab | Solusi |
+| --- | --- | --- |
+| Output terlalu besar. | Kedalaman, visibilitas file, atau profil terlalu luas. | Gunakan `--max-depth`, `--hide-files`, atau profil `minimal`. |
+| Target tidak ditemukan. | Path target salah. | Verifikasi path tersebut dan coba lagi. |
+| File yang diharapkan tidak muncul. | Aturan pengabaian atau peringkasan menyaringnya. | Tinjau konfigurasi yang aktif. |

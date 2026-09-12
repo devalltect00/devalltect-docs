@@ -1,0 +1,22 @@
+---
+title: "Output"
+description: "Output: reflow init"
+sidebar_position: 6
+sidebar_key: reflow-init
+tags: [reflow, output]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow init" title="Output" description="Output" category="Initialization" status="Recommended" syntax="reflow init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Resolved target and initialization mode.
+- Created, skipped, or planned resources.
+- Actionable path and permission errors.
+
+<Terminal title="Output" language="text">{`Target     : <resolved repository>
+Operation  : reflow init
+Dry run    : true/false
+Successful : <count>
+Failed     : <count>`}</Terminal>
+

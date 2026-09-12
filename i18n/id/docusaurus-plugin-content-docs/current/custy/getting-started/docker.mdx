@@ -32,7 +32,7 @@ import {
     title="Jalankan Custy dengan Docker"
     description="Build Custy secara lokal dan jalankan CLI mandirinya terhadap workspace proyek yang di-mount secara terencana."
     category="Memulai"
-    status="Build dari Source"
+    status="Image Rilis atau Build dari Source"
     syntax="docker [build|run|compose] [OPTIONS]"
     tags={[
         "image lokal",
@@ -42,6 +42,7 @@ import {
     links={[
         {label: "Persyaratan", href: "#requirements"},
         {label: "Build Image", href: "#build-the-production-image"},
+        {label: "Image Terpublikasi", href: "#pull-a-published-production-image"},
         {label: "Jalankan pada Proyek", href: "#run-custy-on-a-project"},
         {label: "Helper Make", href: "#optional-makefile-helpers"},
     ]}
@@ -50,32 +51,29 @@ import {
 <CommandMetadata
     items={[
         {label: "Base Image", value: "Python 3.14 slim", icon: "package"},
-        {label: "Tool yang Disertakan", value: "pip, Git, dan Make", icon: "requirement"},
+        {label: "Tool yang Disertakan", value: "pip, Git, Make, Micro, Nano, dan Vim", icon: "requirement"},
         {label: "Workspace Container", value: "/workspace", icon: "directory"},
-        {label: "Sumber yang Disarankan", value: "Build image lokal", icon: "docker"},
+        {label: "Sumber yang Disarankan", value: "Tag rilis GHCR eksak atau build lokal", icon: "docker"},
     ]}
 />
 
 ## Ringkasan
 
 Dockerfile multi-stage Custy menyediakan target image `development` dan
-`production`. Keduanya menyertakan Python 3.14, pip, Git, dan Make. Target
-production menginstal package runtime, sedangkan target development menginstal
+`production`. Keduanya menyertakan Python 3.14, pip, Git, Make, serta editor
+terminal Micro, Nano, Vim, dan Vi. Target production menginstal package runtime, sedangkan target development menginstal
 Custy dalam mode editable beserta dependensi development.
 
 Cara ini menghilangkan kebutuhan untuk menginstal Python atau Git di host.
 Docker tetap harus menerima direktori proyek, metadata repositori, identitas,
 dan kredensial yang diperlukan oleh operasi Custy yang dipilih.
 
-<InfoBox
-    variant="info"
-    title="Gunakan image Custy yang di-build secara lokal"
->
+<InfoBox variant="info" title="Gunakan rilis eksak untuk otomasi">
 
-Cara yang didukung oleh dokumentasi saat ini adalah melakukan build dari
-Dockerfile milik Custy. Jangan menggantinya dengan nama image GHCR kecuali
-rilis Custy yang dipilih secara eksplisit memublikasikan dan mendokumentasikan
-image tersebut.
+Rilis yang dipublikasikan tersedia melalui GHCR. Gunakan tag eksak seperti
+`v2.1.0` untuk otomasi yang dapat direproduksi. Alias bergerak seperti `v2.1`,
+`v2`, dan `latest` praktis untuk upgrade terkontrol, sedangkan build source
+lokal sesuai untuk memvalidasi perubahan yang belum dirilis.
 
 </InfoBox>
 
@@ -125,7 +123,7 @@ image tersebut.
     title="Python dan Git tidak wajib di host"
 >
 
-Image sudah berisi Python 3.14, pip, Git, dan Make. Git di host tetap berguna
+Image sudah berisi Python 3.14, pip, Git, Make, Micro, Nano, Vim, dan Vi. Git di host tetap berguna
 untuk memeriksa proyek sebelum dan sesudah eksekusi, tetapi proses Custy di
 dalam container menggunakan executable Git dari image.
 
@@ -145,7 +143,7 @@ dalam container menggunakan executable Git dari image.
         {
             title: "Base Bersama",
             icon: <Icon name="package" />,
-            children: "Python 3.14 slim, pip, Git, Make, direktori kerja /workspace, dan source tree Custy.",
+            children: "Python 3.14 slim, pip, Git, Make, Micro, Nano, Vim, Vi, direktori kerja /workspace, dan source tree Custy.",
         },
         {
             title: "Production",
@@ -155,7 +153,7 @@ dalam container menggunakan executable Git dari image.
         {
             title: "Development",
             icon: <Icon name="command" />,
-            children: "Instalasi editable dengan grup dependensi development opsional, tetapi tanpa editor grafis bawaan.",
+            children: "Instalasi editable dengan grup dependensi development opsional dan terminal editor interaktif yang sama.",
         },
         {
             title: "Mount Proyek",
@@ -173,19 +171,66 @@ dalam container menggunakan executable Git dari image.
     title="Build Image Production"
 >
 
-Dari root source Custy, build target production dan verifikasi entrypoint
-CLI-nya.
+Dari root source Custy, helper Make merupakan cara build lokal yang disarankan.
+Helper ini memperoleh versi package yang dinormalisasi dari Git sebelum `.git`
+dikecualikan dari konteks Docker, sehingga `custy --version` di dalam image
+sesuai dengan checkpoint source.
 
 <Terminal title="Build dan verifikasi" language="bash">
 
-{`docker build --target production -t custy-prod:latest .
+{`make c-build-prod
 docker run --rm custy-prod:latest --version
 docker run --rm custy-prod:latest --help`}
 
 </Terminal>
 
+Untuk build langsung, berikan versi package PEP 440 yang dituju secara
+eksplisit. Build argument ini mengontrol metadata package dan banner Custy; nilai
+tersebut tidak mengubah versi proyek target yang di-mount.
+
+<Terminal title="Build production langsung" language="bash">
+
+{`docker build --build-arg CUSTY_BUILD_VERSION=2.1.0 --target production -t custy-prod:latest .`}
+
+</Terminal>
+
 Gunakan `--target development -t custy-dev:latest` ketika menguji atau
 mengembangkan Custy itu sendiri.
+
+</Section>
+
+---
+
+<Section
+    title="Pull Image Production yang Dipublikasikan"
+>
+
+Rilis stabil memublikasikan empat tag GHCR yang terkoordinasi. Semua alias versi
+mempertahankan prefiks `v` yang digunakan Custy.
+
+| Bentuk tag | Contoh | Perilaku |
+| --- | --- | --- |
+| Rilis eksak | `v2.1.0` | Memilih rilis immutable dan disarankan untuk CI atau penggunaan yang dapat direproduksi. |
+| Alias minor | `v2.1` | Bergerak ke patch stabil terbaru dalam lini `2.1`. |
+| Alias major | `v2` | Bergerak ke rilis stabil terbaru dalam lini `2`. |
+| Alias latest | `latest` | Bergerak ke rilis stabil Custy terbaru. |
+
+<Terminal title="Pull image Custy yang dipublikasikan" language="bash">
+
+{`docker pull ghcr.io/devalltect00/custy:v2.1.0
+docker pull ghcr.io/devalltect00/custy:v2.1
+docker pull ghcr.io/devalltect00/custy:v2
+docker pull ghcr.io/devalltect00/custy:latest`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Prerelease tidak menggeser alias stabil">
+
+Prerelease seperti `v2.2.0-rc.1` hanya memublikasikan tag eksaknya. Prerelease
+tidak pernah memperbarui `v2.2`, `v2`, atau `latest`, sehingga pengujian opt-in
+tidak dapat menggantikan image stabil secara diam-diam.
+
+</InfoBox>
 
 </Section>
 
@@ -245,18 +290,39 @@ tinjau volume mount sebelum eksekusi normal.
 </InfoBox>
 
 <InfoBox
-    variant="warning"
-    title="Profil yang memerlukan editor membutuhkan image khusus"
+    variant="tip"
+    title="Profil interaktif menggunakan configured container editor"
 >
 
-Image standar tidak menginstal launcher command line VS Code atau Notepad
-Windows, sedangkan profil Commit, Tag, Dev, Release, dan Full menyertakan
-langkah editor interaktif. Untuk saat ini, gunakan profil tersebut secara
-native, atau perluas dan uji image secara sengaja dengan editor yang didukung
-sebelum eksekusi container normal. Mode dry run tetap dapat mempratinjau
-langkah editor tanpa membukanya.
+Image production menyertakan Micro, Nano, Vim, dan Vi untuk profil Commit, Tag,
+Dev, Release, dan Full. Micro menjadi default container candidate. Pertahankan
+`-it` agar editor memperoleh terminal interaktif. Jika diaktifkan, Custy
+memeriksa `VISUAL` dan `EDITOR` lebih dahulu, lalu menggunakan urutan
+`tool.custy.editor.candidates.container`. Lihat
+[Editor configuration](../configuration/editor) untuk supported identifiers,
+fallback behavior, dan container keybindings. Dry-run melaporkan editor step
+tanpa menjalankan process.
 
 </InfoBox>
+
+<InfoBox variant="warning" title="Mounted Git Hooks Tetap Menjadi Project Policy">
+
+Production image menyertakan `cz` dan `pre-commit`, tetapi project-specific Git
+hooks tetap berasal dari mounted repository. Dengan recommended
+`[tool.custy.git.hooks] mode = "auto"`, project tanpa hooks menggunakan normal
+Git, compatible hooks berjalan secara native, dan recognized Windows-generated
+pre-commit wrapper dapat menjalankan configured checks secara langsung di
+Linux. Custy hanya melanjutkan setelah checks tersebut lolos; unknown custom
+hooks tidak pernah dilewati. Lihat
+[Git Commit Hooks](../configuration/git/hooks).
+
+</InfoBox>
+
+<Terminal title="Profil release interaktif" language="powershell">
+
+{`docker run --rm -it -v "\${PWD}:/workspace" -w /workspace custy-prod:latest run release`}
+
+</Terminal>
 
 </Section>
 
@@ -275,6 +341,10 @@ manager ke dalam container.
   tag.
 - Sediakan SSH key, token, atau mekanisme kredensial Git lain yang didukung
   hanya ketika push diperlukan.
+- Pertahankan normal Git dan SSH authentication lebih dulu. Untuk supported
+  GitHub atau GitLab HTTPS remote, Custy dapat membaca token secara opsional
+  dari protected file yang di-mount ke `/run/secrets/custy` atau named
+  environment variable.
 - Tinjau setiap mount kredensial dan konfigurasi dengan cermat; jangan pernah
   memasukkan secret ke dalam image.
 - Perintah lokal seperti inisialisasi tidak memerlukan kredensial remote.
@@ -289,6 +359,25 @@ kredensial remote yang valid atau bahwa tujuan tetap sama. Verifikasi
 autentikasi dan URL remote secara terpisah sebelum publikasi.
 
 </InfoBox>
+
+<InfoBox variant="tip" title="Optional Custy credential fallback">
+
+Jalankan `custy configure credentials` di target project untuk mengatur policy.
+Rekomendasi `container_only = true` tidak mengubah local credential-manager
+session. Mount external credential directory secara read-only atau berikan
+approved token environment variable ke Docker. Lihat
+[Configure Credentials](../commands/configure/credentials/overview).
+
+</InfoBox>
+
+<Terminal title="Protected token-file mount" language="powershell">
+
+{`docker run --rm -it \
+  -v "\${PWD}:/workspace" \
+  -v "$env:LOCALAPPDATA/Custy/credentials:/run/secrets/custy:ro" \
+  -w /workspace custy-prod:latest push`}
+
+</Terminal>
 
 </Section>
 
@@ -339,19 +428,30 @@ make d-build-prod
 make d-init
 
 # Gunakan service Docker Compose
-make c-build-prod`}
+make c-build-prod
+
+# Buat dan periksa external credentials
+make d-credentials-set-github
+make d-credentials-status
+make d-credentials-test CUSTY_CREDENTIALS_REMOTE=origin
+
+# Aktifkan read-only credential mount untuk push
+make d-run-push CUSTY_CREDENTIALS_MOUNT=true`}
 
 </Terminal>
 
-Makefile juga menentukan wrapper untuk profil pipeline. Keberadaan wrapper
-tersebut tidak menghilangkan keterbatasan editor pada image standar atau
-menjamin bahwa nama helper lama cocok dengan CLI publik saat ini. Bandingkan
-target dengan referensi perintah terbaru sebelum menggunakannya. Utamakan
-bentuk `docker run` atau `docker compose run` yang didokumentasikan secara
-langsung jika perilakunya belum pasti. Secara khusus, gunakan pemanggilan
-Compose eksplisit yang didokumentasikan di atas sebagai pengganti wrapper
-`c-init` saat ini, karena kelanjutan perintahnya masih perlu diperbaiki di
-repositori Custy.
+Default `CUSTY_CREDENTIALS_MOUNT` adalah `false`, sehingga native Git, SSH, dan
+manual interactive authentication tetap dipertahankan. Mengaturnya menjadi
+`true` menambahkan external credential directory ke runtime target sebagai
+read-only volume. Helper credential `set` selalu memakai writable mount,
+sedangkan helper `status` dan `test` selalu memakai read-only access. Interface
+yang sama tersedia melalui `c-credentials-*` / `c-run-push` untuk Compose dan
+`r-custy-credentials-*` / `r-custy-run-push` untuk published image.
+
+Override `CUSTY_CREDENTIALS_HOST_DIR` jika file tidak berada di platform
+default directory. Make interface menerima directory path, bukan token value.
+Lihat [Credential Examples](../commands/configure/credentials/examples) untuk
+behavior matrix dan platform default yang lengkap.
 
 <InfoBox
     variant="warning"

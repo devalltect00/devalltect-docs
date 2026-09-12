@@ -1,0 +1,58 @@
+---
+title: "Konsep Inti"
+description: "Pahami path header, strategi bahasa, mode preview, mode apply, dan jaminan dry-run."
+sidebar_position: 1
+sidebar_key: path-header-scanner-concepts
+tags: [path-header-scanner, konsep, keamanan]
+---
+
+import {CommandHero, FeatureGrid, Icon, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="path-header-scanner scan"
+    title="Konsep Inti"
+    description="Pahami apa yang divalidasi pemindai dan di mana batas penulisannya dimulai."
+    category="Konsep"
+    status="Preview Terlebih Dahulu"
+    syntax="temukan -> validasi -> preview -> terapkan"
+    links={[
+        {label: "Path Header", href: "./path-headers"},
+        {label: "Keamanan dan Dry-run", href: "./safety-and-dry-run"},
+        {label: "Perintah Scan", href: "../commands/scan/overview"},
+    ]}
+/>
+
+<Section title="Dua konsep yang perlu dipahami terlebih dahulu">
+
+<FeatureGrid
+    items={[
+        {
+            title: "Path header sesuai bahasa",
+            icon: <Icon name="file" />,
+            children: "Setiap ekstensi yang didukung memakai strategi yang mengenali dan merender sintaks komentar yang valid sambil mempertahankan baris awal khusus.",
+        },
+        {
+            title: "Mutasi eksplisit",
+            icon: <Icon name="security" />,
+            children: "Pemindaian biasa hanya menampilkan preview. Hanya mode --apply efektif yang menulis header, dan --dry-run selalu menonaktifkan penulisan tersebut.",
+        },
+    ]}
+/>
+
+</Section>
+
+<InfoBox variant="note" title="Penemuan tetap dijalankan">
+
+Preview dan dry-run tetap menyelesaikan path, menemukan file, dan memvalidasi
+header agar hasilnya berguna. Perbedaannya dengan mode apply berada pada batas
+penyimpanan.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "Path Header", href: "./path-headers", description: "Tinjau sintaks yang didukung dan pemeliharaan baris awal khusus."},
+        {title: "Keamanan dan Dry-run", href: "./safety-and-dry-run", description: "Bandingkan preview, apply, dan simulasi eksplisit."},
+        {title: "Alur Kerja Praktis", href: "../user-guide/workflows", description: "Pilih perintah berdasarkan efek yang diinginkan."},
+    ]}
+/>

@@ -1,0 +1,30 @@
+---
+title: "Contoh"
+description: "Contoh: reflow tags convert remote"
+sidebar_position: 7
+sidebar_key: reflow-tags-convert-remote
+tags: [reflow, examples]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Contoh" description="Dry-run menjalankan discovery dan validation tanpa mutasi persisten." category="Konversi Tag" status="Mutasi Remote Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview URL
+
+<Terminal language="bash">{`reflow --dry-run --repository-url https://github.com/acme/project.git tags convert remote`}</Terminal>
+
+**Hasil:** Inspects without push.
+
+### 2. Convert
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git tags convert remote --yes`}</Terminal>
+
+**Hasil:** Atomically replaces refs.
+
+### 3. PEP 440
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git tags convert remote --to pep440 --yes`}</Terminal>
+
+**Hasil:** Uses PEP 440 destinations.
+

@@ -1,0 +1,34 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: reflow tags convert local"
+sidebar_position: 5
+sidebar_key: reflow-tags-convert-local
+tags: [reflow, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert local" title="Alur Kerja" description="Mengganti nama tag pada checkout lokal persisten sambil mempertahankan tipe dan metadata annotated jika memungkinkan." category="Konversi Tag" status="Stabil" syntax="reflow tags convert local [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve checkout dan baca objek tag.
+
+### 2. Tahap 2
+
+Susun rencana penggantian lengkap.
+
+### 3. Tahap 3
+
+Tolak URL, collision, signed tag, dan destination tidak valid.
+
+### 4. Tahap 4
+
+Tampilkan target dan konfirmasi.
+
+### 5. Tahap 5
+
+Buat destination lalu hapus source ref lokal.
+
+<InfoBox variant="warning" title="Batas keamanan">Hanya mengubah ref lokal, menolak URL, dan tidak melakukan push.</InfoBox>
+

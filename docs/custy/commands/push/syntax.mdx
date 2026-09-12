@@ -1,6 +1,6 @@
 ---
 title: "Syntax"
-description: "Supported custy push command forms and current limitations."
+description: "Supported custy push command forms and remote-selection behavior."
 sidebar_position: 3
 sidebar_key: custy-push-syntax
 tags: [push, syntax, cli]
@@ -17,9 +17,9 @@ import {
 <CommandHero
     command="custy push"
     title="Command Syntax"
-    description="Use supported push forms while accounting for current remote-selection adapter limitations."
+    description="Use explicit, grouped, backup-aware, and dry-run push forms."
     category="Git Operations"
-    status="Limited"
+    status="Stable"
     syntax="custy push [OPTIONS]"
     tags={[
         "syntax",
@@ -36,7 +36,7 @@ import {
 ## Overview
 
 Use root dry-run before allowing an external operation. The direct and Run
-forms select the same profile, but current adapter limitations still apply.
+forms select the same profile and use the same remote-selection rules.
 
 ---
 
@@ -47,6 +47,8 @@ forms select the same profile, but current adapter limitations still apply.
 <CommandSyntax
     examples={[
         {title: "Run the configured push profile", command: "custy push", description: "Validate and synchronize through the resolved workflow remotes."},
+        {title: "Select exactly one remote", command: "custy push --remote upstream", description: "Override configured groups and push only to upstream."},
+        {title: "Select all configured remotes", command: "custy push --all-remote", description: "Select the de-duplicated main and backup groups, subject to branch safety."},
         {title: "Request backup synchronization", command: "custy push --sync-backup", description: "Also resolve and push eligible backup remotes."},
         {title: "Push a selected tag with HEAD", command: "custy push --tag v1.2.3", description: "Supply the local tag that should be pushed after HEAD."},
         {title: "Preview external operations", command: "custy --dry-run push --tag v1.2.3", description: "Report intended remote and tag operations without normal pushes."},
@@ -61,17 +63,16 @@ forms select the same profile, but current adapter limitations still apply.
     title="Direct Command and Run Profile"
 >
 
-`custy run push` selects the same public push profile but does not expose the
-direct command's full remote and tag option surface.
+`custy run push` selects the same public push profile and exposes the same
+remote and tag option surface through the Run command.
 
 <InfoBox
-    variant="warning"
-    title="Remote selection limitation"
+    variant="info"
+    title="Selection precedence"
 >
 
-The current adapter does not reliably propagate `--remote`, `--all-remote`, or
-`--skip-tag` into the workflow engine. Until Custy is corrected, do not use those
-flags as proof of which remotes or tags will be affected.
+An explicit `--remote` overrides `--all-remote`, `push_to`, and configured
+groups. Without an explicit remote, `--all-remote` overrides `push_to`.
 
 </InfoBox>
 

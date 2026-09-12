@@ -1,0 +1,20 @@
+---
+title: "Requirements"
+description: "Authenticated GitHub release discovery. A push-capable remote. A tag-triggered workflow safe to retrigger."
+sidebar_position: 2
+sidebar_key: reflow-releases-recover
+tags: [reflow, requirements]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Requirements" description="Before you run it" category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+## Before you run it
+
+- Authenticated GitHub release discovery.
+- A push-capable remote.
+- A tag-triggered workflow safe to retrigger.
+
+<InfoBox variant="tip" title="Dry run">Dry-run performs discovery and validation without persistent mutation.</InfoBox>
+

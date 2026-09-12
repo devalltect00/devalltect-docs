@@ -138,7 +138,7 @@ nested packaged examples without replacing existing example files.
         {
             title: "Configuration",
             icon: <Icon name="configuration" />,
-            children: <>Review <code>.config/custy/config.toml</code> before relying on project-specific values.</>,
+            children: <>Review <code>.config/custy/config.toml</code>. Set the changelog repository browser URL only if comparison links are needed, and verify every configured Git remote name.</>,
         },
         {
             title: "Message Templates",
@@ -157,6 +157,22 @@ nested packaged examples without replacing existing example files.
         },
     ]}
 />
+
+<Terminal title="Review repository links and remotes" language="bash">
+
+{`git remote -v
+# Edit .config/custy/config.toml, then validate it.
+custy validate`}
+
+</Terminal>
+
+<InfoBox variant="note" title="A repository URL is not a remote name">
+
+`tool.custy.changelog.links.repository` is an optional HTTP(S) browser URL for
+links in `CHANGELOG.md`. `default_remote`, `main_remotes`, and
+`backup_remotes` contain Git remote names such as `origin` or `mirror`.
+
+</InfoBox>
 
 <InfoBox
     variant="warning"
@@ -245,6 +261,7 @@ destination described in the Dev profile documentation.
 
 <RelatedCommands
     commands={[
+        {title: "Installation", href: "./installation", description: "Choose private GitLab, source, artifact, Git, or Docker installation."},
         {title: "First Workflow", href: "./first-workflow", description: "Understand the Dev profile before normal execution."},
         {title: "custy init", href: "../commands/init/overview", description: "Review initialization modes and generated files."},
         {title: "custy validate", href: "../commands/validate/overview", description: "Understand individual readiness checks."},

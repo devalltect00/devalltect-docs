@@ -1,0 +1,77 @@
+---
+title: "Overview"
+description: "Understand Doc Gen's contributor workflow, output boundaries, and quality tools."
+sidebar_position: 1
+sidebar_key: doc-gen-developer-guide
+tags: [doc-gen, developer guide, contributing]
+keywords: [Doc Gen development, Doc Gen contributor guide, Doc Gen testing]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="make check"
+    title="Doc Gen Developer Guide"
+    description="Extend project-tree analysis and Markdown generation while preserving deterministic, narrow output behavior."
+    category="Development"
+    status="Contributor Guide"
+    syntax="setup -> focused change -> widening validation"
+    tags={["Python", "pytest", "pre-commit", "output safety"]}
+    links={[
+        {label: "Setup", href: "./development-setup"},
+        {label: "Testing", href: "./testing"},
+        {label: "Contributing", href: "./contributing"},
+    ]}
+/>
+
+## Contributor priorities
+
+`structure print` and `structure analyze` are read-only. `structure generate`
+may write only its resolved output document, while `--dry-run` may scan and
+render but must not create directories or files.
+
+<FeatureGrid
+    title="Development Boundaries"
+    items={[
+        {title: "CLI", icon: <Icon name="terminal" />, children: "Keep parsing, option resolution, errors, and presentation under app/doc_gen/cli."},
+        {title: "Structure Core", icon: <Icon name="architecture" />, children: "Keep scanning, profiles, smart mode, metadata, analysis, and generation under app/doc_gen/core/structure."},
+        {title: "Render and Write", icon: <Icon name="file" />, children: "Keep Markdown rendering separate from persistence so dry-run cannot reach the writer."},
+        {title: "Safety", icon: <Icon name="security" />, children: "Use temporary projects and assert that only the selected output can change."},
+    ]}
+/>
+
+---
+
+<Section title="Quality workflow">
+
+Install Doc Gen with its contributor dependencies, enable the repository hook,
+run the smallest affected test, and finish with `make check` plus applicable
+generation and dry-run regression coverage.
+
+<InfoBox variant="note" title="Pre-commit is one quality layer">
+
+Hooks handle Ruff, formatting, whitespace, and newline policy. They do not
+replace output-boundary tests, complete pytest coverage, or applicable Docker,
+Compose, package, and documentation checks.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {title: "Development Setup", href: "./development-setup", description: "Install Doc Gen and its contributor tools."},
+        {title: "Testing", href: "./testing", description: "Validate generation and read-only behavior."},
+        {title: "Contributing", href: "./contributing", description: "Prepare a focused Doc Gen change."},
+        {title: "Architecture", href: "../architecture/overview", description: "Trace scanning, rendering, and persistence responsibilities."},
+    ]}
+/>

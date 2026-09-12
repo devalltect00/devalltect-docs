@@ -24,7 +24,7 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
         {property: "no_debug", type: "Boolean", defaultValue: "true", description: "Inverse debug default yang digunakan global dan experimental workflow resolution."},
         {property: "auto_stage", type: "Boolean", defaultValue: "false", description: "Stage files secara otomatis dalam supported commit, validate, dan run flows."},
         {property: "stage_mode", type: "all | update | none | manual", defaultValue: "all", description: "Pilih semua changes, tracked updates saja, tanpa automatic staging, atau explicit manual staging."},
-        {property: "check_cz", type: "Boolean", defaultValue: "false", description: "Aktifkan supported Commitizen readiness checks dalam commit, validate, dan run flows."},
+        {property: "check_cz", type: "Boolean", defaultValue: "false", description: "Backward-compatible strict override. Jika true, wajibkan Commitizen configuration, executable cz, dan final message validation."},
     ]}
 />
 
@@ -68,6 +68,14 @@ log file.
 Biarkan force settings nonaktif dalam shared configuration. Kombinasi
 `auto_stage = true` dan `stage_mode = "all"` dapat menyertakan tracked dan
 untracked changes.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Gunakan Provider Table untuk Proyek Baru">
+
+Konfigurasikan [`tool.custy.commit.validation`](../commit-validation) untuk auto
+discovery dan explicit fallback behavior. Pertahankan `check_cz` hanya ketika
+older configuration atau CLI workflow memerlukan strict boolean override.
 
 </InfoBox>
 

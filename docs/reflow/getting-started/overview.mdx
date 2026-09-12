@@ -1,0 +1,103 @@
+---
+title: "Overview"
+description: "Install Reflow, select the intended repository, initialize local configuration, and preview the first workflow safely."
+sidebar_position: 1
+sidebar_key: reflow-getting-started
+tags: [reflow, getting-started]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="reflow"
+    title="Getting Started"
+    description="Install Reflow, select the intended repository, initialize local configuration, and preview the first workflow safely."
+    category="Onboarding"
+    status="Recommended"
+    syntax="reflow --dry-run -C ../project tags convert local"
+    tags={["installation", "repository target", "first dry-run"]}
+    links={[
+        {label: "First Workflow", href: "./first-workflow"},
+        {label: "Commands", href: "../commands/overview"},
+        {label: "Targeting", href: "../concepts/repository-targeting"},
+        {label: "Configuration", href: "../configuration/overview"},
+    ]}
+/>
+
+<Section title="Before You Begin">
+
+<FeatureGrid
+    items={[
+        {
+            title: "Python 3.14+",
+            icon: <Icon name="python" />,
+            children: <>Use a dedicated virtual environment and a reviewed source, release artifact, or authorized private GitLab package.</>,
+        },
+        {
+            title: "Git",
+            icon: <Icon name="git" />,
+            children: <>Local workflows need an existing checkout; URL workflows also need credentials appropriate to the selected remote operation.</>,
+        },
+        {
+            title: "Optional External Tools",
+            icon: <Icon name="dependency" />,
+            children: <>Release recovery needs the authenticated GitHub CLI. Docker publishing needs Docker and registry authentication.</>,
+        },
+        {
+            title: "A Deliberate Target",
+            icon: <Icon name="directory" />,
+            children: <>Know whether the command should use the current directory, an explicit local path, or a Git URL.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+<WorkflowTimeline
+    title="Recommended Onboarding Path"
+    items={[
+        {title: "Install Reflow", description: "Install from a reviewed source checkout, trusted artifact, or the private GitLab PyPI registry.", status: "current"},
+        {title: "Choose the repository", description: "Use the current checkout, -C/--repository, or --repository-url as the command allows.", status: "pending"},
+        {title: "Initialize local configuration", description: "Run reflow init only against a local target and review .config/reflow/config.toml.", status: "pending"},
+        {title: "Preview the workflow", description: "Place global --dry-run before the command path and inspect the displayed target and plan.", status: "pending"},
+        {title: "Execute deliberately", description: "Remove --dry-run only after the documented mutation scope matches your intent.", status: "pending"},
+    ]}
+/>
+
+<InfoBox variant="info" title="A URL does not require a permanent clone">
+
+Supported operational commands materialize a repository URL in a managed
+temporary workspace. `reflow init` and `reflow tags convert local` require a
+persistent local checkout and reject URL targets.
+
+</InfoBox>
+
+<Terminal title="Safe onboarding sequence" language="bash">
+
+{`# Prepare project-owned configuration in a local checkout
+reflow -C /path/to/project init
+
+# Review the generated configuration and the Git state
+git -C /path/to/project status --short
+
+# Preview local tag conversion without changing refs
+reflow --dry-run -C /path/to/project tags convert local --to semver`}
+
+</Terminal>
+
+<RelatedCommands
+    commands={[
+        {title: "Installation and First Workflow", href: "./first-workflow", description: "Follow the complete first-run sequence."},
+        {title: "Repository Targeting", href: "../concepts/repository-targeting", description: "Understand target precedence and path/URL exclusivity."},
+        {title: "Safety and Dry-run", href: "../concepts/safety-and-dry-run", description: "Understand the preview boundary before live execution."},
+    ]}
+/>

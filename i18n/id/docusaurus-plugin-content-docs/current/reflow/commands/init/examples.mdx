@@ -1,0 +1,36 @@
+---
+title: "Contoh"
+description: "Contoh reflow init."
+sidebar_position: 7
+sidebar_key: reflow-init
+tags: [reflow, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow init" title="Contoh" description="Mulai dengan dry-run." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Pratinjau
+
+<Terminal language="bash">{`reflow --dry-run init`}</Terminal>
+
+**Hasil:** Hanya menampilkan rencana.
+
+### 2. Default
+
+<Terminal language="bash">{`reflow init`}</Terminal>
+
+**Hasil:** Membuat resource.
+
+### 3. Configuration saja
+
+<Terminal language="bash">{`reflow init --mode config`}</Terminal>
+
+**Hasil:** Membuat configuration.
+
+### 4. Force
+
+<Terminal language="bash">{`reflow init --mode all --force`}</Terminal>
+
+**Hasil:** Mengganti resource terpilih.
+

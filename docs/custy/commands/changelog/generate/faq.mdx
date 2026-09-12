@@ -11,6 +11,7 @@ import {
     CommandHero,
     InfoBox,
     Section,
+    Terminal,
 } from "@site/src/components/docs";
 
 <CommandHero
@@ -98,6 +99,32 @@ excluded depending on configuration.
 
 No. It changes the force-generation decision; collection, parsing, grouping,
 release, link, and rendering settings still apply.
+
+</Section>
+
+---
+
+## How Do I Generate a Changelog from Git History Only?
+
+<Section>
+
+In your project's `.config/custy/config.toml`, set `enabled = false` in the
+existing pending-commit section:
+
+<Terminal title="Exclude the pending message" language="toml">
+
+{`[tool.custy.changelog.pending_commit]
+enabled = false`}
+
+</Terminal>
+
+Then run `custy changelog generate` as usual. You do not need to delete or empty
+`commit-message.txt`; it remains available for commit operations. Messages
+already committed to Git can still appear through history, subject to your
+changelog filters.
+
+See [Pending Commit configuration](../../../configuration/changelog/pending-commit#generate-from-git-history-only)
+for the setting comparison and regeneration example.
 
 </Section>
 

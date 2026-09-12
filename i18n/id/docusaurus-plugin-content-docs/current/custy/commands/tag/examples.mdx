@@ -16,7 +16,7 @@ import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
  {title:"Dry Run",command:"custy --dry-run tag --tag v1.4.0",description:"Tinjau exact tag tanpa membuat reference.",result:"Menampilkan planned Tag profile."},
  {title:"Project Defaults",command:"custy tag",description:"Gunakan resolved configuration.",result:"Membentuk versi dan membuat local tag."},
  {title:"Explicit SemVer",command:"custy tag --strategy semver --tag v1.4.0",description:"Gunakan exact SemVer.",result:"Membuat v1.4.0."},
- {title:"PEP 440 Pre-release",command:"custy tag --strategy pep440 --pre rc",description:"Bentuk release candidate.",result:"Menggunakan PEP 440-compatible format."},
+ {title:"Explicit SemVer Release Candidate",command:"custy tag --strategy semver --tag v1.4.0-rc.1",description:"Gunakan approved explicit lifecycle tag.",result:"Membuat v1.4.0-rc.1."},
  {title:"Inline Message",command:"custy tag --tag v1.4.0 --tag-message \"Release v1.4.0\"",description:"Gunakan inline tag message.",result:"Membuat annotated tag dengan pesan tersebut."},
 ]} />
 

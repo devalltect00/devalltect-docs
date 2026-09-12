@@ -1,0 +1,91 @@
+---
+title: "Instalasi dan Workflow Pertama"
+description: "Instal CLI, inisialisasi project configuration, dan jalankan workflow pertama dengan aman."
+sidebar_position: 2
+sidebar_key: reflow-getting-started
+tags: [reflow, installation, quick-start]
+---
+
+import {
+    CommandHero,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="reflow"
+    title="Instalasi dan Workflow Pertama"
+    description="Instal Reflow dalam environment terisolasi dan pratinjau rencana konversi tag lokal terhadap target eksplisit."
+    category="Memulai"
+    status="Direkomendasikan"
+    syntax="reflow --dry-run -C /path/to/project tags convert local"
+    links={[
+        {label: "Perintah", href: "../commands/overview"},
+        {label: "Panduan Init", href: "../commands/init/overview"},
+        {label: "Konversi Lokal", href: "../commands/tags/convert/local/overview"},
+        {label: "Konfigurasi", href: "../configuration/overview"},
+    ]}
+/>
+
+<InfoBox variant="note" title="Persyaratan runtime">
+
+Reflow memerlukan Python 3.14 atau lebih baru. Pisahkan instalasi Reflow dari
+repositori yang akan dioperasikan; pilih target secara eksplisit ketika
+direktori saat ini dapat menimbulkan ambiguitas.
+
+</InfoBox>
+
+<Section title="Instal dari Source Checkout yang Telah Ditinjau">
+
+<Terminal title="Buat environment terisolasi" language="bash">
+
+{`python -m venv venv
+
+# Aktifkan dengan perintah yang sesuai untuk shell Anda:
+# Windows PowerShell: .\\venv\\Scripts\\Activate.ps1
+# POSIX shell:        source venv/bin/activate
+
+python -m pip install .
+reflow --version`}
+
+</Terminal>
+
+</Section>
+
+<WorkflowTimeline
+    title="Workflow Lokal Pertama"
+    items={[
+        {title: "Pilih checkout", description: "Gunakan -C/--repository agar source checkout Reflow tidak menjadi target secara tidak sengaja.", status: "current"},
+        {title: "Inisialisasi konfigurasi", description: "Buat .config/reflow/config.toml dan tinjau sebelum membagikan atau mengubah default.", status: "pending"},
+        {title: "Periksa tag", description: "Gunakan Git untuk mengonfirmasi nama tag yang harus dipertimbangkan rencana konversi.", status: "pending"},
+        {title: "Pratinjau konversi", description: "Jalankan konversi lokal dengan --dry-run global dan tinjau setiap pemetaan sumber ke tujuan.", status: "pending"},
+        {title: "Pilih apakah akan mengeksekusi", description: "Live run hanya mengubah tag ref lokal; perintah ini tidak melakukan push.", status: "pending"},
+    ]}
+/>
+
+<Terminal title="Inisialisasi dan pratinjau" language="bash">
+
+{`reflow -C /path/to/project init
+git -C /path/to/project tag --list
+reflow --dry-run -C /path/to/project tags convert local --to semver`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Jangan tambahkan --yes sebelum memahami rencana">
+
+Dry-run tidak pernah meminta konfirmasi. Pada mode live, pertahankan prompt
+konfirmasi untuk penggunaan interaktif. Gunakan `--yes` hanya untuk automasi
+yang telah ditinjau atau rencana penggantian yang sudah diperiksa.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "Inisialisasi Reflow", href: "../commands/init/overview", description: "Buat konfigurasi milik proyek dengan aman."},
+        {title: "Konversi Tag Lokal", href: "../commands/tags/convert/local/overview", description: "Pahami perilaku penggantian khusus lokal."},
+        {title: "Contoh", href: "../examples", description: "Bandingkan pratinjau lokal, remote, recovery, dan Docker."},
+    ]}
+/>

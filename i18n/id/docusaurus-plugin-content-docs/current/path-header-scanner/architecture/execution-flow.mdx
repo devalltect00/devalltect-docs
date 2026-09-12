@@ -1,0 +1,20 @@
+---
+title: "Alur Eksekusi"
+description: "Pahami responsibility dan execution flow."
+sidebar_position: 2
+sidebar_key: path-header-scanner-architecture
+tags: [path-header-scanner, architecture, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Alur Eksekusi" description="Pahami responsibility dan execution flow." category="Architecture" status="Reference" syntax="path-header-scanner scan app --dry-run" />
+
+<Terminal language="text">{`CLI input
+  -> configuration resolution
+  -> target and safety validation
+  -> core/service execution
+  -> progress, summary, and actionable error boundary`}</Terminal>
+
+<InfoBox variant="warning" title="Mutation boundary">Scan hanya preview secara default. Effective --apply mengaktifkan write, sedangkan --dry-run mengungguli apply dari CLI dan configuration.</InfoBox>
+

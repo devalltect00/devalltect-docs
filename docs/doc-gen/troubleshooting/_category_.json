@@ -1,0 +1,12 @@
+{
+  "label": "Troubleshooting",
+  "position": 10,
+  "key": "doc-gen-troubleshooting",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-troubleshooting",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/troubleshooting/overview"
+  }
+}

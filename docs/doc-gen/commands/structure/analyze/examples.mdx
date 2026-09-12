@@ -1,0 +1,36 @@
+---
+title: "Examples"
+description: "Examples: doc-gen structure analyze"
+sidebar_position: 7
+sidebar_key: doc-gen-structure-analyze
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure analyze" title="Examples" description="Analyze is inherently read-only. It may scan and calculate metadata, but it does not invoke the Markdown writer." category="Project Structure" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+### 1. Analyze current project
+
+<Terminal language="bash">{`doc-gen structure analyze .`}</Terminal>
+
+**Result:** Displays analysis.
+
+### 2. Override type
+
+<Terminal language="bash">{`doc-gen structure analyze . --project-type python`}</Terminal>
+
+**Result:** Uses Python classification.
+
+### 3. Smart analysis
+
+<Terminal language="bash">{`doc-gen structure analyze . --smart`}</Terminal>
+
+**Result:** Applies automatic optimization decisions.
+
+### 4. Dry-run
+
+<Terminal language="bash">{`doc-gen structure analyze . --dry-run`}</Terminal>
+
+**Result:** Remains read-only.
+

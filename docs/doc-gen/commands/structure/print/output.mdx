@@ -1,0 +1,21 @@
+---
+title: "Output"
+description: "Output: doc-gen structure print"
+sidebar_position: 6
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Output" description="Output" category="Project Structure" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Rendered directory tree.
+- Resolved profile/depth diagnostics when verbose/debug is enabled.
+- No generated Markdown file.
+
+<Terminal language="text">{`Target  : <resolved path>
+Command : doc-gen structure print
+Dry run : true/false
+Status  : <result>`}</Terminal>
+

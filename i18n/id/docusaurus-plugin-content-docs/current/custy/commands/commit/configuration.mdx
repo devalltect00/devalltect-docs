@@ -17,7 +17,8 @@ Direct command membaca `.config/custy/config.toml` ketika CLI override tidak dib
  {property:"[tool.custy.cli.templates.directory]",type:"backups_commit",description:"Pilih retained backup directory."},
  {property:"[tool.custy.cli.paths]",type:"version_file",description:"Pilih file yang menerima resolved version."},
  {property:"[tool.custy.cli.versioning]",type:"strategy",description:"Atur default versioning strategy."},
- {property:"[tool.custy.cli.execution]",type:"staging and validation",description:"Atur auto_stage, stage_mode, force_commit, dan check_cz."},
+ {property:"[tool.custy.cli.execution]",type:"staging and validation",description:"Atur auto_stage, stage_mode, force_commit, dan backward-compatible check_cz override."},
+ {property:"[tool.custy.commit.validation]",type:"provider and strictness",description:"Pilih auto, custy, commitizen, atau git validation dan tentukan apakah unavailable optional tool menjadi fatal."},
 ]} />
 
 <Section title="Example Configuration">
@@ -34,7 +35,14 @@ auto_stage = false
 stage_mode = "all"
 force_commit = false
 check_cz = false
+
+[tool.custy.commit.validation]
+provider = "auto"
+require_tool = false
 ```
 </Section>
+
+Lihat [behavior matrix lengkap](../../configuration/commit-validation) untuk
+proyek dengan atau tanpa Commitizen configuration maupun installation.
 
 <InfoBox variant="tip" title="Simpan Shared Behavior dalam Configuration">Gunakan TOML untuk team defaults dan CLI overrides untuk perubahan satu kali yang disengaja.</InfoBox>

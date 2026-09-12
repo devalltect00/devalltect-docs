@@ -1,0 +1,12 @@
+{
+  "label": "Analyze Project Structure",
+  "position": 3,
+  "key": "doc-gen-structure-analyze-category",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-structure-analyze",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/structure/analyze/overview"
+  }
+}

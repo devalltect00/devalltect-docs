@@ -1,0 +1,11 @@
+{
+  "label": "Konfigurasi",
+  "position": 4,
+  "key": "path-header-scanner-configuration",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/configuration/overview"
+  }
+}

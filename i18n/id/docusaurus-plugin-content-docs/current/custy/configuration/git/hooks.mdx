@@ -1,0 +1,70 @@
+---
+title: "Git Commit Hooks"
+description: "Pilih native atau direct pre-commit execution yang aman untuk local dan container workflows."
+sidebar_position: 4
+sidebar_key: custy-configuration-git-hooks
+tags: [custy, configuration, git hooks, pre-commit, docker]
+keywords: [tool.custy.git.hooks, pre-commit, cross-platform hooks, docker]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, KeyValueTable, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git.hooks]" title="Git Commit Hooks" description="Pertahankan repository checks saat Custy berjalan secara lokal atau di dalam container dengan operating system berbeda." category="Git Configuration" status="Active" syntax="[tool.custy.git.hooks]" tags={["safe defaults", "pre-commit", "containers"]} links={[{label: "Git Overview", href: "./overview"}, {label: "Docker", href: "../../getting-started/docker"}, {label: "Commit Troubleshooting", href: "../../commands/commit/troubleshooting"}]} />
+
+<CommandMetadata items={[{label: "Property", value: "mode", icon: "table"}, {label: "Default", value: "auto", icon: "configuration"}, {label: "Silent Bypass", value: "Tidak Pernah", icon: "success"}, {label: "Project Tanpa Hook", value: "Native Git", icon: "git"}]} />
+
+## Configuration
+
+<PropertyTable items={[{property: "mode", type: "auto | native | pre_commit", defaultValue: "auto", description: "Pilih native Git execution atau verified direct pre-commit execution."}]} />
+
+<Terminal title="Recommended default" language="toml">{`[tool.custy.git.hooks]
+mode = "auto"`}</Terminal>
+
+<Section title="Behavior Matrix">
+
+<KeyValueTable title="Hook Resolution" items={[
+    {key: "auto + tidak ada installed hook", value: "Gunakan normal Git commit behavior. pre-commit tidak diwajibkan atau diaktifkan."},
+    {key: "auto + compatible hook", value: "Biarkan Git menjalankan installed hook secara native."},
+    {key: "auto + incompatible pre-commit wrapper", value: "Jalankan recognized configured pre-commit stage secara langsung, lalu lewati hanya wrapper yang sudah selesai untuk current commit."},
+    {key: "auto + incompatible custom hook", value: "Berhenti dengan aman karena Custy tidak dapat membuktikan equivalent execution path."},
+    {key: "native", value: "Selalu biarkan Git menjalankan installed hooks persis seperti yang tersimpan di repository."},
+    {key: "pre_commit", value: "Wajibkan .pre-commit-config.yaml dan pre-commit executable, jalankan configured stages secara langsung, dan lanjutkan hanya setelah semuanya lolos."},
+]} />
+
+</Section>
+
+<InfoBox variant="info" title="Configuration File Saja Tidak Menginstal Hook">
+
+Dalam mode `auto`, `.pre-commit-config.yaml` tanpa installed
+`.git/hooks/pre-commit` wrapper diperlakukan seperti repository tanpa hook.
+Gunakan `pre-commit install` saat project memang ingin Git menegakkan checks
+tersebut, atau pilih `pre_commit` secara explicit saat Custy harus mewajibkan
+direct execution.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Direct Execution adalah Validation, Bukan Bypass">
+
+Custy menggunakan Git `--no-verify` hanya setelah setiap recognized wrapper
+yang akan dilewati flag tersebut berhasil dijalankan melalui `pre-commit`.
+Unknown custom hooks, unavailable tooling, missing configuration, dan failed
+checks menghentikan workflow. Tidak ada mode `skip`.
+
+</InfoBox>
+
+<Section title="Panduan Local dan Docker">
+
+- Pertahankan `mode = "auto"` untuk kebanyakan project, termasuk project yang
+  tidak menggunakan pre-commit.
+- Gunakan `native` ketika custom hooks sudah portable pada setiap execution
+  environment.
+- Gunakan `pre_commit` ketika project policy mewajibkan direct framework
+  execution.
+- Instal local support dengan `pip install "custy[hooks]"`. Production image
+  sudah menyertakan `pre-commit`.
+- Direct check yang gagal menghasilkan `PRE_COMMIT_HOOK_FAILED` dan tidak
+  membuat Git commit.
+
+</Section>
+
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Git Overview", href: "./overview", description: "Navigasikan remotes, push strategy, dan hooks."}, {title: "Docker", href: "../../getting-started/docker", description: "Jalankan Custy pada mounted repositories."}, {title: "Commit Troubleshooting", href: "../../commands/commit/troubleshooting", description: "Atasi hook dan commit failures."}]} /></Section>

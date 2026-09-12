@@ -1,0 +1,21 @@
+---
+title: "Ringkasan"
+description: "Pahami file konfigurasi, urutan prioritas, dan bagian yang aktif."
+sidebar_position: 1
+sidebar_key: doc-gen-configuration
+tags: [doc-gen, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command=".config/doc_gen/config.toml" title="Konfigurasi" description="Pahami file konfigurasi, urutan prioritas, dan bagian yang aktif." category="Konfigurasi" status="Milik Proyek" syntax=".config/doc_gen/config.toml" />
+
+<Section title="Urutan prioritas">
+
+1. Argumen CLI eksplisit
+2. `.config/doc_gen/config.toml`
+3. Nilai bawaan internal
+
+</Section>
+
+<InfoBox variant="warning" title="Kepemilikan">Inisialisasi membuat salinan milik proyek. CLI tidak boleh diam-diam menimpa konfigurasi yang dikelola pengguna.</InfoBox>

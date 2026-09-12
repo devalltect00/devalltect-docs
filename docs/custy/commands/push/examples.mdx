@@ -1,6 +1,6 @@
 ---
 title: "Examples"
-description: "Practical custy push examples that account for current adapter limitations."
+description: "Practical custy push examples for explicit and grouped destinations."
 sidebar_position: 8
 sidebar_key: custy-push-examples
 tags: [push, examples, remote]
@@ -19,7 +19,7 @@ import {
     title="Examples"
     description="Use cautious push patterns that expose actual resolved destinations before remote synchronization."
     category="Git Operations"
-    status="Limited"
+    status="Stable"
     syntax="custy push [OPTIONS]"
     tags={[
         "examples",
@@ -35,8 +35,8 @@ import {
 
 ## Overview
 
-These examples prioritize dry-run because several advertised destination
-controls are not yet reliably propagated into the workflow engine.
+These examples use dry-run to verify the effective destination set before
+performing remote mutations.
 
 <InfoBox
     variant="warning"
@@ -57,6 +57,8 @@ intended destination.
 <CommandExample
     examples={[
         {title: "Preview resolved destinations", command: "custy --dry-run push", description: "Run validation and inspect which main remotes the engine resolves.", notes: "Use this before every unfamiliar repository or configuration."},
+        {title: "Push to exactly one remote", command: "custy push --remote upstream", description: "Override all configured groups and push only to upstream."},
+        {title: "Push all configured groups", command: "custy push --all-remote", description: "Push the de-duplicated main and eligible backup groups."},
         {title: "Preview HEAD and a release tag", command: "custy --dry-run push --tag v1.4.0", description: "Show the intended HEAD and tag operations for each resolved remote."},
         {title: "Synchronize an eligible backup", command: "custy push --sync-backup --tag v1.4.0", description: "Request backup synchronization in addition to normal main-remote processing.", notes: "Non-critical branch rules can skip backup synchronization."},
         {title: "Run only after review", command: "custy push --tag v1.4.0", description: "Push HEAD and the selected tag using the engine's actual resolved destinations."},
@@ -69,10 +71,10 @@ intended destination.
 
 <InfoBox
     variant="note"
-    title="Examples reflect current behavior"
+    title="Skip a tag deliberately"
 >
 
-These examples intentionally avoid presenting `--remote`, `--all-remote`, or
-`--skip-tag` as reliable until their adapter mapping is corrected.
+Use `custy push --skip-tag` to push HEAD without pushing a tag. In Release
+and Full profiles, the same option also prevents tag creation.
 
 </InfoBox>

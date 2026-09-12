@@ -12,4 +12,17 @@ import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/componen
 
 <InfoBox variant="warning" title="Jangan mengandalkan exit code saja">Beberapa help, version, atau explicit-exit path memiliki behavior khusus. Gunakan output terminal dan log bersama exit status, lalu verifikasi Git serta file state.</InfoBox>
 
+<Section title="Commit Validation dan Git Hook Labels">
+
+- Commitizen discovery: `COMMITIZEN_NOT_CONFIGURED`,
+  `COMMITIZEN_NOT_AVAILABLE`, dan `COMMITIZEN_CONFIGURATION_INVALID`.
+- Final message validation: `COMMITIZEN_CHECK_FAILED`.
+- Git commit execution: `GIT_COMMIT_FAILED` atau `GIT_HOOK_FAILED` dengan
+  captured output dalam error context.
+
+Label tersebut membantu diagnosis, tetapi tetap periksa process status dan
+repository state sebelum retry.
+
+</Section>
+
 <RelatedCommands commands={[{title:"Troubleshooting Workflows",href:"../user-guide/troubleshooting-workflows",description:"Ikuti diagnosis dan recovery yang aman."},{title:"Environment",href:"./environment",description:"Periksa runtime, encoding, editor, Git, dan working directory."},{title:"Global Options",href:"./global-options",description:"Gunakan debug, log-level, no-banner, dan dry-run."},{title:"Safety and Side Effects",href:"../concepts/safety-and-side-effects",description:"Pahami perubahan non-transactional dan recovery responsibility."}]} />

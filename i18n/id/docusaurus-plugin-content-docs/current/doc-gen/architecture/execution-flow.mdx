@@ -1,0 +1,20 @@
+---
+title: "Alur Eksekusi"
+description: "Pahami responsibility dan execution flow."
+sidebar_position: 2
+sidebar_key: doc-gen-architecture
+tags: [doc-gen, architecture, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Alur Eksekusi" description="Pahami responsibility dan execution flow." category="Architecture" status="Reference" syntax="doc-gen structure generate . --dry-run" />
+
+<Terminal language="text">{`CLI input
+  -> configuration resolution
+  -> target and safety validation
+  -> core/service execution
+  -> progress, summary, and actionable error boundary`}</Terminal>
+
+<InfoBox variant="warning" title="Mutation boundary">Generate hanya menulis output Markdown hasil resolution; print dan analyze read-only. Generate dry-run tidak membuat direktori atau file.</InfoBox>
+

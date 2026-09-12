@@ -1,0 +1,15 @@
+---
+title: "Concepts"
+description: "Understand how Doc Gen resolves structure detail, adapts to repositories, and protects project files."
+sidebar_position: 1
+sidebar_key: doc-gen-concepts-overview
+tags: [doc-gen, concepts, safety]
+---
+
+import {CommandHero, FeatureGrid, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen" title="Core Concepts" description="Understand the decisions shared by generation, printing, and analysis." category="Concepts" status="v1.0.0" syntax="doc-gen structure COMMAND [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Profiles and smart mode",href:"./profiles-and-smart-mode"},{label:"Safety and dry-run",href:"./safety-and-dry-run"},{label:"Commands",href:"../commands/overview"}]} />
+
+<FeatureGrid items={[{title:"Profiles",children:"Select a repeatable structure-detail preset."},{title:"Smart mode",children:"Adapt depth, file visibility, and collapsed directories to repository size."},{title:"Target resolution",children:"Scan the explicit target argument or the configured/default directory."},{title:"Write boundary",children:"Only structure generate writes a Markdown document; dry-run prevents that write."}]} />
+
+<InfoBox variant="info" title="Choose by side effect">Use `print` or `analyze` for read-only inspection. Preview `generate` with `--dry-run` before writing its resolved output file.</InfoBox>

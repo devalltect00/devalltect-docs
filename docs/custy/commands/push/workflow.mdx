@@ -19,7 +19,7 @@ import {
     title="Push Workflow"
     description="Follow validation, remote resolution, HEAD synchronization, optional tag publication, and backup behavior."
     category="Git Operations"
-    status="Limited"
+    status="Stable"
     syntax="custy push [OPTIONS]"
     tags={[
         "workflow",
@@ -36,7 +36,9 @@ import {
 ## Overview
 
 The profile validates repository state before resolving and processing each
-eligible destination.
+eligible destination. A standalone `custy push` or `custy run push` does not
+initialize a release workflow, calculate a new version, or ask for release
+confirmation.
 
 ---
 
@@ -48,9 +50,9 @@ eligible destination.
     title="Push Profile"
     items={[
         {title: "Validate repository", description: "Run repository and pre-push validation.", status: "completed"},
-        {title: "Initialize workflow", description: "Prepare shared Git and execution state.", status: "completed"},
-        {title: "Resolve main remotes", description: "Use configured engine remotes or the confirmed origin fallback.", status: "completed"},
-        {title: "Resolve backup remotes", description: "Resolve eligible backup destinations when synchronization is enabled.", status: "optional"},
+        {title: "Resolve selection precedence", description: "Apply explicit --remote, all_remote, then push_to to select the effective groups.", status: "completed"},
+        {title: "Apply backup safety", description: "Remove backup destinations when the current non-critical branch is not eligible.", status: "optional"},
+        {title: "Resolve authentication", description: "Use native Git or SSH first, then an enabled external token source for an eligible container HTTPS push.", status: "optional"},
         {title: "Push HEAD", description: "Push the current HEAD to each resolved main and backup remote.", status: "completed"},
         {title: "Push tag", description: "Push the selected tag when one is available and tag push is not skipped.", status: "optional"},
     ]}
@@ -68,6 +70,10 @@ eligible destination.
 A failed main push raises an error and stops normal progress. Check the reported
 remote, authentication, network, branch protection, and rejected history before
 retrying.
+
+When an interactive terminal is unavailable, the recommended credential policy
+prevents Git from waiting indefinitely for input. Configure an external file or
+environment token before running a non-interactive container push.
 
 </InfoBox>
 

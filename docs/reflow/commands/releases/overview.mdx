@@ -1,0 +1,15 @@
+---
+title: "Release Commands"
+description: "Recover tag-triggered GitHub release automation."
+sidebar_position: 0
+sidebar_key: reflow-releases
+tags: [reflow, releases]
+---
+
+import {CommandHero, InfoBox} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases" title="Release Commands" description="Inspect and recover missing tag-triggered releases." category="Release Automation" status="Stable" syntax="reflow releases recover [OPTIONS]" />
+
+[Complete recovery guide](./recover/overview)
+
+<InfoBox variant="note" title="CI/CD">Recovery re-pushes tags; it does not directly create release records.</InfoBox>

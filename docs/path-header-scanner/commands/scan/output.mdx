@@ -1,0 +1,24 @@
+---
+title: "Output"
+description: "Output: path-header-scanner scan"
+sidebar_position: 6
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Output" description="Output" category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Working directory and resolved target when diagnostic output is enabled.
+- Per-file status where configured.
+- Valid, updated, inserted, and failed totals.
+- Explicit preview, applied, or dry-run mode message.
+
+<Terminal language="text">{`Target   : <resolved path>
+Mode     : preview/apply/dry-run
+Valid    : <count>
+Updated  : <count>
+Inserted : <count>
+Failed   : <count>`}</Terminal>
+

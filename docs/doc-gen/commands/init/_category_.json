@@ -1,4 +1,12 @@
 {
-  "label": "Commands Init",
-  "key": "doc-gen-command-init"
+  "label": "Initialize Doc Gen",
+  "position": 1,
+  "key": "doc-gen-init-category",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-init",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/init/overview"
+  }
 }

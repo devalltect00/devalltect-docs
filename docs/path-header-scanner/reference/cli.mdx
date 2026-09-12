@@ -1,0 +1,27 @@
+---
+title: "CLI Reference"
+description: "Quick CLI, path, option, and safety reference."
+sidebar_position: 2
+sidebar_key: path-header-scanner-reference
+tags: [path-header-scanner, cli, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="CLI Reference" description="Quick CLI, path, option, and safety reference." category="Reference" status="v1.0.0" syntax="path-header-scanner init" />
+
+## Commands
+
+- `path-header-scanner init`
+- `path-header-scanner scan TARGET`
+- `path-header-scanner scan TARGET --apply`
+- `path-header-scanner scan TARGET --dry-run`
+
+## Global options
+
+- `--no-banner`
+- `--version / -v`
+- `--help / -h`
+
+<InfoBox variant="warning" title="Safety">Scan previews by default. Only effective --apply writes target files, and --dry-run overrides CLI and configured apply mode.</InfoBox>
+

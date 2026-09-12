@@ -1,0 +1,52 @@
+---
+title: Referensi Perintah
+description: Pilih inisialisasi, generate, print, atau analisis Doc Gen berdasarkan batas outputnya.
+sidebar_position: 0
+sidebar_key: doc-gen-commands
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="doc-gen"
+    title="Ringkasan Perintah"
+    description="Pilih persiapan proyek, generate Markdown, print terminal, atau analisis struktur dengan batas persistensi yang jelas."
+    category="Referensi Perintah"
+    status="v1.0.0"
+    syntax="doc-gen COMMAND [OPTIONS]"
+    links={[
+        {label: "Inisialisasi", href: "./init/overview"},
+        {label: "Perintah Struktur", href: "./structure/overview"},
+        {label: "Generate", href: "./structure/generate/overview"},
+        {label: "Referensi CLI", href: "../reference/cli"},
+    ]}
+/>
+
+<Section title="Perintah yang didukung">
+
+| Perintah | Hasil | Menulis dokumentasi proyek |
+| --- | --- | --- |
+| [`doc-gen init`](./init/overview) | Konfigurasi proyek | Ya, kecuali dry-run |
+| [`doc-gen structure generate [TARGET]`](./structure/generate/overview) | Dokumen struktur Markdown | Ya, kecuali dry-run |
+| [`doc-gen structure print [TARGET]`](./structure/print/overview) | Pohon terminal | Tidak |
+| [`doc-gen structure analyze [TARGET]`](./structure/analyze/overview) | Analisis terminal | Tidak |
+
+</Section>
+
+Perintah struktur berbagi opsi profil, smart mode, kedalaman, visibilitas file,
+collapse, jenis proyek, verbosity, dan dry-run.
+
+<InfoBox variant="warning" title="Hanya generate yang menyimpan output struktur">
+
+`print` dan `analyze` bersifat read-only. `generate --dry-run` menjalankan
+discovery dan rendering di memori tanpa membuat direktori maupun file output.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "Alur Kerja Pertama", href: "../getting-started/first-workflow", description: "Inisialisasi, periksa, pratinjau, dan generate dengan aman."},
+        {title: "Profil dan Smart Mode", href: "../concepts/profiles-and-smart-mode", description: "Pahami perilaku bersama perintah struktur."},
+        {title: "Konfigurasi", href: "../configuration/reference", description: "Petakan default bersama dan khusus perintah."},
+    ]}
+/>

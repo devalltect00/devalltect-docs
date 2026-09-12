@@ -1,0 +1,20 @@
+---
+title: "Options"
+description: "Options: reflow dockerize"
+sidebar_position: 4
+sidebar_key: reflow-dockerize
+tags: [reflow, options]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Container Publishing" status="External Mutation" syntax="reflow dockerize [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Flag / value | Default | Effect |
+| --- | --- | --- |
+| `--repository, --repo, -C` | resolved path | Select build context. |
+| `--repository-url` | configured URL | Use a managed clone. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false | Preview without Docker/registry mutation. |
+| `--debug/--no-debug, -dbg/-Dbg` | false | Enable diagnostics. |
+| `--log-level, -ll` | INFO | Logging threshold. |
+

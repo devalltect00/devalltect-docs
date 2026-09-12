@@ -1,0 +1,11 @@
+{
+  "label": "Configuration",
+  "position": 4,
+  "key": "reflow-configuration",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/configuration/overview"
+  }
+}

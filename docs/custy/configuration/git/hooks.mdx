@@ -1,0 +1,68 @@
+---
+title: "Git Commit Hooks"
+description: "Choose safe native or direct pre-commit execution for local and container workflows."
+sidebar_position: 4
+sidebar_key: custy-configuration-git-hooks
+tags: [custy, configuration, git hooks, pre-commit, docker]
+keywords: [tool.custy.git.hooks, pre-commit, cross-platform hooks, docker]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, KeyValueTable, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="[tool.custy.git.hooks]" title="Git Commit Hooks" description="Keep repository checks active when Custy runs locally or inside a different operating-system container." category="Git Configuration" status="Active" syntax="[tool.custy.git.hooks]" tags={["safe defaults", "pre-commit", "containers"]} links={[{label: "Git Overview", href: "./overview"}, {label: "Docker", href: "../../getting-started/docker"}, {label: "Commit Troubleshooting", href: "../../commands/commit/troubleshooting"}]} />
+
+<CommandMetadata items={[{label: "Property", value: "mode", icon: "table"}, {label: "Default", value: "auto", icon: "configuration"}, {label: "Silent Bypass", value: "Never", icon: "success"}, {label: "No-Hook Projects", value: "Native Git", icon: "git"}]} />
+
+## Configuration
+
+<PropertyTable items={[{property: "mode", type: "auto | native | pre_commit", defaultValue: "auto", description: "Select native Git execution or verified direct pre-commit execution."}]} />
+
+<Terminal title="Recommended default" language="toml">{`[tool.custy.git.hooks]
+mode = "auto"`}</Terminal>
+
+<Section title="Behavior Matrix">
+
+<KeyValueTable title="Hook Resolution" items={[
+    {key: "auto + no installed hook", value: "Use normal Git commit behavior. pre-commit is not required or activated."},
+    {key: "auto + compatible hook", value: "Let Git execute the installed hook natively."},
+    {key: "auto + incompatible pre-commit wrapper", value: "Run the recognized configured pre-commit stage directly, then skip only that already-completed wrapper for the current commit."},
+    {key: "auto + incompatible custom hook", value: "Stop safely because Custy cannot prove an equivalent execution path."},
+    {key: "native", value: "Always let Git execute installed hooks exactly as stored in the repository."},
+    {key: "pre_commit", value: "Require .pre-commit-config.yaml and the pre-commit executable, run configured stages directly, and continue only after they pass."},
+]} />
+
+</Section>
+
+<InfoBox variant="info" title="A configuration file alone does not install a hook">
+
+In `auto` mode, `.pre-commit-config.yaml` without an installed
+`.git/hooks/pre-commit` wrapper behaves like a normal no-hook repository. Use
+`pre-commit install` when the project intends Git to enforce those checks, or
+choose `pre_commit` explicitly when Custy should require direct execution.
+
+</InfoBox>
+
+<InfoBox variant="warning" title="Direct execution is validation, not a bypass">
+
+Custy uses Git's `--no-verify` only after every recognized wrapper that flag
+would bypass has completed successfully through `pre-commit`. Unknown custom
+hooks, unavailable tooling, missing configuration, and failed checks stop the
+workflow. There is no `skip` mode.
+
+</InfoBox>
+
+<Section title="Local and Docker Guidance">
+
+- Keep `mode = "auto"` for most projects, including projects that do not use
+  pre-commit.
+- Use `native` when custom hooks are already portable across every execution
+  environment.
+- Use `pre_commit` when project policy requires direct framework execution.
+- Install local support with `pip install "custy[hooks]"`. The production
+  image already contains `pre-commit`.
+- A failing direct check returns `PRE_COMMIT_HOOK_FAILED` and does not create a
+  Git commit.
+
+</Section>
+
+<Section title="Continue"><RelatedCommands commands={[{title: "Git Overview", href: "./overview", description: "Navigate remotes, push strategy, and hooks."}, {title: "Docker", href: "../../getting-started/docker", description: "Run Custy against mounted repositories."}, {title: "Commit Troubleshooting", href: "../../commands/commit/troubleshooting", description: "Resolve hook and commit failures."}]} /></Section>

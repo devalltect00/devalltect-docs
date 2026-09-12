@@ -1,0 +1,57 @@
+---
+title: "Overview"
+description: "Discover supported files, validate path headers, preview missing or stale headers, and apply corrections only when explicitly requested."
+sidebar_position: 1
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="path-header-scanner scan"
+    title="Scan Path Headers"
+    description="Discover supported files, validate their path headers, and apply corrections only when explicitly requested."
+    category="Header Scanning"
+    status="Preview First"
+    syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
+    tags={["validation", "preview", "language-aware headers"]}
+    links={[
+        {label: "Syntax", href: "./syntax"},
+        {label: "Options", href: "./options"},
+        {label: "Workflow", href: "./workflow"},
+        {label: "Examples", href: "./examples"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Default Target", value: "app", icon: "directory"},
+        {label: "Default Effect", value: "Preview only", icon: "success"},
+        {label: "Write Opt-in", value: "--apply", icon: "warning"},
+        {label: "Simulation Override", value: "--dry-run", icon: "security"},
+    ]}
+/>
+
+## Overview
+
+The command resolves the target, discovers files with supported extensions,
+selects a language strategy, and compares each existing header with its expected
+project-relative path. The optional target defaults to the configured
+`target_directory`, which is `app` in the generated configuration.
+
+<InfoBox variant="warning" title="Preview is the default">
+
+`scan` does not write target files unless effective apply mode is enabled.
+`--dry-run` overrides both `--apply` and `apply = true` from configuration.
+
+</InfoBox>
+
+<Section title="Result states">
+
+- **Valid:** the existing header already matches.
+- **Inserted:** a missing header would be inserted, or was inserted in apply mode.
+- **Updated:** a stale header would be replaced, or was replaced in apply mode.
+- **Failed:** the file could not be processed safely.
+
+</Section>

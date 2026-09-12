@@ -24,7 +24,7 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
         {property: "no_debug", type: "Boolean", defaultValue: "true", description: "Inverse debug default used by global and experimental workflow resolution."},
         {property: "auto_stage", type: "Boolean", defaultValue: "false", description: "Automatically stage files in supported commit, validate, and run flows."},
         {property: "stage_mode", type: "all | update | none | manual", defaultValue: "all", description: "Select all changes, tracked updates only, no automatic staging, or explicit manual staging."},
-        {property: "check_cz", type: "Boolean", defaultValue: "false", description: "Enable supported Commitizen readiness checks in commit, validate, and run flows."},
+        {property: "check_cz", type: "Boolean", defaultValue: "false", description: "Backward-compatible strict override. When true, require Commitizen configuration, the cz executable, and final message validation."},
     ]}
 />
 
@@ -66,6 +66,14 @@ diagnostic logging also remains active and may update the configured log file.
 
 Keep force settings disabled in shared configuration. Pairing `auto_stage = true`
 with `stage_mode = "all"` can include tracked and untracked changes.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Use the provider table for new projects">
+
+Configure [`tool.custy.commit.validation`](../commit-validation) for automatic
+discovery and explicit fallback behavior. Keep `check_cz` only when an older
+configuration or CLI workflow needs the strict boolean override.
 
 </InfoBox>
 

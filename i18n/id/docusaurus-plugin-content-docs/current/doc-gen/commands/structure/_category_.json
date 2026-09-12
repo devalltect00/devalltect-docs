@@ -1,0 +1,11 @@
+{
+  "label": "Struktur",
+  "position": 2,
+  "key": "doc-gen-structure",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/structure/overview"
+  }
+}

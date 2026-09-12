@@ -58,7 +58,7 @@ execution.
     examples={[
         {title: "Use configured strategy", command: "custy tag", description: "Resolve the next tag from project settings and repository state."},
         {title: "Create an approved SemVer tag", command: "custy tag --strategy semver --tag v1.4.0", description: "Use an explicit version while retaining the SemVer strategy."},
-        {title: "Create a release-candidate tag", command: "custy tag --strategy pep440 --pre rc", description: "Generate a PEP 440 release candidate from repository state."},
+        {title: "Create an explicit release-candidate tag", command: "custy tag --strategy semver --tag v1.4.0-rc.1", description: "Use an approved SemVer lifecycle tag without automatic version generation."},
         {title: "Use an explicit annotation", command: "custy tag --tag v1.4.0 --tag-message \"Release v1.4.0\"", description: "Override the annotated tag message."},
         {title: "Preview the selected tag", command: "custy --dry-run tag --tag v1.4.0", description: "Inspect preparation and the intended tag before creation."},
     ]}

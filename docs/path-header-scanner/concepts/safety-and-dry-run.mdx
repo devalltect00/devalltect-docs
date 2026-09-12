@@ -1,0 +1,15 @@
+---
+title: Safety and Dry-run
+description: Distinguish preview mode, apply mode, and explicit dry-run.
+sidebar_position: 3
+sidebar_key: phs-dry-run
+---
+
+Default scan mode is a useful preview: it discovers files and reports proposed changes but does not write. `--apply` opts into writes. `--dry-run` is a stronger explicit simulation flag and wins over both `--apply` and `apply = true` in configuration.
+
+```bash
+path-header-scanner scan app
+path-header-scanner scan app --apply --dry-run # still non-mutating
+```
+
+Dry-run initialization also prevents scaffolding writes. Diagnostic log files may still be written.

@@ -1,0 +1,8 @@
+---
+title: Keamanan dan Dry-run
+description: Preview init dan generation tanpa persistent write.
+sidebar_position: 9
+sidebar_key: doc-gen-dry-run
+---
+
+`init --dry-run` mencegah scaffolding. `structure generate --dry-run` boleh discover dan render di memory, tetapi tidak membuat output directory atau file. Print dan analyze selalu read-only. Diagnostic logging dapat tetap menulis log.

@@ -1,0 +1,21 @@
+---
+title: "Overview"
+description: "Scan a repository, render its tree as Markdown, and write only the resolved output document."
+sidebar_position: 1
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Generate Structure Documentation" description="Scan a repository, render its tree as Markdown, and write only the resolved output document." category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [TARGET_DIRECTORY] [OPTIONS]" links={[{label:"Syntax",href:"./syntax"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+<Section title="Purpose">Scan a repository, render its tree as Markdown, and write only the resolved output document.</Section>
+
+<InfoBox variant="warning" title="Safety boundary">This is the only structure command that writes output. --dry-run renders in memory but creates neither the output directory nor file.</InfoBox>
+
+- Resolve target, profile, smart mode, rendering, and output settings.
+- Scan while applying ignore/collapse rules.
+- Render Markdown in memory.
+- In dry-run, show the plan and stop before directory/file creation.
+- In live mode, write only the resolved output and display summary/progress.

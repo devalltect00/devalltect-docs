@@ -1,0 +1,23 @@
+---
+title: "Configuration"
+description: "Configuration: doc-gen init"
+sidebar_position: 8
+sidebar_key: doc-gen-init
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen init" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Initialization" status="Recommended" syntax="doc-gen init [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Key | Default | Effect |
+| --- | --- | --- |
+| `tool.doc-gen.initialization.force` | false | Overwrite default. |
+| `tool.doc-gen.initialization.ask` | false | Prompt default. |
+
+```toml
+[tool.doc-gen.initialization]
+force = false
+ask = false
+```
+

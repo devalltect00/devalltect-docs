@@ -1,0 +1,24 @@
+---
+title: "Options"
+description: "Options: doc-gen structure print"
+sidebar_position: 4
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Project Structure" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Flag / value | Default | Effect |
+| --- | --- | --- |
+| `TARGET_DIRECTORY` | . | Repository root to scan. |
+| `--profile` | custom | Choose minimal, default, detailed, or custom. |
+| `--smart/--no-smart` | false | Enable profile-aware automatic optimization. |
+| `--max-depth` | 5 | Maximum displayed directory depth. |
+| `--show-files/--hide-files` | true | Show or hide files. |
+| `--collapse` | configured list | Comma-separated directories to collapse. |
+| `--project-type` | auto-detected | Override project detection. |
+| `--verbose, -v` | false | Print additional generated structure information. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false | Simulate mutating output; discovery still runs. |
+

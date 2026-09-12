@@ -112,7 +112,9 @@ dry_run = false`}
 - Invalid TOML menghasilkan configuration error.
 - Relative paths umumnya dievaluasi dari current working directory.
 - Custy process baru memuat ulang perubahan pada file.
-- Jangan simpan secrets dan Git credentials di project configuration.
+- Jangan simpan secret values di project configuration. Credential policy dan
+  external token filenames boleh dikonfigurasikan di sana, tetapi isi token
+  harus berada di external credential directory atau environment variable.
 
 </Section>
 

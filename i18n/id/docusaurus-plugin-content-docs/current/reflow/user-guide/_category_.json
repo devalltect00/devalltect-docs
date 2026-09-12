@@ -1,0 +1,11 @@
+{
+  "label": "Panduan Pengguna",
+  "position": 6,
+  "key": "reflow-user-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/user-guide/overview"
+  }
+}

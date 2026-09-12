@@ -1,0 +1,28 @@
+---
+title: "FAQ"
+description: "FAQ: path-header-scanner scan"
+sidebar_position: 10
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="FAQ" description="FAQ" category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+## Does scan write by default?
+
+No, it previews.
+
+## What enables writes?
+
+Only effective apply mode; --dry-run always disables it.
+
+## Which languages are supported?
+
+Python, JavaScript, shell, HTML, PHP, and Markdown.
+
+## What does workdir do?
+
+It supplies the base for resolving a relative target.
+

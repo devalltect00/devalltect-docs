@@ -1,0 +1,20 @@
+---
+title: "Output"
+description: "Output reflow init."
+sidebar_position: 6
+sidebar_key: reflow-init
+tags: [reflow, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow init" title="Output" description="Target dan resource tetap terlihat." category="Inisialisasi" status="Direkomendasikan" syntax="reflow init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+- Target dan mode.
+- Resource created, skipped, atau planned.
+- Error path/permission actionable.
+
+<Terminal language="text">{`Mode    : <resolved>
+Created : <count>
+Skipped : <count>`}</Terminal>
+

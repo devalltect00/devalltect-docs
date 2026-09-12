@@ -1,0 +1,20 @@
+---
+title: "Troubleshooting"
+description: "Troubleshooting: reflow releases recover"
+sidebar_position: 9
+sidebar_key: reflow-releases-recover-troubleshooting
+tags: [reflow, troubleshooting]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Troubleshooting" description="Troubleshooting" category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Symptom | Likely cause | Solution |
+| --- | --- | --- |
+| Discovery fails. | GitHub authentication/identity missing. | Authenticate gh and verify target. |
+| Re-push rejected. | Remote policy or credentials block it. | Review and rerun dry-run. |
+| Release remains missing. | Workflow failed or did not run. | Inspect CI/CD logs. |
+
+<InfoBox variant="tip" title="Diagnostics">Use `--debug` before retrying live mutation.</InfoBox>
+

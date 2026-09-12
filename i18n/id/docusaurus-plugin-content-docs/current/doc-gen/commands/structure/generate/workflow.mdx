@@ -1,0 +1,34 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: doc-gen structure generate"
+sidebar_position: 5
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Alur Kerja" description="Memindai repository, merender tree sebagai Markdown, dan menulis hanya output document hasil resolution." category="Struktur Proyek" status="Menulis Output Terpilih" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve target/profile/output.
+
+### 2. Tahap 2
+
+Scan dengan ignore/collapse.
+
+### 3. Tahap 3
+
+Render Markdown in-memory.
+
+### 4. Tahap 4
+
+Dry-run berhenti sebelum write.
+
+### 5. Tahap 5
+
+Live mode menulis hanya output terpilih.
+
+<InfoBox variant="warning" title="Batas keamanan">Hanya generate yang menulis output. Dry-run merender in-memory tanpa membuat direktori atau file.</InfoBox>
+

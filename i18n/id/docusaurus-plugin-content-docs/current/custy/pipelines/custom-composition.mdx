@@ -29,26 +29,27 @@ milik selected profiles.
 
 Kedua profiles menyumbang overlapping repository dan workflow steps. Setelah
 expansion, deduplication, dan priority sorting, Custy menghasilkan exact
-18-step sequence berikut:
+19-step sequence berikut:
 
 <Terminal title="custy run commit push" language="text">{`01  ensure_git_repo_step
 02  ensure_staged_changes_step
-03  ensure_commitizen_convention_step
-04  ensure_commit_message_file_step
-05  ensure_commit_message_file_exists_step
-06  ensure_remote_exists_step
-07  prepare_version_step
-08  workflow_init_step
-09  generate_artifacts_step
-10  edit_files_step
-11  validate_edited_step
-12  apply_version_step
-13  generate_changelog_step
-14  backup_commit_message_files_step
-15  cleanup_backup_step
-16  stage_step
-17  commit_step
-18  push_step`}</Terminal>
+03  ensure_commit_validation_provider_step
+04  ensure_commit_hook_policy_step
+05  ensure_commit_message_file_step
+06  ensure_commit_message_file_exists_step
+07  ensure_remote_exists_step
+08  prepare_version_step
+09  workflow_init_step
+10  generate_artifacts_step
+11  edit_files_step
+12  validate_edited_step
+13  apply_version_step
+14  generate_changelog_step
+15  backup_commit_message_files_step
+16  cleanup_backup_step
+17  stage_step
+18  commit_step
+19  push_step`}</Terminal>
 
 Membalik input menjadi `custy run push commit` saat ini menghasilkan normalized
 order yang sama. Lihat [Step Priority and Ordering](./step-order) untuk priority setiap line.

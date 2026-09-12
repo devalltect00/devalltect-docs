@@ -136,7 +136,7 @@ Custy performs validation in the following order.
 | 4 | Commit message template |
 | 5 | Tag message template |
 | 6 | Staged changes |
-| 7 | Commitizen convention (when enabled) |
+| 7 | Commit validation provider preflight |
 | 8 | Commit message template availability |
 | 9 | Tag message template availability |
 
@@ -243,17 +243,16 @@ This validation helps prevent accidental empty commits.
 ---
 
 <Section
-    title="Commit Strategy Validation"
+    title="Commit Validation Provider"
 >
 
-When the project uses the **Commitizen** version strategy, Custy verifies that
-the commit message satisfies the configured convention.
+Custy resolves `tool.custy.commit.validation` independently from the selected
+version strategy. Auto mode uses Custy's validator unless both Commitizen
+configuration and `cz` are available. Explicit or strict Commitizen mode fails
+early when the integration is missing or invalid. Final message validation runs
+after the editor step in commit-producing profiles.
 
-Projects using SemVer, PEP 440, Date, or Git Count strategies do not rely on
-this validation in the same way.
-
-Commit strategy validation is therefore dependent on the selected versioning
-strategy.
+See the [provider behavior matrix](../../configuration/commit-validation).
 
 </Section>
 

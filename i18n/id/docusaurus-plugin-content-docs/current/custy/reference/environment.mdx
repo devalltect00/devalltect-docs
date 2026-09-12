@@ -4,7 +4,7 @@ description: "Referensi runtime tools, working-directory assumption, external ed
 sidebar_position: 8
 sidebar_key: custy-reference-environment
 ---
-import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+import {CommandHero, InfoBox, KeyValueTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
 
 <CommandHero command="custy --help" title="Environment" description="Siapkan Python, Git, terminal, editor, authentication, dan project root yang benar." category="Referensi" status="Host-dependent" syntax="Python + Git + project files + terminal" links={[{label:"Installation",href:"../getting-started/installation"},{label:"Requirements",href:"../commands/validate/requirements"},{label:"Paths",href:"./paths-and-files"}]} />
 
@@ -12,4 +12,60 @@ import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/componen
 
 <InfoBox variant="info" title="Authentication berada di luar Custy">Push memakai konfigurasi credential Git pada host atau container. Custy tidak menyimpan token remote. Pastikan editor eksternal dan encoding terminal juga sesuai environment Anda.</InfoBox>
 
-<RelatedCommands commands={[{title:"Installation",href:"../getting-started/installation",description:"Pilih source, release asset, Docker, atau Makefile setup."},{title:"Paths and Files",href:"./paths-and-files",description:"Temukan file relatif terhadap working directory."},{title:"Validation Requirements",href:"../commands/validate/requirements",description:"Siapkan repository, template, version file, remote, dan staging."},{title:"Errors and Exit Status",href:"./exit-errors",description:"Interpretasikan parser, validation, terminal, dan subprocess failure."}]} />
+<Section title="Editor environment variables">
+
+Custy tidak mendefinisikan editor environment variable secara otomatis. Custy
+mewarisi variable yang diberikan kepada process-nya dan memeriksa exact name
+berikut ketika `tool.custy.editor.prefer_environment = true`:
+
+<KeyValueTable
+    title="Editor Runtime Variables"
+    items={[
+        {key: "VISUAL", value: "Editor command utama. Dapat berisi trusted executable dan optional arguments seperti code --wait atau micro."},
+        {key: "EDITOR", value: "Editor command kedua setelah VISUAL, misalnya notepad, nano, vim, atau nvim -f."},
+        {key: "PATH", value: "Secara tidak langsung mengontrol executable discovery. PATH tidak memilih editor dengan sendirinya."},
+        {key: "CUSTY_CONTAINER", value: "Memilih container candidates ketika bernilai 1, true, yes, atau on. Official image menetapkannya; variable ini bukan editor command."},
+    ]}
+/>
+
+Hanya `VISUAL` dan `EDITOR` yang menerima editor command. Gunakan uppercase
+name secara tepat agar portable. Jika salah satunya kosong, tidak didefinisikan,
+atau menunjuk executable yang tidak tersedia, Custy melanjutkan ke candidate
+berikutnya yang diizinkan editor policy.
+
+<Terminal title="Atur value sebelum menjalankan Custy" language="bash">
+
+{`# PowerShell
+$env:VISUAL = "code --wait"
+$env:EDITOR = "notepad"
+
+# POSIX shell
+export VISUAL="micro"
+export EDITOR="nano"
+
+# Docker
+docker run --rm -it -e VISUAL=micro -e EDITOR=nano \
+  -v "\${PWD}:/workspace" -w /workspace \
+  custy-prod:latest run release`}
+
+</Terminal>
+
+Operating system, shell profile, IDE, Docker/Compose service, atau CI job harus
+memberikan value sebelum Custy dijalankan. Custy tidak me-load `.env` file
+secara langsung. Custy membaca `VISUAL` dan `EDITOR` ketika workflow mencapai
+commit atau tag message editing, sehingga perubahan di terminal lain tidak
+mengubah Custy process yang sudah berjalan. Lihat
+[Editor Configuration](../configuration/editor) untuk setup examples, accepted
+commands, container behavior, dan matrix lengkap `prefer_environment` serta
+`allow_fallback`.
+
+Ketika environment precedence aktif, Custy membaca `VISUAL` lalu `EDITOR`,
+kemudian mengikuti configured candidates untuk container atau operating system.
+Windows me-resolve command shim seperti `code.CMD` sebelum launch. Container
+Linux standar menggunakan Micro, Nano, Vim, atau Vi di dalam image dan
+memerlukan `-it`; container tidak membuka VS Code atau Notepad yang hanya
+terinstal pada host.
+
+</Section>
+
+<RelatedCommands commands={[{title:"Installation",href:"../getting-started/installation",description:"Pilih source, release asset, Docker, atau Makefile setup."},{title:"Editor Configuration",href:"../configuration/editor",description:"Atur editor identifiers, precedence, container behavior, dan keybindings."},{title:"Paths and Files",href:"./paths-and-files",description:"Temukan file relatif terhadap working directory."},{title:"Validation Requirements",href:"../commands/validate/requirements",description:"Siapkan repository, template, version file, remote, dan staging."},{title:"Errors and Exit Status",href:"./exit-errors",description:"Interpretasikan parser, validation, terminal, dan subprocess failure."}]} />

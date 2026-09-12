@@ -207,10 +207,26 @@ export const PROJECTS: Project[] = [
     name: "Path Header Scanner",
     category: "CLI Tool",
     description:
-      "Path and header validation, analysis, reporting, and workflow automation.",
+      "Preview, validate, and apply consistent path headers across source code and documentation.",
     technologies: ["Python", "Typer", "Rich"],
     docsPath: "/docs/path-header-scanner",
     available: true,
+    documentation: {
+      version: "1.0.0",
+      versionTag: "v1.0.0",
+      lastReviewed: "2026-09-02",
+      releaseUrl: "https://github.com/devalltect00/Path-Header-Scanner/releases/tag/v1.0.0",
+      statusPath: "/docs/path-header-scanner/reference/documentation-status",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/Path-Header-Scanner.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/Path-Header-Scanner/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
   },
 
   {
@@ -218,10 +234,26 @@ export const PROJECTS: Project[] = [
     name: "Doc Gen",
     category: "CLI Tool",
     description:
-      "Generate documentation structures, references, and project documentation assets.",
+      "Generate, print, and analyze repository structure documentation in Markdown.",
     technologies: ["Python", "Typer", "Rich"],
     docsPath: "/docs/doc-gen",
     available: true,
+    documentation: {
+      version: "1.0.0",
+      versionTag: "v1.0.0",
+      lastReviewed: "2026-09-02",
+      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.0.0",
+      statusPath: "/docs/doc-gen/reference/documentation-status",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/Doc-Gen.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/Doc-Gen/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
   },
 
   {
@@ -229,10 +261,26 @@ export const PROJECTS: Project[] = [
     name: "Reflow",
     category: "CLI Tool",
     description:
-      "Git release automation, tag workflows, version conversion, and release management.",
+      "Repository-aware tag conversion, release recovery, and container image publishing.",
     technologies: ["Python", "Typer", "Rich"],
     docsPath: "/docs/reflow",
     available: true,
+    documentation: {
+      version: "1.0.0",
+      versionTag: "v1.0.0",
+      lastReviewed: "2026-09-02",
+      releaseUrl: "https://github.com/devalltect00/Git-Reflow/releases/tag/v1.0.0",
+      statusPath: "/docs/reflow/reference/documentation-status",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/Git-Reflow.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/Git-Reflow/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
   },
 
   {
@@ -247,7 +295,7 @@ export const PROJECTS: Project[] = [
     documentation: {
       version: "2.1.0",
       versionTag: "v2.1.0",
-      lastReviewed: "2026-08-24",
+      lastReviewed: "2026-09-02",
       releaseUrl: "https://github.com/devalltect00/Custy/releases/tag/v2.1.0",
       statusPath: "/docs/custy/reference/documentation-status",
       freshness: {

@@ -75,7 +75,7 @@ zero in automation until the implementation changes.
         {key: "GitOperationError", value: "A repository operation failed at the high-level Git service boundary."},
         {key: "BranchCleanupError", value: "Branch cleanup could not evaluate or delete an eligible branch; protected and deletion failures have dedicated subclasses."},
         {key: "Pipeline failure", value: "The active progress UI identifies the failing step, stops execution, and re-raises the original exception."},
-        {key: "External tool failure", value: "Git, Commitizen, VS Code, or Notepad could not be launched or returned an unsuccessful result."},
+        {key: "External tool failure", value: "Git, Commitizen, or a configured editor could not be launched or returned an unsuccessful result."},
         {key: "Unexpected exception", value: "Typer's pretty-exception behavior or Python traceback reports an unhandled implementation failure."},
     ]}
 />
@@ -92,16 +92,19 @@ The active workflow and commit validator attach labels such as:
   `MAIN_REMOTE_MISSING`.
 - Files and editor: `VERSION_FILE_NOT_FOUND`, `COMMIT_MSG_PATH_MISSING`,
   `COMMIT_MSG_FILE_NOT_FOUND`, `TAG_MSG_PATH_MISSING`,
-  `TAG_MSG_FILE_NOT_FOUND`, `EDITOR_LAUNCH_FAILED`.
+  `TAG_MSG_FILE_NOT_FOUND`, `EDITOR_LAUNCH_FAILED`, `EDITOR_PROCESS_FAILED`.
 - Commit content: `EMPTY_COMMIT_MSG`, `INVALID_COMMIT_FORMAT`,
   `INVALID_COMMIT_TYPE`, `COMMIT_MESSAGE_MISSING`,
-  `COMMITIZEN_CONVENTION_FAILED`, `COMMITIZEN_FAILED`.
+  `COMMITIZEN_NOT_CONFIGURED`, `COMMITIZEN_NOT_AVAILABLE`,
+  `COMMITIZEN_CONFIGURATION_INVALID`, `COMMITIZEN_CHECK_FAILED`,
+  `COMMITIZEN_FAILED`.
 - Staging: `EMPTY_STAGING_ABORTED`, `NO_STAGED_FILES`,
   `NO_STAGED_CHANGES`, `INVALID_STAGE_MODE`, `AUTO_STAGE_FAILED`,
   `STAGING_FAILED`.
 - Version and tag: `INVALID_VERSION_INPUT`, `TAG_MISSING`,
   `TAG_CREATION_FAILED`.
-- Publication and finalization: `COMMIT_FAILED`, `PUSH_FAILED`,
+- Publication and finalization: `GIT_COMMIT_FAILED`, `GIT_HOOK_FAILED`,
+  `COMMIT_FAILED`, `PUSH_FAILED`,
   `PUSH_TAG_FAILED`, `POST_WORKFLOW_FAILED`.
 
 <InfoBox variant="note" title="Labels are diagnostic, not stable numeric codes">

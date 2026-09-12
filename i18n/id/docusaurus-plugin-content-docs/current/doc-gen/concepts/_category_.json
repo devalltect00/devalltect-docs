@@ -1,0 +1,12 @@
+{
+  "label": "Konsep",
+  "position": 3,
+  "key": "doc-gen-concepts",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-concepts",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/concepts/overview"
+  }
+}

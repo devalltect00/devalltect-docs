@@ -1,0 +1,16 @@
+---
+title: Doc Gen
+description: Generate, print, dan analyze dokumentasi struktur repositori.
+sidebar_position: 0
+sidebar_key: doc-gen-home
+---
+
+import {CommandHero, CommandMetadata, FeatureGrid, InfoBox, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen" title="Doc Gen" description="Pindai repositori lalu sajikan strukturnya sebagai Markdown, pohon terminal, atau ringkasan analisis yang mudah dibaca." category="Peralatan Dokumentasi" status="v1.0.0" syntax="doc-gen COMMAND [OPTIONS]" links={[{label:"Mulai",href:"./doc-gen/getting-started/overview"},{label:"Perintah",href:"./doc-gen/commands/overview"},{label:"Konfigurasi",href:"./doc-gen/configuration/overview"}]} />
+<CommandMetadata items={[{label:"Python",value:"3.9+",icon:"dependency"},{label:"Runtime standar",value:"Python 3.14",icon:"configuration"},{label:"Output",value:"Markdown dan terminal",icon:"file"},{label:"Versi",value:"1.0.0",icon:"release"}]} />
+<FeatureGrid items={[{title:"Generate",children:"Tulis dokumen Markdown ke output path yang jelas."},{title:"Print",children:"Tampilkan tree tanpa menulis dokumentasi."},{title:"Analyze",children:"Ringkas project type, directory, dan file."},{title:"Adapt",children:"Gunakan profile atau smart mode untuk mengatur detail."}]} />
+<InfoBox variant="info" title="Hanya generate yang menulis dokumentasi">Print dan analyze read-only. Generate dengan `--dry-run` tidak membuat output directory atau file.</InfoBox>
+<Terminal title="Preview cepat" language="bash">{`doc-gen structure print .
+doc-gen structure analyze .
+doc-gen structure generate . --dry-run`}</Terminal>

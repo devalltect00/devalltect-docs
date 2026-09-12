@@ -1,0 +1,19 @@
+---
+title: "Pemecahan Masalah"
+description: "Pemecahan Masalah: reflow tags convert remote"
+sidebar_position: 9
+sidebar_key: reflow-tags-convert-remote-troubleshooting
+tags: [reflow, troubleshooting]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Pemecahan Masalah" description="Diagnosis konflik target, penolakan push atomik, dan perbedaan izin baca/tulis." category="Konversi Tag" status="Perubahan Jarak Jauh Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+| Gejala | Kemungkinan penyebab | Solusi |
+| --- | --- | --- |
+| Path dan URL dikonfigurasi bersamaan. | Kedua bentuk target saling eksklusif. | Pertahankan hanya salah satu target. |
+| Push atomik ditolak. | Kebijakan, autentikasi, atau penghapusan ditolak. | Tinjau kebijakan dan kredensial, lalu jalankan kembali dry-run. |
+| Clone berhasil, tetapi push gagal. | Izin baca dan tulis berbeda. | Konfigurasikan autentikasi Git tanpa menaruh token di konfigurasi. |
+
+<InfoBox variant="tip" title="Diagnostik">Gunakan `--debug` sebelum mengulangi perubahan mode langsung.</InfoBox>

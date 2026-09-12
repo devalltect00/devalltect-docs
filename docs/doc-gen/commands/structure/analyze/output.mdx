@@ -1,0 +1,21 @@
+---
+title: "Output"
+description: "Output: doc-gen structure analyze"
+sidebar_position: 6
+sidebar_key: doc-gen-structure-analyze
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure analyze" title="Output" description="Output" category="Project Structure" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- Detected project type and structural summary.
+- Resolved profile/smart-mode decisions where applicable.
+- No generated Markdown file.
+
+<Terminal language="text">{`Target  : <resolved path>
+Command : doc-gen structure analyze
+Dry run : true/false
+Status  : <result>`}</Terminal>
+

@@ -1,0 +1,23 @@
+---
+title: "Output"
+description: "Output: reflow dockerize"
+sidebar_position: 6
+sidebar_key: reflow-dockerize
+tags: [reflow, output]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow dockerize" title="Output" description="Output" category="Publikasi Container" status="Mutasi Eksternal" syntax="reflow dockerize [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+- Target/provider/image.
+- Progress per tag.
+- Total published/failed.
+- Error Docker actionable.
+
+<Terminal language="text">{`Target     : <resolved repository>
+Operation  : reflow dockerize
+Dry run    : true/false
+Successful : <count>
+Failed     : <count>`}</Terminal>
+

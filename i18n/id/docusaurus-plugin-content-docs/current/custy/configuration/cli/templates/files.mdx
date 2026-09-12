@@ -39,4 +39,14 @@ Anda dapat mendesain ulang Jinja layout, tetapi pertahankan documented
 
 </InfoBox>
 
+<InfoBox variant="info" title="Reviewed Message Files Dipertahankan">
+
+Artifact step mempertahankan non-empty `commit_message` atau `tag_message` file
+tanpa perubahan, kemudian membukanya untuk review. Generated release text hanya
+digunakan ketika configured message file kosong atau missing dalam custom
+pipeline. Generated fallback me-resolve project name dari `pyproject.toml` atau
+`package.json`, dengan project-directory name sebagai generic fallback.
+
+</InfoBox>
+
 <Section title="Lanjutkan"><RelatedCommands commands={[{title: "Changelog Template Contract", href: "../../changelog/overview", description: "Pahami data yang diteruskan ke changelog.j2."}, {title: "Commit Configuration", href: "../../../commands/commit/configuration", description: "Lihat commit-specific message behavior."}, {title: "Tag Configuration", href: "../../../commands/tag/configuration", description: "Lihat tag-specific message behavior."}]} /></Section>

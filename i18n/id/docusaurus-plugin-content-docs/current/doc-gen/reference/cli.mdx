@@ -1,0 +1,28 @@
+---
+title: "Referensi CLI"
+description: "Referensi cepat CLI, path, option, dan safety."
+sidebar_position: 2
+sidebar_key: doc-gen-reference
+tags: [doc-gen, cli, reference]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Referensi CLI" description="Referensi cepat CLI, path, option, dan safety." category="Reference" status="v1.0.0" syntax="doc-gen init" />
+
+## Commands
+
+- `doc-gen init`
+- `doc-gen structure generate [TARGET]`
+- `doc-gen structure print [TARGET]`
+- `doc-gen structure analyze [TARGET]`
+
+## Global options
+
+- `--no-banner`
+- `--version / -v`
+- `--debug`
+- `--log-level`
+
+<InfoBox variant="warning" title="Safety">Generate hanya menulis output Markdown hasil resolution; print dan analyze read-only. Generate dry-run tidak membuat direktori atau file.</InfoBox>
+

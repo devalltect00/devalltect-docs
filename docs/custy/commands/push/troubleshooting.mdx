@@ -73,8 +73,43 @@ Custy dry-run again.
 
 <Section compact>
 
-Test the remote with Git directly. Repair SSH keys, credential-manager state, or
-provider access without placing secrets in Custy configuration or documentation.
+Run `custy configure credentials status`, then test the remote with Git or
+`custy configure credentials test --remote origin`. Repair SSH keys,
+credential-manager state, mounted external files, token environment variables,
+PAT scopes, or provider access without placing token values in Custy
+configuration or documentation.
+
+For Docker, remember that the host credential-manager session is not inherited.
+Use native SSH, an approved interactive prompt, or the optional protected
+external fallback described in the credential guide.
+
+</Section>
+
+---
+
+## Git Appears to Freeze After Starting a Push
+
+<Section compact>
+
+When no managed or native credential succeeds and `interactive_fallback = true`,
+Git waits for terminal input. Current Custy versions disable Rich rendering for
+hidden direct-command pipelines, suspend visible Run progress, release captured
+streams, and explain that an HTTPS `Password` prompt expects a PAT. If
+`custy run push` works but `custy push` still loses its prompt, rebuild or pull
+the image containing the hidden-progress fix. Pressing Enter twice submits empty
+credentials.
+
+</Section>
+
+---
+
+## A Non-Interactive Push Stops Instead of Prompting
+
+<Section compact>
+
+This prevents an unattended job from hanging. Keep
+`fail_non_interactive = true` and supply the configured file or environment
+source to the process. Dry-run does not read a token or contact the remote.
 
 </Section>
 
@@ -107,19 +142,20 @@ skip backup remotes for non-critical branches.
 
 <Section compact>
 
-Confirm the tag exists locally and was passed into the workflow. The advertised
-`--skip-tag` adapter is currently incomplete, so rely on dry-run output rather
-than assumptions about the flag.
+Confirm the tag exists locally, was passed with `--tag`, and was not disabled
+by `--skip-tag` or commit-type eligibility rules.
 
 </Section>
 
 ---
 
-## `--remote` Did Not Select the Destination
+## A Configured Group Was Not Selected
 
 <Section compact>
 
-This is a known adapter limitation. The current workflow engine can fall back to
-`origin`; cancel the operation if the reported destination is wrong.
+Check precedence. An explicit `--remote` selects one destination,
+`all_remote = true` selects all configured groups, and otherwise
+`tool.custy.git.push_to` selects main, backup, or all. Backup targets can
+still be skipped on non-critical branches.
 
 </Section>

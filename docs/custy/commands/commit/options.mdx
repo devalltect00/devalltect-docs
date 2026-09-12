@@ -20,7 +20,7 @@ import {
     title="Command Options"
     description="Control commit templates, staging behavior, version resolution, backups, and empty-commit handling."
     category="Git Operations"
-    status="Stable with Limitation"
+    status="Stable"
     syntax="custy commit [OPTIONS]"
     tags={[
         "options",
@@ -102,7 +102,7 @@ the final Git commit.
         {
             name: "--check-cz",
             shorthand: "-cz",
-            description: "Request Commitizen validation when available.",
+            description: "Require configured and installed Commitizen validation for this invocation.",
             example: "--check-cz",
         },
     ]}
@@ -129,12 +129,12 @@ custy --log-level debug commit`}
 ---
 
 <InfoBox
-    variant="warning"
-    title="Current adapter limitation"
+    variant="tip"
+    title="Prefer provider configuration for team policy"
 >
 
-The CLI accepts `--check-cz`, but the current command-to-workflow adapter does
-not propagate that value into the workflow engine. Treat it as unavailable until
-the Custy implementation is updated and verified.
+`--check-cz` now acts as a strict one-time override equivalent to
+`provider = "commitizen"` and `require_tool = true`. For reusable policy, see
+[Commit validation configuration](../../configuration/commit-validation).
 
 </InfoBox>

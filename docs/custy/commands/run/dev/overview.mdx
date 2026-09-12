@@ -23,7 +23,7 @@ import {
     title="Development Profile"
     description="Prepare daily artifacts, generate the changelog, back up the commit message, stage, commit, and push."
     category="Pipeline Profile"
-    status="Stable with limitations"
+    status="Stable"
     syntax="custy run dev [OPTIONS]"
     tags={["development", "commit", "push"]}
     links={[
@@ -51,11 +51,12 @@ the current registered profile, does **not** include the `apply_version_step`.
 
 <InfoBox
     variant="warning"
-    title="Push destination limitation"
+    title="Confirm the push destination"
 >
 
-The profile ends with push. Current remote-selection adapter limitations still
-apply, so preview and confirm the actual destination before normal execution.
+The profile ends with push and honors the same explicit and grouped destination
+settings as `custy push`. Preview the effective remotes before normal
+execution.
 
 </InfoBox>
 
@@ -94,7 +95,7 @@ The current registered Dev profile does not include `apply_version_step` or
 >
 
 <Screenshot
-    src="/img/custy/run/dev-profile.png"
+    src="/img/custy/commands/run/dev-profile.png"
     alt="Custy development profile stages shown in the terminal"
     title="Development pipeline"
     caption="The Dev profile prepares, reviews, commits, and pushes daily work."

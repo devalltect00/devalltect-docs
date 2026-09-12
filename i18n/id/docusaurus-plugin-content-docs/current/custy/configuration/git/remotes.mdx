@@ -17,9 +17,9 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
 
 <PropertyTable
     items={[
-        {property: "default_remote", type: "String", defaultValue: "origin", description: "Service fallback ketika operation meminta satu remote. Beberapa direct push resolver paths menyediakan origin sebelum service resolution."},
-        {property: "main_remotes", type: "String array", defaultValue: "[\"origin\"]", description: "Authoritative destinations yang dikembalikan ketika push_to bernilai main."},
-        {property: "backup_remotes", type: "String array", defaultValue: "[]", description: "Optional active mirror atau archive destinations yang dikembalikan ketika push_to bernilai backup. Didukung, tetapi dikomentari dalam generated file."},
+        {property: "default_remote", type: "Remote name string", defaultValue: "origin", description: "Fallback ketika main-group push tidak memiliki main_remotes dan tidak ada explicit --remote. Gunakan nama dari git remote, bukan URL."},
+        {property: "main_remotes", type: "Remote name array", defaultValue: "[\"origin\"]", description: "Tujuan utama untuk group-aware push flows."},
+        {property: "backup_remotes", type: "Remote name array", defaultValue: "[]", description: "Tujuan mirror atau archive opsional untuk group-aware push flows. Didukung, tetapi dikomentari dalam generated file."},
     ]}
 />
 
@@ -31,6 +31,15 @@ main_remotes = ["origin", "gitlab"]
 backup_remotes = ["mirror"]`}
 
 </Terminal>
+
+<InfoBox variant="note" title="Nilai ini adalah nama Git remote">
+
+`origin`, `gitlab`, dan `mirror` adalah alias lokal yang dikonfigurasi oleh Git.
+Nilai tersebut berbeda dari `tool.custy.changelog.links.repository`, yang harus
+berupa URL browser HTTP(S) lengkap dan hanya digunakan dalam changelog yang
+dihasilkan.
+
+</InfoBox>
 
 <InfoBox variant="danger" title="Verifikasi Names dan URLs Sebelum Push">
 

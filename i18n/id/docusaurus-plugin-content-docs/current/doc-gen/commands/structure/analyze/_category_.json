@@ -1,0 +1,11 @@
+{
+  "label": "Analisis Struktur Proyek",
+  "position": 3,
+  "key": "doc-gen-structure-analyze-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/structure/analyze/overview"
+  }
+}

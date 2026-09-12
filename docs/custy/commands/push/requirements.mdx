@@ -49,7 +49,7 @@ destinations before normal execution.
     items={[
         {title: "Reviewed HEAD", level: "required", children: "Confirm the current branch and the exact HEAD commit that will be synchronized."},
         {title: "Reachable Main Remote", level: "required", children: "At least one intended main remote must exist and be reachable."},
-        {title: "Git Authentication", level: "required", children: "Configure SSH or supported Git credentials outside Custy."},
+        {title: "Git Authentication", level: "required", children: "Configure native SSH/Git authentication or Custy's optional protected external HTTPS fallback; never store a token value in config.toml."},
         {title: "Remote Permission", level: "required", children: "The branch and account must satisfy remote protection and authorization rules."},
         {title: "Local Tag", level: "optional", children: "A requested tag must exist locally and point to the intended commit."},
         {title: "Backup Remote", level: "optional", children: "Configure an eligible backup destination only when backup synchronization is required."},
@@ -85,5 +85,13 @@ custy --dry-run push`}
 When no main remote list reaches the workflow engine, the current implementation
 can ask whether it should use `origin`. Non-interactive environments should not
 depend on that prompt.
+
+</InfoBox>
+
+<InfoBox variant="tip" title="Container authentication">
+
+A container does not inherit the host credential-manager session. Use SSH
+through the normal Git environment, allow an approved interactive prompt, or
+configure the optional external fallback with `custy configure credentials`.
 
 </InfoBox>

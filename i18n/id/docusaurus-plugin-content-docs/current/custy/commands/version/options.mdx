@@ -15,7 +15,7 @@ import {CommandHero, CommandOption, Section, InfoBox} from "@site/src/components
 <CommandOption options={[
     {name: "--strategy", required: false, defaultValue: "config.toml", description: "Pilih versioning strategy.", example: "--strategy semver"},
     {name: "--bump", required: false, defaultValue: "auto", description: "Pilih bump level: auto, patch, minor, atau major.", example: "--bump minor"},
-    {name: "--tag", required: false, description: "Gunakan explicit version.", example: "--tag v2.4.0"},
+    {name: "--tag", required: false, description: "Gunakan explicit stable atau supported lifecycle version.", example: "--tag v2.4.0-rc.1"},
     {name: "--pre-release", required: false, description: "Buat pre-release seperti alpha, beta, atau rc.", example: "--pre-release beta"},
     {name: "--post-release", required: false, defaultValue: "false", description: "Buat post-release jika didukung strategy."},
     {name: "--dev-release", required: false, defaultValue: "false", description: "Buat development release jika didukung strategy."},

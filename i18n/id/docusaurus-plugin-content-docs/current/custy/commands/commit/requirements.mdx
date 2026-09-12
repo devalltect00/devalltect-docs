@@ -16,6 +16,7 @@ import {CommandHero, RequirementGrid, InfoBox, Section} from "@site/src/componen
  {title:"Version File",level:"required",children:"Configured version file harus tersedia dan writable."},
  {title:"Editor",level:"required",children:"Editor yang dikonfigurasi harus dapat membuka artifact interaktif."},
  {title:"Reviewed Working Tree",level:"recommended",children:"Pahami perubahan yang dapat ikut di-stage."},
+ {title:"Commitizen",level:"optional",children:<>Instal <code>custy[commitizen]</code> hanya jika proyek memerlukan Commitizen message validation atau version strategy. Auto mode menggunakan built-in validator Custy sebagai fallback.</>},
 ]} />
 
 <InfoBox variant="warning" title="Staging Merupakan Bagian dari Profile">Periksa `auto_stage` dan `stage_mode`; keduanya menentukan perubahan yang masuk ke final commit.</InfoBox>

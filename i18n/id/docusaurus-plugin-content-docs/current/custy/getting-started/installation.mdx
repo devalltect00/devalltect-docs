@@ -12,6 +12,7 @@ tags:
 keywords:
   - instal custy
   - instalasi python custy
+  - package gitlab privat custy
   - artefak rilis custy
   - instalasi editable custy
 ---
@@ -30,13 +31,14 @@ import {
 } from "@site/src/components/docs";
 
 <CommandHero
-    command="python -m pip install ."
+    command="python -m pip install --index-url $PRIVATE_INDEX_URL custy==2.1.0"
     title="Instal Custy"
     description="Pilih metode instalasi native yang didukung, siapkan persyaratannya, dan verifikasi CLI Custy."
     category="Memulai"
     status="Python 3.14+"
     syntax="python -m pip install [OPTIONS] SOURCE"
     tags={[
+        "GitLab PyPI privat",
         "source checkout",
         "artefak rilis",
         "penyiapan developer",
@@ -54,26 +56,28 @@ import {
         {label: "Python Native", value: "3.14 atau lebih baru", icon: "requirement"},
         {label: "Tool Sistem Utama", value: "Git", icon: "git"},
         {label: "Isolasi yang Disarankan", value: "Virtual environment", icon: "directory"},
+        {label: "Registry Privat", value: "GitLab PyPI", icon: "package"},
         {label: "Alternatif Container", value: "Build Docker lokal", icon: "docker"},
     ]}
 />
 
 ## Ringkasan
 
-Custy dapat diinstal dari source checkout, artefak Python yang dilampirkan pada
-rilis, atau langsung dari repositori Git. Kontributor sebaiknya menggunakan
-instalasi editable dengan grup dependensi development. Docker merupakan
-alternatif terpisah jika Anda tidak ingin menginstal Python atau Git langsung
-di host.
+Custy dapat diinstal dari registry GitLab PyPI privat milik proyek, source
+checkout, artefak Python yang dilampirkan pada rilis, atau langsung dari
+repositori Git. Kontributor sebaiknya menggunakan instalasi editable dengan
+grup dependensi development. Docker merupakan alternatif terpisah jika Anda
+tidak ingin menginstal Python atau Git langsung di host.
 
 <InfoBox
     variant="info"
-    title="Tidak mengasumsikan package index publik"
+    title="Registry privat, bukan PyPI publik"
 >
 
-Petunjuk ini tidak mengasumsikan bahwa `pip install custy` akan menemukan
-proyek ini di package index publik. Instal source checkout, artefak rilis, atau
-revisi Git yang sudah ditinjau secara eksplisit.
+`pip install custy` tanpa konfigurasi index tidak akan menemukan proyek ini di
+PyPI publik. Pengguna yang memiliki akses dapat memilih index GitLab privat;
+source checkout, artefak rilis, dan revisi Git yang sudah ditinjau tetap
+didukung sebagai alternatif.
 
 </InfoBox>
 
@@ -133,12 +137,17 @@ revisi Git yang sudah ditinjau secara eksplisit.
         {
             title: "Commitizen",
             icon: <Icon name="git" />,
-            children: <>Instal dan konfigurasikan perintah <code>cz</code> hanya ketika menggunakan strategi versi Commitizen milik Custy. Tool ini termasuk dalam grup dependensi <code>dev</code>, bukan daftar dependensi runtime.</>,
+            children: <>Instal <code>custy[commitizen]</code> ketika menggunakan Commitizen versioning atau commit-message validation. Tool ini tetap optional untuk normal Custy workflows dan disertakan dalam production Docker image.</>,
+        },
+        {
+            title: "Pre-Commit Hooks",
+            icon: <Icon name="success" />,
+            children: <>Instal <code>custy[hooks]</code> ketika local Custy harus menjalankan pre-commit-managed hooks secara langsung. Project tanpa pre-commit tidak memerlukan extra ini. Production image sudah menyertakannya.</>,
         },
         {
             title: "Editor Interaktif",
             icon: <Icon name="file" />,
-            children: "Sediakan launcher command line VS Code atau fallback Notepad Windows ketika alur commit, tag, atau rilis membuka file yang dibuat untuk ditinjau.",
+            children: "Instal setidaknya satu configured editor untuk meninjau commit, tag, atau release message. Windows menggunakan VS Code lalu Notepad secara default; Docker menyertakan Micro, Nano, Vim, dan Vi.",
         },
         {
             title: "Kredensial Remote",
@@ -164,6 +173,11 @@ revisi Git yang sudah ditinjau secara eksplisit.
 <FeatureGrid
     title="Pilihan Instalasi Native"
     items={[
+        {
+            title: "GitLab PyPI Privat",
+            icon: <Icon name="package" />,
+            children: "Direkomendasikan bagi pengguna berizin yang menginginkan package immutable dan telah ditinjau tanpa memelihara source checkout.",
+        },
         {
             title: "Source Checkout",
             icon: <Icon name="directory" />,
@@ -192,7 +206,46 @@ revisi Git yang sudah ditinjau secara eksplisit.
 ---
 
 <Section
-    title="Metode 1: Instal dari Source Checkout"
+    title="Metode 1: Instal dari GitLab PyPI Privat"
+>
+
+Minta ID proyek GitLab dan deploy token yang hanya memiliki izin
+`read_package_registry` kepada maintainer proyek. Kemudian instal satu versi
+package yang tepat di environment terisolasi.
+
+<Terminal title="Instal dari registry proyek privat" language="bash">
+
+{`python -m venv venv
+
+# Aktifkan environment, lalu instal satu versi yang sudah ditinjau.
+python -m pip install \
+  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+  "custy==2.1.0"
+
+custy --version`}
+
+</Terminal>
+
+Tag rilis Git tetap menggunakan SemVer, sedangkan metadata package menggunakan
+PEP 440 kanonis. Contohnya, tag `v2.1.0-rc.1` diinstal sebagai
+`custy==2.1.0rc1`.
+
+<InfoBox variant="warning" title="Simpan kredensial registry di luar repositori">
+
+Jangan commit deploy token, URL index yang memuat kredensial, atau konfigurasi
+pip yang berisi rahasia. Hindari `--extra-index-url` untuk package privat karena
+index yang bersaing dapat menimbulkan risiko dependency confusion. Untuk
+resolusi dependensi yang benar-benar privat, maintainer proyek juga perlu
+meninjau pengaturan package forwarding GitLab.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section
+    title="Metode 2: Instal dari Source Checkout"
 >
 
 Clone repositori, buat virtual environment, lalu instal package runtime. Ini
@@ -230,7 +283,7 @@ python -m pip install .`}
 ---
 
 <Section
-    title="Metode 2: Instal Artefak Rilis"
+    title="Metode 3: Instal Artefak Rilis"
 >
 
 Alur rilis Custy dikonfigurasi untuk melampirkan Python wheel dan source
@@ -267,7 +320,7 @@ asset yang ditampilkan oleh rilis tersebut.
 ---
 
 <Section
-    title="Metode 3: Instal Langsung dari Git"
+    title="Metode 4: Instal Langsung dari Git"
 >
 
 Jika Anda tidak memerlukan checkout lokal, pip dapat menginstal tag atau commit

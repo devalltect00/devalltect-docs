@@ -110,7 +110,9 @@ dry_run = false`}
 - Invalid TOML raises a configuration error.
 - Relative paths are normally evaluated from the current working directory.
 - A new Custy process reloads changes made to the file.
-- Keep secrets and Git credentials out of project configuration.
+- Keep secret values out of project configuration. Credential policy and
+  external token filenames may be configured there, but token contents belong
+  in the external credential directory or an environment variable.
 
 </Section>
 

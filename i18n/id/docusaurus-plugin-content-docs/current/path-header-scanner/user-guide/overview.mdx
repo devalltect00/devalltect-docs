@@ -1,0 +1,19 @@
+---
+title: "Ringkasan"
+description: "Pilih workflow berdasarkan target dan efek samping."
+sidebar_position: 1
+sidebar_key: path-header-scanner-user-guide
+tags: [path-header-scanner, user-guide]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Panduan Pengguna" description="Pilih workflow berdasarkan target dan efek samping." category="User Guide" status="Practical" syntax="path-header-scanner init" />
+
+- `path-header-scanner init`
+- `path-header-scanner scan TARGET`
+- `path-header-scanner scan TARGET --apply`
+- `path-header-scanner scan TARGET --dry-run`
+
+<InfoBox variant="warning" title="Safety">Scan hanya preview secara default. Effective --apply mengaktifkan write, sedangkan --dry-run mengungguli apply dari CLI dan configuration.</InfoBox>
+

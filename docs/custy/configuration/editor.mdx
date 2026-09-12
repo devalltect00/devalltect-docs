@@ -1,0 +1,287 @@
+---
+title: "Editor"
+description: "Configure editor precedence for commit and tag message review on local hosts and inside containers."
+sidebar_position: 8
+sidebar_key: custy-configuration-editor
+tags: [custy, configuration, editor, docker]
+keywords: [tool.custy.editor, VISUAL, EDITOR, vscode, micro, nano, vim]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.editor]"
+    title="Editor"
+    description="Choose predictable editors for local and container workflows without embedding arbitrary shell commands in project configuration."
+    category="Configuration"
+    status="Active"
+    syntax={'windows = ["vscode", "notepad"]'}
+    tags={["platform precedence", "safe fallback", "container editors"]}
+    links={[
+        {label: "Docker", href: "../getting-started/docker"},
+        {label: "Run Troubleshooting", href: "../commands/run/troubleshooting"},
+        {label: "Environment", href: "../reference/environment"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Tables", value: "tool.custy.editor + candidates", icon: "configuration"},
+        {label: "Supported IDs", value: "7", icon: "table"},
+        {label: "Container Default", value: "Micro", icon: "terminal"},
+        {label: "Dry Run", value: "No process launch", icon: "security"},
+    ]}
+/>
+
+## Properties
+
+<PropertyTable
+    items={[
+        {property: "prefer_environment", type: "Boolean", defaultValue: "true", required: false, description: "Try VISUAL and then EDITOR before project-configured candidates."},
+        {property: "allow_fallback", type: "Boolean", defaultValue: "true", required: false, description: "Append Custy's built-in candidates after the configured list."},
+        {property: "candidates.windows", type: "Editor ID array", defaultValue: '["vscode", "notepad"]', required: false, description: "Ordered candidates for a Windows host."},
+        {property: "candidates.linux", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Ordered candidates for native Linux."},
+        {property: "candidates.macos", type: "Editor ID array", defaultValue: '["vscode", "micro", "nano", "vim", "vi"]', required: false, description: "Ordered candidates for macOS."},
+        {property: "candidates.container", type: "Editor ID array", defaultValue: '["micro", "nano", "vim", "vi"]', required: false, description: "Ordered candidates when Custy detects its container runtime."},
+    ]}
+/>
+
+<Section title="Recommended Configuration">
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.editor]
+prefer_environment = true
+allow_fallback = true
+
+[tool.custy.editor.candidates]
+windows = ["vscode", "notepad"]
+linux = ["micro", "nano", "vim", "vi"]
+macos = ["vscode", "micro", "nano", "vim", "vi"]
+container = ["micro", "nano", "vim", "vi"]`}
+
+</Terminal>
+
+The first identifier is the highest priority. Custy skips an editor that is not
+installed or cannot be started, then tries the next candidate. If an editor
+process starts and later exits unsuccessfully, Custy stops instead of opening a
+second editor after the user may already have edited the file.
+
+</Section>
+
+## Environment Variables
+
+`VISUAL` and `EDITOR` belong to the process environment. They are not TOML
+properties, and Custy does not create, persist, or modify them. A user, shell
+profile, operating system, IDE, Docker/Compose service, or CI job may define
+them before starting Custy.
+
+### Accepted names and values
+
+| Exact variable | Role | Accepted value | Example |
+| --- | --- | --- | --- |
+| `VISUAL` | Primary environment editor | A trusted executable with optional arguments | `code --wait` |
+| `EDITOR` | Secondary environment editor | A trusted executable with optional arguments | `nano` |
+| `PATH` | Executable discovery; it does not select an editor | Operating-system search paths | A directory containing `code.CMD` or `micro` |
+| `CUSTY_CONTAINER` | Selects container candidates; it is not an editor command | `1`, `true`, `yes`, or `on` | The official image sets `1` |
+
+Only `VISUAL` and `EDITOR` accept editor commands. Use these uppercase names
+exactly for portable behavior; environment names are case-sensitive on common
+Linux and macOS shells. Accepted command examples include `code --wait`,
+`notepad`, `micro`, `nano`, `vim`, and `nvim -f`. Unlike TOML candidate lists,
+an environment command may name another installed editor. Custy splits its
+arguments and launches the resolved executable without a shell, but the value
+must still be treated as trusted input.
+
+An empty or undefined `VISUAL` or `EDITOR` value is skipped without error. If
+a named executable is unavailable, Custy records that candidate and continues
+according to the configured policy.
+
+### Where to set them
+
+For the current PowerShell process and commands started from it:
+
+<Terminal title="PowerShell session" language="powershell">
+
+{`$env:VISUAL = "code --wait"
+$env:EDITOR = "notepad"
+custy run release`}
+
+</Terminal>
+
+For the current Command Prompt process:
+
+<Terminal title="Command Prompt session" language="batch">
+
+{`set VISUAL=code --wait
+set EDITOR=notepad
+custy run release`}
+
+</Terminal>
+
+For Linux, macOS, WSL, or a POSIX container shell:
+
+<Terminal title="POSIX shell session" language="bash">
+
+{`export VISUAL="micro"
+export EDITOR="nano"
+custy run release`}
+
+</Terminal>
+
+Session values disappear when that shell closes. For persistent local values,
+use Windows User/System Environment Variables or a shell startup file such as
+`~/.bashrc`, `~/.zshrc`, or `~/.profile`, then start a new terminal.
+
+For a one-off container command, pass the variables into the container itself:
+
+<Terminal title="Docker environment" language="bash">
+
+{`docker run --rm -it \
+  -e VISUAL="micro" \
+  -e EDITOR="nano" \
+  -v "\${PWD}:/workspace" \
+  -w /workspace \
+  custy-prod:latest run release`}
+
+</Terminal>
+
+For Compose or CI, define the same exact names in that service or job:
+
+<Terminal title="Docker Compose service" language="yaml">
+
+{`services:
+  app:
+    environment:
+      VISUAL: micro
+      EDITOR: nano`}
+
+</Terminal>
+
+Custy does not load a `.env` file directly. Docker Compose, a CI runner, or
+another launcher may load one and pass the resulting values into the Custy
+process. A host value such as `VISUAL="code --wait"` is not automatically
+available inside a container, and the corresponding executable must exist in
+the environment where Custy is actually running.
+
+### When Custy reads them
+
+1. The shell, operating system, container runtime, or CI runner starts Custy
+   with its process environment.
+2. Custy loads `[tool.custy.editor]` and builds the requested workflow.
+3. When the workflow reaches commit or tag message editing,
+   `EditorService.resolve_candidates()` reads `VISUAL` and then `EDITOR`.
+4. Custy tries the resulting commands and configured candidates in order.
+
+Set the variables before starting Custy. Changing a variable in a different
+terminal does not change the environment of an already-running Custy process.
+
+## Behavior Matrix
+
+| `prefer_environment` | `allow_fallback` | Effective order | Recommended use |
+| --- | --- | --- | --- |
+| `true` | `true` | `VISUAL` → `EDITOR` → configured candidates → built-in defaults | Recommended for most users |
+| `true` | `false` | `VISUAL` → `EDITOR` → configured candidates only | Personal override with a controlled project list |
+| `false` | `true` | Configured candidates → built-in defaults | Predictable team or container behavior with recovery |
+| `false` | `false` | Configured candidates only | Strict, locked-down environments |
+
+Fallback means Custy appends built-in candidates for the same active runtime.
+It can continue when a candidate is missing or cannot be started. If an editor
+process starts and then exits unsuccessfully, Custy stops with
+`EDITOR_PROCESS_FAILED` rather than opening another editor unexpectedly.
+
+<Section title="Resolution Order">
+
+1. `VISUAL`, then `EDITOR`, when `prefer_environment = true`.
+2. `candidates.container` in a detected container; otherwise, the candidates
+   for the active Windows, Linux, or macOS host.
+3. Built-in candidates for that same runtime when `allow_fallback = true`.
+
+Project configuration intentionally accepts only supported identifiers:
+`vscode`, `notepad`, `micro`, `nano`, `vim`, `vi`, and `neovim`. `code` is
+accepted as an alias for `vscode`; `nvim` is accepted as an alias for
+`neovim`.
+
+<InfoBox variant="info" title="Why VS Code can be skipped on Windows">
+
+Custy resolves the actual executable path before launch, including the
+`code.CMD` shim installed by VS Code. If Notepad still opens, check whether
+`VISUAL` or `EDITOR` selects it, whether `code` is visible in the terminal's
+`PATH`, and the skipped-candidate message printed by Custy.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Local Host Versus Docker">
+
+A Linux container cannot normally open a graphical editor installed on its
+Windows host. Custy therefore uses `candidates.container` inside its image and
+uses `candidates.windows` when running natively on Windows. Keep `-it` on
+interactive Docker commands so terminal editors receive a TTY.
+
+The production image bundles Micro, Nano, Vim, and Vi. VS Code, Notepad, and
+Neovim are supported identifiers but are not bundled into the standard image.
+A custom image may install them, although graphical host integration remains
+outside the standard container workflow.
+
+</Section>
+
+<Section title="Terminal Ownership During Editing">
+
+When a blocking terminal editor such as Micro, Nano, Vim, or Vi opens, Custy
+temporarily hides and stops the live pipeline progress display. This gives the
+editor exclusive ownership of the terminal instead of allowing Rich refreshes
+to overwrite editor rows. After the editor exits, Custy restarts the display,
+restores the current step, and continues the pipeline.
+
+The workflow remains on `EditFilesStep` while the editor is open. Suspending the
+display does not skip the step, change the message file, or alter dry-run
+behavior; it only coordinates terminal presentation.
+
+<InfoBox variant="tip" title="If progress still overlaps the editor">
+
+Repeated or embedded progress rows usually mean the `custy` executable or
+Docker image predates terminal-progress suspension. Verify the running version,
+then reinstall the current source checkout or rebuild/pull the intended image
+before retrying. See [Run troubleshooting](../commands/run/troubleshooting) for
+the focused checks.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Container Keybindings">
+
+| Editor | Undo | Redo | Notes |
+| --- | --- | --- | --- |
+| Micro | `Ctrl+Z` or `Alt+Z` | `Ctrl+Y` or `Alt+Y` | Custy adds the Alt aliases; Micro's native shortcuts remain available. |
+| Nano | `Alt+U` | `Alt+E` | Custy preserves Nano's native mappings. `Alt+Z` and `Alt+Y` are not replaced because Nano uses them for interface and syntax-color toggles. |
+| Vim / Vi | `u` or `Alt+Z` | `Ctrl+R` or `Alt+Y` | Custy adds Alt aliases in normal and insert mode while preserving native commands. |
+
+These settings apply only to editors launched inside the Custy image. Custy
+does not overwrite VS Code settings or local Micro, Nano, Vim, or Neovim
+configuration on the host.
+
+</Section>
+
+<InfoBox variant="warning" title="Non-interactive execution">
+
+Terminal editors require an interactive input and output stream. Without
+`-it`, Custy skips them and reports `EDITOR_LAUNCH_FAILED` when no graphical or
+non-interactive candidate is usable. Dry-run reports the planned editor step
+without starting an editor process.
+
+</InfoBox>
+
+<Section title="Continue">
+
+<RelatedCommands
+    commands={[
+        {title: "Docker", href: "../getting-started/docker", description: "Build the image and run interactive workflows against a mounted project."},
+        {title: "Run Troubleshooting", href: "../commands/run/troubleshooting", description: "Diagnose TTY, editor discovery, and partial release state."},
+        {title: "Environment", href: "../reference/environment", description: "Review VISUAL, EDITOR, PATH, terminal, and external-tool boundaries."},
+    ]}
+/>
+
+</Section>

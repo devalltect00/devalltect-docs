@@ -1,0 +1,140 @@
+---
+title: "Contributing"
+description: "Prepare a focused, tested, documented, and safe Path Header Scanner contribution."
+sidebar_position: 4
+sidebar_key: path-header-scanner-developer-guide-contributing
+tags: [path-header-scanner, contributing, code review, pre-commit]
+keywords: [contribute to Path Header Scanner, scanner code quality, scanner pull request]
+---
+
+import {
+    CommandChecklist,
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="make check"
+    title="Contributing to Path Header Scanner"
+    description="Develop language-aware scanning changes with evidence that preview, apply, and dry-run remain safe."
+    category="Developer Guide"
+    status="Review Checklist"
+    syntax="scope -> implement -> validate -> document -> hand off"
+    tags={["quality", "tests", "preview", "dry-run", "pre-commit"]}
+    links={[
+        {label: "Setup", href: "./development-setup"},
+        {label: "Testing", href: "./testing"},
+        {label: "Final Checklist", href: "#final-review-checklist"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Quality Helper", value: "make check", icon: "testing"},
+        {label: "Package Runtime", value: "Python 3.11+", icon: "python"},
+        {label: "Default Scan", value: "Read-only preview", icon: "security"},
+        {label: "Write Opt-In", value: "--apply", icon: "file"},
+    ]}
+/>
+
+## Overview
+
+Keep CLI interaction under `app/cli`, reusable scanning under `app/core/scan`,
+and language syntax under `app/languages`. A contribution must not silently
+turn preview into apply behavior or allow configuration to bypass dry-run.
+
+---
+
+<Section title="Contribution Workflow">
+
+<WorkflowTimeline
+    items={[
+        {title: "Trace the scan path", description: "Follow target and workdir resolution through discovery, language selection, validation, processing, update, and presentation.", status: "completed"},
+        {title: "Define the file contract", description: "List discovered files, exclusions, expected headers, allowed writes, failures, and dry-run behavior.", status: "completed"},
+        {title: "Implement with tests", description: "Keep scanner and language responsibilities focused and cover preview plus approved mutation paths.", status: "current"},
+        {title: "Run widening validation", description: "Run focused scanner tests, pre-commit checks, make check, and the complete suite.", status: "pending"},
+        {title: "Synchronize documentation", description: "Update commands, supported languages, configuration, output, safety, troubleshooting, and architecture as needed.", status: "pending"},
+        {title: "Prepare the handoff", description: "Report affected files, test targets, quality outcomes, safety evidence, and known limits.", status: "pending"},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Implementation Standards">
+
+<CommandChecklist
+    items={[
+        {title: "Resolve paths once", description: "Determine workdir and target before discovery and keep output tied to that resolved identity."},
+        {title: "Preserve preview", description: "Default scan behavior must not write target files."},
+        {title: "Keep apply narrow", description: "Only selected files with supported language strategies may be updated."},
+        {title: "Protect dry-run", description: "Dry-run must override CLI and configured apply values without prompting or file writes."},
+        {title: "Document language behavior", description: "Synchronize syntax, examples, supported extensions, errors, and recovery guidance."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Quality Gates">
+
+<Terminal title="Contributor validation" language="bash">
+
+{`# Focused examples
+python -m pytest tests/core/scan
+python -m pytest tests/languages
+
+# Complete validation
+python -m pytest
+make check
+
+# Hook validation
+make pre-commit-validate
+make pre-commit-run-staged
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Refresh is a maintainer operation">
+
+Run `make pre-commit-refresh` only for intentional hook upgrades. It can change
+the hook configuration and active files and may require network access. Review
+the full diff before committing any result.
+
+</InfoBox>
+
+</Section>
+
+---
+
+<Section title="Final Review Checklist">
+
+<CommandChecklist
+    items={[
+        {title: "Scope is focused", description: "Every change supports the scanner contract, its tests, or documentation."},
+        {title: "Preview is read-only", description: "Tests prove ordinary scan and dry-run do not modify target files."},
+        {title: "Apply is precise", description: "Only intended files and headers change, with useful success and failure summaries."},
+        {title: "Quality results are recorded", description: "Focused tests, full tests, formatting, lint, and relevant builds have explicit outcomes."},
+        {title: "Release actions remain separate", description: "Versions, changelogs, tags, pushes, and publication are untouched unless explicitly requested."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<RelatedCommands
+    commands={[
+        {title: "Development Setup", href: "./development-setup", description: "Create the editable contributor environment."},
+        {title: "Testing", href: "./testing", description: "Validate scanner and language contracts."},
+        {title: "Configuration", href: "../configuration/overview", description: "Preserve scan defaults and exclusions."},
+        {title: "Safety and Dry Run", href: "../concepts/safety-and-dry-run", description: "Protect preview and apply boundaries."},
+    ]}
+/>

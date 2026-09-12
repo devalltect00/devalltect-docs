@@ -1,0 +1,17 @@
+---
+title: Safety and Dry-run
+description: Preview initialization and Markdown generation without persistent writes.
+sidebar_position: 9
+sidebar_key: doc-gen-dry-run
+---
+
+`init --dry-run` suppresses scaffolding. `structure generate --dry-run` may discover and render in memory but does not create an output directory or file. Print and analyze remain read-only with or without dry-run.
+
+```bash
+doc-gen init --dry-run
+doc-gen structure generate . --output docs/project_structure.md --dry-run
+doc-gen structure print . --dry-run
+doc-gen structure analyze . --dry-run
+```
+
+Diagnostic logging may still write to its configured destination.

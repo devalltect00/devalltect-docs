@@ -1,0 +1,57 @@
+---
+title: "Ringkasan"
+description: "Menemukan file didukung, memvalidasi path header, menampilkan preview, dan menerapkan koreksi hanya jika diminta."
+sidebar_position: 1
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, CommandMetadata, InfoBox, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="path-header-scanner scan"
+    title="Pindai Path Header"
+    description="Temukan file yang didukung, validasi path header, dan terapkan koreksi hanya jika diminta secara eksplisit."
+    category="Pemindaian Header"
+    status="Preview Terlebih Dahulu"
+    syntax="path-header-scanner scan [TARGET_DIRECTORY] [OPTIONS]"
+    tags={["validasi", "preview", "header sesuai bahasa"]}
+    links={[
+        {label: "Sintaks", href: "./syntax"},
+        {label: "Opsi", href: "./options"},
+        {label: "Alur Kerja", href: "./workflow"},
+        {label: "Contoh", href: "./examples"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Target Default", value: "app", icon: "directory"},
+        {label: "Efek Default", value: "Hanya preview", icon: "success"},
+        {label: "Aktivasi Penulisan", value: "--apply", icon: "warning"},
+        {label: "Pengganti Simulasi", value: "--dry-run", icon: "security"},
+    ]}
+/>
+
+## Ringkasan
+
+Perintah ini menyelesaikan target, menemukan file dengan ekstensi yang didukung,
+memilih strategi bahasa, dan membandingkan header yang ada dengan path relatif
+proyek yang diharapkan. Target opsional mengikuti `target_directory` dalam
+konfigurasi, yang bernilai `app` pada konfigurasi hasil inisialisasi.
+
+<InfoBox variant="warning" title="Preview adalah default">
+
+`scan` tidak menulis file target kecuali mode apply efektif aktif. `--dry-run`
+mengungguli `--apply` maupun `apply = true` dari konfigurasi.
+
+</InfoBox>
+
+<Section title="Status hasil">
+
+- **Valid:** header yang ada sudah sesuai.
+- **Inserted:** header yang hilang akan ditambahkan, atau telah ditambahkan dalam mode apply.
+- **Updated:** header usang akan diganti, atau telah diganti dalam mode apply.
+- **Failed:** file tidak dapat diproses dengan aman.
+
+</Section>

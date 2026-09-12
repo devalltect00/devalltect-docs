@@ -1,0 +1,35 @@
+---
+title: "Contoh"
+description: "Contoh: doc-gen structure generate"
+sidebar_position: 7
+sidebar_key: doc-gen-structure-generate
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Contoh" description="Hanya generate yang menulis output. Dry-run merender in-memory tanpa membuat direktori atau file." category="Struktur Proyek" status="Menulis Output Terpilih" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`doc-gen structure generate . --dry-run`}</Terminal>
+
+**Hasil:** Renders without writing.
+
+### 2. Output default
+
+<Terminal language="bash">{`doc-gen structure generate .`}</Terminal>
+
+**Hasil:** Writes configured output.
+
+### 3. Custom output
+
+<Terminal language="bash">{`doc-gen structure generate . --output docs/PROJECT_STRUCTURE.md`}</Terminal>
+
+**Hasil:** Writes selected file.
+
+### 4. Detailed smart
+
+<Terminal language="bash">{`doc-gen structure generate . --profile detailed --smart`}</Terminal>
+
+**Hasil:** Uses detailed profile with optimization.

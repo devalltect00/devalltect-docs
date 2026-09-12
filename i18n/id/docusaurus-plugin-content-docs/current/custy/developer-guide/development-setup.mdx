@@ -6,17 +6,42 @@ sidebar_key: custy-developer-guide-development-setup
 ---
 import {CommandHero,CommandChecklist,InfoBox,RelatedCommands,Section,Terminal} from "@site/src/components/docs";
 
-<CommandHero command="pip install -e .[dev]" title="Development Setup" description="Buat isolated editable environment untuk mengembangkan dan menguji Custy." category="Developer Guide" status="Python 3.14+" syntax="python -m pip install -e .[dev]" links={[{label:"Requirements",href:"#requirements"},{label:"Manual Setup",href:"#manual-setup"},{label:"Verify",href:"#verify-the-environment"}]} />
+<CommandHero command="pip install -e .[dev]" title="Development Setup" description="Buat isolated editable environment untuk mengembangkan dan menguji Custy." category="Developer Guide" status="Python 3.14+" syntax="python -m pip install -e .[dev]" tags={["editable install","pytest","Ruff","Black","pre-commit"]} links={[{label:"Requirements",href:"#requirements"},{label:"Manual Setup",href:"#manual-setup"},{label:"Pre-Commit",href:"#pre-commit-workflow"},{label:"Verify",href:"#verify-the-environment"}]} />
 ## Requirements
 <CommandChecklist items={[{title:"Python 3.14+",description:"Gunakan interpreter yang memenuhi project metadata."},{title:"Git",description:"Diperlukan source checkout dan Custy workflows."},{title:"pip and venv",description:"Install dependencies dalam isolated environment."}]} />
 ## Manual Setup
-<Terminal language="bash">{`python -m venv .venv
+<Terminal language="bash">{`python -m venv venv
 # Activate the environment for your shell
+venv\\Scripts\\Activate.ps1
 python -m pip install --upgrade pip
-python -m pip install -e .[dev]`}</Terminal>
+python -m pip install -e ".[dev]"`}</Terminal>
+## Makefile Setup
+Make helpers menggunakan interpreter dari directory `venv/`. Jalankan `make setup` untuk combined setup atau gunakan target individual ketika ingin mengontrol setiap tahap.
+<Terminal language="bash">{`make venv
+make upgrade-pip
+make install-dev
+
+# Combined setup termasuk development tools dan Git hook
+make setup`}</Terminal>
+## Pre-Commit Workflow
+Gunakan target berikut untuk setup dan pemeriksaan harian tanpa mengingat module invocation internal.
+<Terminal language="bash">{`# Install Git hook dan isolated hook environments
+make pre-commit-install-hooks
+
+# Validate .pre-commit-config.yaml
+make pre-commit-validate
+
+# Check staged files
+make pre-commit-run-staged
+
+# Check semua tracked files
+make pre-commit-run`}</Terminal>
+<InfoBox variant="warning" title="Refresh Hanya untuk Upgrade yang Disengaja">`make pre-commit-refresh` menjalankan `autoupdate`, membersihkan dan meng-install ulang hook environments, lalu menjalankan semua hooks terhadap semua files. Command ini dapat mengubah `.pre-commit-config.yaml` dan active source files serta mungkin membutuhkan network access. Review diff sebelum menyimpan hasilnya.</InfoBox>
 ## Verify the Environment
 <Terminal language="bash">{`custy --help
 python -m pytest --version
-ruff --version`}</Terminal>
+python -m ruff --version
+python -m black --version
+python -m pre_commit --version`}</Terminal>
 <InfoBox variant="note" title="Docker Bersifat Opsional">Docker dan Make helpers berguna untuk project workflows, tetapi editable Python setup adalah jalur contributor utama.</InfoBox>
 <RelatedCommands commands={[{title:"Testing",href:"./testing",description:"Jalankan suite."},{title:"Installation",href:"../getting-started/installation",description:"Bandingkan user installation."},{title:"Docker",href:"../getting-started/docker",description:"Gunakan container workflow."},{title:"Contributing",href:"./contributing",description:"Siapkan contribution."}]} />

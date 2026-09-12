@@ -130,7 +130,13 @@ python -m pytest
 # Formatting check, Ruff lint, and full tests
 make check
 
-# Optional local pre-commit verification
+# Validate the hook configuration
+make pre-commit-validate
+
+# Check staged files during normal contributor work
+make pre-commit-run-staged
+
+# Check every tracked file before handoff
 make pre-commit-run`}
 
 </Terminal>
@@ -138,6 +144,15 @@ make pre-commit-run`}
 If a check cannot run, report the command, environment limitation, and the
 validation that did run. Do not describe an unexecuted or failing check as
 passing.
+
+<InfoBox variant="warning" title="Refresh is a maintainer operation">
+
+Run `make pre-commit-refresh` only when intentionally upgrading hook revisions.
+It updates `.pre-commit-config.yaml`, rebuilds hook environments, reinstalls the
+Git hook, and runs all hooks against all files. It can require network access
+and modify active source files, so review its complete diff before committing.
+
+</InfoBox>
 
 </Section>
 

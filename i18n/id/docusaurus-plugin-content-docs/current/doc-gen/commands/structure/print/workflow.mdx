@@ -1,0 +1,30 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: doc-gen structure print"
+sidebar_position: 5
+sidebar_key: doc-gen-structure-print
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure print" title="Alur Kerja" description="Memindai dan merender project tree langsung ke terminal tanpa membuat Markdown document." category="Struktur Proyek" status="Read Only" syntax="doc-gen structure print [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve target/setting.
+
+### 2. Tahap 2
+
+Scan dengan rule.
+
+### 3. Tahap 3
+
+Render terminal tree.
+
+### 4. Tahap 4
+
+Tampilkan tanpa writer.
+
+<InfoBox variant="warning" title="Batas keamanan">Print bersifat read-only. --dry-run diterima dan tetap non-mutating.</InfoBox>
+

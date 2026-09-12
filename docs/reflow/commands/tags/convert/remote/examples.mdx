@@ -1,0 +1,30 @@
+---
+title: "Examples"
+description: "Examples: reflow tags convert remote"
+sidebar_position: 7
+sidebar_key: reflow-tags-convert-remote
+tags: [reflow, examples]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Examples" description="Dry-run performs discovery and validation without persistent mutation." category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+### 1. Preview URL
+
+<Terminal language="bash">{`reflow --dry-run --repository-url https://github.com/acme/project.git tags convert remote`}</Terminal>
+
+**Result:** Inspects without push.
+
+### 2. Convert
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git tags convert remote --yes`}</Terminal>
+
+**Result:** Atomically replaces refs.
+
+### 3. PEP 440
+
+<Terminal language="bash">{`reflow --repository-url https://github.com/acme/project.git tags convert remote --to pep440 --yes`}</Terminal>
+
+**Result:** Uses PEP 440 destinations.
+

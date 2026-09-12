@@ -25,7 +25,7 @@ import {
     tags={[
         "options",
         "pipeline inputs",
-        "adapter limitations",
+        "profile inputs",
     ]}
     links={[
         {label: "Syntax", href: "./syntax"},
@@ -53,7 +53,7 @@ commit, tag, and push inputs.
         {property: "Tag files and version", type: "--tag-msg-file, --version-file, --strategy, --bump, --tag, --tag-message", description: "Control version and tag preparation inputs."},
         {property: "Release modifiers", type: "--pre, --post, --dev, --meta, --epoch", description: "Apply compatible release-version modifiers."},
         {property: "Tag behavior and backup", type: "--force-tag, --skip-checks, --backup-tag-dir", description: "Control tag validation, forced creation, and message backup location."},
-        {property: "Push selection", type: "--all-remote, --remote, --skip-tag, --sync-backup", description: "Advertise destination, tag, and backup synchronization choices."},
+        {property: "Push selection", type: "--all-remote, --remote, --skip-tag, --sync-backup", description: "Select destinations, tag handling, and eligible backup synchronization for profiles containing push."},
     ]}
 />
 
@@ -82,10 +82,18 @@ custy --log-level debug run release`}
     title="Current adapter limitations"
 >
 
-The same mapping limitations documented for the direct commands apply here:
-`check_cz`, `bump`, `skip_check`, `all_remote`, `remote`, and `skip_tag` are not
-reliably propagated to the workflow engine. Use explicit tags where possible and
-verify dry-run destinations and behavior.
+Some non-push inputs still have adapter limitations: `bump` and `skip_check`
+are not reliably propagated to the workflow engine. `check_cz` is propagated
+as a strict Commitizen override. Push
+selection inputs are propagated; still verify consequential destinations with
+dry-run.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Commit validation provider">
+
+For reusable behavior across Run profiles, configure
+[`tool.custy.commit.validation`](../../configuration/commit-validation).
 
 </InfoBox>
 
@@ -96,6 +104,6 @@ verify dry-run destinations and behavior.
 >
 
 See the [Commit options](../commit/options), [Tag options](../tag/options), and
-[Push options](../push/options) for the exact public spellings and limitations.
+[Push options](../push/options) for exact public spellings and behavior.
 
 </Section>

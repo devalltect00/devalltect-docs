@@ -1,0 +1,10 @@
+---
+title: Path Headers
+description: How language strategies parse and render project-relative file paths.
+sidebar_position: 2
+sidebar_key: phs-path-headers
+---
+
+A path header records a file's location using syntax valid for that language. Python, JavaScript and TypeScript, shell, PHP, HTML, and Markdown use dedicated strategies. Markdown uses HTML comments so the path does not become a visible heading.
+
+Strategies preserve required leading content such as shebangs, encoding declarations, and PHP open tags. Unsupported files are skipped rather than modified with guessed syntax.

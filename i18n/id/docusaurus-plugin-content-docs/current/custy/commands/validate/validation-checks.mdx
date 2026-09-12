@@ -93,7 +93,7 @@ Custy menjalankan validation dalam urutan berikut.
 | 4 | Commit message template |
 | 5 | Tag message template |
 | 6 | Staged changes |
-| 7 | Commitizen convention (jika diaktifkan) |
+| 7 | Commit validation provider preflight |
 | 8 | Commit message template availability |
 | 9 | Tag message template availability |
 
@@ -169,14 +169,15 @@ Check ini membantu mencegah empty commit yang tidak disengaja.
 
 ---
 
-<Section title="Commit Strategy Validation">
+<Section title="Commit Validation Provider">
 
-Jika proyek menggunakan **Commitizen** version strategy, Custy memastikan
-commit message memenuhi convention yang dikonfigurasi.
+Custy menentukan `tool.custy.commit.validation` secara terpisah dari version
+strategy. Auto mode menggunakan Custy validator kecuali Commitizen
+configuration dan `cz` sama-sama tersedia. Explicit atau strict Commitizen mode
+gagal lebih awal ketika integration tidak tersedia atau invalid. Final message
+validation berjalan setelah editor step pada commit-producing profiles.
 
-Proyek yang menggunakan SemVer, PEP 440, Date, atau Git Count strategy tidak
-bergantung pada validation ini dengan cara yang sama. Karena itu, commit
-strategy validation bergantung pada versioning strategy yang dipilih.
+Lihat [provider behavior matrix](../../configuration/commit-validation).
 
 </Section>
 

@@ -99,9 +99,11 @@ appropriate for the project.
 <Section compact>
 
 Verify the commit-message template path and use an interactive environment when
-editing is expected. The active launcher tries `code --wait` and then
-`notepad`; it does not currently read `EDITOR` or `VISUAL`. Open the file
-manually if neither executable is available.
+editing is expected. Review [`tool.custy.editor`](../../configuration/editor),
+`VISUAL`, and `EDITOR`. On Windows, the generated defaults prefer VS Code and
+then Notepad; Custy resolves the actual `code.CMD` path before launch. In a
+container, keep `-it` and use an editor installed inside the image. The output
+identifies unavailable candidates before a fallback is selected.
 
 </Section>
 
@@ -114,6 +116,38 @@ manually if neither executable is available.
 Read the first validation error, correct repository state or message content,
 and run dry-run again. Do not use `--allow-empty-commit` to bypass an unrelated
 validation problem.
+
+</Section>
+
+---
+
+## Commitizen Was Not Configured or Installed
+
+<Section compact>
+
+`COMMITIZEN_NOT_CONFIGURED` means strict Commitizen validation was requested
+without `.cz.toml`, `.cz.yaml`, `.cz.yml`, `.cz.json`, or `[tool.commitizen]`.
+`COMMITIZEN_NOT_AVAILABLE` means configuration exists but `cz` is unavailable.
+Install `custy[commitizen]`, correct the configuration, or choose
+`provider = "custy"`. Review the
+[provider behavior matrix](../../configuration/commit-validation).
+
+</Section>
+
+---
+
+## A Git Hook Rejected the Commit
+
+<Section compact>
+
+`PRE_COMMIT_HOOK_FAILED` means Custy successfully selected direct pre-commit
+execution, but a configured check rejected or modified files. Read the captured
+output, repair and stage the result, then retry. `GIT_HOOK_FAILED` means native
+Git still rejected the commit. `GIT_HOOK_POLICY_INVALID` means safe adaptation
+was unavailable, such as an unknown incompatible custom hook or missing
+pre-commit executable. Review the
+[hook behavior matrix](../../configuration/git/hooks); Custy does not silently
+bypass hooks.
 
 </Section>
 

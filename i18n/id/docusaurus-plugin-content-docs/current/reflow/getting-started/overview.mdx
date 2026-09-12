@@ -1,0 +1,104 @@
+---
+title: "Ringkasan"
+description: "Instal Reflow, pilih repositori yang dimaksud, inisialisasi konfigurasi lokal, dan pratinjau workflow pertama dengan aman."
+sidebar_position: 1
+sidebar_key: reflow-getting-started
+tags: [reflow, getting-started]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+    Terminal,
+    WorkflowTimeline,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="reflow"
+    title="Memulai"
+    description="Instal Reflow, pilih repositori yang dimaksud, inisialisasi konfigurasi lokal, dan pratinjau workflow pertama dengan aman."
+    category="Orientasi"
+    status="Direkomendasikan"
+    syntax="reflow --dry-run -C ../project tags convert local"
+    tags={["instalasi", "target repositori", "dry-run pertama"]}
+    links={[
+        {label: "Workflow Pertama", href: "./first-workflow"},
+        {label: "Perintah", href: "../commands/overview"},
+        {label: "Target Repositori", href: "../concepts/repository-targeting"},
+        {label: "Konfigurasi", href: "../configuration/overview"},
+    ]}
+/>
+
+<Section title="Sebelum Memulai">
+
+<FeatureGrid
+    items={[
+        {
+            title: "Python 3.14+",
+            icon: <Icon name="python" />,
+            children: <>Gunakan virtual environment khusus serta sumber atau package artifact yang telah ditinjau.</>,
+        },
+        {
+            title: "Git",
+            icon: <Icon name="git" />,
+            children: <>Workflow lokal memerlukan checkout yang sudah ada; workflow URL juga memerlukan kredensial yang sesuai dengan operasi remote.</>,
+        },
+        {
+            title: "Tool Eksternal Opsional",
+            icon: <Icon name="dependency" />,
+            children: <>Pemulihan release memerlukan GitHub CLI yang terautentikasi. Publikasi Docker memerlukan Docker dan autentikasi registry.</>,
+        },
+        {
+            title: "Target yang Disengaja",
+            icon: <Icon name="directory" />,
+            children: <>Tentukan apakah perintah harus memakai direktori saat ini, path lokal eksplisit, atau URL Git.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+<WorkflowTimeline
+    title="Jalur Orientasi yang Direkomendasikan"
+    items={[
+        {title: "Instal Reflow", description: "Instal dari source checkout yang ditinjau atau package artifact tepercaya.", status: "current"},
+        {title: "Pilih repositori", description: "Gunakan checkout saat ini, -C/--repository, atau --repository-url sesuai dukungan perintah.", status: "pending"},
+        {title: "Inisialisasi konfigurasi lokal", description: "Jalankan reflow init hanya pada target lokal dan tinjau .config/reflow/config.toml.", status: "pending"},
+        {title: "Pratinjau workflow", description: "Letakkan --dry-run global sebelum path perintah dan tinjau target serta rencana yang ditampilkan.", status: "pending"},
+        {title: "Jalankan dengan sengaja", description: "Hapus --dry-run hanya ketika cakupan perubahan terdokumentasi sesuai tujuan Anda.", status: "pending"},
+    ]}
+/>
+
+<InfoBox variant="info" title="URL tidak memerlukan clone permanen">
+
+Perintah operasional yang didukung mematerialisasi URL repositori dalam
+workspace sementara yang dikelola. `reflow init` dan
+`reflow tags convert local` memerlukan checkout lokal persisten dan menolak
+target URL.
+
+</InfoBox>
+
+<Terminal title="Urutan orientasi yang aman" language="bash">
+
+{`# Siapkan konfigurasi milik proyek pada checkout lokal
+reflow -C /path/to/project init
+
+# Tinjau konfigurasi yang dibuat dan status Git
+git -C /path/to/project status --short
+
+# Pratinjau konversi tag lokal tanpa mengubah ref
+reflow --dry-run -C /path/to/project tags convert local --to semver`}
+
+</Terminal>
+
+<RelatedCommands
+    commands={[
+        {title: "Instalasi dan Workflow Pertama", href: "./first-workflow", description: "Ikuti urutan first-run lengkap."},
+        {title: "Target Repositori", href: "../concepts/repository-targeting", description: "Pahami prioritas target serta eksklusivitas path dan URL."},
+        {title: "Keamanan dan Dry-run", href: "../concepts/safety-and-dry-run", description: "Pahami batas pratinjau sebelum eksekusi live."},
+    ]}
+/>

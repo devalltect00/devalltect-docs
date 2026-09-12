@@ -1,0 +1,62 @@
+---
+title: "Installation and First Workflow"
+description: "Install the CLI, initialize project configuration, and run a safe first workflow."
+sidebar_position: 2
+sidebar_key: doc-gen-getting-started
+tags: [doc-gen, installation, quick-start]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Installation and First Workflow" description="Use a dedicated environment, inspect the repository, and preview the resolved output before generation." category="Getting Started" status="Recommended" syntax="doc-gen structure generate . --dry-run" />
+
+<Section title="Install a Reviewed Release">
+
+Authorized users can install from the private GitLab PyPI registry with the
+project ID and a deploy token limited to `read_package_registry`.
+
+<Terminal title="Private GitLab package" language="bash">{`python -m venv venv
+
+# Activate the environment, then install one reviewed package version.
+python -m pip install \
+  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+  "doc-gen==1.0.0"
+
+doc-gen --version`}</Terminal>
+
+A Git tag such as `v1.0.0-rc.1` becomes PEP 440 package version `1.0.0rc1`.
+Use `doc-gen==1.0.0rc1` when deliberately testing that release candidate.
+This package is private; do not commit tokens or credential-bearing index URLs.
+
+</Section>
+
+<Section title="Install from a Source Checkout">
+
+<Terminal title="Environment" language="bash">{`python -m venv venv
+python -m pip install .
+doc-gen --version`}</Terminal>
+
+</Section>
+
+<Terminal title="Safe first workflow" language="bash">{`cd /path/to/project
+doc-gen init --dry-run
+doc-gen init
+
+# Read-only inspection
+doc-gen structure print .
+doc-gen structure analyze .
+
+# Preview the resolved target and output path
+doc-gen structure generate . --output docs/project_structure.md --dry-run
+
+# Generate only after reviewing the preview
+doc-gen structure generate . --output docs/project_structure.md`}</Terminal>
+
+<InfoBox variant="warning" title="One selected output">
+
+Live `structure generate` writes only its resolved Markdown output. Existing
+unrelated documentation remains outside the command's write scope.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Runtime">Python 3.9+ compatibility; Python 3.14 standard runtime</InfoBox>

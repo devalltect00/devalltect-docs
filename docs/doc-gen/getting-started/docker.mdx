@@ -1,0 +1,50 @@
+---
+title: "Docker"
+description: "Pull Doc Gen production images with immutable or moving stable tags and run the CLI in a container."
+sidebar_position: 3
+sidebar_key: doc-gen-getting-started
+tags: [doc-gen, docker, containers]
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="docker pull ghcr.io/devalltect00/doc-gen:v1.0.0" title="Run Doc Gen with Docker" description="Use a published image to inspect or document an explicitly mounted project." category="Getting Started" status="Stable Image Policy" syntax="docker pull ghcr.io/devalltect00/doc-gen:<tag>" />
+
+<Section title="Published Image Tags">
+
+| Tag | Example | Behavior |
+| --- | --- | --- |
+| Exact | `v1.0.0` | Immutable and recommended for CI or reproducible automation. |
+| Minor | `v1.0` | Moves to the newest stable patch in the 1.0 line. |
+| Major | `v1` | Moves to the newest stable release in the 1.x line. |
+| Latest | `latest` | Moves to the newest stable Doc Gen release. |
+
+<Terminal title="Pull and verify Doc Gen" language="bash">
+
+{`docker pull ghcr.io/devalltect00/doc-gen:v1.0.0
+docker run --rm ghcr.io/devalltect00/doc-gen:v1.0.0 --help`}
+
+</Terminal>
+
+<InfoBox variant="warning" title="Prereleases do not move stable aliases">
+
+`v1.0.0-rc.1` publishes only its exact tag. Stable aliases are updated only by
+a stable release.
+
+</InfoBox>
+
+</Section>
+
+<Section title="Choose a Tag Deliberately">
+
+Use the exact version for repeatable generation in CI. Use `v1.0`, `v1`, or
+`latest` only when controlled automatic upgrades are acceptable. Mount only
+the intended project and use `structure generate --dry-run` before allowing a
+generated document to be written.
+
+</Section>
+
+<RelatedCommands commands={[
+    {title: "Installation and First Workflow", href: "./first-workflow", description: "Install Doc Gen and preview generation."},
+    {title: "Generate", href: "../commands/structure/generate/overview", description: "Generate project-structure documentation safely."},
+]} />

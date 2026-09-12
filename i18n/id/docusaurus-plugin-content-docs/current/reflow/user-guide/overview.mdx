@@ -1,0 +1,20 @@
+---
+title: "Ringkasan"
+description: "Pilih workflow berdasarkan target dan efek samping."
+sidebar_position: 1
+sidebar_key: reflow-user-guide
+tags: [reflow, user-guide]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="Panduan Pengguna" description="Pilih workflow berdasarkan target dan efek samping." category="User Guide" status="Practical" syntax="reflow init" />
+
+- `reflow init`
+- `reflow tags convert local`
+- `reflow tags convert remote`
+- `reflow releases recover`
+- `reflow dockerize`
+
+<InfoBox variant="warning" title="Safety">Konversi tag local dan remote memakai command terpisah. Remote push, release recovery, dan registry publishing adalah mutasi eksternal eksplisit.</InfoBox>
+

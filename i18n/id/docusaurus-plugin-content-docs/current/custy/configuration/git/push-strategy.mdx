@@ -15,7 +15,7 @@ import {CommandHero, CommandMetadata, InfoBox, PropertyTable, RelatedCommands, S
 
 ## Properties
 
-<PropertyTable items={[{property: "push_to", type: "main | backup | all", defaultValue: "main", description: "Pilih main_remotes, backup_remotes, atau de-duplicated union keduanya ketika Git service me-resolve sebuah group."}, {property: "auto_push", type: "Boolean", defaultValue: "true", description: "Generated intention untuk push setelah commit dan tag work, tetapi belum digunakan current active command resolvers atau Git service flow. Perlakukan sebagai reserved."}]} />
+<PropertyTable items={[{property: "push_to", type: "main | backup | all", defaultValue: "main", description: "Pilih main_remotes, backup_remotes, atau de-duplicated union keduanya ketika all_remote false dan tidak ada explicit --remote."}, {property: "auto_push", type: "Boolean", defaultValue: "true", description: "Generated intention untuk push setelah commit dan tag work, tetapi belum digunakan current active command resolvers atau Git service flow. Perlakukan sebagai reserved."}]} />
 
 <Terminal title="Service-level strategy" language="toml">
 
@@ -31,9 +31,9 @@ auto_push = true`}
 
 <InfoBox variant="warning" title="Explicit Remote Input Selalu Menang">
 
-Ketika service menerima explicit remote list, service mengembalikan list
-tersebut sebelum memeriksa `push_to`. Direct command resolvers juga dapat
-menyediakan remote dan all-remote values sendiri.
+`--remote` memilih satu destination sebelum group setting diperiksa. Tanpa
+option tersebut, `all_remote = true` memilih kedua configured groups;
+selain itu `push_to` memilih main, backup, atau all.
 
 </InfoBox>
 

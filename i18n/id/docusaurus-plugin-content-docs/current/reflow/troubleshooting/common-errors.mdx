@@ -1,0 +1,20 @@
+---
+title: "Masalah Umum"
+description: "Diagnosis kegagalan konfigurasi, target, lingkungan, dan alur kerja."
+sidebar_position: 2
+sidebar_key: reflow-troubleshooting
+tags: [reflow, troubleshooting, errors]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="Masalah Umum" description="Diagnosis kegagalan konfigurasi, target, lingkungan, dan alur kerja." category="Dukungan" status="Panduan" syntax="reflow --dry-run -C ../project tags convert local" />
+
+| Gejala | Pemeriksaan pertama |
+| --- | --- |
+| Target salah | Periksa target CLI, target terkonfigurasi, kemudian direktori saat ini |
+| Hasil dry-run berbeda dari perkiraan | Pastikan perubahan disimulasikan dan tidak disimpan secara persisten |
+| Konfigurasi diabaikan | Periksa tabel dan kunci yang tepat serta nilai pengganti dari CLI |
+| Alat eksternal gagal | Periksa Git, Docker, CLI penyedia, sistem berkas, atau lingkungan terminal |
+
+<InfoBox variant="tip" title="Utamakan diagnosis">Catat pesan kesalahan ringkas dan konteks debug; jangan mengulangi perubahan eksternal tanpa memahami penyebabnya.</InfoBox>

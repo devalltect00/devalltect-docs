@@ -139,7 +139,7 @@ packaged examples tanpa mengganti existing example files.
         {
             title: "Konfigurasi",
             icon: <Icon name="configuration" />,
-            children: <>Tinjau <code>.config/custy/config.toml</code> sebelum mengandalkan nilai khusus proyek.</>,
+            children: <>Tinjau <code>.config/custy/config.toml</code>. Isi URL browser repository changelog hanya jika comparison links diperlukan, lalu verifikasi setiap nama Git remote yang dikonfigurasi.</>,
         },
         {
             title: "Template Pesan",
@@ -158,6 +158,22 @@ packaged examples tanpa mengganti existing example files.
         },
     ]}
 />
+
+<Terminal title="Tinjau repository links dan remotes" language="bash">
+
+{`git remote -v
+# Edit .config/custy/config.toml, lalu validasi.
+custy validate`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Repository URL bukan nama remote">
+
+`tool.custy.changelog.links.repository` adalah URL browser HTTP(S) opsional
+untuk links di `CHANGELOG.md`. `default_remote`, `main_remotes`, dan
+`backup_remotes` berisi nama Git remote seperti `origin` atau `mirror`.
+
+</InfoBox>
 
 <InfoBox
     variant="warning"
@@ -247,6 +263,7 @@ serta tujuan push yang dijelaskan dalam dokumentasi profil Dev.
 
 <RelatedCommands
     commands={[
+        {title: "Instalasi", href: "./installation", description: "Pilih instalasi melalui GitLab privat, source, artefak, Git, atau Docker."},
         {title: "Alur Kerja Pertama", href: "./first-workflow", description: "Pahami profil Dev sebelum eksekusi normal."},
         {title: "custy init", href: "../commands/init/overview", description: "Tinjau mode inisialisasi dan file yang dibuat."},
         {title: "custy validate", href: "../commands/validate/overview", description: "Pahami setiap pemeriksaan kesiapan."},

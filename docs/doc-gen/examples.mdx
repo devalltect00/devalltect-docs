@@ -1,0 +1,58 @@
+---
+title: Examples
+description: Common Doc Gen generation, printing, and analysis workflows.
+sidebar_position: 5
+sidebar_key: doc-gen-examples
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero
+    command="doc-gen"
+    title="Workflow Examples"
+    description="Inspect a repository, preview a rendered document, and write only the selected output after review."
+    category="Examples"
+    status="Inspect Before Generate"
+    syntax="doc-gen structure COMMAND [TARGET] [OPTIONS]"
+    links={[
+        {label: "Commands", href: "./commands/overview"},
+        {label: "Profiles", href: "./concepts/profiles-and-smart-mode"},
+        {label: "Dry-run Safety", href: "./concepts/safety-and-dry-run"},
+        {label: "Configuration", href: "./configuration/reference"},
+    ]}
+/>
+
+<Section title="Read-only inspection">
+
+<Terminal language="bash">{`doc-gen structure print . --max-depth 3
+doc-gen structure analyze . --smart
+
+# Show directories only
+doc-gen structure print . --hide-files`}</Terminal>
+
+</Section>
+
+<Section title="Preview, then generate">
+
+<Terminal language="bash">{`# Render in memory and show the resolved plan
+doc-gen structure generate . --profile detailed --output docs/project_structure.md --dry-run
+
+# Write the selected output only after review
+doc-gen structure generate . --profile detailed --output docs/project_structure.md`}</Terminal>
+
+</Section>
+
+<InfoBox variant="warning" title="Dry-run creates no output path">
+
+Generation dry-run may scan and render, but it does not create the output
+directory or file. `print` and `analyze` are read-only in both modes.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "Generate Examples", href: "./commands/structure/generate/examples", description: "Explore profiles, targets, and output paths."},
+        {title: "Print Examples", href: "./commands/structure/print/examples", description: "Tune terminal tree visibility."},
+        {title: "Analyze Examples", href: "./commands/structure/analyze/examples", description: "Inspect repository summaries without writes."},
+    ]}
+/>

@@ -1,0 +1,20 @@
+---
+title: "Troubleshooting"
+description: "Troubleshooting: reflow tags convert remote"
+sidebar_position: 9
+sidebar_key: reflow-tags-convert-remote-troubleshooting
+tags: [reflow, troubleshooting]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Troubleshooting" description="Troubleshooting" category="Tag Conversion" status="Guarded Remote Mutation" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Symptom | Likely cause | Solution |
+| --- | --- | --- |
+| Path and URL configured. | Targets are mutually exclusive. | Keep only one. |
+| Atomic push rejected. | Policy, authentication, or deletion was denied. | Review policy/credentials and rerun dry-run. |
+| Clone works, push fails. | Read and write permissions differ. | Configure Git authentication without tokens in config. |
+
+<InfoBox variant="tip" title="Diagnostics">Use `--debug` before retrying live mutation.</InfoBox>
+

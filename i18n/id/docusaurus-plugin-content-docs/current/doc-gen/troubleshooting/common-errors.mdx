@@ -1,0 +1,23 @@
+---
+title: "Masalah Umum"
+description: "Diagnosis kegagalan konfigurasi, target, lingkungan, dan alur kerja."
+sidebar_position: 2
+sidebar_key: doc-gen-troubleshooting
+tags: [doc-gen, troubleshooting, errors]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Masalah Umum" description="Diagnosis kegagalan konfigurasi, target, lingkungan, dan alur kerja." category="Dukungan" status="Panduan" syntax="doc-gen structure generate . --dry-run" />
+
+| Gejala | Pemeriksaan pertama | Tindakan berikutnya |
+| --- | --- | --- |
+| Repositori yang dipindai salah | `TARGET_DIRECTORY` posisi, lalu `tool.doc-gen.cli.structure.target_directory` | Berikan path target secara eksplisit dan ulangi perintah hanya-baca. |
+| Generate tidak membuat file | `--dry-run` atau `tool.doc-gen.cli.execution.dry_run` | Tinjau pratinjau, lalu jalankan tanpa dry-run saat penulisan memang diperlukan. |
+| Output tidak dapat ditulis | Path `--output`, izin direktori induk, dan file yang terkunci | Pilih path yang dapat ditulis; di Windows, tutup program yang sedang memakai file. |
+| Pohon terlalu besar atau kecil | Profil, mode cerdas, kedalaman maksimum, dan visibilitas file | Sesuaikan `--profile`, `--smart`, `--max-depth`, atau `--hide-files`. |
+| Entri yang diharapkan hilang | Aturan pengabaian dan `collapse_dirs` | Tinjau konfigurasi target dan kurangi direktori yang diringkas bila perlu. |
+| Jenis proyek tidak sesuai | Deteksi otomatis atau override `--project-type` | Hapus atau perbaiki override, lalu periksa dengan `structure analyze`. |
+| Konfigurasi tampak diabaikan | Tabel/kunci TOML dan nilai CLI berprioritas lebih tinggi | Hapus override CLI atau perbaiki kuncinya, lalu coba lagi dengan log debug. |
+
+<InfoBox variant="tip" title="Mulai dari diagnostik">Ulangi perintah hanya-baca terkecil dengan opsi global `--debug` atau `--log-level DEBUG`, lalu verifikasi target sebelum generate langsung.</InfoBox>

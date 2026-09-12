@@ -1,0 +1,23 @@
+---
+title: "Common Problems"
+description: "Diagnose configuration, target, environment, and workflow failures."
+sidebar_position: 2
+sidebar_key: doc-gen-troubleshooting
+tags: [doc-gen, troubleshooting, errors]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Common Problems" description="Diagnose configuration, target, environment, and workflow failures." category="Support" status="Guide" syntax="doc-gen structure generate . --dry-run" />
+
+| Symptom | First check | Next action |
+| --- | --- | --- |
+| Wrong repository was scanned | Positional `TARGET_DIRECTORY`, then `tool.doc-gen.cli.structure.target_directory` | Pass the intended path explicitly and rerun a read-only command. |
+| Generate created no file | `--dry-run` or `tool.doc-gen.cli.execution.dry_run` | Review the preview, then rerun without dry-run when a write is intended. |
+| Output cannot be written | Resolved `--output` path, parent permissions, and file locks | Select a writable output path; on Windows, close programs holding the file. |
+| Tree is too large or too small | Profile, smart mode, maximum depth, and file visibility | Adjust `--profile`, `--smart`, `--max-depth`, or `--hide-files`. |
+| Expected entries are missing | Ignore rules and `collapse_dirs` | Review the target configuration and reduce collapsing where appropriate. |
+| Project type is unexpected | Automatic signals or an explicit `--project-type` override | Remove or correct the override and inspect with `structure analyze`. |
+| Configuration appears ignored | Exact TOML table/key and a higher-priority CLI value | Remove the CLI override or correct the key, then retry with debug logging. |
+
+<InfoBox variant="tip" title="Diagnostic first">Retry the smallest read-only command with global `--debug` or `--log-level DEBUG`, and verify the resolved target before live generation.</InfoBox>

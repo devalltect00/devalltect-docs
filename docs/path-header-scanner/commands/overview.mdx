@@ -1,0 +1,51 @@
+---
+title: Commands
+description: Choose Path Header Scanner setup or scanning workflows by their write boundaries.
+sidebar_position: 0
+sidebar_key: phs-commands
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="path-header-scanner"
+    title="Command Overview"
+    description="Choose project initialization or language-aware header scanning with an explicit preview/apply boundary."
+    category="Command Reference"
+    status="v1.0.0"
+    syntax="path-header-scanner COMMAND [OPTIONS]"
+    links={[
+        {label: "Initialize", href: "./init/overview"},
+        {label: "Scan Headers", href: "./scan/overview"},
+        {label: "Core Concepts", href: "../concepts/overview"},
+        {label: "CLI Reference", href: "../reference/cli"},
+    ]}
+/>
+
+<Section title="Supported commands">
+
+| Command | Purpose | Writes by default |
+| --- | --- | --- |
+| [`path-header-scanner init`](./init/overview) | Generate project configuration | Yes, unless dry-run |
+| [`path-header-scanner scan TARGET`](./scan/overview) | Discover and preview header changes | No |
+| `path-header-scanner scan TARGET --apply` | Apply reviewed insertions or updates | Yes |
+
+</Section>
+
+<InfoBox variant="warning" title="Preview before apply">
+
+`scan` previews by default. `--apply` opts into target-file writes, while an
+explicit or configured `--dry-run` overrides apply mode. Initialization has a
+separate dry-run option for previewing its configuration plan.
+
+</InfoBox>
+
+Use `--help` on either command for the installed version's exact options.
+
+<RelatedCommands
+    commands={[
+        {title: "Safe First Workflow", href: "../getting-started/first-workflow", description: "Install, initialize, preview, and apply in a reviewed sequence."},
+        {title: "Path Header Model", href: "../concepts/path-headers", description: "Understand language-aware header syntax and path resolution."},
+        {title: "Configuration", href: "../configuration/reference", description: "Map project settings to init and scan behavior."},
+    ]}
+/>

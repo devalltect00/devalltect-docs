@@ -1,0 +1,42 @@
+---
+title: "Configuration"
+description: "Configuration: doc-gen structure analyze"
+sidebar_position: 8
+sidebar_key: doc-gen-structure-analyze
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure analyze" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Project Structure" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Key | Default | Effect |
+| --- | --- | --- |
+| `tool.doc-gen.cli.execution.dry_run` | false | Global simulation default. |
+| `tool.doc-gen.cli.execution.debug` | false | Diagnostic logging. |
+| `tool.doc-gen.cli.structure.target_directory` | . | Default root. |
+| `tool.doc-gen.cli.structure.profile` | custom | Structure profile. |
+| `tool.doc-gen.cli.structure.smart_mode` | false | Automatic optimization. |
+| `tool.doc-gen.cli.structure.max_depth` | 5 | Depth limit. |
+| `tool.doc-gen.cli.structure.show_files` | true | File visibility. |
+| `tool.doc-gen.cli.structure.collapse_dirs` | built-in list | Collapsed directories. |
+| `tool.doc-gen.cli.structure.verbose` | false | Extra terminal output. |
+
+```toml
+[tool.doc-gen.cli.execution]
+dry_run = false
+debug = false
+
+[tool.doc-gen.cli.structure]
+target_directory = "."
+profile = "custom"
+smart_mode = false
+max_depth = 5
+show_files = true
+verbose = false
+collapse_dirs = ["node_modules", "venv", ".venv", "dist", "build", ".next"]
+
+[tool.doc-gen.cli.structure.analyze]
+# Reserved for future analyze-specific settings.
+```
+

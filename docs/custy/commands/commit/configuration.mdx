@@ -80,7 +80,12 @@ override is absent.
         {
             property: "[tool.custy.cli.execution]",
             type: "staging and validation",
-            description: "Configure auto_stage, stage_mode, force_commit, and check_cz defaults.",
+            description: "Configure auto_stage, stage_mode, force_commit, and the backward-compatible check_cz override.",
+        },
+        {
+            property: "[tool.custy.commit.validation]",
+            type: "provider and strictness",
+            description: "Select auto, custy, commitizen, or git validation and decide whether an unavailable optional tool is fatal.",
         },
     ]}
 />
@@ -105,11 +110,18 @@ backups_commit = ".config/custy/templates/backups/commit"
 auto_stage = false
 stage_mode = "all"
 force_commit = false
-check_cz = false`}
+check_cz = false
+
+[tool.custy.commit.validation]
+provider = "auto"
+require_tool = false`}
 
 </Terminal>
 
 </Section>
+
+See the complete [behavior matrix](../../configuration/commit-validation) for
+projects with and without Commitizen configuration or installation.
 
 ---
 

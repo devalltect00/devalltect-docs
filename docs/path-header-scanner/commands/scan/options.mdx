@@ -1,0 +1,21 @@
+---
+title: "Options"
+description: "Options: path-header-scanner scan"
+sidebar_position: 4
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Options" description="CLI values override project configuration, which overrides internal defaults." category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Flag / value | Default | Effect |
+| --- | --- | --- |
+| `TARGET_DIRECTORY` | app (configured) | Directory to scan. |
+| `--workdir` | none | Base used to resolve a relative target. |
+| `--apply` | false | Write inserted or updated headers. |
+| `--dry-run/--no-dry-run, -dr/-Dr` | false | Force simulation and override apply. |
+| `--include-target-directory/--exclude-target-directory` | true | Control whether target name appears in headers. |
+| `--debug` | false | Enable scan diagnostics. |
+

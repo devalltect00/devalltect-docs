@@ -1,4 +1,12 @@
 {
   "label": "Developer Guide",
-  "key": "doc-gen-developer-guide"
+  "position": 7,
+  "key": "doc-gen-developer-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-developer-guide",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/developer-guide/overview"
+  }
 }

@@ -6,20 +6,20 @@ sidebar_key: custy-push
 ---
 import {CommandHero, FeatureGrid, InfoBox, Screenshot, RelatedCommands} from "@site/src/components/docs";
 
-<CommandHero command="custy push" title="Push Commits and Tags" description="Resolve destinations lalu kirim current HEAD dan optional tag." category="Git Operations" status="Stable with Limitations" syntax="custy push [OPTIONS]" links={[{label:"Options",href:"./options"},{label:"Remotes",href:"./remotes"},{label:"Workflow",href:"./workflow"}]} />
+<CommandHero command="custy push" title="Push Commits and Tags" description="Resolve destinations lalu kirim current HEAD dan optional tag." category="Git Operations" status="Stable" syntax="custy push [OPTIONS]" links={[{label:"Options",href:"./options"},{label:"Remotes",href:"./remotes"},{label:"Workflow",href:"./workflow"}]} />
 
 ## Ringkasan
 
 <InfoBox variant="danger" title="External Side Effect">Push mengubah remote repository dan dapat memicu CI/CD. Mulai dengan `custy --dry-run push` dan baca setiap resolved destination.</InfoBox>
 
 <FeatureGrid items={[
- {title:"Resolve",children:"Tentukan main dan optional backup remote."},
+ {title:"Resolve",children:"Terapkan explicit remote, all_remote, push_to, dan backup-sync precedence."},
  {title:"Validate",children:"Periksa branch, authentication, dan destination."},
  {title:"Push HEAD",children:"Kirim current commit ke remote yang dipilih."},
  {title:"Push Tag",children:"Kirim optional tag ketika diminta dan tersedia."},
 ]} />
 
-<Screenshot src="/img/custy/push/multi-remote-output.png" alt="Output Custy untuk beberapa remote" title="Remote Synchronization" caption="Setiap destination harus diverifikasi secara terpisah." />
+<Screenshot src="/img/custy/commands/push/multi-remote-output.png" alt="Output Custy untuk beberapa remote" title="Remote Synchronization" caption="Setiap destination harus diverifikasi secara terpisah." />
 
 <RelatedCommands commands={[
  {name:"git",description:"Buat local commit.",href:"../commit/overview"},

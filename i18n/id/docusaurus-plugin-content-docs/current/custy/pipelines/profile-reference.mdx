@@ -26,13 +26,13 @@ dan sebagian hanya digunakan untuk menyusun larger profiles.
 
 <Section title="Profile Catalog">
 <KeyValueTable title="All Resolver Profiles" description="Step count menggunakan fully expanded profile, termasuk nested validation profiles." items={[
- {key: "commit · 16 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run commit</code> dan <code>custy commit</code>.</>},
+ {key: "commit · 17 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run commit</code> dan <code>custy commit</code>.</>},
  {key: "tag · 13 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run tag</code> dan <code>custy tag</code>.</>},
- {key: "push · 4 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run push</code> dan <code>custy push</code>.</>},
+ {key: "push · 3 steps", value: <><strong>Public Run + direct command.</strong> <code>custy run push</code> dan <code>custy push</code>.</>},
  {key: "dev · 12 steps", value: <><strong>Public Run.</strong> <code>custy run dev</code> daily commit-and-push composition.</>},
- {key: "release · 24 steps", value: <><strong>Public Run.</strong> <code>custy run release</code> complete publication flow.</>},
- {key: "full · 25 steps", value: <><strong>Public Run.</strong> <code>custy run full</code> Release plus workflow finalization.</>},
- {key: "validate · 9 steps", value: <><strong>Direct command.</strong> <code>custy validate</code> readiness checks.</>},
+ {key: "release · 25 steps", value: <><strong>Public Run.</strong> <code>custy run release</code> complete publication flow.</>},
+ {key: "full · 26 steps", value: <><strong>Public Run.</strong> <code>custy run full</code> Release plus workflow finalization.</>},
+ {key: "validate · 10 steps", value: <><strong>Direct command.</strong> <code>custy validate</code> readiness checks.</>},
  {key: "changelog · 1 step", value: <><strong>Direct command.</strong> <code>custy changelog generate</code>.</>},
  {key: "apply_version · 5 steps", value: <><strong>Direct command.</strong> <code>custy version update</code>.</>},
  {key: "backup_commit_message · 1 step", value: <><strong>Direct command.</strong> <code>custy backup commit</code>.</>},
@@ -42,7 +42,7 @@ dan sebagian hanya digunakan untuk menyusun larger profiles.
  {key: "cleanup_branches · 1 step", value: <><strong>Direct command.</strong> <code>custy cleanup branches</code> dan branch part dari <code>custy cleanup all</code>.</>},
  {key: "init · 1 step", value: <><strong>Direct command.</strong> <code>custy init</code>.</>},
  {key: "validate-sub-repo · 1 step", value: <><strong>Nested internal.</strong> Reusable repository validation prefix.</>},
- {key: "validate-sub-pre-commit · 4 steps", value: <><strong>Nested internal.</strong> Reusable commit-readiness validation group.</>},
+ {key: "validate-sub-pre-commit · 5 steps", value: <><strong>Nested internal.</strong> Reusable message-provider dan commit-hook readiness group.</>},
  {key: "validate-sub-pre-tag · 3 steps", value: <><strong>Nested internal.</strong> Reusable version dan tag-message validation group.</>},
  {key: "validate-sub-pre-push · 1 step", value: <><strong>Nested internal.</strong> Reusable remote validation prefix.</>},
  {key: "cleanup_all · 2 steps", value: <><strong>Defined aggregate.</strong> <code>cleanup_backup_step</code> plus <code>cleanup_branches_step</code>. Current <code>custy cleanup all</code> command menjalankan dua focused profiles secara terpisah.</>},
@@ -56,22 +56,23 @@ dan sebagian hanya digunakan untuk menyusun larger profiles.
 Daftar berikut adalah concrete step order ketika setiap public profile
 di-resolve sendiri. Single-profile resolution mempertahankan declared order.
 
-<Terminal title="commit — 16 steps" language="text">{`01  ensure_git_repo_step
+<Terminal title="commit — 17 steps" language="text">{`01  ensure_git_repo_step
 02  ensure_staged_changes_step
-03  ensure_commitizen_convention_step
-04  ensure_commit_message_file_step
-05  ensure_commit_message_file_exists_step
-06  prepare_version_step
-07  workflow_init_step
-08  generate_artifacts_step
-09  edit_files_step
-10  validate_edited_step
-11  apply_version_step
-12  generate_changelog_step
-13  backup_commit_message_files_step
-14  cleanup_backup_step
-15  stage_step
-16  commit_step`}</Terminal>
+03  ensure_commit_validation_provider_step
+04  ensure_commit_hook_policy_step
+05  ensure_commit_message_file_step
+06  ensure_commit_message_file_exists_step
+07  prepare_version_step
+08  workflow_init_step
+09  generate_artifacts_step
+10  edit_files_step
+11  validate_edited_step
+12  apply_version_step
+13  generate_changelog_step
+14  backup_commit_message_files_step
+15  cleanup_backup_step
+16  stage_step
+17  commit_step`}</Terminal>
 
 <Terminal title="tag — 13 steps" language="text">{`01  ensure_git_repo_step
 02  ensure_version_file_step
@@ -87,10 +88,9 @@ di-resolve sendiri. Single-profile resolution mempertahankan declared order.
 12  cleanup_backup_step
 13  tag_step`}</Terminal>
 
-<Terminal title="push — 4 steps" language="text">{`01  ensure_git_repo_step
+<Terminal title="push — 3 steps" language="text">{`01  ensure_git_repo_step
 02  ensure_remote_exists_step
-03  workflow_init_step
-04  push_step`}</Terminal>
+03  push_step`}</Terminal>
 
 <Terminal title="dev — 12 steps" language="text">{`01  ensure_git_repo_step
 02  prepare_version_step
@@ -105,56 +105,58 @@ di-resolve sendiri. Single-profile resolution mempertahankan declared order.
 11  commit_step
 12  push_step`}</Terminal>
 
-<Terminal title="release — 24 steps" language="text">{`01  ensure_git_repo_step
+<Terminal title="release — 25 steps" language="text">{`01  ensure_git_repo_step
 02  ensure_staged_changes_step
-03  ensure_commitizen_convention_step
-04  ensure_commit_message_file_step
-05  ensure_commit_message_file_exists_step
-06  ensure_version_file_step
-07  ensure_tag_message_file_step
-08  ensure_tag_message_file_exists_step
-09  ensure_remote_exists_step
-10  prepare_version_step
-11  workflow_init_step
-12  prepare_tag_message_step
-13  generate_artifacts_step
-14  edit_files_step
-15  validate_edited_step
-16  apply_version_step
-17  generate_changelog_step
-18  backup_commit_message_files_step
-19  backup_tag_message_files_step
-20  cleanup_backup_step
-21  stage_step
-22  commit_step
-23  tag_step
-24  push_step`}</Terminal>
+03  ensure_commit_validation_provider_step
+04  ensure_commit_hook_policy_step
+05  ensure_commit_message_file_step
+06  ensure_commit_message_file_exists_step
+07  ensure_version_file_step
+08  ensure_tag_message_file_step
+09  ensure_tag_message_file_exists_step
+10  ensure_remote_exists_step
+11  prepare_version_step
+12  workflow_init_step
+13  prepare_tag_message_step
+14  generate_artifacts_step
+15  edit_files_step
+16  validate_edited_step
+17  apply_version_step
+18  generate_changelog_step
+19  backup_commit_message_files_step
+20  backup_tag_message_files_step
+21  cleanup_backup_step
+22  stage_step
+23  commit_step
+24  tag_step
+25  push_step`}</Terminal>
 
-<Terminal title="full — 25 steps" language="text">{`01  ensure_git_repo_step
+<Terminal title="full — 26 steps" language="text">{`01  ensure_git_repo_step
 02  ensure_staged_changes_step
-03  ensure_commitizen_convention_step
-04  ensure_commit_message_file_step
-05  ensure_commit_message_file_exists_step
-06  ensure_version_file_step
-07  ensure_tag_message_file_step
-08  ensure_tag_message_file_exists_step
-09  ensure_remote_exists_step
-10  prepare_version_step
-11  workflow_init_step
-12  prepare_tag_message_step
-13  generate_artifacts_step
-14  edit_files_step
-15  validate_edited_step
-16  apply_version_step
-17  generate_changelog_step
-18  backup_commit_message_files_step
-19  backup_tag_message_files_step
-20  cleanup_backup_step
-21  stage_step
-22  commit_step
-23  tag_step
-24  push_step
-25  finalize_step`}</Terminal>
+03  ensure_commit_validation_provider_step
+04  ensure_commit_hook_policy_step
+05  ensure_commit_message_file_step
+06  ensure_commit_message_file_exists_step
+07  ensure_version_file_step
+08  ensure_tag_message_file_step
+09  ensure_tag_message_file_exists_step
+10  ensure_remote_exists_step
+11  prepare_version_step
+12  workflow_init_step
+13  prepare_tag_message_step
+14  generate_artifacts_step
+15  edit_files_step
+16  validate_edited_step
+17  apply_version_step
+18  generate_changelog_step
+19  backup_commit_message_files_step
+20  backup_tag_message_files_step
+21  cleanup_backup_step
+22  stage_step
+23  commit_step
+24  tag_step
+25  push_step
+26  finalize_step`}</Terminal>
 
 Untuk friendly explanation setiap Dev, Release, dan Full step, lanjutkan ke
 [Development Pipeline](./development-pipeline), [Release Pipeline](./release-pipeline),
@@ -166,16 +168,17 @@ dan [Full Pipeline](./full-pipeline).
 
 <Section title="Direct-Command dan Support Expansions">
 
-<Terminal title="Validation and release support" language="text">{`validate — 9 steps
+<Terminal title="Validation and release support" language="text">{`validate — 10 steps
 01  ensure_git_repo_step
 02  ensure_remote_exists_step
 03  ensure_version_file_step
 04  ensure_staged_changes_step
-05  ensure_commitizen_convention_step
-06  ensure_commit_message_file_step
-07  ensure_commit_message_file_exists_step
-08  ensure_tag_message_file_step
-09  ensure_tag_message_file_exists_step
+05  ensure_commit_validation_provider_step
+06  ensure_commit_hook_policy_step
+07  ensure_commit_message_file_step
+08  ensure_commit_message_file_exists_step
+09  ensure_tag_message_file_step
+10  ensure_tag_message_file_exists_step
 
 changelog — 1 step
 01  generate_changelog_step
@@ -215,9 +218,10 @@ init — 1 step
 
 validate-sub-pre-commit
 01  ensure_staged_changes_step
-02  ensure_commitizen_convention_step
-03  ensure_commit_message_file_step
-04  ensure_commit_message_file_exists_step
+02  ensure_commit_validation_provider_step
+03  ensure_commit_hook_policy_step
+04  ensure_commit_message_file_step
+05  ensure_commit_message_file_exists_step
 
 validate-sub-pre-tag
 01  ensure_version_file_step
@@ -231,4 +235,4 @@ validate-sub-pre-push
 
 <InfoBox variant="info" title="Expansion Order dan Merged Order adalah Konsep Berbeda">Daftar di atas menunjukkan satu profile yang di-resolve sendiri. Jika dua atau lebih profiles dipilih, Custy menggabungkannya, menghapus repeated step names, dan mengurutkan result menggunakan `STEP_ORDER`. Lihat [Step Priority and Ordering](./step-order).</InfoBox>
 
-<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Step Priority and Ordering", href: "./step-order", description: "Pahami seluruh 27 priority entries dan merged-profile sorting."}, {title: "Public Profiles", href: "./profiles", description: "Pilih salah satu dari enam supported Run names."}, {title: "Custom Composition", href: "./custom-composition", description: "Lihat cara public profiles merge dan deduplicate."}, {title: "Step System", href: "./step-system", description: "Tinjau registration, construction, context, dan contributor rules."}]} /></Section>
+<Section title="Lanjutkan"><RelatedCommands commands={[{title: "Step Priority and Ordering", href: "./step-order", description: "Pahami seluruh 28 priority entries dan merged-profile sorting."}, {title: "Public Profiles", href: "./profiles", description: "Pilih salah satu dari enam supported Run names."}, {title: "Custom Composition", href: "./custom-composition", description: "Lihat cara public profiles merge dan deduplicate."}, {title: "Step System", href: "./step-system", description: "Tinjau registration, construction, context, dan contributor rules."}]} /></Section>

@@ -1,0 +1,12 @@
+{
+  "label": "Inisialisasi Reflow",
+  "position": 1,
+  "key": "reflow-init-id",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/init/overview"
+  }
+}
+

@@ -1,4 +1,12 @@
 {
-  "label": "Init",
-  "key": "reflow-commands-init"
+  "label": "Initialize Reflow",
+  "position": 1,
+  "key": "reflow-init-category",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/commands/init/overview"
+  }
 }
+

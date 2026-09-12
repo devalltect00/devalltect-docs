@@ -11,7 +11,7 @@ import {CommandHero, CommandOption, InfoBox, Section} from "@site/src/components
 ## Ringkasan
 
 <CommandOption options={[
- {name:"--tag",description:"Gunakan explicit version.",example:"--tag v1.2.3"},
+ {name:"--tag",description:"Gunakan exact stable atau supported lifecycle version. Prefix v yang tidak ditulis akan ditambahkan otomatis.",example:"--tag v1.2.3-rc.1"},
  {name:"--strategy",description:"Pilih versioning strategy.",example:"--strategy semver"},
  {name:"--bump",description:"Pilih version bump level.",example:"--bump minor"},
  {name:"--pre",description:"Tambahkan pre-release modifier.",example:"--pre rc"},

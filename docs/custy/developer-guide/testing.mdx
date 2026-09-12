@@ -26,10 +26,11 @@ import {
     category="Developer Guide"
     status="Required for Changes"
     syntax="python -m pytest [PATH] [OPTIONS]"
-    tags={["unit", "CLI", "integration", "regression"]}
+    tags={["unit", "CLI", "integration", "regression", "pre-commit"]}
     links={[
         {label: "Test Layers", href: "#test-layers"},
         {label: "Focused Tests", href: "#focused-validation"},
+        {label: "Pre-Commit", href: "#pre-commit-quality-gates"},
         {label: "Full Validation", href: "#complete-validation"},
     ]}
 />
@@ -117,6 +118,38 @@ names because `StepRegistry` rejects duplicates.
         {title: "Side effect", description: "Use temporary paths and mocked Git or subprocess boundaries; never depend on a contributor's real repository or credentials."},
     ]}
 />
+
+</Section>
+
+---
+
+<Section title="Pre-Commit Quality Gates">
+
+The repository hook configuration uses Ruff for linting and safe lint fixes,
+Black as the single Python formatter, and utility hooks for trailing whitespace
+and final newlines. Ruff and Black read their policy from `pyproject.toml`.
+
+<Terminal title="Pre-commit validation" language="bash">
+
+{`# Validate the hook configuration without running hooks
+make pre-commit-validate
+
+# Fast contributor check for staged files
+make pre-commit-run-staged
+
+# Broad check for all tracked files
+make pre-commit-run`}
+
+</Terminal>
+
+<InfoBox variant="note" title="Reference files remain untouched">
+
+Repository-level pre-commit exclusions and the Ruff and Black force-exclusion
+settings protect archived `old/`, `example_before/`, copied, deprecated,
+development, and temporary Python reference files. This protection still
+applies when a hook, editor, or command supplies a matching path explicitly.
+
+</InfoBox>
 
 </Section>
 

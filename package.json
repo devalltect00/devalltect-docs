@@ -1,7 +1,44 @@
 {
   "name": "devalltect00-docs",
-  "version": "0.1.0-alpha.1",
+  "version": "1.0.0",
   "private": true,
+  "description": "Bilingual Docusaurus documentation portal for Devalltect developer and DevOps tools.",
+  "keywords": [
+    "documentation",
+    "documentation-portal",
+    "docusaurus",
+    "developer-tools",
+    "devops",
+    "typescript",
+    "react",
+    "i18n",
+    "english",
+    "indonesian",
+    "github-pages",
+    "custy",
+    "path-header-scanner",
+    "doc-gen",
+    "reflow"
+  ],
+  "homepage": "https://devalltect00.github.io/devalltect-docs/",
+  "bugs": {
+    "url": "https://github.com/devalltect00/devalltect-docs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devalltect00/devalltect-docs.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Devalltect / Rizky Fernandes",
+    "url": "https://github.com/devalltect00"
+  },
+  "maintainers": [
+    {
+      "name": "Rizky Fernandes",
+      "url": "https://github.com/devalltect00"
+    }
+  ],
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",

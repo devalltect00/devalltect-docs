@@ -1,0 +1,11 @@
+{
+  "label": "Panduan Pengguna",
+  "position": 6,
+  "key": "doc-gen-user-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/user-guide/overview"
+  }
+}

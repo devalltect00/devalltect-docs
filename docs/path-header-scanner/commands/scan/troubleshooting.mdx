@@ -1,0 +1,19 @@
+---
+title: "Troubleshooting"
+description: "Troubleshooting: path-header-scanner scan"
+sidebar_position: 9
+sidebar_key: phs-scan-troubleshooting
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Troubleshooting" description="Troubleshooting" category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Symptom | Likely cause | Solution |
+| --- | --- | --- |
+| Target not found. | workdir/target resolution is wrong. | Check absolute result and retry in preview. |
+| No supported files. | Target is empty, excluded, or has unsupported extensions. | Review target and supported languages. |
+| Windows help raises UnicodeEncodeError. | Legacy CP1252 output cannot encode an emoji in help text. | Use UTF-8 terminal mode (for example chcp 65001) or set PYTHONUTF8=1. |
+| Unexpected changes were feared. | --apply or configuration enabled writes. | Use --dry-run; it overrides both. |
+

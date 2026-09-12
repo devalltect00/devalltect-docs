@@ -1,0 +1,75 @@
+---
+title: "Ringkasan"
+description: "Pahami target repositori, cakupan perubahan, aturan konfirmasi, dan batas dry-run Reflow sebelum menjalankan workflow."
+sidebar_position: 0
+sidebar_key: reflow-concepts
+tags: [reflow, konsep, keamanan]
+keywords: [konsep Reflow, target repositori, dry-run, cakupan perubahan]
+---
+
+import {
+    CommandHero,
+    FeatureGrid,
+    Icon,
+    InfoBox,
+    RelatedCommands,
+    Section,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="reflow"
+    title="Konsep Inti"
+    description="Pahami cara Reflow memilih repositori dan lokasi perubahan yang diizinkan untuk setiap perintah."
+    category="Konsep"
+    status="Baca Sebelum Mengubah"
+    syntax="reflow [GLOBAL OPTIONS] COMMAND"
+    tags={["target repositori", "cakupan perubahan", "dry-run"]}
+    links={[
+        {label: "Target Repositori", href: "./repository-targeting"},
+        {label: "Keamanan dan Dry-run", href: "./safety-and-dry-run"},
+    ]}
+/>
+
+<Section title="Dua Keputusan Mengatur Setiap Workflow">
+
+<FeatureGrid
+    items={[
+        {
+            title: "Repositori yang mana?",
+            icon: <Icon name="git" />,
+            children: <>Opsi target CLI mengalahkan konfigurasi; konfigurasi mengalahkan direktori kerja saat ini.</>,
+        },
+        {
+            title: "Cakupan perubahan yang mana?",
+            icon: <Icon name="workflow" />,
+            children: <>Perintah menentukan apakah perubahan bersifat lokal, remote, registry, atau hanya inisialisasi.</>,
+        },
+        {
+            title: "Mode pratinjau atau live?",
+            icon: <Icon name="success" />,
+            children: <>Opsi global <code>--dry-run</code> mengizinkan discovery dan validasi sambil mencegah perubahan persisten.</>,
+        },
+        {
+            title: "Interaktif atau otomatis?",
+            icon: <Icon name="command" />,
+            children: <>Perintah tag dan recovery yang mengubah state meminta konfirmasi di mode live kecuali opsi <code>--yes</code> yang terdokumentasi diberikan.</>,
+        },
+    ]}
+/>
+
+</Section>
+
+<InfoBox variant="warning" title="URL repositori adalah target, bukan izin">
+
+Memilih URL Git mengizinkan Reflow membuat clone sementara yang dikelola.
+Remote hanya berubah ketika perintah yang dipilih secara eksplisit
+mendokumentasikan perubahan remote.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "Target Repositori", href: "./repository-targeting", description: "Ikuti prioritas target serta eksklusivitas path dan URL."},
+        {title: "Keamanan dan Dry-run", href: "./safety-and-dry-run", description: "Pahami apa yang boleh dibaca pratinjau dan apa yang tidak boleh diubah."},
+    ]}
+/>

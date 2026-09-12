@@ -1,4 +1,12 @@
 {
   "label": "Developer Guide",
-  "key": "reflow-developer-guide"
+  "position": 7,
+  "key": "reflow-developer-guide",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "reflow/developer-guide/overview"
+  }
 }
+

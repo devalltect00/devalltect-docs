@@ -39,4 +39,14 @@ Generate and review the `CHANGELOG.md` diff after every structural edit.
 
 </InfoBox>
 
+<InfoBox variant="info" title="Reviewed message files are preserved">
+
+The artifact step keeps a non-empty `commit_message` or `tag_message` file
+unchanged, then opens it for review. Generated release text is used only when
+the configured message file is empty or missing in a custom pipeline. Generated
+fallbacks resolve the project name from `pyproject.toml` or `package.json`, with
+the project-directory name as a generic fallback.
+
+</InfoBox>
+
 <Section title="Continue"><RelatedCommands commands={[{title: "Changelog Template Contract", href: "../../changelog/overview", description: "Understand data passed to changelog.j2."}, {title: "Commit Configuration", href: "../../../commands/commit/configuration", description: "See commit-specific message behavior."}, {title: "Tag Configuration", href: "../../../commands/tag/configuration", description: "See tag-specific message behavior."}]} /></Section>

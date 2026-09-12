@@ -1,0 +1,11 @@
+{
+  "label": "Arsitektur",
+  "position": 8,
+  "key": "path-header-scanner-architecture",
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "doc",
+    "id": "path-header-scanner/architecture/overview"
+  }
+}

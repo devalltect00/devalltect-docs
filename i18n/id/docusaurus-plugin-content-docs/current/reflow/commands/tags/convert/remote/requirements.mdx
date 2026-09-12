@@ -1,0 +1,20 @@
+---
+title: "Persyaratan"
+description: "URL atau checkout dengan remote push. Izin membuat dan menghapus tag ref. Tidak ada collision, signed tag, atau konversi tidak didukung."
+sidebar_position: 2
+sidebar_key: reflow-tags-convert-remote
+tags: [reflow, requirements]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow tags convert remote" title="Persyaratan" description="Sebelum menjalankannya" category="Konversi Tag" status="Mutasi Remote Terjaga" syntax="reflow tags convert remote [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+## Sebelum menjalankannya
+
+- URL atau checkout dengan remote push.
+- Izin membuat dan menghapus tag ref.
+- Tidak ada collision, signed tag, atau konversi tidak didukung.
+
+<InfoBox variant="tip" title="Dry run">Dry-run menjalankan discovery dan validation tanpa mutasi persisten.</InfoBox>
+

@@ -1,0 +1,29 @@
+---
+title: "Alur Kerja"
+description: "Alur Kerja: doc-gen init"
+sidebar_position: 5
+sidebar_key: doc-gen-init
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen init" title="Alur Kerja" description="Membuat file konfigurasi Doc Gen milik proyek." category="Inisialisasi" status="Direkomendasikan" syntax="doc-gen init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Tahap 1
+
+Resolve default.
+
+### 2. Tahap 2
+
+Susun rencana pembuatan file konfigurasi.
+
+### 3. Tahap 3
+
+Dry-run menampilkan lalu berhenti.
+
+### 4. Tahap 4
+
+Mode langsung membuat atau memperbarui konfigurasi sesuai `--ask` dan `--force`.
+
+<InfoBox variant="warning" title="Batas keamanan">Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta konfirmasi.</InfoBox>

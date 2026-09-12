@@ -36,7 +36,7 @@ import {
     items={[
         {label: "Root Table", value: "tool.custy", icon: "configuration"},
         {label: "Project File", value: ".config/custy/config.toml", icon: "file"},
-        {label: "Generated Tables", value: "29", icon: "table"},
+        {label: "Generated Tables", value: "32", icon: "table"},
         {label: "Primary Precedence", value: "CLI -> config -> default", icon: "timeline"},
     ]}
 />
@@ -70,6 +70,8 @@ default_remote = "origin"`}
         {key: "tool.custy.project", value: <>Select the validated project source directory. <a href="../configuration/project">Details</a>.</>},
         {key: "tool.custy.release", value: <>Store release metadata while accounting for the documented active-loader shape mismatch. <a href="../configuration/release">Details</a>.</>},
         {key: "tool.custy.initialization", value: <>Set default replacement and prompt behavior for <code>custy init</code>. <a href="../configuration/initialization">Details</a>.</>},
+        {key: "tool.custy.editor", value: <>Choose environment, platform, and container editor precedence. <a href="../configuration/editor">Details</a>.</>},
+        {key: "tool.custy.commit.validation", value: <>Select built-in, automatic, Commitizen, or basic Git message validation. <a href="../configuration/commit-validation">Details</a>.</>},
         {key: "tool.custy.cli", value: <>Configure versioning, paths, templates, execution, push, cleanup, changelog, and experimental workflow defaults. <a href="../configuration/cli/overview">Details</a>.</>},
         {key: "tool.custy.logging", value: <>Configure Rich console and rotating file logging. <a href="../configuration/logging/overview">Details</a>.</>},
         {key: "tool.custy.changelog", value: <>Control collection, cleaning, release behavior, links, mappings, rendering, and advanced loaded settings. <a href="../configuration/changelog/overview">Details</a>.</>},

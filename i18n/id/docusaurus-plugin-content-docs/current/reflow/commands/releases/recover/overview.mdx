@@ -1,0 +1,25 @@
+---
+title: "Ringkasan"
+description: "Menemukan version tag tanpa GitHub release lalu melakukan re-push untuk memicu ulang CI/CD berbasis tag."
+sidebar_position: 1
+sidebar_key: reflow-releases-recover
+tags: [reflow, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Pulihkan Otomasi Release" description="Menemukan version tag tanpa GitHub release lalu melakukan re-push untuk memicu ulang CI/CD berbasis tag." category="Pemulihan Release" status="Pemulihan Workflow GitHub" syntax="reflow releases recover [OPTIONS]" links={[{label:"Persyaratan",href:"./requirements"},{label:"Sintaks",href:"./syntax"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+<Section title="Tujuan">
+
+Menemukan version tag tanpa GitHub release lalu melakukan re-push untuk memicu ulang CI/CD berbasis tag.
+
+</Section>
+
+<InfoBox variant="warning" title="Batas keamanan">Menghapus dan re-push tag; tidak membuat release record melalui website atau API.</InfoBox>
+
+- Baca tag dan release.
+- Pilih tag tanpa release.
+- Terapkan stable/limit.
+- Tampilkan target/rencana.
+- Hapus dan re-push dengan delay setelah konfirmasi.

@@ -18,7 +18,7 @@ A unified Docusaurus portal for Devalltect developer and DevOps tools. It provid
 | --- | --- | --- |
 | **Path Header Scanner** | Path and source-header inspection | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/path-header-scanner) |
 | **Doc Gen** | Project structure and documentation generation | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/doc-gen) |
-| **Reflow** | Git tag replay, version conversion, and release automation | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow) |
+| **Reflow** | Tag conversion, release recovery, and container publishing | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow) |
 | **Custy** | Git workflow, changelog, versioning, maintenance, and release pipelines | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/custy) |
 
 ## Requirements

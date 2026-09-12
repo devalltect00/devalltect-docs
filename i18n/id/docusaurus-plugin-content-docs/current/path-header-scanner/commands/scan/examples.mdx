@@ -1,0 +1,36 @@
+---
+title: "Contoh"
+description: "Contoh: path-header-scanner scan"
+sidebar_position: 7
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Contoh" description="Preview adalah default. --apply mengaktifkan write; --dry-run mengungguli apply dari CLI/configuration dan menjamin target tidak berubah." category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview default
+
+<Terminal language="bash">{`path-header-scanner scan app`}</Terminal>
+
+**Hasil:** Scans without writing.
+
+### 2. Apply
+
+<Terminal language="bash">{`path-header-scanner scan app --apply`}</Terminal>
+
+**Hasil:** Writes approved header corrections.
+
+### 3. Dry-run overrides apply
+
+<Terminal language="bash">{`path-header-scanner scan app --apply --dry-run`}</Terminal>
+
+**Hasil:** Simulates and writes nothing.
+
+### 4. Resolve from workdir
+
+<Terminal language="bash">{`path-header-scanner scan src --workdir ../project`}</Terminal>
+
+**Hasil:** Scans ../project/src.
+

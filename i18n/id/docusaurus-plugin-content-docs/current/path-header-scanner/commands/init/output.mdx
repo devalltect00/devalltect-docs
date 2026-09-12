@@ -1,0 +1,30 @@
+---
+title: "Output"
+description: "Pahami rencana inisialisasi, jumlah resource, dan status penyelesaian."
+sidebar_position: 6
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Output" description="Output" category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+- Dry-run menampilkan setiap direktori yang akan dipastikan dan file yang akan dibuat atau diperbarui.
+- Eksekusi live melaporkan mode terpilih dan jumlah resource.
+- Panel terakhir membedakan penyelesaian normal dari penyelesaian dry-run.
+
+<Terminal title="Ringkasan inisialisasi" language="text">{`Initialization Summary
+Mode                <all atau config>
+Created Files       <jumlah>
+Copied Files        <jumlah>
+Skipped Files       <jumlah>
+Created Directories <jumlah>`}</Terminal>
+
+<InfoBox variant="note" title="File yang dilewati bukan kegagalan pemindaian">
+
+Inisialisasi mempertahankan resource milik proyek yang sudah ada kecuali
+penggantian disetujui. Status header seperti valid, inserted, dan updated adalah
+milik perintah `scan`, bukan `init`.
+
+</InfoBox>

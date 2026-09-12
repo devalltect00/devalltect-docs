@@ -1,6 +1,6 @@
 ---
 title: "Options"
-description: "Options accepted by custy push and their current implementation status."
+description: "Options accepted by custy push and their destination-selection precedence."
 sidebar_position: 4
 sidebar_key: custy-push-options
 tags: [push, options, remote]
@@ -18,14 +18,14 @@ import {
 <CommandHero
     command="custy push"
     title="Command Options"
-    description="Review the intended remote, tag, and backup controls together with their current implementation status."
+    description="Control the effective remote set, tag handling, and eligible backup synchronization."
     category="Git Operations"
-    status="Limited"
+    status="Stable"
     syntax="custy push [OPTIONS]"
     tags={[
         "options",
         "remotes",
-        "adapter limitations",
+        "selection precedence",
     ]}
     links={[
         {label: "Syntax", href: "./syntax"},
@@ -36,8 +36,8 @@ import {
 
 ## Overview
 
-Some options are accepted by the CLI but are not reliably propagated into the
-workflow engine. Treat dry-run output as the current destination truth.
+Push options are propagated through both the direct command and public Run
+profiles. An explicit \`--remote\` has the highest selection priority.
 
 ---
 
@@ -47,11 +47,11 @@ workflow engine. Treat dry-run output as the current destination truth.
 
 <CommandOption
     options={[
-        {name: "--all-remote", shorthand: "-ar", description: "Intended to push every configured main remote. Accepted by the CLI but not reliably propagated.", example: "--all-remote"},
-        {name: "--remote", shorthand: "-r", description: "Intended to select one main remote such as origin. Accepted by the CLI but not reliably propagated.", example: "--remote origin"},
-        {name: "--tag", description: "Push the selected local tag after HEAD. This value is propagated.", example: "--tag v1.2.3"},
-        {name: "--skip-tag", shorthand: "-st", description: "Intended to push HEAD without a tag. Accepted by the CLI but not reliably propagated.", example: "--skip-tag"},
-        {name: "--sync-backup", shorthand: "-sb", description: "Enable eligible backup-remote synchronization. This value is propagated.", example: "--sync-backup"},
+        {name: "--all-remote", shorthand: "-ar", description: "Push to the de-duplicated main and backup remote groups. An explicit --remote still wins.", example: "--all-remote"},
+        {name: "--remote", shorthand: "-r", description: "Select exactly one remote and override all_remote, push_to, and configured groups.", example: "--remote origin"},
+        {name: "--tag", description: "Push this local tag after HEAD when tag pushing remains enabled.", example: "--tag v1.2.3"},
+        {name: "--skip-tag", shorthand: "-st", description: "Push HEAD without creating or pushing a tag in combined workflows.", example: "--skip-tag"},
+        {name: "--sync-backup", shorthand: "-sb", description: "Add configured backup remotes to a main-group push when branch safety permits.", example: "--sync-backup"},
     ]}
 />
 
@@ -76,12 +76,12 @@ custy --log-level debug push`}
 ---
 
 <InfoBox
-    variant="danger"
-    title="Verify actual destinations"
+    variant="warning"
+    title="Preview consequential pushes"
 >
 
-Because several selection flags are not currently wired into the workflow
-engine, use dry-run and read every resolved destination before allowing a normal
-push. This documentation will be updated when the Custy adapter is fixed.
+Use dry-run and read every resolved destination before allowing a normal push.
+Remote validation and repository discovery remain read-only operations during
+the preview.
 
 </InfoBox>

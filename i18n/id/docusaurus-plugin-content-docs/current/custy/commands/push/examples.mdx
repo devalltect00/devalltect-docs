@@ -1,6 +1,6 @@
 ---
 title: "Examples"
-description: "Contoh custy push dengan mempertimbangkan adapter limitations."
+description: "Contoh custy push untuk explicit dan grouped destinations."
 sidebar_position: 8
 sidebar_key: custy-push-examples
 ---
@@ -15,9 +15,11 @@ import {CommandHero, CommandExample, InfoBox} from "@site/src/components/docs";
 <CommandExample examples={[
  {title:"Preview Default Push",command:"custy --dry-run push",description:"Resolve destinations tanpa network mutation.",result:"Menampilkan planned actions."},
  {title:"Default Push",command:"custy push",description:"Push current HEAD.",result:"Menggunakan resolved main destination."},
+ {title:"Specific Remote",command:"custy push --remote upstream",description:"Override semua configured groups.",result:"Push hanya ke upstream."},
+ {title:"All Configured Remotes",command:"custy push --all-remote",description:"Pilih main dan eligible backup groups.",result:"Menggunakan de-duplicated destination set."},
  {title:"Preview with Tag",command:"custy --dry-run push --tag v1.4.0",description:"Preview HEAD dan tag push.",result:"Menampilkan destination dan tag actions."},
  {title:"Push with Tag",command:"custy push --tag v1.4.0",description:"Push HEAD dan tag.",result:"Mengirim ke main destination."},
  {title:"Backup Synchronization",command:"custy push --sync-backup --tag v1.4.0",description:"Minta main dan backup synchronization.",result:"Backup berjalan bila destination valid."},
 ]} />
 
-<InfoBox variant="info" title="Examples Reflect Current Behavior">Verifikasi kembali setelah Custy adapter diperbarui karena remote-selection behavior dapat berubah.</InfoBox>
+<InfoBox variant="info" title="Skip Tag Deliberately">Gunakan `custy push --skip-tag` untuk push HEAD tanpa push tag. Pada Release dan Full profiles, option yang sama juga mencegah pembuatan tag.</InfoBox>

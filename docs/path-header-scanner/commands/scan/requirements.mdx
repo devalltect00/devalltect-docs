@@ -1,0 +1,18 @@
+---
+title: "Requirements"
+description: "A readable target directory. Write permission only when --apply is used. Supported Python, JavaScript, shell, HTML, PHP, or Markdown files."
+sidebar_position: 2
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Requirements" description="Before you run it" category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+- A readable target directory.
+- Write permission only when --apply is used.
+- Supported Python, JavaScript, shell, HTML, PHP, or Markdown files.
+
+<InfoBox variant="tip" title="Dry run">Preview is the default. --apply enables writes; --dry-run overrides CLI and configured apply mode and guarantees no target-file changes.</InfoBox>
+

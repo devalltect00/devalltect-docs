@@ -1,0 +1,51 @@
+---
+title: Commands
+description: Choose Doc Gen initialization, generation, printing, or analysis by its output boundary.
+sidebar_position: 0
+sidebar_key: doc-gen-commands
+---
+
+import {CommandHero, InfoBox, RelatedCommands, Section} from "@site/src/components/docs";
+
+<CommandHero
+    command="doc-gen"
+    title="Command Overview"
+    description="Choose project setup, Markdown generation, terminal printing, or structure analysis with clear persistence boundaries."
+    category="Command Reference"
+    status="v1.0.0"
+    syntax="doc-gen COMMAND [OPTIONS]"
+    links={[
+        {label: "Initialize", href: "./init/overview"},
+        {label: "Structure Commands", href: "./structure/overview"},
+        {label: "Generate", href: "./structure/generate/overview"},
+        {label: "CLI Reference", href: "../reference/cli"},
+    ]}
+/>
+
+<Section title="Supported commands">
+
+| Command | Result | Writes project documentation |
+| --- | --- | --- |
+| [`doc-gen init`](./init/overview) | Project configuration | Yes, unless dry-run |
+| [`doc-gen structure generate [TARGET]`](./structure/generate/overview) | Markdown structure document | Yes, unless dry-run |
+| [`doc-gen structure print [TARGET]`](./structure/print/overview) | Terminal tree | No |
+| [`doc-gen structure analyze [TARGET]`](./structure/analyze/overview) | Terminal analysis | No |
+
+</Section>
+
+Structure commands share profile, smart-mode, depth, file visibility, collapse, project-type, verbosity, and dry-run options.
+
+<InfoBox variant="warning" title="Only generate persists structure output">
+
+`print` and `analyze` are read-only. `generate --dry-run` performs discovery
+and rendering in memory but creates neither its output directory nor file.
+
+</InfoBox>
+
+<RelatedCommands
+    commands={[
+        {title: "First Workflow", href: "../getting-started/first-workflow", description: "Initialize, inspect, preview, and generate safely."},
+        {title: "Profiles and Smart Mode", href: "../concepts/profiles-and-smart-mode", description: "Understand shared structure behavior."},
+        {title: "Configuration", href: "../configuration/reference", description: "Map shared and command-specific defaults."},
+    ]}
+/>

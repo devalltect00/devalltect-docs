@@ -1,0 +1,179 @@
+---
+title: "Commit Validation"
+description: "Pilih validasi Custy, Commitizen, deteksi otomatis, atau pemeriksaan dasar message file Git."
+sidebar_position: 9
+sidebar_key: custy-configuration-commit-validation
+tags: [custy, commit, commitizen, configuration]
+keywords: [commit validation provider, check-cz, commitizen optional]
+---
+
+import {
+    CommandHero,
+    CommandMetadata,
+    InfoBox,
+    PropertyTable,
+    RelatedCommands,
+    Section,
+    Terminal,
+} from "@site/src/components/docs";
+
+<CommandHero
+    command="[tool.custy.commit.validation]"
+    title="Commit Validation"
+    description="Sediakan validasi commit untuk setiap proyek dan aktifkan Commitizen hanya ketika proyek memang menggunakannya."
+    category="Configuration"
+    status="Active"
+    syntax="provider = auto | custy | commitizen | git"
+    tags={["provider selection", "optional Commitizen", "Git hooks"]}
+    links={[
+        {label: "Commit Configuration", href: "../commands/commit/configuration"},
+        {label: "Commit Troubleshooting", href: "../commands/commit/troubleshooting"},
+        {label: "Execution Defaults", href: "./cli/execution"},
+    ]}
+/>
+
+<CommandMetadata
+    items={[
+        {label: "Default Provider", value: "auto", icon: "configuration"},
+        {label: "Strict by Default", value: "Tidak", icon: "security"},
+        {label: "Built-in Validator", value: "Selalu tersedia", icon: "success"},
+        {label: "External Tool", value: "cz (optional)", icon: "terminal"},
+    ]}
+/>
+
+## Konfigurasi yang Direkomendasikan
+
+<Terminal title=".config/custy/config.toml" language="toml">
+
+{`[tool.custy.commit.validation]
+provider = "auto"
+require_tool = false`}
+
+</Terminal>
+
+Default ini tidak mewajibkan Commitizen. Custy mengaktifkan `cz` hanya jika
+menemukan konfigurasi Commitizen pada proyek dan executable yang tersedia.
+
+---
+
+<Section title="Matriks Perilaku">
+
+| Provider | Commitizen config | `cz` terinstal | Hasil |
+| --- | --- | --- | --- |
+| `auto` | Tidak | Tidak | Gunakan validasi Custy. |
+| `auto` | Tidak | Ya | Gunakan validasi Custy; instalasi saja tidak mengaktifkan Commitizen. |
+| `auto` | Ya | Ya | Jalankan validasi Custy, lalu validasi Commitizen. |
+| `auto` | Ya | Tidak | Tampilkan peringatan, lalu gunakan validasi Custy. |
+| `auto` dengan `require_tool = true` | Ya | Tidak | Berhenti sebelum perubahan dengan `COMMITIZEN_NOT_AVAILABLE`. |
+| `custy` | Apa pun | Apa pun | Gunakan aturan Conventional Commit bawaan Custy. |
+| `commitizen` | Ya | Ya | Wajibkan validasi Custy dan Commitizen. |
+| `commitizen` | Tidak ada atau tidak valid | Apa pun | Berhenti sebelum perubahan dengan error konfigurasi yang spesifik. |
+| `git` | Apa pun | Apa pun | Wajibkan message file UTF-8 yang dapat dibaca dan tidak kosong; izinkan format khusus proyek. |
+
+</Section>
+
+<InfoBox variant="tip" title="Gunakan auto untuk berbagai repository">
+
+`auto` adalah default bersama yang tepat ketika Custy digunakan pada proyek
+dengan tooling berbeda. Gunakan `commitizen` jika repository secara sengaja
+mewajibkan kebijakan yang sama pada pengembangan lokal, container, dan CI.
+
+</InfoBox>
+
+---
+
+<Section title="Properti">
+
+<PropertyTable
+    items={[
+        {property: "provider", type: "auto | custy | commitizen | git", defaultValue: "auto", description: "Pilih deteksi otomatis, aturan internal Custy, integrasi Commitizen yang ketat, atau pemeriksaan keamanan dasar message file Git."},
+        {property: "require_tool", type: "Boolean", defaultValue: "false", description: "Dalam mode auto, ubah integrasi Commitizen yang terdeteksi tetapi tidak valid atau tidak tersedia dari peringatan dan fallback menjadi error awal."},
+    ]}
+/>
+
+</Section>
+
+---
+
+<Section title="Yang Dideteksi Auto">
+
+Custy mengenali sumber konfigurasi proyek berikut:
+
+- `.cz.toml`
+- `.cz.yaml` atau `.cz.yml`
+- `.cz.json`
+- `[tool.commitizen]` dalam `pyproject.toml`
+
+Custy memeriksa ketersediaan executable `cz` secara terpisah. Custy tidak
+menginstal Commitizen saat command berjalan dan tidak mengaktifkannya hanya
+karena executable terinstal secara global.
+
+</Section>
+
+---
+
+<Section title="CLI Override">
+
+`--check-cz` adalah override ketat yang tetap kompatibel dengan versi
+sebelumnya. Untuk pemanggilan tersebut, perilakunya sama dengan:
+
+<Terminal language="toml">
+
+{`provider = "commitizen"
+require_tool = true`}
+
+</Terminal>
+
+Gunakan konfigurasi TOML permanen untuk kebijakan tim. Gunakan `--check-cz`
+untuk pemeriksaan satu kali yang disengaja.
+
+</Section>
+
+---
+
+<Section title="Instal Dukungan Commitizen Opsional">
+
+<Terminal>
+
+{`pip install "custy[commitizen]"`}
+
+</Terminal>
+
+Production Docker image Custy menyertakan extra opsional ini agar workflow
+Commitizen yang didukung tersedia di container. Instalasi `pre-commit` khusus
+proyek tetap terpisah.
+
+</Section>
+
+---
+
+<Section title="Versioning dan Validasi Message Terpisah">
+
+`[tool.custy.cli.versioning].strategy = "commitizen"` meminta Commitizen
+membantu menentukan versi. `[tool.custy.commit.validation].provider =
+"commitizen"` memintanya memvalidasi commit message akhir. Proyek dapat
+mengaktifkan salah satu, keduanya, atau tidak sama sekali.
+
+</Section>
+
+<InfoBox variant="warning" title="Git hooks tetap berjalan">
+
+Pemilihan provider tidak menonaktifkan `pre-commit`, `commit-msg`, atau Git
+hooks lain. Jika hook gagal, Custy melaporkan `GIT_HOOK_FAILED` beserta output
+yang ditangkap. Hook yang dipasang di Windows mungkin berisi path Python
+Windows dan tidak dapat langsung berjalan di Linux Docker; instal hook tersebut
+di environment tempat Git akan menjalankannya.
+
+</InfoBox>
+
+<Section title="Lanjutkan">
+
+<RelatedCommands
+    commands={[
+        {title: "Commit Configuration", href: "../commands/commit/configuration", description: "Gabungkan kebijakan provider dengan template, staging, dan backup."},
+        {title: "Commit Troubleshooting", href: "../commands/commit/troubleshooting", description: "Atasi kegagalan Commitizen dan Git hook."},
+        {title: "Docker", href: "../getting-started/docker", description: "Pahami tooling container dan hook repository yang di-mount."},
+    ]}
+/>
+
+</Section>

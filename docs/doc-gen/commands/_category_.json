@@ -1,4 +1,12 @@
 {
   "label": "Commands",
-  "key": "doc-gen-commands"
+  "position": 2,
+  "key": "doc-gen-commands",
+  "collapsible": true,
+  "collapsed": false,
+  "className": "category-doc-gen-commands",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/overview"
+  }
 }

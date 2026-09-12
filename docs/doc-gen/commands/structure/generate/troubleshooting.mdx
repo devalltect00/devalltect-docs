@@ -1,0 +1,18 @@
+---
+title: "Troubleshooting"
+description: "Troubleshooting: doc-gen structure generate"
+sidebar_position: 9
+sidebar_key: doc-gen-structure-generate-troubleshooting
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure generate" title="Troubleshooting" description="Troubleshooting" category="Project Structure" status="Writes Selected Output" syntax="doc-gen structure generate [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Symptom | Likely cause | Solution |
+| --- | --- | --- |
+| Target missing. | Target resolution is wrong. | Verify target and retry dry-run. |
+| Output cannot be written. | Parent/path permission or invalid path. | Select a writable output path. |
+| Unexpected content omitted. | Ignore/collapse/profile rules filtered it. | Review effective profile and collapse_dirs. |
+

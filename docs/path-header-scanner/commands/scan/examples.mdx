@@ -1,0 +1,36 @@
+---
+title: "Examples"
+description: "Examples: path-header-scanner scan"
+sidebar_position: 7
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Examples" description="Preview is the default. --apply enables writes; --dry-run overrides CLI and configured apply mode and guarantees no target-file changes." category="Header Scanning" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+### 1. Preview default
+
+<Terminal language="bash">{`path-header-scanner scan app`}</Terminal>
+
+**Result:** Scans without writing.
+
+### 2. Apply
+
+<Terminal language="bash">{`path-header-scanner scan app --apply`}</Terminal>
+
+**Result:** Writes approved header corrections.
+
+### 3. Dry-run overrides apply
+
+<Terminal language="bash">{`path-header-scanner scan app --apply --dry-run`}</Terminal>
+
+**Result:** Simulates and writes nothing.
+
+### 4. Resolve from workdir
+
+<Terminal language="bash">{`path-header-scanner scan src --workdir ../project`}</Terminal>
+
+**Result:** Scans ../project/src.
+

@@ -218,12 +218,12 @@ git remote -v`}
 
 <InfoBox
     variant="warning"
-    title="Remote-selection limitation"
+    title="Remote selection is configuration-driven"
 >
 
-The current Dev profile documentation records limitations in the remote
-selection adapter. Confirm the actual destination during dry-run output and
-review the dedicated Push documentation before normal execution.
+The Dev profile honors explicit `--remote`, `--all-remote`, and the
+configured Git remote groups. Confirm the effective destinations during dry-run
+and review the dedicated Push documentation before normal execution.
 
 </InfoBox>
 

@@ -1,0 +1,8 @@
+---
+title: Keamanan dan Dry-run
+description: Simulasikan workflow tanpa perubahan persisten.
+sidebar_position: 10
+sidebar_key: reflow-dry-run
+---
+
+`--dry-run` adalah global option dan ditempatkan sebelum command. Discovery, validation, provider query, dan temporary clone dapat tetap berjalan, tetapi perubahan file, tag, remote, dan registry disimulasikan. Dry-run tidak meminta mutation confirmation; diagnostic logging dapat tetap menulis log.

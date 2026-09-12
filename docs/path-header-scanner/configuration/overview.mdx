@@ -1,0 +1,22 @@
+---
+title: "Overview"
+description: "Understand the project configuration file, precedence, and active sections."
+sidebar_position: 1
+sidebar_key: path-header-scanner-configuration
+tags: [path-header-scanner, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command=".config/path_header_scanner/config.toml" title="Configuration" description="Understand the project configuration file, precedence, and active sections." category="Configuration" status="Project Owned" syntax=".config/path_header_scanner/config.toml" />
+
+<Section title="Precedence">
+
+1. Explicit CLI argument
+2. `.config/path_header_scanner/config.toml`
+3. Internal default
+
+</Section>
+
+<InfoBox variant="warning" title="Ownership">Initialization creates a project-owned copy. The CLI must not silently overwrite user-managed configuration.</InfoBox>
+

@@ -1,0 +1,36 @@
+---
+title: "Contoh"
+description: "Contoh: path-header-scanner init"
+sidebar_position: 7
+sidebar_key: phs-init
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner init" title="Contoh" description="Dry-run tidak membuat direktori, menulis file, mengganti content, atau meminta konfirmasi." category="Inisialisasi" status="Direkomendasikan" syntax="path-header-scanner init [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Preview
+
+<Terminal language="bash">{`path-header-scanner init --dry-run`}</Terminal>
+
+**Hasil:** Shows planned resources.
+
+### 2. Initialize
+
+<Terminal language="bash">{`path-header-scanner init`}</Terminal>
+
+**Hasil:** Creates resolved resources.
+
+### 3. Configuration only
+
+<Terminal language="bash">{`path-header-scanner init --mode config`}</Terminal>
+
+**Hasil:** Creates configuration.
+
+### 4. Force
+
+<Terminal language="bash">{`path-header-scanner init --mode all --force`}</Terminal>
+
+**Hasil:** Replaces selected files.
+

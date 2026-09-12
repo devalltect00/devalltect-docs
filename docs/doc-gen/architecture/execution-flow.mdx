@@ -1,0 +1,20 @@
+---
+title: "Execution Flow"
+description: "Understand responsibilities and execution flow."
+sidebar_position: 2
+sidebar_key: doc-gen-architecture
+tags: [doc-gen, architecture, workflow]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Doc Gen" title="Execution Flow" description="Understand responsibilities and execution flow." category="Architecture" status="Reference" syntax="doc-gen structure generate . --dry-run" />
+
+<Terminal language="text">{`CLI input
+  -> configuration resolution
+  -> target and safety validation
+  -> core/service execution
+  -> progress, summary, and actionable error boundary`}</Terminal>
+
+<InfoBox variant="warning" title="Mutation boundary">Generate writes only its resolved Markdown output; print and analyze are read-only. Generate dry-run never creates its output directory or file.</InfoBox>
+

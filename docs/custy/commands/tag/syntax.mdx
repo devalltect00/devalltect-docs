@@ -58,7 +58,7 @@ backup option surface. Place global dry-run before `tag`.
         {title: "Use project version settings", command: "custy tag", description: "Resolve and create the tag through the configured strategy."},
         {title: "Provide an exact tag", command: "custy tag --tag v1.2.3", description: "Use a manually selected tag value."},
         {title: "Select PEP 440", command: "custy tag --strategy pep440", description: "Generate a PEP 440 version from repository state."},
-        {title: "Create a pre-release label", command: "custy tag --tag v1.3.0 --pre beta", description: "Add a pre-release label to the resolved version."},
+        {title: "Provide an exact pre-release", command: "custy tag --strategy semver --tag v1.3.0-beta.1", description: "Use a supported explicit lifecycle tag."},
         {title: "Preview tag preparation", command: "custy --dry-run tag --tag v1.2.3", description: "Inspect the planned tag profile without normal mutations."},
     ]}
 />

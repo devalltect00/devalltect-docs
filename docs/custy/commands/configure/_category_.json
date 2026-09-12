@@ -1,0 +1,9 @@
+{
+  "label": "Configure",
+  "position": 12,
+  "collapsed": false,
+  "collapsible": true,
+  "className": "category-configure",
+  "key": "custy-commands-configure",
+  "link": {"type": "doc", "id": "custy/commands/configure/overview"}
+}

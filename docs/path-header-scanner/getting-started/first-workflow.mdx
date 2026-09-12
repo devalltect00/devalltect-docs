@@ -1,0 +1,60 @@
+---
+title: "Installation and First Workflow"
+description: "Install the CLI, initialize project configuration, and run a safe first workflow."
+sidebar_position: 2
+sidebar_key: path-header-scanner-getting-started
+tags: [path-header-scanner, installation, quick-start]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Path Header Scanner" title="Installation and First Workflow" description="Use a dedicated environment, preview setup, and review a scan before applying header changes." category="Getting Started" status="Recommended" syntax="path-header-scanner scan app" />
+
+<Section title="Install a Reviewed Release">
+
+Authorized users can install from the private GitLab PyPI registry with the
+project ID and a deploy token limited to `read_package_registry`.
+
+<Terminal title="Private GitLab package" language="bash">{`python -m venv venv
+
+# Activate the environment, then install one reviewed package version.
+python -m pip install \
+  --index-url "https://<deploy-user>:<deploy-token>@gitlab.com/api/v4/projects/<project-id>/packages/pypi/simple" \
+  "path-header-scanner==1.0.0"
+
+path-header-scanner --version`}</Terminal>
+
+A Git tag such as `v1.0.0-rc.1` becomes PEP 440 package version `1.0.0rc1`.
+Use `path-header-scanner==1.0.0rc1` when deliberately testing that release
+candidate. This package is private; do not commit tokens or credential-bearing
+index URLs.
+
+</Section>
+
+<Section title="Install from a Source Checkout">
+
+<Terminal title="Environment" language="bash">{`python -m venv venv
+python -m pip install .
+path-header-scanner --version`}</Terminal>
+
+</Section>
+
+<Terminal title="Safe first workflow" language="bash">{`cd /path/to/project
+path-header-scanner init --dry-run
+path-header-scanner init
+
+# Scan is preview-only by default
+path-header-scanner scan app
+
+# Apply only after reviewing the preview
+path-header-scanner scan app --apply`}</Terminal>
+
+<InfoBox variant="tip" title="Resolve a target from another project base">
+
+Use `path-header-scanner scan app --workdir ../project` when `app` should be
+resolved relative to a different working directory. An explicit `--dry-run`
+still overrides `--apply` and configured apply mode.
+
+</InfoBox>
+
+<InfoBox variant="note" title="Runtime">Python 3.11+ compatibility; Python 3.14 standard runtime</InfoBox>

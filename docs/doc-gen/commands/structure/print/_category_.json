@@ -1,0 +1,12 @@
+{
+  "label": "Print Project Structure",
+  "position": 2,
+  "key": "doc-gen-structure-print-category",
+  "collapsible": true,
+  "collapsed": true,
+  "className": "category-doc-gen-structure-print",
+  "link": {
+    "type": "doc",
+    "id": "doc-gen/commands/structure/print/overview"
+  }
+}

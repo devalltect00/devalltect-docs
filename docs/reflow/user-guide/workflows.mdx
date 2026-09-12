@@ -1,0 +1,22 @@
+---
+title: "Practical Workflows"
+description: "Choose a workflow by its target and side effects."
+sidebar_position: 2
+sidebar_key: reflow-user-guide
+tags: [reflow, workflows]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="Reflow" title="Practical Workflows" description="Choose a workflow by its target and side effects." category="User Guide" status="Practical" syntax="reflow --dry-run -C ../project tags convert local" />
+
+| Command | Effect |
+| --- | --- |
+| `reflow init` | Project setup |
+| `reflow tags convert local` | Primary workflow |
+| `reflow tags convert remote` | Additional explicit workflow |
+| `reflow releases recover` | Additional explicit workflow |
+| `reflow dockerize` | Additional explicit workflow |
+
+<InfoBox variant="tip" title="Preview">Local and remote tag replacement are separate commands. Remote pushes, release recovery, and registry publishing are explicit external mutations.</InfoBox>
+

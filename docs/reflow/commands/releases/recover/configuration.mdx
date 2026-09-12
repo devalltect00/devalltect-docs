@@ -1,0 +1,25 @@
+---
+title: "Configuration"
+description: "Configuration: reflow releases recover"
+sidebar_position: 8
+sidebar_key: reflow-releases-recover
+tags: [reflow, configuration]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="reflow releases recover" title="Configuration" description="CLI values override project configuration, which overrides internal defaults." category="Release Recovery" status="GitHub Workflow Recovery" syntax="reflow releases recover [OPTIONS]" links={[{label:"Overview",href:"./overview"},{label:"Options",href:"./options"},{label:"Workflow",href:"./workflow"},{label:"Examples",href:"./examples"}]} />
+
+| Configuration key | Default | Effect |
+| --- | --- | --- |
+| `tool.reflow.cli.releases.recover.delay` | 2 | Re-push spacing. |
+| `tool.reflow.cli.releases.recover.only_stable` | false | Stable-only filter. |
+| `tool.reflow.cli.releases.recover.limit` | unlimited | Optional cap. |
+
+```toml
+[tool.reflow.cli.releases.recover]
+delay = 2
+only_stable = false
+# limit = 25
+```
+

@@ -1,0 +1,24 @@
+---
+title: "Output"
+description: "Output: path-header-scanner scan"
+sidebar_position: 6
+sidebar_key: phs-scan
+tags: [path-header-scanner, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="path-header-scanner scan" title="Output" description="Output" category="Pemindaian Header" status="Preview First" syntax="path-header-scanner scan [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+- Workdir/target hasil resolution.
+- Status file jika dikonfigurasi.
+- Total valid/updated/inserted/failed.
+- Pesan mode preview/applied/dry-run.
+
+<Terminal language="text">{`Target   : <resolved path>
+Mode     : preview/apply/dry-run
+Valid    : <count>
+Updated  : <count>
+Inserted : <count>
+Failed   : <count>`}</Terminal>
+

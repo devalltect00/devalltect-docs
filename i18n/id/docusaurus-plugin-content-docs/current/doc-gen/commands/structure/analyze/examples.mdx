@@ -1,0 +1,36 @@
+---
+title: "Contoh"
+description: "Contoh: doc-gen structure analyze"
+sidebar_position: 7
+sidebar_key: doc-gen-structure-analyze
+tags: [doc-gen, command]
+---
+
+import {CommandHero, InfoBox, Section, Terminal} from "@site/src/components/docs";
+
+<CommandHero command="doc-gen structure analyze" title="Contoh" description="Analyze bersifat read-only; scan dan calculation boleh berjalan tanpa writer." category="Struktur Proyek" status="Read Only" syntax="doc-gen structure analyze [OPTIONS]" links={[{label:"Ringkasan",href:"./overview"},{label:"Opsi",href:"./options"},{label:"Alur Kerja",href:"./workflow"},{label:"Contoh",href:"./examples"}]} />
+
+### 1. Analyze current project
+
+<Terminal language="bash">{`doc-gen structure analyze .`}</Terminal>
+
+**Hasil:** Displays analysis.
+
+### 2. Override type
+
+<Terminal language="bash">{`doc-gen structure analyze . --project-type python`}</Terminal>
+
+**Hasil:** Uses Python classification.
+
+### 3. Smart analysis
+
+<Terminal language="bash">{`doc-gen structure analyze . --smart`}</Terminal>
+
+**Hasil:** Applies automatic optimization decisions.
+
+### 4. Dry-run
+
+<Terminal language="bash">{`doc-gen structure analyze . --dry-run`}</Terminal>
+
+**Hasil:** Remains read-only.
+

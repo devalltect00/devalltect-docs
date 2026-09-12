@@ -50,7 +50,7 @@ import {
         {title: "Git", level: "required", children: "Custy's core workflows inspect and modify Git repository state. Docker images install Git inside the container."},
         {title: "pip or installed package", level: "required", children: "The custy entrypoint must resolve from the intended virtual environment, release installation, or container."},
         {title: "UTF-8-capable terminal", level: "recommended", children: "Rich output contains Unicode symbols and emoji; compatible encoding avoids display and redirected-output failures."},
-        {title: "VS Code or Notepad", level: "recommended", children: "Flows that edit message files try code --wait first and then the Windows notepad executable."},
+        {title: "Configured Editor", level: "recommended", children: "Install at least one editor from the active tool.custy.editor candidate list. Docker includes Micro, Nano, Vim, and Vi."},
         {title: "Commitizen", level: "optional", children: "The external cz executable is needed only by Commitizen-dependent validation or strategy paths."},
         {title: "Docker", level: "optional", children: "Use the supported container workflow without installing Custy and Git directly on the host."},
         {title: "Make", level: "optional", children: "Use repository Makefile helpers; it is not required by the installed core CLI."},
@@ -103,14 +103,68 @@ credentials, or file paths.
 
 ---
 
+<Section title="Editor Environment Variables">
+
+Custy does not define an editor environment variable automatically. It
+inherits the variables supplied to its process and checks the following exact
+names when `tool.custy.editor.prefer_environment = true`:
+
+<KeyValueTable
+    title="Editor Runtime Variables"
+    items={[
+        {key: "VISUAL", value: "Primary editor command. May contain a trusted executable and optional arguments, such as code --wait or micro."},
+        {key: "EDITOR", value: "Secondary editor command, checked after VISUAL, such as notepad, nano, vim, or nvim -f."},
+        {key: "PATH", value: "Indirectly controls executable discovery. PATH does not select an editor by itself."},
+        {key: "CUSTY_CONTAINER", value: "Selects container candidates when set to 1, true, yes, or on. The official image sets it; it is not an editor command."},
+    ]}
+/>
+
+Only `VISUAL` and `EDITOR` accept editor commands. Use the uppercase names
+exactly for portable behavior. If either is empty, undefined, or names an
+unavailable executable, Custy moves to the next candidate allowed by the
+editor policy.
+
+<Terminal title="Set values before starting Custy" language="bash">
+
+{`# PowerShell
+$env:VISUAL = "code --wait"
+$env:EDITOR = "notepad"
+
+# POSIX shell
+export VISUAL="micro"
+export EDITOR="nano"
+
+# Docker
+docker run --rm -it -e VISUAL=micro -e EDITOR=nano \
+  -v "\${PWD}:/workspace" -w /workspace \
+  custy-prod:latest run release`}
+
+</Terminal>
+
+The operating system, shell profile, IDE, Docker/Compose service, or CI job
+must supply these values before Custy starts. Custy does not directly load a
+`.env` file. It reads `VISUAL` and `EDITOR` when a workflow reaches commit or
+tag message editing, so changing another terminal does not modify an existing
+Custy process. See [Editor Configuration](../configuration/editor) for setup
+examples, accepted commands, container behavior, and the complete
+`prefer_environment`/`allow_fallback` matrix.
+
+</Section>
+
+---
+
 <Section title="External Tools and Credentials">
 
 - Custy invokes `git` and relies on the normal Git executable lookup.
 - Remote authentication belongs to Git and the configured credential helper,
   SSH agent, CI secret setup, or container environment. Custy does not read a
   dedicated GitHub or GitLab token variable in the active core path.
-- The editor launcher does not currently read `EDITOR` or `VISUAL`; it tries
-  `code --wait` and then `notepad`.
+- The editor launcher reads `VISUAL`, then `EDITOR`, when environment
+  precedence is enabled. It then follows container or platform candidate lists
+  from [`tool.custy.editor`](../configuration/editor).
+- Windows executable discovery resolves command shims such as `code.CMD`
+  before launch. A normal Linux container cannot open VS Code or Notepad from
+  the host; use its bundled terminal editors and an interactive TTY.
 - Commitizen strategy behavior invokes `cz` as an external subprocess.
 - Docker bind mounts determine which host project appears as the container's
   working directory.
@@ -138,6 +192,7 @@ affects presentation and can prevent help output from completing.
         {title: "Paths and Files", href: "./paths-and-files", description: "Locate files resolved from the working directory."},
         {title: "Validation Requirements", href: "../commands/validate/requirements", description: "Prepare repository, templates, version file, remotes, and staging."},
         {title: "Errors and Exit Status", href: "./exit-errors", description: "Interpret terminal, parser, validation, and subprocess failures."},
+        {title: "Editor Configuration", href: "../configuration/editor", description: "Configure editor identifiers, precedence, container behavior, and keybindings."},
     ]}
 />
 

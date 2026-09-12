@@ -54,7 +54,8 @@ Common directories include:
 ├── .gitlab
 │   ├── ci.yml
 │   ├── docker.yml
-│   └── pages.yml
+│   ├── pages.yml
+│   └── release.yml
 ├── .pnpm-store/ ... (collapsed)
 ├── .yarn/ ... (collapsed)
 ├── blog/ ... (collapsed)
@@ -542,7 +543,6 @@ Common directories include:
 │   ├── badges.md
 │   ├── developers.mdx
 │   ├── intro.mdx
-│   ├── PROJECT_STRUCTURE.md
 │   ├── projects-overview.mdx
 │   ├── TODO.md
 │   ├── TODO_category.md
@@ -622,6 +622,13 @@ Common directories include:
 │       ├── versioning.test.ts
 │       └── versioning.ts
 ├── scripts
+│   ├── repository
+│   │   ├── src
+│   │   │   └── sync_metadata.mjs
+│   │   └── tests
+│   │       ├── generated_artifacts.test.mjs
+│   │       ├── release_workflow.test.mjs
+│   │       └── sync_metadata.test.mjs
 │   └── add_frontmatter.py
 ├── src
 │   ├── components
@@ -805,7 +812,6 @@ Common directories include:
 ├── README.md
 ├── SECURITY.md
 ├── sidebars.ts
-├── TODO_FRONTMATTER.md
 ├── tsconfig.json
 └── yarn.lock
 ```

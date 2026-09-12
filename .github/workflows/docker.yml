@@ -57,8 +57,37 @@ jobs:
 
       - name: 🔎 Smoke-test static site
         run: |
-          curl --fail --retry 10 --retry-delay 1 http://127.0.0.1:8080/healthz
-          curl --fail --retry 10 --retry-delay 1 http://127.0.0.1:8080/devalltect-docs/
+          container_id="${{ steps.preview.outputs.container_id }}"
+
+          for attempt in $(seq 1 60); do
+            container_status="$(docker inspect --format='{{.State.Status}}' "$container_id")"
+            health_status="$(docker inspect --format='{{if .State.Health}}{{.State.Health.Status}}{{else}}unavailable{{end}}' "$container_id")"
+
+            if [ "$health_status" = "healthy" ]; then
+              break
+            fi
+
+            if [ "$container_status" != "running" ] || [ "$health_status" = "unhealthy" ]; then
+              echo "Container failed before the smoke test completed."
+              docker logs "$container_id"
+              docker inspect "$container_id"
+              exit 1
+            fi
+
+            if [ "$attempt" -eq 60 ]; then
+              echo "Timed out waiting for the container to become healthy."
+              docker logs "$container_id"
+              docker inspect "$container_id"
+              exit 1
+            fi
+
+            sleep 1
+          done
+
+          curl --fail --show-error --silent --retry 5 --retry-delay 1 --retry-all-errors \
+            http://127.0.0.1:8080/healthz
+          curl --fail --show-error --silent --retry 5 --retry-delay 1 --retry-all-errors \
+            http://127.0.0.1:8080/devalltect-docs/
 
       - name: 🧹 Stop production-preview image
         if: always() && steps.preview.outputs.container_id != ''

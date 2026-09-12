@@ -33,27 +33,13 @@
 # build/
 # │
 # ▼
-# public/
-# │
-# ▼
 # GitLab Pages
 #
 #
 # Output
 # ------
-# GitLab Pages expects deployment files to exist inside:
-#
-# public/
-#
-# Docusaurus generates:
-#
-# build/
-#
-# Therefore the build output is copied into:
-#
-# public/
-#
-# before publication.
+# Docusaurus generates build/. The pages.publish setting exposes that directory
+# directly, so no intermediate public/ copy is required.
 #
 #
 # Trigger
@@ -67,7 +53,7 @@
 # - Docker and Compose are optional local and CI validation tools
 # - Pages deployment does not consume the production-preview image
 # - No container registry required
-# - No release workflow required
+# - Release-page automation is handled separately by release.yml
 #
 # Docusaurus produces a fully static website.
 #
@@ -82,7 +68,7 @@
 #
 # =========================================================
 
-pages:
+deploy-pages:
   stage: deploy
 
   image: node:20
@@ -109,20 +95,12 @@ pages:
 
     - yarn build
 
-    # =====================================================
-    # 📂 PREPARE GITLAB PAGES ARTIFACT
-    # =====================================================
+  pages:
+    publish: build
 
-    - mkdir public
-    - cp -r build/* public/
-
-  artifacts:
-    paths:
-      - public
-
-  expire_in: 1 week
+  environment:
+    name: production
+    url: $CI_PAGES_URL
 
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-
-    - if: '$CI_COMMIT_BRANCH == "main"'
+    - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"

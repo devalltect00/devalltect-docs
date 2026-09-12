@@ -1,0 +1,179 @@
+# .github/workflows/release.yml
+
+name: 🚀 Release
+
+run-name: 🚀 Release • ${{ inputs.tag || github.ref_name }}
+
+# Validate an existing annotated SemVer tag, preserve its complete tag message,
+# and append generated release metadata. Pages deployment remains independent.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag, such as v1.0.0 or v1.0.0-rc.1
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+env:
+  RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+
+jobs:
+  release:
+    name: 🚀 Create Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout release tag
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.tag || github.ref }}
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: 🧶 Enable Corepack
+        run: corepack enable
+
+      - name: 📦 Install dependencies
+        run: yarn install --immutable
+
+      - name: 🏷️ Validate annotated release tag
+        id: release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TAG="$RELEASE_TAG"
+
+          if ! yarn node -e '
+            const semver = require("semver");
+            const tag = process.argv[1];
+            if (!tag.startsWith("v") || !semver.valid(tag.slice(1))) process.exit(1);
+          ' "$TAG"; then
+            echo "Invalid Devalltect Docs Semantic Version tag: $TAG" >&2
+            exit 1
+          fi
+
+          if ! git show-ref --verify --quiet "refs/tags/$TAG"; then
+            echo "Release tag does not exist in the repository: $TAG" >&2
+            exit 1
+          fi
+
+          if [[ "$(git cat-file -t "refs/tags/$TAG")" != "tag" ]]; then
+            echo "GitHub Releases require an annotated Git tag: $TAG" >&2
+            exit 1
+          fi
+
+          TAG_MESSAGE="$(git tag -l --format='%(contents)' "$TAG")"
+          if [[ -z "${TAG_MESSAGE//[[:space:]]/}" ]]; then
+            echo "Annotated release tag has an empty message: $TAG" >&2
+            exit 1
+          fi
+
+          VERSION="${TAG#v}"
+          PACKAGE_VERSION="$(node -p 'require("./package.json").version')"
+          NODE_VERSION="$(node -p 'require("./package.json").engines.node.match(/\d+/)[0]')"
+          TYPE="stable"
+          TITLE="🚀 Release"
+
+          case "$VERSION" in
+            *-alpha.*) TYPE="alpha"; TITLE="🧪 Alpha Release" ;;
+            *-beta.*) TYPE="beta"; TITLE="🔬 Beta Release" ;;
+            *-rc.*) TYPE="rc"; TITLE="🚧 Release Candidate" ;;
+            *-*) TYPE="prerelease"; TITLE="🛠️ Prerelease" ;;
+          esac
+
+          PRERELEASE=false
+          if [[ "$TYPE" != "stable" ]]; then
+            PRERELEASE=true
+          fi
+
+          if [[ "v$PACKAGE_VERSION" != "$TAG" ]]; then
+            echo "::warning::package.json version '$PACKAGE_VERSION' does not match release tag '$TAG'."
+          fi
+
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "title=$TITLE $TAG" >> "$GITHUB_OUTPUT"
+          echo "type=$TYPE" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
+          echo "package_version=$PACKAGE_VERSION" >> "$GITHUB_OUTPUT"
+          echo "node_version=$NODE_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: 🧪 Validate tagged portal
+        run: yarn validate
+
+      - name: 📝 Build release notes
+        shell: bash
+        env:
+          TAG: ${{ steps.release.outputs.tag }}
+          RELEASE_TYPE: ${{ steps.release.outputs.type }}
+          PACKAGE_VERSION: ${{ steps.release.outputs.package_version }}
+          NODE_VERSION: ${{ steps.release.outputs.node_version }}
+        run: |
+          set -euo pipefail
+
+          COMMIT_SHA="$(git rev-list -n 1 "$TAG")"
+          SHORT_SHA="${COMMIT_SHA:0:8}"
+          COMMIT_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$COMMIT_SHA"
+
+          git tag -l --format='%(contents)' "$TAG" > RELEASE_NOTES.md
+
+          {
+            printf '\n---\n\n'
+            printf '## 📅 Release Information\n\n'
+            printf -- '- Version: `%s`\n' "$TAG"
+            printf -- '- Portal Package Version: `%s`\n' "$PACKAGE_VERSION"
+            printf -- '- Node.js Version: `%s`\n' "$NODE_VERSION"
+            printf -- '- Release Type: `%s`\n' "$RELEASE_TYPE"
+            printf -- '- Project: `%s`\n' "$GITHUB_REPOSITORY"
+            printf -- '- Commit: [%s](%s)\n' "$SHORT_SHA" "$COMMIT_URL"
+          } >> RELEASE_NOTES.md
+
+      - name: 🚀 Create or update GitHub Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs.tag }}
+          TITLE: ${{ steps.release.outputs.title }}
+          PRERELEASE: ${{ steps.release.outputs.prerelease }}
+        run: |
+          set -euo pipefail
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            if [[ "$PRERELEASE" == "true" ]]; then
+              gh release edit "$TAG" \
+                --title "$TITLE" \
+                --notes-file RELEASE_NOTES.md \
+                --prerelease \
+                --latest=false
+            else
+              gh release edit "$TAG" \
+                --title "$TITLE" \
+                --notes-file RELEASE_NOTES.md \
+                --prerelease=false \
+                --latest
+            fi
+          elif [[ "$PRERELEASE" == "true" ]]; then
+            gh release create "$TAG" \
+              --verify-tag \
+              --title "$TITLE" \
+              --notes-file RELEASE_NOTES.md \
+              --prerelease
+          else
+            gh release create "$TAG" \
+              --verify-tag \
+              --title "$TITLE" \
+              --notes-file RELEASE_NOTES.md \
+              --latest
+          fi

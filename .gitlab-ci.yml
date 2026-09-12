@@ -19,7 +19,8 @@
 # .gitlab-ci.yml
 # ├── .gitlab/ci.yml
 # ├── .gitlab/pages.yml
-# └── .gitlab/docker.yml
+# ├── .gitlab/docker.yml
+# └── .gitlab/release.yml
 #
 #
 # GitHub Equivalent
@@ -28,7 +29,8 @@
 # .github/workflows/
 # ├── ci.yml
 # ├── pages.yml
-# └── docker.yml
+# ├── docker.yml
+# └── release.yml
 #
 #
 # Responsibilities
@@ -37,6 +39,7 @@
 # - Docusaurus Build Verification
 # - Docker Image Validation
 # - GitLab Pages Deployment
+# - Annotated-tag Release Publication
 #
 #
 # Deployment Flow
@@ -74,9 +77,11 @@
 # - A container registry
 # - Kubernetes deployment
 # - Release packaging
+# - Container or package publication
 #
 # Docusaurus generates a static website that can be
 # published directly through GitLab Pages.
+# Annotated release tags are published separately as GitLab Releases.
 #
 #
 # Future Expansion
@@ -99,8 +104,10 @@ stages:
   - test
   - container
   - deploy
+  - release
 
 include:
   - local: ".gitlab/ci.yml"
   - local: ".gitlab/docker.yml"
   - local: ".gitlab/pages.yml"
+  - local: ".gitlab/release.yml"

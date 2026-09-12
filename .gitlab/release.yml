@@ -1,0 +1,111 @@
+# =========================================================
+# 🚀 GitLab Release
+# =========================================================
+#
+# Validate an existing annotated SemVer tag, preserve its complete tag message,
+# and append generated release metadata. Pages deployment remains independent,
+# and this job publishes no packages or container images.
+#
+# =========================================================
+
+release:create:
+  stage: release
+
+  image: registry.gitlab.com/gitlab-org/cli:latest
+
+  variables:
+    GIT_DEPTH: "0"
+
+  needs:
+    - job: ci:validate
+      artifacts: false
+
+  script:
+    - |
+      set -eu
+
+      TAG="$CI_COMMIT_TAG"
+      TAG_REGEX='^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?(\+[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$'
+
+      if ! printf '%s\n' "$TAG" | grep -Eq "$TAG_REGEX"; then
+        echo "Invalid Devalltect Docs Semantic Version tag: $TAG" >&2
+        exit 1
+      fi
+
+      if ! git fetch --force origin "refs/tags/$TAG:refs/tags/$TAG"; then
+        echo "Unable to fetch release tag metadata: $TAG" >&2
+        exit 1
+      fi
+
+      if ! git show-ref --verify --quiet "refs/tags/$TAG"; then
+        echo "Release tag does not exist in the repository: $TAG" >&2
+        exit 1
+      fi
+
+      if [ "$(git cat-file -t "refs/tags/$TAG")" != "tag" ]; then
+        echo "GitLab Releases require an annotated Git tag: $TAG" >&2
+        exit 1
+      fi
+
+      TAG_MESSAGE="$(git tag -l --format='%(contents)' "$TAG")"
+      if ! printf '%s' "$TAG_MESSAGE" | grep -q '[^[:space:]]'; then
+        echo "Annotated release tag has an empty message: $TAG" >&2
+        exit 1
+      fi
+
+      PACKAGE_VERSION="$(sed -n 's/^[[:space:]]*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' package.json | head -n 1)"
+      NODE_REQUIREMENT="$(sed -n 's/^[[:space:]]*"node"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' package.json | head -n 1)"
+      NODE_VERSION="$(printf '%s' "$NODE_REQUIREMENT" | grep -oE '[0-9]+' | head -n 1)"
+      COMMIT_SHA="$(git rev-list -n 1 "$TAG")"
+      SHORT_SHA="$(printf '%.8s' "$COMMIT_SHA")"
+      COMMIT_URL="$CI_PROJECT_URL/-/commit/$COMMIT_SHA"
+
+      if [ -z "$PACKAGE_VERSION" ] || [ -z "$NODE_VERSION" ]; then
+        echo "Unable to read portal or Node.js version metadata from package.json." >&2
+        exit 1
+      fi
+
+      printf '%s\n' "$TAG_MESSAGE" > RELEASE_NOTES.md
+      {
+        printf '\n---\n\n'
+        printf '## 📅 Release Information\n\n'
+        printf -- '- Version: `%s`\n' "$TAG"
+        printf -- '- Portal Package Version: `%s`\n' "$PACKAGE_VERSION"
+        printf -- '- Node.js Version: `%s`\n' "$NODE_VERSION"
+        printf -- '- Release Type: `%s`\n' "$RELEASE_TYPE"
+        printf -- '- Project: `%s`\n' "$CI_PROJECT_PATH"
+        printf -- '- Commit: [%s](%s)\n' "$SHORT_SHA" "$COMMIT_URL"
+      } >> RELEASE_NOTES.md
+
+      echo "Prepared release notes and metadata from annotated tag $TAG."
+
+  release:
+    tag_name: "$CI_COMMIT_TAG"
+    name: "$RELEASE_LABEL $CI_COMMIT_TAG"
+    description: "./RELEASE_NOTES.md"
+
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+-alpha\.[0-9A-Za-z.-]+(\+[0-9A-Za-z.-]+)?$/ && $CI_COMMIT_REF_PROTECTED == "true"'
+      variables:
+        RELEASE_LABEL: "🧪 Alpha Release"
+        RELEASE_TYPE: "alpha"
+
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9A-Za-z.-]+(\+[0-9A-Za-z.-]+)?$/ && $CI_COMMIT_REF_PROTECTED == "true"'
+      variables:
+        RELEASE_LABEL: "🔬 Beta Release"
+        RELEASE_TYPE: "beta"
+
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9A-Za-z.-]+(\+[0-9A-Za-z.-]+)?$/ && $CI_COMMIT_REF_PROTECTED == "true"'
+      variables:
+        RELEASE_LABEL: "🚧 Release Candidate"
+        RELEASE_TYPE: "rc"
+
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+-[0-9A-Za-z.-]+(\+[0-9A-Za-z.-]+)?$/ && $CI_COMMIT_REF_PROTECTED == "true"'
+      variables:
+        RELEASE_LABEL: "🛠️ Prerelease"
+        RELEASE_TYPE: "prerelease"
+
+    - if: '$CI_COMMIT_TAG =~ /^v[0-9]+\.[0-9]+\.[0-9]+(\+[0-9A-Za-z.-]+)?$/ && $CI_COMMIT_REF_PROTECTED == "true"'
+      variables:
+        RELEASE_LABEL: "🚀 Release"
+        RELEASE_TYPE: "stable"

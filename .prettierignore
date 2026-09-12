@@ -57,6 +57,8 @@ coverage/
 # 📄 GENERATED REPORTS
 # =========================================================
 report.*.json
+docs/project_structure.md
+docs/PROJECT_STRUCTURE.md
 
 # =========================================================
 # 📚 PROJECT-SPECIFIC

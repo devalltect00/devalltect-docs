@@ -20,6 +20,44 @@
     "doc-gen",
     "reflow"
   ],
+  "devalltect": {
+    "github": {
+      "topics": [
+        "documentation",
+        "documentation-portal",
+        "docusaurus",
+        "typescript",
+        "react",
+        "developer-tools",
+        "devops",
+        "i18n",
+        "github-pages",
+        "open-source",
+        "custy",
+        "reflow",
+        "doc-gen",
+        "path-header-scanner"
+      ]
+    },
+    "gitlab": {
+      "topics": [
+        "documentation",
+        "documentation-portal",
+        "docusaurus",
+        "typescript",
+        "react",
+        "developer-tools",
+        "devops",
+        "i18n",
+        "gitlab-pages",
+        "ci-cd",
+        "custy",
+        "reflow",
+        "doc-gen",
+        "path-header-scanner"
+      ]
+    }
+  },
   "homepage": "https://devalltect00.github.io/devalltect-docs/",
   "bugs": {
     "url": "https://github.com/devalltect00/devalltect-docs/issues"
@@ -49,8 +87,13 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "test": "yarn test:documentation-freshness",
+    "test": "yarn test:documentation-freshness && yarn test:repository",
     "test:documentation-freshness": "tsx --test --test-concurrency=1 plugins/documentation-freshness/*.test.ts",
+    "test:repository": "node --test scripts/repository/tests/*.test.mjs",
+    "test:repository-metadata": "node --test scripts/repository/tests/sync_metadata.test.mjs",
+    "test:release-workflows": "node --test scripts/repository/tests/release_workflow.test.mjs",
+    "repository:metadata:sync": "node scripts/repository/src/sync_metadata.mjs",
+    "repository:metadata:dry-run": "node scripts/repository/src/sync_metadata.mjs --dry-run",
     "typecheck": "tsc",
     "format": "prettier --write .",
     "format:check": "prettier --check .",

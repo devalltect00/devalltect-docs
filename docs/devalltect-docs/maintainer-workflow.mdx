@@ -21,6 +21,83 @@ configuration, requirements, safety guidance, or examples.
 7. When container files change, validate Compose and both Docker runtime modes.
 8. Review affected pages at desktop and mobile widths before release.
 
+## Repository Metadata
+
+The source of truth for repository metadata is `package.json`:
+
+```text
+description
+devalltect.github.topics
+devalltect.gitlab.topics
+```
+
+The synchronization helper discovers GitHub and GitLab targets from validated
+Git remotes. It does not read repository URLs or credentials from the metadata
+block. Review both targets and payloads without making API requests:
+
+```bash
+yarn repository:metadata:dry-run
+```
+
+After the preview is correct and both `gh` and `glab` are authenticated, apply
+the metadata:
+
+```bash
+yarn repository:metadata:sync
+```
+
+Limit an update to one provider when needed:
+
+```bash
+yarn repository:metadata:sync --provider github
+yarn repository:metadata:sync --provider gitlab
+```
+
+An empty or missing provider topic array intentionally clears that provider's
+existing topics. Every selected repository is resolved before the first API
+request, but an API failure cannot roll back an earlier successful update.
+
+## Release Publishing
+
+GitHub Pages and GitLab Pages publish the portal from the default branch. A
+release tag does not replace either Pages deployment; it creates a corresponding
+Release page after the tagged source passes validation.
+
+Create an annotated Semantic Version tag from the reviewed release message:
+
+```bash
+git tag -a v1.0.0 -F .config/custy/templates/tag-message_release-version.txt
+git push <github-remote> v1.0.0
+git push <gitlab-remote> v1.0.0
+```
+
+Both providers preserve the complete annotated tag message as the primary
+public Release notes. The workflow appends a generated Release Information
+section containing the version, portal package version, Node.js version,
+release type, provider project path, and an exact tagged-commit link. Release
+titles distinguish alpha, beta, release-candidate, other prerelease, and stable
+tags. GitLab requires the release tag to be protected.
+
+For example, a stable release ends with a generated block like this:
+
+```markdown
+---
+
+## 📅 Release Information
+
+- Version: `v1.0.0`
+- Portal Package Version: `1.0.0`
+- Node.js Version: `20`
+- Release Type: `stable`
+- Project: `devalltect00/devalltect-docs`
+- Commit: [abc12345](provider-specific-commit-url)
+```
+
+The release workflows do not publish npm packages, container images, or a
+second copy of the static site. A package-version mismatch is reported on
+GitHub but does not block historical documentation releases because this is a
+private portal package rather than a published npm package.
+
 ## Project Preview Images
 
 The homepage and each project landing page share one representative screenshot:
@@ -40,6 +117,19 @@ personal paths, private repository URLs, and unrelated terminal history.
 The screenshot component provides responsive sizing, alternative text, lazy
 loading, and an accessible fallback. The fallback prevents an unfinished asset
 from breaking a page, but it is not a substitute for the final release image.
+
+## Generated Documentation Artifacts
+
+Custy owns `CHANGELOG.md`, while Doc Gen owns `docs/project_structure.md`.
+Regenerate those files through their respective tools instead of editing their
+generated sections manually.
+
+The project-structure document is excluded from Prettier because Doc Gen owns
+its output format. It remains covered by repository tests and the Docusaurus
+production build. Keep its configured and tracked path lowercase so Windows and
+Linux resolve the same file. Docker intentionally excludes `.config/`; its
+validation checks the tracked artifact, link, and formatter boundary while the
+configuration assertion runs in the normal repository CI context.
 
 ## Review Boundaries
 

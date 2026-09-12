@@ -153,6 +153,7 @@ Do not translate command names, options, configuration keys, paths, code identif
 ├── make/                    Modular local, Docker, and Compose commands
 ├── docs/                    Default English documentation
 ├── i18n/                    Locale messages and translated content
+├── scripts/                 Repository metadata and content helpers
 ├── src/                     React components, pages, data, and styles
 ├── static/                  Public images and assets
 ├── Dockerfile               Multi-stage development and preview image
@@ -164,6 +165,12 @@ Do not translate command names, options, configuration keys, paths, code identif
 ```
 
 See [docs/project_structure.md](docs/project_structure.md) for the broader project inventory.
+
+Repository descriptions and provider-specific topics are sourced from
+`package.json`. Preview metadata synchronization with
+`yarn repository:metadata:dry-run`, then use `yarn repository:metadata:sync`
+after verifying the selected GitHub and GitLab repositories. The live command
+requires authenticated `gh` and `glab` sessions.
 
 ## ✍️ Documentation Standards
 
@@ -187,6 +194,11 @@ The deployment configuration uses `url: "https://devalltect00.github.io"` and `b
 
 Docker images are validated in CI but are not published. GitHub Pages and
 GitLab Pages continue to deploy the generated static files directly.
+Annotated Semantic Version tags are validated separately and use their complete
+tag messages as the primary GitHub and GitLab Release notes. Each provider then
+appends the version, portal package version, Node.js version, release type,
+project, and tagged commit. Release automation does not publish a package,
+container image, or additional Pages deployment.
 
 ## 🏷️ Badges
 
@@ -212,6 +224,17 @@ or sensitive deployment details in an issue, example, or documentation page.
 
 Published release notes and version history are available from
 [GitHub Releases](https://github.com/devalltect00/devalltect-docs/releases).
+Create an annotated tag from the reviewed release-message template, then push
+the same tag to GitHub and GitLab:
+
+```bash
+git tag -a v1.0.0 -F .config/custy/templates/tag-message_release-version.txt
+git push <github-remote> v1.0.0
+git push <gitlab-remote> v1.0.0
+```
+
+GitLab release tags must be protected. Alpha, beta, and release-candidate tags
+are published as prereleases; a stable tag is published as the latest release.
 
 ---
 
@@ -229,4 +252,4 @@ This repository is available under the [MIT License](LICENSE).
 
 ---
 
-_Handcrafted with ❤️ by Devalltect / Rizky Fernandes_
+_Crafted with ❤️ by Devalltect / Rizky Fernandes_

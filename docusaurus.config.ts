@@ -6,6 +6,15 @@ import documentationFreshnessPlugin from "./plugins/documentation-freshness";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const deploymentUrl = new URL(
+  process.env.DOCUSAURUS_SITE_URL ||
+    process.env.CI_PAGES_URL ||
+    "https://devalltect00.github.io/devalltect-docs/"
+);
+const deploymentBaseUrl = deploymentUrl.pathname.endsWith("/")
+  ? deploymentUrl.pathname
+  : `${deploymentUrl.pathname}/`;
+
 const config: Config = {
   // title: "DevAlltect00 Docs",
   title: "Devalltect Docs",
@@ -17,14 +26,11 @@ const config: Config = {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
-  // Set the production url of your site here
-  url: "https://devalltect00.github.io",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  // baseUrl: "/devalltect00-docs/",
-  // baseUrl: "/project/",
-  // baseUrl: "",
-  baseUrl: "/devalltect-docs/",
+  // GitHub Pages uses the default below. GitLab Pages supplies CI_PAGES_URL,
+  // including its project path or unique-domain root, during the Pages job.
+  // DOCUSAURUS_SITE_URL can override either target for another deployment.
+  url: deploymentUrl.origin,
+  baseUrl: deploymentBaseUrl,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

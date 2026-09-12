@@ -21,6 +21,47 @@ konfigurasi, persyaratan, panduan keamanan, atau contoh.
 7. Saat file container berubah, validasi Compose dan kedua mode runtime Docker.
 8. Tinjau halaman terdampak pada lebar desktop dan mobile sebelum rilis.
 
+## Publikasi Rilis
+
+GitHub Pages dan GitLab Pages memublikasikan portal dari branch default. Tag
+rilis tidak menggantikan kedua deployment Pages tersebut; tag membuat halaman
+Release terkait setelah sumber yang diberi tag lolos validasi.
+
+Buat tag Semantic Version beranotasi dari pesan rilis yang telah ditinjau:
+
+```bash
+git tag -a v1.0.0 -F .config/custy/templates/tag-message_release-version.txt
+git push <github-remote> v1.0.0
+git push <gitlab-remote> v1.0.0
+```
+
+Kedua provider mempertahankan seluruh pesan tag beranotasi sebagai catatan utama
+Release publik. Workflow menambahkan bagian Release Information yang dihasilkan
+secara otomatis, berisi versi, versi package portal, versi Node.js, jenis rilis,
+path proyek provider, dan tautan ke commit persis yang diberi tag. Judul Release
+membedakan tag alpha, beta, release candidate, prerelease lainnya, dan stabil.
+GitLab mengharuskan tag rilis dilindungi.
+
+Sebagai contoh, rilis stabil diakhiri dengan blok yang dihasilkan seperti ini:
+
+```markdown
+---
+
+## 📅 Release Information
+
+- Version: `v1.0.0`
+- Portal Package Version: `1.0.0`
+- Node.js Version: `20`
+- Release Type: `stable`
+- Project: `devalltect00/devalltect-docs`
+- Commit: [abc12345](provider-specific-commit-url)
+```
+
+Workflow rilis tidak memublikasikan package npm, image container, atau salinan
+kedua dari site statis. Ketidakcocokan versi package dilaporkan di GitHub tetapi
+tidak memblokir rilis dokumentasi historis karena package portal ini bersifat
+privat dan bukan package npm yang dipublikasikan.
+
 ## Gambar Pratinjau Proyek
 
 Homepage dan setiap landing page proyek menggunakan satu screenshot
@@ -42,6 +83,20 @@ terminal yang tidak terkait.
 Komponen screenshot menyediakan ukuran responsif, teks alternatif, lazy
 loading, dan fallback yang aksesibel. Fallback mencegah aset yang belum selesai
 merusak halaman, tetapi bukan pengganti gambar rilis final.
+
+## Artefak Dokumentasi yang Dihasilkan
+
+Custy mengelola `CHANGELOG.md`, sedangkan Doc Gen mengelola
+`docs/project_structure.md`. Regenerasikan file tersebut melalui tool
+masing-masing dan jangan mengedit bagian yang dihasilkan secara manual.
+
+Dokumen struktur proyek dikecualikan dari Prettier karena format outputnya
+dikelola oleh Doc Gen. File tersebut tetap divalidasi oleh pengujian repositori
+dan build produksi Docusaurus. Gunakan path berhuruf kecil pada konfigurasi dan
+Git agar Windows dan Linux mengarah ke file yang sama. Docker sengaja
+mengecualikan `.config/`; validasinya memeriksa artefak yang dilacak, tautan, dan
+batas formatter, sedangkan pemeriksaan konfigurasi dijalankan dalam konteks CI
+repositori normal.
 
 ## Batas Peninjauan
 

@@ -1,0 +1,176 @@
+✅ Devalltect Docs v1.0.0 — Stable Multilingual Documentation Hub
+
+Devalltect Docs v1.0.0 is the first stable release of the shared documentation
+portal for Custy, Path Header Scanner, Doc Gen, and Reflow. The portal now
+provides complete English and Indonesian documentation, consistent reusable
+components, release-aware version status, responsive navigation, and automated
+static delivery from one Docusaurus project. Its final preparation combines four
+untagged development checkpoints: the multilingual documentation foundation,
+the visual-preview and portal-maintainer follow-up, clearer homepage navigation
+and dedicated reader paths, then optional reproducible container workflows. A
+final hardening pass refreshed the documented project releases, public support
+metadata, container checks, cross-provider Pages delivery, and annotated-tag
+Release publication.
+
+The previously planned alpha release was not published. This release starts the
+public Devalltect Docs history directly at stable v1.0.0.
+
+### 🌟 Stable Release Highlights
+
+- A unified documentation home for four Devalltect developer and DevOps tools.
+- Complete English and Indonesian documentation coverage across all four projects.
+- Shared React components tailored to commands, workflows, configuration, architecture, troubleshooting, screenshots, terminals, tables, and references.
+- Installation guidance for source checkouts, editable development, private GitLab Python packages, and project container images.
+- Clear stable Docker aliases for exact, minor, major, and `latest` references while prereleases remain exact-tag only.
+- Consistent navigation, page hierarchy, terminology, colors, typography, dark mode, spacing, and responsive behavior.
+- One crisp, responsive application preview for each project on its documentation landing page and homepage card.
+- A bilingual Devalltect Docs guide for maintainers, including screenshot, localization, freshness, validation, and release workflows.
+- A bilingual developer hub with direct routes to project setup, testing, architecture, contribution, and portal-maintenance guidance.
+- Root-sidebar access to the developer hub with consistent documentation navigation and pagination.
+- Documentation freshness notices that stay hidden when content is current and appear only when status requires attention.
+- GitHub Pages deployment with multilingual production builds and CI validation.
+- GitLab Pages deployment with provider-aware project paths and unique-domain
+  support.
+- Optional Docker and Compose development with complete container validation
+  and an immutable Nginx production preview.
+- GitHub and GitLab Release pages preserve the complete reviewed annotated tag
+  message, append provider-specific release metadata, and use clear prerelease
+  and stable titles.
+
+### 📚 Documented Projects
+
+#### Custy
+
+Documentation for Custy v2.1.2 covers installation, initialization, validation,
+versioning, changelog generation, Git operations, pipeline profiles,
+configuration, dry-run safety, Docker, architecture, contributor workflows, and
+troubleshooting. It includes automatic Python, Node.js, mixed, PHP, and generic
+project-layout guidance.
+
+#### Path Header Scanner
+
+Documentation for Path Header Scanner v1.0.1 covers preview, validation, apply
+workflows, path-header rules, configuration, safety, development, architecture,
+reference material, and troubleshooting.
+
+#### Doc Gen
+
+Documentation for Doc Gen v1.0.2 covers repository structure generation,
+printing, analysis, configuration, usage workflows, development, architecture,
+reference material, and troubleshooting.
+
+#### Reflow
+
+Documentation for Reflow v1.0.2 covers repository-aware tag conversion,
+release recovery, container image reconstruction and publishing, configuration,
+safety, development, architecture, reference material, and troubleshooting.
+
+### 🌍 English and Indonesian
+
+English is the default locale and Bahasa Indonesia is fully supported. Project
+guides, navigation metadata, shared interface language, warnings, and related
+content are aligned across both locales.
+
+Technical contracts remain literal where needed. Command names, flags,
+configuration keys, paths, code identifiers, and exact output are not translated
+when doing so would make instructions less accurate.
+
+### 🧩 Reusable Documentation Components
+
+The portal includes reusable components for:
+
+- command introductions, syntax, options, examples, output, and metadata;
+- requirements, features, checklists, lifecycle explanations, and related commands;
+- terminal sessions, screenshots, image comparisons, and missing-image fallbacks;
+- dedicated overview and compact card screenshot presentations with 16:9 containment;
+- reliable post-hydration detection for cached missing images and accessible fallback presentation;
+- workflow steps, timelines, Mermaid diagrams, architecture patterns, and tables;
+- documentation-version status, cards, sections, headings, badges, tags, and information boxes.
+
+Components share responsive styling, accessibility-conscious hierarchy,
+light/dark themes, and consistent terminology while allowing each project to
+use only the patterns that improve its content.
+
+### 🔎 Documentation Freshness
+
+Each project can record the release represented by its documentation. Automatic
+mode discovers remote repository tags, parses supported SemVer or PEP 440
+versions, filters prereleases when configured, selects the latest compatible
+release, and compares it with the documented baseline.
+
+Maintainers can use manual mode for private repositories, unavailable remotes,
+or custom tag formats. Timeout handling and safe fallback states prevent a
+temporary network failure from breaking the documentation experience.
+
+Reader-facing states distinguish:
+
+- **Current:** documentation matches the latest detected release; no notice is shown.
+- **Outdated:** a newer release exists; an update warning is shown.
+- **Preview:** documentation is ahead of the latest release; a preview notice is shown.
+- **Unknown:** freshness could not be verified; a neutral status is shown.
+
+### 🎨 Portal Experience
+
+- A custom homepage presents available tools, goal-oriented documentation areas, and accurate reader entry points.
+- A dedicated developer hub connects contributors to project-specific guides and architecture without forcing identical project structures.
+- Centralized project metadata keeps cards and version status synchronized.
+- Project metadata also keeps preview paths, alternative text, fallback descriptions, and technology badges synchronized.
+- Homepage image assets resolve correctly when the portal is hosted from its configured project subpath.
+- Navbar and homepage branding switch between explicit light- and dark-background logo variants with the active theme.
+- Autogenerated sidebars use stable translation keys and predictable categories.
+- Responsive layouts support desktop and mobile reading.
+- Final project screenshots use stable PNG paths while accessible fallbacks keep preparation builds usable.
+- Devalltect Docs documents its own bilingual maintenance and release workflow.
+- The `/docs` root redirects readers to the main portal instead of returning a not-found page.
+
+### 🛠️ Development and Validation
+
+- Docusaurus 3.10.1 with React 19 and TypeScript.
+- Yarn 4.18.0 with an immutable lockfile workflow.
+- Node.js 20 or newer.
+- Multi-stage Docker, Compose, modular Make commands, and a subpath-aware Nginx
+  preview without public image publication.
+- Portable Make help, deterministic Prettier validation, and an updated concise
+  repository-structure reference.
+- Consistent lowercase Doc Gen project-structure output with regression checks
+  that prevent Windows and Linux path-casing drift.
+- Context-aware Docker validation that preserves the maintenance-configuration
+  exclusion without weakening generated-artifact checks in normal CI.
+- Type checking for components, configuration, plugins, and shared utilities.
+- Automated documentation-freshness tests.
+- Bilingual contributor setup, pre-commit, testing, review, and safety guidance for all documented projects.
+- Multilingual production builds with route, link, anchor, MDX, and static-rendering validation.
+- GitHub Actions and GitLab CI deploy the same static portal with
+  provider-appropriate URLs and base paths.
+- Tag-only release jobs validate the selected source before creating GitHub or
+  GitLab Release pages, append generated version and commit information, and do
+  not publish packages or container images.
+- Health-aware container smoke tests retry startup races, provide useful
+  failure diagnostics, remain separate from static Pages deployment, and never
+  push images.
+
+### 🚀 Public Documentation
+
+- Portal: https://devalltect00.github.io/devalltect-docs
+- Project overview: https://devalltect00.github.io/devalltect-docs/docs/projects-overview
+- English documentation: https://devalltect00.github.io/devalltect-docs/docs
+- Indonesian documentation: https://devalltect00.github.io/devalltect-docs/id/docs
+
+The mirrored GitLab deployment is available through the repository's
+**Deploy → Pages** address, allowing standard project paths and unique domains
+without publishing a hardcoded GitLab URL here.
+
+### ✅ Release Status
+
+- Version: `v1.0.0`
+- Previous release: none
+- Abandoned prerelease plan: `v0.1.0-alpha.1`
+- Strategy: Semantic Versioning
+- Stability: Stable
+- Locales: English and Indonesian
+- Documented projects: Custy, Path Header Scanner, Doc Gen, and Reflow
+- Development history: four untagged v1.0.0 checkpoints followed by final
+  metadata, release, and delivery hardening
+
+_Release: v1.0.0_
+_Author: Devalltect / Rizky Fernandes_

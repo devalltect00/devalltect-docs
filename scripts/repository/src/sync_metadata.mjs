@@ -270,7 +270,12 @@ export function buildRequests(provider, repository, description, topics) {
 /** Execute one provider API request, or print it without executing in dry-run. */
 export function runApiRequest(
   request,
-  { dryRun = false, runner = spawnSync, output = console.log } = {}
+  {
+    dryRun = false,
+    runner = spawnSync,
+    output = console.log,
+    executable = request.executable,
+  } = {}
 ) {
   output(`+ ${request.executable} ${request.args.join(" ")}`);
   output(`  JSON: ${JSON.stringify(request.payload)}`);
@@ -278,7 +283,7 @@ export function runApiRequest(
     return;
   }
 
-  const result = runner(request.executable, request.args, {
+  const result = runner(executable, request.args, {
     input: JSON.stringify(request.payload),
     encoding: "utf8",
     stdio: ["pipe", "inherit", "inherit"],
@@ -320,11 +325,25 @@ export function parseArguments(argv) {
   return options;
 }
 
-/** Return whether a command is available without invoking that command. */
-function commandExists(command) {
-  const lookup = process.platform === "win32" ? "where.exe" : "which";
-  const result = spawnSync(lookup, [command], { stdio: "ignore" });
-  return !result.error && result.status === 0;
+/** Resolve a command to the first executable path reported by the platform. */
+export function resolveCommand(
+  command,
+  { runner = spawnSync, platform = process.platform } = {}
+) {
+  const lookup = platform === "win32" ? "where.exe" : "which";
+  const result = runner(lookup, [command], {
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "ignore"],
+  });
+  if (result.error || result.status !== 0) {
+    return null;
+  }
+  return (
+    result.stdout
+      ?.split(/\r?\n/u)
+      .map((candidate) => candidate.trim())
+      .find(Boolean) ?? null
+  );
 }
 
 function showHelp() {
@@ -361,10 +380,17 @@ export function main(argv = process.argv.slice(2)) {
     };
   });
 
+  const resolvedExecutables = new Map();
   if (!options.dryRun) {
-    const missing = plans
-      .map(({ provider }) => provider.executable)
-      .filter((command) => !commandExists(command));
+    const missing = [];
+    for (const { provider } of plans) {
+      const executable = resolveCommand(provider.executable);
+      if (executable) {
+        resolvedExecutables.set(provider.key, executable);
+      } else {
+        missing.push(provider.executable);
+      }
+    }
     if (missing.length > 0) {
       throw new Error(`Required CLI tools not found: ${missing.join(", ")}`);
     }
@@ -389,7 +415,10 @@ export function main(argv = process.argv.slice(2)) {
       plan.topics
     )) {
       try {
-        runApiRequest(request, { dryRun: options.dryRun });
+        runApiRequest(request, {
+          dryRun: options.dryRun,
+          executable: resolvedExecutables.get(plan.provider.key) ?? request.executable,
+        });
         if (!options.dryRun) {
           completedApiRequests += 1;
         }

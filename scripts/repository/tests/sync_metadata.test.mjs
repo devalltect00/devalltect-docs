@@ -10,6 +10,7 @@ import {
   getTopics,
   normalizeRepositoryUrl,
   parseArguments,
+  resolveCommand,
   runApiRequest,
 } from "../src/sync_metadata.mjs";
 
@@ -129,6 +130,44 @@ test("dry-run prints a request without invoking the provider CLI", () => {
 
   assert.equal(invoked, false);
   assert.equal(output.length, 2);
+});
+
+test("resolves the provider CLI to the first platform-reported path", () => {
+  const invocations = [];
+  const executable = resolveCommand("gh", {
+    platform: "win32",
+    runner: (command, args) => {
+      invocations.push({ command, args });
+      return {
+        error: null,
+        status: 0,
+        stdout: "C:\\Program Files\\GitHub CLI\\gh.exe\r\nD:\\tools\\gh.exe\r\n",
+      };
+    },
+  });
+
+  assert.deepEqual(invocations, [{ command: "where.exe", args: ["gh"] }]);
+  assert.equal(executable, "C:\\Program Files\\GitHub CLI\\gh.exe");
+});
+
+test("runs a provider request through its resolved executable path", () => {
+  const invocations = [];
+  const output = [];
+  runApiRequest(
+    { executable: "gh", args: ["api", "repos/owner/docs"], payload: {} },
+    {
+      executable: "C:\\Program Files\\GitHub CLI\\gh.exe",
+      runner: (command, args) => {
+        invocations.push({ command, args });
+        return { error: null, status: 0 };
+      },
+      output: (line) => output.push(line),
+    }
+  );
+
+  assert.equal(invocations[0].command, "C:\\Program Files\\GitHub CLI\\gh.exe");
+  assert.deepEqual(invocations[0].args, ["api", "repos/owner/docs"]);
+  assert.match(output[0], /^\+ gh api/u);
 });
 
 test("parses dry-run and provider selection", () => {

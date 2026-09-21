@@ -1,6 +1,6 @@
 {
   "name": "devalltect00-docs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Bilingual Docusaurus documentation portal for Devalltect developer and DevOps tools.",
   "keywords": [
@@ -18,7 +18,10 @@
     "custy",
     "path-header-scanner",
     "doc-gen",
-    "reflow"
+    "reflow",
+    "portfolio",
+    "nextjs",
+    "vercel"
   ],
   "devalltect": {
     "github": {
@@ -36,7 +39,10 @@
         "custy",
         "reflow",
         "doc-gen",
-        "path-header-scanner"
+        "path-header-scanner",
+        "portfolio",
+        "nextjs",
+        "vercel"
       ]
     },
     "gitlab": {
@@ -54,7 +60,10 @@
         "custy",
         "reflow",
         "doc-gen",
-        "path-header-scanner"
+        "path-header-scanner",
+        "portfolio",
+        "nextjs",
+        "vercel"
       ]
     }
   },
@@ -100,9 +109,9 @@
     "validate": "yarn format:check && yarn test && yarn typecheck && yarn build"
   },
   "dependencies": {
-    "@docusaurus/core": "3.10.1",
-    "@docusaurus/faster": "3.10.1",
-    "@docusaurus/preset-classic": "3.10.1",
+    "@docusaurus/core": "^3.10.2",
+    "@docusaurus/faster": "^3.10.2",
+    "@docusaurus/preset-classic": "^3.10.2",
     "@mdx-js/react": "^3.0.0",
     "@renovatebot/pep440": "4.2.4",
     "clsx": "^2.0.0",
@@ -112,9 +121,9 @@
     "semver": "7.8.5"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.10.1",
-    "@docusaurus/tsconfig": "3.10.1",
-    "@docusaurus/types": "3.10.1",
+    "@docusaurus/module-type-aliases": "^3.10.2",
+    "@docusaurus/tsconfig": "^3.10.2",
+    "@docusaurus/types": "^3.10.2",
     "@types/node": "20",
     "@types/react": "^19.0.0",
     "@types/semver": "7.8.0",

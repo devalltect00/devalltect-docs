@@ -1,0 +1,11 @@
+{
+  "label": "Reference",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": false,
+  "className": "category-devalltect-portfolio-reference",
+  "link": {
+    "type": "doc",
+    "id": "devalltect-portfolio/reference/documentation-status"
+  }
+}

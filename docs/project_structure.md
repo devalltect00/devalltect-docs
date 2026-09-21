@@ -316,6 +316,13 @@ Common directories include:
 │   │   ├── index.mdx
 │   │   ├── maintainer-workflow.mdx
 │   │   └── versioning-and-freshness.mdx
+│   ├── devalltect-portfolio
+│   │   ├── reference
+│   │   │   ├── _category_.json
+│   │   │   └── documentation-status.mdx
+│   │   ├── _category_.json
+│   │   ├── getting-started.mdx
+│   │   └── index.mdx
 │   ├── doc-gen
 │   │   ├── architecture
 │   │   │   ├── _category_.json
@@ -543,16 +550,17 @@ Common directories include:
 │   ├── badges.md
 │   ├── developers.mdx
 │   ├── intro.mdx
+│   ├── project_structure.md
 │   ├── projects-overview.mdx
 │   ├── TODO.md
-│   ├── TODO_category.md
-│   └── TODO_FRONTMATTER.md
+│   └── TODO_PLAN.md
 ├── i18n
 │   └── id
 │       ├── docusaurus-plugin-content-docs
 │       │   ├── current
 │       │   │   ├── custy
 │       │   │   ├── devalltect-docs
+│       │   │   ├── devalltect-portfolio
 │       │   │   ├── doc-gen
 │       │   │   ├── path-header-scanner
 │       │   │   ├── reflow
@@ -612,6 +620,7 @@ Common directories include:
 │           ├── help.mk
 │           └── variable.mk
 ├── node_modules/ ... (collapsed)
+├── other-venv/ ... (collapsed)
 ├── plugins
 │   └── documentation-freshness
 │       ├── index.ts
@@ -779,6 +788,7 @@ Common directories include:
 │   │   │       └── workflow
 │   │   ├── project-previews
 │   │   │   ├── custy.png
+│   │   │   ├── devalltect-portfolio.png
 │   │   │   ├── doc-gen.png
 │   │   │   ├── path-header-scanner.png
 │   │   │   └── reflow.png
@@ -792,8 +802,8 @@ Common directories include:
 │   │   ├── undraw_docusaurus_react.svg
 │   │   └── undraw_docusaurus_tree.svg
 │   └── .nojekyll
-├── venv/ ... (collapsed)
 ├── .dockerignore
+├── .env.example
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── .pre-commit-config.yaml
@@ -837,6 +847,7 @@ Common directories include:
 | `.prettierignore` | Files ignored by Prettier. |
 | `.pre-commit-config.yaml` | Pre-commit hooks configuration. |
 | `.gitlab-ci.yml` | GitLab CI/CD pipeline configuration. |
+| `.env.example` | Example environment variables configuration. |
 
 ---
 

@@ -15,6 +15,22 @@ const deploymentBaseUrl = deploymentUrl.pathname.endsWith("/")
   ? deploymentUrl.pathname
   : `${deploymentUrl.pathname}/`;
 
+const defaultDevalltectHomeUrl = "https://devalltect00.github.io/";
+
+function resolvePublicUrl(value: string | undefined, fallback: string): string {
+  try {
+    const url = new URL(value?.trim() || fallback);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+const devalltectHomeUrl = resolvePublicUrl(
+  process.env.DEVALLTECT_HOME_URL,
+  defaultDevalltectHomeUrl
+);
+
 const config: Config = {
   // title: "DevAlltect00 Docs",
   title: "Devalltect Docs",
@@ -111,6 +127,11 @@ const config: Config = {
           position: "right",
         },
         {
+          href: devalltectHomeUrl,
+          label: "Devalltect Home",
+          position: "right",
+        },
+        {
           href: "https://github.com/devalltect00",
           label: "GitHub",
           position: "right",
@@ -154,6 +175,10 @@ const config: Config = {
           title: "More",
           items: [
             {
+              label: "Devalltect Home",
+              href: devalltectHomeUrl,
+            },
+            {
               label: "CodePen",
               href: "https://codepen.io/devaltect",
             },
@@ -163,7 +188,7 @@ const config: Config = {
             },
             {
               label: "Portfolio",
-              href: "https://personal-portfolio-devalltect00.vercel.app/",
+              href: "https://devalltect-portfolio.vercel.app/",
             },
           ],
         },

@@ -24,6 +24,7 @@ permissions:
 
 env:
   RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+  DEVALLTECT_HOME_URL: ${{ vars.DEVALLTECT_HOME_URL || 'https://devalltect00.github.io/' }}
 
 jobs:
   release:

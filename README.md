@@ -15,12 +15,20 @@ A unified Docusaurus portal for Devalltect developer and DevOps tools. It provid
 
 **Public documentation:** [devalltect00.github.io/devalltect-docs](https://devalltect00.github.io/devalltect-docs)
 
+The portal navigation also links back to the central
+[Devalltect homepage](https://devalltect00.github.io/). Copy `.env.example` to
+`.env` and set `DEVALLTECT_HOME_URL` only when a preview or alternate deployment
+needs a different public homepage target. Invalid or non-HTTP(S) values safely
+fall back to the canonical homepage. GitHub builds can use a repository variable
+with the same name; GitLab build jobs receive an identically named CI/CD variable
+automatically.
+
 ## ℹ️ Project Metadata
 
 | Property              | Value                                      |
 | --------------------- | ------------------------------------------ |
 | Project               | Devalltect Docs                            |
-| Release line          | `v1.0.0`                                   |
+| Release line          | `v1.1.0`                                   |
 | Site generator        | Docusaurus 3.10.1                          |
 | Runtime               | Node.js 20+                                |
 | Package manager       | Yarn 4.18.0                                |
@@ -32,12 +40,13 @@ A unified Docusaurus portal for Devalltect developer and DevOps tools. It provid
 
 ## 📚 Documented Projects
 
-| Project                 | Scope                                                                   | Documentation                                                                        |
-| ----------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **Path Header Scanner** | Path and source-header inspection                                       | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/path-header-scanner) |
-| **Doc Gen**             | Project structure and documentation generation                          | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/doc-gen)             |
-| **Reflow**              | Tag conversion, release recovery, and container publishing              | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow)              |
-| **Custy**               | Git workflow, changelog, versioning, maintenance, and release pipelines | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/custy)               |
+| Project                  | Scope                                                                   | Documentation                                                                         |
+| ------------------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Path Header Scanner**  | Path and source-header inspection                                       | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/path-header-scanner)  |
+| **Doc Gen**              | Project structure and documentation generation                          | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/doc-gen)              |
+| **Reflow**               | Tag conversion, release recovery, and container publishing              | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow)               |
+| **Custy**                | Git workflow, changelog, versioning, maintenance, and release pipelines | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/custy)                |
+| **Devalltect Portfolio** | Bilingual project, experience, and technology showcase                  | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/devalltect-portfolio) |
 
 ## 📋 Requirements
 
@@ -206,8 +215,6 @@ See [docs/badges.md](docs/badges.md) for the complete badge catalog and usage gu
 
 ## 🤝 Contributing
 
-## 🤝 Contributing
-
 Contributions are welcome for confirmed documentation bugs, typographical
 errors, broken links, and incorrect or unclear wording. Please review the
 [developer guide](docs/developers.mdx) and follow the
@@ -228,9 +235,9 @@ Create an annotated tag from the reviewed release-message template, then push
 the same tag to GitHub and GitLab:
 
 ```bash
-git tag -a v1.0.0 -F .config/custy/templates/tag-message_release-version.txt
-git push <github-remote> v1.0.0
-git push <gitlab-remote> v1.0.0
+git tag -a v1.1.0 -F .config/custy/templates/tag-message-v1.1.0.txt
+git push <github-remote> v1.1.0
+git push <gitlab-remote> v1.1.0
 ```
 
 GitLab release tags must be protected. Alpha, beta, and release-candidate tags

@@ -1,7 +1,23 @@
-fix(repository): resolve provider CLI paths on Windows
+feat(portfolio-docs): document the Devalltect Portfolio v2
 
-Use the executable path discovered during preflight when running repository
-metadata synchronization commands.
+Expand the bilingual documentation portal from four developer tools to five
+Devalltect projects by adding a public portfolio guide and release baseline.
 
-Add regression coverage for Windows command resolution and preserve readable
-provider command previews.
+- add English and Indonesian portfolio overview, getting-started, and
+  documentation-status pages;
+- register the portfolio in shared project metadata, homepage discovery, and
+  sidebar navigation;
+- connect the portal navbar and footer to the central Devalltect homepage with
+  bilingual labels and a safe optional build-time URL override;
+- document the v2.0.0 visitor experience, static Vercel delivery, optional
+  Docker workflow, and public source validation;
+- keep internal maintenance, credentials, private project data, and security
+  findings outside the public portal;
+- update portal metadata, README tables, badges, maintainer guidance, and
+  repository topics for the v1.1.0 release line.
+
+Tags:
+- Type: #feature #documentation #i18n
+- Project: #devalltect-portfolio #devalltect-docs
+- Platform: #docusaurus #nextjs #vercel
+- Quality: #accessibility #responsive-ui #freshness

@@ -1,0 +1,50 @@
+---
+title: Getting Started
+description: Visit the Devalltect Portfolio or run its public source locally.
+sidebar_position: 1
+---
+
+# Getting Started
+
+## Visit the portfolio
+
+Open [devalltect-portfolio.vercel.app](https://devalltect-portfolio.vercel.app/).
+The site starts in English with the light theme. Use the navigation controls to
+change language, switch theme, or hide the interactive 3D lamp.
+
+Browse the project archive to search by name, filter by technology or status,
+and sort by project start date. A project can provide several screenshots; use
+the gallery controls or drag gesture to move through them.
+
+## Run the source locally
+
+Requirements:
+
+- Node.js 24
+- Corepack
+- pnpm 12.5.1
+
+```bash
+git clone https://github.com/devalltect00/devalltect-portfolio-v2.git
+cd devalltect-portfolio-v2
+corepack enable
+pnpm install --frozen-lockfile
+pnpm assets:stage
+pnpm dev
+```
+
+Open `http://localhost:3000/en/` or `http://localhost:3000/id/`.
+
+For a phone on the same trusted network, use `pnpm dev:lan`. The helper
+discovers the current private address instead of requiring a committed IP.
+
+## Validate a checkout
+
+```bash
+pnpm validate
+pnpm exec playwright install chromium
+pnpm test:e2e
+```
+
+Docker and Compose are optional. Vercel builds the Next.js static export
+directly and does not deploy a project container.

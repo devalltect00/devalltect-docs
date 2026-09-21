@@ -63,6 +63,9 @@ on:
 permissions:
   contents: read
 
+env:
+  DEVALLTECT_HOME_URL: ${{ vars.DEVALLTECT_HOME_URL || 'https://devalltect00.github.io/' }}
+
 jobs:
   validate:
     name: 🧪 Validate Documentation

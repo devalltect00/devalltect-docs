@@ -1,0 +1,70 @@
+---
+title: Devalltect Portfolio
+description: Explore the bilingual interactive portfolio for Devalltect projects, experience, and technical growth.
+sidebar_position: 0
+sidebar_key: devalltect-portfolio-home
+---
+
+import { FeatureGrid, InfoBox, Screenshot } from "@site/src/components/docs";
+
+# Devalltect Portfolio
+
+Devalltect Portfolio v2 is a bilingual, interactive presentation of projects,
+technical experience, and creative software engineering work. It guides
+visitors through a curated journey while retaining a searchable archive for
+deeper exploration.
+
+**Open the portfolio:** [devalltect-portfolio.vercel.app](https://devalltect-portfolio.vercel.app/)
+
+<Screenshot
+  src="/img/project-previews/devalltect-portfolio.png"
+  alt="Devalltect Portfolio home page and interactive project journey"
+  title="Devalltect Portfolio at a Glance"
+  caption="The portfolio combines editorial project storytelling with responsive, accessible interaction."
+  fallback="The v2.0.0 portfolio screenshot can be added at static/img/project-previews/devalltect-portfolio.png without changing this page."
+  variant="overview"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Discover",
+      children:
+        "Search and sort projects by technology, status, and project start date.",
+    },
+    {
+      title: "Explore",
+      children:
+        "Open project stories with optional multi-image galleries and resilient link handling.",
+    },
+    {
+      title: "Experience",
+      children:
+        "Switch language and theme, explore intentional motion, and interact with the 3D lamp control.",
+    },
+    {
+      title: "Access",
+      children:
+        "Use mobile-first navigation, semantic content, keyboard interaction, and reduced-motion support.",
+    },
+  ]}
+/>
+
+<InfoBox variant="info" title="Public documentation boundary">
+  These pages document the visitor experience and public development workflow.
+  Credentials, private project data, unpublished client information, and security
+  findings are intentionally excluded.
+</InfoBox>
+
+## Supported experience
+
+- English is the default locale and Bahasa Indonesia is available throughout.
+- Light is the initial theme; explicit preferences persist in the browser.
+- Project cards handle unavailable screenshots and optional links gracefully.
+- The static production build does not require a database or persistent backend.
+- Vercel hosts production while Docker remains optional development and
+  portability tooling.
+
+Use [Getting Started](./getting-started.mdx) to visit or run the project locally.
+The [Documentation Status](./reference/documentation-status.mdx) page records the
+release baseline represented here.

@@ -155,6 +155,7 @@ verbose = false
 #     ]
 collapse_dirs = [
     "node_modules",
+    "other-venv",
     "venv",
     ".venv",
     "venv_3_14",

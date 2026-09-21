@@ -115,6 +115,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  DEVALLTECT_HOME_URL: ${{ vars.DEVALLTECT_HOME_URL || 'https://devalltect00.github.io/' }}
+
 concurrency:
   group: github-pages
   cancel-in-progress: true

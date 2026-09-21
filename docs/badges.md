@@ -48,12 +48,12 @@ This page records the badges used by the Devalltect documentation portal. The UR
 
 ## ✨ Portal Coverage
 
-| Badge                                                                             | Purpose                                         |
-| --------------------------------------------------------------------------------- | ----------------------------------------------- |
-| ![Projects](https://img.shields.io/badge/projects-4-blue.svg)                     | Path Header Scanner, Doc Gen, Reflow, and Custy |
-| ![Static site](https://img.shields.io/badge/site-static-success.svg)              | Deployable static output                        |
-| ![Navigation](https://img.shields.io/badge/navigation-cross--project-success.svg) | Unified cross-project navigation                |
-| ![Responsive](https://img.shields.io/badge/UI-responsive-success.svg)             | Responsive documentation experience             |
+| Badge                                                                             | Purpose                                                    |
+| --------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| ![Projects](https://img.shields.io/badge/projects-5-blue.svg)                     | Portfolio, Path Header Scanner, Doc Gen, Reflow, and Custy |
+| ![Static site](https://img.shields.io/badge/site-static-success.svg)              | Deployable static output                                   |
+| ![Navigation](https://img.shields.io/badge/navigation-cross--project-success.svg) | Unified cross-project navigation                           |
+| ![Responsive](https://img.shields.io/badge/UI-responsive-success.svg)             | Responsive documentation experience                        |
 
 ## Recommended README Set
 

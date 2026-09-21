@@ -222,6 +222,40 @@ export interface Project {
  */
 export const PROJECTS: Project[] = [
   {
+    id: "devalltect-portfolio",
+    name: "Devalltect Portfolio",
+    category: "Web Application",
+    description:
+      "Explore Devalltect projects, technical experience, and creative software engineering work through a bilingual interactive portfolio.",
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Three.js", "Vercel"],
+    preview: {
+      src: "/img/project-previews/devalltect-portfolio.png",
+      alt: "Devalltect Portfolio home page and interactive project journey",
+      fallback:
+        "The Devalltect Portfolio preview will appear here when its release screenshot is added.",
+    },
+    docsPath: "/docs/devalltect-portfolio",
+    available: true,
+    documentation: {
+      version: "2.0.0",
+      versionTag: "v2.0.0",
+      lastReviewed: "2026-09-20",
+      releaseUrl:
+        "https://github.com/devalltect00/devalltect-portfolio-v2/releases/tag/v2.0.0",
+      statusPath: "/docs/devalltect-portfolio/reference/documentation-status",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/devalltect-portfolio-v2.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/devalltect-portfolio-v2/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
+  },
+
+  {
     id: "path-header-scanner",
     name: "Path Header Scanner",
     category: "CLI Tool",

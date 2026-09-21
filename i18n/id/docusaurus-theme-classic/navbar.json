@@ -15,6 +15,10 @@
     "message": "Projects Overview",
     "description": "Navbar item with label Projects Overview"
   },
+  "item.label.Devalltect Home": {
+    "message": "Beranda Devalltect",
+    "description": "Navbar item linking to the central Devalltect homepage"
+  },
   "item.label.GitHub": {
     "message": "GitHub",
     "description": "Navbar item with label GitHub"

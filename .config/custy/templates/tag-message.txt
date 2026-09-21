@@ -1,0 +1,35 @@
+🚀 Devalltect Docs v1.1.0 — Portfolio Documentation
+
+Devalltect Docs v1.1.0 adds the Devalltect Portfolio v2 as the portal's fifth
+documented project. Readers can now discover the portfolio, understand its
+public experience, run its source locally, and verify the documented release
+baseline in both English and Bahasa Indonesia.
+
+### Highlights
+
+- New bilingual Devalltect Portfolio overview.
+- Public getting-started guidance for visitors and source checkouts.
+- Documentation status for the portfolio v2.0.0 baseline.
+- Portfolio discovery through homepage cards, project metadata, and sidebar
+  navigation.
+- Bilingual navbar and footer routes back to the central Devalltect homepage,
+  with a safe optional build-time override.
+- Clear separation between public guidance and private maintenance material.
+- Updated portal README, badge catalog, metadata topics, and maintainer release
+  instructions.
+
+The portfolio's internal architecture and maintenance guides remain in its
+source repository. Credentials, private client information, unpublished
+projects, and security findings are not published in this portal.
+
+### Release information
+
+- Version: `v1.1.0`
+- Previous version: `v1.0.0`
+- Strategy: Semantic Versioning
+- Locales: English and Bahasa Indonesia
+- Documented projects: 5
+- Status: Stable
+
+_Release: v1.1.0_
+_Author: Devalltect / Rizky Fernandes_

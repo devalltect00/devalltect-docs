@@ -1,0 +1,48 @@
+---
+title: Konfigurasi dan Deployment
+description: Konfigurasikan Script Properties dan deploy web app Foksiku berversi.
+sidebar_position: 3
+---
+
+import { InfoBox } from "@site/src/components/docs";
+
+# Konfigurasi dan Deployment
+
+## Script Properties wajib
+
+| Properti                       | Tujuan                                         |
+| ------------------------------ | ---------------------------------------------- |
+| `TELEGRAM_BOT_TOKEN`           | Token BotFather                                |
+| `SPREADSHEET_ID`               | ID Google Spreadsheet target                   |
+| `WEB_APP_URL`                  | URL produksi Apps Script berakhiran `/exec`    |
+| `WEBHOOK_SECRET_PATH`          | Secret acak minimal 32 karakter yang diizinkan |
+| `AUTHORIZED_TELEGRAM_USER_IDS` | ID numerik bootstrap Owner yang dilindungi     |
+
+<InfoBox variant="danger" title="Jangan publikasikan nilainya">
+  Simpan nilai hanya dalam Apps Script Properties. Jangan masukkan token, ID
+  spreadsheet, URL webhook, ID Owner, atau kode undangan ke source, screenshot, maupun
+  log.
+</InfoBox>
+
+## Validasi dan push lokal
+
+```powershell
+pnpm install
+pnpm run verify
+pnpm run push
+pnpm run open
+```
+
+## Deployment produksi
+
+1. Jalankan `setupSpreadsheet` setelah perubahan schema.
+2. Jalankan `setupMaintenanceTrigger` satu kali.
+3. Edit deployment web app dan pilih **New version**.
+4. Pertahankan **Execute as me** dan **Who has access: Anyone**.
+5. Deploy tanpa mengubah URL produksi `/exec`.
+6. Jalankan `setTelegramWebhook`.
+7. Jalankan `getTelegramWebhookInfo`; update tertunda harus nol dan tidak ada error.
+8. Smoke-test akses, satu pengeluaran terkonfirmasi, dan sebuah laporan.
+
+Perubahan Script Properties tidak memerlukan deployment baru. Perubahan source
+memerlukannya.

@@ -1,0 +1,68 @@
+---
+title: Foksiku
+description: Pelacakan pengeluaran Telegram privat berbasis peran dengan Google Sheets.
+sidebar_position: 0
+sidebar_key: foksiku-home
+---
+
+import { FeatureGrid, InfoBox, Screenshot } from "@site/src/components/docs";
+
+# Foksiku
+
+Foksiku v0.2.0 adalah pelacak pengeluaran Telegram privat yang dibuat dengan
+TypeScript, Google Apps Script, dan Google Sheets. Pengguna yang diundang dapat
+mencatat pembelian, menggunakan kembali produk tersimpan, mengonfirmasi
+perubahan, dan meminta laporan tanpa memberi chatbot umum wewenang atas data
+keuangan.
+
+**Bot Telegram:** [@foksikubot](https://t.me/foksikubot)
+
+<Screenshot
+  src="/img/project-previews/foksiku.png"
+  alt="Identitas Focused Fox Foksiku dan kemampuan pelacakan pengeluaran Telegram privat"
+  title="Sekilas Foksiku"
+  caption="Focused Fox mewakili pencatatan pengeluaran privat yang ditinjau melalui alur Telegram yang ringkas."
+  fallback="Artwork rilis Foksiku dapat ditambahkan ke static/img/project-previews/foksiku.png tanpa mengubah halaman ini."
+  variant="overview"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Catat",
+      children:
+        "Catat satu atau beberapa pengeluaran IDR, USD, atau EUR beserta jumlah, tanggal, waktu, dan penyimpanan langsung opsional.",
+    },
+    {
+      title: "Gunakan kembali",
+      children:
+        "Buat produk dan alias milik pengguna untuk pembelian berulang, lalu arsipkan tanpa mengubah riwayat.",
+    },
+    {
+      title: "Tinjau",
+      children:
+        "Konfirmasi, edit, batalkan, koreksi, atau void data dengan mempertahankan jejak transaksi append-only.",
+    },
+    {
+      title: "Laporkan",
+      children:
+        "Lihat laporan harian, mingguan, bulanan, tahunan, kategori, rentang, pengeluaran tertinggi, dan riwayat berpaginasi.",
+    },
+  ]}
+/>
+
+<InfoBox variant="info" title="Antarmuka dwibahasa dan deterministik">
+  Bot mendukung respons Bahasa Inggris dan Bahasa Indonesia, tombol tindakan yang
+  dilokalkan, serta preferensi bahasa per pengguna. NLU berbasis model lokal terbatas
+  tetap menjadi milestone terpisah; v0.2.0 tetap memvalidasi seluruh tindakan keuangan
+  menggunakan kode aplikasi deterministik.
+</InfoBox>
+
+## Privasi dan akses
+
+Foksiku menerima operasi keuangan dan administrasi hanya dalam chat Telegram
+privat. Akses ditentukan oleh ID pengguna Telegram numerik dan peran eksplisit.
+Username dan nama tampilan tidak pernah memberikan izin.
+
+Gunakan [Memulai](./getting-started.mdx) atau buka
+[Panduan Pengguna](./user-guide/overview.mdx).

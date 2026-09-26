@@ -222,6 +222,44 @@ export interface Project {
  */
 export const PROJECTS: Project[] = [
   {
+    id: "foksiku",
+    name: "Foksiku",
+    category: "Web Application",
+    description:
+      "Record private Telegram expenses in Google Sheets with bilingual menus, confirmations, reusable products, role-aware access, and deterministic reports.",
+    technologies: [
+      "TypeScript",
+      "Google Apps Script",
+      "Google Sheets",
+      "Telegram Bot API",
+    ],
+    preview: {
+      src: "/img/project-previews/foksiku.png",
+      alt: "Foksiku Focused Fox identity and private Telegram expense-tracking capabilities",
+      fallback:
+        "The Foksiku preview will appear here when its release artwork is available.",
+    },
+    docsPath: "/docs/foksiku",
+    available: true,
+    documentation: {
+      version: "0.2.0",
+      versionTag: "v0.2.0",
+      lastReviewed: "2026-09-24",
+      releaseUrl: "https://github.com/devalltect00/foksiku/releases/tag/v0.2.0",
+      statusPath: "/docs/foksiku/reference/documentation-status",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/foksiku.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/foksiku/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
+  },
+
+  {
     id: "devalltect-portfolio",
     name: "Devalltect Portfolio",
     category: "Web Application",

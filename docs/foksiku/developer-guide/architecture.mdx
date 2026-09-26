@@ -1,0 +1,45 @@
+---
+title: Architecture
+description: Trace a Foksiku update from Telegram to validated spreadsheet persistence.
+sidebar_position: 2
+---
+
+# Architecture
+
+```text
+Telegram update
+      |
+authenticated Apps Script webhook
+      |
+lock + duplicate-update boundary
+      |
+dispatcher -> focused handler
+      |
+service + validation + authorization
+      |
+repository / Telegram adapter
+      |
+Google Sheets / Telegram Bot API
+```
+
+## Module boundaries
+
+| Boundary                       | Responsibility                                                 |
+| ------------------------------ | -------------------------------------------------------------- |
+| `telegram/`                    | Webhook transport, Bot API, dispatch, callbacks, and handlers  |
+| `security/` and `access/`      | Roles, invitations, throttling, and access auditing            |
+| `expenses/` and `catalog/`     | Parsing, money, products, aliases, and persistence             |
+| `reports/` and `transactions/` | Aggregation, history, correction, and voiding                  |
+| `state/`                       | Pending confirmations and processed-update idempotency         |
+| `sheets/`                      | Schemas, settings, migrations, and safe cells                  |
+| `observability/`               | Bounded, redacted structured events                            |
+| `maintenance/`                 | Retention policies and daily trigger management                |
+| `i18n/`                        | Locale resolution and typed English/Indonesian message catalog |
+
+Classes are used only when a meaningful lifecycle or interchangeable
+implementation requires them. The current Apps Script request model is better
+served by small typed functions and explicit modules.
+
+Localized labels are presentation only. Callback payloads remain fixed,
+language-neutral allowlisted actions, and the same authorization and validation
+rules run for both supported languages.

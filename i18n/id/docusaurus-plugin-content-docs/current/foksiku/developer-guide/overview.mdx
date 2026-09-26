@@ -1,0 +1,46 @@
+---
+title: Panduan Developer
+description: Kembangkan Foksiku dengan mempertahankan batas keuangan, akses, dan Apps Script.
+sidebar_position: 1
+sidebar_key: foksiku-developer-guide
+---
+
+import { CommandHero, FeatureGrid, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="pnpm run verify"
+  title="Panduan Developer Foksiku"
+  description="Kembangkan bot melalui modul TypeScript terfokus dan validasi eksplisit."
+  category="Pengembangan"
+  status="v0.2.0"
+  syntax="source -> verifikasi -> build -> clasp push -> deployment berversi"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Functional core",
+      children:
+        "Fungsi murni untuk parsing, normalisasi, validasi, kalkulasi, dan pemformatan.",
+    },
+    {
+      title: "Imperative shell",
+      children:
+        "Handler kecil mengoordinasikan repository, adapter Telegram, dan layanan Apps Script.",
+    },
+    {
+      title: "Persistensi aman",
+      children:
+        "Repository mengelola akses Sheet, netralisasi cell, locking, dan riwayat append-only.",
+    },
+    {
+      title: "Transport terbatas",
+      children: "Webhook melakukan autentikasi, deduplikasi, otorisasi, dan delegasi.",
+    },
+  ]}
+/>
+
+<InfoBox variant="warning" title="Output hasil generate">
+  Edit `src/`, bukan `dist/`. Build membuat ulang bundle Apps Script sebelum clasp
+  mengirimnya.
+</InfoBox>

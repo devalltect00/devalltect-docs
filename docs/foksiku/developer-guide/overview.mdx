@@ -1,0 +1,46 @@
+---
+title: Developer Guide
+description: Develop Foksiku while preserving financial, access, and Apps Script boundaries.
+sidebar_position: 1
+sidebar_key: foksiku-developer-guide
+---
+
+import { CommandHero, FeatureGrid, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="pnpm run verify"
+  title="Foksiku Developer Guide"
+  description="Extend the bot through focused TypeScript modules and explicit validation."
+  category="Development"
+  status="v0.2.0"
+  syntax="source -> verify -> build -> clasp push -> versioned deployment"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Functional core",
+      children:
+        "Pure parsing, normalization, validation, calculation, and formatting functions.",
+    },
+    {
+      title: "Imperative shell",
+      children:
+        "Small handlers coordinate repositories, Telegram adapters, and Apps Script services.",
+    },
+    {
+      title: "Safe persistence",
+      children:
+        "Repositories own Sheet access, cell neutralization, locking, and append-only history.",
+    },
+    {
+      title: "Narrow transport",
+      children: "The webhook authenticates, deduplicates, authorizes, and delegates.",
+    },
+  ]}
+/>
+
+<InfoBox variant="warning" title="Generated output">
+  Edit `src/`, never `dist/`. The build recreates the Apps Script bundle before clasp
+  pushes it.
+</InfoBox>

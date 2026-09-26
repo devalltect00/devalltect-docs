@@ -16,12 +16,13 @@ A unified Docusaurus portal for Devalltect developer and DevOps tools. It provid
 **Public documentation:** [devalltect00.github.io/devalltect-docs](https://devalltect00.github.io/devalltect-docs)
 
 The portal navigation also links back to the central
-[Devalltect homepage](https://devalltect00.github.io/). Copy `.env.example` to
-`.env` and set `DEVALLTECT_HOME_URL` only when a preview or alternate deployment
-needs a different public homepage target. Invalid or non-HTTP(S) values safely
-fall back to the canonical homepage. GitHub builds can use a repository variable
-with the same name; GitLab build jobs receive an identically named CI/CD variable
-automatically.
+[Devalltect homepage](https://devalltect00.github.io/) and the current
+[Devalltect Portfolio](https://devalltect-portfolio.vercel.app/). Copy
+`.env.example` to `.env`, then set `DEVALLTECT_HOME_URL` or `PORTFOLIO_URL`
+only when a preview or alternate deployment needs different public navigation
+targets. Invalid or non-HTTP(S) values safely fall back to their canonical
+entrypoints. GitHub builds can use repository variables with the same names;
+GitLab build jobs receive identically named CI/CD variables automatically.
 
 ## ℹ️ Project Metadata
 
@@ -47,6 +48,7 @@ automatically.
 | **Reflow**               | Tag conversion, release recovery, and container publishing              | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/reflow)               |
 | **Custy**                | Git workflow, changelog, versioning, maintenance, and release pipelines | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/custy)                |
 | **Devalltect Portfolio** | Bilingual project, experience, and technology showcase                  | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/devalltect-portfolio) |
+| **Foksiku**              | Private Telegram expense tracking backed by Google Sheets               | [Open docs](https://devalltect00.github.io/devalltect-docs/docs/foksiku)              |
 
 ## 📋 Requirements
 

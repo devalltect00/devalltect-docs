@@ -1,0 +1,31 @@
+---
+title: Permissions and Retention
+description: Foksiku capability matrix, logging levels, and record retention.
+sidebar_position: 2
+---
+
+# Permissions and Retention
+
+| Capability                      | Unknown | Blocked |     Member     |     Admin      |     Owner      |
+| ------------------------------- | :-----: | :-----: | :------------: | :------------: | :------------: |
+| Identity and access help        |   Yes   |   Yes   |      Yes       |      Yes       |      Yes       |
+| `/join CODE`                    |   Yes   |   No    | Already joined | Already joined | Already joined |
+| Expenses, products, and reports |   No    |   No    |    Own data    |    Own data    |    Own data    |
+| `/members`                      |   No    |   No    |       No       |      Yes       |      Yes       |
+| Invite a member                 |   No    |   No    |       No       |      Yes       |      Yes       |
+| Invite an administrator         |   No    |   No    |       No       |       No       |      Yes       |
+| Block, unblock, or change roles |   No    |   No    |       No       |       No       |      Yes       |
+
+| Record                                |             Retention |
+| ------------------------------------- | --------------------: |
+| Cloud operational logs                |               30 days |
+| Failed-join cache counters            |                1 hour |
+| Completed or expired pending actions  |               30 days |
+| Used, expired, or revoked invitations |               90 days |
+| Processed Telegram updates            |               90 days |
+| Access audit events                   |              365 days |
+| Transactions, users, and products     | No automatic deletion |
+
+Foksiku supports `DEBUG`, `INFO`, `WARNING`, `ERROR`, and `CRITICAL`
+application levels. Production defaults to `INFO`, and sensitive message or
+credential content is excluded.

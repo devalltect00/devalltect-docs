@@ -16,6 +16,7 @@ const deploymentBaseUrl = deploymentUrl.pathname.endsWith("/")
   : `${deploymentUrl.pathname}/`;
 
 const defaultDevalltectHomeUrl = "https://devalltect00.github.io/";
+const defaultPortfolioUrl = "https://devalltect-portfolio.vercel.app/";
 
 function resolvePublicUrl(value: string | undefined, fallback: string): string {
   try {
@@ -30,6 +31,7 @@ const devalltectHomeUrl = resolvePublicUrl(
   process.env.DEVALLTECT_HOME_URL,
   defaultDevalltectHomeUrl
 );
+const portfolioUrl = resolvePublicUrl(process.env.PORTFOLIO_URL, defaultPortfolioUrl);
 
 const config: Config = {
   // title: "DevAlltect00 Docs",
@@ -55,6 +57,11 @@ const config: Config = {
   projectName: "devalltect-docs",
 
   trailingSlash: false, // remove `/` postfix on url. So it becomes `./devalltect-docs` instead of `./devalltect-docs/`
+
+  // Public runtime navigation values for client-side homepage components.
+  customFields: {
+    portfolioUrl,
+  },
 
   onBrokenLinks: "throw",
 
@@ -188,7 +195,7 @@ const config: Config = {
             },
             {
               label: "Portfolio",
-              href: "https://devalltect-portfolio.vercel.app/",
+              href: portfolioUrl,
             },
           ],
         },

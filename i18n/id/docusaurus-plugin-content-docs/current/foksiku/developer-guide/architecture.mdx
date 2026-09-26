@@ -1,0 +1,45 @@
+---
+title: Arsitektur
+description: Ikuti update Foksiku dari Telegram sampai persistensi spreadsheet tervalidasi.
+sidebar_position: 2
+---
+
+# Arsitektur
+
+```text
+Update Telegram
+      |
+webhook Apps Script terautentikasi
+      |
+lock + batas update duplikat
+      |
+dispatcher -> handler terfokus
+      |
+service + validasi + otorisasi
+      |
+repository / adapter Telegram
+      |
+Google Sheets / Telegram Bot API
+```
+
+## Batas modul
+
+| Batas                          | Tanggung jawab                                              |
+| ------------------------------ | ----------------------------------------------------------- |
+| `telegram/`                    | Transport webhook, Bot API, dispatch, callback, dan handler |
+| `security/` dan `access/`      | Peran, undangan, throttling, dan audit akses                |
+| `expenses/` dan `catalog/`     | Parsing, uang, produk, alias, dan persistensi               |
+| `reports/` dan `transactions/` | Agregasi, riwayat, koreksi, dan void                        |
+| `state/`                       | Konfirmasi tertunda dan idempotensi update                  |
+| `sheets/`                      | Schema, pengaturan, migrasi, dan cell aman                  |
+| `observability/`               | Event terstruktur, terbatas, dan disamarkan                 |
+| `maintenance/`                 | Kebijakan retensi dan pengelolaan trigger harian            |
+| `i18n/`                        | Resolusi locale dan katalog pesan Inggris/Indonesia bertipe |
+
+Class digunakan hanya ketika lifecycle bermakna atau implementasi yang dapat
+dipertukarkan membutuhkannya. Model request Apps Script saat ini lebih sesuai
+dengan fungsi kecil bertipe dan modul eksplisit.
+
+Label yang dilokalkan hanya berada pada lapisan presentasi. Payload callback
+tetap berupa tindakan allowlist yang tetap dan netral bahasa, sedangkan aturan
+otorisasi serta validasi yang sama berlaku untuk kedua bahasa.

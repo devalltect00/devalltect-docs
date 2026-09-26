@@ -1,0 +1,59 @@
+---
+title: Alur Pengeluaran
+description: Catat, konfirmasi, koreksi, dan arsipkan data Foksiku dengan aman.
+sidebar_position: 2
+---
+
+# Alur Pengeluaran
+
+## Catat satu pengeluaran
+
+```text
+Bakso 18000
+Coffee $4.50
+Indomie x2
+Bakso 18000 kemarin
+Bakso 18000 jam 08.01
+```
+
+Foksiku menampilkan produk, jumlah, harga satuan, total, tanggal, dan waktu yang
+dipahami sebelum penyimpanan. Tambahkan `-y` atau `--yes` hanya jika input
+sudah lengkap dan Anda ingin melewati tombol konfirmasi.
+
+## Catat beberapa pengeluaran
+
+Letakkan satu item pada setiap baris:
+
+```text
+Bakso Rp18.000
+Soto Rp17.000
+```
+
+Seluruh batch divalidasi terlebih dahulu. Satu baris tidak valid mencegah
+penyimpanan sebagian secara diam-diam, dan satu keputusan konfirmasi berlaku
+untuk seluruh batch valid.
+
+## Gunakan kembali produk
+
+```text
+/add_product Indomie | 3500 | Food | mie,mie instan
+Indomie 2
+mie x3 -y
+/products
+```
+
+Arsipkan produk dengan `/archive_product Indomie`. Pengarsipan menghentikan
+pencocokan baru, tetapi tidak mengubah snapshot transaksi lama.
+
+## Koreksi atau void transaksi
+
+Gunakan ID pendek yang ditampilkan oleh `/transactions`:
+
+```text
+/correct a1b2c3d4
+quantity 2
+```
+
+Foksiku mem-void baris asli dan menambahkan pengganti yang saling tertaut.
+`/void ID` mempertahankan baris asli sambil mengubah statusnya. Riwayat
+keuangan tidak dihapus secara fisik oleh perintah ini.

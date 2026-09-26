@@ -1,0 +1,50 @@
+---
+title: Panduan Pengguna
+description: Pilih alur Foksiku berdasarkan hasil yang dibutuhkan.
+sidebar_position: 1
+sidebar_key: foksiku-user-guide
+---
+
+import { CommandHero, FeatureGrid, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="@foksikubot"
+  title="Panduan Pengguna Foksiku"
+  description="Catat, tinjau, dan laporkan pengeluaran privat melalui Telegram."
+  category="Panduan Pengguna"
+  status="v0.2.0"
+  syntax="pesan -> validasi -> pratinjau -> simpan"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Alur pengeluaran",
+      children: "Item tunggal, batch multi-item, jumlah, tanggal, waktu, dan koreksi.",
+    },
+    {
+      title: "Produk",
+      children:
+        "Nilai default dan alias yang dapat digunakan ulang serta dimiliki pengguna Telegram.",
+    },
+    {
+      title: "Laporan",
+      children:
+        "Total periode, kategori, rentang, pengeluaran tertinggi, dan riwayat transaksi.",
+    },
+    {
+      title: "Akses",
+      children: "Undangan privat dan perintah administrasi berbasis peran.",
+    },
+    {
+      title: "Bahasa dan menu",
+      children:
+        "Respons Bahasa Inggris atau Indonesia dengan pintasan tindakan yang dilokalkan.",
+    },
+  ]}
+/>
+
+<InfoBox variant="note" title="Interpretasi deterministik">
+  Foksiku memvalidasi pola pesan yang didukung dan meminta klarifikasi untuk input yang
+  tidak lengkap atau ambigu. Teks tidak dieksekusi sebagai kode ataupun perintah shell.
+</InfoBox>

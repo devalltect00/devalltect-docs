@@ -1,0 +1,31 @@
+---
+title: Izin dan Retensi
+description: Matriks kemampuan, level logging, dan retensi data Foksiku.
+sidebar_position: 2
+---
+
+# Izin dan Retensi
+
+| Kemampuan                         | Unknown | Blocked |     Member      |      Admin      |      Owner      |
+| --------------------------------- | :-----: | :-----: | :-------------: | :-------------: | :-------------: |
+| Bantuan identitas dan akses       |   Ya    |   Ya    |       Ya        |       Ya        |       Ya        |
+| `/join CODE`                      |   Ya    |  Tidak  | Sudah bergabung | Sudah bergabung | Sudah bergabung |
+| Pengeluaran, produk, dan laporan  |  Tidak  |  Tidak  |  Data sendiri   |  Data sendiri   |  Data sendiri   |
+| `/members`                        |  Tidak  |  Tidak  |      Tidak      |       Ya        |       Ya        |
+| Undang Member                     |  Tidak  |  Tidak  |      Tidak      |       Ya        |       Ya        |
+| Undang Admin                      |  Tidak  |  Tidak  |      Tidak      |      Tidak      |       Ya        |
+| Blokir, pulihkan, atau ubah peran |  Tidak  |  Tidak  |      Tidak      |      Tidak      |       Ya        |
+
+| Data                                         |                Retensi |
+| -------------------------------------------- | ---------------------: |
+| Log operasional Cloud                        |                30 hari |
+| Counter kegagalan join dalam cache           |                  1 jam |
+| Pending action selesai atau kedaluwarsa      |                30 hari |
+| Undangan terpakai, kedaluwarsa, atau dicabut |                90 hari |
+| Update Telegram yang telah diproses          |                90 hari |
+| Event audit akses                            |               365 hari |
+| Transaksi, pengguna, dan produk              | Tidak dihapus otomatis |
+
+Foksiku mendukung level aplikasi `DEBUG`, `INFO`, `WARNING`, `ERROR`,
+dan `CRITICAL`. Produksi menggunakan minimum `INFO`, dan konten pesan atau
+kredensial sensitif tidak disertakan.

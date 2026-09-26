@@ -1,0 +1,30 @@
+---
+title: Access and Invitations
+description: Understand Foksiku roles, private enrollment, and administrative boundaries.
+sidebar_position: 4
+---
+
+# Access and Invitations
+
+| Role    | Purpose                                                              |
+| ------- | -------------------------------------------------------------------- |
+| Unknown | Identity lookup and invitation redemption only                       |
+| Blocked | Identity and access-status lookup only                               |
+| Member  | Own expenses, products, history, and reports                         |
+| Admin   | Member capabilities plus member invitations and listings             |
+| Owner   | Administrative role changes, blocking, and administrator invitations |
+
+Common commands:
+
+```text
+/whoami
+/my_access
+/join INVITATION_CODE
+/members
+/invite member 15m
+/revoke_invite INVITATION_ID
+```
+
+Only an owner can issue administrator invitations, block or unblock accounts,
+or change roles. Administrative roles do not grant access to another user's
+financial records.

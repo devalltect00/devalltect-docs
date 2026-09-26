@@ -1,0 +1,31 @@
+---
+title: Laporan dan Riwayat
+description: Periksa total dan riwayat Foksiku tanpa mencampur mata uang.
+sidebar_position: 3
+---
+
+# Laporan dan Riwayat
+
+| Perintah                   | Hasil                               |
+| -------------------------- | ----------------------------------- |
+| `/today`                   | Pengeluaran terkonfirmasi hari ini  |
+| `/week`                    | Senin sampai hari ini               |
+| `/month`                   | Bulan kalender saat ini             |
+| `/year`                    | Januari sampai hari ini             |
+| `/range START END`         | Rentang tanggal ISO inklusif        |
+| `/category NAME \| PERIOD` | Total kategori untuk suatu periode  |
+| `/top PERIOD 5`            | Pengeluaran tertinggi per mata uang |
+| `/transactions`            | Riwayat transaksi berpaginasi       |
+
+Contoh:
+
+```text
+/transactions month price desc
+/transactions all date asc page 2
+/range 2026-09-01 2026-09-30
+/category Food | month
+/top month 5
+```
+
+Total IDR, USD, dan EUR tetap dipisahkan. Foksiku tidak membuat kurs sendiri
+atau menjumlahkan mata uang yang berbeda.

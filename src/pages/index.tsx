@@ -28,6 +28,11 @@ import QuickLinks from "@site/src/components/homepage/QuickLinks";
  */
 export default function Home(): React.JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+  const portfolioUrl =
+    typeof siteConfig.customFields?.portfolioUrl === "string"
+      ? siteConfig.customFields.portfolioUrl
+      : "https://devalltect-portfolio.vercel.app/";
+
   return (
     <Layout
       // title="Devalltect Docs"
@@ -45,7 +50,7 @@ export default function Home(): React.JSX.Element {
 
         <QuickLinks />
 
-        <About />
+        <About portfolioUrl={portfolioUrl} />
       </main>
     </Layout>
   );

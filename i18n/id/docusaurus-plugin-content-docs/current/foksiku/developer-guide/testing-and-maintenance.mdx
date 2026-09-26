@@ -1,0 +1,30 @@
+---
+title: Pengujian dan Pemeliharaan
+description: Validasi Foksiku secara lokal dan pelihara data operasional yang terbatas.
+sidebar_position: 4
+---
+
+# Pengujian dan Pemeliharaan
+
+```powershell
+pnpm run format:check
+pnpm run docs:check
+pnpm run typecheck
+pnpm run lint
+pnpm test
+pnpm run build
+```
+
+`pnpm run verify` menjalankan seluruh urutan tersebut. Pengujian perlu
+mencakup parsing, otorisasi, kepemilikan, update duplikat, callback, penulisan
+repository, laporan, koreksi, retensi, dan batas Telegram.
+
+## Pemeliharaan operasional
+
+`setupMaintenanceTrigger` membuat trigger harian yang idempoten. Cleanup
+dibatasi per eksekusi dan tidak pernah menghapus transaksi, pengguna, maupun
+produk secara otomatis.
+
+Gunakan Apps Script executions dan Cloud Logging untuk diagnosis runtime.
+Jangan menambahkan sheet log umum karena akan meningkatkan latensi, storage,
+dan keterkaitan kegagalan.

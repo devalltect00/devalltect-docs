@@ -1,6 +1,6 @@
 {
   "name": "devalltect00-docs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Bilingual Docusaurus documentation portal for Devalltect developer and DevOps tools.",
   "keywords": [
@@ -20,6 +20,9 @@
     "doc-gen",
     "reflow",
     "portfolio",
+    "foksiku",
+    "telegram-bot",
+    "expense-tracker",
     "nextjs",
     "vercel"
   ],
@@ -41,6 +44,8 @@
         "doc-gen",
         "path-header-scanner",
         "portfolio",
+        "foksiku",
+        "telegram-bot",
         "nextjs",
         "vercel"
       ]
@@ -62,6 +67,8 @@
         "doc-gen",
         "path-header-scanner",
         "portfolio",
+        "foksiku",
+        "telegram-bot",
         "nextjs",
         "vercel"
       ]

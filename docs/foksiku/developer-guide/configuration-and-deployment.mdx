@@ -1,0 +1,47 @@
+---
+title: Configuration and Deployment
+description: Configure Script Properties and deploy a versioned Foksiku web app.
+sidebar_position: 3
+---
+
+import { InfoBox } from "@site/src/components/docs";
+
+# Configuration and Deployment
+
+## Required Script Properties
+
+| Property                       | Purpose                                         |
+| ------------------------------ | ----------------------------------------------- |
+| `TELEGRAM_BOT_TOKEN`           | BotFather token                                 |
+| `SPREADSHEET_ID`               | Target Google Spreadsheet ID                    |
+| `WEB_APP_URL`                  | Production Apps Script `/exec` URL              |
+| `WEBHOOK_SECRET_PATH`          | Random secret of at least 32 allowed characters |
+| `AUTHORIZED_TELEGRAM_USER_IDS` | Protected bootstrap-owner numeric IDs           |
+
+<InfoBox variant="danger" title="Never publish values">
+  Store values only in Apps Script Properties. Do not place tokens, spreadsheet IDs,
+  webhook URLs, owner IDs, or invitation codes in source, screenshots, or logs.
+</InfoBox>
+
+## Local validation and push
+
+```powershell
+pnpm install
+pnpm run verify
+pnpm run push
+pnpm run open
+```
+
+## Production deployment
+
+1. Run `setupSpreadsheet` after schema changes.
+2. Run `setupMaintenanceTrigger` once.
+3. Edit the web-app deployment and select **New version**.
+4. Keep **Execute as me** and **Who has access: Anyone**.
+5. Deploy without changing the production `/exec` URL.
+6. Run `setTelegramWebhook`.
+7. Run `getTelegramWebhookInfo` and require zero pending updates and no error.
+8. Smoke-test access, one confirmed expense, and a report.
+
+Changing Script Properties does not require a new deployment. Changing source
+code does.

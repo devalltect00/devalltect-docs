@@ -22,7 +22,11 @@ import styles from "./About.module.css";
  * or resume section.
  * ============================================================
  */
-export default function About(): React.JSX.Element {
+type AboutProps = {
+  portfolioUrl: string;
+};
+
+export default function About({ portfolioUrl }: AboutProps): React.JSX.Element {
   return (
     <section className={styles.section}>
       <div className="container">
@@ -56,10 +60,7 @@ export default function About(): React.JSX.Element {
               LinkedIn
             </Link>
 
-            <Link
-              className="button button--secondary"
-              href="https://personal-portfolio-devalltect00.vercel.app/"
-            >
+            <Link className="button button--secondary" href={portfolioUrl}>
               Portfolio
             </Link>
 

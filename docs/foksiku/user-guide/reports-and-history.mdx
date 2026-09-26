@@ -1,0 +1,31 @@
+---
+title: Reports and History
+description: Inspect Foksiku totals and transaction history without mixing currencies.
+sidebar_position: 3
+---
+
+# Reports and History
+
+| Command                    | Result                        |
+| -------------------------- | ----------------------------- |
+| `/today`                   | Confirmed spending today      |
+| `/week`                    | Monday through today          |
+| `/month`                   | Current calendar month        |
+| `/year`                    | January through today         |
+| `/range START END`         | Inclusive ISO-date range      |
+| `/category NAME \| PERIOD` | Category totals for a period  |
+| `/top PERIOD 5`            | Highest expenses by currency  |
+| `/transactions`            | Paginated transaction history |
+
+Examples:
+
+```text
+/transactions month price desc
+/transactions all date asc page 2
+/range 2026-09-01 2026-09-30
+/category Food | month
+/top month 5
+```
+
+IDR, USD, and EUR totals remain separate. Foksiku does not invent exchange
+rates or add unlike currencies together.

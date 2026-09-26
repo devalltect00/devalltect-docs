@@ -1,0 +1,30 @@
+---
+title: Testing and Maintenance
+description: Validate Foksiku locally and maintain bounded operational records.
+sidebar_position: 4
+---
+
+# Testing and Maintenance
+
+```powershell
+pnpm run format:check
+pnpm run docs:check
+pnpm run typecheck
+pnpm run lint
+pnpm test
+pnpm run build
+```
+
+`pnpm run verify` runs that complete sequence. Tests should cover parsing,
+authorization, ownership, duplicate updates, callbacks, repository writes,
+reports, corrections, retention, and Telegram boundary behavior.
+
+## Operational maintenance
+
+`setupMaintenanceTrigger` creates an idempotent daily trigger. Cleanup is
+bounded per run and never automatically deletes transactions, users, or
+products.
+
+Use Apps Script executions and Cloud Logging for runtime diagnosis. Do not add
+a general-purpose spreadsheet log because it increases latency, storage, and
+failure coupling.

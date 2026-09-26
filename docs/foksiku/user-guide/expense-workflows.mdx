@@ -1,0 +1,58 @@
+---
+title: Expense Workflows
+description: Record, confirm, correct, and safely archive Foksiku data.
+sidebar_position: 2
+---
+
+# Expense Workflows
+
+## Record one expense
+
+```text
+Bakso 18000
+Coffee $4.50
+Indomie x2
+Bakso 18000 yesterday
+Bakso 18000 at 08:01
+```
+
+Foksiku shows the interpreted product, quantity, unit price, total, date, and
+time before persistence. Add `-y` or `--yes` only when the input is complete
+and you want to skip the confirmation buttons.
+
+## Record several expenses
+
+Put one item on each line:
+
+```text
+Bakso Rp18.000
+Soto Rp17.000
+```
+
+The entire batch is validated first. One invalid line prevents silent partial
+saving, and one confirmation decision applies to the valid batch.
+
+## Reuse a product
+
+```text
+/add_product Indomie | 3500 | Food | mie,mie instan
+Indomie 2
+mie x3 -y
+/products
+```
+
+Archive a product with `/archive_product Indomie`. Archival prevents future
+matching but does not alter transaction snapshots.
+
+## Correct or void a transaction
+
+Use the short ID displayed by `/transactions`:
+
+```text
+/correct a1b2c3d4
+quantity 2
+```
+
+Foksiku voids the original row and appends a linked replacement. `/void ID`
+preserves the original row while changing its status. Financial history is
+never physically deleted by these commands.

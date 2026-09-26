@@ -1,0 +1,37 @@
+---
+title: Masalah Umum
+description: Diagnosis masalah akses, webhook, deployment, dan laporan Foksiku.
+sidebar_position: 1
+---
+
+# Masalah Umum
+
+## Bot tidak membalas
+
+Jalankan `getTelegramWebhookInfo`. URL harus sesuai, update tertunda seharusnya
+nol setelah pemulihan, dan tidak boleh ada error terakhir. Pastikan deployment
+menggunakan **Execute as me** dan **Who has access: Anyone**.
+
+## Telegram melaporkan 401, 302, atau mengulang pesan lama
+
+Publikasikan versi deployment baru, jalankan `setTelegramWebhook` lagi, lalu
+periksa diagnostik. Gunakan `deleteTelegramWebhookAndDropPendingUpdates` hanya
+saat memang ingin membuang update yang mengantre.
+
+## Laporan mengatakan tidak ada pengeluaran
+
+Pastikan pratinjau telah disimpan, status transaksi terkonfirmasi, periode
+laporan cocok dengan tanggal lokal transaksi, dan pengguna yang meminta
+merupakan pemilik data.
+
+## Perintah tidak tersedia
+
+Jalankan `/my_access`. Help menyesuaikan peran. Unknown dan Blocked tidak dapat
+menjalankan perintah keuangan, sedangkan perintah administrasi membutuhkan
+Admin atau Owner.
+
+## Perubahan source tidak muncul
+
+Jalankan `pnpm run verify`, push ulang bundle `dist/`, lalu publikasikan
+**New version** dari deployment web app yang ada. Push source saja tidak
+memperbarui deployment `/exec` berversi.

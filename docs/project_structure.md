@@ -2,27 +2,22 @@
 
 # Repository Overview
 
-This repository follows a modular structure commonly used in modern projects.
+This repository was analyzed using composable project and framework metadata.
 
-Common directories include:
+Detected technologies: `reactjs`, `javascript`, `typescript`, `yarn`
 
-- `app/` — Main application source code.
+Recognized top-level directories:
+
 - `.config/` — Project configuration files.
-- `.github/` — GitHub-related configuration.
-- `.vscode/` — Visual Studio Code workspace settings.
 - `docs/` — Project documentation and technical references.
-- `tests/` — Automated tests.
-- `data/` — Input datasets or static data.
-- `output/` — Generated outputs from the application.
 - `scripts/` — Utility scripts for development or automation.
-- `tools/` — Development tools and automation utilities.
-- `templates/` — Reusable templates used by the project.
+- `src/` — JavaScript or TypeScript application source code.
 
 ---
 
-# Repository Structure
+## Repository Structure
 
-(project type: ProjectType.NODEJS)
+(project type: ProjectType.REACTJS)
 
 ```text
 .
@@ -59,7 +54,6 @@ Common directories include:
 ├── .pnpm-store/ ... (collapsed)
 ├── .yarn/ ... (collapsed)
 ├── blog/ ... (collapsed)
-├── build/ ... (collapsed)
 ├── docker
 │   └── nginx.conf
 ├── docs
@@ -385,6 +379,30 @@ Common directories include:
 │   │   ├── _category_.json
 │   │   ├── examples.mdx
 │   │   └── index.mdx
+│   ├── foksiku
+│   │   ├── developer-guide
+│   │   │   ├── _category_.json
+│   │   │   ├── architecture.mdx
+│   │   │   ├── configuration-and-deployment.mdx
+│   │   │   ├── overview.mdx
+│   │   │   └── testing-and-maintenance.mdx
+│   │   ├── reference
+│   │   │   ├── _category_.json
+│   │   │   ├── commands.mdx
+│   │   │   ├── documentation-status.mdx
+│   │   │   └── permissions-and-retention.mdx
+│   │   ├── troubleshooting
+│   │   │   ├── _category_.json
+│   │   │   └── common-problems.mdx
+│   │   ├── user-guide
+│   │   │   ├── _category_.json
+│   │   │   ├── access-and-invitations.mdx
+│   │   │   ├── expense-workflows.mdx
+│   │   │   ├── overview.mdx
+│   │   │   └── reports-and-history.mdx
+│   │   ├── _category_.json
+│   │   ├── getting-started.mdx
+│   │   └── index.mdx
 │   ├── path-header-scanner
 │   │   ├── architecture
 │   │   │   ├── _category_.json
@@ -553,7 +571,8 @@ Common directories include:
 │   ├── project_structure.md
 │   ├── projects-overview.mdx
 │   ├── TODO.md
-│   └── TODO_PLAN.md
+│   ├── TODO_category.md
+│   └── TODO_FRONTMATTER.md
 ├── i18n
 │   └── id
 │       ├── docusaurus-plugin-content-docs
@@ -562,6 +581,7 @@ Common directories include:
 │       │   │   ├── devalltect-docs
 │       │   │   ├── devalltect-portfolio
 │       │   │   ├── doc-gen
+│       │   │   ├── foksiku
 │       │   │   ├── path-header-scanner
 │       │   │   ├── reflow
 │       │   │   ├── developers.mdx
@@ -619,7 +639,6 @@ Common directories include:
 │       └── variables
 │           ├── help.mk
 │           └── variable.mk
-├── node_modules/ ... (collapsed)
 ├── other-venv/ ... (collapsed)
 ├── plugins
 │   └── documentation-freshness
@@ -790,6 +809,7 @@ Common directories include:
 │   │   │   ├── custy.png
 │   │   │   ├── devalltect-portfolio.png
 │   │   │   ├── doc-gen.png
+│   │   │   ├── foksiku.png
 │   │   │   ├── path-header-scanner.png
 │   │   │   └── reflow.png
 │   │   ├── docusaurus-social-card.jpg
@@ -803,7 +823,6 @@ Common directories include:
 │   │   └── undraw_docusaurus_tree.svg
 │   └── .nojekyll
 ├── .dockerignore
-├── .env.example
 ├── .gitignore
 ├── .gitlab-ci.yml
 ├── .pre-commit-config.yaml
@@ -822,77 +841,78 @@ Common directories include:
 ├── README.md
 ├── SECURITY.md
 ├── sidebars.ts
-├── tsconfig.json
-└── yarn.lock
+├── TODO_FRONTMATTER.md
+└── tsconfig.json
 ```
 
 ---
 
-## Root Files
+## Recognized Files
 
-| File | Description |
-|------|-------------|
-| `README.md` | Project overview and introduction. |
-| `CHANGELOG.md` | History of notable changes between releases. |
-| `LICENSE` | Project license information. |
-| `SECURITY.md` | Security policy and vulnerability reporting instructions. |
-| `Makefile` | Defines common development, testing, and build commands. |
-| `Dockerfile` | Container image build instructions. |
-| `docker-compose.yml` | Default multi-container Docker configuration. |
-| `docker-compose.dev.yml` | Development Docker Compose configuration. |
-| `docker-compose.prod.yml` | Production Docker Compose configuration. |
-| `.gitignore` | Specifies files and directories ignored by Git. |
-| `.dockerignore` | Specifies files excluded from Docker build context. |
-| `.prettierrc.json` | Prettier code formatting configuration. |
-| `.prettierignore` | Files ignored by Prettier. |
-| `.pre-commit-config.yaml` | Pre-commit hooks configuration. |
-| `.gitlab-ci.yml` | GitLab CI/CD pipeline configuration. |
-| `.env.example` | Example environment variables configuration. |
+- `README.md` — Project overview and introduction.
+- `CHANGELOG.md` — History of notable changes between releases.
+- `LICENSE` — Project license information.
+- `SECURITY.md` — Security policy and vulnerability reporting instructions.
+- `Makefile` — Defines common development, testing, and build commands.
+- `Dockerfile` — Container image build instructions.
+- `docker-compose.yml` — Default multi-container Docker configuration.
+- `docker-compose.dev.yml` — Development Docker Compose configuration.
+- `docker-compose.prod.yml` — Production Docker Compose configuration.
+- `.gitignore` — Specifies files and directories ignored by Git.
+- `.dockerignore` — Specifies files excluded from Docker build context.
+- `.prettierrc.json` — Prettier code formatting configuration.
+- `.prettierignore` — Files ignored by Prettier.
+- `.pre-commit-config.yaml` — Pre-commit hooks configuration.
+- `.gitlab-ci.yml` — GitLab CI/CD pipeline configuration.
+- `.env.example` — Example environment variables configuration.
+- `package.json` — Node.js package metadata, scripts, and dependencies.
+- `yarn.lock` — Yarn dependency lock file.
+- `tsconfig.json` — TypeScript compiler configuration.
 
 ---
 
 ## Directory Details
 
 ### `.config/`
+
 Project configuration files.
 
 Stores reusable configuration files used by the project.
 Helps keep the repository root clean and organized.
 
 Common examples:
+
 - .config/tool-config/
 - .config/templates/
 - .config/settings/
 
 ### `docs/`
+
 Project documentation and technical references.
 
-The documentation folder usually contains structured knowledge about the project.
+Contains user guides, technical references, and project records.
 
-Common documentation sections:
-- docs/architecture        → system design and architecture diagrams
-- docs/development         → development guides and workflows
-- docs/system              → detailed technical documentation
-- docs/reference           → command references and APIs
-- docs/user-guide          → instructions for end users
-- docs/diagrams            → visual architecture diagrams
-- docs/phases              → project phases and planning
-- docs/Q&A                 → common questions and explanations
+Possible sections include:
 
-Common files:
-- PROJECT_STRUCTURE.md
-- DEVELOPMENT_GUIDE.md
-- HOW_TO_USE.md
-- TODO.md
-- CLI_COMMAND.md
-- references.md
-- badges.md
+- architecture and design decisions
+- developer and contributor guides
+- user guides and command references
+- generated repository documentation
+
+Doc Gen writes `docs/project_structure.md` by default, but the
+destination is configurable.
 
 ### `scripts/`
+
 Utility scripts for development or automation.
 
 May include deployment scripts, maintenance tools, or helpers.
 
+### `src/`
+
+JavaScript or TypeScript application source code.
+
+Contains runtime modules, entry points, and shared source code.
 
 ---
 

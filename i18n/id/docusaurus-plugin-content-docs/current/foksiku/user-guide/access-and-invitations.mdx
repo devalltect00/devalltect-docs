@@ -1,0 +1,30 @@
+---
+title: Akses dan Undangan
+description: Pahami peran, pendaftaran privat, dan batas administrasi Foksiku.
+sidebar_position: 4
+---
+
+# Akses dan Undangan
+
+| Peran   | Tujuan                                                         |
+| ------- | -------------------------------------------------------------- |
+| Unknown | Hanya melihat identitas dan menggunakan undangan               |
+| Blocked | Hanya melihat identitas dan status akses                       |
+| Member  | Pengeluaran, produk, riwayat, dan laporan milik sendiri        |
+| Admin   | Kemampuan Member ditambah undangan anggota dan daftar pengguna |
+| Owner   | Perubahan peran, pemblokiran, dan undangan administrator       |
+
+Perintah umum:
+
+```text
+/whoami
+/my_access
+/join INVITATION_CODE
+/members
+/invite member 15m
+/revoke_invite INVITATION_ID
+```
+
+Hanya Owner yang dapat mengundang administrator, memblokir atau memulihkan
+akun, maupun mengubah peran. Peran administratif tidak memberi akses ke data
+keuangan pengguna lain.

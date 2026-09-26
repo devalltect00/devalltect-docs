@@ -1,0 +1,24 @@
+---
+title: Command Reference
+description: Supported Foksiku commands grouped by capability.
+sidebar_position: 1
+---
+
+# Command Reference
+
+| Group          | Commands                                                                    |
+| -------------- | --------------------------------------------------------------------------- |
+| General        | `/start`, `/help`, `/menu`, `/language`, `/whoami`, `/my_access`, `/cancel` |
+| Reports        | `/today`, `/week`, `/month`, `/year`, `/range`, `/category`, `/top`         |
+| History        | `/transactions`, `/correct`, `/void`                                        |
+| Products       | `/add_product`, `/products`, `/archive_product`                             |
+| Enrollment     | `/join`                                                                     |
+| Administration | `/members`, `/invite`, `/revoke_invite`, `/block`, `/unblock`, `/set_role`  |
+
+Help is role-aware and omits commands the requesting account cannot use. The
+older `/product`, `/archiveproduct`, `/setrole`, and `/revokeinvite`
+spellings remain compatible aliases.
+
+Common Indonesian aliases are `/bantuan`, `/hariini`, `/minggu`, `/bulan`,
+`/tahun`, `/produk`, `/transaksi`, and `/bahasa`. `/menu` presents localized
+buttons for common actions without changing the underlying authorization rules.

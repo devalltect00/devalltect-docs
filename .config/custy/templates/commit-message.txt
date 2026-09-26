@@ -1,23 +1,61 @@
-feat(portfolio-docs): document the Devalltect Portfolio v2
+feat(ecosystem-docs): checkpoint Foksiku and homepage documentation
 
-Expand the bilingual documentation portal from four developer tools to five
-Devalltect projects by adding a public portfolio guide and release baseline.
+Extend the documentation portal after the published v1.1.0 release with
+complete Foksiku v0.2.0 guidance and a bilingual public documentation baseline
+for the prepared Devalltect Homepage v1.0.0 release.
 
-- add English and Indonesian portfolio overview, getting-started, and
-  documentation-status pages;
-- register the portfolio in shared project metadata, homepage discovery, and
-  sidebar navigation;
-- connect the portal navbar and footer to the central Devalltect homepage with
-  bilingual labels and a safe optional build-time URL override;
-- document the v2.0.0 visitor experience, static Vercel delivery, optional
-  Docker workflow, and public source validation;
-- keep internal maintenance, credentials, private project data, and security
-  findings outside the public portal;
-- update portal metadata, README tables, badges, maintainer guidance, and
-  repository topics for the v1.1.0 release line.
+- register Foksiku in centralized project metadata, homepage discovery,
+  project overview pages, package topics, and sidebar navigation;
+- add aligned English and Indonesian overview and getting-started pages;
+- document expense capture, multi-item batches, saved products, reports,
+  transaction history, append-only corrections, access roles, and invitations;
+- add developer guidance for the functional-core architecture, module
+  boundaries, Script Properties, clasp workflow, versioned Apps Script
+  deployment, testing, and bounded maintenance;
+- publish clear command, permission, logging, and retention references;
+- add webhook, authorization, deployment, and reporting troubleshooting;
+- document per-user English and Indonesian responses, localized action buttons,
+  the compact menu, language selection, and Indonesian command aliases;
+- keep constrained local-model NLU clearly identified as future work rather
+  than presenting it as current v0.2.0 behavior;
+- configure release-aware documentation freshness for the public Foksiku
+  repository and v0.2.0 tag;
+- add the selected Focused Fox release preview to Foksiku discovery cards and
+  both localized project landing pages with accessible alternative text;
+- keep tokens, deployment URLs, spreadsheet identifiers, Telegram IDs,
+  invitation codes, and financial data outside public documentation;
+- retain the Devalltect Portfolio v2 pages and shared ecosystem navigation
+  established in v1.1.0;
+- add English and Indonesian Devalltect Homepage overview, setup,
+  configuration, architecture, deployment, and status pages;
+- register the homepage in centralized project metadata, discovery cards,
+  sidebar navigation, repository topics, and release-aware freshness checks;
+- document the Astro static-output boundary, root GitHub Pages deployment,
+  public destination overrides, metadata dry-run workflow, and the requirement
+  to use GitHub Actions instead of GitHub's Jekyll branch builder;
+- identify homepage v1.0.0 as prepared but unpublished until its annotated tag
+  and release are created;
+- preserve clear boundaries between the ecosystem homepage, interactive
+  portfolio, and technical documentation portal;
+- replace the remaining starter favicon reference with Devalltect branding and
+  clarify the portal identity in the navigation header;
+- add the Devalltect Docs portal itself to homepage and project-overview
+  discovery at its published v1.1.0 baseline;
+- synchronize normalized project start dates from Portfolio v2, display them
+  with locale-aware labels, and sort discovery cards newest-first;
+- add focused metadata and chronological-order tests while preserving a
+  reusable oldest-first option for future discovery views;
+- refine visitor-facing project categories so the static homepage, interactive
+  portfolio, Telegram bot, documentation platform, and CLI tools are described
+  according to their actual experiences.
+
+Tag: none
+Previous release: v1.1.0
+Release phase: post-v1.1.0 development checkpoint
+Target release: next minor version
 
 Tags:
-- Type: #feature #documentation #i18n
-- Project: #devalltect-portfolio #devalltect-docs
-- Platform: #docusaurus #nextjs #vercel
-- Quality: #accessibility #responsive-ui #freshness
+- Type: #feature #documentation #checkpoint
+- Project: #foksiku #devalltect-homepage #devalltect-docs
+- Platform: #docusaurus #astro #telegram #google-apps-script #github-pages
+- Quality: #i18n #security #accessibility #release-freshness

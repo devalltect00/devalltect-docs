@@ -1,0 +1,68 @@
+---
+title: Memulai
+description: Bergabung dengan Foksiku dan mencatat pengeluaran pertama.
+sidebar_position: 1
+---
+
+import { InfoBox, Terminal } from "@site/src/components/docs";
+
+# Memulai
+
+## 1. Buka bot privat
+
+Buka [@foksikubot](https://t.me/foksikubot) dalam chat Telegram privat.
+Foksiku tidak dirancang untuk grup.
+
+## 2. Periksa identitas dan akses
+
+<Terminal title="Telegram">
+
+```text
+/whoami
+/my_access
+```
+
+</Terminal>
+
+Pengguna yang belum dikenal dapat melihat ID Telegram numeriknya, tetapi tidak
+dapat mengakses data keuangan. Jika administrator mengirim undangan, gunakan
+kode itu satu kali:
+
+```text
+/join INVITATION_CODE
+```
+
+## 3. Catat pengeluaran
+
+Buka menu tindakan dan pilih **Catat pengeluaran**, atau kirim pengeluaran langsung:
+
+```text
+/menu
+```
+
+```text
+Bakso Rp18.000
+```
+
+Tinjau pratinjau, lalu pilih **Simpan**, **Ubah**, atau **Batal**. Tambahkan
+`-y` untuk langsung menyimpan input yang sudah lengkap dan valid:
+
+```text
+Bakso Rp18.000 -y
+```
+
+## 4. Periksa laporan
+
+```text
+/today
+```
+
+## 5. Pilih bahasa
+
+Kirim `/bahasa`, lalu pilih **English** atau **Bahasa Indonesia**. Foksiku
+menyimpan preferensi tersebut untuk akun Anda. `/language` juga tetap tersedia.
+
+<InfoBox variant="warning" title="Privasi undangan">
+  Perlakukan kode undangan sebagai kredensial sementara. Kirim secara privat dan jangan
+  publikasikan dalam screenshot, dokumentasi, issue, atau source.
+</InfoBox>

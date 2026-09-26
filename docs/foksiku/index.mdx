@@ -1,0 +1,67 @@
+---
+title: Foksiku
+description: Private, role-aware Telegram expense tracking backed by Google Sheets.
+sidebar_position: 0
+sidebar_key: foksiku-home
+---
+
+import { FeatureGrid, InfoBox, Screenshot } from "@site/src/components/docs";
+
+# Foksiku
+
+Foksiku v0.2.0 is a private Telegram expense tracker implemented with TypeScript,
+Google Apps Script, and Google Sheets. Invited users can record purchases,
+reuse saved products, confirm changes, and request spending reports without
+giving a general-purpose chatbot authority over financial records.
+
+**Telegram bot:** [@foksikubot](https://t.me/foksikubot)
+
+<Screenshot
+  src="/img/project-previews/foksiku.png"
+  alt="Foksiku Focused Fox identity and private Telegram expense-tracking capabilities"
+  title="Foksiku at a Glance"
+  caption="Focused Fox represents private, reviewed expense capture through a compact Telegram workflow."
+  fallback="The Foksiku release artwork can be added at static/img/project-previews/foksiku.png without changing this page."
+  variant="overview"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Capture",
+      children:
+        "Record one or several IDR, USD, or EUR expenses with quantities, dates, times, and optional immediate save.",
+    },
+    {
+      title: "Reuse",
+      children:
+        "Create user-owned products and aliases for recurring purchases, then archive them without changing history.",
+    },
+    {
+      title: "Review",
+      children:
+        "Confirm, edit, cancel, correct, or void records while preserving an append-only transaction trail.",
+    },
+    {
+      title: "Report",
+      children:
+        "Inspect daily, weekly, monthly, yearly, category, range, top-expense, and paginated transaction views.",
+    },
+  ]}
+/>
+
+<InfoBox variant="info" title="Bilingual, deterministic interface">
+  The bot supports English and Bahasa Indonesia responses, localized action buttons, and
+  per-user language preferences. Constrained local-model NLU remains a separate future
+  milestone; v0.2.0 continues to validate all financial actions with deterministic
+  application code.
+</InfoBox>
+
+## Privacy and access
+
+Foksiku accepts financial and administrative operations only in private
+Telegram chats. Access is controlled by numeric Telegram user ID and explicit
+roles. Usernames and display names never grant permission.
+
+Use [Getting Started](./getting-started.mdx) to begin, or open the
+[User Guide](./user-guide/overview.mdx) for supported workflows.

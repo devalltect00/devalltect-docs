@@ -1,0 +1,49 @@
+---
+title: User Guide
+description: Choose a Foksiku workflow by the result you need.
+sidebar_position: 1
+sidebar_key: foksiku-user-guide
+---
+
+import { CommandHero, FeatureGrid, InfoBox } from "@site/src/components/docs";
+
+<CommandHero
+  command="@foksikubot"
+  title="Foksiku User Guide"
+  description="Record, review, and report private expenses through Telegram."
+  category="User Guide"
+  status="v0.2.0"
+  syntax="message -> validation -> preview -> save"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Expense workflows",
+      children:
+        "Single items, multi-item batches, quantities, dates, times, and corrections.",
+    },
+    {
+      title: "Products",
+      children: "Reusable defaults and aliases scoped to the current Telegram user.",
+    },
+    {
+      title: "Reports",
+      children:
+        "Period totals, categories, ranges, top expenses, and transaction history.",
+    },
+    {
+      title: "Access",
+      children: "Private invitations and role-aware administrative commands.",
+    },
+    {
+      title: "Language and menu",
+      children: "English or Indonesian responses with localized action shortcuts.",
+    },
+  ]}
+/>
+
+<InfoBox variant="note" title="Deterministic interpretation">
+  Foksiku validates supported message patterns and asks for clarification when input is
+  incomplete or ambiguous. It does not execute text as code or shell commands.
+</InfoBox>

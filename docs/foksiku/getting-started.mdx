@@ -1,0 +1,67 @@
+---
+title: Getting Started
+description: Join Foksiku and record a first confirmed expense.
+sidebar_position: 1
+---
+
+import { InfoBox, Terminal } from "@site/src/components/docs";
+
+# Getting Started
+
+## 1. Open the private bot
+
+Open [@foksikubot](https://t.me/foksikubot) in a private Telegram chat. Foksiku
+is not designed for groups.
+
+## 2. Check your identity and access
+
+<Terminal title="Telegram">
+
+```text
+/whoami
+/my_access
+```
+
+</Terminal>
+
+An unknown user can view their numeric Telegram ID but cannot access financial
+data. If an administrator sends you an invitation, redeem it once:
+
+```text
+/join INVITATION_CODE
+```
+
+## 3. Record an expense
+
+Open the action menu and choose **Record an expense**, or send the expense directly:
+
+```text
+/menu
+```
+
+```text
+Bakso Rp18.000
+```
+
+Review the preview, then choose **Save**, **Edit**, or **Cancel**. To save a
+fully validated expense without the button step, append `-y`:
+
+```text
+Bakso Rp18.000 -y
+```
+
+## 4. Confirm the report
+
+```text
+/today
+```
+
+## 5. Choose a language
+
+Send `/language`, then choose **English** or **Bahasa Indonesia**. Foksiku stores
+the preference for your account. `/bahasa` is the Indonesian alias.
+
+<InfoBox variant="warning" title="Invitation privacy">
+  Treat invitation codes as temporary credentials. Send them privately and never publish
+  them in screenshots, documentation, issues, or source control.
+</InfoBox>

@@ -1,0 +1,36 @@
+---
+title: Common Problems
+description: Diagnose Foksiku access, webhook, deployment, and reporting issues.
+sidebar_position: 1
+---
+
+# Common Problems
+
+## The bot does not reply
+
+Run `getTelegramWebhookInfo`. The configured URL must match, pending updates
+should be zero after recovery, and no last error should be present. Confirm the
+deployment uses **Execute as me** and **Who has access: Anyone**.
+
+## Telegram reports 401, 302, or repeated old messages
+
+Publish a new deployment version, run `setTelegramWebhook` again, and inspect
+the webhook diagnostic. Use `deleteTelegramWebhookAndDropPendingUpdates` only
+when intentionally discarding queued updates.
+
+## A report says no expenses were recorded
+
+Confirm that the preview was saved, the transaction status is confirmed, the
+report period matches the transaction's local date, and the requesting user
+owns the record.
+
+## A command is unavailable
+
+Run `/my_access`. Help is role-aware. Unknown and blocked users cannot run
+financial commands, while administrative commands require Admin or Owner.
+
+## Source changes do not appear
+
+Run `pnpm run verify`, push the rebuilt `dist/` bundle, then publish a **New
+version** of the existing web-app deployment. A source push alone does not
+update a versioned `/exec` deployment.

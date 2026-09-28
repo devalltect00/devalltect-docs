@@ -1,0 +1,36 @@
+---
+title: Deployment
+description: Build and publish Devalltect Homepage through GitHub Actions and root GitHub Pages.
+sidebar_position: 4
+---
+
+# Deployment
+
+The production site is the root user site at
+[devalltect00.github.io](https://devalltect00.github.io/). `astro.config.ts`
+therefore uses the root site URL without a repository base path.
+
+## GitHub Pages
+
+Repository **Settings → Pages → Build and deployment → Source** must be set to
+**GitHub Actions**. Do not select **Deploy from a branch**, because GitHub's
+automatic Jekyll builder cannot process Astro source files.
+
+The Pages workflow:
+
+1. Installs Node.js 24 and the locked pnpm dependencies.
+2. Runs the Astro production build.
+3. Uploads `dist/` as the Pages artifact.
+4. Deploys that artifact to the `github-pages` environment.
+
+Optional repository variables named `PUBLIC_PORTFOLIO_URL` and
+`PUBLIC_DOCUMENTATION_URL` override navigation targets during CI builds.
+
+## Local production check
+
+```bash
+pnpm build
+pnpm preview
+```
+
+Never commit generated `dist/` or `.astro/` output.

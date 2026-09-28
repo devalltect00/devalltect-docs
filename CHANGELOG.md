@@ -14,9 +14,8 @@ Unreleased
 
 **Summary**
 
-Extend the documentation portal after the published v1.1.0 release with
-complete Foksiku v0.2.0 guidance and a bilingual public documentation baseline
-for the prepared Devalltect Homepage v1.0.0 release.
+Expand the portal with public, bilingual documentation for Foksiku and the
+Devalltect Homepage, while improving project discovery and release tracking.
 
 ### ✨ Features
 
@@ -43,6 +42,10 @@ for the prepared Devalltect Homepage v1.0.0 release.
 - synchronize normalized project start dates from Portfolio v2, display them
 - add focused metadata and chronological-order tests while preserving a
 - refine visitor-facing project categories so the static homepage, interactive
+- register the projects in shared metadata, homepage discovery, sidebars, and
+- add the Devalltect Docs portal to project discovery and sort cards by project
+- refine project categories and add accessible project preview images;
+- add focused project metadata and sorting tests, and clarify public/private
 
 **Tags**
 

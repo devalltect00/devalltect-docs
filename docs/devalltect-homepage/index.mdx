@@ -1,0 +1,60 @@
+---
+title: Devalltect Homepage
+description: Discover the bilingual Astro gateway to the Devalltect portfolio, documentation, projects, and engineering profiles.
+sidebar_position: 0
+sidebar_key: devalltect-homepage-home
+---
+
+import { FeatureGrid, InfoBox, Screenshot } from "@site/src/components/docs";
+
+# Devalltect Homepage
+
+Devalltect Homepage is the concise front door to the Devalltect project
+ecosystem. The bilingual Astro site introduces the identity, highlights
+maintained tools, and routes visitors to the portfolio, documentation portal,
+GitHub, and GitLab without duplicating those destinations.
+
+**Open the homepage:** [devalltect00.github.io](https://devalltect00.github.io/)
+
+<Screenshot
+  src="/img/project-previews/devalltect-homepage.png"
+  alt="Devalltect Homepage bilingual ecosystem gateway"
+  title="Devalltect Homepage at a Glance"
+  caption="A focused gateway for choosing between the portfolio, documentation, projects, and public engineering profiles."
+  fallback="Add the approved homepage screenshot at static/img/project-previews/devalltect-homepage.png when it is available."
+  variant="overview"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Orient",
+      children:
+        "Introduce Devalltect and help first-time visitors understand the available destinations.",
+    },
+    {
+      title: "Navigate",
+      children:
+        "Link directly to the interactive portfolio, documentation hub, repositories, and maintained tools.",
+    },
+    {
+      title: "Localize",
+      children:
+        "Serve English at the root route and Bahasa Indonesia at /id/ from centralized typed content.",
+    },
+    {
+      title: "Stay lightweight",
+      children:
+        "Use Astro static output and minimal browser JavaScript for fast, accessible navigation.",
+    },
+  ]}
+/>
+
+<InfoBox variant="info" title="Clear product boundaries">
+  The homepage is an ecosystem gateway. Portfolio v2 presents the broader visual story,
+  while Devalltect Docs provides detailed technical guidance.
+</InfoBox>
+
+Use [Getting Started](./getting-started.mdx) to run the source locally. The
+[Documentation Status](./reference/documentation-status.mdx) page records the
+planned first stable release represented here.

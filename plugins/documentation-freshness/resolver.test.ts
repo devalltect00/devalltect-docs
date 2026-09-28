@@ -18,6 +18,7 @@ function createProject(
     name: "Example",
     category: "CLI Tool",
     description: "Example project.",
+    startedAt: "2026-01",
     technologies: ["TypeScript"],
     docsPath: "/docs/example",
     available: true,

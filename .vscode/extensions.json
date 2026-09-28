@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "gitlab.gitlab-workflow",
+    "pkief.material-icon-theme",
+    "redhat.vscode-yaml",
+    "unifiedjs.vscode-mdx"
+  ],
+  "unwantedRecommendations": []
+}

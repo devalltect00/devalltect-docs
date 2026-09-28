@@ -1,61 +1,20 @@
-feat(ecosystem-docs): checkpoint Foksiku and homepage documentation
+feat(ecosystem-docs): expand bilingual project documentation
 
-Extend the documentation portal after the published v1.1.0 release with
-complete Foksiku v0.2.0 guidance and a bilingual public documentation baseline
-for the prepared Devalltect Homepage v1.0.0 release.
+Expand the portal with public, bilingual documentation for Foksiku and the
+Devalltect Homepage, while improving project discovery and release tracking.
 
-- register Foksiku in centralized project metadata, homepage discovery,
-  project overview pages, package topics, and sidebar navigation;
-- add aligned English and Indonesian overview and getting-started pages;
-- document expense capture, multi-item batches, saved products, reports,
-  transaction history, append-only corrections, access roles, and invitations;
-- add developer guidance for the functional-core architecture, module
-  boundaries, Script Properties, clasp workflow, versioned Apps Script
-  deployment, testing, and bounded maintenance;
-- publish clear command, permission, logging, and retention references;
-- add webhook, authorization, deployment, and reporting troubleshooting;
-- document per-user English and Indonesian responses, localized action buttons,
-  the compact menu, language selection, and Indonesian command aliases;
-- keep constrained local-model NLU clearly identified as future work rather
-  than presenting it as current v0.2.0 behavior;
-- configure release-aware documentation freshness for the public Foksiku
-  repository and v0.2.0 tag;
-- add the selected Focused Fox release preview to Foksiku discovery cards and
-  both localized project landing pages with accessible alternative text;
-- keep tokens, deployment URLs, spreadsheet identifiers, Telegram IDs,
-  invitation codes, and financial data outside public documentation;
-- retain the Devalltect Portfolio v2 pages and shared ecosystem navigation
-  established in v1.1.0;
-- add English and Indonesian Devalltect Homepage overview, setup,
-  configuration, architecture, deployment, and status pages;
-- register the homepage in centralized project metadata, discovery cards,
-  sidebar navigation, repository topics, and release-aware freshness checks;
-- document the Astro static-output boundary, root GitHub Pages deployment,
-  public destination overrides, metadata dry-run workflow, and the requirement
-  to use GitHub Actions instead of GitHub's Jekyll branch builder;
-- identify homepage v1.0.0 as prepared but unpublished until its annotated tag
-  and release are created;
-- preserve clear boundaries between the ecosystem homepage, interactive
-  portfolio, and technical documentation portal;
-- replace the remaining starter favicon reference with Devalltect branding and
-  clarify the portal identity in the navigation header;
-- add the Devalltect Docs portal itself to homepage and project-overview
-  discovery at its published v1.1.0 baseline;
-- synchronize normalized project start dates from Portfolio v2, display them
-  with locale-aware labels, and sort discovery cards newest-first;
-- add focused metadata and chronological-order tests while preserving a
-  reusable oldest-first option for future discovery views;
-- refine visitor-facing project categories so the static homepage, interactive
-  portfolio, Telegram bot, documentation platform, and CLI tools are described
-  according to their actual experiences.
-
-Tag: none
-Previous release: v1.1.0
-Release phase: post-v1.1.0 development checkpoint
-Target release: next minor version
+- add English and Indonesian guides for Foksiku and the Devalltect Homepage,
+  covering overview, setup, configuration, architecture, deployment, and status;
+- register the projects in shared metadata, homepage discovery, sidebars, and
+  release-aware documentation freshness checks;
+- add the Devalltect Docs portal to project discovery and sort cards by project
+  start date with locale-aware labels;
+- refine project categories and add accessible project preview images;
+- add focused project metadata and sorting tests, and clarify public/private
+  documentation boundaries.
 
 Tags:
-- Type: #feature #documentation #checkpoint
+- Type: #feature #documentation #i18n
 - Project: #foksiku #devalltect-homepage #devalltect-docs
-- Platform: #docusaurus #astro #telegram #google-apps-script #github-pages
-- Quality: #i18n #security #accessibility #release-freshness
+- Platform: #docusaurus #astro #telegram #github-pages
+- Quality: #accessibility #testing #release-freshness

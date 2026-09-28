@@ -131,6 +131,19 @@
   "gitlab.pipelineValidation.enabled": true,
 
   // =========================================================
+  // 🖥️ INTEGRATED TERMINAL
+  // =========================================================
+
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "path": "${env:windir}\\System32\\cmd.exe",
+      "args": []
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+
+  // =========================================================
   // 🎨 USER INTERFACE
   // =========================================================
 

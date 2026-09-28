@@ -1,0 +1,42 @@
+---
+title: Memulai
+description: Kunjungi Devalltect Homepage atau jalankan sumber Astro secara lokal.
+sidebar_position: 1
+---
+
+# Memulai
+
+## Kunjungi halaman utama
+
+Buka [devalltect00.github.io](https://devalltect00.github.io/). Bahasa Inggris
+tersedia pada `/`, sedangkan Bahasa Indonesia tersedia pada `/id/`. Kontrol tema
+dan bahasa tetap aksesibel pada tampilan desktop maupun mobile.
+
+## Jalankan sumber secara lokal
+
+Persyaratan:
+
+- Node.js 24
+- Corepack
+- pnpm 12.5.1
+
+```bash
+git clone https://github.com/devalltect00/devalltect00.github.io.git
+cd devalltect00.github.io
+corepack enable
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Buka `http://localhost:4321/`. Untuk pratinjau dari perangkat lain pada jaringan
+tepercaya yang sama, jalankan `pnpm dev --host 0.0.0.0` dan buka alamat jaringan
+privat yang ditampilkan.
+
+## Validasi checkout
+
+```bash
+pnpm validate
+```
+
+Gerbang validasi memeriksa format, aturan lint, diagnostik Astro dan TypeScript,
+pengujian, serta build produksi.

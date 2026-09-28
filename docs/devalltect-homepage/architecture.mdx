@@ -1,0 +1,32 @@
+---
+title: Architecture
+description: Understand the focused static architecture of Devalltect Homepage.
+sidebar_position: 3
+---
+
+# Architecture
+
+Devalltect Homepage is an Astro static site. It does not require a database,
+runtime API, server-rendered session, or client framework.
+
+```text
+src/
+├── components/   Reusable navigation, homepage, theme, and footer UI
+├── data/         Project records and public destinations
+├── i18n/         Equivalent English and Indonesian copy
+├── layouts/      Shared document structure and metadata
+├── pages/        Root, Indonesian, and not-found routes
+├── styles/       Design tokens, responsive layout, and motion
+└── types/        Shared content contracts
+```
+
+## Responsibility boundaries
+
+- Routes assemble localized pages but do not own project data.
+- Components render reusable presentation and small browser interactions.
+- Data modules centralize versions, destinations, and project records.
+- Localization modules keep English and Indonesian content aligned.
+- Static output remains portable and suitable for root GitHub Pages hosting.
+
+The homepage intentionally stays smaller than Portfolio v2 and Devalltect Docs.
+That separation keeps navigation direct and maintenance responsibilities clear.

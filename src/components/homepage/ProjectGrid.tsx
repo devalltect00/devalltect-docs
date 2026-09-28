@@ -1,8 +1,13 @@
 import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import React from "react";
 
 import { Screenshot } from "@site/src/components/docs";
-import { PROJECTS } from "@site/src/data/projects";
+import {
+  PROJECTS,
+  sortProjectsByStartDate,
+  type ProjectStartOrder,
+} from "@site/src/data/projects";
 
 import styles from "./ProjectGrid.module.css";
 
@@ -29,12 +34,38 @@ import styles from "./ProjectGrid.module.css";
 interface ProjectGridProps {
   /** Display each project's representative application screenshot. */
   showPreviews?: boolean;
+
+  /** Chronological order applied to the project cards. */
+  sortOrder?: ProjectStartOrder;
+}
+
+/** Format a normalized project start date for the active portal locale. */
+function formatStartDate(startedAt: string, locale: string): string {
+  const normalized = startedAt.length === 7 ? `${startedAt}-01` : startedAt;
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  };
+
+  if (startedAt.length === 10) {
+    options.day = "numeric";
+  }
+
+  return new Intl.DateTimeFormat(locale === "id" ? "id-ID" : "en-US", options).format(
+    new Date(`${normalized}T00:00:00Z`)
+  );
 }
 
 /** Render the projects available in the documentation portal. */
 export default function ProjectGrid({
   showPreviews = false,
+  sortOrder = "newest",
 }: ProjectGridProps): React.JSX.Element {
+  const { i18n } = useDocusaurusContext();
+  const projects = sortProjectsByStartDate(PROJECTS, sortOrder);
+  const isIndonesian = i18n.currentLocale === "id";
+
   return (
     <section className={styles.section}>
       <div className="container">
@@ -44,10 +75,16 @@ export default function ProjectGrid({
           <p>
             Browse documentation for available projects, tools, services, and platforms.
           </p>
+
+          <p className={styles.sortNote}>
+            {isIndonesian
+              ? "Diurutkan berdasarkan tanggal mulai terbaru."
+              : "Sorted by newest start date."}
+          </p>
         </div>
 
         <div className={styles.grid}>
-          {PROJECTS.map((project) => (
+          {projects.map((project) => (
             <article key={project.id} className={styles.card}>
               {showPreviews && project.preview && (
                 <Screenshot
@@ -59,7 +96,13 @@ export default function ProjectGrid({
                 />
               )}
 
-              <div className={styles.category}>{project.category}</div>
+              <div className={styles.metadata}>
+                <span className={styles.category}>{project.category}</span>
+                <time dateTime={project.startedAt} className={styles.startedAt}>
+                  {isIndonesian ? "Dimulai" : "Started"}{" "}
+                  {formatStartDate(project.startedAt, i18n.currentLocale)}
+                </time>
+              </div>
 
               <h3 className={styles.name}>{project.name}</h3>
 

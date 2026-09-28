@@ -42,7 +42,7 @@ export default function Home(): React.JSX.Element {
       <main>
         <Hero />
 
-        <ProjectGrid showPreviews />
+        <ProjectGrid showPreviews sortOrder="newest" />
 
         <DocumentationOverview />
 

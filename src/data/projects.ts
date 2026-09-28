@@ -107,7 +107,10 @@ import type { DocumentationFreshnessConfig } from "./documentationFreshness";
 export type ProjectCategory =
   | "CLI Tool"
   | "Library"
+  | "Website"
   | "Web Application"
+  | "Telegram Bot"
+  | "Documentation Platform"
   | "Desktop Application"
   | "API Service"
   | "Platform";
@@ -189,6 +192,12 @@ export interface Project {
   description: string;
 
   /**
+   * Date when active development started, expressed as `YYYY-MM` or
+   * `YYYY-MM-DD`. This value is shared with the public portfolio.
+   */
+  startedAt: string;
+
+  /**
    * Primary technologies.
    */
   technologies: string[];
@@ -215,6 +224,38 @@ export interface Project {
   documentation?: ProjectDocumentation;
 }
 
+/** Supported chronological order for project discovery surfaces. */
+export type ProjectStartOrder = "newest" | "oldest";
+
+/** Convert a normalized project start date into a stable UTC timestamp. */
+function projectStartTimestamp(startedAt: string): number {
+  const match = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(startedAt);
+
+  if (!match) {
+    throw new Error(`Invalid project start date: ${startedAt}`);
+  }
+
+  const [, year, month, day = "01"] = match;
+  return Date.UTC(Number(year), Number(month) - 1, Number(day));
+}
+
+/**
+ * Return a chronological copy of project metadata without mutating the
+ * centralized source array.
+ */
+export function sortProjectsByStartDate(
+  projects: readonly Project[],
+  order: ProjectStartOrder = "newest"
+): Project[] {
+  const direction = order === "newest" ? -1 : 1;
+
+  return [...projects].sort(
+    (left, right) =>
+      direction *
+      (projectStartTimestamp(left.startedAt) - projectStartTimestamp(right.startedAt))
+  );
+}
+
 /**
  * Documentation projects.
  *
@@ -222,11 +263,54 @@ export interface Project {
  */
 export const PROJECTS: Project[] = [
   {
+    id: "devalltect-homepage",
+    name: "Devalltect Homepage",
+    category: "Website",
+    description:
+      "A bilingual Astro gateway to the Devalltect portfolio, documentation, projects, and engineering profiles.",
+    startedAt: "2026-09-20",
+    technologies: [
+      "Astro 7",
+      "TypeScript",
+      "Node.js 24",
+      "pnpm",
+      "GitHub Actions",
+      "GitHub Pages",
+    ],
+    preview: {
+      src: "/img/project-previews/devalltect-homepage.png",
+      alt: "Devalltect Homepage bilingual ecosystem gateway",
+      fallback:
+        "The Devalltect Homepage preview will appear here when its release screenshot is added.",
+    },
+    docsPath: "/docs/devalltect-homepage",
+    available: true,
+    documentation: {
+      version: "1.0.0",
+      versionTag: "v1.0.0",
+      lastReviewed: "2026-09-24",
+      releaseUrl:
+        "https://github.com/devalltect00/devalltect00.github.io/releases/tag/v1.0.0",
+      statusPath: "/docs/devalltect-homepage/reference/documentation-status",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/devalltect00.github.io.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/devalltect00.github.io/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
+  },
+
+  {
     id: "foksiku",
     name: "Foksiku",
-    category: "Web Application",
+    category: "Telegram Bot",
     description:
       "Record private Telegram expenses in Google Sheets with bilingual menus, confirmations, reusable products, role-aware access, and deterministic reports.",
+    startedAt: "2026-09-13",
     technologies: [
       "TypeScript",
       "Google Apps Script",
@@ -265,6 +349,7 @@ export const PROJECTS: Project[] = [
     category: "Web Application",
     description:
       "Explore Devalltect projects, technical experience, and creative software engineering work through a bilingual interactive portfolio.",
+    startedAt: "2026-09-17",
     technologies: ["Next.js 16", "React 19", "TypeScript", "Three.js", "Vercel"],
     preview: {
       src: "/img/project-previews/devalltect-portfolio.png",
@@ -275,11 +360,11 @@ export const PROJECTS: Project[] = [
     docsPath: "/docs/devalltect-portfolio",
     available: true,
     documentation: {
-      version: "2.0.0",
-      versionTag: "v2.0.0",
+      version: "2.1.0",
+      versionTag: "v2.1.0",
       lastReviewed: "2026-09-20",
       releaseUrl:
-        "https://github.com/devalltect00/devalltect-portfolio-v2/releases/tag/v2.0.0",
+        "https://github.com/devalltect00/devalltect-portfolio-v2/releases/tag/v2.1.0",
       statusPath: "/docs/devalltect-portfolio/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -294,11 +379,53 @@ export const PROJECTS: Project[] = [
   },
 
   {
+    id: "devalltect-docs",
+    name: "Devalltect Docs",
+    category: "Documentation Platform",
+    description:
+      "A bilingual Docusaurus documentation portal for Devalltect developer and DevOps tools.",
+    startedAt: "2026-08",
+    technologies: [
+      "Docusaurus 3",
+      "React 19",
+      "TypeScript",
+      "MDX",
+      "Yarn",
+      "GitHub Pages",
+    ],
+    preview: {
+      src: "/img/project-previews/devalltect-docs.png",
+      alt: "Devalltect Docs bilingual documentation portal",
+      fallback:
+        "The Devalltect Docs preview will appear here when its approved screenshot is added.",
+    },
+    docsPath: "/docs/devalltect-docs",
+    available: true,
+    documentation: {
+      version: "1.2.0",
+      versionTag: "v1.2.0",
+      lastReviewed: "2026-09-24",
+      releaseUrl: "https://github.com/devalltect00/devalltect-docs/releases/tag/v1.2.0",
+      statusPath: "/docs/devalltect-docs/versioning-and-freshness",
+      freshness: {
+        mode: "auto",
+        repositoryUrl: "https://github.com/devalltect00/devalltect-docs.git",
+        tagFormat: "semver",
+        releasesUrl: "https://github.com/devalltect00/devalltect-docs/releases",
+        includePrereleases: false,
+        timeoutMs: 10_000,
+        fallbackStatus: "unknown",
+      },
+    },
+  },
+
+  {
     id: "path-header-scanner",
     name: "Path Header Scanner",
     category: "CLI Tool",
     description:
       "Preview, validate, and apply consistent path headers across source code and documentation.",
+    startedAt: "2026-05",
     technologies: ["Python 3.11+", "Typer", "Rich", "TOML", "Docker"],
     preview: {
       src: "/img/project-previews/path-header-scanner.png",
@@ -333,6 +460,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Generate, print, and analyze repository structure documentation in Markdown.",
+    startedAt: "2026-03",
     technologies: ["Python 3.9+", "Typer", "Rich", "Markdown", "Docker"],
     preview: {
       src: "/img/project-previews/doc-gen.png",
@@ -343,10 +471,10 @@ export const PROJECTS: Project[] = [
     docsPath: "/docs/doc-gen",
     available: true,
     documentation: {
-      version: "1.0.2",
-      versionTag: "v1.0.2",
+      version: "1.1.0",
+      versionTag: "v1.1.0",
       lastReviewed: "2026-09-11",
-      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.0.2",
+      releaseUrl: "https://github.com/devalltect00/Doc-Gen/releases/tag/v1.1.0",
       statusPath: "/docs/doc-gen/reference/documentation-status",
       freshness: {
         mode: "auto",
@@ -366,6 +494,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Repository-aware tag conversion, release recovery, and container image publishing.",
+    startedAt: "2026-04",
     technologies: ["Python 3.14+", "Typer", "Rich", "Git", "GitHub CLI", "Docker"],
     preview: {
       src: "/img/project-previews/reflow.png",
@@ -398,6 +527,7 @@ export const PROJECTS: Project[] = [
     category: "CLI Tool",
     description:
       "Configurable Git workflow, versioning, changelog, backup, cleanup, and release automation.",
+    startedAt: "2025-07",
     technologies: ["Python 3.14+", "Typer", "Rich", "Git", "Jinja2", "Commitizen"],
     preview: {
       src: "/img/project-previews/custy.png",

@@ -1,0 +1,42 @@
+---
+title: Getting Started
+description: Visit Devalltect Homepage or run its Astro source locally.
+sidebar_position: 1
+---
+
+# Getting Started
+
+## Visit the homepage
+
+Open [devalltect00.github.io](https://devalltect00.github.io/). English is
+served at `/`, while Bahasa Indonesia is available at `/id/`. Theme and
+language controls remain accessible on desktop and mobile layouts.
+
+## Run the source locally
+
+Requirements:
+
+- Node.js 24
+- Corepack
+- pnpm 12.5.1
+
+```bash
+git clone https://github.com/devalltect00/devalltect00.github.io.git
+cd devalltect00.github.io
+corepack enable
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Open `http://localhost:4321/`. To preview from another device on the same
+trusted network, run `pnpm dev --host 0.0.0.0` and open the displayed private
+network address.
+
+## Validate a checkout
+
+```bash
+pnpm validate
+```
+
+The validation gate checks formatting, lint rules, Astro and TypeScript
+diagnostics, tests, and the production build.

@@ -1,0 +1,36 @@
+---
+title: Deployment
+description: Build dan publikasikan Devalltect Homepage melalui GitHub Actions dan root GitHub Pages.
+sidebar_position: 4
+---
+
+# Deployment
+
+Situs produksi adalah situs pengguna root di
+[devalltect00.github.io](https://devalltect00.github.io/). Karena itu,
+`astro.config.ts` menggunakan URL situs root tanpa base path repositori.
+
+## GitHub Pages
+
+**Settings → Pages → Build and deployment → Source** pada repositori harus
+diatur menjadi **GitHub Actions**. Jangan gunakan **Deploy from a branch** karena
+builder Jekyll otomatis GitHub tidak dapat memproses sumber Astro.
+
+Workflow Pages:
+
+1. Memasang Node.js 24 dan dependensi pnpm yang terkunci.
+2. Menjalankan build produksi Astro.
+3. Mengunggah `dist/` sebagai artefak Pages.
+4. Men-deploy artefak ke environment `github-pages`.
+
+Variabel repositori opsional `PUBLIC_PORTFOLIO_URL` dan
+`PUBLIC_DOCUMENTATION_URL` mengganti tujuan navigasi selama build CI.
+
+## Pemeriksaan produksi lokal
+
+```bash
+pnpm build
+pnpm preview
+```
+
+Jangan commit keluaran `dist/` atau `.astro/` yang dihasilkan.

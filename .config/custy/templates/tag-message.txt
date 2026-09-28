@@ -1,0 +1,32 @@
+🚀 Devalltect Docs v1.2.0 — Expanded Ecosystem Documentation
+
+Devalltect Docs v1.2.0 expands the bilingual portal with public guidance for
+Foksiku and the Devalltect Homepage, and improves how visitors discover and
+navigate the wider project ecosystem.
+
+### Highlights
+
+- Bilingual user and developer documentation for Foksiku.
+- Bilingual setup, configuration, architecture, deployment, and status guides
+  for the Astro-based Devalltect Homepage.
+- Expanded project discovery with date-aware sorting, clearer categories, and
+  accessible preview images.
+- Release-aware documentation status checks and focused metadata tests.
+
+This portal release documents Foksiku v0.2.0 and the prepared Devalltect
+Homepage v1.0.0. It does not publish or release those projects.
+
+---
+
+## 📅 Release Information
+
+- Version: `v1.2.0`
+- Previous version: `v1.1.0`
+- Release Type: `stable`
+- Project: `devalltect00/devalltect-docs`
+- Strategy: Semantic Versioning
+- Locales: English and Bahasa Indonesia
+- Scope: Documentation portal and project discovery
+
+_Release: v1.2.0_
+_Author: Devalltect / Rizky Fernandes_

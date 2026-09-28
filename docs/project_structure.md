@@ -310,6 +310,14 @@ Recognized top-level directories:
 │   │   ├── index.mdx
 │   │   ├── maintainer-workflow.mdx
 │   │   └── versioning-and-freshness.mdx
+│   ├── devalltect-homepage
+│   │   ├── reference
+│   │   │   └── documentation-status.mdx
+│   │   ├── architecture.mdx
+│   │   ├── configuration.mdx
+│   │   ├── deployment.mdx
+│   │   ├── getting-started.mdx
+│   │   └── index.mdx
 │   ├── devalltect-portfolio
 │   │   ├── reference
 │   │   │   ├── _category_.json
@@ -579,6 +587,7 @@ Recognized top-level directories:
 │       │   ├── current
 │       │   │   ├── custy
 │       │   │   ├── devalltect-docs
+│       │   │   ├── devalltect-homepage
 │       │   │   ├── devalltect-portfolio
 │       │   │   ├── doc-gen
 │       │   │   ├── foksiku
@@ -781,6 +790,7 @@ Recognized top-level directories:
 │   │   └── docs.old.css
 │   ├── data
 │   │   ├── documentationFreshness.ts
+│   │   ├── projects.test.ts
 │   │   └── projects.ts
 │   ├── logs/ ... (collapsed)
 │   ├── pages
@@ -807,6 +817,8 @@ Recognized top-level directories:
 │   │   │       └── workflow
 │   │   ├── project-previews
 │   │   │   ├── custy.png
+│   │   │   ├── devalltect-docs.png
+│   │   │   ├── devalltect-homepage.png
 │   │   │   ├── devalltect-portfolio.png
 │   │   │   ├── doc-gen.png
 │   │   │   ├── foksiku.png

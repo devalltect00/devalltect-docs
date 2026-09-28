@@ -1,0 +1,60 @@
+---
+title: Halaman Utama Devalltect
+description: Temukan gerbang Astro dwibahasa menuju portofolio, dokumentasi, proyek, dan profil engineering Devalltect.
+sidebar_position: 0
+sidebar_key: devalltect-homepage-home
+---
+
+import { FeatureGrid, InfoBox, Screenshot } from "@site/src/components/docs";
+
+# Halaman Utama Devalltect
+
+Devalltect Homepage adalah pintu masuk ringkas menuju ekosistem proyek
+Devalltect. Situs Astro dwibahasa ini memperkenalkan identitas, menampilkan alat
+yang dipelihara, serta mengarahkan pengunjung ke portofolio, portal dokumentasi,
+GitHub, dan GitLab tanpa menduplikasi tujuan tersebut.
+
+**Buka halaman utama:** [devalltect00.github.io](https://devalltect00.github.io/)
+
+<Screenshot
+  src="/img/project-previews/devalltect-homepage.png"
+  alt="Gerbang ekosistem dwibahasa Devalltect Homepage"
+  title="Sekilas Devalltect Homepage"
+  caption="Gerbang terfokus untuk memilih portofolio, dokumentasi, proyek, dan profil engineering publik."
+  fallback="Tambahkan screenshot halaman utama yang disetujui ke static/img/project-previews/devalltect-homepage.png saat tersedia."
+  variant="overview"
+/>
+
+<FeatureGrid
+  items={[
+    {
+      title: "Orientasi",
+      children:
+        "Perkenalkan Devalltect dan bantu pengunjung baru memahami tujuan yang tersedia.",
+    },
+    {
+      title: "Navigasi",
+      children:
+        "Hubungkan langsung ke portofolio interaktif, pusat dokumentasi, repositori, dan alat yang dipelihara.",
+    },
+    {
+      title: "Lokalisasi",
+      children:
+        "Sajikan bahasa Inggris pada rute utama dan Bahasa Indonesia pada /id/ dari konten terpusat bertipe ketat.",
+    },
+    {
+      title: "Tetap ringan",
+      children:
+        "Gunakan keluaran statis Astro dan JavaScript browser minimal untuk navigasi cepat dan aksesibel.",
+    },
+  ]}
+/>
+
+<InfoBox variant="info" title="Batas produk yang jelas">
+  Homepage adalah gerbang ekosistem. Portfolio v2 menyajikan cerita visual yang lebih
+  luas, sedangkan Devalltect Docs menyediakan panduan teknis terperinci.
+</InfoBox>
+
+Gunakan [Memulai](./getting-started.mdx) untuk menjalankan sumber secara lokal.
+Halaman [Status Dokumentasi](./reference/documentation-status.mdx) mencatat
+rilis stabil pertama yang dipersiapkan di sini.

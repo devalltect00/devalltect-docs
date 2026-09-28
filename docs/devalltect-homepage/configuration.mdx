@@ -1,0 +1,35 @@
+---
+title: Configuration
+description: Configure public homepage destinations without hard-coding preview URLs.
+sidebar_position: 2
+---
+
+# Configuration
+
+The homepage works without an environment file. Canonical public destinations
+are built in as safe defaults.
+
+Copy `.env.example` to `.env` only when a local preview or alternate deployment
+needs different entrypoints:
+
+```dotenv
+PUBLIC_PORTFOLIO_URL=https://devalltect-portfolio.vercel.app/
+PUBLIC_DOCUMENTATION_URL=https://devalltect00.github.io/devalltect-docs/
+```
+
+Both variables are public Astro build-time values. Blank, malformed, or
+non-HTTP(S) values fall back to the canonical URLs instead of breaking
+navigation.
+
+## Repository metadata
+
+The repository description and provider-specific topics are stored in
+`package.json`. Review the planned request before applying it:
+
+```bash
+pnpm repository:metadata:dry-run --provider github
+pnpm repository:metadata:dry-run --provider gitlab
+```
+
+Metadata synchronization requires the corresponding authenticated provider CLI
+and explicit permission to change the remote repository.

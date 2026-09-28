@@ -37,7 +37,7 @@ const config: Config = {
   // title: "DevAlltect00 Docs",
   title: "Devalltect Docs",
   tagline: "Unified documentation portal for developer and DevOps tools",
-  favicon: "img/favicon.ico",
+  favicon: "img/logo-devalltect00-on-light.png",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -111,9 +111,9 @@ const config: Config = {
     },
     navbar: {
       // title: "DevAlltect00 Docs",
-      title: "Devalltect",
+      title: "Devalltect Docs",
       logo: {
-        alt: "DevAlltect00 Logo",
+        alt: "Devalltect logo",
         src: "img/logo-devalltect00-on-light.png",
         srcDark: "img/logo-devalltect00-on-dark.png",
       },

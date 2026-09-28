@@ -29,7 +29,7 @@ GitLab build jobs receive identically named CI/CD variables automatically.
 | Property              | Value                                      |
 | --------------------- | ------------------------------------------ |
 | Project               | Devalltect Docs                            |
-| Release line          | `v1.1.0`                                   |
+| Release line          | `v1.2.0`                                   |
 | Site generator        | Docusaurus 3.10.1                          |
 | Runtime               | Node.js 20+                                |
 | Package manager       | Yarn 4.18.0                                |
@@ -237,9 +237,9 @@ Create an annotated tag from the reviewed release-message template, then push
 the same tag to GitHub and GitLab:
 
 ```bash
-git tag -a v1.1.0 -F .config/custy/templates/tag-message-v1.1.0.txt
-git push <github-remote> v1.1.0
-git push <gitlab-remote> v1.1.0
+git tag -a v1.2.0 -F .config/custy/templates/tag-message.txt
+git push <github-remote> v1.2.0
+git push <gitlab-remote> v1.2.0
 ```
 
 GitLab release tags must be protected. Alpha, beta, and release-candidate tags

@@ -1,6 +1,6 @@
 {
   "name": "devalltect00-docs",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "description": "Bilingual Docusaurus documentation portal for Devalltect developer and DevOps tools.",
   "keywords": [
@@ -24,7 +24,9 @@
     "telegram-bot",
     "expense-tracker",
     "nextjs",
-    "vercel"
+    "vercel",
+    "astro",
+    "homepage"
   ],
   "devalltect": {
     "github": {
@@ -47,7 +49,8 @@
         "foksiku",
         "telegram-bot",
         "nextjs",
-        "vercel"
+        "vercel",
+        "astro"
       ]
     },
     "gitlab": {
@@ -70,7 +73,8 @@
         "foksiku",
         "telegram-bot",
         "nextjs",
-        "vercel"
+        "vercel",
+        "astro"
       ]
     }
   },
@@ -103,8 +107,9 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "test": "yarn test:documentation-freshness && yarn test:repository",
+    "test": "yarn test:documentation-freshness && yarn test:projects && yarn test:repository",
     "test:documentation-freshness": "tsx --test --test-concurrency=1 plugins/documentation-freshness/*.test.ts",
+    "test:projects": "tsx --test src/data/projects.test.ts",
     "test:repository": "node --test scripts/repository/tests/*.test.mjs",
     "test:repository-metadata": "node --test scripts/repository/tests/sync_metadata.test.mjs",
     "test:release-workflows": "node --test scripts/repository/tests/release_workflow.test.mjs",

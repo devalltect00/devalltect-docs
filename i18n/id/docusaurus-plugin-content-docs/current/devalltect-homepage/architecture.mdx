@@ -1,0 +1,32 @@
+---
+title: Arsitektur
+description: Pahami arsitektur statis terfokus dari Devalltect Homepage.
+sidebar_position: 3
+---
+
+# Arsitektur
+
+Devalltect Homepage adalah situs statis Astro. Situs ini tidak memerlukan basis
+data, API runtime, sesi server-rendered, atau framework klien.
+
+```text
+src/
+├── components/   UI navigasi, homepage, tema, dan footer yang dapat digunakan ulang
+├── data/         Catatan proyek dan tujuan publik
+├── i18n/         Konten Inggris dan Indonesia yang setara
+├── layouts/      Struktur dokumen dan metadata bersama
+├── pages/        Rute utama, Indonesia, dan halaman tidak ditemukan
+├── styles/       Token desain, layout responsif, dan motion
+└── types/        Kontrak konten bersama
+```
+
+## Batas tanggung jawab
+
+- Rute menyusun halaman terlokalisasi tetapi tidak memiliki data proyek.
+- Komponen merender presentasi reusable dan interaksi browser kecil.
+- Modul data memusatkan versi, tujuan, dan catatan proyek.
+- Modul lokalisasi menjaga kesetaraan konten Inggris dan Indonesia.
+- Keluaran statis tetap portabel untuk hosting root GitHub Pages.
+
+Homepage sengaja lebih ringkas daripada Portfolio v2 dan Devalltect Docs agar
+navigasi tetap langsung dan tanggung jawab pemeliharaan tetap jelas.

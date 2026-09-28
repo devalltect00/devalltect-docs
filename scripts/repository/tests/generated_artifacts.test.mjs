@@ -35,6 +35,10 @@ test("Docker keeps maintenance configuration outside the build context", () => {
   assert.match(dockerIgnore, /^\.config\/$/mu);
 });
 
+test("Docker keeps the public environment template in the build context", () => {
+  assert.match(dockerIgnore, /^!\.env\.example$/mu);
+});
+
 test("portfolio entrypoint navigation is environment-configurable", () => {
   assert.match(
     environmentExample,

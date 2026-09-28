@@ -1,20 +1,9 @@
-feat(ecosystem-docs): expand bilingual project documentation
+fix(ci): preserve environment template in Docker validation
 
-Expand the portal with public, bilingual documentation for Foksiku and the
-Devalltect Homepage, while improving project discovery and release tracking.
+Allow the public environment example into the Docker build context so
+repository validation can inspect the documented portfolio configuration.
 
-- add English and Indonesian guides for Foksiku and the Devalltect Homepage,
-  covering overview, setup, configuration, architecture, deployment, and status;
-- register the projects in shared metadata, homepage discovery, sidebars, and
-  release-aware documentation freshness checks;
-- add the Devalltect Docs portal to project discovery and sort cards by project
-  start date with locale-aware labels;
-- refine project categories and add accessible project preview images;
-- add focused project metadata and sorting tests, and clarify public/private
-  documentation boundaries.
+Add regression coverage for the Docker exception and exclude local Python
+virtual environments from Git, Prettier, and Docker processing.
 
-Tags:
-- Type: #feature #documentation #i18n
-- Project: #foksiku #devalltect-homepage #devalltect-docs
-- Platform: #docusaurus #astro #telegram #github-pages
-- Quality: #accessibility #testing #release-freshness
+No release tag points to this maintenance commit.
